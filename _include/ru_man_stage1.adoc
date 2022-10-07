@@ -1,0 +1,15 @@
+= 
+:allow-uri-read: 
+
+
+Lors de l'étape 1, vous devez préparer les nœuds pour la mise à niveau et exécuter une série de contrôles préalables. Vous devrez peut-être changer de disque pour Storage Encryption. Vous devez également préparer votre démarrage sur le réseau de nouveaux contrôleurs.
+
+.Étapes
+. link:determine_aggregates_on_internal_drives.html["Déterminez si le contrôleur possède des agrégats sur des disques internes"]
+. link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"]
+. link:get_address_key_management_server_encryption.html["Procurez-vous une adresse IP d'un serveur de gestion externe des clés pour le cryptage du stockage"]
+. link:manage_authentication_kmip.html["Gérez l'authentification à l'aide de serveurs KMIP"]
+. link:manage_authentication_okm.html["Gérez l'authentification à l'aide d'un gestionnaire de clés intégré"]
+. link:quiesce_snapmirror_relationships.html["Suspendre les relations SnapMirror"]
+. link:prepare_for_netboot.html["Préparation à la mise sur le réseau"]
+

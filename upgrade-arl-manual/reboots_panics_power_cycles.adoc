@@ -1,0 +1,218 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/reboots_panics_power_cycles.html 
+keywords: crash, reboot, node1, node2, node3, node4, upgrade 
+summary: 'Le système peut tomber en panne (un redémarrage, une panique ou une mise hors/sous tension) au cours des différentes étapes d"une mise à niveau manuelle du transfert d"agrégats ARL sur les contrôleurs exécutant ONTAP 9.7 ou une version antérieure.' 
+---
+= Redémarre, fonctionne de façon incohérente ou fonctionne tout cycle d'alimentation
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Le système peut tomber en panne – redémarrage, fonctionnement d'urgence ou mise hors/sous tension – au cours des différentes étapes de la mise à niveau. La solution à ces problèmes dépend du moment où ils se produisent.
+
+
+
+== Redémarre, fonctionne de façon incohérente ou reste alimenté lors de l'étape 2
+
+Des pannes peuvent se produire avant, pendant ou immédiatement après la phase 2, au cours de laquelle vous transférez des agrégats du nœud 1 vers le nœud 2, déplacez les LIF de données et les LIF SAN détenues par le nœud 1 vers le nœud 2, enregistrez les informations sur le nœud 1 et retirez le nœud 1.
+
+
+
+=== Le nœud 1 ou le nœud 2 tombe en panne avant la phase 2 alors que la haute disponibilité est toujours activée
+
+Si le nœud 1 ou le nœud 2 tombe en panne avant la phase 2, aucun agrégat n'a été déplacé et la configuration haute disponibilité est toujours activée.
+
+Le basculement et le rétablissement peuvent se poursuivre normalement.
+
+.Étapes
+. Vérifiez si la console ne dispose pas de messages EMS susceptibles d'apparaître sur le système et effectuez l'action corrective recommandée.
+. Poursuivez la procédure de mise à niveau de la paire de nœuds.
+
+
+
+
+=== NODE1 tombe en panne pendant ou juste après la phase 2 avec la haute disponibilité toujours activée
+
+Un ou plusieurs agrégats ont été transférés du nœud 1 vers le nœud 2, et la haute disponibilité est toujours activée. NODE2 prendra le relais du volume racine du nœud 1 et de tout agrégat non racine qui n'a pas été déplacé.
+
+La propriété des agrégats transférés semble identique à celle des agrégats non racines pris en charge, car le propriétaire du site n'a pas changé. Lorsque le noeud 1 entre dans `waiting for giveback state`, node2 redonnera tous les agrégats non-root du nœud 1.
+
+.Étapes
+. Terminé link:relocate_non_root_aggr_node1_node2.html#step1["Étape 1"] Dans la section _transférer à nouveau des agrégats non-racines du nœud 1 vers le nœud 2_.
+. Poursuivez la procédure de mise à niveau de la paire de nœuds.
+
+
+
+
+=== Le nœud 1 tombe en panne après la phase 2 lorsque la haute disponibilité est désactivée
+
+Le nœud 2 ne prendra pas le relais, mais il transmet toujours les données à partir de tous les agrégats non racines.
+
+.Étapes
+. Afficher le nœud 1.
+. Poursuivez la procédure de mise à niveau de la paire de nœuds.
++
+Vous verrez peut-être des modifications dans la sortie du `storage failover show` commande, mais c'est typique et n'affecte pas la procédure. Voir la section Dépannage link:issues_multiple_stages_of_procedure.html#Unexpected-storage-failover-show-command-output["Sortie inattendue de la commande Storage Failover show"].
+
+
+
+
+
+=== Le nœud 2 échoue pendant ou après la phase 2 alors que la haute disponibilité est toujours activée
+
+NODE1 a déplacé un ou la totalité de ses agrégats vers le nœud 2. LA HAUTE DISPONIBILITÉ est activée.
+
+NODE1 prendra en charge l'ensemble des agrégats du nœud 2 ainsi que l'un de ses propres agrégats qu'il avait transférés vers le nœud 2. Lorsque le noeud 2 entre dans `Waiting for Giveback` état, le nœud 1 renvoie tous les agrégats du nœud 2.
+
+.Étapes
+. Terminé link:relocate_non_root_aggr_node1_node2.html#step1["Étape 1"] Dans la section _transférer à nouveau des agrégats non-racines du nœud 1 vers le nœud 2_.
+. Poursuivez la procédure de mise à niveau de la paire de nœuds.
+
+
+
+
+=== Le nœud 2 tombe en panne après la phase 2 et après la désactivation de la haute disponibilité
+
+NODE1 ne prendra pas le contrôle.
+
+.Étapes
+. Afficher le nœud 2.
++
+Une panne client se produit pour tous les agrégats lors du démarrage du nœud 2.
+
+. Poursuivez la procédure de mise à niveau du reste de la paire de nœuds.
+
+
+
+
+== Redémarrages, paniques ou cycles d'alimentation pendant l'étape 3
+
+Des pannes peuvent se produire immédiatement après la phase 3, pendant laquelle vous installez et démarrez le nœud 3, mappez les ports du nœud 1 vers le nœud 3, déplacent les LIF de données et les LIF SAN appartenant au nœud 1 et au nœud 2 vers le nœud 3, et déplacent tous les agrégats du nœud 2 vers le nœud 3.
+
+
+
+=== Panne du nœud 2 lors de la phase 3 avec la haute disponibilité désactivée et avant de déplacer un agrégat
+
+Le nœud 3 ne prendra pas le relais suite à une panne du nœud 2 car la haute disponibilité est déjà désactivée.
+
+.Étapes
+. Afficher le nœud 2.
++
+Une panne client se produit pour tous les agrégats lors du démarrage du nœud 2.
+
+. Poursuivez la procédure de mise à niveau de la paire de nœuds.
+
+
+
+
+=== Le nœud 2 tombe en panne lors de la phase 3 après le déplacement d'une partie ou de l'ensemble des agrégats
+
+Le nœud 2 a déplacé une partie ou la totalité de ses agrégats vers le nœud 3, qui transmet des données depuis les agrégats qui ont été déplacés. LA HAUTE DISPONIBILITÉ est désactivée.
+
+Pour les agrégats qui n'ont pas été transférés, une panne se produit au niveau du client.
+
+.Étapes
+. Afficher le nœud 2.
+. Transférez les agrégats restants en fin de compte link:relocate_non_root_aggr_node2_node3.html#step1["Étape 1"] à link:relocate_non_root_aggr_node2_node3.html#step3["Étape 3"] Dans la section _transférer des agrégats non-racines du noeud 2 vers celui de noeud 3_.
+. Poursuivez la procédure de mise à niveau de la paire de nœuds.
+
+
+
+
+=== Le nœud 3 tombe en panne lors de la phase 3 et avant le transfert d'agrégats vers le nœud 2
+
+Le nœud 2 ne prend pas le relais, mais il transmet toujours les données à partir de tous les agrégats non racines.
+
+.Étapes
+. Afficher le nœud 3.
+. Poursuivez la procédure de mise à niveau de la paire de nœuds.
+
+
+
+
+=== Le nœud 3 tombe en panne lors de l'étape 3 lors du transfert d'agrégats
+
+En cas de panne du nœud 3 alors que le nœud 2 replace les agrégats sur le nœud 3, le nœud 2 annulera le déplacement d'agrégats restants.
+
+Le nœud 2 continue de servir les agrégats restants, mais les agrégats qui ont déjà été transférés vers le nœud 3 rencontrent une panne du client lors du démarrage du nœud 3.
+
+.Étapes
+. Afficher le nœud 3.
+. Terminé link:relocate_non_root_aggr_node2_node3.html#step3["Étape 3"] Une fois de plus, dans la section _transférer des agrégats non-racines du nœud 2 vers le nœud 3_.
+. Poursuivez la procédure de mise à niveau de la paire de nœuds.
+
+
+
+
+=== Le nœud3 ne parvient pas à démarrer après un échec dans l'étape 3
+
+En raison d'une défaillance catastrophique, le nœud3 ne peut pas être démarré suite à une panne lors de l'étape 3.
+
+.Étape
+. Contactez l'assistance technique.
+
+
+
+
+=== Le nœud2 tombe en panne après l'étape 3 mais avant l'étape 5
+
+Le nœud 3 continue de diffuser des données pour tous les agrégats. La paire HA est désactivée.
+
+.Étapes
+. Afficher le nœud 2.
+. Poursuivez la procédure de mise à niveau de la paire de nœuds.
+
+
+
+
+=== Le nœud3 tombe en panne après l'étape 3 mais avant l'étape 5
+
+Le nœud3 tombe en panne après l'étape 3 mais avant l'étape 5. La paire HA est désactivée.
+
+.Étapes
+. Afficher le nœud 3.
++
+Une panne client sera tolérée pour tous les agrégats.
+
+. Poursuivez la procédure de mise à niveau de la paire de nœuds.
+
+
+
+
+== Redémarrages, paniques ou cycles d'alimentation pendant l'étape 5
+
+Des pannes peuvent se produire lors de la phase 5, à l'étape où vous installez et démarrez le nœud 4, mappez les ports du nœud 2 vers le nœud 4, déplacent les LIF de données et les LIF SAN appartenant au nœud 2 du nœud 3 vers le nœud 4, puis déplacez l'ensemble des agrégats du nœud 2 du nœud 3 vers le nœud 4.
+
+
+
+=== Le nœud 3 tombe en panne lors de l'étape 5
+
+NODE3 a déplacé tout ou partie des agrégats du nœud 2 vers le nœud 4. NODE4 ne prend pas le contrôle, mais continue de servir des agrégats non racines que le nœud 3 a déjà déplacé. La paire HA est désactivée.
+
+Une panne se produit au niveau du reste des agrégats jusqu'au démarrage du nœud 3.
+
+.Étapes
+. Afficher le nœud 3.
+. Transférez les agrégats restants qui appartenaient au nœud 2 en répétant link:relocate_node2_non_root_aggr_node3_node4.html#Step1["Étape 1"] à link:relocate_node2_non_root_aggr_node3_node4.html#step3["Étape 3"] Dans la section _transférer les agrégats non racines du nœud 2 du nœud 3 vers le nœud 4_.
+. Poursuivez la procédure de mise à niveau de la paire de nœuds.
+
+
+
+
+=== NODE4 tombe en panne lors de l'étape 5
+
+NODE3 a déplacé tout ou partie des agrégats du nœud 2 vers le nœud 4. NODE3 ne prend pas le contrôle, mais continue de servir des agrégats non racines que NODE3 détient ainsi que ceux qui n'ont pas été transférés. LA HAUTE DISPONIBILITÉ est désactivée.
+
+Une panne se produit au niveau des agrégats non racines qui ont déjà été transférés jusqu'au démarrage du nœud 4.
+
+.Étapes
+. Ajouter le nœud 4.
+. Transférez les agrégats restants qui appartenaient au nœud 2 en effectuant de nouveau le processus link:relocate_node2_non_root_aggr_node3_node4.html#Step1["Étape 1"] à link:relocate_node2_non_root_aggr_node3_node4.html#step3["Étape 3"] Dans _transférer les agrégats non racines du nœud 2 du nœud 3 vers le nœud 4_.
+. Poursuivez la procédure de mise à niveau de la paire de nœuds.
+

@@ -1,0 +1,21 @@
+= Mettre à niveau la paire de nœuds
+:allow-uri-read: 
+
+
+Avant de mettre à niveau les nœuds à l'aide de l'ARL, il est important de connaître son fonctionnement. Dans ce contenu, la procédure est divisée en plusieurs étapes.
+
+
+
+== Mettre à niveau la paire de nœuds
+
+Pour mettre à niveau la paire de nœuds, vous devez préparer les nœuds d'origine, puis effectuer une série d'étapes sur les nœuds d'origine et nouveaux. Vous pouvez ensuite désaffecter les nœuds d'origine.
+
+
+
+== Présentation de la séquence de mise à niveau ARL
+
+Durant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, un contrôleur à la fois, en tirant parti de la configuration de paires haute disponibilité pour transférer la propriété d'agrégats non racines. Tous les agrégats non racines doivent être reloisés afin d'atteindre leur destination finale, qui est le nœud mis à niveau correct.
+
+Chaque agrégat possède un propriétaire d'origine et un propriétaire actuel. Le propriétaire de la maison est le propriétaire réel de l'agrégat, et le propriétaire actuel est le propriétaire temporaire.
+
+Le tableau ci-après décrit les tâches générales que vous effectuez à chaque étape ainsi que l'état de propriété de l'agrégat à la fin de cette étape. Les étapes détaillées sont fournies ultérieurement dans la procédure :

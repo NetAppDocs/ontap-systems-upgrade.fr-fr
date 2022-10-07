@@ -1,0 +1,12 @@
+= 
+:allow-uri-read: 
+
+
+Si vous installez physiquement les nœuds 3 et 4e dans la procédure, vous devrez peut-être netboot. Le terme « netboot » signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Lorsque vous vous préparez à netboot, vous devez placer une copie de l'image de démarrage ONTAP 9 sur un serveur web auquel le système peut accéder.
+
+.Avant de commencer
+* Vérifiez que vous pouvez accéder à un serveur HTTP avec le système.
+* Reportez-vous à la section link:other_references.html["Références"] Un lien vers le site de support _NetApp_ et télécharger les fichiers système nécessaires pour votre plateforme et la version correcte de ONTAP.
+
+
+Vous devez netboot les nouveaux contrôleurs si la même version de ONTAP 9 est installée sur les contrôleurs d'origine. Après avoir installé chaque nouveau contrôleur, vous démarrez le système à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système.

@@ -1,0 +1,146 @@
+= 
+:allow-uri-read: 
+
+
+. Démarrage sur le nœud 4 :
++
+[cols="30,70"]
+|===
+| Pour... | Alors... 
+
+
+| Systèmes de la gamme FAS/AFF8000 | `netboot \http://<web_server_ip/path_to_web-accessible_directory>/netboot/kernel` 
+
+
+| Tous les autres systèmes | `netboot \http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz` 
+|===
++
+Le `<path_to_the_web-accessible_directory>` vous devez indiquer où vous avez téléchargé le `<ontap_version>_image.tgz` À l'étape 1 de la section link:prepare_for_netboot.html["Préparation à la mise sur le réseau"].
+
++
+
+NOTE: N'interrompez pas l'amorçage.
+
+. Dans le menu de démarrage, sélectionnez option `(7) Install new software first`.
++
+Cette option de menu permet de télécharger et d'installer la nouvelle image ONTAP sur le périphérique d'amorçage.
+
++
+
+NOTE: Ne tenez pas compte du message suivant : `This procedure is not supported for Non-Disruptive Upgrade on an HA pair`Cette remarque s'applique aux mises à niveau de ONTAP sans interruption et non aux mises à niveau des contrôleurs. Utilisez toujours netboot pour mettre à jour le nouveau nœud vers l'image souhaitée. Si vous utilisez une autre méthode pour installer l'image sur le nouveau contrôleur, il est possible que la mauvaise image soit installée. Ce problème s'applique à toutes les versions de ONTAP.
+
+. Si vous êtes invité à poursuivre la procédure, entrez `y`, Et lorsque vous êtes invité à saisir l'URL du pack :
++
+`\http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz`
+
+. Procédez comme suit pour redémarrer le module de contrôleur :
++
+.. Entrez `n` pour ignorer la récupération de sauvegarde lorsque l'invite suivante s'affiche :
++
+....
+Do you want to restore the backup configuration now? {y|n}
+....
+.. Redémarrez en entrant `y` lorsque vous voyez l'invite suivante :
++
+....
+The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}
+....
++
+Le module de contrôleur redémarre mais s'arrête au menu d'amorçage car le périphérique d'amorçage a été reformaté et les données de configuration doivent être restaurées.
+
+
+
+. Sélectionnez le mode maintenance `5` dans le menu de démarrage et entrez `y` lorsque vous êtes invité à poursuivre le démarrage.
+. Vérifiez que le contrôleur et le châssis sont configurés en tant que haute disponibilité :
++
+`ha-config show`
+
++
+L'exemple suivant montre la sortie du `ha-config show` commande :
+
++
+....
+Chassis HA configuration: ha
+Controller HA configuration: ha
+....
++
+
+NOTE: Le système enregistre dans une PROM, qu'il soit dans une paire HA ou dans une configuration autonome. L'état doit être le même sur tous les composants du système autonome ou de la paire haute disponibilité.
+
+. Si le contrôleur et le châssis ne sont pas configurés comme HA, utilisez les commandes suivantes pour corriger la configuration :
++
+`ha-config modify controller ha`
+
++
+`ha-config modify chassis ha`
+
++
+Si vous disposez d'une configuration MetroCluster, utilisez les commandes suivantes pour modifier le contrôleur et le châssis :
+
++
+`ha-config modify controller mcc`
+
++
+`ha-config modify chassis mcc`
+
+. Quitter le mode maintenance :
++
+`halt`
+
++
+Interrompez l'AUTOBOOT en appuyant sur Ctrl-C dans l'invite de l'environnement de démarrage.
+
+. [[auto_install4_step15]]sur le noeud 3, vérifiez la date, l'heure et le fuseau horaire du système :
++
+`date`
+
+. Sur le nœud 4, vérifiez la date à l'aide de la commande suivante à l'invite de l'environnement d'initialisation :
++
+`show date`
+
+. Si nécessaire, définissez la date sur le node4 :
++
+`set date _mm/dd/yyyy_`
+
+. Sur le nœud 4, vérifiez l'heure à l'aide de la commande suivante à l'invite de l'environnement d'amorçage :
++
+`show time`
+
+. Si nécessaire, définissez l'heure sur le node4 :
++
+`set time _hh:mm:ss_`
+
+. Si nécessaire, définissez l'ID système partenaire sur le noeud 4 :
++
+`setenv partner-sysid _node2_sysid_`
+
++
+.. Enregistrer les paramètres :
++
+`saveenv`
+
+
+
+. [[auto_install4_step21]]sur le nouveau nœud, dans le chargeur d'amorçage, le `partner-sysid` le paramètre doit être défini. Pour node4, `partner-sysid` doit être celui du noeud 3. Vérifiez le `partner-sysid` pour le nœud 3 :
++
+`printenv partner-sysid`
+
+. [[step22]]effectuer l'une des actions suivantes :
++
+[cols="30,70"]
+|===
+| Si votre système... | Alors... 
+
+
+| Possède des disques et aucun stockage interne | Accédez à ,Étape 23. 
+
+
+| Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage  a| 
+.. Passez à la section link:set_fc_or_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] complétez les sous-sections de cette section.
+.. Revenez à cette section et suivez les étapes restantes, en commençant par ,Étape 23.
+
+
+*Important* : vous devez reconfigurer les ports intégrés FC, les ports CNA intégrés et les cartes CNA avant de démarrer ONTAP sur les systèmes V-Series ou avec le logiciel de virtualisation FlexArray.
+
+|===
+

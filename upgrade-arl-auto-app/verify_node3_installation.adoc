@@ -1,0 +1,344 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/verify_node3_installation.html 
+keywords: verifying, verify, node, install, installation 
+summary: 'Vérifiez que les ports physiques du nœud 1 sont correctement mappées sur le nœud 3 et restaurez la configuration réseau sur le nœud 3 lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+---
+= Vérifiez l'installation du noeud 3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous devez vérifier que les ports physiques du nœud1 sont correctement mis en correspondance avec les ports physiques du nœud3. Cela permettra au noeud 3 de communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
+
+Reportez-vous à la section link:other_references.html["Références"] Pour établir une liaison avec _Hardware Universe_ afin de capturer des informations sur les ports des nouveaux nœuds. Vous utiliserez ces informations plus loin dans cette section.
+
+L'organisation des ports physiques peut varier en fonction du modèle des nœuds. Au démarrage du nouveau nœud, ONTAP tente de déterminer les ports qui doivent héberger les LIFs du cluster afin de se mettre automatiquement en quorum.
+
+Si les ports physiques du nœud1 ne sont pas directement mis en correspondance avec les ports physiques du nœud3, la section suivante  network configuration on node3 doit être utilisé pour réparer la connectivité réseau.
+
+Après avoir installé et démarrer node3, vous devez vérifier qu'il est correctement installé. Vous devez attendre que le noeud 3 rejoint le quorum et reprendre l'opération de transfert.
+
+À ce stade de la procédure, l'opération aura été interrompue au fur et à mesure que le noeud 3 rejoint le quorum.
+
+.Étapes
+. Vérifiez que le noeud 3 a rejoint le quorum :
++
+`cluster show -node node3 -fields health`
+
++
+La sortie du `health` ce champ doit être de `true`.
+
+. Vérifiez que le noeud 3 fait partie du même cluster que le noeud 2 et qu'il est en bon état :
++
+`cluster show`
+
+. Chaque LIF de cluster doit écouter sur le port 7700. Vérifiez que les LIFs de cluster écoutent sur le port 7700 :
++
+`::> network connections listening show -vserver Cluster`
+
++
+Le port 7700 en écoute sur les ports de cluster est le résultat attendu, comme illustré dans l'exemple suivant pour un cluster à deux nœuds :
+
++
+[listing]
+----
+Cluster::> network connections listening show -vserver Cluster
+Vserver Name     Interface Name:Local Port     Protocol/Service
+---------------- ----------------------------  -------------------
+Node: NodeA
+Cluster          NodeA_clus1:7700               TCP/ctlopcp
+Cluster          NodeA_clus2:7700               TCP/ctlopcp
+Node: NodeB
+Cluster          NodeB_clus1:7700               TCP/ctlopcp
+Cluster          NodeB_clus2:7700               TCP/ctlopcp
+4 entries were displayed.
+----
+. Si nécessaire, pour chaque LIF de cluster qui ne écoute pas sur le port 7700, mettre le statut administratif de la LIF sur `down` puis `up`:
++
+`::> net int modify -vserver Cluster -lif _cluster-lif_ -status-admin down; net int modify -vserver Cluster -lif _cluster-lif_ -status-admin up`
+
++
+Répétez l'étape 3 pour vérifier que la LIF de cluster écoute désormais sur le port 7700.
+
+. Passer en mode privilège avancé :
++
+`set advanced`
+
+. Vérifier l'état de l'opération de remplacement du contrôleur et vérifier qu'elle est en pause et dans le même état qu'avant l'arrêt du nœud 1 pour effectuer les tâches physiques liées à l'installation de nouveaux contrôleurs et au déplacement des câbles :
++
+`system controller replace show`
+
++
+`system controller replace show-details`
+
+. Si vous travaillez sur un système MetroCluster, vérifiez que le contrôleur remplacé est configuré correctement pour la configuration MetroCluster ; la configuration MetroCluster doit être en état de fonctionnement. Voir link:verify_health_of_metrocluster_config.html["Vérifier l'état de santé de la configuration MetroCluster"].
++
+Reconfigurer les LIFs intercluster sur le nœud MetroCluster node3, et vérifier le cluster peering pour restaurer la communication entre les nœuds MetroCluster avant de passer à l'étape 6.
+
++
+Vérifier l'état du nœud MetroCluster :
+
++
+`metrocluster node show`
+
+. Reprendre l'opération de remplacement du contrôleur :
++
+`system controller replace resume`
+
+. Le remplacement du contrôleur est alors mis en pause pour toute intervention incluant le message suivant :
++
+....
+Cluster::*> system controller replace show
+Node             Status                       Error-Action
+---------------- ------------------------     ------------------------------------
+Node1(now node3) Paused-for-intervention      Follow the instructions given in
+                                              Step Details
+Node2                      None
+
+Step Details:
+--------------------------------------------
+To complete the Network Reachability task, the ONTAP network configuration must be manually adjusted to match the new physical network configuration of the hardware. This includes:
+
+1. Re-create the interface group, if needed, before restoring VLANs. For detailed commands and instructions, refer to the "Re-creating VLANs, ifgrps, and broadcast domains" section of the upgrade controller hardware guide for the ONTAP version running on the new controllers.
+2. Run the command "cluster controller-replacement network displaced-vlans show" to check if any VLAN is displaced.
+3. If any VLAN is displaced, run the command "cluster controller-replacement network displaced-vlans restore" to restore the VLAN on the desired port.
+
+2 entries were displayed.
+....
++
+
+NOTE: Dans cette procédure, la section _Re-création de VLAN, ifgrps et broadcast domain_ a été renommée _Restore network configuration sur node3_.
+
+. Lorsque le remplacement du contrôleur est en pause, passez à la section suivante de ce document pour restaurer la configuration réseau sur le nœud.
+
+
+
+
+== Restaurez la configuration du réseau sur le noeud 3
+
+Une fois que vous avez confirmé que le noeud 3 est dans le quorum et que vous pouvez communiquer avec le noeud 2, vérifiez que les VLAN, les groupes d'interface et les domaines de diffusion du noeud 1 sont visibles sur le noeud 3. Vérifiez également que tous les ports réseau du node3 sont configurés dans leurs domaines de diffusion appropriés.
+
+Pour plus d'informations sur la création et la recrércréation de VLAN, de groupes d'interfaces et de domaines de diffusion, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Network Management_.
+
+.Étapes
+. [[step1]]répertorie tous les ports physiques qui se trouvent sur le noeud 1 mis à niveau (appelé node3) :
++
+`network port show -node node3`
+
++
+Tous les ports réseau physiques, les ports VLAN et les ports de groupe d'interfaces sur le nœud sont affichés. À partir de cette sortie, vous pouvez voir tous les ports physiques qui ont été déplacés dans le `Cluster` Broadcast domain par ONTAP. Vous pouvez utiliser cette sortie pour décider quels ports doivent être utilisés comme ports membres de groupe d'interface, ports de base VLAN ou ports physiques autonomes pour l'hébergement des LIFs.
+
+. [[step2]]lister les domaines de diffusion sur le cluster :
++
+`broadcast-domain show`
+
+. [[step3]]Indiquez la capacité de port réseau de tous les ports sur le noeud 3 :
++
+`network port reachability show`
+
++
+La sortie doit s'afficher comme dans l'exemple suivant :
+
++
+[listing]
+----
+clusterA::*> reachability show -node node1_node3
+(network port reachability show)
+Node         Port       Expected Reachability   Reachability Status
+-----------  ---------  ----------------------  ----------------------
+node1_node3
+             a0a        Default:Default         no-reachability
+             a0a-822    Default:822             no-reachability
+             a0a-823    Default:823             no-reachability
+             e0M        Default:Mgmt            ok
+             e0a        Cluster:Cluster         misconfigured-reachability
+             e0b        Cluster:Cluster         no-reachability
+             e0c        Cluster:Cluster         no-reachability
+             e0d        Cluster:Cluster         no-reachability
+             e0e        Cluster:Cluster         ok
+             e0e-822    -                       no-reachability
+             e0e-823    -                       no-reachability
+             e0f        Default:Default         no-reachability
+             e0f-822    Default:822             no-reachability
+             e0f-823    Default:823             no-reachability
+             e0g        Default:Default         misconfigured-reachability
+             e0h        Default:Default         ok
+             e0h-822    Default:822             ok
+             e0h-823    Default:823             ok
+18 entries were displayed.
+----
++
+Dans l'exemple précédent, le nœud 1_node3 démarre simplement après le remplacement du contrôleur. Certains ports n'ont pas la capacité de reachcapacité à leurs domaines de diffusion attendus et doivent être réparés.
+
+. [[auto_revérification_3_step4]]réparer l'accessibilité pour chacun des ports du node3 avec un état de réabilité autre que `ok`. Exécuter la commande suivante, sur tout premier port physique, puis sur n'importe quel port VLAN, un à la fois :
++
+`network port reachability repair -node _node_name_  -port _port_name_`
+
++
+La sortie doit s'afficher comme dans l'exemple suivant :
+
++
+[listing]
+----
+Cluster ::> reachability repair -node node1_node3 -port e0h
+----
++
+[listing]
+----
+Warning: Repairing port "node1_node3: e0h" may cause it to move into a different broadcast domain, which can cause LIFs to be re-homed away from the port. Are you sure you want to continue? {y|n}:
+----
++
+Un message d'avertissement, tel qu'illustré ci-dessus, est prévu pour les ports dont l'état d'accessibilité peut être différent de l'état d'accessibilité du domaine de diffusion où il se trouve actuellement. Vérifiez la connectivité du port et la réponse `y` ou `n` selon les besoins.
+
++
+Vérifier que tous les ports physiques ont leur capacité d'accessibilité attendue :
+
++
+`network port reachability show`
+
++
+Au fur et à mesure que la réparation de l'accessibilité est effectuée, ONTAP tente de placer les ports dans les domaines de diffusion appropriés. Toutefois, si la capacité de réachbilité d’un port ne peut être déterminée et n’appartient à aucun des domaines de diffusion existants, ONTAP créera de nouveaux domaines de diffusion pour ces ports.
+
+. [[step5]]si la configuration du groupe d'interfaces ne correspond pas à la nouvelle disposition du port physique du contrôleur, modifiez-la en procédant comme suit.
++
+.. Vous devez d'abord supprimer les ports physiques qui doivent être des ports membres du groupe d'interfaces de leur appartenance à un domaine de diffusion. Pour ce faire, utilisez la commande suivante :
++
+`network port broadcast-domain remove-ports -broadcast-domain _broadcast-domain_name_ -ports _node_name:port_name_`
+
+.. Ajout d'un port membre à un groupe d'interfaces :
++
+`network port ifgrp add-port -node _node_name_ -ifgrp _ifgrp_ -port _port_name_`
+
+.. Le groupe d'interface est automatiquement ajouté au domaine de diffusion environ une minute après l'ajout du premier port membre.
+.. Vérifiez que le groupe d'interface a été ajouté au domaine de diffusion approprié :
++
+`network port reachability show -node _node_name_ -port _ifgrp_`
+
++
+Si l'état de la capacité d'accessibilité du groupe d'interfaces n'est pas le cas `ok`, affectez-le au domaine de diffusion approprié :
+
++
+`network port broadcast-domain add-ports -broadcast-domain _broadcast_domain_name_ -ports _node:port_`
+
+
+
+. [[step6]]affectez les ports physiques appropriés à l' `Cluster` broadcast domain en procédant comme suit :
++
+.. Déterminez les ports qui ont la capacité de remboursement du `Cluster` broadcast domain :
++
+`network port reachability show -reachable-broadcast-domains Cluster:Cluster`
+
+.. Réparer n'importe quel port avec la capacité de réparation du `Cluster` broadcast domain, si son statut de accessibilité n'est pas `ok`:
++
+`network port reachability repair -node _node_name_ -port _port_name_`
+
+
+
+. [[step7]]déplacez les ports physiques restants dans leurs domaines de diffusion appropriés à l'aide de l'une des commandes suivantes :
++
+`network port reachability repair -node _node_name_ -port _port_name_`
+
++
+`network port broadcast-domain remove-port`
+
++
+`network port broadcast-domain add-port`
+
++
+Vérifiez qu'il n'y a pas de port injoignable ou inattendu. Vérifiez l'état d'accessibilité de tous les ports physiques à l'aide de la commande suivante et en examinant la sortie pour confirmer que l'état est `ok`:
+
++
+`network port reachability show -detail`
+
+. [[step8]]restaurez tous les VLAN qui auraient pu être déplacés à l'aide des étapes suivantes :
++
+.. Liste des réseaux locaux virtuels déplacés :
++
+`cluster controller-replacement network displaced-vlans show`
+
++
+Les valeurs de sortie suivantes doivent s'afficher :
+
++
+[listing]
+----
+Cluster::*> displaced-vlans show
+(cluster controller-replacement network displaced-vlans show)
+          Original
+Node      Base Port   VLANs
+--------  ----------  -----------------------------------------
+Node1       a0a       822, 823
+            e0e       822, 823
+2 entries were displayed.
+----
+.. Restaurer les VLAN déplacés de leurs ports de base précédents :
++
+`cluster controller-replacement network displaced-vlans restore`
+
++
+Voici un exemple de restauration des VLAN déplacés du groupe d'interface "a0A" vers le même groupe d'interface :
+
++
+[listing]
+----
+Cluster::*> displaced-vlans restore -node node1_node3 -port a0a -destination-port a0a
+----
++
+Voici un exemple de restauration des VLAN déplacés sur le port « e0e » vers « e0h » :
+
++
+[listing]
+----
+Cluster::*> displaced-vlans restore -node node1_node3 -port e0e -destination-port e0h
+----
++
+Lorsqu'une restauration VLAN est réussie, les VLAN déplacés sont créés sur le port de destination spécifié. La restauration VLAN échoue si le port de destination est membre d'un groupe d'interfaces ou si le port de destination est arrêté.
+
++
+Attendez environ une minute pour placer les VLAN nouvellement restaurés dans leurs domaines de diffusion appropriés.
+
+.. Créez de nouveaux ports VLAN si nécessaire pour les ports VLAN qui ne sont pas dans le `cluster controller-replacement network displaced-vlans show` sortie mais doit être configurée sur d'autres ports physiques.
+
+
+. [[step9]]supprimez tous les domaines de diffusion vides une fois toutes les réparations de port terminées :
++
+`broadcast-domain delete -broadcast-domain _broadcast_domain_name_`
+
+. [[step10]]vérifier l'accessibilité des ports :
++
+`network port reachability show`
+
++
+Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le `network port reachability show` la commande doit indiquer l'état de la capacité d'accessibilité `ok` pour tous les ports connectés et l'état en tant que `no-reachability` pour les ports sans connectivité physique. Si un port signale un état autre que ces deux, effectuez la réparation de la capacité d'accès et ajoutez ou supprimez des ports de leurs domaines de diffusion comme indiqué dans ,Étape 4.
+
+. Vérifier que tous les ports ont été placés dans des domaines de diffusion :
++
+`network port show`
+
+. Vérifiez que l'unité de transmission maximale (MTU) correcte est configurée pour tous les ports des domaines de diffusion :
++
+`network port broadcast-domain show`
+
+. Restaurer les ports de base LIF, en précisant les ports de home Vserver(s) et LIF, le cas échéant, qui doivent être restaurés à l'aide des étapes suivantes :
++
+.. Lister les LIFs déplacées :
++
+`displaced-interface show`
+
+.. Restaurer les home node LIF et les ports home ports :
++
+`cluster controller-replacement network displaced-interface restore-home-node -node _node_name_ -vserver _vserver_name_ -lif-name _LIF_name_`
+
+
+
+. Vérifier que toutes les LIF disposent d'un port d'origine et sont administrativement en service :
++
+`network interface show -fields home-port, status-admin`
+
+

@@ -1,0 +1,55 @@
+---
+permalink: upgrade/upgrade-reset-default-configuration-node3-and-node4.html 
+sidebar: sidebar 
+keywords: confirm, configuration, information, boot, media, interfere, controller, upgrade, reset, node3, node4, node, default, setting, reset default configuration on the new nodes 
+summary: 'Pour vérifier que les informations de configuration du support de démarrage n"interfèrent pas avec la mise à niveau du contrôleur, vous devez réinitialiser les configurations des noeuds 3 et nœud4 sur les paramètres de configuration par défaut.' 
+---
+= Réinitialise la configuration par défaut sur les nouveaux nœuds
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour vérifier que les informations de configuration du support de démarrage n'interfèrent pas avec la mise à niveau du contrôleur, vous devez réinitialiser les configurations des noeuds 3 et nœud4 sur les paramètres de configuration par défaut.
+
+Vous devez effectuer les étapes suivantes sur les noeuds 3 et 4. Vous pouvez effectuer les étapes sur chaque nœud en parallèle.
+
+. Démarrez le nœud sur le menu de démarrage :
++
+`boot_ontap menu`
+
+. À l'invite du menu de démarrage, tapez `wipeconfig` Puis appuyez sur entrée.
++
+L'écran suivant affiche l'invite du menu de démarrage
+
++
+[listing]
+----
+Please choose one of the following:
+
+    (1) Normal Boot.
+    (2) Boot without /etc/rc.
+    (3) Change password.
+    (4) Clean configuration and initialize all disks.
+    (5) Maintenance mode boot.
+    (6) Update flash from backup config.
+    (7) Install new software first.
+    (8) Reboot node.
+    (9) Configure Advanced Drive Partitioning.
+    Selection (1-9)?  wipeconfig
+----
+. Entrez `yes` lorsque vous voyez une invite similaire à la suivante :
++
+[listing]
+----
+This option deletes critical system configuration, including cluster membership.
+Warning: do not run this option on a HA node that has been taken over.
+Are you sure you want to continue?: yes
+Rebooting to finish wipeconfig request.
+----
++
+Le système lance le `wipeconfig` procédure et redémarrage. Une fois la procédure terminée, le système revient au menu de démarrage.
+
+. Dans le menu de démarrage, entrez 8 pour redémarrer le nœud, et appuyez sur *Ctrl-C* pendant l'AUTOBOOT pour arrêter le nœud sur l'invite DU CHARGEUR.
+

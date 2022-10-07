@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/relocate_failed_or_vetoed_aggr.html 
+keywords: relocate, aggregates, fail, veto 
+summary: 'Transfert manuel des agrégats défectueux ou vetotés lors de la mise à niveau des contrôleurs exécutant ONTAP 9.5 vers 9.7 à l"aide de `system controller replace` commandes.' 
+---
+= Le transfert d'agrégats a échoué ou a été veto
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si un agrégat ne peut pas transférer ou être vetoté, vous devez transférer manuellement les agrégats ou remplacer les vetos ou les vérifications de destination, si nécessaire.
+
+L'opération de relocalisation a été interrompue en raison de l'erreur.
+
+.Étapes
+. Vérifiez les logs EMS pour déterminer pourquoi l'agrégat n'a pas pu être déplacé ou a été vetoté.
+. Transfert d'agrégats défaillants ou vetotés :
++
+`storage aggregate relocation start -node _node1_ -destination _node2_ aggregate-list * -ndocontroller-upgrade true`
+
+. Entrez-le lorsque vous y êtes invité `y`.
+. Vous pouvez forcer le déplacement en utilisant l'une des méthodes suivantes :
++
+[cols="35,65"]
+|===
+| Option | Description 
+
+
+| Annulation des contrôles de veto | Saisissez les informations suivantes :
+`storage aggregate relocation start -override-vetoes * -ndocontroller-upgrade true` 
+
+
+| Remplacement des vérifications de destination | Saisissez les informations suivantes :
+`storage aggregate relocation start -overridedestination-checks * -ndo-controllerupgrade true` 
+|===
+

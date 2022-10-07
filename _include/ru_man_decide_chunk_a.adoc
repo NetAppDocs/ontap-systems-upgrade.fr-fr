@@ -1,0 +1,11 @@
+= 
+:allow-uri-read: 
+
+
+Vous apprendrez à mettre à niveau les contrôleurs de stockage d'une paire haute disponibilité avec de nouveaux contrôleurs tout en conservant l'ensemble des données et disques existants. Il s'agit d'une procédure complexe qui ne doit être utilisée que par des administrateurs expérimentés.
+
+Utilisez ce contenu dans les circonstances suivantes :
+
+* Vous ne voulez pas ajouter les nouveaux contrôleurs comme une nouvelle paire haute disponibilité au cluster et migrer les données en utilisant les déplacements de volumes.
+* Vous avez de l'expérience dans l'administration de ONTAP et vous êtes à l'aise avec les risques de travailler en mode de privilèges de diagnostic.
+

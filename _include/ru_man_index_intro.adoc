@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+Ce contenu explique comment mettre à niveau le matériel du contrôleur sans interruption grâce au transfert d'agrégats.
+
+Vous pouvez mettre à niveau le matériel du contrôleur sur une paire de nœuds exécutant ONTAP 9 sans interruption en migrant les agrégats non-racines depuis les nœuds d'origine vers les nouveaux nœuds du même cluster. Les données hébergées sur les nœuds mis à niveau sont accessibles au cours de la mise à niveau.
+
+Cette procédure utilise une méthode de transfert d'agrégats (ARL), qui tire parti de la configuration haute disponibilité pour déplacer la propriété des agrégats non-racines d'un nœud vers un autre si ceux-ci partagent le stockage au sein d'un même cluster.

@@ -1,0 +1,74 @@
+= 
+:allow-uri-read: 
+
+
+Vous devez installer NODE3 dans le rack, transférer les connexions du noeud 1 vers le noeud 3, démarrer le noeud 3 et installer ONTAP. Vous devez ensuite réaffecter l'un des disques de spare du nœud1, tous les disques appartenant au volume racine et tous les agrégats non racines qui n'ont pas été transférés vers le nœud2 plus tôt dans le processus, comme indiqué dans cette section.
+
+L'opération de déplacement est mise en pause au début de cette étape. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement. En outre, vous devez vérifier que les LIF SAN ont bien été déplacées vers le nœud 3.
+
+Vous avez besoin de netboot nœud3 si cette version de ONTAP 9 n'est pas installée sur le nœud 1. Une fois le noeud 3 installé, démarrez-le à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système, en suivant les instructions de la section link:prepare_for_netboot.html["Préparation à la mise sur le réseau"].
+
+.Important :
+* Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire ,Étape 1 à ,Étape 21, quittez ensuite cette section et suivez les instructions de la section link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] Sections si nécessaire, en saisissant des commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec ,Étape 23.
+* Si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière, puis aller à link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] sections, saisie de commandes à l'invite du cluster.
+
+
+.Étapes
+. [[auto_install3_step1]]Assurez-vous que vous disposez d'un espace rack pour node3.
++
+Si les nœuds 1 et 2 se trouvent dans un châssis distinct, vous pouvez placer le nœud 3 au même emplacement de rack que le nœud 1. Toutefois, si le nœud 1 se trouvait dans le même châssis avec le nœud 2, il faut placer le nœud 3 dans son propre espace rack, de préférence à proximité de l'emplacement du nœud 1.
+
+. [[auto_install3_step2]]installez le noeud 3 dans le rack, en suivant les instructions _installation and Setup_ de votre modèle de nœud.
++
+
+NOTE: Si vous effectuez une mise à niveau vers un système contenant les deux nœuds du même châssis, installez le nœud 4 dans le châssis et sur le nœud 3. Si ce n'est pas le cas, lors du démarrage du nœud 3, le nœud se comporte comme s'il se trouvaient dans une configuration à double châssis et lors du démarrage du nœud 4, l'interconnexion entre les nœuds n'apparaît pas.
+
+. [[auto_install3_step3]]Cable node3, déplaçant les connexions du node1 vers le node3.
++
+Reliez les connexions suivantes à l'aide des instructions _installation and Setup_ ou des instructions _FlexArray Virtualization installation conditions requises et Reference_ pour la plateforme node3, du document du tiroir disque approprié et de _High Availability Management_.
+
++
+Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers les spécifications d'installation de la virtualisation et les références_ et _gestion de la haute disponibilité_ de FlexArray.
+
++
+** Console (port de gestion à distance)
+** Ports de cluster
+** Ports de données
+** Ports de gestion de clusters et de nœuds
+** Stockage
+** Configurations SAN : ports de switch iSCSI Ethernet et FC
++
+
+NOTE: Il n'est pas nécessaire de déplacer la carte d'interconnexion ou la connexion du câble d'interconnexion de cluster du nœud 1 vers le nœud 3, car la plupart des modèles de plateforme possèdent un modèle de carte d'interconnexion unique. Pour la configuration MetroCluster, vous devez déplacer les connexions des câbles FC-VI du nœud 1 vers le nœud 3. Si le nouvel hôte ne dispose pas de carte FC-VI, il vous faudra peut-être déplacer la carte FC-VI.
+
+
+
+. [[auto_install3_step4]]mettez le système sous tension vers le noeud 3, puis interrompez le processus d'amorçage en appuyant sur Ctrl-C sur le terminal de la console pour accéder à l'invite de l'environnement d'amorçage.
++
+Si vous effectuez la mise à niveau vers un système avec les deux nœuds du même châssis, le nœud 4 redémarre également. Vous pouvez toutefois ignorer le démarrage du nœud 4 jusqu'à ce qu'il soit ultérieur.
+
++
+
+NOTE: Lorsque vous démarrez le nœud 3, le message d'avertissement suivant peut s'afficher :
+
++
+....
+WARNING: The battery is unfit to retain data during a power outage. This is likely because the battery is discharged but could be due to other temporary conditions.
+When the battery is ready, the boot process will complete and services will be engaged.
+To override this delay, press 'c' followed by 'Enter'
+....
+. [[auto_install3_step5]]si vous voyez le message d'avertissement dans ,Étape 4, procédez comme suit :
++
+.. Vérifiez s'il y a un message de console susceptible d'indiquer un problème autre que celui d'une batterie NVRAM faible et, le cas échéant, effectuez les actions correctives nécessaires.
+.. Laissez la batterie se charger et le processus de démarrage s'achever.
++
+
+WARNING: *Attention : ne pas outrepasser le délai; si la batterie n'est pas chargée, cela pourrait entraîner une perte de données.*
+
++
+
+NOTE: Reportez-vous à la section link:prepare_for_netboot.html["Préparation à la mise sur le réseau"].
+
+
+
+

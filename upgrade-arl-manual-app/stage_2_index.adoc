@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/stage_2_index.html 
+keywords: relocate, retire, node1, steps, stage 2 
+summary: 'Étape 2 : processus de mise à niveau manuelle d"ARL sur les contrôleurs exécutant ONTAP 9.8 ou une version ultérieure' 
+---
+= Étape 2. Transférez et retirez le nœud 1
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Lors de la phase 2, vous déplacez les agrégats et les LIF du nœud 1 vers le nœud 2, enregistrez les informations sur le nœud 1, puis retirez le nœud 1. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement.
+
+.Étapes
+. link:relocate_non_root_aggr_node1_node2.html["Déplacement des agrégats non racines et des LIF de données NAS qui appartiennent au nœud 1 vers le nœud 2"]
+. link:move_nas_lifs_node1_node2.html["Déplacement des LIF de données NAS qui appartiennent au nœud 1 vers le nœud 2"]
+. link:record_node1_information.html["Enregistrement des informations sur le noeud 1"]
+. link:retire_node1.html["Retirer le nœud 1"]
+

@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/decide_to_use_arl_guide.html 
+keywords: decision, decision, what to use, upgrade, HA pair, metrocluster, storage encryption, volume encryption, NSE, NVE 
+summary: 'Utilisez la procédure manuelle d"ARL pour mettre à niveau les contrôleurs de stockage d"une paire haute disponibilité avec les nouveaux contrôleurs exécutant ONTAP 9.8 ou une version ultérieure.' 
+---
+= Décider d'utiliser la procédure de transfert d'agrégats
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous apprendrez à mettre à niveau les contrôleurs de stockage d'une paire haute disponibilité avec de nouveaux contrôleurs tout en conservant l'ensemble des données et disques existants. Il s'agit d'une procédure complexe qui ne doit être utilisée que par des administrateurs expérimentés.
+
+Utilisez ce contenu dans les circonstances suivantes :
+
+* Vous ne voulez pas ajouter les nouveaux contrôleurs comme une nouvelle paire haute disponibilité au cluster et migrer les données en utilisant les déplacements de volumes.
+* Vous avez de l'expérience dans l'administration de ONTAP et vous êtes à l'aise avec les risques de travailler en mode de privilèges de diagnostic.
+* Le système repose sur des configurations Fabric MetroCluster à 4 et 8 nœuds qui exécutent ONTAP 9.8 ou une version ultérieure.
+
+
+
+NOTE: Vous pouvez utiliser NetApp Storage Encryption (NSE) et NetApp Volume Encryption (NVE) dans le cadre de cette procédure.
+
+Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+
+Reportez-vous à la section link:other_references.html["Références"] Lien vers le Centre de documentation _ONTAP 9_ où vous pouvez accéder à la documentation produit ONTAP 9.

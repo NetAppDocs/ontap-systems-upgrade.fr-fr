@@ -1,0 +1,11 @@
+---
+section: upgrade-arl
+title: Utiliser le transfert d'agrégats pour mettre à niveau le matériel du contrôleur
+entries:
+- title: Présentation
+  url: "/upgrade-arl/index.html"
+- section: upgrade-arl-auto-affa900
+- section: upgrade-arl-auto-app
+- section: upgrade-arl-manual-app
+- section: upgrade-arl-auto
+- section: upgrade-arl-manual

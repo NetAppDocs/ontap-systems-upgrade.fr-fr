@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/verify_upgrade_hardware.html 
+keywords: preparing, nodes, upgrade 
+summary: 'Avant de commencer la mise à niveau, vérifiez que vous disposez du matériel approprié pour une mise à niveau d"un système AFF A700 vers un système AFF A900.' 
+---
+= Vérifiez la mise à niveau matérielle
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avant de commencer la mise à niveau, vous devez vérifier que vous disposez du matériel approprié pour une mise à niveau d'un système AFF A700 vers un système AFF A900 ou FAS9000 vers une mise à niveau vers un système FAS9500. Pour chaque paire haute disponibilité que vous mettez à niveau, vous devez disposer de deux modules de contrôleur système et de deux modules NVRAM. Si des pièces sont manquantes, contactez le support technique ou votre contact commercial NetApp pour obtenir de l'aide.

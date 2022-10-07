@@ -1,0 +1,142 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/ensure_controllers_set_up_correctly.html 
+keywords: set up, controllers, correctly, ha pair, lif, aggregate, node, failover 
+summary: 'Activez la paire haute disponibilité, vérifiez l"accès au stockage des nœuds 3 et 4, et confirmez la propriété de l"agrégat après une mise à niveau manuelle du transfert d"agrégats sur les contrôleurs qui exécutent ONTAP 9.8 ou une version ultérieure.' 
+---
+= Vérifiez que les nouveaux contrôleurs sont correctement configurés
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Pour confirmer la configuration correcte, vous devez activer la paire HA. Vous devez également vérifier que les nœuds 3 et Node4 ne sont pas en mesure d'accéder aux systèmes de stockage des autres et que les LIF de données ne sont pas membres du cluster. Vous devez également confirmer que le nœud 3 est propriétaire des agrégats du nœud 1 et que le nœud 4 est propriétaire des agrégats du nœud 2, et que les volumes des deux nœuds sont en ligne.
+
+.Étapes
+. Activer le basculement du stockage en entrant la commande suivante sur l'un des nœuds :
++
+`storage failover modify -enabled true -node _node3_`
+
+. Vérifiez que le basculement du stockage est activé :
++
+`storage failover show`
+
++
+L'exemple suivant montre la sortie de la commande lorsque le basculement du stockage est activé :
+
++
+[listing]
+----
+cluster::> storage failover show
+                              Takeover
+Node           Partner        Possible State Description
+-------------- -------------- -------- ------------------
+node3          node4          true     Connected to node4
+node4          node3          true     Connected to node3
+----
+. Effectuer l'une des actions suivantes :
++
+|===
+| Si le cluster est un.. | Description 
+
+
+| Cluster à deux nœuds | Activer la haute disponibilité du cluster en entrant la commande suivante sur l'un des nœuds :
+`cluster ha modify -configured true` 
+
+
+| Cluster à plus de deux nœuds | Accédez à ,Étape 4. 
+|===
+. [[man_Assurez_setup_Step4]]Vérifiez que les noeuds 3 et node4 appartiennent au même cluster en saisissant la commande suivante et en examinant la sortie :
++
+`cluster show`
+
+. Vérifiez que les nœuds 3 et node4 peuvent accéder au stockage l'un à l'autre en entrant la commande suivante et en examinant le résultat :
++
+`storage failover show -fields local-missing-disks,partner-missing-disks`
+
+. Vérifiez que les nœuds 3 et NODE4 ne possèdent pas de LIF de données détenues par d'autres nœuds du cluster en saisissant la commande suivante et en examinant la sortie :
++
+`network interface show`
+
++
+Si le nœud 3 ou le nœud 4 possède des LIF de données détenues en privé par d'autres nœuds du cluster, utilisez l'option `network interface revert` Commande qui permet de rétablir les LIF de données propriétaires.
+
+. Vérifiez que le nœud 3 possède les agrégats du nœud 1 et que le nœud 4 est propriétaire des agrégats du nœud 2 :
++
+`storage aggregate show -owner-name _node3_`
+`storage aggregate show -owner-name _node4_`
+
+. Déterminez si des volumes sont hors ligne :
++
+`volume show -node _node3_ -state offline`
+`volume show -node _node4_ -state offline`
+
+. Si des volumes sont hors ligne, comparez-les avec la liste des volumes hors ligne que vous avez capturés link:prepare_nodes_for_upgrade.html#step19d["Étape 19 (d)"] Dans _préparer les nœuds pour la mise à niveau_ et mettre en ligne l'un des volumes hors ligne, si nécessaire, en entrant la commande suivante, une fois pour chaque volume :
++
+`volume online -vserver _vserver_name_ -volume _volume_name_`
+
+. Installez les nouvelles licences pour les nouveaux nœuds en entrant la commande suivante pour chaque nœud :
++
+`system license add -license-code _license_code,license_code,license_code..._`
+
++
+Le paramètre License-code accepte une liste de 28 clés de caractères alphabétiques majuscules. Vous pouvez ajouter une licence à la fois ou plusieurs licences à la fois, chaque clé de licence séparée par une virgule.
+
+. Si NetApp Storage Encryption (NSE) était utilisé sur la configuration et que vous définissez le `setenv bootarg.storageencryption.support` commande « vrai » avec le `kmip.init.maxwait` variable « off » (désactivée) (in link:install_boot_node3.html#step16["Étape 16"] De _Install and boot node3_), vous devez réinitialiser la variable :
+`set diag; systemshell -node _node_name_ -command sudo kenv -u -p kmip.init.maxwait`
+. Pour supprimer toutes les anciennes licences des nœuds d'origine, entrez l'une des commandes suivantes :
++
+`system license clean-up -unused -expired`
+`system license delete -serial-number _node_serial_number_ -package _licensable_package_`
+
++
+** Pour supprimer toutes les licences expirées, entrez :
++
+`system license clean-up -expired`
+
+** Pour supprimer toutes les licences inutilisées, entrez :
++
+`system license clean-up -unused`
+
+** Pour supprimer une licence spécifique d'un cluster, entrez les commandes suivantes sur les nœuds :
++
+`system license delete -serial-number _node1_serial_number_ -package *`
+`system license delete -serial-number _node2_serial_number_ -package *`
+
++
+Les valeurs de sortie suivantes sont affichées :
+
++
+[listing]
+----
+Warning: The following licenses will be removed:
+<list of each installed package>
+Do you want to continue? {y|n}: y
+----
++
+Entrez `y` pour supprimer tous les paquets.
+
+
+
+. Vérifiez que les licences sont correctement installées en entrant la commande suivante et en examinant le résultat obtenu :
++
+`system license show`
+
++
+Vous pouvez comparer la sortie avec la sortie que vous avez capturée dans link:prepare_nodes_for_upgrade.html#step30["Étape 30"] De _préparer les nœuds pour la mise à niveau_.
+
+. Configurez les SP en exécutant la commande suivante sur les deux nœuds :
++
+`system service-processor network modify -node _node_name_`
+
++
+Accédez à link:other_references.html["Références"] Pour accéder à _System Administration Reference_ pour obtenir des informations sur les processeurs de stockage et les _ONTAP 9 Commands: Manual page Reference_ pour obtenir des informations détaillées sur le `system service- processor network modify` commande.
+
+. Pour configurer un cluster sans commutateur sur les nouveaux nœuds, rendez-vous sur link:other_references.html["Références"] Pour accéder au _Network support site_ et suivre les instructions de la section _transition vers un cluster sans commutateur à deux nœuds_.
+
+
+Si le cryptage du stockage est activé sur les nœuds 3 et 4, procédez comme suit dans link:set_up_storage_encryption_new_controller.html["Configurez Storage Encryption sur le nouveau module de contrôleur"]. Dans le cas contraire, suivez les étapes de la section link:decommission_old_system.html["Désaffectation de l'ancien système"].

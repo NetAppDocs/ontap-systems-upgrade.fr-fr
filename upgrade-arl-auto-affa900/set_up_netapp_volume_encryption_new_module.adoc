@@ -1,0 +1,67 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/set_up_netapp_volume_encryption_new_module.html 
+keywords: set up, netapp volume encryption, controller, module, nve, node 
+summary: 'Si nécessaire, configurez le nouveau module de contrôleur pour NVE lors de la mise à niveau d"un système AFF A700 vers un système AFF A900. »' 
+---
+= Configurez NetApp Volume Encryption sur le nouveau module de contrôleur
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si le remplacement du contrôleur ou du partenaire haute disponibilité du nouveau contrôleur utilise NetApp Volume Encryption (NVE), vous devez configurer le nouveau module de contrôleur pour NVE.
+
+Cette procédure comprend les étapes réalisées sur le nouveau module de contrôleur. Vous devez saisir la commande sur le nœud approprié.
+
+.Étapes
+. Vérifier que les serveurs de gestion des clés sont toujours disponibles, leur état et leurs informations de clé d'authentification :
++
+`security key-manager key query -node node`
+
+. Ajoutez les serveurs de gestion des clés répertoriés à l'étape précédente à la liste des serveurs de gestion des clés du nouveau contrôleur :
++
+.. Ajouter le serveur de gestion des clés :
++
+`security key-manager external add-servers -key-servers _key_management_server_ip_address_`
+
+.. Répétez l'étape précédente pour chaque serveur de gestion des clés répertorié. Vous pouvez lier jusqu'à quatre serveurs de gestion des clés.
+.. Vérifiez que les serveurs de gestion des clés ont été ajoutés correctement :
++
+`security key-manager external show`
+
+
+
+. Sur le nouveau module de contrôleur, exécutez l'assistant de configuration de la gestion des clés pour configurer et installer les serveurs de gestion des clés.
++
+Vous devez installer les mêmes serveurs de gestion des clés que ceux installés sur le module de contrôleur existant.
+
++
+.. Lancez l'assistant de configuration du serveur de gestion des clés sur le nouveau nœud :
++
+`security key-manager external enable`
+
+.. Suivez les étapes de l'assistant pour configurer les serveurs de gestion des clés.
+
+
+. Restaurer les clés d'authentification de tous les serveurs de gestion des clés liés vers le nouveau nœud :
++
+[cols="30,70"]
+|===
+| Pour... | Utilisez cette commande... 
+
+
+| Gestion externe des clés (EKM) | `security key-manager external restore`Cette commande a besoin de la phrase de passe OKM 
+
+
+| Gestionnaire de clés intégré | `security key-manager onboard sync` 
+|===
+
+
+Vérifiez si des volumes ont été mis hors ligne car les clés d'authentification n'étaient pas disponibles ou si les serveurs EKM n'ont pas pu être atteints. Remettre ces volumes en ligne à l'aide du `volume online` commande.
+
+Vérifiez si des volumes ont été mis hors ligne, car les clés d'authentification n'étaient pas disponibles ou les serveurs de gestion de clés externes n'ont pas pu être atteints. Remettre ces volumes en ligne à l'aide du `volume online` commande.

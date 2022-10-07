@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/lif_migration_failure.html 
+keywords: lif, migration, failure, mtu 
+summary: 'Les LIF ne sont pas en ligne après la migration aux étapes 2, 3 ou 5 lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+---
+= Échec de la migration de LIF
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Une fois les LIF migrées, elles risquent de ne pas s'activer en ligne après la migration à la phase 2, à la phase 3 ou à la phase 5.
+
+.Étapes
+. Vérifiez que la taille MTU du port est identique à celle du nœud source.
++
+Par exemple, si la taille MTU du port cluster est de 9000 sur le nœud source, il doit être de 9000 sur le nœud de destination.
+
+. Vérifiez la connectivité physique du câble réseau si l'état physique du port est `down`.
+

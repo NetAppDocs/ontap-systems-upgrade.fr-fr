@@ -1,0 +1,41 @@
+---
+permalink: upgrade/upgrade-check-lifs-register-serial-number.html 
+sidebar: sidebar 
+keywords: lifs 
+summary: Avant de renvoyer le nœud de remplacement à la service, vérifiez que les LIF se trouvent sur leur port de rattachement, puis enregistrez le numéro de série du nœud de remplacement si AutoSupport est activé et réinitialisez le rétablissement automatique. 
+---
+= Vérifiez les LIF et enregistrez le numéro de série
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant de renvoyer le nœud de remplacement à la service, vous devez vérifier que les LIF se trouvent sur leur port d'origine, et enregistrer le numéro de série du nœud de remplacement si AutoSupport est activé et réinitialiser le rétablissement automatique.
+
+. Vérifiez que les interfaces logiques sont bien placées sur leur serveur domestique et leurs ports : `network interface show -is-home false`
++
+Si des LIFs sont répertoriées comme faux, restaurez-les sur leurs ports de home port : `network interface revert *`
+
+. Enregistrez le numéro de série du système auprès du support NetApp.
++
+[cols="1,2"]
+|===
+| Si... | Alors... 
+
+
+ a| 
+AutoSupport est activé
+ a| 
+Envoyez un message AutoSupport pour enregistrer le numéro de série.
+
+
+
+ a| 
+AutoSupport n'est pas activé
+ a| 
+Contactez le support NetApp pour enregistrer le numéro de série.
+
+|===
+. Si le retour automatique a été désactivé, réactivez-le : `storage failover modify -node local -auto-giveback true`
+

@@ -1,0 +1,512 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/set_fc_or_uta_uta2_config_on_node3.html 
+keywords: setting, fc, uta, uta2 configuration, node 
+summary: 'Vous pouvez configurer les ports FC intégrés des nœuds 3, les ports UTA/UTA2 ou la carte UTA/UTA2 lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+---
+= Définissez la configuration FC ou UTA/UTA2 sur le nœud 3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si le système Node4 est doté de ports FC intégrés, de ports UTA/UTA2 (ou d'une carte UTA/UTA2), vous devez configurer les paramètres avant de suivre la procédure.
+
+Vous devrez peut-être compléter cette section  FC ports on node3, la section  and configure UTA/UTA2 ports on node3, ou les deux sections.
+
+
+NOTE: Les documents marketing NetApp peuvent utiliser le terme UTA2 pour faire référence aux adaptateurs et ports CNA (Converged Network adapter). Cependant, l'interface de ligne de commandes utilise le terme CNA.
+
+* Si le nœud 3 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2 et que vous mettez à niveau le système avec des disques de stockage, vous pouvez ignorer la link:verify_node3_installation.html["Vérifiez l'installation du noeud 3"] section.
+* Cependant, si vous disposez d'un système V-Series ou d'un système doté du logiciel de virtualisation FlexArray avec des baies de stockage et que le nœud 3 ne dispose pas de ports FC intégrés, de ports UTA/UTA intégrés ou d'une carte UTA/UTA2, retournez à la section _installation et démarrage sur le nœud 3_, puis reprenez la section link:install_boot_node3.html#step23["Étape 23"].
+
+
+.Choix
+*  FC ports on node3
+*  and configure UTA/UTA2 ports on node3
+
+
+
+
+== Configurez les ports FC sur le nœud 3
+
+Si le nœud 3 dispose de ports FC intégrés ou d'un adaptateur FC, vous devez définir des configurations de ports sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés. Si les ports ne sont pas configurés, le service peut subir une interruption.
+
+Vous devez avoir les valeurs des paramètres du port FC du noeud 1 que vous avez enregistrées dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"].
+
+Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez les configurer dans  and configure UTA/UTA2 ports on node3.
+
+*Important* : si votre système dispose de disques de stockage, entrez les commandes de cette section à l'invite du cluster. Si vous disposez d'un système « V-Series » ou d'un logiciel de virtualisation FlexArray et êtes connecté aux baies de stockage, saisissez les commandes dans cette section en mode maintenance.
+
+. [[step1]]Comparez les paramètres FC sur le noeud 3 avec les paramètres que vous avez précédemment capturés à partir du noeud 1.
+. [[step2]]effectuer l'une des actions suivantes :
++
+[cols="30,70"]
+|===
+| Si le système que vous mettez à niveau... | Puis… 
+
+
+| Possède des disques de stockage  a| 
+En mode maintenance (option 5 au menu de démarrage), modifiez les ports FC sur le nœud 3 si nécessaire :
+
+** Pour programmer les ports cibles :
+
+
+`ucadmin modify -m fc -t target _adapter_`
+
+** Pour programmer les ports initiateurs :
+
+
+`ucadmin modify -m fc -t initiator _adapter_`
+
+`-t` Est le type FC4 : cible ou initiateur.
+
+
+
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | En mode maintenance (option 5 au menu de démarrage), modifiez les ports FC sur le nœud 3 si nécessaire :
+`ucadmin modify -m fc -t initiator -f _adapter_port_name_`
+
+`-t` Est le type, la cible ou l'initiateur FC4. *Remarque* : les ports FC doivent être programmés comme initiateurs. 
+|===
+. [[step3]]effectuer l'une des actions suivantes :
++
+[cols="30,70"]
+|===
+| Si le système que vous mettez à niveau... | Puis… 
+
+
+| Possède des disques de stockage | Vérifiez les nouveaux paramètres à l'aide de la commande suivante et en examinant la sortie :
+`ucadmin show` 
+
+
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Vérifiez les nouveaux paramètres à l'aide de la commande suivante et en examinant la sortie :
+`ucadmin show` 
+|===
+. [[step4]]Quitter le mode de maintenance :
++
+`halt`
+
+. Démarrage du système à partir de l'invite du chargeur :
++
+`boot_ontap menu`
+
+. [[step6]]après avoir saisi la commande, attendez que le système s'arrête à l'invite de l'environnement d'amorçage.
+. Sélectionnez option `5` dans le menu de démarrage pour le mode maintenance.
+
+
+. [[auto_check3_step8]]effectuer l'une des actions suivantes :
++
+|===
+| Si le système que vous mettez à niveau... | Puis… 
+
+
+| Possède des disques de stockage  a| 
+** Si le nœud 3 dispose d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2, consultez la section  and configure UTA/UTA2 ports on node3.
+** Si le nœud 3 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, ignorez la section  and configure UTA/UTA2 ports on node3 et allez à la section link:verify_node3_installation.html["Vérifiez l'installation du noeud 3"].
+
+
+
+
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
+** Si le nœud 3 dispose d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2, consultez la section  and configure UTA/UTA2 ports on node3.
+** Si le nœud 3 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, ignorez la section  and configure UTA/UTA2 ports on node3 Et revenez à la section _Install and boot node3_ et reprenez à link:install_boot_node3.html#step23["Étape 23"].
+
+
+|===
+
+
+
+
+== Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3
+
+Si le nœud 3 est équipé de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez vérifier la configuration des ports et éventuellement les reconfigurer, en fonction du mode d'utilisation du système mis à niveau.
+
+Vous devez disposer des modules SFP+ appropriés pour les ports UTA/UTA2.
+
+Si vous souhaitez utiliser un port UTA/UTA2 (Unified Target adapter) pour FC, vous devez d'abord vérifier la configuration du port.
+
+
+NOTE: Les documents marketing NetApp peuvent utiliser le terme UTA2 pour faire référence aux adaptateurs et ports CNA. Cependant, l'interface de ligne de commandes utilise le terme CNA.
+
+Vous pouvez utiliser le `ucadmin show` commande pour vérifier la configuration actuelle du port :
+
+....
+*> ucadmin show
+         Current  Current    Pending   Pending      Admin
+Adapter  Mode     Type       Mode      Type         Status
+-------  -------  -------    --------  ----------   --------
+0e      fc        target     -         initiator    offline
+0f      fc        target     -         initiator    offline
+0g      fc        target     -         initiator    offline
+0h      fc        target     -         initiator    offline
+1a      fc        target     -         -            online
+1b      fc        target     -         -            online
+6 entries were displayed.
+....
+Les ports UTA2 peuvent être configurés en mode FC natif ou UTA/UTA2. Le mode FC prend en charge les initiateurs FC et la cible FC ; le mode UTA/UTA2 permet d'utiliser simultanément le trafic NIC et FCoE sur la même interface SFP+ 10 GbE et prend en charge les cibles FC.
+
+Il est possible de trouver des ports UTA2 sur un adaptateur ou un contrôleur et de bénéficier des configurations suivantes, mais vous devez vérifier la configuration des ports UTA/UTA2 sur le nœud 3 et la modifier si nécessaire :
+
+* Les cartes UTA/UTA2 commandées lors de la commande du contrôleur sont configurées avant l'expédition pour avoir la personnalité que vous demandez.
+* Les cartes UTA/UTA2 commandées séparément du contrôleur sont fournies avec la personnalité de la cible FC par défaut.
+* Les ports UTA/UTA2 intégrés dans les nouveaux contrôleurs sont configurés avant l'expédition pour personnaliser votre demande.
++
+
+WARNING: *Attention* : si votre système dispose de disques de stockage, entrez les commandes de cette section à l'invite du cluster, sauf si vous êtes invité à passer en mode Maintenance. Si vous disposez d'un système V- Series ou d'un logiciel de virtualisation FlexArray et êtes connecté aux baies de stockage, vous pouvez saisir les commandes de cette section à l'invite du mode maintenance. Vous devez être en mode de maintenance pour configurer les ports UTA/UTA2.
+
+
+
+.Étapes
+. [[step1]]Vérifiez la configuration actuelle des ports en entrant la commande suivante sur le noeud 3 :
++
+[cols="30,70"]
+|===
+| Si le système... | Puis… 
+
+
+| Possède des disques de stockage | Aucune action requise. 
+
+
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | `ucadmin show` 
+|===
++
+Un résultat similaire à l'exemple suivant s'affiche :
+
++
+....
+*> ucadmin show
+         Current  Current     Pending   Pending    Admin
+Adapter  Mode     Type        Mode      Type       Status
+-------  -------  ---------   -------   --------   ---------
+0e      fc        initiator   -         -          online
+0f      fc        initiator   -         -          online
+0g      cna       target      -         -          online
+0h      cna       target      -         -          online
+0e      fc        initiator   -         -          online
+0f      fc        initiator   -         -          online
+0g      cna       target      -         -          online
+0h      cna       target      -         -          online
+*>
+....
+. [[step2]]si le module SFP+ actuel ne correspond pas à l'utilisation souhaitée, remplacez-le par le module SFP+ approprié.
++
+Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ approprié.
+
+. [[step3]]examiner la sortie du `ucadmin show` Déterminez si les ports UTA/UTA2 ont le profil souhaité.
+. [[step4]]effectuer l'une des actions suivantes :
++
+[cols="30,70"]
+|===
+| Si les ports UTA/UTA2... | Puis… 
+
+
+| N'avez pas la personnalité que vous voulez | Accédez à ,Étape 5. 
+
+
+| Avoir la personnalité que vous voulez | Passez aux étapes 5 à 12 et passez à ,Étape 13. 
+|===
+. [[auto_check3_step5]]effectuer l'une des actions suivantes :
++
+[cols="30,70"]
+|===
+| Si vous configurez... | Puis… 
+
+
+| Ports sur carte UTA/UTA2 | Accédez à ,Étape 7 
+
+
+| Ports UTA/UTA2 intégrés | Ignorez l'étape 7 et passez à ,Étape 8. 
+|===
+. [[step6]]]si l'adaptateur est en mode initiateur et si le port UTA/UTA2 est en ligne, mettez le port UTA/UTA2 hors ligne :
++
+`storage disable adapter _adapter_name_`
+
++
+Les adaptateurs en mode cible sont automatiquement hors ligne en mode maintenance.
+
+. [[auto_check3_step7]]si la configuration actuelle ne correspond pas à l'utilisation souhaitée, modifiez la configuration comme nécessaire :
++
+`ucadmin modify -m fc|cna -t initiator|target _adapter_name_`
+
++
+** `-m` est le mode personnalité, `fc` ou `cna`.
+** `-t` Est de type FC4, `target` ou `initiator`.
++
+
+NOTE: Vous devez utiliser un initiateur FC pour les lecteurs de bande, les systèmes de virtualisation FlexArray et les configurations MetroCluster. Vous devez utiliser la cible FC pour les clients SAN.
+
+
+
+. [[auto_check3_step8]]Vérifiez les paramètres :
++
+`ucadmin show`
+
+. [[step9]]Vérifiez les paramètres :
++
+[cols="30,70"]
+|===
+| Si le système... | Puis… 
+
+
+| Possède des disques de stockage | `ucadmin show` 
+
+
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | `ucadmin show` 
+|===
++
+Le résultat des exemples suivants montre que le type FC4 d'adaptateur « 1b » passe à `initiator` et que le mode des adaptateurs « 2a » et « 2b » passe à `cna`:
+
++
+....
+*> ucadmin show
+         Current    Current     Pending  Pending     Admin
+Adapter  Mode       Type        Mode     Type        Status
+-------  --------   ----------  -------  --------    --------
+1a       fc         initiator   -        -           online
+1b       fc         target      -        initiator   online
+2a       fc         target      cna      -           online
+2b       fc         target      cna      -           online
+*>
+....
+. [[step10]]placez n'importe quel port cible en ligne en entrant l'une des commandes suivantes, une fois pour chaque port :
++
+[cols="30,70"]
+|===
+| Si le système... | Puis… 
+
+
+| Possède des disques de stockage | `network fcp adapter modify -node _node_name_ -adapter _adapter_name_ -state up` 
+
+
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | `fcp config _adapter_name_ up` 
+|===
+. [[step11]]Connectez le câble du port.
+
+
+. [[auto_check3_step12]]effectuer l'une des actions suivantes :
++
+|===
+| Si le système... | Puis… 
+
+
+| Possède des disques de stockage | Accédez à link:verify_node3_installation.html["Vérifiez l'installation du noeud 3"]. 
+
+
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Retournez à la section _Install and boot node3_, puis reprenez à link:install_boot_node3.html#step23["Étape 23"]. 
+|===
+. [[auto_check3_step13]]Quitter le mode maintenance :
++
+`halt`
+
+. [[step14]]démarrez le nœud dans le menu d'amorçage en exécutant `boot_ontap menu`. Si vous migrez vers une A800, rendez-vous sur ,Étape 23.
+
+
+. [[auto9597_check_node3_step15]]]sur le noeud 3, allez au menu de démarrage à l'aide de 22/7 et sélectionnez l'option masquée `boot_after_controller_replacement`. À l'invite, entrez node1 pour réaffecter les disques du nœud1 au nœud3, comme dans l'exemple suivant.
++
+.Développez l'exemple de sortie de la console
+====
+....
+LOADER-A> boot_ontap menu
+.
+<output truncated>
+.
+All rights reserved.
+*******************************
+*                             *
+* Press Ctrl-C for Boot Menu. *
+*                             *
+*******************************
+.
+<output truncated>
+.
+Please choose one of the following:
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)? 22/7
+(22/7) Print this secret List
+(25/6) Force boot with multiple filesystem disks missing.
+(25/7) Boot w/ disk labels forced to clean.
+(29/7) Bypass media errors.
+(44/4a) Zero disks if needed and create new flexible root volume.
+(44/7) Assign all disks, Initialize all disks as SPARE, write DDR labels
+.
+<output truncated>
+.
+(wipeconfig)                        Clean all configuration on boot device
+(boot_after_controller_replacement) Boot after controller upgrade
+(boot_after_mcc_transition)         Boot after MCC transition
+(9a)                                Unpartition all disks and remove their ownership information.
+(9b)                                Clean configuration and initialize node with partitioned disks.
+(9c)                                Clean configuration and initialize node with whole disks.
+(9d)                                Reboot the node.
+(9e)                                Return to main boot menu.
+The boot device has changed. System configuration information could be lost. Use option (6) to restore the system configuration, or option (4) to initialize all disks and setup a new system.
+Normal Boot is prohibited.
+Please choose one of the following:
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)? boot_after_controller_replacement
+This will replace all flash-based configuration with the last backup to disks. Are you sure you want to continue?: yes
+.
+<output truncated>
+.
+Controller Replacement: Provide name of the node you would like to replace:<nodename of the node being replaced>
+Changing sysid of node node1 disks.
+Fetched sanown old_owner_sysid = 536940063 and calculated old sys id = 536940063
+Partner sysid = 4294967295, owner sysid = 536940063
+.
+<output truncated>
+.
+varfs_backup_restore: restore using /mroot/etc/varfs.tgz
+varfs_backup_restore: attempting to restore /var/kmip to the boot device
+varfs_backup_restore: failed to restore /var/kmip to the boot device
+varfs_backup_restore: attempting to restore env file to the boot device
+varfs_backup_restore: successfully restored env file to the boot device wrote key file "/tmp/rndc.key"
+varfs_backup_restore: timeout waiting for login
+varfs_backup_restore: Rebooting to load the new varfs
+Terminated
+<node reboots>
+System rebooting...
+.
+Restoring env file from boot media...
+copy_env_file:scenario = head upgrade
+Successfully restored env file from boot media...
+Rebooting to load the restored env file...
+.
+System rebooting...
+.
+<output truncated>
+.
+WARNING: System ID mismatch. This usually occurs when replacing a boot device or NVRAM cards!
+Override system ID? {y|n} y
+.
+Login:
+....
+====
++
+
+NOTE: Dans l'exemple de sortie de la console ci-dessus, ONTAP vous invite à entrer le nom du nœud partenaire si le système utilise des disques du partitionnement de disque avancé.
+
+. Si le système passe en boucle de redémarrage avec le message `no disks found`, Il indique que le système a réinitialisé les ports FC ou UTA/UTA2 dans le mode cible et ne parvient donc pas à voir les disques. Pour résoudre ce problème, continuez avec ,Étape 17 à ,Étape 22, ou allez à la section link:verify_node3_installation.html["Vérifiez l'installation du noeud 3"].
+. [[auto_check3_step17]]appuyez sur `Ctrl-C` dans le cas de l'autoboot, cette variable permet d'arrêter le nœud sur le `LOADER>` à l'invite.
+. [[step18]]à l'invite du chargeur, entrer en mode maintenance :
++
+`boot_ontap maint`
+
+. [[step19]]en mode maintenance, affichez tous les ports initiateurs précédemment définis qui sont maintenant en mode cible :
++
+`ucadmin show`
+
++
+Modifier les ports en mode initiateur :
+
++
+`ucadmin modify -m fc -t initiator -f _adapter name_`
+
+. [[step20]]Vérifiez que les ports ont été modifiés en mode initiateur :
++
+`ucadmin show`
+
+. [[step21]]Quitter le mode maintenance :
++
+`halt`
+
++
+[NOTE]
+====
+Si vous effectuez une mise à niveau à partir d'un système prenant en charge des disques externes vers un système qui prend également en charge des disques externes, accédez à ,Étape 22.
+
+Si vous mettez à niveau à partir d'un système prenant en charge des disques externes vers un système prenant en charge des disques internes et externes, par exemple un système AFF A800, rendez-vous sur ,Étape 23.
+
+====
+. [[auto_check3_step22]]à l'invite du chargeur, démarrez :
++
+`boot_ontap`
+
++
+Maintenant, au démarrage, le nœud peut détecter tous les disques qui lui étaient précédemment affectés et peut démarrer comme prévu.
+
+. [[auto_check3_step23]]si vous effectuez une mise à niveau depuis un système avec des disques externes vers un système qui prend en charge des disques internes et externes (systèmes AFF A800, par exemple), définissez l'agrégat node1 comme agrégat racine pour confirmer que ce dernier démarre depuis l'agrégat racine du nœud1. Pour définir l'agrégat root, aller au menu de boot et faire une sélection `5` pour passer en mode maintenance.
++
+
+CAUTION: *Vous devez exécuter les sous-étapes suivantes dans l'ordre exact indiqué ; le non-respect de cette consigne peut entraîner une panne ou même une perte de données.*
+
++
+La procédure suivante définit le nœud 3 pour démarrer à partir de l'agrégat racine du nœud 1 :
+
++
+.. Passer en mode maintenance :
++
+`boot_ontap maint`
+
+.. Vérifier les informations RAID, plex et checksum du noeud 1 :
++
+`aggr status -r`
+
+.. Vérifier le statut de l'agrégat du nœud 1 :
++
+`aggr status`
+
+.. Si nécessaire, mettre l'agrégat du nœud 1 en ligne :
++
+`aggr_online root_aggr_from___node1__`
+
+.. Empêcher le démarrage du nœud 3 à partir de son agrégat racine d'origine :
++
+`aggr offline _root_aggr_on_node3_`
+
+.. Définir l'agrégat racine du nœud 1 en tant que nouvel agrégat racine pour le nœud 3 :
++
+`aggr options aggr_from___node1__ root`
+
+.. Vérifier que l'agrégat racine du nœud 3 est hors ligne et que l'agrégat racine des disques transférées depuis le nœud 1 est en ligne et défini à la racine :
++
+`aggr status`
+
++
+
+NOTE: Si vous ne procédez pas à la sous-étape précédente, le noeud 3 risque de démarrer à partir de l'agrégat racine interne, ou le système peut supposer qu'une nouvelle configuration de cluster existe ou vous inviter à en identifier une.
+
++
+Voici un exemple de sortie de la commande :
+
++
+[listing]
+----
+ -----------------------------------------------------------------
+ Aggr                 State    Status             Options
+
+ aggr0_nst_fas8080_15 online   raid_dp, aggr      root, nosnap=on
+                               fast zeroed
+                               64-bit
+
+ aggr0                offline  raid_dp, aggr      diskroot
+                               fast zeroed
+                               64-bit
+ -----------------------------------------------------------------
+----
+
+
+

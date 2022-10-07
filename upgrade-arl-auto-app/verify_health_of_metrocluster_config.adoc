@@ -1,0 +1,62 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/verify_health_of_metrocluster_config.html 
+keywords: verifying, health, metrocluster, configuration, fabric, mcc 
+summary: 'Vérifiez l"état de santé de la configuration MetroCluster et corrigez le fonctionnement lors de la mise à niveau des contrôleurs qui exécutent ONTAP 9.8 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+---
+= Vérifier l'état de santé de la configuration MetroCluster
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avant de lancer une mise à niveau sur une configuration Fabric MetroCluster, vous devez vérifier le bon fonctionnement de la configuration MetroCluster.
+
+.Étapes
+. Vérifiez que les composants MetroCluster sont sains :
++
+`metrocluster check run`
+
++
+....
+metrocluster_siteA::*> metrocluster check run
+....
++
+L'opération s'exécute en arrière-plan.
+
+. Après le `metrocluster check run` opération terminée, afficher les résultats :
++
+`metrocluster check show`
+
++
+Après environ cinq minutes, les résultats suivants s'affichent :
+
++
+[listing]
+----
+metrocluster_siteA::*> metrocluster check show
+Last Checked On: 4/7/2019 21:15:05
+Component            Result
+---------------      -------
+nodes                ok
+lifs                 ok
+config-replication   ok
+aggregates           warning
+clusters             ok
+connections          not-applicable
+volumes              ok
+7 entries were displayed.
+----
+. Vérifier l'état de l'opération de vérification MetroCluster en cours :
++
+`metrocluster operation history show -job-id 38`
+
+. Vérifiez qu'il n'y a pas d'alerte de santé :
++
+`system health alert show`
+
+

@@ -1,0 +1,17 @@
+= 
+:allow-uri-read: 
+
+
+Pour retirer le nœud 2, vous devez arrêter le nœud 2 correctement et le retirer du rack ou du châssis.
+
+.Étapes
+. Reprendre l'opération :
++
+`system controller replace resume`
+
++
+Le nœud s'arrête automatiquement.
+
+
+
+Vous pouvez désaffecter le nœud2 une fois la mise à niveau terminée. Voir link:decommission_old_system.html["Désaffectation de l'ancien système"].

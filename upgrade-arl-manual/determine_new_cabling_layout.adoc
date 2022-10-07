@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/determine_new_cabling_layout.html 
+keywords: cable, cabling, layout, disk shelf, fc switches 
+summary: 'Déterminez l"infrastructure de câblage des nouveaux modules de contrôleur et tiroirs disques lors d"une mise à niveau manuelle d"agrégats (ARL) sur les contrôleurs exécutant ONTAP 9.7 ou une version antérieure.' 
+---
+= Identification de la nouvelle disposition de câblage
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous devez déterminer le câblage reliant les nouveaux modules de contrôleur et les nouveaux tiroirs disques aux commutateurs FC existants.
+
+Cette tâche doit être effectuée sur chaque site MetroCluster.
+
+Utilisez le contenu _Fabric-Attached MetroCluster installation and Configuration_ pour déterminer la disposition du câblage pour votre type de commutateur, en utilisant l'utilisation des ports pour une configuration MetroCluster à huit nœuds. L'utilisation du port de commutateur FC doit correspondre à l'utilisation décrite dans le contenu pour que les fichiers de configuration de référence (RCFs) puissent être utilisés.
+
+Accédez à link:other_references.html["Références"] Pour établir un lien vers le contenu _MetroCluster installation and Configuration_ joint à la structure.
+
+
+NOTE: Si votre environnement ne peut pas être câblé de manière à pouvoir utiliser les RCFs, contactez le support technique. Ne pas utiliser cette procédure si le câblage ne peut pas utiliser de RCFs.

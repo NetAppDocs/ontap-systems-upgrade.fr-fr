@@ -1,0 +1,30 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/retire_node1.html 
+keywords: retiring, node 
+summary: 'Désactivez la paire HA avec le nœud 2 et arrêtez le nœud 1 lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+---
+= Retirer le nœud 1
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Pour retirer le nœud 1, vous reprenez l'opération automatisée pour désactiver la paire HA avec le nœud 2 et arrêter le nœud 1 correctement. Vous devez retirer le nœud 1 du rack ou du châssis.
+
+.Étapes
+. Reprendre l'opération :
++
+`system controller replace resume`
+
+. Vérifiez que le noeud 1 a été arrêté :
++
+`system controller replace show-details`
+
+
+
+Vous pouvez désaffecter le nœud1 une fois la mise à niveau terminée. Voir link:decommission_old_system.html["Désaffectation de l'ancien système"].

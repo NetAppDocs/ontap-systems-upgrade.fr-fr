@@ -1,0 +1,103 @@
+---
+permalink: upgrade/upgrade-create-aggregate-move-volumes.html 
+sidebar: sidebar 
+keywords: create, aggregate, node, store, volume, original, node, identify, aggregate, individually, create an aggregate and moving volumes to the new nodes 
+summary: 'Vous créez au moins un agrégat sur chacun des nouveaux nœuds afin de stocker les volumes que vous voulez déplacer des nœuds d"origine. Vous devez identifier un agrégat pour chaque volume et les déplacer individuellement.' 
+---
+= Création d'un agrégat et déplacement des volumes vers les nouveaux nœuds
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous créez au moins un agrégat sur chacun des nouveaux nœuds afin de stocker les volumes que vous voulez déplacer des nœuds d'origine. Vous devez identifier un agrégat pour chaque volume et les déplacer individuellement.
+
+Les relations de miroir de protection des données doivent avoir été initialisées avant de déplacer un volume.
+
+https://docs.netapp.com/us-en/ontap/data-protection-disaster-recovery/index.html["Rechercher la procédure de protection des données requise"^].
+
+.Étapes
+. Créer au moins un agrégat sur chaque nouveau nœud :
++
+`storage aggregate create -aggregate aggr_name -node new_node_name -diskcount integer`
+
+. Ajouter le nouvel agrégat au même SVM que l'agrégat sur le nœud d'origine depuis lequel vous voulez déplacer les volumes :
++
+`vserver add-aggregates`
+
++
+Le nouvel agrégat et l'ancien agrégat depuis lequel le volume sera déplacé doivent se trouver dans le même SVM.
+
+. Vérifier que le nouvel agrégat est désormais attribué au même SVM que l'agrégat sur le nœud d'origine :
++
+`vserver show -vserversvm_name`
+
+. Afficher les informations relatives aux volumes que vous souhaitez déplacer des nœuds d'origine vers les nouveaux nœuds :
++
+`volume show -vserver svm_name -node original_node_name`
+
++
+Vous devez conserver la sortie de la commande pour une référence ultérieure.
+
++
+L'exemple suivant affiche les volumes sur le SVM « vs1 » et le nœud « node0 » :
+
++
+[listing]
+----
+cluster::> volume show -vserver vs1 -node node0
+Vserver   Volume       Aggregate    State      Type       Size  Available Used%
+--------- ------------ ------------ ---------- ---- ---------- ---------- -----
+vs1       clone        aggr1        online     RW         40MB    37.87MB    5%
+vs1       vol1         aggr1        online     RW         40MB    37.87MB    5%
+vs1       vs1root      aggr1        online     RW         20MB    18.88MB    5%
+3 entries were displayed.
+----
+. Déterminez un agrégat vers lequel vous pouvez déplacer un volume donné :
++
+`volume move target-aggr show -vserver svm_name -volume vol_name`
+
++
+L'exemple suivant montre que le volume « user_max » du SVM « vs2 » peut être déplacé vers l'un des agrégats répertoriés :
+
++
+[listing]
+----
+cluster::> volume move target-aggr show -vserver vs2 -volume user_max
+Aggregate Name   Available Size  Storage Type
+--------------   --------------  ------------
+aggr2            467.9GB         FCAL
+node12a_aggr3    10.34GB         FCAL
+node12a_aggr2    10.36GB         FCAL
+node12a_aggr1    10.36GB         FCAL
+node12a_aggr4    10.36GB         FCAL
+5 entries were displayed
+----
+. Exécutez un contrôle de validation sur chaque volume que vous voulez déplacer afin de vérifier qu'il peut être déplacé vers l'agrégat spécifié :
++
+`volume move start -vserver svm_name -volume volume_name -destination-aggregate destination_aggregate_name -perform-validation-only true`
+
+. Déplacez les volumes un par un (niveau de privilège avancé) :
++
+`volume move start -vserver svm_name -volume vol_name -destination-aggregate destination_aggr_name -cutover-window integer`
+
++
+Vous ne pouvez pas déplacer le volume racine du nœud (vol0). D'autres volumes, y compris des volumes root SVM, peuvent être déplacés.
+
+. Afficher le résultat du `volume move` opération pour vérifier que les volumes ont été déplacés correctement :
++
+`volume move show -vserver svm_name -volume vol_name`
+
+. Si le `volume move` l'opération ne termine pas la phase finale après plusieurs tentatives, forcer le déplacement à se terminer :
++
+`volume move trigger-cutover -vserver svm_name -volume vol_name -force true`
+
++
+Le fait de forcer l'opération de déplacement du volume peut interrompre l'accès client au volume déplacé.
+
+. Vérifier que les volumes ont été déplacés correctement vers le SVM spécifié et qu'ils se trouvent dans l'agrégat approprié :
++
+`volume show -vserver svm_name`
+
+

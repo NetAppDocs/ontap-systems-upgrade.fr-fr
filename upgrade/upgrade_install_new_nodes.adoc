@@ -1,0 +1,28 @@
+---
+permalink: upgrade/upgrade-install-new-nodes.html 
+sidebar: sidebar 
+keywords: upgrade, moving, move, storage, install, node3, node4, attach, power, console, network, connection, install the new nodes 
+summary: 'Lorsque vous effectuez une mise à niveau en déplaçant le stockage, vous commencez par installer les nœuds node3 et nœud4, ainsi que par connecter l"alimentation, la console et les connexions réseau aux nouveaux nœuds.' 
+---
+= Installez les nouveaux nœuds
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous effectuez une mise à niveau en déplaçant le stockage, vous commencez par installer les nœuds node3 et nœud4, ainsi que par connecter l'alimentation, la console et les connexions réseau aux nouveaux nœuds.
+
+.Étapes
+. Si nécessaire, installez des cartes dans les nœuds node3 et node4 en suivant les instructions de la procédure d'installation de l'adaptateur appropriée.
+. Installez les nouveaux nœuds en suivant les instructions _installation and Setup_ de la plate-forme.
++
+Ne reliez pas les tiroirs disques des nœuds d'origine aux nouveaux nœuds.
+
+. Reliez les connexions de l'alimentation et de la console à la paire HA node3/node4, en suivant les instructions _installation and Setup_ de la plate-forme.
+. Branchez les câbles réseau.
+. Transférez tous les câbles restants, autres que les câbles du tiroir de stockage, depuis la paire haute disponibilité des nœuds 1/nœuds 2 vers les ports correspondants sur le nœud 3/nœud 4, respectivement.
++
+Il s'agit notamment de câbles Fibre Channel et Ethernet qui ne sont pas utilisés pour connecter les tiroirs de stockage.
+
+

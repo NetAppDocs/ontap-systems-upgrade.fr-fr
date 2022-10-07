@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+Le transfert d'agrégats (ARL) peut échouer à divers stades de la mise à niveau.

@@ -1,0 +1,39 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/index.html 
+keywords: aggregate, relocation, controller, hardware, aggregates, flexarray, metrocluster, terminology 
+summary: 'Vous pouvez mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou une version ultérieure en utilisant `system controller replace` commandes, répositionnant la propriété d"agrégats non racines.' 
+---
+= Présentation
+:allow-uri-read: 
+
+
+[role="lead lead"]
+Cette procédure décrit la procédure de mise à niveau du matériel du contrôleur à l'aide du transfert d'agrégats (ARL) pour les configurations système suivantes :
+
+[cols="40,20,40"]
+|===
+| Méthode | Version ONTAP | Systèmes pris en charge 
+
+
+| À l'aide de `system controller replace` commandes | 9.8 ou ultérieure | link:decide_to_use_the_aggregate_relocation_guide.html#sys_commands_98_supported_systems["Lien vers la matrice des systèmes pris en charge"] 
+|===
+Pendant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, délocalisant ainsi la propriété des agrégats non racines. Vous migrez plusieurs fois des agrégats entre nœuds et nœuds pour confirmer qu'au moins un nœud transmet des données depuis les agrégats tout au long de la procédure de mise à niveau. Vous migrez également les interfaces de données logiques (LIF) et vous affectez les ports réseau sur le nouveau contrôleur aux groupes d'interface.
+
+Dans ces informations, les nœuds d'origine sont appelés « nœud1 » et « nœud2 », ainsi que « nœud3 » et « nœud4 ». Au cours de la procédure décrite, le noeud 1 est remplacé par le noeud 3 et le noeud 2 est remplacé par le noeud 4. Les termes « node1 », « node2 », « node3 » et « node4 » servent uniquement à la distinction entre les nœuds d'origine et les nouveaux. Lorsque vous suivez la procédure, vous devez remplacer les véritables noms de vos nœuds d'origine et de vos nouveaux nœuds. Toutefois, en réalité, les noms des nœuds ne changent pas : le nœud 3 porte le nom node1 et le nœud 4 porte le nom node2 une fois le contrôleur mis à niveau.
+
+Dans cette information, le terme « systèmes avec logiciel de virtualisation FlexArray » fait référence aux systèmes qui appartiennent à ces nouvelles plateformes. Le terme « système V-Series » fait référence aux différents systèmes matériels pouvant être connectés aux baies de stockage.
+
+.Information importante :
+* Cette procédure est complexe et suppose que vous avez des compétences avancées en administration de ONTAP. Vous devez également lire et comprendre le link:guidelines_for_upgrading_controllers_with_arl.html["Instructions de mise à niveau des contrôleurs avec l'ARL"] et le link:overview_of_the_arl_upgrade.html["Présentation de la mise à niveau ARL"] avant de commencer la mise à niveau.
+* Cette procédure suppose que le matériel de remplacement du contrôleur est nouveau et qu'il n'a pas été utilisé. Étapes requises pour préparer les contrôleurs utilisés avec le `wipeconfig` la commande n'est pas incluse dans cette procédure. Vous devez contacter le support technique si le matériel de remplacement du contrôleur était précédemment utilisé, en particulier si les contrôleurs exécutaient Data ONTAP en 7-mode.
+* Vous pouvez utiliser l'ARL pour effectuer une mise à niveau simplifiée et sans interruption du contrôleur vers un nouveau contrôleur qui exécute une version plus récente de ONTAP que la version exécutée sur le cluster que vous mettez à niveau. Les combinaisons de versions de ONTAP pour les anciens et les nouveaux contrôleurs sont déterminées par le modèle de mise à niveau sans interruption du logiciel de ONTAP. Par exemple, si vous disposez d'un contrôleur exécutant ONTAP 9.8, et qu'il s'agit de la dernière version prise en charge pour ce contrôleur, vous pouvez effectuer la mise à niveau vers un nouveau contrôleur exécutant une version ONTAP plus tard que ONTAP 9.8.
++
+Cette procédure de mise à niveau s'applique principalement aux scénarios de mise à niveau où le modèle de contrôleur que vous remplacez ne prend pas en charge les versions ONTAP ultérieures et que le nouveau contrôleur ne prend pas en charge les versions ONTAP antérieures.
+
+* Vous pouvez suivre cette procédure pour mettre à niveau le matériel du contrôleur dans des clusters de plus de deux nœuds. Toutefois, vous devez effectuer la procédure séparément pour chaque paire haute disponibilité du cluster.
+* Cette procédure s'applique aux systèmes FAS, aux systèmes V-Series, aux systèmes AFF et aux systèmes équipés du logiciel de virtualisation FlexArray. Les systèmes FAS commercialisés après ONTAP 9.5 peuvent se connecter aux baies de stockage si la licence requise est installée. Pour plus d'informations sur la baie de stockage et les modèles V-Series, reportez-vous à link:other_references.html["Références"] Pour établir un lien vers _Hardware Universe_ et accéder à la matrice de prise en charge V-Series.
+* Cette procédure s'applique aux systèmes exécutant une configuration NetApp MetroCluster à 4 nœuds ou une version supérieure. Étant donné que les sites de configuration MetroCluster peuvent se trouver sur deux sites physiquement différents, la mise à niveau automatisée du contrôleur doit être effectuée individuellement sur chaque site MetroCluster pour une paire haute disponibilité.
+* Pour les systèmes non MetroCluster, tels que des clusters haute disponibilité, la mise à niveau du transfert d'agrégats (ARL) est la seule procédure prise en charge.
+* Si vous mettez à niveau votre système AFF A320, vous pouvez utiliser les déplacements de volumes pour mettre à niveau le matériel de votre contrôleur et contacter le support technique. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+

@@ -1,0 +1,41 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html 
+keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability, aff, a700, a900 
+summary: 'Choisissez d"utiliser la procédure ARL pour mettre à niveau un système AFF A700 vers un système AFF A900.' 
+---
+= Décider d'utiliser la procédure de transfert d'agrégats
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous découvrirez comment mettre à niveau les contrôleurs de stockage d'une paire haute disponibilité AFF A700 avec de nouveaux contrôleurs AFF A900 ou contrôleurs d'une paire haute disponibilité FAS9000 avec de nouveaux contrôleurs FAS9500, tout en conservant toutes les données et les disques existants. Il s'agit d'une procédure complexe qui ne doit être utilisée que par des administrateurs expérimentés.
+
+Utiliser cette procédure dans les cas suivants :
+
+* Vous avez vérifié auprès de votre ingénieur commercial NetApp que vous avez reçu le contrôleur AFF A900 ou FAS9500, ainsi que les modules NVRAM et les pièces nécessaires à la mise à niveau.
+* Vous exécutez ONTAP 9.10.1 ou version ultérieure pour un contrôleur AFF A900.
+* Vous exécutez le logiciel ONTAP 9.10.1P3 ou version ultérieure pour un contrôleur FAS9500.
+* Vous ne souhaitez pas ajouter de nouveaux contrôleurs et migrer les données en utilisant les déplacements de volumes pour une nouvelle paire haute disponibilité vers le cluster.
+* Vous avez de l'expérience dans l'administration de ONTAP et vous êtes à l'aise avec les risques de travailler en mode de privilèges de diagnostic.
+
+
+Ne pas utiliser *PAS* cette procédure dans les circonstances suivantes :
+
+* Vous utilisez le logiciel de virtualisation FlexArray sur les systèmes AFF A700 ou FAS9000.
+* Vous utilisez un commutateur partagé pour l'interconnexion de cluster et le stockage Ethernet.
+
+
+Pour la mise à niveau des configurations Fabric MetroCluster ou MetroCluster IP, reportez-vous à la section link:other_references.html["Références"] Pour accéder au contenu _MetroCluster Upgrade and expansion_.
+
+
+NOTE: Vous pouvez utiliser NetApp Storage Encryption (NSE) et NetApp Volume Encryption (NVE) dans le cadre de cette procédure.
+
+Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+
+Reportez-vous à la section link:other_references.html["Références"] Lien vers le Centre de documentation _ONTAP 9_ où vous pouvez accéder à la documentation produit ONTAP 9.

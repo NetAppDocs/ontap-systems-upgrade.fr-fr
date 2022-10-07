@@ -1,0 +1,71 @@
+= Configurez les ports FC sur le nœud 3
+:allow-uri-read: 
+
+
+
+
+== Configurez les ports FC sur le nœud 3
+
+Si le nœud 3 dispose de ports FC intégrés ou d'un adaptateur FC, vous devez définir des configurations de ports sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés. Si les ports ne sont pas configurés, le service peut subir une interruption.
+
+Vous devez avoir les valeurs des paramètres du port FC du noeud 1 que vous avez enregistrées dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"].
+
+Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez les configurer dans  and configure UTA/UTA2 ports on node3.
+
+*Important* : si votre système dispose de disques de stockage, entrez les commandes de cette section à l'invite du cluster. Si vous disposez d'un système « V-Series » ou d'un logiciel de virtualisation FlexArray et êtes connecté aux baies de stockage, saisissez les commandes dans cette section en mode maintenance.
+
+. [[step1]]Comparez les paramètres FC sur le noeud 3 avec les paramètres que vous avez précédemment capturés à partir du noeud 1.
+. [[step2]]effectuer l'une des actions suivantes :
++
+[cols="30,70"]
+|===
+| Si le système que vous mettez à niveau... | Puis… 
+
+
+| Possède des disques de stockage  a| 
+En mode maintenance (option 5 au menu de démarrage), modifiez les ports FC sur le nœud 3 si nécessaire :
+
+** Pour programmer les ports cibles :
+
+
+`ucadmin modify -m fc -t target _adapter_`
+
+** Pour programmer les ports initiateurs :
+
+
+`ucadmin modify -m fc -t initiator _adapter_`
+
+`-t` Est le type FC4 : cible ou initiateur.
+
+
+
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | En mode maintenance (option 5 au menu de démarrage), modifiez les ports FC sur le nœud 3 si nécessaire :
+`ucadmin modify -m fc -t initiator -f _adapter_port_name_`
+
+`-t` Est le type, la cible ou l'initiateur FC4. *Remarque* : les ports FC doivent être programmés comme initiateurs. 
+|===
+. [[step3]]effectuer l'une des actions suivantes :
++
+[cols="30,70"]
+|===
+| Si le système que vous mettez à niveau... | Puis… 
+
+
+| Possède des disques de stockage | Vérifiez les nouveaux paramètres à l'aide de la commande suivante et en examinant la sortie :
+`ucadmin show` 
+
+
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Vérifiez les nouveaux paramètres à l'aide de la commande suivante et en examinant la sortie :
+`ucadmin show` 
+|===
+. [[step4]]Quitter le mode de maintenance :
++
+`halt`
+
+. Démarrage du système à partir de l'invite du chargeur :
++
+`boot_ontap menu`
+
+. [[step6]]après avoir saisi la commande, attendez que le système s'arrête à l'invite de l'environnement d'amorçage.
+. Sélectionnez option `5` dans le menu de démarrage pour le mode maintenance.
+

@@ -1,0 +1,208 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/retire_node1.html 
+keywords: retire, node1, epsilon, shut down, failover 
+summary: 'Désactivez la paire haute disponibilité avec le nœud 2 et arrêtez le nœud 1 correctement lors d"une mise à niveau manuelle d"agrégats ARL sur les contrôleurs qui exécutent ONTAP 9.8 ou une version ultérieure.' 
+---
+= Retirer le nœud 1
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Pour retirer le nœud 1, vous devez désactiver la paire haute disponibilité avec le nœud 2, arrêter le nœud 1 correctement et le retirer du rack ou du châssis.
+
+.Étapes
+. Vérifiez le nombre de nœuds sur le cluster :
++
+`cluster show`
+
++
+Le système affiche les nœuds du cluster, comme illustré ci-dessous :
+
++
+[listing]
+----
+cluster::> cluster show
+Node                  Health  Eligibility
+--------------------- ------- ------------
+node1                 true    true
+node2                 true    true
+2 entries were displayed.
+----
+. [[man_LEGATION_1_step2]]Désactiver le basculement du stockage, selon les besoins :
++
+[cols="35,65"]
+|===
+| Si le cluster est... | Alors... 
+
+
+| Un cluster à deux nœuds  a| 
+.. Pour désactiver la haute disponibilité du cluster, entrez la commande suivante sur l'un des nœuds :
+
+
+`cluster ha modify -configured false`
+
+.. Désactiver le basculement du stockage :
+
+
+`storage failover modify -node _node1_ -enabled false`
+
+
+
+| Un cluster comprenant plus de deux nœuds | Désactiver le basculement du stockage :
+`storage failover modify -node _node1_ -enabled false` 
+|===
+. Vérifier que le basculement du stockage a été désactivé :
++
+`storage failover show`
+
++
+L'exemple suivant montre la sortie du `storage failover show` commande lorsque le basculement du stockage a été désactivé pour un nœud :
+
++
+[listing]
+----
+ cluster::> storage failover show
+                               Takeover
+ Node           Partner        Possible State Description
+ -------------- -------------- -------- -------------------------------------
+ node1          node2          false    Connected to node2, Takeover
+                                        is not possible: Storage failover is
+                                        disabled
+
+ node2          node1          false    Node owns partner's aggregates as part
+                                        of the nondisruptive controller upgrade
+                                        procedure. Takeover is not possible:
+                                        Storage failover is disabled
+ 2 entries were displayed.
+----
+. Vérifier le statut de la LIF de données :
++
+`network interface show -role data -curr-node _node2_ -home-node _node1_`
+
++
+Consultez la colonne *Status Admin/Oper* pour voir si des LIF sont en panne. Si l'un des LIFs est arrêté, consulter le link:troubleshoot_index.html["Dépistage de la suie"] section.
+
+. Effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si le cluster est... | Alors... 
+
+
+| Un cluster à deux nœuds | Accédez à ,Étape 6. 
+
+
+| Un cluster comprenant plus de deux nœuds | Accédez à ,Étape 8. 
+|===
+. [[man_hrete_1_step6]]accéder au niveau de privilège avancé sur l'un des nœuds :
++
+`set -privilege advanced`
+
+. [[step7]]vérifier que la haute disponibilité du cluster a été désactivée :
++
+`cluster ha show`
+
++
+Le système affiche le message suivant :
+
++
+[listing]
+----
+High Availability Configured: false
+----
++
+Si la haute disponibilité du cluster n'a pas été désactivée, répétez l'opération ,Étape 2.
+
+. [[man_revolve_1_step8]]vérifier si le nœud1 possède actuellement epsilon :
++
+`cluster show`
+
++
+Étant donné qu'il y a la possibilité d'une TIE dans un cluster qui a un nombre pair de nœuds, un nœud a un poids fractionnaire supplémentaire appelé epsilon. Reportez-vous à la section link:other_references.html["Références"] Pour accéder à _System Administration Reference_ pour plus d'informations.
+
++
+[NOTE]
+====
+Si vous avez un cluster à quatre nœuds, epsilon peut se trouver sur un nœud dans une paire haute disponibilité différente dans le cluster.
+
+Si vous mettez à niveau une paire haute disponibilité dans un cluster avec plusieurs paires haute disponibilité, vous devez déplacer epsilon vers le nœud d'une paire haute disponibilité qui ne fait pas l'objet d'une mise à niveau du contrôleur. Par exemple, si vous mettez à niveau NODEA/NodeB dans un cluster avec la configuration de paire haute disponibilité NODEA/NodeB et le nœud C/noadé, vous devez déplacer epsilon vers le nœud C ou le nœud noadé.
+
+====
++
+L'exemple suivant montre que le nœud 1 contient epsilon :
+
++
+[listing]
+----
+ cluster::*> cluster show
+
+ Node                 Health  Eligibility  Epsilon
+ -------------------- ------- ------------ ------------
+ node1                true    true         true
+ node2                true    true         false
+----
+. Si le nœud1 contient epsilon, marquer epsilon `false` sur le nœud afin qu'il puisse être transféré vers le nœud 2 :
++
+`cluster modify -node _node1_ -epsilon false`
+
+. Transfert epsilon vers node2 par marquage epsilon `true` sur le nœud 2 :
++
+`cluster modify -node _node2_ -epsilon true`
+
+. Vérifiez que la modification apportée au nœud 2 s'est produite :
++
+`cluster show`
+
++
+[listing]
+----
+ cluster::*> cluster show
+ Node                 Health  Eligibility  Epsilon
+ -------------------- ------- ------------ ------------
+ node1                true    true         false
+ node2                true    true         true
+----
++
+L'epsilon pour node2 devrait maintenant être vrai et l'epsilon pour le node1 devrait être faux.
+
+. Vérifiez si la configuration est un cluster à 2 nœuds sans commutateur :
++
+`network options switchless-cluster show`
+
++
+[listing]
+----
+ cluster::*> network options switchless-cluster show
+
+ Enable Switchless Cluster: false/true
+----
++
+La valeur de cette commande doit correspondre à l'état physique du système.
+
+. Revenir au niveau admin:
++
+`set -privilege admin`
+
+. Arrêtez le nœud 1 à partir de l'invite du nœud 1 :
++
+`system node halt -node _node1_`
+
++
+
+WARNING: *Attention* : si le nœud1 se trouve dans le même châssis que le nœud2, ne mettez pas le châssis hors tension à l'aide du commutateur d'alimentation ou en tirant le câble d'alimentation. Dans ce cas, le nœud 2, qui transmet les données, tomber en panne.
+
+. Lorsque vous êtes invité à confirmer l'arrêt du système, entrez `y`.
++
+Le nœud s'arrête à l'invite de l'environnement de démarrage.
+
+. Lorsque le nœud 1 affiche l'invite de l'environnement de démarrage, retirez-le du châssis ou du rack.
++
+Vous pouvez désaffecter le nœud1 une fois la mise à niveau terminée. Voir link:decommission_old_system.html["Désaffectation de l'ancien système"].
+
+

@@ -1,0 +1,218 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/netboot_node2.html 
+keywords: preparing, netboot, ontap, aff, a900, node2 
+summary: Après avoir échangé le module de contrôleur AFF A900 node2 correspondant et le module NVRAM, vous devrez peut-être les netboot. 
+---
+= NetBoot node2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Après avoir échangé le module de contrôleur AFF A900 ou FAS9500 NODE2 et la mémoire NVRAM correspondants, vous devrez peut-être les netboot. Le terme netboot signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Lorsque vous vous préparez à netboot, vous devez placer une copie de l'image de démarrage ONTAP 9 sur un serveur web auquel le système peut accéder.
+
+Il n'est pas possible de vérifier la version de ONTAP installée sur le support de démarrage d'un AFF A900 ou d'un module de contrôleur FAS9500, sauf s'il est installé dans un châssis et sous tension. La version ONTAP du support de démarrage AFF A900 ou FAS9500 doit être identique à la version ONTAP exécutée sur AFF A700 ou le système FAS9000 que vous mettez à niveau. Les images de démarrage primaire et de sauvegarde doivent correspondre. Vous pouvez configurer les images en effectuant un démarrage suivi de l' `wipeconfig` commande dans le menu de démarrage. Si le module de contrôleur était auparavant utilisé dans un autre cluster, le `wipeconfig` commande efface toute configuration résiduelle sur le support d'amorçage.
+
+
+NOTE: Vous pouvez également utiliser l'option de démarrage USB pour effectuer le démarrage sur le réseau. Voir la link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Article de la base de connaissances NetApp : comment utiliser la commande boot_Recovery LOADER afin d'installer ONTAP pour la configuration initiale d'un système"^].
+
+.Avant de commencer
+* Vérifiez que vous pouvez accéder à un serveur HTTP avec le système.
+* Téléchargez les fichiers système nécessaires pour votre système et la version correcte de ONTAP depuis le site _support NetApp_. Reportez-vous à la section link:other_references.html["Références"] Lien vers le _site de support NetApp_.
+
+
+Vous devez netboot les nouveaux contrôleurs si la même version de ONTAP 9 est installée sur les contrôleurs d'origine. Après avoir installé chaque nouveau contrôleur, vous démarrez le système à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système.
+
+.Étapes
+. Reportez-vous à la section link:other_references.html["Références"] Pour accéder au _site de support NetApp_ afin de télécharger les fichiers utilisés pour effectuer sur le réseau du système.
+. [[netboot_Node4_step2]]Télécharger le logiciel ONTAP approprié depuis la section de téléchargement du logiciel du site de support NetApp et stocker le `<ontap_version>_image.tgz` fichier dans un répertoire accessible sur le web.
+. Accédez au répertoire accessible sur le Web et vérifiez que les fichiers dont vous avez besoin sont disponibles.
+. Votre liste de répertoires devrait contenir `<ontap_version>_image.tgz`.
+. Configurez la connexion netboot en choisissant l'une des opérations suivantes.
++
+
+NOTE: Vous devez utiliser le port de gestion et l'IP comme connexion netboot. N'utilisez pas d'IP de la LIF de données et ne subit aucune panne pendant l'exécution de la mise à niveau.
+
++
+[cols="35,65"]
+|===
+| Si le protocole DHCP (Dynamic Host Configuration Protocol) est... | Alors... 
+
+
+| Exécution | Configurez la connexion automatiquement à l'aide de la commande suivante à l'invite de l'environnement d'initialisation :
+`ifconfig e0M -auto` 
+
+
+| Non en cours d'exécution  a| 
+Configurez manuellement la connexion à l'aide de la commande suivante à l'invite de l'environnement d'initialisation :
+`ifconfig e0M -addr=_filer_addr_ -mask=_netmask_ -gw=_gateway_ -dns=_dns_addr_ -domain=_dns_domain_`
+`_filer_addr_` Est l'adresse IP du système de stockage.
+`_netmask_` est le masque de réseau du système de stockage.
+`_gateway_` est la passerelle du système de stockage.
+`_dns_addr_` Est l'adresse IP d'un serveur de noms sur votre réseau. Ce paramètre est facultatif.
+`_dns_domain_` Est le nom de domaine DNS (Domain Name Service). Ce paramètre est facultatif.
+
+
+NOTE: D'autres paramètres peuvent être nécessaires pour votre interface. Entrez `help ifconfig` à l'invite du micrologiciel pour plus de détails.
+
+|===
+. Démarrage sur le nœud 2 :
++
+`netboot \http://<web_server_ip/path_to_web_accessible_directory>/netboot/kernel`
+
++
+
+NOTE: N'interrompez pas l'amorçage.
+
+. Attendez que le nœud2 s'exécute sur le module de contrôleur AFF A900 ou FAS9500 pour démarrer et afficher les options du menu de démarrage comme indiqué dans la sortie suivante :
++
+[listing]
+----
+Please choose one of the following:
+
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)?
+----
+. Dans le menu de démarrage, sélectionnez option `(7) Install new software first`.
++
+Cette option de menu permet de télécharger et d'installer la nouvelle image ONTAP sur le périphérique d'amorçage.
+
++
+[NOTE]
+====
+Ne tenez pas compte du message suivant : `This procedure is not supported for Non-Disruptive Upgrade on an HA pair`. Cette remarque s'applique aux mises à niveau logicielles ONTAP sans interruption et non aux mises à niveau du contrôleur.
+
+Utilisez toujours netboot pour mettre à jour le nouveau nœud vers l'image souhaitée. Si vous utilisez une autre méthode pour installer l'image sur le nouveau contrôleur, il est possible que la mauvaise image soit installée. Ce problème s'applique à toutes les versions de ONTAP.
+
+====
+. Si vous êtes invité à poursuivre la procédure, entrez `y`, Et lorsque vous êtes invité à saisir l'URL du pack :
+`\http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz`
++
+Le `<path_to_the_web-accessible_directory>` vous devez indiquer où vous avez téléchargé le `<ontap_version>_image.tgz` dans ,Étape 2.
+
+. Procédez comme suit pour redémarrer le module de contrôleur :
++
+.. Entrez `n` pour ignorer la récupération de sauvegarde lorsque l'invite suivante s'affiche :
++
+[listing]
+----
+Do you want to restore the backup configuration now? {y|n}
+----
+.. Entrez `y` pour redémarrer lorsque vous voyez l'invite suivante :
++
+[listing]
+----
+The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}
+----
++
+Le module de contrôleur redémarre mais s'arrête au menu d'amorçage car le périphérique d'amorçage a été reformaté et les données de configuration doivent être restaurées.
+
+
+
+. À l'invite, exécutez le `wipeconfig` commande pour effacer toute configuration précédente sur le support de démarrage.
++
+.. Lorsque vous voyez le message ci-dessous, répondez `yes`:
++
+[listing]
+----
+This will delete critical system configuration, including cluster membership.
+Warning: do not run this option on a HA node that has been taken over.
+Are you sure you want to continue?:
+----
+.. Le nœud redémarre pour terminer le `wipeconfig` puis s'arrête au menu de démarrage.
+
+
+. Sélectionnez le mode maintenance `5` dans le menu de démarrage et entrez `y` lorsque vous êtes invité à poursuivre le démarrage.
+. Vérifiez que le contrôleur et le châssis sont configurés comme `ha`:
++
+`ha-config show`
+
++
+L'exemple suivant montre la sortie du `ha-config show` commande :
+
++
+[listing]
+----
+Chassis HA configuration: ha
+Controller HA configuration: ha
+----
+. Si le contrôleur et le châssis ne sont pas configurés comme étant `ha`, utilisez les commandes suivantes pour corriger la configuration :
++
+`ha-config modify controller ha`
+
++
+`ha-config modify chassis ha`
+
+. Arrêt du nœud 2 :
++
+`halt`
+
++
+NODE2 doit s'arrêter à l'invite DU CHARGEUR>.
+
+. Sur le node2, vérifiez la date, l'heure et le fuseau horaire du système :
++
+`date`
+
+. Sur le nœud 2, vérifiez la date à l'aide de la commande suivante à l'invite de l'environnement d'initialisation :
++
+`show date`
+
+. Si nécessaire, définissez la date sur le noeud 2 :
++
+`set date _mm/dd/yyyy_`
+
++
+
+NOTE: Définissez la date UTC correspondante sur le node2.
+
+. Sur le nœud 2, vérifiez l'heure à l'aide de la commande suivante à l'invite de l'environnement de démarrage :
++
+`show time`
+
+. Si nécessaire, définissez l'heure sur le noeud 2 :
++
+`set time _hh:mm:ss_`
+
++
+
+NOTE: Définissez l'heure UTC correspondante sur le node2.
+
+. Si nécessaire, définissez l'ID système partenaire sur le noeud 2 :
++
+
+NOTE: Il s'agit de l'ID système du nœud 1 que vous mettez à niveau vers un AFF A900.
+
++
+`setenv partner-sysid _node1_sysid_`
+
++
+.. Enregistrer les paramètres :
++
+`saveenv`
+
+
+
+. Sur le nœud 2, à l'invite DU CHARGEUR, vérifiez le `partner-sysid` pour le nœud 1 :
++
+`printenv partner-sysid`
+
++
+Pour le noeud 2, le `partner-sysid` doit être celui du noeud 1.
+
+

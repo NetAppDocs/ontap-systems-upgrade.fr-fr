@@ -1,0 +1,163 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/move_non_root_aggr_nas_lifs_node1_from_node2_to_node3.html 
+keywords: aggregate relocation, lifs, node3, node1, node2, NAS 
+summary: 'Lors de la mise à niveau des contrôleurs exécutant ONTAP 9.5 vers 9.7, déplacez les LIF de données NAS du nœud 2 vers le nœud 3 `system controller replace` commandes.' 
+---
+= Déplacement des agrégats non racines et des LIF de données NAS qui appartiennent au nœud 1 du nœud 2 vers le nœud 3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Après avoir vérifié l'installation du nœud 3 et avant de transférer des agrégats du nœud 2 vers le nœud 3, vous devez déplacer les LIF de données NAS appartenant au nœud 1 qui se trouvent actuellement sur le nœud 2 vers le nœud 3. Vous devez également vérifier que des LIFs SAN existent sur le noeud 3.
+
+Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Vous vérifierez que les LIFs sont saines et situées sur les ports appropriés après avoir mis le nœud3 en ligne.
+
+.Étapes
+. Reprendre l'opération de relocalisation :
++
+`system controller replace resume`
+
++
+Le système effectue les tâches suivantes :
+
++
+** Vérification du quorum du cluster
+** Vérification de l'ID système
+** Vérification de la version d'image
+** Vérification de la plate-forme cible
+** Vérification de l'accessibilité du réseau
+
+
++
+L'opération s'interrompt à cette étape de la vérification de la capacité d'accessibilité du réseau.
+
+. Vérifiez manuellement que le réseau et tous les VLAN, les groupes d'interface et les domaines de diffusion ont été correctement configurés.
+. Reprendre l'opération de relocalisation :
++
+`system controller replace resume`
+
++
+[listing]
+----
+To complete the "Network Reachability" phase, ONTAP network configuration must
+be manually adjusted to match the new physical network configuration of the
+hardware. This includes assigning network ports to the correct broadcast
+domains, creating any required ifgrps and VLANs, and modifying the home-port
+parameter of network interfaces to the appropriate ports. Refer to the "Using
+aggregate relocation to upgrade controller hardware on a pair of nodes running
+ONTAP 9.x" documentation, Stages 3 and 5. Have all of these steps been manually
+completed? [y/n]
+----
+. Entrez `y` pour continuer.
+. Le système effectue les vérifications suivantes :
++
+** Vérification de l'état du cluster
+** Vérification de l'état de la LIF de cluster
+
+
++
+Après ces vérifications, le système relocalise les agrégats non-racine et les LIF de données NAS qui appartiennent au nœud1 vers le nouveau contrôleur, node3. Le système s'interrompt une fois le transfert de ressources terminé.
+
+. Vérifier le statut du transfert d'agrégats et du déplacement des LIF de données NAS :
++
+`system controller replace show-details`
+
+. Vérifier que les agrégats non racines et les LIF de données NAS ont été correctement transférées vers le nœud 3.
++
+Si un agrégat ne peut pas transférer ou être vetu, vous devez transférer manuellement les agrégats ou remplacer les vetos ou les vérifications de destination, si nécessaire. Voir link:relocate_failed_or_vetoed_aggr.html["Le transfert d'agrégats a échoué ou a été veto"] pour en savoir plus.
+
+. Vérifiez que les LIFs SAN se trouvent sur les ports adéquats sur le nœud3 en effectuant la procédure suivante :
++
+.. Entrez la commande suivante et examinez son résultat :
++
+`network interface show -data-protocol _iscsi|fcp_ -home-node _node3_`
+
++
+Le système renvoie une sortie similaire à l'exemple suivant :
+
++
+[listing]
+----
+cluster::> net int show -data-protocol iscsi|fcp -home-node node3
+
+        Logical   Status     Network           Current  Current Is
+Vserver Interface Admin/Oper Address/Mask      Node     Port    Home
+------- --------- ---------- ----------------- -------- ------- ----
+vs0
+        a0a       up/down     10.63.0.53/24     node3   a0a     true
+        data1     up/up       10.63.0.50/18     node3   e0c     true
+        rads1     up/up       10.63.0.51/18     node3   e1a     true
+        rads2     up/down     10.63.0.52/24     node3   e1b     true
+vs1
+        lif1      up/up       172.17.176.120/24 node3   e0c     true
+        lif2      up/up       172.17.176.121/24 node3   e1a     true
+----
+.. Si le nœud3 possède des LIFs SAN ou des groupes de LIFs SAN qui se trouvent sur un port qui n'existait pas sur le nœud1 ou qui doivent être mappés à un autre port, déplacez-les vers un port approprié du nœud3 en procédant comme suit :
++
+... Définir le statut LIF sur « down » :
++
+`network interface modify -vserver _Vserver_name_ -lif _LIF_name_ -status-admin down`
+
+... Supprimer le LIF du port set :
++
+`portset remove -vserver _Vserver_name_ -portset _portset_name_ -port-name _port_name_`
+
+... Entrez l'une des commandes suivantes :
++
+**** Déplacement d'un seul LIF :
++
+`network interface modify -vserver _Vserver_name_ -lif _LIF_name_ -home-port _new_home_port_`
+
+**** Déplacer toutes les LIF sur un port unique inexistant ou incorrect vers un nouveau port :
++
+`network interface modify {-home-port _port_on_node1_ -home-node _node1_ -role data} -home-port _new_home_port_on_node3_`
+
+**** Reajoutez les LIFs au port set :
++
+`portset add -vserver _Vserver_name_ -portset _portset_name_ -port-name _port_name_`
+
++
+
+NOTE: Vous devez confirmer que vous avez déplacé les LIFs SAN vers un port dont la vitesse de liaison est identique à celle du port d'origine.
+
+
+
+
+
+.. Modifier l'état de toutes les LIFs sur « up » afin que les LIFs acceptent et envoient le trafic sur le nœud :
++
+`network interface modify -home-port _port_name_ -home-node _node3_ -lif data -status admin up`
+
+.. Entrez la commande suivante sur l'un ou l'autre des nœuds et examinez son résultat pour vérifier que les LIFs ont été déplacées vers les ports corrects et que les LIFs ont le statut de `up`:
++
+`network interface show -home-node _node3_ -role data`
+
+.. Si l'un des LIFs est arrêté, définissez le statut administratif des LIFs sur `up` En saisissant la commande suivante, une fois pour chaque LIF :
++
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -status-admin up`
+
+
+
+. Reprenez l'opération pour demander au système d'effectuer les vérifications post-requises :
++
+`system controller replace resume`
+
++
+Le système effectue les vérifications suivantes :
+
++
+** Vérification du quorum du cluster
+** Vérification de l'état du cluster
+** Vérification de la reconstruction d'agrégats
+** Vérification de l'état de l'agrégat
+** Vérification de l'état du disque
+** Vérification de l'état de la LIF de cluster
+
+
+

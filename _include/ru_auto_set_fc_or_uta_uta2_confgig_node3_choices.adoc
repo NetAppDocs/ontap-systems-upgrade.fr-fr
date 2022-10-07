@@ -1,0 +1,8 @@
+= 
+:allow-uri-read: 
+
+
+.Choix
+*  FC ports on node3
+*  and configure UTA/UTA2 ports on node3
+

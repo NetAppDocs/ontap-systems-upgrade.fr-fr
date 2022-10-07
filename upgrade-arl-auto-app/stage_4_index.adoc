@@ -1,0 +1,22 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/stage_4_index.html 
+keywords: relocate, retire, node2, LIF, node3, non-root aggregates, stage 4 
+summary: 'Étape 4 : séquence de processus pour la mise à niveau d"ARL à l"aide de `system controller replace` Commandes sur les contrôleurs exécutant ONTAP 9.8 ou version ultérieure.' 
+---
+= Étape 4. Transférez et retirez le nœud 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Lors de la phase 4, tous les agrégats non racines sont transférés du nœud 2 au nœud 3 ; les LIF de données non-SAN qui appartiennent au nœud 2 sont déplacées vers le nœud 3. Vous devez enregistrer les informations nécessaires sur le noeud 2, puis retirer le noeud 2.
+
+.Étapes
+. link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Transférez des agrégats non racines et des LIF de données NAS du nœud 2 vers le nœud 3"]
+. link:retire_node2.html["Retrait du nœud 2"]
+

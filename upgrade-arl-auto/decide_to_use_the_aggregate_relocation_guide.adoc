@@ -1,0 +1,68 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/decide_to_use_the_aggregate_relocation_guide.html 
+keywords: aggregate relocation, decide to use, upgrade, model, matrix, replacement, controller 
+summary: 'Choisissez si vous souhaitez utiliser l"ARL pour mettre à niveau les contrôleurs sous ONTAP 9.5 vers 9.7 à l"aide de `system controller replace` commandes.' 
+---
+= Décider d'utiliser la procédure de transfert d'agrégats
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous apprendrez à mettre à niveau les contrôleurs de stockage d'une paire haute disponibilité avec de nouveaux contrôleurs tout en conservant l'ensemble des données et disques existants. Il s'agit d'une procédure complexe qui ne doit être utilisée que par des administrateurs expérimentés.
+
+Utilisez ce contenu dans les circonstances suivantes :
+
+* Vous mettez à niveau des contrôleurs NetApp exécutant ONTAP 9.5, 9.6 ou 9.7. Ce document ne s'applique pas aux mises à niveau vers ONTAP 9.8.
+* Vous ne voulez pas ajouter les nouveaux contrôleurs comme une nouvelle paire haute disponibilité au cluster et migrer les données en utilisant les déplacements de volumes.
+* Vous avez de l'expérience dans l'administration de ONTAP et vous êtes à l'aise avec les risques de travailler en mode de privilèges de diagnostic.
+* Si vous mettez à niveau une configuration MetroCluster, il s'agit d'une configuration FC à 4 nœuds ou supérieure et tous les nœuds exécutent ONTAP 9.6 ou 9.7.
+
+
+
+NOTE: Vous pouvez utiliser NetApp Storage Encryption (NSE) et NetApp Volume Encryption (NVE) dans le cadre de cette procédure.
+
+[[sys_commands_95_97_supported_Systems]] les tableaux suivants montrent la matrice de modèles prise en charge pour la mise à niveau du contrôleur.
+
+[cols="50,50"]
+|===
+| Ancien contrôleur | Remplacement du contrôleur 
+
+
+| FAS8020, FAS8040, FAS8060, FAS8080 | FAS8200, FAS8300, FAS8700, FAS9000 
+
+
+| AFF8020, AFF8040, AFF8060, AFF8080 | AFF A300, AFF A400, AFF A700^1^, AFF A800^2^ 
+
+
+| FAS8200 | FAS8700, FAS9000, FAS8300^4^,^^5^ 
+
+
+| AFF A300 | AFF A700^1^, AFF A800^2^,^^3^, AFF A400^4^,^^5^ 
+|===
+
+NOTE: Si la combinaison de modèle de mise à niveau du contrôleur ne se trouve pas dans le tableau ci-dessus, contactez l'assistance technique.
+
+^1^la mise à niveau automatisée du ARL pour le système AFF A700 est prise en charge à partir de ONTAP 9.7P2.
+
+^2^si vous effectuez une mise à jour vers un AFF A800 ou un système prenant en charge des disques internes et externes, vous devez suivre les instructions spécifiques relatives à l'agrégat racine sur des disques NVMe internes. Voir link:set_fc_or_uta_uta2_config_on_node3.html#step14["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3, étape 14"] et link:set_fc_or_uta_uta2_config_node4.html#step14["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4, étape 14"].
+
+^3^la mise à niveau automatisée d'un AFF A300 vers un système AFF A800 est prise en charge par ONTAP 9.7P5.
+
+^4^la mise à niveau automatisée d'un AFF A300 vers un système AFF A400 et un système FAS8200 vers FAS8300 est prise en charge par ONTAP 9.7P8.
+
+^5^si vous effectuez une mise à niveau depuis un AFF A300 vers un système AFF A400 ou FAS8200 vers un système FAS8300 dans une configuration de cluster sans commutateur à deux nœuds, vous devez choisir les ports de cluster temporaires pour la mise à niveau du contrôleur. Les systèmes AFF A400 et FAS8300 se présentent dans deux configurations sous la forme d'un bundle Ethernet où les ports de carte mezzanine sont de type Ethernet et sous la forme d'un bundle FC où les ports mezzanine sont de type FC.
+
+* Dans le cas d'un système AFF A400 ou FAS8300 avec une configuration de type Ethernet, vous pouvez utiliser n'importe lequel des deux ports mezzanine comme ports de cluster temporaires.
+* Pour un système AFF A400 ou FAS8300 avec une configuration de type FC, vous devez ajouter une carte d'interface réseau 10GbE à quatre ports (référence X1147A) pour fournir les ports de cluster temporaires.
+* Après avoir effectué la mise à niveau du contrôleur en utilisant des ports de cluster temporaires, vous pouvez migrer les LIF de cluster vers les ports e3a et e3b, 100 GbE sur un système AFF A400 et e0c et e0d, 100 GbE sur un système FAS8300 sans interruption.
+
+
+Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+
+Reportez-vous à la section link:other_references.html["Références"] Lien vers le Centre de documentation _ONTAP 9_ où vous pouvez accéder à la documentation produit ONTAP 9.

@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/persist_enable_switches.html 
+keywords: enable, switches, fabric, persistent 
+summary: 'Activez de manière persistante les commutateurs Brocade et Cisco dans la structure lors d"une mise à niveau manuelle d"ARL sur les contrôleurs exécutant ONTAP 9.7 ou une version antérieure.' 
+---
+= Activer de manière persistante les commutateurs
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous devez activer de manière persistante les commutateurs dans la structure.
+
+Activer le commutateur de manière persistante :
+
+* Pour les commutateurs Brocade, utilisez le `switchCfgPersistentenable` commande.
++
+[listing]
+----
+FC_switch_A_1:admin> switchCfgPersistentenable
+----
+* Pour les commutateurs Cisco, utilisez le `no suspend` commande.
++
+[listing]
+----
+vsan [vsna #]no suspend
+----
+

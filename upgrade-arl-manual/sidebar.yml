@@ -1,0 +1,165 @@
+---
+section: upgrade-arl-manual
+title: Mettez à niveau manuellement le matériel du contrôleur en exécutant ONTAP 9.7
+  ou une version antérieure
+entries:
+- title: Présentation
+  url: "/upgrade-arl-manual/index.html"
+- title: Décider d'utiliser le contenu de transfert d'agrégats
+  url: "/upgrade-arl-manual/decide_to_use_arl_guide.html"
+- title: Workflow de mise à niveau ARL
+  url: "/upgrade-arl-manual/arl_upgrade_workflow.html"
+- title: Instructions de mise à niveau des contrôleurs avec l'ARL
+  url: "/upgrade-arl-manual/guidelines_upgrade_with_arl.html"
+- title: Outils et documentation requis
+  url: "/upgrade-arl-manual/required_tools_documentation.html"
+- title: 'Fiche : informations à collecter avant et pendant la mise à niveau du contrôleur'
+  url: "/upgrade-arl-manual/worksheet_information_before_during_upgrade.html"
+- title: Reconfigurer la disposition des commutateurs FC pour ONTAP 9.1 ou version
+    ultérieure
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-manual/reconfig_index.html"
+  - title: Envoyer un message AutoSupport personnalisé avant de reconfigurer les commutateurs
+    url: "/upgrade-arl-manual/send_custom_asup_message_prior_reconfig_switches.html"
+  - title: Vérifier l'état de santé de la configuration MetroCluster
+    url: "/upgrade-arl-manual/verify_health_mcc_config.html"
+  - title: Recherchez les erreurs de configuration MetroCluster
+    url: "/upgrade-arl-manual/check_mcc_config_errors.html"
+  - title: Désactivez les commutateurs de manière persistante
+    url: "/upgrade-arl-manual/persist_disable_switches.html"
+  - title: Identification de la nouvelle disposition de câblage
+    url: "/upgrade-arl-manual/determine_new_cabling_layout.html"
+  - title: Appliquer les fichiers RCF et recâblage des commutateurs
+    url: "/upgrade-arl-manual/apply_RCF_files_recable_switches.html"
+  - title: Activer de manière persistante les commutateurs
+    url: "/upgrade-arl-manual/persist_enable_switches.html"
+  - title: Vérification du basculement, de la résolution et du rétablissement
+    url: "/upgrade-arl-manual/verify_swtichover_healing_switchback.html"
+- title: Étape 1. Préparation de la mise à niveau
+  pdf-filename: Étape 1. Préparation à la mise à niveau (mise à niveau manuelle sous
+    ONTAP 9.7 ou version antérieure)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-manual/stage_1_index.html"
+  - title: Déterminez si le contrôleur possède des agrégats sur des disques internes
+    url: "/upgrade-arl-manual/determine_aggregates_on_internal_drives.html"
+  - title: Préparer les nœuds pour une mise à niveau
+    url: "/upgrade-arl-manual/prepare_nodes_for_upgrade.html"
+  - title: Procurez-vous une adresse IP d'un serveur de gestion externe des clés pour
+      le cryptage du stockage
+    url: "/upgrade-arl-manual/get_address_key_management_server_encryption.html"
+  - title: Gérez l'authentification à l'aide de serveurs KMIP
+    url: "/upgrade-arl-manual/manage_authentication_kmip.html"
+  - title: Gérez l'authentification à l'aide d'un gestionnaire de clés intégré
+    url: "/upgrade-arl-manual/manage_authentication_okm.html"
+  - title: Suspendre les relations SnapMirror
+    url: "/upgrade-arl-manual/quiesce_snapmirror_relationships.html"
+  - title: Préparation à la mise sur le réseau
+    url: "/upgrade-arl-manual/prepare_for_netboot.html"
+- title: Étape 2. Transférez et retirez le nœud 1
+  pdf-filename: Étape 2. Relocalisation et retrait du nœud 1 (mise à niveau manuelle
+    dans ONTAP 9.7 ou version antérieure)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-manual/stage_2_index.html"
+  - title: Transférer des agrégats non racines du nœud 1 vers le nœud 2
+    url: "/upgrade-arl-manual/relocate_non_root_aggr_node1_node2.html"
+  - title: Déplacez les LIF de données NAS qui appartiennent au nœud 1 vers le nœud
+      2
+    url: "/upgrade-arl-manual/move_nas_lifs_node1_node2.html"
+  - title: Enregistrer les informations sur le noeud 1
+    url: "/upgrade-arl-manual/record_node1_information.html"
+  - title: Retirer le nœud 1
+    url: "/upgrade-arl-manual/retire_node1.html"
+- title: Étape 3. Installez et démarrez le nœud 3
+  pdf-filename: Étape 3. Installation et démarrage du nœud 3 (mise à niveau manuelle
+    dans ONTAP 9.7 ou version antérieure)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-manual/stage_3_index.html"
+  - title: Installez et démarrez le nœud 3
+    url: "/upgrade-arl-manual/install_boot_node3.html"
+  - title: Définissez la configuration FC ou UTA/UTA2 sur le nœud 3
+    url: "/upgrade-arl-manual/set_fc_uta_uta2_config_node3.html"
+  - title: Mapper les ports du node1 vers le node3
+    url: "/upgrade-arl-manual/map_ports_node1_node3.html"
+  - title: Vérifiez l'installation du noeud 3
+    url: "/upgrade-arl-manual/verify_node3_installation.html"
+  - title: Déplacez les LIF de données NAS qui appartiennent au nœud 1, du nœud 2
+      au nœud 3, et vérifiez les LIF SAN sur le nœud 3
+    url: "/upgrade-arl-manual/move_nas_lifs_node1_from_node2_node3_verify_san_lifs_node3.html"
+  - title: 'Fiche : informations à enregistrer avant de déplacer les LIF de données
+      NAS vers le nœud 3'
+    url: "/upgrade-arl-manual/worksheet_information_before_moving_san_lifs_node3.html"
+  - title: Transférer des agrégats non racines du nœud 2 vers le nœud 3
+    url: "/upgrade-arl-manual/relocate_non_root_aggr_node2_node3.html"
+  - title: Déplacez les LIF de données NAS qui appartiennent au nœud 2 vers le nœud
+      3
+    url: "/upgrade-arl-manual/move_nas_lifs_node2_node3.html"
+- title: Étape 4. Enregistrer les informations et retirer le noeud 2
+  pdf-filename: Étape 4. Enregistrement des informations et retrait du nœud 2 (mise
+    à niveau manuelle dans ONTAP 9.7 ou version antérieure)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-manual/stage_4_index.html"
+  - title: Enregistrer les informations sur le noeud 2
+    url: "/upgrade-arl-manual/record_node2_information.html"
+  - title: Retrait du nœud 2
+    url: "/upgrade-arl-manual/retire_node2.html"
+- title: Étape 5. Installez et démarrez Node4
+  pdf-filename: Étape 5. Installation et démarrage du nœud 4 (mise à niveau manuelle
+    dans ONTAP 9.7 ou version antérieure)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-manual/stage_5_index.html"
+  - title: Installez et démarrez Node4
+    url: "/upgrade-arl-manual/install_boot_node4.html"
+  - title: Configurez la configuration FC ou UTA/UTA2 sur le nœud 4
+    url: "/upgrade-arl-manual/set_fc_uta_uta2_config_node4.html"
+  - title: Mappage des ports du node2 au node4
+    url: "/upgrade-arl-manual/map_ports_node2_node4.html"
+  - title: Vérifiez l'installation du node4
+    url: "/upgrade-arl-manual/verify_node4_installation.html"
+  - title: Déplacez les LIF de données NAS qui appartiennent au nœud 2 du nœud 3 vers
+      le nœud 4, puis vérifiez les LIF SAN sur le nœud 4
+    url: "/upgrade-arl-manual/move_nas_lifs_node2_from_node3_node4_verify_san_lifs_node4.html"
+  - title: 'Fiche : informations à enregistrer avant de déplacer les LIF de données
+      NAS vers le nœud 4'
+    url: "/upgrade-arl-manual/worksheet_information_before_moving_san_lifs_node4.html"
+  - title: Transférez les agrégats non racine du nœud 2 depuis le nœud 3 vers le nœud
+      4
+    url: "/upgrade-arl-manual/relocate_node2_non_root_aggr_node3_node4.html"
+- title: Étape 6. Terminez la mise à niveau
+  pdf-filename: Étape 6. Terminer la mise à niveau (mise à niveau manuelle dans ONTAP
+    9.7 ou version antérieure)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-manual/stage_6_index.html"
+  - title: Vérifiez que les nouveaux contrôleurs sont correctement configurés
+    url: "/upgrade-arl-manual/ensure_controllers_set_up_correctly.html"
+  - title: Configurez Storage Encryption sur le nouveau module de contrôleur
+    url: "/upgrade-arl-manual/set_up_storage_encryption_new_controller.html"
+  - title: Configurez NetApp Volume Encryption sur le nouveau module de contrôleur
+    url: "/upgrade-arl-manual/set_up_netapp_encryption_on_new_controller.html"
+  - title: Désaffectation de l'ancien système
+    url: "/upgrade-arl-manual/decommission_old_system.html"
+  - title: Reprendre les opérations SnapMirror
+    url: "/upgrade-arl-manual/resume_snapmirror_ops.html"
+- title: Résoudre les problèmes
+  pdf-filename: Dépannage (mise à niveau manuelle dans ONTAP 9.7 ou version antérieure)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-manual/troubleshoot_index.html"
+  - title: Défaillance du transfert d'agrégats
+    url: "/upgrade-arl-manual/aggregate_relocation_failures.html"
+  - title: Redémarre, fonctionne de façon incohérente ou fonctionne tout cycle d'alimentation
+    url: "/upgrade-arl-manual/reboots_panics_power_cycles.html"
+  - title: Problèmes pouvant survenir à plusieurs étapes de la procédure
+    url: "/upgrade-arl-manual/issues_multiple_stages_of_procedure.html"
+  - title: Échec de la migration de LIF
+    url: "/upgrade-arl-manual/lif_migration_failure.html"
+  - title: Après la mise à niveau, les LIFs se trouvent sur des ports non valides
+    url: "/upgrade-arl-manual/lifs_invalid_ports_after_upgrade.html"
+- title: Références
+  url: "/upgrade-arl-manual/other_references.html"

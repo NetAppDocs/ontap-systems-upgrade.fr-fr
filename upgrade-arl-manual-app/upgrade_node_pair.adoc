@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/upgrade_node_pair.html 
+keywords: upgrade, node pair, steps 
+summary: 'Vous pouvez préparer manuellement le nœud d"origine pour la mise à niveau en effectuant des tâches sur les nœuds d"origine et les nouveaux sur les contrôleurs exécutant ONTAP 9.8 ou version ultérieure.' 
+---
+= Mettre à niveau la paire de nœuds
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Pour mettre à niveau la paire de nœuds, vous devez préparer les nœuds d'origine, puis effectuer une série d'étapes sur les nœuds d'origine et nouveaux. Vous pouvez ensuite désaffecter les nœuds d'origine.
+
+.Étapes
+. link:stage1_prepare_for_upgrade.html["Étape 1 : préparer la mise à niveau"]
+. link:stage2_relocate_retire_node1.html["Étape 2 : déplacer et retirer le nœud 1"]
+. link:stage_3_install_boot_node3.html["Etape 3 : installation et démarrage du node3"]
+. link:stage4_record_info_retire_node2.html["Étape 4 : enregistrer les informations et retirer le noeud 2"]
+. link:stage5_install_boot_node4.html["Etape 5 : installation et démarrage du node4"]
+. link:stage6_complete_upgrade.html["Étape 6 : terminez la mise à niveau"]
+

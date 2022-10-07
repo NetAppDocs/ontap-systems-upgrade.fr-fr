@@ -1,0 +1,72 @@
+---
+permalink: upgrade/upgrade-move-lifs-to-new-nodes.html 
+sidebar: sidebar 
+keywords: move, volume, original, node, migrate, non-san, lif, cluster-management, move non-san data lifs and cluster management lifs to the new nodeas 
+summary: 'Une fois les volumes déplacés des nœuds d"origine, vous devez migrer les LIF de données non SAN et les LIF de Cluster-management des nœuds d"origine vers les nouveaux nœuds.' 
+---
+= Déplacez les LIF de données non-SAN et les LIF de gestion du cluster vers les nouveaux nœuds
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Une fois les volumes déplacés des nœuds d'origine, vous devez migrer les LIF de données non SAN et les LIF de Cluster-management des nœuds d'origine vers les nouveaux nœuds.
+
+Vous ne pouvez pas migrer une LIF utilisée pour effectuer des opérations de déchargement des copies avec VMware vStorage APIs for Array Integration (VAAI).
+
+.Étapes
+. Depuis le nœud sur lequel la LIF de cluster est hébergée, changer les ports home pour les LIFs de données non-SAN des nœuds d'origine aux nouveaux nœuds :
++
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-node _new_node_name_ -home-port {<netport|ifgrp>}`
+
+. Effectuer l'une des actions suivantes :
++
+[cols="1,2"]
+|===
+| Pour migrer... | Puis entrer... 
+
+
+ a| 
+Une LIF spécifique
+ a| 
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -source-node _source_node_name_ -destination-node _dest_node_name_ -destination-port _dest_port_name_`
+
+
+
+ a| 
+Toutes les LIF de données non-SAN et de cluster-management
+ a| 
+`network interface migrate-all -node _node_name_`
+
+|===
++
+La commande suivante migre une LIF nommée « datalif1 » sur le SVM « vs0 » vers le port « e0d » sur « node0b » :
+
++
+[listing]
+----
+cluster::> network interface migrate -vserver vs0 -lif datalif1 -destination-node node0b -destination-port e0d
+----
++
+La commande suivante migre toutes les LIFs de données et de cluster-management du nœud actuel (local) :
+
++
+[listing]
+----
+cluster::> network interface migrate-all -node local
+----
+. Vérifier si le home node de la LIF cluster-management est sur l'un des nœuds d'origine : `network interface show -lif cluster_mgmt -fields home-node`
+. Si le home node de la LIF cluster management est situé sur l'un des nœuds d'origine, effectuez la procédure suivante :
++
+.. Basculer le home node de la LIF cluster-management sur l'un des nouveaux nœuds :
++
+`network interface modify -vserver _cluster_name_ -lif cluster_mgmt -home-node _new_node_name_ -home-port {<netport|ifgrp>}`
+
+.. Migrer la LIF cluster-management vers l'un des nouveaux nœuds :
++
+`network interface migrate -vserver _vserver_name_ -lif cluster-mgmt -destination-node _new_node_name_ -destination-port {<netport|ifgrp>}`
+
+
+
+

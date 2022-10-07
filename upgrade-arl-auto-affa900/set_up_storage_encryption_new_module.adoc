@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/set_up_storage_encryption_new_module.html 
+keywords: set up storage, encryption, controller, module, node 
+summary: 'Si nécessaire, configurez le cryptage de stockage, installez les certificats SSL et configurez les serveurs de gestion des clés lors d"une mise à niveau AFF A700 vers AFF A900.' 
+---
+= Configurez Storage Encryption sur le nouveau module de contrôleur
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si le contrôleur remplacé ou le partenaire de haute disponibilité du nouveau contrôleur utilise Storage Encryption, vous devez configurer le nouveau module de contrôleur pour Storage Encryption, y compris l'installation de certificats SSL et la configuration de serveurs de gestion des clés.
+
+Cette procédure comprend les étapes réalisées sur le nouveau module de contrôleur. Vous devez saisir la commande sur le nœud approprié.
+
+.Étapes
+. Vérifier que les serveurs de gestion des clés sont toujours disponibles, leur état et leurs informations de clé d'authentification :
++
+`security key-manager external show-status`
+
++
+`security key-manager onboard show-backup`
+
+. Ajoutez les serveurs de gestion des clés répertoriés à l'étape précédente à la liste des serveurs de gestion des clés du nouveau contrôleur.
++
+.. Ajouter le serveur de gestion des clés :
++
+`security key-manager external add-servers -key-servers _key_management_server_ip_address_`
+
+.. Répétez l'étape précédente pour chaque serveur de gestion des clés répertorié. Vous pouvez lier jusqu'à quatre serveurs de gestion des clés.
+.. Vérifiez que les serveurs de gestion des clés ont été ajoutés correctement :
++
+`security key-manager external show`
+
+
+
+. Sur le nouveau module de contrôleur, exécutez l'assistant de configuration de la gestion des clés pour configurer et installer les serveurs de gestion des clés.
++
+Vous devez installer les mêmes serveurs de gestion des clés que ceux installés sur le module de contrôleur existant.
+
++
+.. Lancez l'assistant de configuration du serveur de gestion des clés sur le nouveau nœud :
++
+`security key-manager external enable`
+
+.. Suivez les étapes de l'assistant pour configurer les serveurs de gestion des clés.
+
+
+. Restaurer les clés d'authentification de tous les serveurs de gestion des clés liés vers le nouveau nœud :
++
+`security key-manager external restore -node _new_controller_name_`
+
+

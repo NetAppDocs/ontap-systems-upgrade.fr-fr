@@ -1,0 +1,171 @@
+= 
+:allow-uri-read: 
+
+
+. [[step7]]exécutez sur le nœud 3 :
++
+[cols="30,70"]
+|===
+| Pour... | Alors... 
+
+
+| Systèmes de la gamme FAS/AFF8000 | `netboot \http://<web_server_ip/path_to_web-accessible_directory>/netboot/kernel` 
+
+
+| Tous les autres systèmes | `netboot \http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz` 
+|===
++
+Le `<path_to_the_web-accessible_directory>` vous devez indiquer où vous avez téléchargé le `<ontap_version>_image.tgz` dans la section link:prepare_for_netboot.html["Préparation à la mise sur le réseau"].
+
++
+
+NOTE: N'interrompez pas l'amorçage.
+
+. [[step8]]] dans le menu de démarrage, sélectionnez option `(7) Install new software first`.
++
+Cette option de menu permet de télécharger et d'installer la nouvelle image ONTAP sur le périphérique d'amorçage.
+
++
+
+NOTE: Ne tenez pas compte du message suivant : `This procedure is not supported for Non-Disruptive Upgrade on an HA pair`. Cette remarque s'applique aux mises à niveau de ONTAP sans interruption et non aux mises à niveau des contrôleurs. Utilisez toujours netboot pour mettre à jour le nouveau nœud vers l'image souhaitée. Si vous utilisez une autre méthode pour installer l'image sur le nouveau contrôleur, il est possible que la mauvaise image soit installée. Ce problème s'applique à toutes les versions de ONTAP.
+
+. [[step9]]si vous êtes invité à poursuivre la procédure, entrez `y`, Et lorsque vous êtes invité à saisir l'URL du pack :
++
+`\http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz`
+
+. [[step10]]effectuez les sous-étapes suivantes pour redémarrer le module de contrôleur :
++
+.. Entrez `n` pour ignorer la récupération de sauvegarde lorsque l'invite suivante s'affiche :
++
+`Do you want to restore the backup configuration now? {y|n}`
+
+.. Entrez `y` pour redémarrer lorsque vous voyez l'invite suivante :
++
+`The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}`
+
++
+Le module de contrôleur redémarre mais s'arrête au menu d'amorçage car le périphérique d'amorçage a été reformaté et les données de configuration doivent être restaurées.
+
+
+
+. [[step11]]sélectionnez le mode de maintenance `5` dans le menu de démarrage et entrez `y` lorsque vous êtes invité à poursuivre le démarrage.
+. [[step12]]vérifier que le contrôleur et le châssis sont configurés comme haute disponibilité :
++
+`ha-config show`
+
++
+L'exemple suivant montre la sortie du `ha-config show` commande :
+
++
+....
+Chassis HA configuration: ha
+Controller HA configuration: ha
+....
++
+
+NOTE: Le système enregistre dans une PROM, qu'il soit dans une paire HA ou dans une configuration autonome. L'état doit être le même sur tous les composants du système autonome ou de la paire haute disponibilité.
+
+. [[step13]]si le contrôleur et le châssis ne sont pas configurés comme HA, utilisez les commandes suivantes pour corriger la configuration :
++
+`ha-config modify controller ha`
+
++
+`ha-config modify chassis ha`
+
++
+Si vous disposez d'une configuration MetroCluster, utilisez les commandes suivantes pour modifier le contrôleur et le châssis :
+
++
+`ha-config modify controller mcc`
+
++
+`ha-config modify chassis mcc`
+
+. [[step14]]quitter le mode maintenance :
++
+`halt`
+
++
+Interrompez l'AUTOBOOT en appuyant sur `Ctrl-C` à l'invite de l'environnement de démarrage.
+
+. [[step15]]sur le noeud 2, vérifiez la date, l'heure et le fuseau horaire du système :
++
+`date`
+
+. [[step16]]sur le noeud 3, vérifiez la date à l'aide de la commande suivante à l'invite de l'environnement d'initialisation :
++
+`show date`
+
+. [[step17]]si nécessaire, définissez la date sur le noeud 3 :
++
+`set date _mm/dd/yyyy_`
+
+. [[step18]]sur le noeud 3, vérifiez l'heure à l'aide de la commande suivante à l'invite de l'environnement d'initialisation :
++
+`show time`
+
+. [[step19]]si nécessaire, définissez l'heure sur le noeud 3 :
++
+`set time _hh:mm:ss_`
+
+. [[step20]]si nécessaire, définissez l'ID système partenaire sur le noeud 3 :
++
+`setenv partner-sysid _node2_sysid_`
+
++
+.. Enregistrer les paramètres :
++
+`saveenv`
+
+
+
+. [[auto_install3_step21]]sur le nouveau nœud, dans le chargeur d'amorçage, le `partner-sysid` le paramètre doit être défini. Pour le nœud 3, `partner-sysid` doit être celui du node2. Vérifiez le `partner-sysid` pour le nœud 3 :
++
+`printenv partner-sysid`
+
+. [[step22]]effectuer l'une des actions suivantes :
++
+[cols="30,70"]
+|===
+| Si votre système... | Description 
+
+
+| Possède des disques et aucun stockage interne | Accédez à ,Étape 23 
+
+
+| Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage  a| 
+.. Passez à la section link:set_fc_or_uta_uta2_config_on_node3.html["Configuration FC ou UTA/UTA2 sur le nœud 3"] complétez les sous-sections de cette section.
+.. Revenez à cette section et suivez les étapes restantes, en commençant par ,Étape 23.
+
+
+*Important* : vous devez reconfigurer les ports intégrés FC, les ports CNA intégrés et les cartes CNA avant de démarrer ONTAP sur les systèmes V-Series ou avec le logiciel de virtualisation FlexArray.
+
+|===
+. [[auto_install3_step23]]Ajoutez les ports d'initiateur FC du nouveau nœud aux zones de commutation.
++
+Si votre système dispose d'un SAN sur bandes, vous devez segmentation pour les initiateurs. Si nécessaire, modifiez les ports intégrés sur l'initiateur en consultant le link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configuration des ports FC sur le nœud3"]. Reportez-vous à la documentation relative à votre matrice de stockage et à la segmentation pour plus d'instructions sur le zonage.
+
+. [[step24]]Ajouter les ports d'initiateur FC à la baie de stockage en tant que nouveaux hôtes, en mappant les LUN de la baie aux nouveaux hôtes.
++
+Reportez-vous à la documentation relative à votre matrice de stockage et au zoning pour obtenir des instructions.
+
+. [[step25]]Modifier les valeurs du nom de port mondial (WWPN) dans les groupes d'hôtes ou de volumes associés aux LUN de baie de stockage.
++
+L'installation d'un nouveau module de contrôleur modifie les valeurs WWPN associées à chaque port FC intégré.
+
+. [[step26]]si votre configuration utilise un zoning basé sur des commutateurs, ajustez le zoning pour refléter les nouvelles valeurs WWPN.
+. [[step27]]si NetApp Storage Encryption (NSE) est utilisé sur cette configuration, le `setenv bootarg.storageencryption.support` la commande doit être définie sur `true`, et le `kmip.init.maxwait` la variable doit être définie sur `off` pour éviter une boucle d'amorçage après le chargement de la configuration du noeud 1 :
++
+`setenv bootarg.storageencryption.support true`
+
++
+`setenv kmip.init.maxwait off`
+
+. [[step28]]nœud d'amorçage dans le menu d'amorçage :
++
+`boot_ontap menu`
+
++
+Si vous ne disposez pas de configuration FC ou UTA/UTA2, exécutez l'application link:set_fc_or_uta_uta2_config_on_node3.html#auto9597_check_node3_step15["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3, étape 15"] afin que le nœud3 puisse reconnaître les disques du nœud1.
+
+

@@ -1,0 +1,61 @@
+= 
+:allow-uri-read: 
+
+
+Avant de remplacer le nœud 2 par le nœud 4, vous devez transférer les agrégats non racines qui sont détenus par le nœud 2 vers le nœud 3.
+
+Une fois les post-contrôles effectués à partir de l'étape précédente, la version de ressource pour le noeud 2 démarre automatiquement. Les agrégats non-racines et les LIF de données non-SAN sont migrées du nœud 2 vers le nœud 3.
+
+Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau.
+
+Une fois les agrégats et les LIF migrés, l'opération est interrompue à des fins de vérification. À ce stade, vous devez vérifier si tous les agrégats non-racine et toutes les LIF de données non-SAN sont migrés vers le nœud 3.
+
+
+NOTE: Le propriétaire home des agrégats et des LIF n'est pas modifié ; seul le propriétaire actuel est modifié.
+
+.Étapes
+. Vérifier que tous les agrégats non racines sont en ligne et leur état sur le nœud 3 :
++
+`storage aggregate show -node _node3_ -state online -root false`
+
++
+L'exemple suivant montre que les agrégats non-root du noeud 2 sont en ligne :
+
++
+....
+cluster::> storage aggregate show -node node3 state online -root false
+
+Aggregate      Size         Available   Used%   State   #Vols  Nodes  RAID     Status
+----------     ---------    ---------   ------  -----   -----  ------ -------  ------
+aggr_1         744.9GB      744.8GB      0%     online  5      node2  raid_dp  normal
+aggr_2         825.0GB      825.0GB      0%     online  1      node2  raid_dp  normal
+2 entries were displayed.
+....
++
+Si les agrégats ont été mis hors ligne ou devenaient étrangers sur le nœud3, mettez-les en ligne en utilisant la commande suivante sur le nœud3, une fois pour chaque agrégat :
+
++
+`storage aggregate online -aggregate _aggr_name_`
+
+. Vérifiez que tous les volumes sont en ligne sur le nœud 3 à l'aide de la commande suivante sur le nœud 3 et en examinant la sortie :
++
+`volume show -node _node3_ -state offline`
+
++
+Si un volume est hors ligne sur le nœud 3, mettez-le en ligne à l'aide de la commande suivante sur le nœud 3, une fois pour chaque volume :
+
++
+`volume online -vserver _vserver_name_ -volume _volume_name_`
+
++
+Le `_vserver_name_` pour utiliser cette commande avec cette commande, figure dans la sortie du précédent `volume show` commande.
+
+. Vérifier que les LIFs ont été déplacées vers les ports appropriés et sont à l'état de `up`. Si l'un des LIFs est arrêté, définissez le statut administratif des LIFs sur `up` En saisissant la commande suivante, une fois pour chaque LIF :
++
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _node_name_ -status-admin up`
+
+. Si les ports qui hébergent actuellement des LIFs de données n'existeront pas sur le nouveau matériel, les supprimer du broadcast domain :
++
+`network port broadcast-domain remove-ports`
+
+

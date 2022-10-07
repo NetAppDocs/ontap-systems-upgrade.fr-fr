@@ -1,0 +1,119 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/get_ip_address_of_external_kms_for_storage_encryption.html 
+keywords: ip, address, external, key, management, server, storage, encryption, upgrading, authentication 
+summary: 'Configurez et gérez le cryptage du stockage, gérez les clés d"authentification et mettez au repos les relations SnapMirror lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou une version ultérieure à l"aide de `system controller replace` commande.' 
+---
+= Procurez-vous une adresse IP d'un serveur de gestion externe des clés pour le cryptage du stockage
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Une fois la mise à niveau effectuée, vous devez immédiatement configurer Storage Encryption et établir une clé d'authentification au niveau du cluster pour remplacer les clés d'authentification précédentes au niveau du nœud.
+
+.Étapes
+. Installez les certificats SSL (Secure sockets layer) client et serveur nécessaires pour communiquer avec les serveurs de gestion des clés :
++
+`security certificate install`
+
+. Configurez Storage Encryption sur tous les nœuds à l'aide de la commande suivante sur chaque nœud :
++
+`security key-manager external enable`
+
+. Ajouter l'adresse IP de chaque serveur de gestion des clés :
++
+`security key-manager external add-servers -key-servers _key_management_server_ip_address_`
+
+. Vérifiez que les mêmes serveurs de gestion des clés sont configurés et disponibles sur tous les nœuds du cluster :
++
+`security key-manager external show-status`
+
+. Créer une nouvelle clé d'authentification au niveau du cluster :
++
+`security key-manager key create`
+
+. Notez le nouvel ID de clé d'authentification.
+. ReKey tous les disques à autochiffrement grâce à la nouvelle clé d'authentification :
++
+`storage encryption disk modify -disk * -data-key-id _authentication_key_id_`
+
+
+
+
+
+== Gérez l'authentification à l'aide de serveurs KMIP
+
+Avec ONTAP 9.8 ou version ultérieure, vous pouvez utiliser des serveurs KMIP (Key Management Interoperability Protocol) pour gérer les clés d'authentification.
+
+.Étapes
+. Ajout d'un nouveau contrôleur :
++
+`security key-manager external enable`
+
+. Ajouter le gestionnaire de clés :
++
+`security key-manager external add-servers -key-servers _key_management_server_ip_address_`
+
+. Vérifier que les serveurs de gestion des clés sont configurés et disponibles pour tous les nœuds du cluster :
++
+`security key-manager external show-status`
+
+. Restaurez les clés d'authentification de tous les serveurs de gestion de clés liés vers le nouveau nœud :
++
+`security key-manager external restore -node _new_controller_name_`
+
+. ReKey tous les disques avec autocryptage à l'aide de la nouvelle clé d'authentification :
++
+`storage encryption disk modify -disk * [-data-key-id nonMSID AK]`
+
+. Si vous utilisez la norme FIPS (Federal information Processing Standard), ressaisissez tous les disques auto-cryptés à l'aide de la nouvelle clé d'authentification :
++
+`storage encryption disk modify -disk * [-fips-key-id nonMSID AK]`
+
+
+
+
+
+== Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré
+
+Vous pouvez utiliser OKM pour gérer les clés de chiffrement. Si vous prévoyez d'utiliser OKM, vous devez enregistrer la phrase de passe et les supports de sauvegarde avant de commencer la mise à niveau.
+
+.Étapes
+. Enregistrez la phrase de passe dans un emplacement sécurisé.
+. Créer une sauvegarde pour une restauration. Exécutez la commande suivante et enregistrez les valeurs de sortie :
++
+`security key-manager onboard show-backup`
+
+
+
+
+
+== Suspendre les relations SnapMirror (facultatif)
+
+Avant de poursuivre l'opération, vous devez confirmer que toutes les relations SnapMirror sont suspendues. Lorsqu'une relation SnapMirror est mise en veille, elle reste suspension sur l'ensemble des redémarrages et basculements.
+
+.Étapes
+. Vérifier l'état de la relation SnapMirror sur le cluster destination :
++
+`snapmirror show`
+
++
+[NOTE]
+====
+Si l'état est « transfert », vous devez annuler ces transferts :
+`snapmirror abort -destination-vserver _vserver_name_`
+
+====
++
+L'annulation échoue si la relation SnapMirror n'est pas à l'état « Transferring ».
+
+. Arrêter toutes les relations entre le cluster :
++
+`snapmirror quiesce -destination-vserver _vserver_name_`
+
+

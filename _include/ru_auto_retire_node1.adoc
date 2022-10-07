@@ -1,0 +1,18 @@
+= 
+:allow-uri-read: 
+
+
+Pour retirer le nœud 1, vous reprenez l'opération automatisée pour désactiver la paire HA avec le nœud 2 et arrêter le nœud 1 correctement. Vous devez retirer le nœud 1 du rack ou du châssis.
+
+.Étapes
+. Reprendre l'opération :
++
+`system controller replace resume`
+
+. Vérifiez que le noeud 1 a été arrêté :
++
+`system controller replace show-details`
+
+
+
+Vous pouvez désaffecter le nœud1 une fois la mise à niveau terminée. Voir link:decommission_old_system.html["Désaffectation de l'ancien système"].

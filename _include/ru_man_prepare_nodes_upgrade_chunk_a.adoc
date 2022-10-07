@@ -1,0 +1,326 @@
+= 
+:allow-uri-read: 
+
+
+Avant de remplacer les nœuds d'origine, vous devez confirmer qu'ils sont dans une paire haute disponibilité, qu'ils ne disposent pas de disques manquants ou défaillants, qu'ils peuvent accéder aux différents nœuds de stockage et qu'ils ne possèdent pas de LIF de données attribuées aux autres nœuds du cluster. Vous devez également collecter des informations sur les nœuds d'origine et, si le cluster se trouve dans un environnement SAN, confirmer que tous les nœuds du cluster sont au quorum.
+
+.Étapes
+. Vérifiez que chaque nœud d'origine dispose de ressources suffisantes pour prendre en charge de manière adéquate la charge de travail des deux nœuds en mode basculement.
++
+Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _High Availability Management_ et suivez la section _Best Practices for HA binômes. Aucun des nœuds d'origine ne doit fonctionner à plus de 50 % d'utilisation. Si un nœud fonctionne à moins de 50 %, il peut gérer les charges des deux nœuds lors de la mise à niveau du contrôleur.
+
+. Pour créer une base de performances pour les nœuds d'origine, procédez comme suit :
++
+.. S'assurer que le compte utilisateur de diagnostic est déverrouillé.
++
+*Important*: Le compte utilisateur de diagnostic est destiné uniquement à des fins de diagnostic de bas niveau et ne doit être utilisé qu'avec des conseils du support technique.
+
++
+*Important* : pour plus d'informations sur le déverrouillage des comptes utilisateur, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.
+
+.. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers le site de support de _NetApp_ et télécharger le collecteur de performances et de statistiques (Perfstat Converged).
++
+L'outil Perfstat Converged permet d'établir une base de performance comparée après la mise à niveau.
+
+.. Créez une base de performances en suivant les instructions disponibles sur le site de support NetApp.
+
+
+. Reportez-vous à la section link:other_references.html["Références"] Pour accéder au _site de support NetApp_ et ouvrir un dossier de demande de support sur le site de support NetApp.
++
+Vous pouvez utiliser ce ticket pour signaler les problèmes susceptibles de survenir lors de la mise à niveau.
+
+. Vérifiez que les batteries NVMEM ou NVRAM des nœuds 3 et 4 sont chargées et chargez les batteries, le cas échéant.
++
+Vous devez vérifier physiquement les nœud3 et nœud4 pour vérifier si les batteries NVMEM ou NVRAM sont chargées. Pour plus d'informations sur les LED du modèle des nœuds 3 et 4, voir link:other_references.html["Références"] Pour accéder au _Hardware Universe_.
+
++
+
+WARNING: *Attention* n'essayez pas d'effacer le contenu de la NVRAM. Si vous devez effacer le contenu de NVRAM, contactez le support technique NetApp.
+
+. Vérifiez la version de ONTAP sur les nœuds 3 et 4.
++
+La même version de ONTAP 9.x doit être installée sur les nouveaux nœuds. Si une autre version de ONTAP est installée sur les nouveaux nœuds, vous devez netboot les nouveaux contrôleurs après les avoir installés. Pour obtenir des instructions sur la mise à niveau de ONTAP, reportez-vous à la section link:other_references.html["Références"] Pour accéder à _Upgrade ONTAP_.
+
++
+Les informations relatives à la version de ONTAP sur le node3 et le node4 doivent être incluses dans les boîtes d'expédition. La version ONTAP est affichée lorsque le nœud démarre ou que vous pouvez démarrer le nœud en mode maintenance et exécuter la commande :
+
++
+`version`
+
+. Vérifier si vous avez deux ou quatre LIF de cluster sur les nœuds 1 et nœud2 :
++
+`network interface show -role cluster`
+
++
+Le système affiche n'importe quelle LIF de cluster, comme indiqué dans l'exemple suivant :
+
++
+....
+cluster::> network interface show -role cluster
+        Logical    Status     Network          Current  Current Is
+Vserver Interface  Admin/Oper Address/Mask     Node     Port    Home
+------- ---------- ---------- ---------------- -------- ------- ----
+node1
+        clus1      up/up      172.17.177.2/24  node1    e0c     true
+        clus2      up/up      172.17.177.6/24  node1    e0e     true
+node2
+        clus1      up/up      172.17.177.3/24  node2    e0c     true
+        clus2      up/up      172.17.177.7/24  node2    e0e     true
+....
+. Si vous avez deux ou quatre LIF de cluster sur le nœud 1 ou le nœud 2, veillez à exécuter le Ping des deux LIF de cluster sur tous les chemins disponibles en suivant les sous-étapes suivantes :
++
+.. Saisissez le niveau de privilège avancé :
++
+`set -privilege advanced`
+
++
+Le système affiche le message suivant :
+
++
+....
+Warning: These advanced commands are potentially dangerous; use them only when directed to do so by NetApp personnel.
+Do you wish to continue? (y or n):
+....
+.. Entrez `y`.
+.. Envoyez une requête ping aux nœuds et testez la connectivité :
++
+`cluster ping-cluster -node node_name`
+
++
+Un message similaire à l'exemple suivant s'affiche :
+
++
+....
+cluster::*> cluster ping-cluster -node node1
+Host is node1
+Getting addresses from network interface table...
+Local = 10.254.231.102 10.254.91.42
+Remote = 10.254.42.25 10.254.16.228
+Ping status:
+...
+Basic connectivity succeeds on 4 path(s) Basic connectivity fails on 0 path(s)
+................
+Detected 1500 byte MTU on 4 path(s):
+Local 10.254.231.102 to Remote 10.254.16.228
+Local 10.254.231.102 to Remote 10.254.42.25
+Local 10.254.91.42 to Remote 10.254.16.228
+Local 10.254.91.42 to Remote 10.254.42.25
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+....
++
+Si le nœud utilise deux ports de cluster, vous devez voir qu'il peut communiquer sur quatre chemins, comme indiqué dans l'exemple.
+
+.. Revenir au privilège de niveau administratif :
++
+`set -privilege admin`
+
+
+
+. Vérifiez que les nœuds 1 et 2 se trouvent dans une paire HA et assurez-vous que les nœuds sont connectés les uns aux autres et que le basculement est possible :
++
+`storage failover show`
+
++
+L'exemple suivant montre la sortie lorsque les nœuds sont connectés l'un à l'autre et le basculement est possible :
+
++
+....
+cluster::> storage failover show
+                              Takeover
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------
+node1          node2          true     Connected to node2
+node2          node1          true     Connected to node1
+....
++
+Un nœud ne doit pas faire l'objet d'un retour partiel. L'exemple suivant montre que le nœud 1 est en retour partiel :
+
++
+....
+cluster::> storage failover show
+                              Takeover
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------
+node1          node2          true     Connected to node2, Partial giveback
+node2          node1          true     Connected to node1
+....
++
+Si l'un des nœuds est en cours de rétablissement partiel, utilisez le `storage failover giveback` pour effectuer le retour, puis utilisez la commande `storage failover show-giveback` commande afin de s'assurer qu'aucun agrégat n'a toujours besoin d'être redonné. Pour obtenir des informations détaillées sur les commandes, reportez-vous à link:other_references.html["Références"] Pour établir un lien vers _High Availability Management_.
+
+. [[man_prepare_nodes_step9]]Confirmez que ni le nœud1 ni le nœud2 ne possède les agrégats pour lesquels il s'agit du propriétaire actuel (mais pas le propriétaire du domicile) :
++
+`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
+
++
+Si ni le nœud1 ni le nœud2 ne possède des agrégats pour lesquels il s'agit du propriétaire actuel (mais pas le propriétaire du domicile), le système renvoie un message semblable à l'exemple suivant :
+
++
+....
+cluster::> storage aggregate show -node node2 -is-home false -fields owner-name,homename,state
+There are no entries matching your query.
+....
++
+L'exemple suivant montre la sortie de la commande pour un nœud nommé node2 qui est le propriétaire du home, mais pas le propriétaire actuel, de quatre agrégats :
+
++
+....
+cluster::> storage aggregate show -node node2 -is-home false
+               -fields owner-name,home-name,state
+
+aggregate     home-name    owner-name   state
+------------- ------------ ------------ ------
+aggr1         node1        node2        online
+aggr2         node1        node2        online
+aggr3         node1        node2        online
+aggr4         node1        node2        online
+
+4 entries were displayed.
+....
+. Effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si la commande dans ,Étape 9... | Alors... 
+
+
+| Sortie vide | Ignorez l'étape 11 et passez à ,Étape 12. 
+
+
+| Sortie | Accédez à ,Étape 11. 
+|===
+. [[man_prepare_nodes_step11]]] si le nœud1 ou le nœud2 possède des agrégats pour lesquels il s'agit du propriétaire actuel, mais pas du propriétaire de la maison, procédez comme suit :
++
+.. Renvoyez les agrégats actuellement détenus par le nœud partenaire au nœud propriétaire de rattachement :
++
+`storage failover giveback -ofnode _home_node_name_`
+
+.. Vérifiez que ni le nœud1 ni le nœud2 ne possède toujours des agrégats pour lesquels il s'agit du propriétaire actuel (mais pas le propriétaire du domicile) :
++
+`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
+
++
+L'exemple suivant montre la sortie de la commande lorsqu'un nœud est à la fois le propriétaire actuel et le propriétaire du domicile des agrégats :
+
++
+....
+cluster::> storage aggregate show -nodes node1
+          -is-home true -fields owner-name,home-name,state
+
+aggregate     home-name    owner-name   state
+------------- ------------ ------------ ------
+aggr1         node1        node1        online
+aggr2         node1        node1        online
+aggr3         node1        node1        online
+aggr4         node1        node1        online
+
+4 entries were displayed.
+....
+
+
+. [[man_prepare_nodes_step12]] Confirmez que les nœuds 1 et 2 peuvent accéder l'un à l'autre au stockage et vérifiez qu'aucun disque n'est manquant :
++
+`storage failover show -fields local-missing-disks,partner-missing-disks`
+
++
+L'exemple suivant montre la sortie lorsqu'aucun disque n'est manquant :
+
++
+....
+cluster::> storage failover show -fields local-missing-disks,partner-missing-disks
+
+node     local-missing-disks partner-missing-disks
+-------- ------------------- ---------------------
+node1    None                None
+node2    None                None
+....
++
+Si des disques sont manquants, reportez-vous à la section link:other_references.html["Références"] Pour lier la gestion des _disques et des agrégats à la CLI_, _gestion du stockage logique avec CLI_ et _High Availability management_ afin de configurer le stockage pour la paire HA.
+
+. Confirmer que les nœuds 1 et 2 sont en bonne santé et admissibles à participer au groupe :
++
+`cluster show`
+
++
+L'exemple suivant montre la sortie lorsque les deux nœuds sont éligibles et fonctionnent correctement :
+
++
+....
+cluster::> cluster show
+
+Node                  Health  Eligibility
+--------------------- ------- ------------
+node1                 true    true
+node2                 true    true
+....
+. Définissez le niveau de privilège sur avancé :
++
+`set -privilege advanced`
+
+. [[man_prepare_nodes_step15]] Confirmez que le nœud1 et le nœud2 exécutent la même version de ONTAP :
++
+`system node image show -node _node1,node2_ -iscurrent true`
+
++
+L'exemple suivant montre la sortie de la commande :
+
++
+....
+cluster::*> system node image show -node node1,node2 -iscurrent true
+
+                 Is      Is                Install
+Node     Image   Default Current Version   Date
+-------- ------- ------- ------- --------- -------------------
+node1
+         image1  true    true    9.1         2/7/2017 20:22:06
+node2
+         image1  true    true    9.1         2/7/2017 20:20:48
+
+2 entries were displayed.
+....
+. Vérifiez que le nœud 1 ou le nœud 2 ne possède aucune LIF de données appartenant à d'autres nœuds du cluster et que celui-ci est vérifié `Current Node` et `Is Home` colonnes dans la sortie :
++
+`network interface show -role data -is-home false -curr-node _node_name_`
+
++
+L'exemple suivant montre la sortie lorsque le nœud 1 n'a pas de LIFs appartenant à d'autres nœuds du cluster :
+
++
+....
+cluster::> network interface show -role data -is-home false -curr-node node1
+ There are no entries matching your query.
+....
++
+L'exemple suivant montre la sortie lorsque le nœud 1 possède des LIFs de données détenues en privé par l'autre nœud :
+
++
+....
+cluster::> network interface show -role data -is-home false -curr-node node1
+
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+vs0
+            data1      up/up      172.18.103.137/24  node1         e0d     false
+            data2      up/up      172.18.103.143/24  node1         e0f     false
+
+2 entries were displayed.
+....
+. Si la sortie est entrée ,Étape 15 Indique que le nœud 1 ou le nœud 2 possède des LIF de données détenues par d'autres nœuds du cluster, afin de migrer les LIF de données hors du nœud 1 ou du nœud 2 :
++
+`network interface revert -vserver * -lif *`
+
++
+Pour des informations détaillées sur le `network interface revert` commande, voir link:other_references.html["Références"] Pour lier les commandes _ONTAP 9 : Manuel page Reference_.
+
+. Vérifier si le nœud 1 ou le nœud 2 possède des disques défectueux :
++
+`storage disk show -nodelist _node1,node2_ -broken`
+
++
+Si l'un des disques est défectueux, supprimez-les en suivant les instructions de la section _Disk and Aggregate management à l'aide de la CLI_. (Voir link:other_references.html["Références"] Pour établir un lien vers _Disk et la gestion de l'agrégat avec l'interface de ligne de commande_.)
+
+. Collectez des informations sur node1 et node2 en effectuant les sous-étapes suivantes et en enregistrant la sortie de chaque commande :
+

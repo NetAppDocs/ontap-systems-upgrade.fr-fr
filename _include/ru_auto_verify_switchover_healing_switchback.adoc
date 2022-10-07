@@ -1,0 +1,7 @@
+= 
+:allow-uri-read: 
+
+
+Il est recommandé de vérifier les opérations de basculement, de rétablissement et de rétablissement de la configuration MetroCluster.
+
+Reportez-vous à la section link:other_references.html["Références"] Associer le contenu _MetroCluster Management and Disaster Recovery_ et suivre les procédures mentionnées pour le basculement, la réparation et le rétablissement négociés.

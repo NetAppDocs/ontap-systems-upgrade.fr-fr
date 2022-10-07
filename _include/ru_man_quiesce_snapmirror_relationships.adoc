@@ -1,0 +1,24 @@
+= 
+:allow-uri-read: 
+
+
+Avant de démarrer le système, vous devez confirmer que toutes les relations SnapMirror sont suspendues. Lorsqu'une relation SnapMirror est mise en veille, elle reste suspension sur l'ensemble des redémarrages et basculements.
+
+.Étapes
+. Vérifier l'état de la relation SnapMirror sur le cluster destination :
++
+`snapmirror show`
+
++
+
+NOTE: Si l'état est `Transferring`, vous devez abandonner ces transferts :
+`snapmirror abort -destination-vserver _vserver name_`
+
++
+L'annulation échoue si la relation SnapMirror n'est pas dans le `Transferring` état.
+
+. Arrêter toutes les relations entre le cluster :
++
+`snapmirror quiesce -destination-vserver _vserver-name_`
+
+

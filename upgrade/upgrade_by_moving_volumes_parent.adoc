@@ -1,0 +1,26 @@
+---
+permalink: upgrade/upgrade-by-moving-volumes-parent.html 
+sidebar: sidebar 
+keywords: upgrade by moving volumes 
+summary: 'Si vous effectuez une mise à niveau en déplaçant des volumes, vous préparez les nœuds d"origine et joignez les nouveaux nœuds au cluster. Vous déplacez des volumes vers les nouveaux nœuds, configurez des LIF, puis déconnectez les nœuds d"origine du cluster. La mise à niveau en déplaçant des volumes s"effectue sans interruption.' 
+---
+= Flux de travail
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous mettez à niveau le matériel du contrôleur en déplaçant des volumes, vous préparez les nœuds d'origine et joignez les nouveaux nœuds au cluster. Vous déplacez des volumes vers les nouveaux nœuds, configurez des LIF, puis déconnectez les nœuds d'origine du cluster. La mise à niveau en déplaçant des volumes s'effectue sans interruption.
+
+image::../upgrade/media/workflow_for_upgrading_by_moving_volumes.gif[Flux de production pour la mise à niveau du matériel des contrôleurs en déplaçant des volumes]
+
+.Étapes
+. xref:upgrade-prepare-when-moving-volumes.adoc[Préparation à la mise à niveau lors du déplacement de volumes]
+. xref:upgrade-install-and-join-new-nodes-move-vols.adoc[Installez les nouveaux nœuds et joignez-les au cluster]
+. xref:upgrade-create-aggregate-move-volumes.adoc[Création d'un agrégat et déplacement des volumes vers les nouveaux nœuds]
+. xref:upgrade-move-lifs-to-new-nodes.adoc[Déplacez les LIF de données non-SAN et les LIF de gestion du cluster vers les nouveaux nœuds]
+. xref:upgrade_move_delete_recreate_san_lifs.adoc[Déplacer, supprimer ou créer DES LIF SAN]
+. xref:upgrade-unjoin-original-nodes-move-volumes.adoc[Dissocier les nœuds d'origine du cluster]
+. xref:upgrade-complete-move-volumes.adoc[Terminez la mise à niveau]
+

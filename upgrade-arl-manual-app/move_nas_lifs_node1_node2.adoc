@@ -1,0 +1,111 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/move_nas_lifs_node1_node2.html 
+keywords: nas, node1, node2, lifs, cluster, san 
+summary: 'Déplacez les LIF de données du nœud 1 vers le nœud 2 si vous disposez d"un cluster à deux nœuds ou vers un troisième nœud si votre cluster possède plus de deux nœuds, au cours d"une mise à niveau manuelle du transfert d"agrégats (ARL) sur les contrôleurs qui exécutent ONTAP 9.8 ou une version ultérieure.' 
+---
+= Déplacez les LIF de données NAS qui appartiennent au nœud 1 vers le nœud 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avant de remplacer le nœud 1 par le nœud 3, vous devez déplacer les LIF de données NAS qui appartiennent au nœud 1 vers le nœud 2 si vous disposez d'un cluster à deux nœuds ou vers un troisième nœud si votre cluster possède plus de deux nœuds. La méthode que vous utilisez varie selon que le cluster est configuré pour NAS ou SAN.
+
+Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Vous devez vérifier que les LIFs sont bonnes et situées sur les ports appropriés une fois que vous avez mis le nœud3 en ligne.
+
+.Étapes
+. Lister toutes les LIFs de données NAS hébergées sur le nœud1 en saisissant la commande suivante et en capturant la sortie :
++
+`network interface show -data-protocol nfs|cifs -curr-node _node1_`
+
++
+[listing]
+----
+ cluster::> network interface show -data-protocol nfs|cifs -curr-node node1
+
+          Logical     Status      Network             Current   Current Is
+ Vserver  Interface   Admin/Oper  Address/Mask        Node      Port    Home
+ -------- ----------  ----------  ------------------  --------- ------- ----
+ vs0
+          a0a         up/down     10.63.0.53/24       node1     a0a     true
+          data1       up/up       10.63.0.50/18       node1     e0c     true
+          rads1       up/up       10.63.0.51/18       node1     e1a     true
+          rads2       up/down     10.63.0.52/24       node1     e1b     true
+ vs1
+          lif1        up/up       192.17.176.120/24   node1     e0c     true
+          lif2        up/up       172.17.176.121/24   node1     e1a     true
+----
+. [[step2]]Modifier les paramètres de restauration automatique de toutes les LIFs des nœuds 1 et nœud2 :
++
+`network interface modify -vserver _Vserver_name_ -lif _LIF_name_ -auto-revert false`
+
+. [[step3]]procédez comme suit pour migrer toute LIF de données NAS hébergée sur des groupes d'interface et des VLAN sur le nœud 1 :
++
+.. [[sub-pa]] faire migrer les LIF hébergées sur n'importe quel groupe d'interface et les VLAN du nœud 1 vers un port du nœud 2 qui est capable d'héberger les LIF sur le même réseau que les groupes d'interface en entrant la commande suivante, une fois pour chaque LIF :
++
+`network interface migrate -vserver _Vserver_name_ -lif _LIF_name_ -destination-node _node2_ –destination-port _netport|ifgrp_`
+
+.. Modifier le port de rattachement et le nœud de rattachement des LIFs et des VLAN dans ,Sous-étape a Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :
++
+`network interface modify -vserver _Vserver_name_ -lif _LIF_name_ -home-node _node2_ - home-port _netport|ifgrp_`
+
+
+
+. [[step4]]effectuer l'une des actions suivantes :
++
+[cols="20,80"]
+|===
+| Si le cluster est configuré pour... | Alors... 
+
+
+| NAS | Terminé ,Étape 5 à ,Étape 8. 
+
+
+| SAN | Désactiver toutes les LIFs SAN du nœud pour les désactiver pour la mise à niveau :
+`network interface modify -vserver _Vserver-name_ -lif _LIF_name_ -home-node _node_to_upgrade_ -home-port _netport|ifgrp_ -status-admin down` 
+|===
+. [[man_lif_1_2_step5]]migrer les LIF de données NAS du nœud 1 vers le nœud 2 en entrant la commande suivante, une fois pour chaque LIF de données :
++
+`network interface migrate -vserver _Vserver-name_ -lif _LIF_name_ -destination-node _node2_ -destination-port _data_port_`
+
+. [[step6]]Entrez la commande suivante et examinez ses valeurs de sortie pour vérifier que les LIF ont été déplacées vers les ports corrects et que celles-ci ont le statut de up en entrant la commande suivante sur l'un des nœuds et en examinant la sortie :
++
+`network interface show -curr-node _node2_ -data-protocol nfs|cifs`
+
+. [[step7]]Modifier le nœud de rattachement des LIFs migrées :
++
+`network interface modify -vserver _Vserver-name_ -lif _LIF_name_ -home-node _node2_ -home-port _port_name_`
+
+. [[man_lif_1_2_step8]]Vérifiez si la LIF utilise le port comme port home ou courant. Si le port n'est pas à la maison ou le port actuel, allez à ,Étape 9:
++
+`network interface show -home-node _node2_ -home-port _port_name_`
+
++
+`network interface show -curr-node _node_name_ -curr-port _port_name_`
+
+. [[man_lif_1_2_ste9]]si les LIFs utilisent le port en tant que port de base ou port actuel, modifiez-les pour utiliser un autre port :
++
+`network interface migrate -vserver _Vserver-name_ -lif _LIF_name_ -destination–node _node_name_ -destination-port _port_name_`
+
++
+`network interface modify -vserver _Vserver-name_ -lif _LIF_name_ -home–node _node_name_ -home-port _port_name_`
+
+. [[step10]]si l'une des LIF est hors service, définissez le statut administratif des LIF sur « UP » en saisissant la commande suivante, une fois pour chaque LIF :
++
+`network interface modify -vserver _Vserver-name_ -lif _LIF_name_ -home-node _nodename_ -status-admin up`
+
++
+
+NOTE: Pour les configurations MetroCluster, il se peut que vous ne puissiez pas modifier le broadcast domain d'un port, car il est associé à un port hébergeant la LIF d'un SVM (Storage Virtual machine) de destination. Taper la commande suivante du SVM source correspondant sur le site distant pour réaffecter le LIF de destination à un port approprié :
+`metrocluster vserver resync -vserver _Vserver_name_`
+
+. [[step11]]Entrez la commande suivante et examinez ses valeurs de sortie pour vérifier qu'aucune LIF de données n'est restante sur le nœud 1 :
++
+`network interface show -curr-node _node1_ -role data`
+
+

@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/check_metrocluster_config_errors.html 
+keywords: Config Advisor, configuration, errors, validation, health, Active IQ 
+summary: 'Utilisez l"outil Config Advisor pour rechercher les erreurs de configuration courantes lors de la mise à niveau des contrôleurs exécutant ONTAP 9.5 vers 9.7 à l"aide de `system controller replace` commandes.' 
+---
+= Recherchez les erreurs de configuration MetroCluster
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous pouvez utiliser l'outil Active IQ Config Advisor disponible sur le site de support NetApp pour rechercher des erreurs de configuration courantes.
+
+Active IQ Config Advisor est un outil de validation de la configuration et de vérification de l'état de santé. Vous pouvez le déployer sur des sites sécurisés et sur des sites non sécurisés à des fins de collecte des données et d'analyse du système.
+
+
+NOTE: Le support pour Config Advisor est limité et n'est disponible qu'en ligne.
+
+. Téléchargez le link:https://mysupport.netapp.com/site/tools["Active IQ Config Advisor"] outil.
+. Exécutez Active IQ Config Advisor, examinez les résultats et suivez ses recommandations pour résoudre tout problème.
+

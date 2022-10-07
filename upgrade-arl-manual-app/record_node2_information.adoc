@@ -1,0 +1,143 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/record_node2_information.html 
+keywords: record, node2, information, NVRAM, retire 
+summary: 'Enregistrez des informations sur le réseau de cluster node2, la gestion, les ports FC et l"ID système NVRAM lors d"une mise à niveau manuelle des agrégats ARL sur les contrôleurs exécutant ONTAP 9.8 ou une version ultérieure.' 
+---
+= Enregistrer les informations sur le noeud 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avant de pouvoir arrêter et retirer le nœud 2, vous devez enregistrer les informations relatives à son réseau, sa gestion et ses ports FC du cluster ainsi que son ID système NVRAM. Vous aurez besoin de ces informations ultérieurement dans la procédure lorsque vous mappez le nœud2 sur le nœud4 et que vous réaffectez des disques.
+
+.Étapes
+. Trouver les ports cluster network, node-management, intercluster et cluster-management sur le nœud2 :
++
+`network interface show -curr-node _node_name_ -role cluster,intercluster,nodemgmt,cluster-mgmt`
+
++
+Le système affiche les LIFs de ce nœud et d'autres nœuds du cluster, comme illustré ci-dessous :
+
++
+[listing]
+----
+cluster::> network interface show -curr-node node2 -role
+cluster,intercluster,node-mgmt,cluster-mgmt
+         Logical     Status     Network            Current     Current Is
+Vserver  Interface   Admin/Oper Address/Mask       Node        Port    Home
+-------- ----------  ---------- ------------------ ----------  ------- ----
+node2
+         intercluster up/up     192.168.1.202/24   node2       e0e     true
+         clus1        up/up     169.254.xx.xx/24   node2       e0a     true
+         clus2        up/up     169.254.xx.xx/24   node2       e0b     true
+         mgmt1        up/up     192.168.0.xxx/24   node2       e0c     true
+4 entries were displayed.
+----
++
+
+NOTE: Il se peut que votre système ne dispose pas de LIF intercluster. Vous n'aurez qu'une LIF de gestion du cluster sur un seul nœud d'une paire de nœuds. Une LIF de gestion de cluster a été affichée dans les résultats de l'exemple de link:record_node1_information.html#step["Étape 1"] Dans _Record node1 port information_.
+
+. Capturez les informations de la sortie à utiliser dans la section link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"].
++
+Les informations de sortie sont nécessaires pour mapper les nouveaux ports du contrôleur sur les anciens ports du contrôleur.
+
+. Détermination des ports physiques sur le nœud 2 :
++
+`network port show -node _node_name_ -type physical` +
+
++
+`_node_name_` est le nœud en cours de migration.
+
++
+Le système affiche les ports physiques sur le nœud 2, comme illustré dans l'exemple suivant :
+
++
+[listing]
+----
+cluster::> network port show -node node2 -type physical
+
+                                                             Speed (Mbps)
+Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
+------ --------- ------------ ---------------- ----- ------- -----------
+node2
+       e0M       Default      IP_address       up       1500  auto/100
+       e0a       Default      -                up       1500  auto/1000
+       e0b       Default      -                up       1500  auto/1000
+       e1a       Cluster      Cluster          up       9000  auto/10000
+       e1b       Cluster      Cluster          up       9000  auto/10000
+5 entries were displayed.
+----
+. Enregistrez les ports et leurs domaines de diffusion.
++
+Les domaines de diffusion devront être mappés vers les ports du nouveau contrôleur plus tard dans la procédure.
+
+. Déterminer les ports FC sur le nœud 2 :
++
+`network fcp adapter show`
+
++
+Le système affiche les ports FC sur le nœud 2, comme illustré dans l'exemple suivant :
+
++
+[listing]
+----
+cluster::> network fcp adapter show -node node2
+                     Connection  Host
+Node         Adapter Established Port Address
+------------ ------- ----------- ------------
+node2
+             0a      ptp         11400
+node2
+             0c      ptp         11700
+node2
+             6a      loop        0
+node2
+             6b      loop        0
+4 entries were displayed.
+----
+. Notez les ports.
++
+Les informations de sortie sont nécessaires pour mapper les nouveaux ports FC sur le nouveau contrôleur plus loin dans la procédure.
+
+. Si ce n'est pas déjà fait, vérifiez s'il existe des groupes d'interfaces ou des VLAN configurés sur le noeud 2 :
++
+`ifgrp show`
+
++
+`vlan show`
+
++
+Vous utiliserez les informations de la section link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"].
+
+. Effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si... | Alors... 
+
+
+| Numéro d'ID système NVRAM enregistré dans link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] | Accédez à link:retire_node2.html["Retrait du nœud 2"]. 
+
+
+| N'a pas enregistré le numéro d'ID système NVRAM dans link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] | Terminé ,Étape 9 et ,Étape 10 puis passer à la section suivante, link:retire_node2.html["Retrait du nœud 2"]. 
+|===
+. [[man_record_2_step9]]Afficher les attributs du noeud 2 :
++
+`system node show -instance -node node2`
+
++
+[listing]
+----
+cluster::> system node show -instance -node node2
+                            ...
+                 NVRAM System ID: system_ID
+                           ...
+----
+. [[man_record_2_step10]]Enregistrer l'ID système NVRAM à utiliser dans la section link:install_boot_node4.html["Installez et démarrez Node4"].
+

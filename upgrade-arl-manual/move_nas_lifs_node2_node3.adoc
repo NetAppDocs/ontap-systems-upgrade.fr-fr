@@ -1,0 +1,150 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/move_nas_lifs_node2_node3.html 
+keywords: move, nas, lif, node2, node3, san, cifs, nfs 
+summary: 'Déplacez les LIF de données NAS du nœud 2 vers le nœud 3 lors d"une mise à niveau manuelle d"agrégats ARL sur les contrôleurs exécutant ONTAP 9.7 ou une version antérieure.' 
+---
+= Déplacez les LIF de données NAS qui appartiennent au nœud 2 vers le nœud 3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Après avoir déplacé les agrégats du nœud 2 vers le nœud 3, vous devez déplacer les LIF de données NAS détenues par le nœud 2 vers le nœud 3.
+
+Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Vous devez vérifier que les LIF sont en bon état et situées sur les ports appropriés après avoir déplacé les LIF du nœud 3 vers le nœud 4 et mis le nœud 4 en ligne.
+
+.Étapes
+. [[step1]]Répertorier toutes les LIFs de données NAS détenues par le nœud2 en entrant la commande suivante sur l'un des nœuds et en capturant la sortie :
++
+`network interface show -data-protocol nfs|cifs -home-node _node2_`
+
++
+L'exemple suivant montre la sortie de la commande pour le nœud 2 :
+
++
+[listing]
+----
+cluster::> network interface show -data-protocol nfs|cifs -home-node node2
+              Logical     Status      Network             Current  Current  Is
+ Vserver      Interface   Admin/Oper  Address/Mask        Node     Port     Home
+ -----------  ----------  ----------  ------------------  -------  -------  ----
+ vs0
+              a0a         up/down     10.63.0.53/24       node2    a0a      true
+              data1       up/up       10.63.0.50/18       node2    e0c      true
+              rads1       up/up       10.63.0.51/18       node2    e1a      true
+              rads2       up/down     10.63.0.52/24       node2    e1b      true
+ vs1
+              lif1        up/up       172.17.176.120/24   node2    e0c      true
+              lif2        up/up       172.17.176.121/24   node2    e1a      true
+----
+. [[step2]]effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si le noeud 2... | Alors... 
+
+
+| Dispose de groupes d'interface ou de VLAN configurés | Accédez à ,Étape 3. 
+
+
+| Aucun groupe d'interface ou VLAN n'est configuré | Ignorez l'étape 3 et passez à ,Étape 4. 
+|===
+. [[man_Move_lif_2_3_step3]]effectuez les opérations suivantes pour migrer des LIF de données NAS hébergées sur des groupes d'interfaces et des VLAN sur le nœud 2 :
++
+.. [[man_Move_lif_2_3_sub-stepa]]faites migrer toutes les LIF de données hébergées sur un groupe d'interface du nœud 2 vers un port du nœud 3 qui est capable d'héberger des LIF sur le même réseau en saisissant la commande suivante, une fois pour chaque LIF :
++
+`network interface migrate -vserver _Vserver_name_ -lif _LIF_name_ -destination-node _node3_ –destination-port _netport|ifgrp_`
+
+.. Modifier le home port et le home node des LIFs dans ,Sous-étape a Sur le port et le nœud qui héberge actuellement les LIFs en entrant la commande suivante, une fois pour chaque nœud :
++
+`network interface modify -vserver _Vserver_name_ -lif _LIF_name_ -home-node _node3_ -homeport _netport|ifgrp_`
+
+.. [[man_Move_lif_2_3_sub-epc]]migrer toutes les LIF hébergées sur des VLAN du nœud 2 vers un port du nœud 3 capable d'héberger les LIF sur le même réseau que les VLAN en entrant la commande suivante, une fois pour chaque LIF :
++
+`network interface migrate -vserver _Vserver_name_ -lif _LIF_name_ -destination-node _node3_ –destination-port _netport|ifgrp_`
+
+.. Modifier le home port et le home node des LIFs dans ,Sous-étape c Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :
++
+`network interface modify -vserver _Vserver_name_ -lif _LIF_name_ -home-node _node3_ -homeport _netport|ifgrp_`
+
+
+
+. [[man_Move_lif_2_3_step4]]effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si le cluster est configuré pour... | Alors... 
+
+
+| NAS | Terminé ,Étape 5 à ,Étape 8. 
+
+
+| SAN | Passez les étapes 5 à 8, puis terminez ,Étape 9. 
+
+
+| NAS et SAN | Terminé ,Étape 5 à ,Étape 9. 
+|===
+. [[man_Move_lif_2_3_step5]]si vous disposez de ports de données qui ne sont pas les mêmes sur vos plates-formes, ajoutez les ports au domaine de broadcast :
++
+`network port broadcast-domain add-ports -ipspace _IPspace_name_ -broadcast-domain mgmt -ports _node:port_`
+
++
+L'exemple suivant ajoute le port « e0a » sur le nœud « 6280-1 » et le port « e0i » du nœud « 8060-1 » au domaine de diffusion « mgmt » dans l'IPspace « Default » :
+
++
+[listing]
+----
+cluster::> network port broadcast-domain add-ports -ipspace Default
+           -broadcast-domain mgmt -ports 6280-1:e0a, 8060-1:e0i
+----
+. [[step6]]migrer chaque LIF de données NAS vers le nœud 3 en saisissant la commande suivante, une fois pour chaque LIF :
++
+`network interface migrate -vserver _Vserver_name_ -lif _LIF_name_ -destination-node _node3_ -destination-port _netport|ifgrp_`
+
+. [[step7]]vérifier que les LIFs NAS ont été déplacées vers les ports corrects, et que ces derniers ont le statut de up en entrant la commande suivante sur l'un des nœuds et en examinant la sortie :
++
+`network interface show -curr-node _node3_ -data-protocol cifs|nfs`
+
+. [[man_Move_lif_2_3_step8]]si des LIFs sont hors service, définissez le statut administratif des LIFs sur « UP » en entrant la commande suivante, une fois pour chaque LIF :
++
+`network interface modify -vserver _Vserver_name_ -lif _LIF_name_ -status-admin up`
+
+. [[man_Move_lif_2_3_step9]]si des groupes d'interfaces ou des VLAN sont configurés, effectuez les sous-étapes suivantes :
++
+.. Supprimez les VLAN des groupes d'interface :
++
+`network port vlan delete -node _node_name_ -port _ifgrp_ -vlan-id _VLAN_ID_`
+
+.. Entrez la commande suivante et examinez son résultat pour déterminer s'il existe un groupe d'interfaces configuré sur le nœud :
++
+`network port ifgrp show -node _node_name_ -ifgrp _ifgrp_name_ -instance`
+
++
+Le système affiche les informations sur les groupes d'interfaces pour le nœud, comme illustré ci-dessous :
+
++
+[listing]
+----
+cluster::> network port ifgrp show -node node2 -ifgrp a0a -instance
+                 Node: node2
+ Interface Group Name: a0a
+Distribution Function: ip
+        Create Policy: multimode_lacp
+          MAC Address: MAC_address
+    ort Participation: partial
+        Network Ports: e2c, e2d
+             Up Ports: e2c
+           Down Ports: e2d
+----
+.. Si un groupe d'interface est configuré sur le nœud, notez les noms des groupes d'interface et des ports qui leur sont affectés, puis supprimez les ports en entrant la commande suivante, une fois pour chaque port :
++
+`network port ifgrp remove-port -node _node_name_ -ifgrp _ifgrp_name_ -port _port_name_`
+
+
+
+

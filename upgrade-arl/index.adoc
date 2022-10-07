@@ -1,0 +1,53 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl/index.html 
+keywords: aggregate, relocation, moving, manual, upgrade, relocate, hardware 
+summary: 'Utiliser le transfert d"agrégats pour mettre à niveau le matériel du contrôleur' 
+---
+= Présentation
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Ce contenu explique comment mettre à niveau le matériel du contrôleur sans interruption grâce au transfert d'agrégats (ARL).
+
+Pour connaître les autres méthodes de mise à niveau du matériel de votre contrôleur, reportez-vous à la section xref:other_references.adoc[Références] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+
+Vous pouvez mettre à niveau le matériel du contrôleur sur une paire de nœuds exécutant ONTAP sans interrompre l'activité en migrant les agrégats non-racines depuis les nœuds d'origine vers les nouveaux nœuds du même cluster. Les données hébergées sur les nœuds mis à niveau sont accessibles au cours de la mise à niveau.
+
+Le transfert d'agrégats non racines permet d'exploiter la configuration haute disponibilité du système et de déplacer des agrégats sans racine d'un nœud vers un autre s'ils partagent du stockage au sein d'un même cluster.
+
+Il existe deux méthodes ARL pour mettre à niveau le matériel de votre contrôleur, à l'aide de commandes système ou d'une mise à niveau manuelle. Avant de commencer, vous devez vérifier que vous avez sélectionné le contenu correct pour la mise à niveau matérielle de votre contrôleur.
+
+Si vous effectuez une mise à niveau à l'aide des commandes système, reportez-vous au tableau suivant :
+
+[cols="30,70"]
+|===
+| Si vous exécutez cette version de ONTAP… | Pour mettre à niveau avec les commandes système, utilisez… 
+
+
+| 9.10.1 ou ultérieure | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Utilisez les commandes « System Controller replace » pour mettre à niveau AFF A700 vers AFF A900 exécutant ONTAP 9.10.1 ou une version ultérieure"] 
+
+
+| 9.8 ou ultérieure | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/index.html["Utilisez les commandes « system contrôleur replace » pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou une version ultérieure"] 
+
+
+| 9.5 à 9.7 | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto/index.html["Utilisez les commandes « system contrôleur replace » pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.5 vers ONTAP 9.7"] 
+|===
+Si vous effectuez une mise à niveau manuelle, reportez-vous au tableau suivant :
+
+[cols="30,70"]
+|===
+| Si vous exécutez cette version de ONTAP… | Pour mettre à niveau manuellement, utilisez… 
+
+
+| 9.8 ou ultérieure | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual-app/index.html["Mettez manuellement à niveau le matériel du contrôleur sous ONTAP 9.8 ou une version ultérieure"] 
+
+
+| 9.0 à 9.7 | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual/index.html["Mettez à niveau manuellement le matériel du contrôleur en exécutant ONTAP 9.7 ou une version antérieure"] 
+|===

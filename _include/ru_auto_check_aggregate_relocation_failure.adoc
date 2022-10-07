@@ -1,0 +1,26 @@
+= Vérifier l'échec du transfert d'agrégat
+:allow-uri-read: 
+
+
+
+
+== Vérifier l'échec du transfert d'agrégat
+
+Lors de cette procédure, l'ARL peut échouer à l'étape 2, à l'étape 3 ou à l'étape 5.
+
+.Étapes
+. Entrez la commande suivante et vérifiez le résultat :
++
+`storage aggregate relocation show`
+
++
+Le `storage aggregate relocation show` la commande vous indique les agrégats qui ont été correctement transférés et ceux qui n'ont pas été transférés, ainsi que les causes de la défaillance.
+
+. Vérifier la console à la recherche de messages EMS.
+. Effectuer l'une des actions suivantes :
++
+** Prendre l'action corrective appropriée, en fonction de la sortie du `storage aggregate relocation show` Commande et la sortie du message EMS.
+** Forcer le transfert de l'agrégat ou des agrégats à l'aide du `override-vetoes` ou le `override-destination-checks` de la `storage aggregate relocation start` commande.
+
+
+

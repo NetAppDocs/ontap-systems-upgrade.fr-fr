@@ -1,0 +1,127 @@
+---
+permalink: upgrade/upgrade-shutdown-remove-original-nodes.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Lors de l"arrêt et du retrait des nœuds d"origine, vous devez envoyer un message AutoSupport concernant la mise à niveau, détruire les boîtes aux lettres, mettre les nœuds hors tension et retirer le châssis.' 
+---
+= Arrêtez les nœuds d'origine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lors de l'arrêt et du retrait des nœuds d'origine, vous devez envoyer un message AutoSupport concernant la mise à niveau, détruire les boîtes aux lettres, mettre les nœuds hors tension et retirer le châssis.
+
+.Étapes
+. Envoyer un message AutoSupport depuis les nœuds 1 et NODE2 afin d'informer le support technique de la mise à niveau :
++
+`system node autosupport invoke -node _node_name_ -type all -message "MAINT=2h Upgrading _node_name_ from _platform_original_ to _platform_new_"`
+
+. Désactiver la haute disponibilité ou le basculement du stockage sur les nœuds 1 et 2 :
++
+[cols="1,2"]
+|===
+| Si vous avez un... | Entrer... 
+
+
+ a| 
+Cluster à deux nœuds
+ a| 
+.. `cluster ha modify -configured false`
+.. `storage failover modify -node _node_name_ -enabled false`
+
+
+
+
+ a| 
+Cluster à plus de deux nœuds
+ a| 
+`storage failover modify -node _node_name_ -enabled false`
+
+|===
+. Arrêter le nœud :
++
+`system node halt -node _node_name_`
+
++
+Vous pouvez supprimer la vérification de quorum pendant le processus de redémarrage en utilisant le `-ignore-quorum-warnings` option.
+
+. Connectez-vous à la console série si vous n'êtes pas déjà connecté. Le nœud doit être à l'invite DU CHARGEUR. Utilisez le `boot_ontap maint` commande de démarrage en mode maintenance.
++
+Un message vous demande de confirmer que le nœud partenaire est en panne ou que le basculement est désactivé manuellement sur le nœud partenaire. Vous pouvez entrer `yes` pour continuer.
+
+. [[shutdown_node_step5]]Enregistrer l'ID système de chaque nœud d'origine, qui est obtenu via les informations de propriété du disque en mode maintenance :
++
+`disk show -v`
+
++
+Vous avez besoin des ID système lorsque vous affectez des disques des nœuds d'origine aux nouveaux nœuds.
+
++
+[listing]
+----
+*> disk show -v
+Local System ID: 118049495
+DISK    OWNER               POOL    SERIAL NUMBER          HOME
+----    -----               ----    -------------          ----
+0a.33   node1 (118049495)   Pool0   3KS6BN970000973655KL   node1 (118049495)
+0a.32   node1 (118049495)   Pool0   3KS6BCKD000097363ZHK   node1 (118049495)
+0a.36   node1 (118049495)   Pool0   3KS6BL9H000097364W74   node1 (118049495)
+...
+----
+. Si vous disposez d'une configuration de port FC ou CNA, affichez la configuration en mode maintenance :
++
+`ucadmin show`
+
++
+Vous devez enregistrer la sortie de la commande pour référence ultérieure.
+
++
+[listing]
+----
+*> ucadmin show
+Current Current Pending   Pending
+Adapter Mode    Type      Mode    Type    Status
+------- ------- --------- ------- ------- ------
+0e      fc      initiator -       -       online
+0f      fc      initiator -       -       online
+0g      cna     target    -       -       online
+0h      cna     target    -       -       online
+...
+----
+. En mode Maintenance, détruire les boîtes aux lettres node1 et node2 : +
++
+`mailbox destroy local`
+
++
+La console affiche un message similaire au message suivant :
+
++
+[listing]
+----
+Destroying mailboxes forces a node to create new empty mailboxes, which
+clears any takeover state, removes all knowledge of out-of-date plexes and
+mirrored volumes, and will prevent management services from going online in
+2-node cluster HA configurations.
+Are you sure you want to destroy the local mailboxes?
+----
+. Détruire les boîtes aux lettres en saisissant `y` lorsque vous voyez une invite similaire à la suivante :
++
+[listing]
+----
+.............Mailboxes destroyed
+Takeover On Reboot option will be set to ON after the node boots.
+This option is ON by default except on setups that have iSCSI or FCP license.
+Use "storage failover modify -node <nodename> -onreboot false" to turn it OFF.
+
+*>
+----
+. Quitter le mode Maintenance :
++
+`halt`
+
+. Mettez le nœud1 et le nœud2 hors tension, puis débranchez-les de la source d'alimentation.
+. Etiqueter et retirer tous les câbles du node1 et du node2.
+. Retirez le châssis contenant les nœuds 1 et 2.
+

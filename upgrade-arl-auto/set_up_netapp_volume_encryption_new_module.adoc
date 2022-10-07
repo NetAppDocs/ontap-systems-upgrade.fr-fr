@@ -1,0 +1,87 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/set_up_netapp_volume_encryption_new_module.html 
+keywords: set up, netapp volume encryption, controller, module, nve, node 
+summary: 'Si nécessaire, configurez le nouveau module de contrôleur pour NVE lors de la mise à niveau des contrôleurs exécutant ONTAP 9.5 vers 9.7 en utilisant `system controller replace` commandes.' 
+---
+= Configurez NetApp Volume Encryption sur le nouveau module de contrôleur
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si le contrôleur remplacé ou le partenaire de haute disponibilité du nouveau contrôleur utilise NetApp Volume Encryption, vous devez configurer le nouveau module de contrôleur pour NetApp Volume Encryption.
+
+Cette procédure comprend les étapes réalisées sur le nouveau module de contrôleur. Vous devez saisir la commande sur le nœud approprié.
+
+.Étapes
+. Vérifier que les serveurs de gestion des clés sont toujours disponibles, leur état et leurs informations de clé d'authentification :
++
+[cols="30,70"]
+|===
+| Pour cette version de ONTAP… | Utilisez cette commande... 
+
+
+| ONTAP 9.6 ou 9.7 | `security key-manager key query -node node` 
+
+
+| ONTAP 9.5 | `security key-manager key show` 
+|===
+. Ajoutez les serveurs de gestion des clés répertoriés à l'étape précédente à la liste des serveurs de gestion des clés du nouveau contrôleur :
++
+.. Ajouter le serveur de gestion des clés :
++
+`security key-manager -add _key_management_server_ip_address_`
+
+.. Répétez l'étape précédente pour chaque serveur de gestion des clés répertorié.
++
+Vous pouvez lier jusqu'à quatre serveurs de gestion des clés.
+
+.. Vérifiez que les serveurs de gestion des clés ont été ajoutés correctement :
++
+`security key-manager show`
+
+
+
+. Sur le nouveau module de contrôleur, exécutez l'assistant de configuration de la gestion des clés pour configurer et installer les serveurs de gestion des clés.
++
+Vous devez installer les mêmes serveurs de gestion des clés que ceux installés sur le module de contrôleur existant.
+
++
+.. Lancez l'assistant de configuration du serveur de gestion des clés sur le nouveau nœud :
++
+`security key-manager setup -node _new_controller_name_`
+
+.. Suivez les étapes de l'assistant pour configurer les serveurs de gestion des clés.
+
+
+. Restaurez les clés d'authentification de tous les serveurs de gestion de clés liés vers le nouveau nœud.
++
+** Restauration de l'authentification pour le gestionnaire de clés externe :
++
+`security key-manager external restore`
+
++
+Cette commande nécessite la phrase secrète Onboard Key Manager (OKM).
+
+** Restaurer l'authentification pour OKM :
++
+[cols="30,70"]
+|===
+| Pour cette version de ONTAP… | Utilisez cette commande... 
+
+
+| ONTAP 9.6 ou 9.7 | `security key-manager onboard sync` 
+
+
+| ONTAP 9.5 | `security key-manager setup -node _node_name_` 
+|===
+
+
+
+
+Vérifiez si des volumes ont été mis hors ligne, car les clés d'authentification n'étaient pas disponibles ou les serveurs de gestion de clés externes n'ont pas pu être atteints. Remettre ces volumes en ligne à l'aide du `volume online` commande.

@@ -1,0 +1,8 @@
+= 
+:allow-uri-read: 
+
+
+. Pour configurer un cluster sans commutateur sur les nouveaux nœuds, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers le site de support _NetApp_ et suivre les instructions de la section _transition vers un cluster_ sans commutateur à deux nœuds_.
+
+
+Si le cryptage du stockage est activé sur les nœuds 3 et 4, complétez la section link:set_up_storage_encryption_new_module.html["Configurez Storage Encryption sur le nouveau module de contrôleur"]. Sinon, complétez la section link:decommission_old_system.html["Désaffectation de l'ancien système"].

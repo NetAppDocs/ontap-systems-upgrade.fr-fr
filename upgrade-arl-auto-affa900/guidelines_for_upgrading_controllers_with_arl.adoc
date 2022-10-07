@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/guidelines_for_upgrading_controllers_with_arl.html 
+keywords: guidelines, upgrade, aff, a900, a700, ontap, controllers 
+summary: 'Comprenez si vous pouvez utiliser le transfert d"agrégats pour mettre à niveau un système AFF A700 vers un système AFF A900.' 
+---
+= Instructions de mise à niveau des contrôleurs
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Utilisation de l'ARL pour mettre à niveau une paire de contrôleurs dans les configurations système suivantes :
+
+* Mettez à niveau deux contrôleurs AFF A700 vers un système AFF A900 qui exécute ONTAP 9.10.1 ou une version ultérieure
+* Mettez à niveau une paire de contrôleurs FAS9000 vers un système FAS9500 qui exécute ONTAP 9.10.1P3 ou version ultérieure
+
+
+
+
+== Mises à niveau prises en charge pour l'ARL
+
+La combinaison prise en charge est la mise à niveau du contrôleur d'un système AFF A700 vers un système AFF A900 ou d'un système FAS9000 vers un système FAS9500 via le transfert d'agrégats (ARL) et le module NVRAM. Si vous avez reçu un nouveau système AFF A900 ou FAS9500 comme système complet, incluant un nouveau châssis, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _utilisez les commandes "System Controller replace" pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ content.
+
+
+WARNING: Cette procédure s'applique exclusivement à une mise à niveau d'un système AFF A700 vers un système AFF A900 qui exécute ONTAP 9.10.1 ou une version ultérieure et à une mise à niveau d'un système FAS9000 vers un système FAS9500 exécutant 9.10.1P3 ou une version ultérieure. N'utilisez PAS cette procédure pour effectuer une mise à niveau entre d'autres combinaisons de systèmes.
+
+La mise à niveau du contrôleur avec l'ARL est prise en charge sur les systèmes configurés avec les volumes SnapLock Enterprise et SnapLock Compliance.
+
+
+
+== Clusters à 2 nœuds sans commutateur
+
+Si vous mettez à niveau des nœuds dans un cluster sans commutateur à 2 nœuds, vous pouvez quitter le cluster sans commutateur tout en effectuant la mise à niveau. Il n'est pas nécessaire de les convertir en cluster commuté.
+
+
+
+== Résoudre les problèmes
+
+En cas de problème lors de la mise à niveau des contrôleurs, reportez-vous à la link:troubleshoot_index.html["Résoudre les problèmes"] section à la fin de la procédure pour plus d'informations et des solutions possibles.
+
+Si vous ne trouvez pas de solution au problème que vous rencontrez, contactez le support technique.

@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/required_tools_and_documentation.html 
+keywords: required, tools, documentation, install, worksheet, ontap 
+summary: 'Vous devez disposer d"outils et de documentation pour mettre à niveau les contrôleurs exécutant ONTAP 9.8 ou une version ultérieure en utilisant `system controller replace` commandes.' 
+---
+= Outils et documentation requis
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous devez disposer d'outils spécifiques pour installer le nouveau matériel et vous devez référencer d'autres documents pendant le processus de mise à niveau.
+
+Vous avez besoin des outils suivants pour effectuer la note haute :
+
+* Sangle de mise à la terre
+* Tournevis cruciforme n° 2
+
+
+Accédez au link:other_references.html["Références"] pour accéder à la liste des documents de référence et des sites de référence requis pour cette mise à niveau

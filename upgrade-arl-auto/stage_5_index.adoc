@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/stage_5_index.html 
+keywords: install, boot, node4, node2, node-management,  stage 5 
+summary: 'Étape 5 : séquence de processus pour la mise à niveau d"ARL à l"aide de `system controller replace` Commandes des contrôleurs exécutant ONTAP 9.5 à 9.7.' 
+---
+= Étape 5. Installez et démarrez Node4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Lors de l'étape 5, vous installez et démarrez le nœud4, mappez les ports cluster et node-management du node2 au node4, puis vérifiez l'installation du node4. Vous pouvez également déplacer les LIF de données NAS qui appartiennent au nœud 2 du nœud 3 vers le nœud 4, puis déplacer les agrégats du nœud 2 vers le nœud 4.
+
+.Étapes
+. link:install_boot_node4.html["Installez et démarrez Node4"]
+. link:set_fc_or_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"]
+. link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"]
+. link:join_quorum_node_has_different_ports_stage5.html["Joignez le quorum lorsqu'un nœud dispose d'un ensemble différent de ports réseau"]
+. link:verify_node4_installation.html["Vérifiez l'installation du node4"]
+. link:move_non_root_aggr_and_nas_data_lifs_node2_from_node3_to_node4.html["Déplacement des agrégats non racines et des LIF de données NAS qui appartiennent au nœud 2 du nœud 3 vers le nœud 4"]
+

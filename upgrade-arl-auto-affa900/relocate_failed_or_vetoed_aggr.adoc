@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/relocate_failed_or_vetoed_aggr.html 
+keywords: relocate, failed, vetoed, aggregates, relocation, operation 
+summary: 'Le transfert d"agrégats défaillants ou vetotés lors d"une mise à niveau d"un système AFF A700 vers un système AFF A900.' 
+---
+= Le transfert d'agrégats a échoué ou a été veto
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si un agrégat ne peut pas transférer ou est vetoté, vous devez transférer manuellement les agrégats ou, si nécessaire, remplacer les vetos ou les vérifications de destination.
+
+L'opération de relocalisation a été interrompue en raison de l'erreur.
+
+.Étapes
+. Vérifiez les journaux du système de gestion des événements (EMS) pour déterminer pourquoi l'agrégat n'a pas pu transférer ou a été vetoté.
+. Transfert d'agrégats défaillants ou vetotés :
++
+`storage aggregate relocation start -node _node1_ -destination _node2_ -aggregate-list _aggr_name_ -ndo-controller-upgrade true`
+
+. Entrez-le lorsque vous y êtes invité `y`.
+. Vous pouvez forcer le déplacement en utilisant l'une des méthodes suivantes :
+
+
+[cols="35,65"]
+|===
+| Option | Description 
+
+
+| Annulation des contrôles de veto | Utiliser la commande suivante :
+`storage aggregate relocation start -node node1 -destination node2 -aggregate-list _aggr_list_ -ndo-controller-upgrade true -override-vetoes true` 
+
+
+| Remplacement des vérifications de destination | Utiliser la commande suivante :
+`storage aggregate relocation start -node node1 -destination node2 -aggregate-list _aggr_list_ -ndo-controller-upgrade true -override-vetoes true -override-destination-checks true` 
+|===

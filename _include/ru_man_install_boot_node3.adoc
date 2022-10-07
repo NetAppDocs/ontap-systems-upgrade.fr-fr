@@ -1,0 +1,526 @@
+= 
+:allow-uri-read: 
+
+
+Vous devez installer NODE3 dans le rack, transférer les connexions du noeud 1 vers le noeud 3, démarrer le noeud 3 et installer ONTAP. Vous devez également réaffecter les disques de spare du nœud1, tous les disques appartenant au volume racine et tous les agrégats non racines qui ne sont pas transférés vers le nœud2 plus tôt.
+
+Vous devez netboot nœud3 si aucune version de ONTAP 9 n'est installée sur le nœud 1. Une fois le noeud 3 installé, démarrez-le à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système. Voir link:prepare_for_netboot.html["Préparation à la mise sur le réseau"].
+
+Toutefois, vous n'avez pas besoin de netboot sur les nœuds 3 si les versions de ONTAP 9 sont identiques ou ultérieures, installées sur le nœud 1.
+
+
+NOTE: *Important* : si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système doté du logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire ,Étape 1 à ,Étape 5, laissez cette section à ,Étape 6 et suivez les instructions de la section link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] si nécessaire, la saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec ,Étape 7. Cependant, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière et passer à link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"], saisie de commandes à l'invite du cluster.
+
+.Étapes
+. [[man_install3_step1]]Assurez-vous que vous disposez d'un espace rack pour node3.
++
+Si les nœuds 1 et 2 se trouvent dans un châssis distinct, vous pouvez placer le nœud 3 au même emplacement de rack que le nœud 1. Toutefois, si le nœud 1 se trouvait dans le même châssis avec le nœud 2, il faut placer le nœud 3 dans son propre espace rack, de préférence à proximité de l'emplacement du nœud 1.
+
+. [[step2]]installez le noeud 3 dans le rack, en suivant les instructions _installation and Setup_ pour votre modèle de nœud.
++
+
+NOTE: Si vous effectuez une mise à niveau vers un système contenant les deux nœuds du même châssis, installez le nœud 4 dans le châssis et sur le nœud 3. Si ce n'est pas le cas, lors du démarrage du nœud 3, le nœud se comporte comme s'il se trouvaient dans une configuration à double châssis et lors du démarrage du nœud 4, l'interconnexion entre les nœuds n'apparaît pas.
+
+. [[step3]]câble du noeud 3, en déplaçant les connexions du noeud 1 vers le noeud 3.
++
+Les références suivantes vous aident à effectuer les connexions de câble appropriées. Accédez à link:other_references.html["Références"] pour les lier.
+
++
+** _Instructions d'installation et de configuration_ ou _exigences d'installation et de référence de virtualisation FlexArray_ pour la plate-forme node3
+** Procédure appropriée de tiroir disque
+** La documentation _High Availability Management_
+
+
++
+Reliez les connexions suivantes :
+
++
+** Console (port de gestion à distance)
+** Ports de cluster
+** Ports de données
+** Ports de gestion de clusters et de nœuds
+** Stockage
+** Configurations SAN : ports de switch iSCSI Ethernet et FC
++
+
+NOTE: Il n'est pas nécessaire de déplacer la carte d'interconnexion ou la connexion du câble d'interconnexion de cluster du nœud 1 vers le nœud 3, car la plupart des modèles de plateforme possèdent un modèle de carte d'interconnexion unique. Pour la configuration MetroCluster, vous devez déplacer les connexions des câbles FC-VI du nœud 1 vers le nœud 3. Si le nouvel hôte ne dispose pas de carte FC-VI, il vous faudra peut-être déplacer la carte FC-VI.
+
+
+
+. [[man_install3_step4]]mettez le système sous tension vers le noeud 3, puis interrompez le processus d'amorçage en appuyant sur Ctrl-C sur le terminal de la console pour accéder à l'invite de l'environnement d'amorçage.
++
+Si vous effectuez la mise à niveau vers un système avec les deux nœuds du même châssis, le nœud 4 redémarre également. Vous pouvez toutefois ignorer le démarrage du nœud 4 jusqu'à ce qu'il soit ultérieur.
+
++
+
+NOTE: Lorsque vous démarrez le nœud 3, le message d'avertissement suivant peut s'afficher :
+
++
+[listing]
+----
+WARNING: The battery is unfit to retain data during a power outage. This is likely because the battery is discharged but could be due to other temporary conditions.
+When the battery is ready, the boot process will complete and services will be engaged.
+To override this delay, press 'c' followed by 'Enter'
+----
+. [[man_install3_step5]]si vous voyez le message d'avertissement dans ,Étape 4, procédez comme suit :
++
+.. Vérifiez s'il y a un message de console susceptible d'indiquer un problème autre que celui d'une batterie NVRAM faible et, le cas échéant, effectuez les actions correctives nécessaires.
+.. Laissez la batterie se charger et le processus de démarrage s'achever.
++
+
+NOTE: *Attention*: Ne pas neutraliser le délai; si la batterie n'est pas chargée, cela pourrait entraîner une perte de données.
+
+
+
+. [[man_install3_step6]]effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si votre système... | Alors... 
+
+
+| Possède des disques et aucun stockage interne | Passez aux étapes 7 à 12 et passez à ,Étape 13. 
+
+
+| Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage  a| 
+.. Accédez à link:set_fc_uta_uta2_config_node3.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 3"] et complétez les sous-sections link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"], en fonction de votre système.
+.. Revenez à cette section et suivez les étapes restantes, en commençant par ,Étape 7.
+
+
+*Important* : vous devez reconfigurer les ports intégrés FC, les ports CNA intégrés et les cartes CNA avant de démarrer ONTAP sur les systèmes V-Series ou avec le logiciel de virtualisation FlexArray.
+
+|===
+. [[man_install3_step7]]Ajoutez les ports d'initiateur FC du nouveau nœud aux zones de commutation.
++
+Si votre système dispose d'un SAN sur bandes, vous devez segmentation pour les initiateurs. Reportez-vous à la documentation relative à votre matrice de stockage et au zoning pour obtenir des instructions.
+
+. [[man_install3_step8]]Ajoutez les ports d'initiateur FC à la matrice de stockage en tant que nouveaux hôtes, mappant les LUN de la baie aux nouveaux hôtes.
++
+Reportez-vous à la documentation relative à votre matrice de stockage et au zoning pour obtenir des instructions.
+
+. [[man_install3_step9]]] modifiez les valeurs WWPN (World Wide Port Name) dans les groupes hôte ou de volumes associés aux LUN de tableau de la matrice de stockage.
++
+L'installation d'un nouveau module de contrôleur modifie les valeurs WWPN associées à chaque port FC intégré.
+
+. [[man_install3_step10]]si votre configuration utilise un zoning basé sur des commutateurs, ajustez la segmentation pour refléter les nouvelles valeurs WWPN.
+. [[man_install3_step11]]Vérifiez que les LUN de tableau sont désormais visibles pour le noeud 3 :
++
+`sysconfig -v`
+
++
+Le système affiche toutes les LUN de baie visibles pour chacun des ports FC initiator. Si les LUN de la matrice ne sont pas visibles, vous ne pourrez pas réattribuer des disques du nœud1 au nœud3 ultérieurement dans cette section.
+
+. [[man_install3_step12]]appuyez sur Ctrl-C pour afficher le menu de démarrage et sélectionner le mode de maintenance.
+. [[man_install3_step13]]à l'invite du mode Maintenance, entrez la commande suivante :
++
+`halt`
+
++
+Le système s'arrête à l'invite de l'environnement d'amorçage.
+
+. [[man_install3_step14]]effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si le système auquel vous effectuez la mise à niveau est dans... | Alors... 
+
+
+| Configuration à châssis double (avec contrôleurs dans un châssis différent) | Accédez à ,Étape 15. 
+
+
+| Configuration à châssis unique (avec contrôleurs dans le même châssis)  a| 
+.. Basculez le câble de la console du node3 vers le node4.
+.. Mettez le nœud 4 sous tension, puis interrompez le processus de démarrage en appuyant sur Ctrl-C au niveau du terminal de la console pour accéder à l'invite de l'environnement de démarrage.
++
+Si les deux contrôleurs se trouvent dans le même châssis, l'alimentation doit déjà être mise sous tension.
+
++
+*Remarque* : quittez le nœud4 à l'invite de l'environnement d'initialisation ; vous revenez au node4 dans link:install_boot_node4.html["Installez et démarrez Node4"].
+
+.. Si le message d'avertissement s'affiche dans ,Étape 4, suivez les instructions de la section ,Étape 5
+.. Retournez le câble de la console du nœud 4 au nœud 3.
+.. Accédez à ,Étape 15.
+
+
+|===
+. [[man_install3_step15]]configurer le noeud 3 pour ONTAP :
++
+`set-defaults`
+
+. [[man_install3_step16]]si NetApp Storage Encryption (NSE) est utilisé dans cette configuration, le système `setenv bootarg.storageencryption.support` la commande doit être définie sur `true`, et le `kmip.init.maxwait` la variable doit être définie sur `off` pour éviter une boucle d'amorçage après le chargement de la configuration du noeud 1 :
++
+`setenv bootarg.storageencryption.support true`
+
++
+`setenv kmip.init.maxwait off`
+
+. [[man_install3_step17]]] si la version de ONTAP installée sur le noeud 3 est identique ou ultérieure à la version de ONTAP 9 installée sur le noeud 1, répertoriez et réaffectez les disques au nouveau noeud 3 :
++
+`boot_ontap`
+
++
+
+WARNING: *Avertissement* : si ce nouveau nœud a déjà été utilisé dans un autre cluster ou une autre paire haute disponibilité, vous devez exécuter `wipeconfig` avant de continuer. Le non-respect de cette consigne peut entraîner des pannes du service ou des pertes de données. Contactez le support technique si le contrôleur de remplacement était auparavant utilisé, en particulier si les contrôleurs exécutaient ONTAP sous 7-mode.
+
+. [[man_install3_step18]]appuyez sur CTRL-C pour afficher le menu de démarrage.
+. [[man_install3_step19]]effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si le système que vous mettez à niveau... | Alors... 
+
+
+| _NOT_ dispose de la version ONTAP correcte ou actuelle sur le noeud 3 | Accédez à ,Étape 20. 
+
+
+| Dispose de la version correcte ou à jour de ONTAP sur le noeud 3 | Accédez à ,Étape 25. 
+|===
+. [[man_install3_step20]]configurez la connexion netboot en choisissant l'une des actions suivantes.
++
+
+NOTE: Vous devez utiliser le port de gestion et l'IP comme connexion netboot. N'utilisez pas d'IP de la LIF de données et ne provoquer aucune interruption de service pendant l'exécution de la mise à niveau.
+
++
+[cols="35,65"]
+|===
+| Si le protocole DHCP (Dynamic Host Configuration Protocol) est... | Alors... 
+
+
+| Exécution | Configurez la connexion automatiquement en entrant la commande suivante à l'invite de l'environnement d'amorçage :
+`ifconfig e0M -auto` 
+
+
+| Non en cours d'exécution | Configurez manuellement la connexion en entrant la commande suivante à l'invite de l'environnement d'amorçage :
+`ifconfig e0M -addr=_filer_addr_ -mask=_netmask_ -gw=_gateway_ -dns=_dns_addr_ -domain=_dns_domain_`
+
+`_filer_addr_` Est l'adresse IP du système de stockage.
+`_netmask_` est le masque de réseau du système de stockage.
+`_gateway_` est la passerelle du système de stockage.
+`_dns_addr_` Est l'adresse IP d'un serveur de noms sur votre réseau.
+`_dns_domain_` Est le nom de domaine DNS (Domain Name Service). Si vous utilisez ce paramètre facultatif, vous n'avez pas besoin d'un nom de domaine complet dans l'URL du serveur netboot ; vous n'avez besoin que du nom d'hôte du serveur. *Remarque*: D'autres paramètres peuvent être nécessaires pour votre interface. Entrez `help ifconfig` à l'invite du micrologiciel pour plus de détails. 
+|===
+. [[man_install3_step21]]exécutez netboot sur les nœuds 3 :
++
+[cols="35,65"]
+|===
+| Pour... | Alors... 
+
+
+| Systèmes de la gamme FAS/AFF8000 | `netboot \http://<web_server_ip>/<path_to_webaccessible_directory>/netboot/kernel` 
+
+
+| Tous les autres systèmes | `netboot \http://<web_server_ip>/<path_to_webaccessible_directory>/<ontap_version>_image.tgz` 
+|===
++
+Le `<path_to_the_web-accessible_directory>` mène à l'emplacement où vous avez téléchargé le `<ontap_version>_image.tgz` dans link:prepare_for_netboot.html#man_netboot_Step1["Étape 1"] Dans la section _préparer pour netboot_.
+
++
+
+NOTE: N'interrompez pas l'amorçage.
+
+. [[man_install3_step22]]dans le menu d'amorçage, sélectionnez l'option *(7) installer le nouveau logiciel* en premier.
++
+Cette option de menu permet de télécharger et d'installer la nouvelle image ONTAP sur le périphérique d'amorçage.
+
++
+
+NOTE: Ne tenez pas compte du message suivant :
+
++
+[listing]
+----
+This procedure is not supported for Non-Disruptive Upgrade on an HA pair.
+----
++
+Cette remarque s'applique aux mises à niveau de ONTAP sans interruption et non aux mises à niveau des contrôleurs.
+
++
+
+NOTE: Utilisez toujours netboot pour mettre à jour le nouveau nœud vers l'image souhaitée. Si vous utilisez une autre méthode pour installer l'image sur le nouveau contrôleur, il est possible que la mauvaise image soit installée. Ce problème s'applique à toutes les versions d'ONTAP.
+
+. [[man_install3_step23]]si vous êtes invité à poursuivre la procédure, entrez `y`, Et lorsque vous êtes invité à saisir l'URL suivante :
++
+`\http://<web_server_ip>/<path_to_web-accessible_directory>/<ontap_version_image>.tgz`
+
+. [[man_install3_step24]]effectuez les sous-étapes suivantes :
++
+.. Entrez `n` pour ignorer la récupération de sauvegarde lorsque l'invite suivante s'affiche :
++
+[listing]
+----
+Do you want to restore the backup configuration now? {y|n}
+----
+.. Redémarrez en entrant `y` lorsque vous voyez l'invite suivante :
++
+[listing]
+----
+The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}
+----
++
+Le module de contrôleur redémarre mais s'arrête au menu d'amorçage car le périphérique d'amorçage a été reformaté et les données de configuration doivent être restaurées.
+
+
+
+. [[man_install3_step25]]sélectionnez *(5) mode de maintenance boot* en entrant `5`, puis entrez `y` lorsque vous êtes invité à poursuivre le démarrage.
+. [[man_install3_step26]]avant de continuer, allez à link:set_fc_uta_uta2_config_node3.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 3"] Pour modifier les ports FC ou UTA/UTA2 sur le nœud,
++
+Apportez les modifications recommandées dans ces sections, redémarrez le nœud et passez en mode maintenance.
+
+. [[man_install3_step27]]recherchez l'ID système du noeud 3 :
++
+`disk show -a`
+
++
+Le système affiche l'ID système du nœud et les informations sur les disques correspondantes, comme illustré ci-dessous :
+
++
+[listing]
+----
+ *> disk show -a
+ Local System ID: 536881109
+ DISK     OWNER                    POOL  SERIAL   HOME          DR
+ HOME                                    NUMBER
+ -------- -------------            ----- -------- ------------- -------------
+ 0b.02.23 nst-fas2520-2(536880939) Pool0 KPG2RK6F nst-fas2520-2(536880939)
+ 0b.02.13 nst-fas2520-2(536880939) Pool0 KPG3DE4F nst-fas2520-2(536880939)
+ 0b.01.13 nst-fas2520-2(536880939) Pool0 PPG4KLAA nst-fas2520-2(536880939)
+ ......
+ 0a.00.0               (536881109) Pool0 YFKSX6JG              (536881109)
+ ......
+----
++
+
+NOTE: Le message peut s'afficher `disk show: No disks match option -a.` après avoir saisi la commande. Ce n'est pas un message d'erreur qui vous permet de poursuivre la procédure.
+
+. [[man_install3_step28]]Réassigner les unités de rechange du node1, tous les disques appartenant à la racine et tous les agrégats non-racines qui n'ont pas été déplacés vers node2 plus tôt dans link:relocate_non_root_aggr_node1_node2.html["Transférer des agrégats non racines du nœud 1 vers le nœud 2"].
++
+Entrez le formulaire approprié du `disk reassign` commande basée sur si votre système possède des disques partagés :
+
++
+[cols="35,65"]
+|===
+| Si le type de disque est... | Exécutez ensuite la commande... 
+
+
+| Avec disques partagés | `disk reassign -s _node1_sysid_ -d _node3_sysid_ -p _node2_sysid_` 
+
+
+| Sans disques partagés | `disk reassign -s _node1_sysid_ -d _node3_sysid_` 
+|===
++
+Pour le `_node1_sysid_` valeur, utilisez les informations capturées dans link:record_node1_information.html["Enregistrer les informations sur le noeud 1"]. Pour obtenir la valeur de `_node3_sysid_`, utilisez l' `sysconfig` commande.
+
++
+
+NOTE: Le `-p` cette option n'est requise en mode maintenance que lorsque des disques partagés sont présents.
+
++
+Le `disk reassign` la commande réassigne uniquement les disques pour lesquels `_node1_sysid_` est le propriétaire actuel.
+
++
+Le système affiche le message suivant :
+
++
+[listing]
+----
+Partner node must not be in Takeover mode during disk reassignment from maintenance mode.
+Serious problems could result!!
+Do not proceed with reassignment if the partner is in takeover mode. Abort reassignment (y/n)?
+----
+. [[man_install3_step29]]entrer `n`.
++
+Le système affiche le message suivant :
+
++
+[listing]
+----
+After the node becomes operational, you must perform a takeover and giveback of the HA partner node to ensure disk reassignment is successful.
+Do you want to continue (y/n)?
+----
+. [[man_install3_step30]]entrer `y`
++
+Le système affiche le message suivant :
+
++
+[listing]
+----
+Disk ownership will be updated on all disks previously belonging to Filer with sysid <sysid>.
+Do you want to continue (y/n)?
+----
+. [[man_install3_step31]]entrer `y`.
+. [[man_install3_step32]]si vous effectuez une mise à niveau d'un système avec des disques externes vers un système qui prend en charge des disques internes et externes (systèmes AFF A800, par exemple), définissez l'agrégat node1 comme root pour confirmer que node3 démarre à partir de l'agrégat racine du nœud1.
++
+
+WARNING: *Avertissement* : vous devez effectuer les sous-étapes suivantes dans l'ordre indiqué ; le non-respect de cette consigne peut entraîner une panne ou même une perte de données.
+
++
+La procédure suivante définit le nœud 3 pour démarrer à partir de l'agrégat racine du nœud 1 :
+
++
+.. Vérifier les informations RAID, plex et checksum du noeud 1 :
++
+`aggr status -r`
+
+.. Vérifier le statut de l'agrégat du nœud 1 :
++
+`aggr status`
+
+.. Mettre l'agrégat de nœud 1 en ligne, si nécessaire :
++
+`aggr_online _root_aggr_from_node1_`
+
+.. Empêcher le démarrage du nœud 3 à partir de son agrégat racine d'origine :
+`aggr offline _root_aggr_on_node3_`
+.. Définir l'agrégat racine du nœud 1 en tant que nouvel agrégat racine pour le nœud 3 :
++
+`aggr options _aggr_from_node1_ root`
+
+.. Vérifier que l'agrégat racine du nœud 3 est hors ligne et que l'agrégat racine des disques transférées depuis le nœud 1 est en ligne et défini à la racine :
++
+`aggr status`
+
++
+
+NOTE: Si vous ne procédez pas à la sous-étape précédente, le noeud 3 risque de démarrer à partir de l'agrégat racine interne, ou le système peut supposer qu'une nouvelle configuration de cluster existe ou vous inviter à en identifier une.
+
++
+Voici un exemple de sortie de la commande :
+
+
+
++
+[listing]
+----
+ ---------------------------------------------------------------
+      Aggr State               Status          Options
+ aggr0_nst_fas8080_15 online   raid_dp, aggr   root, nosnap=on
+                               fast zeroed
+                               64-bit
+
+   aggr0 offline               raid_dp, aggr   diskroot
+                               fast zeroed
+                               64-bit
+ ----------------------------------------------------------------------
+----
+. [[man_install3_step33]]Vérifiez que le contrôleur et le châssis sont configurés comme `ha`:
++
+`ha-config show`
+
++
+L'exemple suivant montre le résultat de la commande ha-config show :
+
++
+[listing]
+----
+ *> ha-config show
+    Chassis HA configuration: ha
+    Controller HA configuration: ha
+----
++
+Les systèmes enregistrent dans une ROM programmable (PROM), qu'ils soient dans une paire HA ou une configuration autonome. L'état doit être le même sur tous les composants du système autonome ou de la paire haute disponibilité.
+
++
+Si le contrôleur et le châssis ne sont pas configurés comme « HA », utilisez les commandes suivantes pour corriger la configuration :
+
++
+`ha-config modify controller ha`
+
++
+`ha-config modify chassis ha`
+
++
+Si vous disposez d'une configuration MetroCluster, utilisez les commandes suivantes pour modifier le contrôleur et le châssis :
+
++
+`ha-config modify controller mcc`
+
++
+`ha-config modify chassis mcc`
+
+. [[man_install3_step34]]détruisez les boîtes aux lettres sur le noeud 3 :
++
+`mailbox destroy local`
+
++
+La console affiche le message suivant :
+
++
+[listing]
+----
+Destroying mailboxes forces a node to create new empty mailboxes, which clears any takeover state, removes all knowledge of out-of-date plexes of mirrored volumes, and will prevent management services from going online in 2-node cluster HA configurations. Are you sure you want to destroy the local mailboxes?
+----
+. [[man_install3_step35]]entrer `y` à l'invite pour confirmer que vous souhaitez détruire les boîtes aux lettres locales.
+. [[man_install3_step36]]Quitter le mode de maintenance :
++
+`halt`
+
++
+Le système s'arrête à l'invite de l'environnement d'amorçage.
+
+. [[man_install3_step37]]sur le node2, vérifiez la date, l'heure et le fuseau horaire du système :
++
+`date`
+
+. [[man_install3_step38]]sur le noeud 3, vérifiez la date à l'invite de l'environnement d'initialisation :
++
+`show date`
+
+. [[man_install3_step39]]si nécessaire, définissez la date sur le noeud 3 :
++
+`set date _mm/dd/yyyy_`
+
+. [[man_install3_step40]]sur le noeud 3, vérifiez l'heure à l'invite de l'environnement d'initialisation :
++
+`show time`
+
+. [[man_install3_step41]]si nécessaire, définissez l'heure sur node3 :
++
+`set time _hh:mm:ss_`
+
+. [[man_install3_step42]]Vérifiez que l'ID du système partenaire est correctement défini comme indiqué dans ,Étape 28 interrupteur sous -p :
++
+`printenv partner-sysid`
+
+. [[man_install3_step43]]si nécessaire, définissez l'ID système partenaire sur le noeud 3 :
++
+`setenv partner-sysid _node2_sysid_`
+
++
+Enregistrer les paramètres :
+
++
+`saveenv`
+
+. [[man_install3_step44]]accédez au menu de démarrage à l'invite de l'environnement d'amorçage :
++
+`boot_ontap menu`
+
+. [[man_install3_step45]]dans le menu de démarrage, sélectionnez l'option *(6) mettre à jour Flash à partir de la configuration de sauvegarde* en entrant `6` à l'invite.
++
+Le système affiche le message suivant :
+
++
+[listing]
+----
+This will replace all flash-based configuration with the last backup to disks. Are you sure you want to continue?:
+----
+. [[man_install3_step46]]entrer `y` à l'invite.
++
+Le démarrage se poursuit normalement, et le système vous demande alors de confirmer la non-concordance de l'ID système.
+
++
+
+NOTE: Il est possible que le système redémarre deux fois avant d'afficher l'avertissement de non-concordance.
+
+. [[man_install3_step47]]confirmer l'incohérence comme indiqué dans l'exemple suivant :
++
+[listing]
+----
+WARNING: System id mismatch. This usually occurs when replacing CF or NVRAM cards!
+Override system id (y|n) ? [n] y
+----
++
+Le nœud peut se redémarrer avant de démarrer normalement.
+
+. [[man_install3_step48]]Connectez-vous au node3.
+

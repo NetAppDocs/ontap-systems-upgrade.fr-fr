@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/restore_key-manager_configuration_node3.html 
+keywords: restoring, key-manager, configuration, node3, nve, arl, encryption, netapp, volume 
+summary: 'Si nécessaire, restaurez la configuration du gestionnaire de clés sur le nœud 3 lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+---
+= Restaurez la configuration du gestionnaire de clés sur le noeud 3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si vous utilisez NetApp Volume Encryption (NVE) pour chiffrer les volumes sur le système que vous mettez à niveau, la configuration de chiffrement doit être synchronisée avec les nouveaux nœuds. Si vous ne restaurez pas le gestionnaire de clés, lorsque vous transférez les agrégats du nœud 1 vers le nœud 3 via le transfert d'agrégats (ARL), les volumes chiffrés sont mis hors ligne.
+
+Synchronisez la configuration de cryptage avec les nouveaux nœuds en effectuant les étapes suivantes :
+
+.Étapes
+. Synchronisez la configuration de chiffrement pour Onboard Key Manager (OKM) en utilisant la commande suivante à l'invite du cluster :
++
+`security key-manager onboard sync`
+
+. Saisissez la phrase secrète pour l'ensemble du cluster pour le OKM.
+

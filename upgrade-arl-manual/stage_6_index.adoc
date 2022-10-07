@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/stage_6_index.html 
+keywords: stage 6, complete, upgrade, set up, setup, controller, storage encryption, netapp encryption, decommission, resume snapmirror 
+summary: 'Étape 6 : processus de mise à niveau manuelle d"ARL sur les contrôleurs exécutant ONTAP 9.7 ou une version antérieure.' 
+---
+= Étape 6. Terminez la mise à niveau
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Lors de la phase 6, vous confirmez que les nouveaux nœuds sont correctement configurés. Si l'un des nouveaux nœuds dispose d'un adaptateur cible unifié, vous devez restaurer toute configuration de port et peut-être avoir besoin de modifier la personnalité de l'adaptateur. Vous devez également configurer Storage Encryption si les nouveaux nœuds sont compatibles avec le chiffrement. Vous devez également désaffecter les anciens nœuds.
+
+. link:ensure_controllers_set_up_correctly.html["Vérifiez que les nouveaux contrôleurs sont correctement configurés"]
+. link:set_up_storage_encryption_new_controller.html["Configurez Storage Encryption sur le nouveau module de contrôleur"]
+. link:set_up_netapp_encryption_on_new_controller.html["Configuration de NetApp Encryption sur le nouveau module de contrôleur"]
+. link:decommission_old_system.html["Désaffectation de l'ancien système"]
+. link:resume_snapmirror_ops.html["Reprendre les opérations SnapMirror"]
+

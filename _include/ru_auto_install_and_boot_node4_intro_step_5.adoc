@@ -1,0 +1,66 @@
+= 
+:allow-uri-read: 
+
+
+Vous devez netboot nœud4 si cette version de ONTAP 9 n'est pas installée sur le nœud 2. Une fois le noeud 4 installé, démarrez-le à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système, en suivant les instructions de la section link:prepare_for_netboot.html["Préparation à la mise sur le réseau"].
+
+.Important :
+* Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire ,Étape 1 à ,Étape 21, quittez ensuite cette section et suivez les instructions à link:set_fc_or_uta_uta2_config_node4.html#configure-fc-ports-on-node4["Configurez les ports FC sur le nœud 4"] et à link:set_fc_or_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4"], Saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec ,Étape 23.
+* Cependant, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière et passer à link:set_fc_or_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"], saisie de commandes à l'invite du cluster.
+
+
+.Étapes
+. [[auto_install4_step1]]Assurez-vous que le noeud 4 dispose d'un espace de rack suffisant.
++
+Si le noeud 4 se trouve dans un châssis distinct du noeud 2, vous pouvez placer le noeud 4 au même emplacement que le noeud 3. Si les nœuds 2 et 4 se trouvent dans le même châssis, le nœud 4 se trouve déjà dans son emplacement de rack approprié.
+
+. Installez le node4 dans le rack en suivant les instructions de _instructions d'installation et de configuration_ pour le modèle de nœud.
+. Reliez le nœud 4, puis déplacez les connexions du nœud 2 vers le nœud 4.
++
+Reliez les connexions suivantes à l'aide des instructions de _instructions d'installation et de configuration_ ou de _FlexArray virtualisation installation conditions requises et Reference_ pour la plateforme node4, le document de tiroir disque approprié et _High Availability Management_.
+
++
+Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers les spécifications d'installation de la virtualisation et les références_ et _gestion de la haute disponibilité_ de FlexArray.
+
++
+** Console (port de gestion à distance)
+** Ports de cluster
+** Ports de données
+** Ports de gestion de clusters et de nœuds
+** Stockage
+** Configurations SAN : ports de switch iSCSI Ethernet et FC
++
+
+NOTE: Il n'est pas nécessaire de déplacer la carte d'interconnexion/carte FC-VI ou la connexion de câble d'interconnexion/FC-VI du node2 au node4 car la plupart des modèles de plateforme disposent de modèles de cartes d'interconnexion uniques. Pour la configuration MetroCluster, vous devez déplacer les connexions des câbles FC-VI du nœud2 au nœud4. Si le nouvel hôte ne dispose pas de carte FC-VI, il vous faudra peut-être déplacer la carte FC-VI.
+
+
+
+. Mettez le nœud 4 sous tension, puis interrompez le processus de démarrage en appuyant sur `Ctrl-C` sur le terminal de la console pour accéder à l'invite de l'environnement d'initialisation.
++
+
+NOTE: Lors du démarrage du nœud 4, le message d'avertissement suivant peut s'afficher :
+
++
+....
+WARNING: The battery is unfit to retain data during a power outage. This is likely
+         because the battery is discharged but could be due to other temporary
+         conditions.
+         When the battery is ready, the boot process will complete
+         and services will be engaged. To override this delay, press 'c' followed
+         by 'Enter'
+....
+. Si le message d'avertissement s'affiche à l'étape 4, effectuez les actions suivantes :
++
+.. Vérifiez s'il y a un message de console susceptible d'indiquer un problème autre que celui d'une batterie NVRAM faible et, le cas échéant, effectuez les actions correctives nécessaires.
+.. Laissez la batterie se charger et le processus de démarrage s'achever.
++
+
+WARNING: *Attention : ne pas outrepasser le délai; si la batterie n'est pas chargée, cela pourrait entraîner une perte de données.*
+
++
+
+NOTE: Reportez-vous à la section link:prepare_for_netboot.html["Préparation à la mise sur le réseau"].
+
+
+
+

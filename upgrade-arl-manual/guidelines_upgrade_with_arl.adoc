@@ -1,0 +1,143 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/guidelines_upgrade_with_arl.html 
+keywords: guidelines, upgrade, controllers, arl, aggregate, relocation 
+summary: 'Comprenez si vous pouvez utiliser la procédure manuelle d"ARL pour deux contrôleurs exécutant ONTAP 9.7 ou une version antérieure.' 
+---
+= Instructions de mise à niveau des contrôleurs avec l'ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Pour savoir si vous pouvez utiliser le transfert d'agrégats (ARL) pour mettre à niveau une paire de contrôleurs exécutant ONTAP 9.0 à 9.7, les performances de la plateforme et la configuration des contrôleurs d'origine et de remplacement.
+
+
+
+== Mises à niveau prises en charge pour l'ARL
+
+Vous pouvez mettre à niveau une paire de nœuds à l'aide de l'ARL dans les cas suivants :
+
+* Les contrôleurs d'origine et les contrôleurs de remplacement doivent exécuter la même version de ONTAP 9.x avant la mise à niveau.
+* Les contrôleurs de remplacement doivent avoir une capacité égale ou supérieure à celle des contrôleurs d'origine. La capacité supérieure ou égale fait référence aux attributs, tels que la taille de la NVRAM, le volume, la LUN ou le nombre maximal d'agrégats, mais également à la taille maximale du volume ou de l'agrégat des nouveaux nœuds.
+* Vous pouvez mettre à niveau les systèmes suivants :
++
+** D'un système FAS à un système FAS.
+** Un système FAS vers un système avec le logiciel de virtualisation FlexArray ou un système V-Series.
+** D'un système AFF à un système AFF.
+** Un système avec le logiciel de virtualisation FlexArray ou un système V-Series vers un système FAS, à condition que le système doté du logiciel de virtualisation FlexArray ou d'un système V-Series ne dispose pas de LUN de baie.
+** Un système V-Series à un système avec le logiciel de virtualisation FlexArray ou un système V-Series.
+
+
+
+
+
+NOTE: Avant d'effectuer une mise à niveau du système AFF, vous devez mettre à niveau ONTAP vers les versions 9.3P12, 9.4P6 ou 9.5P1 ou ultérieures. Ces versions sont requises pour une mise à niveau réussie.
+
+* Pour certaines mises à niveau du contrôleur ARL, vous pouvez utiliser des ports de cluster temporaires sur le contrôleur de remplacement à des fins de mise à niveau. Par exemple, si vous effectuez une mise à niveau d'un système AFF A300 vers un système AFF A400, selon la configuration du système AFF A400, vous pouvez utiliser l'un des deux ports mezzanine ou ajouter une carte d'interface réseau 10GbE à quatre ports pour mettre en place des ports de cluster temporaires. Une fois la mise à niveau du contrôleur effectuée à l'aide de ports de cluster temporaires, vous pouvez migrer les clusters vers des ports 100 GbE sur le contrôleur de remplacement, et ce sans interruption.
+* Si vous utilisez ONTAP 9.6P11, 9.7P8 ou des versions ultérieures, il est recommandé d'activer le basculement de la connectivité, de la vivacité et du contrôle de disponibilité (CLAM) afin de rétablir le quorum du cluster en cas de certaines défaillances de nœud. Le `kernel-service` la commande nécessite un accès au niveau de privilège avancé. Pour plus d'informations, voir : https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU436["Article de la base de connaissances NetApp SU436 : modification de la configuration par défaut de CLAM Takeover"^].
+* La mise à niveau du contrôleur avec l'ARL est prise en charge sur les systèmes configurés avec les volumes SnapLock Enterprise et SnapLock Compliance.
+
+
+Vous devez vérifier si l'ARL peut être réalisé sur les contrôleurs d'origine et de remplacement. Vous devez vérifier la taille de tous les agrégats définis et le nombre de disques pris en charge par le système d'origine. Ensuite, comparez-les avec la taille et le nombre de disques pris en charge par le nouveau système. Pour accéder à ces informations, reportez-vous à la section link:other_references.html["Références"] Pour accéder au _Hardware Universe_. La taille de l'agrégat et le nombre de disques pris en charge par le nouveau système doivent être égaux ou supérieurs à la taille et au nombre de disques pris en charge par le système d'origine.
+
+Vous devez valider dans le cluster des règles de combinaison de nouveaux nœuds que les nouveaux nœuds peuvent intégrer au cluster avec les nœuds existants lors du remplacement du contrôleur d'origine. Pour plus d'informations sur les règles de mélange des clusters, reportez-vous à link:other_references.html["Références"] Pour accéder au _Hardware Universe_.
+
+
+NOTE: Les deux systèmes sont haute disponibilité ou non HA. Les deux nœuds doivent avoir la personnalisation activée ou désactivée. Vous ne pouvez pas combiner un nœud avec la personnalité optimisée pour la technologie 100 % Flash activée ou un nœud sur lequel l'utilisateur n'est pas activé au sein de la même paire haute disponibilité. Si les personnalités sont différentes, contactez l'assistance technique.
+
+
+NOTE: Si le nouveau système comporte moins de slots que le système d'origine ou s'il comporte moins de ports ou des ports différents, vous devrez peut-être ajouter un adaptateur au nouveau système. Reportez-vous à la section link:other_references.html["Références"] Pour obtenir des informations détaillées sur les plateformes spécifiques, accédez au site de support NetApp _Hardware Universe_.
+
+
+
+== Mises à niveau non prises en charge pour l'ARL
+
+Vous ne pouvez pas effectuer les mises à niveau suivantes :
+
+* Vers ou depuis des contrôleurs qui ne peuvent pas exécuter de version de ONTAP depuis ONTAP 9.0 vers ONTAP 9.7.
++
+Pour en savoir plus sur la mise à niveau du contrôleur pour les systèmes exécutant Data ONTAP 7-mode, reportez-vous à la link:other_references.html["Références"] Lien vers le _site de support NetApp_.
+
+* Remplacement des contrôleurs qui ne prennent pas en charge les tiroirs disques connectés aux contrôleurs d'origine.
++
+Pour plus d'informations sur la prise en charge des disques, reportez-vous à link:other_references.html["Références"] Pour accéder au _Hardware Universe_.
+
+* À partir des contrôleurs avec agrégats racine ou agrégats de données sur disques internes
++
+Pour mettre à niveau les contrôleurs avec les agrégats racine ou les agrégats de données sur disques internes, reportez-vous à link:other_references.html["Références"] Pour lier votre système à _mise à niveau en déplaçant des volumes ou du stockage_ et aller à la procédure _mettre à niveau une paire de nœuds exécutant clustered Data ONTAP en déplaçant des volumes_.
+
++
+
+NOTE: Pour mettre à niveau ONTAP sur les nœuds d'un cluster, reportez-vous à la section link:other_references.html["Références"] Pour accéder à _Upgrade ONTAP_.
+
+
+
+
+
+== Hypothèses et terminologie
+
+Ce document est rédigé avec les hypothèses suivantes :
+
+* Le matériel de remplacement du contrôleur est nouveau et n'a pas été utilisé.
++
+
+WARNING: *Attention*: Parce que cette procédure suppose que le matériel de remplacement du contrôleur est nouveau et n'a pas été utilisé, les étapes requises pour préparer les contrôleurs utilisés avec le `wipeconfig` la commande n'est pas incluse dans cette procédure. Vous devez contacter le support technique si le matériel de remplacement du contrôleur était précédemment utilisé, en particulier si les contrôleurs exécutaient Data ONTAP sous 7-mode.
+
+* Vous avez lu et compris les instructions de mise à niveau de paire de nœuds.
++
+
+WARNING: *Attention*: N'essayez pas d'effacer le contenu de la NVRAM. Si vous avez besoin d'effacer le contenu de la mémoire NVRAM, contactez le support technique NetApp.
+
+* Vous exécutez la commande appropriée avant et après le `modify` commandes et comparaison du résultat des deux `show` commandes pour vérifier que `modify` la commande a réussi.
+* Si vous disposez d'une configuration SAN, vous disposez de LIF locales et partenaires pour chaque machine virtuelle de stockage (SVM), sur la paire haute disponibilité. Si vous ne disposez pas de LIF locales et partenaires pour chaque SVM, vous devez ajouter cette LIF de données SAN sur le nœud distant et local de cette SVM avant de commencer la mise à niveau.
+* Si vous disposez d'ensembles de ports dans une configuration SAN, vous devez avoir vérifié que chaque ensemble de ports liés contient au moins une LIF depuis chaque nœud de la paire haute disponibilité.
+
+
+Cette procédure utilise le terme _boot Environment prompt_ pour faire référence à l'invite sur un nœud à partir duquel vous pouvez effectuer certaines tâches, telles que redémarrer le nœud et imprimer ou définir des variables environnementales. L'invite est parfois appelée de manière informelle comme l'invite _boot loader_.
+
+L'invite de l'environnement d'initialisation est présentée dans l'exemple suivant :
+
+[listing]
+----
+LOADER>
+----
+
+
+== Licences dans ONTAP 9.7 ou version antérieure
+
+Lorsque vous configurez un cluster, l'assistant d'installation vous demande d'entrer la clé de licence de base du cluster. Cependant, certaines fonctionnalités nécessitent des licences supplémentaires, qui sont émises sous la forme de _packages_ qui incluent une ou plusieurs fonctionnalités. Chaque nœud du cluster doit disposer de sa propre clé pour que chaque fonctionnalité soit utilisée dans le cluster.
+
+Si vous ne disposez pas de nouvelles clés de licence, les fonctionnalités actuellement sous licence dans le cluster sont disponibles pour le nouveau contrôleur et continueront de fonctionner. Toutefois, l'utilisation de fonctions sans licence sur le contrôleur peut vous mettre hors conformité avec votre contrat de licence. Vous devez donc installer la ou les nouvelles clés de licence pour le nouveau contrôleur une fois la mise à niveau terminée.
+
+Toutes les clés de licence comportent 28 caractères alphabétiques en majuscules. Reportez-vous à la section link:other_references.html["Références"] Lien vers le site de support _NetApp_ où vous pouvez obtenir de nouvelles clés de licence de 28 caractères pour ONTAP 9.7. ou plus tôt. Les clés sont disponibles dans la section _mon support_ sous _licences logicielles_. Si le site ne dispose pas des clés de licence dont vous avez besoin, contactez votre ingénieur commercial NetApp.
+
+Pour plus d'informations sur les licences, rendez-vous sur link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.
+
+
+
+== Chiffrement du stockage
+
+Les nœuds d'origine ou les nouveaux nœuds peuvent être activés pour Storage Encryption. Dans ce cas, vous devez effectuer d'autres étapes de cette procédure pour vérifier que Storage Encryption est correctement configuré.
+
+Si vous souhaitez utiliser le chiffrement du stockage, tous les disques associés aux nœuds doivent être dotés de disques à autocryptage.
+
+
+
+== Clusters à 2 nœuds sans commutateur
+
+Si vous mettez à niveau des nœuds dans un cluster sans commutateur à 2 nœuds, vous pouvez quitter le cluster sans commutateur tout en effectuant la mise à niveau. Il n'est pas nécessaire de les convertir en cluster commuté.
+
+
+
+== Dépannage
+
+Cette procédure comprend des suggestions de dépannage.
+
+En cas de problème lors de la mise à niveau des contrôleurs, vous pouvez vous référer au link:troubleshoot_index.html["Résoudre les problèmes"] section à la fin de la procédure pour plus d'informations et des solutions possibles.
+
+Si vous ne trouvez pas de solution au problème que vous rencontrez, contactez le support technique.

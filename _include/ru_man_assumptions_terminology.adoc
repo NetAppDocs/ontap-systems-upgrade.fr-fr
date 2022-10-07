@@ -1,0 +1,29 @@
+= 
+:allow-uri-read: 
+
+
+Ce document est rédigé avec les hypothèses suivantes :
+
+* Le matériel de remplacement du contrôleur est nouveau et n'a pas été utilisé.
++
+
+WARNING: *Attention*: Parce que cette procédure suppose que le matériel de remplacement du contrôleur est nouveau et n'a pas été utilisé, les étapes requises pour préparer les contrôleurs utilisés avec le `wipeconfig` la commande n'est pas incluse dans cette procédure. Vous devez contacter le support technique si le matériel de remplacement du contrôleur était précédemment utilisé, en particulier si les contrôleurs exécutaient Data ONTAP sous 7-mode.
+
+* Vous avez lu et compris les instructions de mise à niveau de paire de nœuds.
++
+
+WARNING: *Attention*: N'essayez pas d'effacer le contenu de la NVRAM. Si vous avez besoin d'effacer le contenu de la mémoire NVRAM, contactez le support technique NetApp.
+
+* Vous exécutez la commande appropriée avant et après le `modify` commandes et comparaison du résultat des deux `show` commandes pour vérifier que `modify` la commande a réussi.
+* Si vous disposez d'une configuration SAN, vous disposez de LIF locales et partenaires pour chaque machine virtuelle de stockage (SVM), sur la paire haute disponibilité. Si vous ne disposez pas de LIF locales et partenaires pour chaque SVM, vous devez ajouter cette LIF de données SAN sur le nœud distant et local de cette SVM avant de commencer la mise à niveau.
+* Si vous disposez d'ensembles de ports dans une configuration SAN, vous devez avoir vérifié que chaque ensemble de ports liés contient au moins une LIF depuis chaque nœud de la paire haute disponibilité.
+
+
+Cette procédure utilise le terme _boot Environment prompt_ pour faire référence à l'invite sur un nœud à partir duquel vous pouvez effectuer certaines tâches, telles que redémarrer le nœud et imprimer ou définir des variables environnementales. L'invite est parfois appelée de manière informelle comme l'invite _boot loader_.
+
+L'invite de l'environnement d'initialisation est présentée dans l'exemple suivant :
+
+[listing]
+----
+LOADER>
+----

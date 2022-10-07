@@ -1,0 +1,66 @@
+---
+permalink: upgrade/upgrade-complete-move-volumes.html 
+sidebar: sidebar 
+keywords: complete, procedure, upgrading, upgrade, move, moving, volume, configure, service, processor, sp, license, autosupport, storage, encryption, fc, nca, port, complete the upgrade 
+summary: 'Pour terminer la procédure de mise à niveau par le déplacement de volumes, vous devez configurer le processeur de service \(SP\), installer de nouvelles licences et configurer AutoSupport. Vous devrez peut-être également configurer Storage ou Volume Encryption et configurer les ports FC ou NCA.' 
+---
+= Terminez la mise à niveau
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour effectuer la procédure de mise à niveau en déplaçant des volumes, vous devez configurer le processeur de service, installer de nouvelles licences et configurer AutoSupport. Vous devrez peut-être également configurer Storage ou Volume Encryption et configurer les ports FC ou NCA.
+
+. Configurez le processeur de service sur les nouveaux nœuds si nécessaire :
++
+`system service-processor network modify`
+
+. Installez les nouvelles licences sur les nouveaux nœuds, le cas échéant :
++
+`system license add`
+
+. Configurez AutoSupport sur les nouveaux nœuds :
++
+`system node autosupport modify`
+
+. Depuis chaque nouveau nœud, envoyez un message AutoSupport post-mise à niveau au support technique :
++
+`system node autosupport invoke -node node_name -type all -message "node_name successfully upgraded from platform_old to platform_new"`
+
+. Restaurez la fonctionnalité de cryptage de stockage ou de volume en suivant la procédure appropriée danshttps://docs.netapp.com/us-en/ontap/encryption-at-rest/index.html["Gestion du chiffrement via l'interface de ligne de commandes"^] le contenu.
++
+Choisissez l'une des procédures suivantes selon que vous utilisez la gestion intégrée ou externe des clés :
+
++
+** « Restauration des clés de cryptage intégrées »
+** « Restauration des clés de cryptage externes »
+
+
+. Si les nouveaux nœuds disposent de ports FC (intégrés ou sur adaptateurs FC), de ports CNA intégrés ou d'une carte CNA, configurez les ports FC ou CNA, entrez la commande suivante de l'invite du système de stockage :
++
+`system node hardware unified-connect modify -node node-name -adapter adapter-name -mode {fc|cna} -type {target|initiator}`
+
++
+link:https://docs.netapp.com/us-en/ontap/san-admin/index.html["Gestion SAN avec l'interface de ligne de commandes"^]
+
++
+Vous ne pouvez modifier la configuration CNA que lorsque les adaptateurs CNA sont hors ligne.
+
+. Le cas échéant, configurez un cluster sans commutateur sur les nouveaux nœuds.
++
+https://library.netapp.com/ecm/ecm_download_file/ECMP1140536["Migration vers un cluster à deux nœuds avec commutateur avec commutateurs de cluster Cisco"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMP1140535["Migration vers un cluster à deux nœuds avec commutateurs de cluster NetApp CN1610"^]
+
+. Selon les besoins, désaffectez les systèmes d'origine via le site de support NetApp pour informer NetApp que les systèmes ne sont plus opérationnels et peuvent être supprimés des bases de données de support :
++
+.. Connectez-vous au https://mysupport.netapp.com/site/global/dashboard["Support NetApp"^] le site.
+.. Cliquez sur le lien *Mes systèmes installés*.
+.. Sur la page *Installed Systems*, saisissez le numéro de série de l'ancien système dans le formulaire, puis cliquez sur *Go!*
+.. Sur la page formulaire de mise hors service, remplissez le formulaire et cliquez sur *Envoyer*.
+
+
+

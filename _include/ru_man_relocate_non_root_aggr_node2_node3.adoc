@@ -1,0 +1,138 @@
+= 
+:allow-uri-read: 
+
+
+Avant de remplacer le nœud 2 par le nœud 4, vous devez envoyer un message AutoSupport pour le nœud 2, puis transférer les agrégats non racines qui appartiennent au nœud 2 vers le nœud 3.
+
+.Étapes
+. [[step1]] Envoyer un message AutoSupport à NetApp pour le nœud 2 :
++
+`system node autosupport invoke -node _node2_ -type all -message "Upgrading _node2_ from _platform_old_ to _platform_new_"`
+
+. Vérifiez que le message AutoSupport a été envoyé :
++
+`system node autosupport show -node _node2_ -instance`
+
++
+Les champs « dernier objet envoyé : » et « dernière envoi : » contiennent le titre du message du dernier message envoyé et l'heure à laquelle le message a été envoyé.
+
+. [[step3]]transférer les agrégats non racines :
++
+.. Définissez le niveau de privilège sur avancé :
++
+`set -privilege advanced`
+
+.. Lister les agrégats qui sont détenus par le nœud2 :
++
+`storage aggregate show -owner-name _node2_`
+
+.. Démarrer le transfert d'agrégats :
++
+`storage aggregate relocation start -node _node2_ -destination _node3_ -aggregate-list * -ndo-controller-upgrade true`
+
++
+
+NOTE: La commande ne localise que des agrégats non-racines.
+
+.. Entrez-le lorsque vous y êtes invité `y`.
++
+La réinstallation a lieu en arrière-plan. Le transfert d'un agrégat peut prendre quelques secondes ou quelques minutes, Cette durée inclut à la fois les parties en cas d'interruption du client et les parties en cas d'interruption de service. La commande ne permet pas de transférer des agrégats hors ligne ou restreints.
+
+.. Retour au niveau de privilège admin :
++
+`set -privilege admin`
+
+
+
+. Vérifiez l'état de la réinstallation du noeud 2 :
++
+`storage aggregate relocation show -node _node2_`
+
++
+La sortie affiche « Done » pour un agrégat après son déplacement.
+
++
+
+NOTE: Vous devez patienter jusqu'à ce que tous les agrégats qui appartiennent au nœud 2 aient été transférés vers le nœud 3 avant de passer à l'étape suivante.
+
+. Effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| En cas de déménagement de... | Alors... 
+
+
+| Tous les agrégats ont réussi | Accédez à ,Étape 6. 
+
+
+| Tout agrégat a échoué ou a été vetoté  a| 
+.. Afficher un message d'état détaillé :
++
+`storage aggregate show -instance`
+
++
+Vous pouvez également vérifier les journaux EMS pour voir l'action corrective requise.
+
++
+
+NOTE: Le `event log show` la commande répertorie les erreurs qui se sont produites.
+
+.. Effectuez l'action corrective.
+.. Définissez le niveau de privilège sur avancé :
++
+`set -privilege advanced`
+
+.. Transfert d'agrégats défaillants ou vetotés :
++
+`storage aggregate relocation start -node _node2_ -destination _node3_ -aggregate-list * -ndo-controllerupgrade true`
+
+.. Entrez-le lorsque vous y êtes invité `y`.
+.. Retour au niveau de privilège admin :
++
+`set -privilege admin`
+
+
+
+Si nécessaire, vous pouvez forcer la relocalisation en utilisant l'une des méthodes suivantes :
+
+** En remplaçant les contrôles de veto :
++
+`storage aggregate relocation start -override-vetoes true -ndo-controller-upgrade`
+
+** En remplaçant les vérifications de destination :
++
+`storage aggregate relocation start -override-destination-checks true -ndocontroller-upgrade`
+
+
+
+Pour plus d'informations sur les commandes de transfert d'agrégats de stockage, rendez-vous sur link:other_references.html["Références"] Pour établir un lien vers la gestion des _disques et des agrégats à l'aide de la CLI_ et des commandes _ONTAP 9 : manuel page Reference_.
+
+|===
+. [[man_replace_2_3_step6]]vérifier que tous les agrégats non racines sont en ligne sur le nœud 3 :
++
+`storage aggregate show -node _node3_ -state offline -root false`
+
++
+Si un agrégat est mis hors ligne ou est devenu étranger, vous devez les mettre en ligne une fois pour chaque agrégat :
+
++
+`storage aggregate online -aggregate _aggr_name_`
+
+. Vérifiez que tous les volumes sont en ligne sur le noeud 3 :
++
+`volume show -node _node3_ -state offline`
+
++
+Si des volumes sont hors ligne sur le nœud 3, vous devez les mettre en ligne une fois pour chaque volume :
+
++
+`volume online -vserver _Vserver-name_ -volume _volume-name_`
+
+. Vérifiez que le nœud 2 ne possède aucun agrégat non racine en ligne :
++
+`storage aggregate show -owner-name _node2_ -ha-policy sfo -state online`
+
++
+Le résultat de la commande ne doit pas afficher d'agrégats en ligne non-racine, car tous les agrégats en ligne non-racine ont déjà été déplacés vers le nœud 3.
+
+

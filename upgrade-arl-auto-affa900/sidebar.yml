@@ -1,0 +1,109 @@
+---
+section: upgrade-arl-auto-affa900
+title: Utilisez les commandes « remplacement du contrôleur système » pour mettre à
+  niveau AFF A700 vers AFF A900 ou FAS9000 vers FAS9500
+entries:
+- title: Présentation
+  url: "/upgrade-arl-auto-affa900/index.html"
+- title: Automatisation du processus de mise à niveau des contrôleurs
+  url: "/upgrade-arl-auto-affa900/automate_the_controller_upgrade_process.html"
+- title: Décider d'utiliser le contenu de transfert d'agrégats
+  url: "/upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html"
+- title: Outils et documentation requis
+  url: "/upgrade-arl-auto-affa900/required_tools_and_documentation.html"
+- title: Instructions de mise à niveau des contrôleurs
+  url: "/upgrade-arl-auto-affa900/guidelines_for_upgrading_controllers_with_arl.html"
+- title: Présentation de la mise à niveau ARL
+  url: "/upgrade-arl-auto-affa900/overview_of_the_arl_upgrade.html"
+- title: Étape 1. Préparation de la mise à niveau
+  pdf-filename: Étape 1. Préparation à la mise à niveau (mise à niveau vers AFF A900
+    ou FAS9500)
+  entries:
+  - title: Vérifiez la mise à niveau matérielle
+    url: "/upgrade-arl-auto-affa900/verify_upgrade_hardware.html"
+  - title: Préparer les nœuds pour une mise à niveau
+    url: "/upgrade-arl-auto-affa900/prepare_nodes_for_upgrade.html"
+  - title: Procurez-vous une adresse IP d'un serveur de gestion externe des clés pour
+      le cryptage du stockage
+    url: "/upgrade-arl-auto-affa900/get_ip_address_of_external_kms_for_storage_encryption.html"
+- title: Étape 2. Transférez des ressources et retirez le nœud AFF A700 ou FAS9000
+    1
+  entries:
+  - title: Transférez les agrégats non racine et les LIF de données NAS qui appartiennent
+      au nœud1 vers le nœud2
+    url: "/upgrade-arl-auto-affa900/relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html"
+  - title: Le transfert d'agrégats a échoué ou a été veto
+    url: "/upgrade-arl-auto-affa900/relocate_failed_or_vetoed_aggr.html"
+  - title: Retirer le nœud 1
+    url: "/upgrade-arl-auto-affa900/retire_node1.html"
+  - title: NetBoot node1
+    url: "/upgrade-arl-auto-affa900/netboot_node1.html"
+- title: Étape 3. Démarrez le nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les
+    modules NVRAM
+  entries:
+  - title: Démarrez le nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les modules
+      NVRAM
+    url: "/upgrade-arl-auto-affa900/boot_node1_with_a900_controller_and_nvs.html"
+  - title: Vérifiez l'installation du noeud 1
+    url: "/upgrade-arl-auto-affa900/verify_node1_installation.html"
+  - title: Restaurez la configuration du gestionnaire de clés sur le noeud mis à niveau
+      1
+    url: "/upgrade-arl-auto-affa900/restore_key_manager_config_upgraded_node1.html"
+  - title: Déplacement des agrégats non racines et des LIF de données NAS qui appartiennent
+      au nœud 1 du nœud 2 vers le nœud mis à niveau 1
+    url: "/upgrade-arl-auto-affa900/move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html"
+- title: Étape 4. Transférez les ressources depuis le nœud 2 et retirez le nœud 2
+  entries:
+  - title: Transférez des agrégats non racines et des LIF de données NAS du nœud 2
+      vers le nœud 1
+    url: "/upgrade-arl-auto-affa900/relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html"
+  - title: Retrait du nœud 2
+    url: "/upgrade-arl-auto-affa900/retire_node2.html"
+- title: Étape 5. Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur
+    le nœud 2
+  entries:
+  - title: Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur le nœud
+      2
+    url: "/upgrade-arl-auto-affa900/install_a900_nvs_and_controller_on_node2.html"
+  - title: NetBoot node2
+    url: "/upgrade-arl-auto-affa900/netboot_node2.html"
+- title: Étape 6. Démarrez le nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les
+    modules NVRAM
+  entries:
+  - title: Démarrez le nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les modules
+      NVRAM
+    url: "/upgrade-arl-auto-affa900/boot_node2_with_a900_controller_and_nvs.html"
+  - title: Vérifiez l'installation du node2
+    url: "/upgrade-arl-auto-affa900/verify_node2_installation.html"
+  - title: Restaurez la configuration du gestionnaire de clés sur le noeud 2
+    url: "/upgrade-arl-auto-affa900/restore_key_manager_config_node2.html"
+  - title: Déplacement des agrégats non racines et des LIF de données NAS vers le
+      nœud 2
+    url: "/upgrade-arl-auto-affa900/move_non_root_aggr_and_nas_data_lifs_back_to_node2.html"
+- title: Étape 7. Terminez la mise à niveau
+  entries:
+  - title: Vérifiez que les nouveaux contrôleurs sont correctement configurés
+    url: "/upgrade-arl-auto-affa900/ensure_new_controllers_are_set_up_correctly.html"
+  - title: Configurez Storage Encryption sur le nouveau module de contrôleur
+    url: "/upgrade-arl-auto-affa900/set_up_storage_encryption_new_module.html"
+  - title: Configurez NetApp Volume Encryption sur le nouveau module de contrôleur
+    url: "/upgrade-arl-auto-affa900/set_up_netapp_volume_encryption_new_module.html"
+  - title: Désaffectation de l'ancien système
+    url: "/upgrade-arl-auto-affa900/decommission_old_system.html"
+  - title: Reprendre les opérations SnapMirror
+    url: "/upgrade-arl-auto-affa900/resume_snapmirror_operations.html"
+- title: Résoudre les problèmes
+  pdf-filename: Dépannage (mise à niveau vers AFF A900 ou FAS9500)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-auto-affa900/troubleshoot_index.html"
+  - title: Défaillance du transfert d'agrégats
+    url: "/upgrade-arl-auto-affa900/aggregate_relocation_failures.html"
+  - title: Redémarre, fonctionne de façon incohérente ou fonctionne tout cycle d'alimentation
+    url: "/upgrade-arl-auto-affa900/reboots_panics_or_power_cycles.html"
+  - title: Problèmes pouvant survenir à plusieurs étapes de la procédure
+    url: "/upgrade-arl-auto-affa900/issues_in_multiple_stages_of_procedure.html"
+  - title: Échec de la migration de LIF
+    url: "/upgrade-arl-auto-affa900/lif_migration_failure.html"
+- title: Références
+  url: "/upgrade-arl-auto-affa900/other_references.html"

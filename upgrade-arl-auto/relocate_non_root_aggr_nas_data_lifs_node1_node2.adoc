@@ -1,0 +1,127 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/relocate_non_root_aggr_nas_data_lifs_node1_node2.html 
+keywords: relocate, non-root, nonroot, aggregates, NAS, data, lifs, node1, node2 
+summary: 'Déplacez les agrégats non racines et les LIF de données NAS du nœud 1 vers le nœud 2, puis déplacez les ressources du nœud 1 vers le nœud 3 lors de la mise à niveau des contrôleurs exécutant ONTAP 9.5 vers la version 9.7 à l"aide des commandes « Remplacement du contrôleur système ».' 
+---
+= Transférez les agrégats non racine et les LIF de données NAS qui appartiennent au nœud1 vers le nœud2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avant de remplacer le nœud 1 par le nœud 3, vous devez déplacer les agrégats non racines et les LIF de données NAS du nœud 1 vers le nœud 2 avant de déplacer les ressources du nœud 1 vers le nœud 3.
+
+L'opération doit déjà être mise en pause au début de la tâche ; vous devez reprendre manuellement l'opération.
+
+Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Vous devez vérifier que les LIFs sont bonnes et situées sur les ports appropriés une fois que vous avez mis le nœud3 en ligne.
+
+
+NOTE: Le propriétaire du home-home pour les agrégats et les LIFs n'est pas modifié ; seul le propriétaire actuel est modifié.
+
+.Étapes
+. Reprendre les opérations de transfert d'agrégats et de déplacement de LIF de données NAS :
++
+`system controller replace resume`
+
++
+Tous les agrégats non racine et les LIF de données NAS sont migrés du nœud 1 vers le nœud 2.
+
++
+L'opération s'interrompt pour vous permettre de vérifier si tous les agrégats non-racine du nœud 1 et les LIF de données non-SAN ont été migrés vers le nœud 2.
+
+. Vérifier le statut du transfert d'agrégats et du déplacement des LIF de données NAS :
++
+`system controller replace show-details`
+
+. Lorsque l'opération est toujours en pause, vérifiez que tous les agrégats non racines sont en ligne pour leur état sur le nœud 2 :
++
+`storage aggregate show -node _node2_ -state online -root false`
+
++
+L'exemple suivant montre que les agrégats non-root du noeud 2 sont en ligne :
+
++
+[listing]
+----
+cluster::> storage aggregate show -node node2 state online -root false
+
+Aggregate  Size     Available  Used%  State  #Vols  Nodes  RAID Status
+---------  -------  ---------  -----  ------ -----  ------ --------------
+aggr_1     744.9GB  744.8GB    0%     online     5  node2  raid_dp,normal
+aggr_2     825.0GB  825.0GB    0%     online     1  node2  raid_dp,normal
+2 entries were displayed.
+----
++
+Si les agrégats ont été mis hors ligne ou sont devenus étrangers sur le nœud 2, les mettre en ligne en utilisant la commande suivante sur le nœud 2, une fois pour chaque agrégat :
+
++
+`storage aggregate online -aggregate _aggr_name_`
+
+. Vérifier que tous les volumes sont en ligne sur le nœud 2 à l'aide de la commande suivante sur le nœud 2 et en examinant la sortie correspondante :
++
+`volume show -node _node2_ -state offline`
+
++
+Si un volume est hors ligne sur le nœud 2, mettez-le en ligne à l'aide de la commande suivante sur le nœud 2, une fois pour chaque volume :
+
++
+`volume online -vserver _vserver_name_ -volume _volume_name_`
+
++
+Le `_vserver_name_` pour utiliser cette commande avec cette commande, figure dans la sortie du précédent `volume show` commande.
+
+
+
+. [[step5]]si les ports qui hébergent actuellement des LIFs de données n'existeront pas sur le nouveau matériel, supprimez-les du domaine de broadcast :
++
+`network port broadcast-domain remove-ports`
+
+. Si l'une des LIFs est inactive, définir le statut administratif des LIFs à « up » en saisissant la commande suivante, une seule fois pour chaque LIF :
++
+`network interface modify -vserver _Vserver_name -lif _LIF_name_`
+                          `-home-node _nodename_ -status-admin up`
+
+. Si des groupes d'interfaces ou des VLAN sont configurés, procédez comme suit :
++
+.. Si vous ne les avez pas déjà enregistrés, enregistrez les informations VLAN et ifgrp pour pouvoir recréer les VLAN et ifgrps sur le nœud 3 après le démarrage du nœud 3.
+.. Supprimez les VLAN des groupes d'interface en entrant la commande suivante :
++
+`network port vlan delete -node _nodename_ -port _ifgrp_ -vlan-id _VLAN_ID_`
+
++
+
+NOTE: Suivez l'action corrective pour résoudre toutes les erreurs suggérées par la commande vlan delete.
+
+.. Entrez la commande suivante et examinez son résultat pour vérifier la présence d'un groupe d'interfaces configuré sur le nœud :
++
+`network port ifgrp show -node _nodename_ -ifgrp _ifgrp_name_ -instance`
+
++
+Le système affiche les informations sur les groupes d'interfaces pour le nœud, comme illustré ci-dessous :
+
++
+[listing]
+----
+cluster::> network port ifgrp show -node node1 -ifgrp a0a -instance
+                 Node: node1
+ Interface Group Name: a0a
+Distribution Function: ip
+        Create Policy: multimode_lacp
+          MAC Address: 02:a0:98:17:dc:d4
+   Port Participation: partial
+        Network Ports: e2c, e2d
+             Up Ports: e2c
+           Down Ports: e2d
+----
+.. Si des groupes d'interface sont configurés sur le nœud, notez les noms de ces groupes et des ports qui leur sont affectés, puis supprimez les ports en entrant la commande suivante, une fois pour chaque port :
++
+`network port ifgrp remove-port -node _nodename_ -ifgrp _ifgrp_name_ -port _netport_`
+
+
+
+

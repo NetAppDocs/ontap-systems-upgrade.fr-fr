@@ -1,0 +1,13 @@
+= 
+:allow-uri-read: 
+
+
+Une fois les LIF migrées, elles risquent de ne pas s'activer en ligne après la migration à la phase 2, à la phase 3 ou à la phase 5.
+
+.Étapes
+. Vérifiez que la taille MTU du port est identique à celle du nœud source.
++
+Par exemple, si la taille MTU du port cluster est de 9000 sur le nœud source, il doit être de 9000 sur le nœud de destination.
+
+. Vérifiez la connectivité physique du câble réseau si l'état physique du port est « en panne ».
+

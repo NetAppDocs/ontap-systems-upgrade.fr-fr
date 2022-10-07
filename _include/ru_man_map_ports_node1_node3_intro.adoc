@@ -1,0 +1,11 @@
+= 
+:allow-uri-read: 
+
+
+Vous devez vous assurer que les ports physiques du nœud1 sont correctement associés aux ports physiques du nœud3, ce qui permettra au noeud 3 de communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
+
+Vous devez déjà disposer d'informations sur les ports sur les nouveaux nœuds à partir du _Hardware Universe_. (Allez à link:other_references.html["Références"] Pour établir un lien vers le _Hardware Universe_). Vous utilisez ces informations ultérieurement dans cette section et dans link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"].
+
+La configuration logicielle du nœud3 doit correspondre à la connectivité physique du nœud3, et la connectivité IP doit être restaurée avant de poursuivre la mise à niveau.
+
+Les paramètres de port peuvent varier en fonction du modèle des nœuds.

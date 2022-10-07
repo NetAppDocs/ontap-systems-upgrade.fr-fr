@@ -1,0 +1,135 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/overview_of_the_arl_upgrade.html 
+keywords: overview, arl, upgrade, owner, controller, hardware 
+summary: Fonctionnement de la procédure de mise à niveau du contrôleur ARL AFF A700 vers AFF A900. 
+---
+= Présentation de la mise à niveau ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avant de mettre à niveau les nœuds à l'aide de l'ARL, il est important de connaître son fonctionnement. Dans ce contenu, la procédure est divisée en plusieurs étapes.
+
+
+
+== Mettre à niveau la paire de nœuds
+
+Pour mettre à niveau la paire de nœuds, vous devez préparer les nœuds d'origine, puis effectuer une série d'étapes sur les nœuds d'origine et nouveaux. Vous pouvez ensuite désaffecter les nœuds d'origine.
+
+
+
+== Présentation de la séquence de mise à niveau ARL
+
+Durant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, un contrôleur à la fois, en tirant parti de la configuration de paires haute disponibilité pour transférer la propriété d'agrégats non racines. Tous les agrégats non racines doivent être reloisés afin d'atteindre leur destination finale, qui est le nœud mis à niveau correct.
+
+Chaque agrégat possède un propriétaire d'origine et un propriétaire actuel. Le propriétaire de la maison est le propriétaire réel de l'agrégat, et le propriétaire actuel est le propriétaire temporaire.
+
+Le tableau ci-après décrit les tâches générales que vous effectuez à chaque étape ainsi que l'état de propriété de l'agrégat à la fin de cette étape. Les étapes détaillées sont fournies ultérieurement dans la procédure :
+
+[cols="35,65"]
+|===
+| Étape | Étapes 
+
+
+| link:verify_upgrade_hardware.html["Étape 1 : préparer la mise à niveau"]  a| 
+. Vérifiez la mise à niveau matérielle
+. Exécutez des contrôles préalables pour vérifier que vous pouvez effectuer l'opération
+. Propriété correcte de l'agrégat en cas d'échec d'un contrôle préalable
+. Entrer les clés de licence de la base du cluster
+. Obtenir une adresse IP pour le cryptage du stockage
+. Gestion de l'authentification à l'aide d'un serveur KMIP (Key Management Operabilité Protocol)
+. Gestion du chiffrement du stockage à l'aide d'un gestionnaire de clés intégré (OKM)
+. Suspendre les relations SnapMirror (facultatif)
+
+
+Propriété d'un agrégat à la fin de la phase 1 :
+
+* NODE1 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 1
+* NODE2 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 2
+
+
+
+
+| link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["2e étape : transférer des ressources depuis le nœud 1 et retirer le système AFF A700 ou FAS9000 node1"]  a| 
+. Transférez les agrégats non racine et les LIF de données NAS qui appartiennent au nœud1 vers le nœud2
+. Le transfert d'agrégats a échoué ou a été veto
+. Retirer le nœud 1
+. Retirez le contrôleur AFF A700 ou FAS9000 et les modules NVRAM
+. Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur le nœud 1
+. NetBoot node1
+
+
+Propriété d'un agrégat à la fin de la phase 2 :
+
+* NODE2 est le propriétaire actuel des agrégats du nœud 1
+* NODE2 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 2
+
+
+
+
+| link:boot_node1_with_a900_controller_and_nvs.html["Etape 3 : démarrez le nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM"]  a| 
+. Démarrez le nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM
+. Vérifiez que le noeud 1 a bien été installé
+. Restaurez la configuration réseau node1
+. Restaurez la configuration du gestionnaire de clés sur le noeud mis à niveau 1
+. Déplacement des agrégats non racines et des LIF de données NAS qui appartiennent au nœud 1 du nœud 2 vers le nœud mis à niveau 1
+
+
+Propriété globale à la fin de la phase 3 :
+
+* AFF A900 ou FAS9500 nœud1 mis à niveau est le propriétaire du site et le propriétaire actuel des agrégats du nœud 1
+* NODE2 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 2
+
+
+
+
+| link:relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html["Étape 4 : déplacer des ressources depuis le nœud 2 et retirer le nœud 2"]  a| 
+. Transférez des agrégats non racines et des LIF de données NAS du nœud 2 vers le nœud 1
+. Retrait du nœud 2
+
+
+Propriété globale à la fin de la phase 4 :
+
+* Le nœud mis à niveau 1 est le propriétaire et le propriétaire actuel des agrégats qui appartenaient initialement au nœud 1
+* Le nœud mis à niveau est le propriétaire actuel des agrégats du nœud 2
+
+
+
+
+| link:install_a900_nvs_and_controller_on_node2.html["Etape 5 : installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur le nœud 2"]  a| 
+. Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur le nœud 2
+. NetBoot node2
+
+
+Propriété globale à la fin de la phase 5 :
+
+* Le nœud mis à niveau 1 est le propriétaire initial et le propriétaire actuel des agrégats qui appartenaient à l'origine du nœud 1.
+* Le nœud mis à niveau est le propriétaire du site et le propriétaire actuel des agrégats qui appartenaient initialement au nœud 2.
+
+
+
+
+| link:boot_node2_with_a900_controller_and_nvs.html["Etape 6 : démarrez le nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM"]  a| 
+. Démarrez le nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM
+. Vérifiez que le nœud2 est correctement installé
+. Restaurez la configuration réseau node2
+. Déplacement des agrégats non racines et des LIF de données NAS vers le nœud 2
+
+
+
+
+| link:ensure_new_controllers_are_set_up_correctly.html["Étape 7 : terminez la mise à niveau"]  a| 
+. Vérifier que les nouveaux contrôleurs sont correctement configurés
+. Configurez Storage Encryption sur le nouveau module de contrôleur
+. Configurez NetApp Volume Encryption sur le nouveau module de contrôleur.
+. Désaffectation de l'ancien système.
+. Reprendre les opérations NetApp SnapMirror
+
+
+|===

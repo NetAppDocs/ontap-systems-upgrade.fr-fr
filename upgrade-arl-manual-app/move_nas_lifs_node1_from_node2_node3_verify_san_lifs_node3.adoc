@@ -1,0 +1,271 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/move_nas_lifs_node1_from_node2_node3_verify_san_lifs_node3.html 
+keywords: move, nas, san, lif, ports, broadcast domain, node1, node2, node3 
+summary: 'Déplacez les LIF de données NAS du nœud 1 qui se trouvent sur le nœud 2, depuis le nœud 2 vers le nœud 3, lors d"une mise à niveau manuelle du transfert d"agrégats (ARL) sur les contrôleurs exécutant ONTAP 9.8 ou une version ultérieure.' 
+---
+= Déplacez les LIF de données NAS qui appartiennent au nœud 1, du nœud 2 au nœud 3, et vérifiez les LIF SAN sur le nœud 3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avant de transférer des agrégats du nœud 2 vers le nœud 3, vous devez déplacer les LIF de données NAS appartenant au nœud 1 qui se trouvent actuellement sur le nœud 2 vers le nœud 3. Vous devez également vérifier les LIFs SAN sur le nœud3.
+
+Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Vous vérifierez que les LIFs sont saines et situées sur les ports appropriés après avoir mis le nœud3 en ligne.
+
+.Étapes
+. [[step1]]Répertorier toutes les LIFs de données NAS qui ne possédaient pas le noeud 2 en entrant la commande suivante sur l'un ou l'autre des nœuds et en capturant la sortie :
++
+`network interface show -role data -curr-node _node2_ -is-home false -home-node _node3_`
+
+. [[Worksheet_step2]]si le cluster est configuré pour les LIFs SAN, enregistrez les LIFs SAN `adapter` et `switch-port` informations de configuration dans cette link:worksheet_information_before_moving_san_lifs_node3.html["feuille de calcul"] pour une utilisation ultérieure dans la procédure.
++
+.. Lister les LIFs SAN sur le nœud2 et examiner le résultat :
++
+`network interface show -data-protocol fc*`
+
++
+Le système renvoie une sortie similaire à l'exemple suivant :
+
++
+[listing]
+----
+cluster1::> net int show -data-protocol fc*
+  (network interface show)
+             Logical     Status     Network            Current        Current Is
+Vserver      Interface   Admin/Oper Address/Mask       Node           Port    Home
+-----------  ----------  ---------- ------------------ -------------  ------- ----
+svm2_cluster1
+             lif_svm2_cluster1_340
+                         up/up      20:02:00:50:56:b0:39:99
+                                                       cluster1-01    1b      true
+             lif_svm2_cluster1_398
+                         up/up      20:03:00:50:56:b0:39:99
+                                                       cluster1-02    1a      true
+             lif_svm2_cluster1_691
+                         up/up      20:01:00:50:56:b0:39:99
+                                                       cluster1-01    1a      true
+             lif_svm2_cluster1_925
+                         up/up      20:04:00:50:56:b0:39:99
+                                                       cluster1-02    1b      true
+4 entries were displayed.
+----
+.. Dressez la liste des configurations existantes et examinez les résultats :
++
+`fcp adapter show -fields switch-port,fc-wwpn`
+
++
+Le système renvoie une sortie similaire à l'exemple suivant :
+
++
+[listing]
+----
+cluster1::> fcp adapter show -fields switch-port,fc-wwpn
+  (network fcp adapter show)
+node         adapter  fc-wwpn                  switch-port
+-----------  -------  -----------------------  -------------
+cluster1-01  0a       50:0a:09:82:9c:13:38:00  ACME Switch:0
+cluster1-01  0b       50:0a:09:82:9c:13:38:01  ACME Switch:1
+cluster1-01  0c       50:0a:09:82:9c:13:38:02  ACME Switch:2
+cluster1-01  0d       50:0a:09:82:9c:13:38:03  ACME Switch:3
+cluster1-01  0e       50:0a:09:82:9c:13:38:04  ACME Switch:4
+cluster1-01  0f       50:0a:09:82:9c:13:38:05  ACME Switch:5
+cluster1-01  1a       50:0a:09:82:9c:13:38:06  ACME Switch:6
+cluster1-01  1b       50:0a:09:82:9c:13:38:07  ACME Switch:7
+cluster1-02  0a       50:0a:09:82:9c:6c:36:00  ACME Switch:0
+cluster1-02  0b       50:0a:09:82:9c:6c:36:01  ACME Switch:1
+cluster1-02  0c       50:0a:09:82:9c:6c:36:02  ACME Switch:2
+cluster1-02  0d       50:0a:09:82:9c:6c:36:03  ACME Switch:3
+cluster1-02  0e       50:0a:09:82:9c:6c:36:04  ACME Switch:4
+cluster1-02  0f       50:0a:09:82:9c:6c:36:05  ACME Switch:5
+cluster1-02  1a       50:0a:09:82:9c:6c:36:06  ACME Switch:6
+cluster1-02  1b       50:0a:09:82:9c:6c:36:07  ACME Switch:7
+16 entries were displayed
+----
+
+
+. [[step3]]effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si le noeud 1... | Alors... 
+
+
+| Des groupes d'interface ou des VLAN ont été configurés | Accédez à ,Étape 4. 
+
+
+| Aucun groupe d'interfaces ou VLAN n'a été configuré | Ignorez l'étape 4 et passez à ,Étape 5. 
+|===
+. [[man_lif_revérification_3_step3]]effectuez les sous-étapes suivantes pour migrer toutes les LIF de données NAS hébergées sur des groupes d'interfaces et des VLAN situés à l'origine sur le nœud 1, du nœud 2 vers le nœud 3 :
++
+.. [[man_lif_verify_3_sub-pa]]migrer toutes les LIF de données hébergées sur le nœud 2 qui appartenaient précédemment au nœud 1 sur un groupe d'interface vers un port du nœud 3 capable d'héberger les LIFs sur le même réseau en entrant la commande suivante, une fois pour chaque LIF :
++
+`network interface migrate -vserver _vserver_name_ -lif _LIF_name_ -destination-node _node3_ –destination-port _netport|ifgrp_`
+
+.. Modifier le home port et le home node de la LIF dans ,Sous-étape a Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :
++
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _node3_ -home-port _netport|ifgrp_`
+
+.. [[man_lif_verify_3_sub-epc]]migrer n'importe quelle LIF de données hébergée sur le nœud 2 qui appartenait auparavant à celui-ci sur un port VLAN vers un port sur le nœud 3 capable d'héberger les LIFs sur le même réseau en entrant la commande suivante, une fois pour chaque LIF :
++
+`network interface migrate -vserver _vserver_name_ -lif _LIF_name_ -destination-node _node3_ –destination-port _netport|ifgrp_`
+
+.. Modifier le home port et le home node des LIFs dans ,Sous-étape c Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :
++
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _node3_ -home-port _netport|ifgrp_`
+
+
+
+. [[man_lif_verify_3_step4]]effectuer l'une des actions suivantes :
++
+[cols="25,75"]
+|===
+| Si le cluster est configuré pour... | Alors... 
+
+
+| NAS | Terminé ,Étape 6 et ,Étape 7, Ignorez l'étape 8 et terminez ,Étape 9 à ,Étape 12. 
+
+
+| SAN | Désactiver toutes les LIFs SAN du nœud pour les désactiver pour la mise à niveau :
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _node_to_upgrade_ -home-port _netport|ifgrp_ -status-admin down` 
+|===
+. [[man_lif_verify_3_step5]]si vous disposez de ports de données qui ne sont pas les mêmes sur vos plates-formes, ajoutez les ports au broadcast domain :
++
+`network port broadcast-domain add-ports -ipspace _IPspace_name_ -broadcast-domain mgmt -ports _node:port_`
+
++
+L'exemple suivant ajoute le port « e0a » sur le nœud « 8200-1 » et le port « e0i » du nœud « 8060-1 » au domaine de diffusion « mgmt » dans l'IPspace « Default » :
+
++
+[listing]
+----
+cluster::> network port broadcast-domain add-ports -ipspace Default -broadcast-domain mgmt -ports 8200-1:e0a, 8060-1:e0i
+----
+. [[man_lif_revérification_3_ste6]]migrer chaque LIF de données NAS vers le nœud 3 en saisissant la commande suivante, une fois pour chaque LIF :
++
+`network interface migrate -vserver _vserver_name_ -lif _LIF_name_ -destination-node _node3_ -destination-port _netport|ifgrp_`
+
+. [[man_lif_verify_3_step7]]Assurez-vous que la migration des données est persistante :
++
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_-home-port _netport|ifgrp_ -home-node _node3_`
+
+. [[man_lif_verify_3_step8]]Vérifiez que les LIFs SAN se trouvent sur les ports appropriés sur le nœud3 :
++
+.. Entrez la commande suivante et examinez son résultat :
++
+`network interface show -data-protocol iscsi|fcp -home-node _node3_`
+
++
+Le système renvoie une sortie similaire à l'exemple suivant :
+
++
+[listing]
+----
+cluster::> net int show -data-protocol iscsi|fcp -home-node node3
+              Logical     Status      Network             Current        Current  Is
+ Vserver      Interface   Admin/Oper  Address/Mask        Node           Port     Home
+ -----------  ----------  ----------  ------------------  -------------  -------  ----
+ vs0
+              a0a         up/down     10.63.0.53/24       node3          a0a      true
+              data1       up/up       10.63.0.50/18       node3          e0c      true
+              rads1       up/up       10.63.0.51/18       node3          e1a      true
+              rads2       up/down     10.63.0.52/24       node3          e1b      true
+ vs1
+              lif1        up/up       172.17.176.120/24   node3          e0c      true
+              lif2        up/up       172.17.176.121/24   node3          e1a      true
+----
+.. Vérifiez que les nouvelles et `adapter` et `switch-port` les configurations sont correctes en comparant la sortie du `fcp adapter show` commande avec les informations de configuration que vous avez enregistrées dans la fiche ,Étape 2.
++
+Lister les nouvelles configurations LIF SAN sur le nœud3 :
+
++
+`fcp adapter show -fields switch-port,fc-wwpn`
+
++
+Le système renvoie une sortie similaire à l'exemple suivant :
+
++
+[listing]
+----
+cluster1::> fcp adapter show -fields switch-port,fc-wwpn
+  (network fcp adapter show)
+node        adapter fc-wwpn                 switch-port
+----------- ------- ----------------------- -------------
+cluster1-01 0a      50:0a:09:82:9c:13:38:00 ACME Switch:0
+cluster1-01 0b      50:0a:09:82:9c:13:38:01 ACME Switch:1
+cluster1-01 0c      50:0a:09:82:9c:13:38:02 ACME Switch:2
+cluster1-01 0d      50:0a:09:82:9c:13:38:03 ACME Switch:3
+cluster1-01 0e      50:0a:09:82:9c:13:38:04 ACME Switch:4
+cluster1-01 0f      50:0a:09:82:9c:13:38:05 ACME Switch:5
+cluster1-01 1a      50:0a:09:82:9c:13:38:06 ACME Switch:6
+cluster1-01 1b      50:0a:09:82:9c:13:38:07 ACME Switch:7
+cluster1-02 0a      50:0a:09:82:9c:6c:36:00 ACME Switch:0
+cluster1-02 0b      50:0a:09:82:9c:6c:36:01 ACME Switch:1
+cluster1-02 0c      50:0a:09:82:9c:6c:36:02 ACME Switch:2
+cluster1-02 0d      50:0a:09:82:9c:6c:36:03 ACME Switch:3
+cluster1-02 0e      50:0a:09:82:9c:6c:36:04 ACME Switch:4
+cluster1-02 0f      50:0a:09:82:9c:6c:36:05 ACME Switch:5
+cluster1-02 1a      50:0a:09:82:9c:6c:36:06 ACME Switch:6
+cluster1-02 1b      50:0a:09:82:9c:6c:36:07 ACME Switch:7
+16 entries were displayed
+----
++
+
+NOTE: Si une LIF SAN dans la nouvelle configuration ne se trouve pas sur un adaptateur toujours connecté à la même configuration `switch-port`, cela peut provoquer une panne du système lorsque vous redémarrez le nœud.
+
+.. Si le nœud3 possède des LIFs SAN ou des groupes de LIFs SAN qui se trouvent sur un port qui n'existait pas sur le nœud1 ou qui doivent être mappés à un autre port, déplacez-les vers un port approprié du nœud3 en procédant comme suit :
++
+... Définir le statut de la LIF sur « down » :
++
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -status-admin down`
+
+... Supprimer le LIF du port set :
++
+`portset remove -vserver _vserver_name_ -portset _portset_name_ -port-name _port_name_`
+
+... Entrez l'une des commandes suivantes :
++
+**** Déplacement d'un seul LIF :
++
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-port _new_home_port_`
+
+**** Déplacer toutes les LIF sur un port unique inexistant ou incorrect vers un nouveau port :
++
+`network interface modify {-home-port _port_on_node1_ -home-node _node1_ -role data} -home-port _new_home_port_on_node3_`
+
+**** Reajoutez les LIFs au port set :
++
+`portset add -vserver _vserver_name_ -portset _portset_name_ -port-name _port_name_`
+
++
+
+NOTE: Vous devez déplacer les LIFs SAN sur un port dont la vitesse de liaison est identique à celle du port d'origine.
+
+
+
+
+
+
+
+. Modifier l'état de toutes les LIFs sur « up » afin que les LIFs acceptent et envoient le trafic sur le nœud :
++
+`network interface modify -home-port _port_name_ -home-node _node3_ -lif data -status-admin up`
+
+. Entrez la commande suivante sur l'un des nœuds et examinez son résultat pour vérifier que les LIF ont été déplacées vers les ports corrects, et que ces derniers ont le statut « UP » en saisissant la commande suivante sur l'un des nœuds et en examinant la sortie :
++
+`network interface show -home-node _node3_ -role data`
+
+. [[man_lif_revérification_3_step11]]] si des LIFs sont hors service, définissez le statut administratif des LIFs à « up » en saisissant la commande suivante, une fois pour chaque LIF :
++
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -status-admin up`
+
+. Envoyer un message AutoSupport post-mise à niveau à NetApp pour le nœud 1 :
++
+`system node autosupport invoke -node _node3_ -type all -message "node1 successfully upgraded from _platform_old_ to _platform_new_"`
+
+

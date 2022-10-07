@@ -1,0 +1,48 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/apply_RCF_files_recable_switches.html 
+keywords: rcf files, reference configuration, switches, nodes, recable, fc 
+summary: 'Installez les fichiers RCF pour reconfigurer les commutateurs Cisco et Brocade lors d"une mise à niveau manuelle d"ARL sur les contrôleurs exécutant ONTAP 9.7 ou une version antérieure.' 
+---
+= Appliquer les fichiers RCF et recâblage des commutateurs
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous devez appliquer les fichiers de configuration de référence (RCFs) appropriés pour reconfigurer vos commutateurs afin d'adapter les nouveaux nœuds. Après avoir appliqué les RCFs, vous pouvez recâter les commutateurs.
+
+L'utilisation du port de commutateur FC doit correspondre à l'utilisation décrite dans le contenu _MetroCluster installation et Configuration_ de manière à pouvoir utiliser les RCFC. Accédez à link:other_references.html["Références"] Pour établir un lien vers le contenu _MetroCluster installation and Configuration_ joint à la structure.
+
+.Étapes
+. Accédez au https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["Téléchargements MetroCluster RCF"^] Puis sélectionnez les RCFC pour votre configuration de commutateur.
++
+Vous devez utiliser les RCFs qui correspondent à vos modèles de commutateur.
+
+. Installez les FC Switch RCFs en sélectionnant la procédure qui correspond à vos modèles de commutateurs et en suivant les instructions d'installation :
++
+** https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/task_install_the_brocade_fc_switch_rcf_file.html["Installez un commutateur FC Brocade RCF"^]
+** https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/task_download_and_install_the_cisco_fc_switch_rcf_files.html["Installez un commutateur RCF Cisco FC"^]
+
+
+. Vérifier que la configuration du commutateur est enregistrée.
+. Reliez les deux ponts FC-SAS aux commutateurs FC à l'aide de la disposition de câblage que vous avez créée dans link:determine_new_cabling_layout.html["Identification de la nouvelle disposition de câblage"].
+. Vérifiez que les ports sont en ligne :
++
+** Pour les commutateurs Brocade, utilisez le `switchshow` commande.
+** Pour les commutateurs Cisco, utilisez l'option show `interface brief` commande.
+
+
+. Reliez les ports FC-VI des contrôleurs aux commutateurs.
+. Depuis les nœuds existants, vérifier que les ports FC-VI sont en ligne :
++
+`metrocluster interconnect adapter show`
+
++
+`metrocluster interconnect mirror show`
+
+

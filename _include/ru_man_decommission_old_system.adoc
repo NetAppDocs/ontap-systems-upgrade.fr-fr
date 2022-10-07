@@ -1,0 +1,24 @@
+= 
+:allow-uri-read: 
+
+
+Une fois la mise à niveau effectuée, vous pouvez désaffecter l'ancien système via le site de support NetApp. Hors fonctionnement du système dit à NetApp que le système n'est plus opérationnel et qu'il l'supprime des bases de données de prise en charge.
+
+.Étapes
+. Reportez-vous à la section link:other_references.html["Références"] Pour accéder au _site de support NetApp_ et connectez-vous.
+. Sélectionnez *produits > Mes produits* dans le menu.
+. Sur la page *Afficher les systèmes installés*, choisissez les *critères de sélection* que vous souhaitez utiliser pour afficher des informations sur votre système.
++
+Vous pouvez choisir l'une des options suivantes pour localiser votre système :
+
++
+** Numéro de série (situé à l'arrière de l'appareil)
+** Numéros de série pour mon emplacement
+
+
+. Sélectionnez *Go!*
++
+Un tableau affiche les informations sur le cluster, y compris les numéros de série.
+
+. Localisez le cluster dans le tableau et sélectionnez *Decommission This system* dans le menu déroulant Product Tool Set.
+

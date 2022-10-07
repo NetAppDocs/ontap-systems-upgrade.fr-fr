@@ -1,0 +1,43 @@
+= 
+:allow-uri-read: 
+
+
+. [[auto_check_4_step17]]appuyez sur `Ctrl-C` dans le cas de l'autoboot, cette variable permet d'arrêter le nœud sur le `LOADER>` à l'invite.
+. À l'invite du chargeur, passez en mode maintenance :
++
+`boot_ontap maint`
+
+. En mode maintenance, afficher tous les ports initiateurs précédemment définis qui sont maintenant en mode cible :
++
+`ucadmin show`
+
++
+Modifier les ports en mode initiateur :
+
++
+`ucadmin modify -m fc -t initiator -f _adapter name_`
+
+. Vérifiez que les ports ont été modifiés en mode initiateur :
++
+`ucadmin show`
+
+. Quitter le mode maintenance :
++
+`halt`
+
++
+[NOTE]
+====
+Si vous effectuez une mise à niveau à partir d'un système prenant en charge des disques externes vers un système qui prend également en charge des disques externes, accédez à ,Étape 22.
+
+Si vous effectuez une mise à niveau à partir d'un système qui utilise des disques externes vers un système prenant en charge des disques internes et externes, par exemple un système AFF A800, rendez-vous sur ,Étape 23.
+
+====
+. [[auto_check_4_step22]]à l'invite du chargeur, démarrez :
++
+`boot_ontap`
+
++
+Maintenant, au démarrage, le nœud peut détecter tous les disques qui lui étaient précédemment affectés et peut démarrer comme prévu.
+
+

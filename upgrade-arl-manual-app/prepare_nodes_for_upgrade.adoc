@@ -1,0 +1,725 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/prepare_nodes_for_upgrade.html 
+keywords: prepare, nodes, upgrade, missing disks, HA pair, san 
+summary: 'Préparez les nœuds, collectez des informations et vérifiez que tous les nœuds de cluster sont au quorum lors d"une mise à niveau manuelle d"ARL sur les contrôleurs qui exécutent ONTAP 9.8 ou une version ultérieure.' 
+---
+= Préparer les nœuds pour une mise à niveau
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avant de remplacer les nœuds d'origine, vous devez confirmer qu'ils sont dans une paire haute disponibilité, qu'ils ne disposent pas de disques manquants ou défaillants, qu'ils peuvent accéder aux différents nœuds de stockage et qu'ils ne possèdent pas de LIF de données attribuées aux autres nœuds du cluster. Vous devez également collecter des informations sur les nœuds d'origine et, si le cluster se trouve dans un environnement SAN, confirmer que tous les nœuds du cluster sont au quorum.
+
+.Étapes
+. Vérifiez que chaque nœud d'origine dispose de ressources suffisantes pour prendre en charge de manière adéquate la charge de travail des deux nœuds en mode basculement.
++
+Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _High Availability Management_ et suivez la section _Best Practices for HA binômes. Aucun des nœuds d'origine ne doit fonctionner à plus de 50 % d'utilisation. Si un nœud fonctionne à moins de 50 %, il peut gérer les charges des deux nœuds lors de la mise à niveau du contrôleur.
+
+. Pour créer une base de performances pour les nœuds d'origine, procédez comme suit :
++
+.. S'assurer que le compte utilisateur de diagnostic est déverrouillé.
++
+*Important*: Le compte utilisateur de diagnostic est destiné uniquement à des fins de diagnostic de bas niveau et ne doit être utilisé qu'avec des conseils du support technique.
+
++
+*Important* : pour plus d'informations sur le déverrouillage des comptes utilisateur, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.
+
+.. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers le site de support de _NetApp_ et télécharger le collecteur de performances et de statistiques (Perfstat Converged).
++
+L'outil Perfstat Converged permet d'établir une base de performance comparée après la mise à niveau.
+
+.. Créez une base de performances en suivant les instructions disponibles sur le site de support NetApp.
+
+
+. Reportez-vous à la section link:other_references.html["Références"] Pour accéder au _site de support NetApp_ et ouvrir un dossier de demande de support sur le site de support NetApp.
++
+Vous pouvez utiliser ce ticket pour signaler les problèmes susceptibles de survenir lors de la mise à niveau.
+
+. Vérifiez que les batteries NVMEM ou NVRAM des nœuds 3 et 4 sont chargées et chargez les batteries, le cas échéant.
++
+Vous devez vérifier physiquement les nœud3 et nœud4 pour vérifier si les batteries NVMEM ou NVRAM sont chargées. Pour plus d'informations sur les LED du modèle des nœuds 3 et 4, voir link:other_references.html["Références"] Pour accéder au _Hardware Universe_.
+
++
+
+WARNING: *Attention* n'essayez pas d'effacer le contenu de la NVRAM. Si vous devez effacer le contenu de NVRAM, contactez le support technique NetApp.
+
+. Vérifiez la version de ONTAP sur les nœuds 3 et 4.
++
+La même version de ONTAP 9.x doit être installée sur les nouveaux nœuds. Si une autre version de ONTAP est installée sur les nouveaux nœuds, vous devez netboot les nouveaux contrôleurs après les avoir installés. Pour obtenir des instructions sur la mise à niveau de ONTAP, reportez-vous à la section link:other_references.html["Références"] Pour accéder à _Upgrade ONTAP_.
+
++
+Les informations relatives à la version de ONTAP sur le node3 et le node4 doivent être incluses dans les boîtes d'expédition. La version ONTAP est affichée lorsque le nœud démarre ou que vous pouvez démarrer le nœud en mode maintenance et exécuter la commande :
+
++
+`version`
+
+. Vérifier si vous avez deux ou quatre LIF de cluster sur les nœuds 1 et nœud2 :
++
+`network interface show -role cluster`
+
++
+Le système affiche n'importe quelle LIF de cluster, comme indiqué dans l'exemple suivant :
+
++
+....
+cluster::> network interface show -role cluster
+        Logical    Status     Network          Current  Current Is
+Vserver Interface  Admin/Oper Address/Mask     Node     Port    Home
+------- ---------- ---------- ---------------- -------- ------- ----
+node1
+        clus1      up/up      172.17.177.2/24  node1    e0c     true
+        clus2      up/up      172.17.177.6/24  node1    e0e     true
+node2
+        clus1      up/up      172.17.177.3/24  node2    e0c     true
+        clus2      up/up      172.17.177.7/24  node2    e0e     true
+....
+. Si vous avez deux ou quatre LIF de cluster sur le nœud 1 ou le nœud 2, veillez à exécuter le Ping des deux LIF de cluster sur tous les chemins disponibles en suivant les sous-étapes suivantes :
++
+.. Saisissez le niveau de privilège avancé :
++
+`set -privilege advanced`
+
++
+Le système affiche le message suivant :
+
++
+....
+Warning: These advanced commands are potentially dangerous; use them only when directed to do so by NetApp personnel.
+Do you wish to continue? (y or n):
+....
+.. Entrez `y`.
+.. Envoyez une requête ping aux nœuds et testez la connectivité :
++
+`cluster ping-cluster -node node_name`
+
++
+Un message similaire à l'exemple suivant s'affiche :
+
++
+....
+cluster::*> cluster ping-cluster -node node1
+Host is node1
+Getting addresses from network interface table...
+Local = 10.254.231.102 10.254.91.42
+Remote = 10.254.42.25 10.254.16.228
+Ping status:
+...
+Basic connectivity succeeds on 4 path(s) Basic connectivity fails on 0 path(s)
+................
+Detected 1500 byte MTU on 4 path(s):
+Local 10.254.231.102 to Remote 10.254.16.228
+Local 10.254.231.102 to Remote 10.254.42.25
+Local 10.254.91.42 to Remote 10.254.16.228
+Local 10.254.91.42 to Remote 10.254.42.25
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+....
++
+Si le nœud utilise deux ports de cluster, vous devez voir qu'il peut communiquer sur quatre chemins, comme indiqué dans l'exemple.
+
+.. Revenir au privilège de niveau administratif :
++
+`set -privilege admin`
+
+
+
+. Vérifiez que les nœuds 1 et 2 se trouvent dans une paire HA et assurez-vous que les nœuds sont connectés les uns aux autres et que le basculement est possible :
++
+`storage failover show`
+
++
+L'exemple suivant montre la sortie lorsque les nœuds sont connectés l'un à l'autre et le basculement est possible :
+
++
+....
+cluster::> storage failover show
+                              Takeover
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------
+node1          node2          true     Connected to node2
+node2          node1          true     Connected to node1
+....
++
+Un nœud ne doit pas faire l'objet d'un retour partiel. L'exemple suivant montre que le nœud 1 est en retour partiel :
+
++
+....
+cluster::> storage failover show
+                              Takeover
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------
+node1          node2          true     Connected to node2, Partial giveback
+node2          node1          true     Connected to node1
+....
++
+Si l'un des nœuds est en cours de rétablissement partiel, utilisez le `storage failover giveback` pour effectuer le retour, puis utilisez la commande `storage failover show-giveback` commande afin de s'assurer qu'aucun agrégat n'a toujours besoin d'être redonné. Pour obtenir des informations détaillées sur les commandes, reportez-vous à link:other_references.html["Références"] Pour établir un lien vers _High Availability Management_.
+
+. [[man_prepare_nodes_step9]]Confirmez que ni le nœud1 ni le nœud2 ne possède les agrégats pour lesquels il s'agit du propriétaire actuel (mais pas le propriétaire du domicile) :
++
+`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
+
++
+Si ni le nœud1 ni le nœud2 ne possède des agrégats pour lesquels il s'agit du propriétaire actuel (mais pas le propriétaire du domicile), le système renvoie un message semblable à l'exemple suivant :
+
++
+....
+cluster::> storage aggregate show -node node2 -is-home false -fields owner-name,homename,state
+There are no entries matching your query.
+....
++
+L'exemple suivant montre la sortie de la commande pour un nœud nommé node2 qui est le propriétaire du home, mais pas le propriétaire actuel, de quatre agrégats :
+
++
+....
+cluster::> storage aggregate show -node node2 -is-home false
+               -fields owner-name,home-name,state
+
+aggregate     home-name    owner-name   state
+------------- ------------ ------------ ------
+aggr1         node1        node2        online
+aggr2         node1        node2        online
+aggr3         node1        node2        online
+aggr4         node1        node2        online
+
+4 entries were displayed.
+....
+. Effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si la commande dans ,Étape 9... | Alors... 
+
+
+| Sortie vide | Ignorez l'étape 11 et passez à ,Étape 12. 
+
+
+| Sortie | Accédez à ,Étape 11. 
+|===
+. [[man_prepare_nodes_step11]]] si le nœud1 ou le nœud2 possède des agrégats pour lesquels il s'agit du propriétaire actuel, mais pas du propriétaire de la maison, procédez comme suit :
++
+.. Renvoyez les agrégats actuellement détenus par le nœud partenaire au nœud propriétaire de rattachement :
++
+`storage failover giveback -ofnode _home_node_name_`
+
+.. Vérifiez que ni le nœud1 ni le nœud2 ne possède toujours des agrégats pour lesquels il s'agit du propriétaire actuel (mais pas le propriétaire du domicile) :
++
+`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
+
++
+L'exemple suivant montre la sortie de la commande lorsqu'un nœud est à la fois le propriétaire actuel et le propriétaire du domicile des agrégats :
+
++
+....
+cluster::> storage aggregate show -nodes node1
+          -is-home true -fields owner-name,home-name,state
+
+aggregate     home-name    owner-name   state
+------------- ------------ ------------ ------
+aggr1         node1        node1        online
+aggr2         node1        node1        online
+aggr3         node1        node1        online
+aggr4         node1        node1        online
+
+4 entries were displayed.
+....
+
+
+. [[man_prepare_nodes_step12]] Confirmez que les nœuds 1 et 2 peuvent accéder l'un à l'autre au stockage et vérifiez qu'aucun disque n'est manquant :
++
+`storage failover show -fields local-missing-disks,partner-missing-disks`
+
++
+L'exemple suivant montre la sortie lorsqu'aucun disque n'est manquant :
+
++
+....
+cluster::> storage failover show -fields local-missing-disks,partner-missing-disks
+
+node     local-missing-disks partner-missing-disks
+-------- ------------------- ---------------------
+node1    None                None
+node2    None                None
+....
++
+Si des disques sont manquants, reportez-vous à la section link:other_references.html["Références"] Pour lier la gestion des _disques et des agrégats à la CLI_, _gestion du stockage logique avec CLI_ et _High Availability management_ afin de configurer le stockage pour la paire HA.
+
+. Confirmer que les nœuds 1 et 2 sont en bonne santé et admissibles à participer au groupe :
++
+`cluster show`
+
++
+L'exemple suivant montre la sortie lorsque les deux nœuds sont éligibles et fonctionnent correctement :
+
++
+....
+cluster::> cluster show
+
+Node                  Health  Eligibility
+--------------------- ------- ------------
+node1                 true    true
+node2                 true    true
+....
+. Définissez le niveau de privilège sur avancé :
++
+`set -privilege advanced`
+
+. [[man_prepare_nodes_step15]] Confirmez que le nœud1 et le nœud2 exécutent la même version de ONTAP :
++
+`system node image show -node _node1,node2_ -iscurrent true`
+
++
+L'exemple suivant montre la sortie de la commande :
+
++
+....
+cluster::*> system node image show -node node1,node2 -iscurrent true
+
+                 Is      Is                Install
+Node     Image   Default Current Version   Date
+-------- ------- ------- ------- --------- -------------------
+node1
+         image1  true    true    9.1         2/7/2017 20:22:06
+node2
+         image1  true    true    9.1         2/7/2017 20:20:48
+
+2 entries were displayed.
+....
+. Vérifiez que le nœud 1 ou le nœud 2 ne possède aucune LIF de données appartenant à d'autres nœuds du cluster et que celui-ci est vérifié `Current Node` et `Is Home` colonnes dans la sortie :
++
+`network interface show -role data -is-home false -curr-node _node_name_`
+
++
+L'exemple suivant montre la sortie lorsque le nœud 1 n'a pas de LIFs appartenant à d'autres nœuds du cluster :
+
++
+....
+cluster::> network interface show -role data -is-home false -curr-node node1
+ There are no entries matching your query.
+....
++
+L'exemple suivant montre la sortie lorsque le nœud 1 possède des LIFs de données détenues en privé par l'autre nœud :
+
++
+....
+cluster::> network interface show -role data -is-home false -curr-node node1
+
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+vs0
+            data1      up/up      172.18.103.137/24  node1         e0d     false
+            data2      up/up      172.18.103.143/24  node1         e0f     false
+
+2 entries were displayed.
+....
+. Si la sortie est entrée ,Étape 15 Indique que le nœud 1 ou le nœud 2 possède des LIF de données détenues par d'autres nœuds du cluster, afin de migrer les LIF de données hors du nœud 1 ou du nœud 2 :
++
+`network interface revert -vserver * -lif *`
+
++
+Pour des informations détaillées sur le `network interface revert` commande, voir link:other_references.html["Références"] Pour lier les commandes _ONTAP 9 : Manuel page Reference_.
+
+. Vérifier si le nœud 1 ou le nœud 2 possède des disques défectueux :
++
+`storage disk show -nodelist _node1,node2_ -broken`
+
++
+Si l'un des disques est défectueux, supprimez-les en suivant les instructions de la section _Disk and Aggregate management à l'aide de la CLI_. (Voir link:other_references.html["Références"] Pour établir un lien vers _Disk et la gestion de l'agrégat avec l'interface de ligne de commande_.)
+
+. Collectez des informations sur node1 et node2 en effectuant les sous-étapes suivantes et en enregistrant la sortie de chaque commande :
+
+
+[NOTE]
+====
+* Vous utiliserez ces informations plus tard dans la procédure.
+* Si vous possédez un système doté de plus de deux ports de cluster par nœud, par exemple un système FAS8080 ou AFF8080, avant de démarrer la mise à niveau, vous devez migrer et ré-home les LIF de cluster sur deux ports de cluster par nœud. Si vous effectuez la mise à niveau du contrôleur avec plus de deux ports de cluster par nœud, des LIF de cluster risquent d'être manquantes sur le nouveau contrôleur après la mise à niveau.
+
+
+====
+. Enregistrez le modèle, l'ID du système et le numéro de série des deux nœuds :
++
+`system node show -node _node1,node2_ -instance`
+
++
+
+NOTE: Vous utiliserez les informations pour réaffecter des disques et désaffecter les nœuds d'origine.
+
+. Entrez la commande suivante sur les nœuds 1 et 2, et notez les informations sur les tiroirs, le nombre de disques de chaque tiroir, les détails du stockage Flash, la mémoire, la mémoire NVRAM et les cartes réseau depuis la sortie :
++
+`run -node _node_name_ sysconfig`
+
++
+
+NOTE: Vous pouvez utiliser ces informations pour identifier des pièces ou des accessoires que vous souhaitez transférer vers node3 ou node4. Si vous ne savez pas si les nœuds sont des systèmes V-Series ou si vous disposez du logiciel de virtualisation FlexArray, vous pouvez également l'apprendre de la sortie.
+
+. Entrez la commande suivante sur les nœuds 1 et 2, puis enregistrez les agrégats en ligne sur les deux nœuds :
++
+`storage aggregate show -node _node_name_ -state online`
+
++
+
+NOTE: Vous pouvez utiliser ces informations ainsi que les informations de la sous-étape suivante pour vérifier que les agrégats et les volumes restent en ligne tout au long de la procédure, à l'exception de la brève période pendant laquelle ils sont hors ligne pendant le transfert.
+
+. [[man_prepare_nodes_step19]]Entrez la commande suivante sur les nœuds 1 et 2 et enregistrez les volumes hors ligne sur les deux nœuds :
++
+`volume show -node _node_name_ -state offline`
+
++
+
+NOTE: Après la mise à niveau, vous exécuteront de nouveau la commande et comparerez la sortie avec la sortie de cette étape pour voir si d'autres volumes se sont déconnectés.
+
++
+.. Entrez les commandes suivantes pour vérifier si des groupes d'interfaces ou des VLAN sont configurés sur le nœud 1 ou le nœud 2 :
++
+`network port ifgrp show`
+
++
+`network port vlan show`
+
++
+Notez que les groupes d'interface ou les VLAN sont configurés sur le node1 ou le node2 ; vous avez besoin de ces informations à l'étape suivante et ultérieurement de la procédure.
+
+.. Pour vérifier que les ports physiques peuvent être correctement mappés ultérieurement au cours de la procédure, procédez comme suit sur les sous-étapes suivantes du node1 et du node2 :
+
+
+. Entrez la commande suivante pour vérifier la présence de groupes de basculement sur le nœud autre que `clusterwide`:
++
+`network interface failover-groups show`
+
++
+Les Failover Groups regroupent les ensembles de ports réseau présents sur le système. Étant donné que la mise à niveau du matériel du contrôleur peut modifier l'emplacement des ports physiques, les groupes de basculement peuvent être modifiés par inadvertance au cours de la mise à niveau.
+
++
+Le système affiche les groupes de basculement sur le nœud, comme illustré dans l'exemple suivant :
+
++
+....
+cluster::> network interface failover-groups show
+
+Vserver             Group             Targets
+------------------- ----------------- ----------
+Cluster             Cluster           node1:e0a, node1:e0b
+                                      node2:e0a, node2:e0b
+
+fg_6210_e0c         Default           node1:e0c, node1:e0d
+                                      node1:e0e, node2:e0c
+                                      node2:e0d, node2:e0e
+
+2 entries were displayed.
+....
+. Si des groupes de basculement sont présents, ils sont différents de `clusterwide`, enregistrez les noms des groupes de basculement et les ports appartenant aux groupes de basculement.
+. Entrez la commande suivante pour vérifier s'il existe des VLAN configurés sur le nœud :
++
+`network port vlan show -node _node_name_`
+
++
+Les VLAN sont configurés sur des ports physiques. Si les ports physiques changent, les VLAN devront être recrétés ultérieurement dans la procédure.
+
++
+Le système affiche les VLAN configurés sur le nœud, comme illustré dans l'exemple suivant :
+
++
+....
+cluster::> network port vlan show
+
+Network Network
+Node    VLAN Name Port    VLAN ID MAC Address
+------  --------- ------- ------- ------------------
+node1   e1b-70    e1b     70      00:15:17:76:7b:69
+....
+. Si des VLAN sont configurés sur le nœud, notez le couplage de chaque port réseau et de l'ID VLAN.
++
+.. Effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si les groupes d'interfaces ou LES VLAN sont... | Alors... 
+
+
+| Sur le nœud 1 ou le nœud 2 | Terminé ,Étape 23 et ,Étape 24. 
+
+
+| Pas sur le nœud1 ou le nœud2 | Accédez à ,Étape 24. 
+|===
+.. [[man_prepare_nodes_step23]] si vous ne savez pas si le nœud1 et le nœud2 se trouvent dans un environnement SAN ou non-SAN, entrez la commande suivante et examinez sa sortie :
++
+`network interface show -vserver _vserver_name_ -data-protocol iscsi|fcp`
+
++
+Si ni iSCSI ni FC n'est configuré pour le SVM, la commande affiche un message similaire à l'exemple suivant :
+
++
+....
+cluster::> network interface show -vserver Vserver8970 -data-protocol iscsi|fcp
+There are no entries matching your query.
+....
++
+Vous pouvez vérifier que le nœud se trouve dans un environnement NAS à l'aide de `network interface show` commande avec `-data-protocol nfs|cifs` paramètres.
+
++
+Si iSCSI ou FC est configuré pour le SVM, la commande affiche un message similaire à l'exemple suivant :
+
++
+....
+cluster::> network interface show -vserver vs1 -data-protocol iscsi|fcp
+
+         Logical    Status     Network            Current  Current Is
+Vserver  Interface  Admin/Oper Address/Mask       Node     Port    Home
+-------- ---------- ---------- ------------------ -------- ------- ----
+vs1      vs1_lif1   up/down    172.17.176.20/24   node1    0d      true
+....
+.. [[man_prepare_nodes_step24]]Vérifiez que tous les nœuds du cluster sont au quorum en effectuant les sous-étapes suivantes :
+
+
+. Saisissez le niveau de privilège avancé :
++
+`set -privilege advanced`
+
++
+Le système affiche le message suivant :
+
++
+....
+Warning: These advanced commands are potentially dangerous; use them only when directed to do so by NetApp personnel.
+Do you wish to continue? (y or n):
+....
+. Entrez `y`.
+. Vérifiez l'état du service du cluster dans le noyau, une fois pour chaque nœud :
++
+`cluster kernel-service show`
+
++
+Un message similaire à l'exemple suivant s'affiche :
+
++
+....
+cluster::*> cluster kernel-service show
+
+Master        Cluster       Quorum        Availability  Operational
+Node          Node          Status        Status        Status
+------------- ------------- ------------- ------------- -------------
+node1         node1         in-quorum     true          operational
+              node2         in-quorum     true          operational
+
+2 entries were displayed.
+....
++
+Les nœuds d'un cluster sont dans le quorum lorsqu'une simple majorité de nœuds sont en bon état et peuvent communiquer entre eux. Pour plus d'informations, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.
+
+. Revenir au niveau de privilège administratif :
++
+`set -privilege admin`
+
++
+.. Effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si le cluster... | Alors... 
+
+
+| A configuré SAN | Accédez à ,Étape 26. 
+
+
+| Aucun SAN n'est configuré | Accédez à ,Étape 29. 
+|===
+.. [[man_prepare_nodes_step26]]vérifier la présence de LIF SAN sur le nœud1 et le nœud2 pour chaque SVM dont le service SAN iSCSI ou FC est activé en entrant la commande suivante et en examinant sa sortie :
++
+`network interface show -data-protocol iscsi|fcp -home-node _node_name_`
+
++
+La commande affiche les informations San LIF pour les nœuds 1 et 2. Les exemples suivants présentent l'état dans la colonne Status Admin/Oper en tant que up/up, indiquant que le service SAN iSCSI et FC sont activés :
+
++
+....
+cluster::> network interface show -data-protocol iscsi|fcp
+            Logical    Status     Network                  Current   Current Is
+Vserver     Interface  Admin/Oper Address/Mask             Node      Port    Home
+----------- ---------- ---------- ------------------       --------- ------- ----
+a_vs_iscsi  data1      up/up      10.228.32.190/21         node1     e0a     true
+            data2      up/up      10.228.32.192/21         node2     e0a     true
+
+b_vs_fcp    data1      up/up      20:09:00:a0:98:19:9f:b0  node1     0c      true
+            data2      up/up      20:0a:00:a0:98:19:9f:b0  node2     0c      true
+
+c_vs_iscsi_fcp data1   up/up      20:0d:00:a0:98:19:9f:b0  node2     0c      true
+            data2      up/up      20:0e:00:a0:98:19:9f:b0  node2     0c      true
+            data3      up/up      10.228.34.190/21         node2     e0b     true
+            data4      up/up      10.228.34.192/21         node2     e0b     true
+....
++
+Vous pouvez également afficher des informations plus détaillées sur les LIF en entrant la commande suivante :
+
++
+`network interface show -instance -data-protocol iscsi|fcp`
+
+.. Capturer la configuration par défaut de n'importe quel port FC sur les nœuds d'origine en saisissant la commande suivante et en enregistrant la sortie de vos systèmes :
++
+`ucadmin show`
+
++
+La commande affiche des informations concernant tous les ports FC du cluster, comme illustré dans l'exemple suivant :
+
++
+....
+cluster::> ucadmin show
+
+                Current Current   Pending Pending   Admin
+Node    Adapter Mode    Type      Mode    Type      Status
+------- ------- ------- --------- ------- --------- -----------
+node1   0a      fc      initiator -       -         online
+node1   0b      fc      initiator -       -         online
+node1   0c      fc      initiator -       -         online
+node1   0d      fc      initiator -       -         online
+node2   0a      fc      initiator -       -         online
+node2   0b      fc      initiator -       -         online
+node2   0c      fc      initiator -       -         online
+node2   0d      fc      initiator -       -         online
+8 entries were displayed.
+....
++
+Vous pouvez utiliser les informations après la mise à niveau pour définir la configuration des ports FC sur les nouveaux nœuds.
+
+.. Si vous mettez à niveau un système V-Series ou un système avec le logiciel de virtualisation FlexArray, capturez les informations relatives à la topologie des nœuds d'origine en entrant la commande suivante et en enregistrant le résultat :
++
+`storage array config show -switch`
+
++
+Le système affiche les informations relatives à la topologie, comme le montre l'exemple suivant :
+
++
+....
+cluster::> storage array config show -switch
+
+      LUN LUN                                  Target Side Initiator Side Initi-
+Node  Grp Cnt Array Name    Array Target Port  Switch Port Switch Port    ator
+----- --- --- ------------- ------------------ ----------- -------------- ------
+node1 0   50  I_1818FAStT_1
+                            205700a0b84772da   vgbr6510a:5  vgbr6510s164:3  0d
+                            206700a0b84772da   vgbr6510a:6  vgbr6510s164:4  2b
+                            207600a0b84772da   vgbr6510b:6  vgbr6510s163:1  0c
+node2 0   50  I_1818FAStT_1
+                            205700a0b84772da   vgbr6510a:5  vgbr6510s164:1  0d
+                            206700a0b84772da   vgbr6510a:6  vgbr6510s164:2  2b
+                            207600a0b84772da   vgbr6510b:6  vgbr6510s163:3  0c
+                            208600a0b84772da   vgbr6510b:5  vgbr6510s163:4  2a
+7 entries were displayed.
+....
+.. [[man_prepare_nodes_step29]]effectuez les sous-étapes suivantes :
+
+
+. Entrez la commande suivante sur l'un des nœuds d'origine et enregistrez le résultat :
++
+`service-processor show -node * -instance`
+
++
+Le système affiche des informations détaillées sur le processeur de service sur les deux nœuds.
+
+. Vérifiez que le statut du processeur de service est `online`.
+. Vérifiez que le réseau du processeur de service est configuré.
+. Enregistrez l'adresse IP et d'autres informations sur le processeur de service.
++
+Vous pouvez réutiliser les paramètres réseau des périphériques de gestion à distance, dans ce cas les SP, du système d'origine pour les SP sur les nouveaux nœuds. Pour plus d'informations sur le processeur de service, reportez-vous à link:other_references.html["Références"] Pour établir un lien vers les _System Administration Reference_ et les _ONTAP 9 Commands: Manual page Reference_.
+
++
+.. [[man_prepare_nodes_step30]]si vous souhaitez que les nouveaux nœuds disposent de la même fonctionnalité sous licence que les nœuds d'origine, entrez la commande suivante pour afficher les licences de cluster sur le système d'origine :
++
+`system license show -owner *`
+
++
+L'exemple suivant montre les licences de site pour cluster1 :
+
++
+....
+system license show -owner *
+Serial Number: 1-80-000013
+Owner: cluster1
+
+Package           Type    Description           Expiration
+----------------- ------- --------------------- -----------
+Base              site    Cluster Base License  -
+NFS               site    NFS License           -
+CIFS              site    CIFS License          -
+SnapMirror        site    SnapMirror License    -
+FlexClone         site    FlexClone License     -
+SnapVault         site    SnapVault License     -
+6 entries were displayed.
+....
+.. Obtenir de nouvelles clés de licence pour les nouveaux nœuds sur le site _NetApp support site_. Reportez-vous à la section link:other_references.html["Références"] Lien vers _site de support NetApp_.
++
+Si le site ne dispose pas des clés de licence dont vous avez besoin, contactez votre ingénieur commercial NetApp.
+
+.. Vérifiez si AutoSupport est activé sur le système d'origine en entrant la commande suivante sur chaque nœud et en examinant son résultat :
++
+`system node autosupport show -node _node1,node2_`
+
++
+Le résultat de la commande indique si le protocole AutoSupport est activé, comme illustré dans l'exemple suivant :
+
++
+....
+cluster::> system node autosupport show -node node1,node2
+
+Node             State     From          To                Mail Hosts
+---------------- --------- ------------- ----------------  ----------
+node1            enable    Postmaster    admin@netapp.com  mailhost
+
+node2            enable    Postmaster    -                 mailhost
+2 entries were displayed.
+....
+.. Effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si le système d'origine... | Alors... 
+
+
+| A activé AutoSupport...  a| 
+... Accédez à ,Étape 34.
+... Accédez à la section link:get_address_key_management_server_encryption.html["Obtenir l'adresse IP d'un serveur de gestion externe des clés pour Storage Encryption"].
+
+
+
+
+| AutoSupport n'est pas activé...  a| 
+... Activez AutoSupport en suivant les instructions de la _System Administration Reference_. (Voir link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.)
++
+*Remarque :* AutoSupport est activé par défaut lorsque vous configurez votre système de stockage pour la première fois. Bien que vous puissiez désactiver AutoSupport à tout moment, vous devez le laisser activé. L'activation d'AutoSupport peut considérablement aider à identifier les problèmes et les solutions qui pourraient survenir sur votre système de stockage.
+
+... Accédez au link:get_address_key_management_server_encryption.html["Obtenir l'adresse IP d'un serveur de gestion externe des clés pour Storage Encryption"] section.
+
+
+|===
+.. [[man_prepare_nodes_step34]]Vérifiez que AutoSupport est configuré avec les informations de l'hôte de courrier et les ID de courrier électronique de destinataire en entrant la commande suivante sur les deux nœuds d'origine et en examinant la sortie :
++
+`system node autosupport show -node node_name -instance`
+
++
+Pour plus d'informations sur AutoSupport, reportez-vous à link:other_references.html["Références"] Pour établir un lien vers les _System Administration Reference_ et les _ONTAP 9 Commands: Manual page Reference_.
+
+.. [[man_prepare_nodes_ste35,étape 35]] Envoyer un message AutoSupport à NetApp pour le nœud 1 en entrant la commande suivante :
++
+`system node autosupport invoke -node node1 -type all -message "Upgrading node1 from platform_old to platform_new"`
+
++
+
+NOTE: N'envoyez pas de message AutoSupport à NetApp pour le noeud 2 à ce stade ; vous le faites plus tard dans la procédure.
+
+.. [[man_prepare_nodes_step36, étape 36]] Vérifiez que le message AutoSupport a été envoyé en entrant la commande suivante et en examinant sa sortie :
++
+`system node autosupport show -node _node1_ -instance`
+
++
+Les champs `Last Subject Sent:` et `Last Time Sent:` contient le titre du message du dernier message envoyé et l'heure à laquelle le message a été envoyé.
+
+
+
+

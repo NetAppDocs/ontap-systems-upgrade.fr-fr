@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/resume_snapmirror_operations.html 
+keywords: resuming, snapmirror, operations, transfer, relationship, updates, schedule, complete 
+summary: 'Reprenez les transferts et les relations SnapMirror lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou version ultérieure en utilisant `system controller replace` commandes.' 
+---
+= Reprendre les opérations SnapMirror
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous pouvez reprendre les transferts SnapMirror suspendus avant de mettre à niveau et reprendre les relations SnapMirror. Les mises à jour sont planifiées une fois la mise à niveau terminée.
+
+.Étapes
+. Vérifier le statut SnapMirror sur la destination :
++
+`snapmirror show`
+
+. Reprendre la relation SnapMirror :
++
+`snapmirror resume -destination–vserver _vserver_name_`
+
+

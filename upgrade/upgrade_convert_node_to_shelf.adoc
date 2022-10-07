@@ -1,0 +1,32 @@
+---
+permalink: upgrade/upgrade-convert-node-to-shelf.html 
+sidebar: sidebar 
+keywords: node, support, model, process, upgrading, upgrade, moving, move, convert, drive, shelf, attach, convert an original node to a drive shelf 
+summary: 'Si votre nœud d"origine est l"un des modèles pris en charge, pendant le processus de mise à niveau en déplaçant le stockage, vous pouvez convertir le nœud en tiroir disque, puis le connecter aux nouveaux nœuds du même cluster.' 
+---
+= Convertir un nœud d'origine en tiroir disque
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si votre nœud d'origine est l'un des modèles pris en charge, pendant le processus de mise à niveau en déplaçant le stockage, vous pouvez convertir le nœud en tiroir disque, puis le connecter aux nouveaux nœuds du même cluster.
+
+Vous devez avoir passé en revue link:upgrade-considerations.html["Considérations relatives à la mise à niveau du matériel du contrôleur"] à propos de la conversion d'un nœud en tiroir disque. Contactez le support technique si vous avez besoin d'instructions spécifiques pour la configuration de votre entreprise.
+
+.Étapes
+. Remplacez les modules de contrôleur dans le nœud que vous convertissez avec les modules IOM appropriés.
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+. Définissez l'ID de tiroir disque.
++
+Chaque tiroir disque, châssis compris, requiert un ID unique.
+
+. Réinitialise les autres ID de tiroir disque selon vos besoins.
+. Mettez les tiroirs disques connectés aux nouveaux nœuds hors tension, puis mettez-les hors tension.
+. Reliez le tiroir disque converti à un port SAS du nouveau système et, si vous utilisez un câblage ACP hors bande, au port ACP du nouveau nœud.
+. Mettez le système sous tension afin que le tiroir disque converti et tous les autres tiroirs disques reliés aux nouveaux nœuds.
+. Mettez les nouveaux nœuds sous tension, puis interrompez le processus de démarrage de chaque nœud en appuyant sur Ctrl-C pour accéder à l'invite de l'environnement de démarrage.
+

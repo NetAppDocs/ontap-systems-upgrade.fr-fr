@@ -1,0 +1,48 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/prepare_for_netboot.html 
+keywords: prepare, netboot, rack, node3, node4 
+summary: 'Préparation au démarrage sur le nœud node3 et sur le nœud 4 lors d"une mise à niveau manuelle du transfert d"agrégats sur des contrôleurs exécutant ONTAP 9.7 ou une version antérieure.' 
+---
+= Préparation à la mise sur le réseau
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si vous installez physiquement les nœuds 3 et 4e dans la procédure, vous devrez peut-être netboot. Le terme _netboot_ signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Lorsque vous vous préparez à netboot, vous devez placer une copie de l'image de démarrage ONTAP 9 sur un serveur web auquel le système peut accéder.
+
+.Avant de commencer
+* Vérifiez que vous pouvez accéder à un serveur HTTP avec le système.
+* Reportez-vous à la section link:other_references.html["Références"] Un lien vers le site de support _NetApp_ et télécharger les fichiers système nécessaires pour votre plateforme et la version correcte de ONTAP.
+
+
+Vous devez netboot les nouveaux contrôleurs si la même version de ONTAP 9 est installée sur les contrôleurs d'origine. Après avoir installé chaque nouveau contrôleur, vous démarrez le système à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système.
+
+Toutefois, vous n'avez pas besoin d'effectuer le démarrage sur les contrôleurs si la même version de ONTAP 9 est installée sur les contrôleurs d'origine. Si c'est le cas, vous pouvez ignorer cette section et passer à link:stage_3_install_boot_node3.html["Etape 3 : installation et démarrage du node3"].
+
+.Étapes
+. [[man_netboot_Step1]]accédez au site de support NetApp pour télécharger les fichiers utilisés pour effectuer le démarrage sur le réseau du système.
+. Téléchargez le logiciel ONTAP approprié depuis la section de téléchargement des logiciels du site de support NetApp et stockez le `<ontap_version>_image.tgz` fichier dans un répertoire accessible sur le web.
+. Accédez au répertoire accessible sur le Web et vérifiez que les fichiers dont vous avez besoin sont disponibles.
++
+[cols="35,65"]
+|===
+| Pour... | Alors... 
+
+
+| Systèmes de la gamme FAS/AFF8000 | Extraire le contenu du `<ontap_version>_image.tgz` fichier dans le répertoire cible :
+`tar -zxvf <ontap_version>_image.tgz`*Remarque* : si vous extrayez le contenu sous Windows, utilisez 7-Zip ou WinRAR pour extraire l'image netboot. Votre liste de répertoires doit contenir un dossier netboot avec un fichier du noyau :
+`netboot/kernel` 
+
+
+| Tous les autres systèmes | Votre liste de répertoires doit contenir le fichier suivant : `<ontap_version>_image.tgz`*Remarque*: Vous n'avez pas besoin d'extraire le contenu du `<ontap_version>_image.tgz` fichier. 
+|===
++
+Vous utiliserez les informations dans les répertoires de link:stage_3_install_boot_node3.html["Étape 3"].
+
+

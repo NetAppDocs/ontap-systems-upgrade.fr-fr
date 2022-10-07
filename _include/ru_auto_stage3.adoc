@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+Lors de la phase 3, vous installez et démarrez le nœud 3, vérifiez que le cluster et les ports de gestion des nœuds du nœud 1 sont connectés sur le nœud 3 et vérifiez l'installation du nœud 3. Les LIF de données non-SAN et les agrégats non-racines appartenant au nœud 1 sont déplacés du nœud 2 vers le nœud 3.

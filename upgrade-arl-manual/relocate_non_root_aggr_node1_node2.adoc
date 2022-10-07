@@ -1,0 +1,139 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/relocate_non_root_aggr_node1_node2.html 
+keywords: node1, node2, aggregate, relocation, storage 
+summary: 'Déplacez les agrégats non-racines du nœud 1 vers le nœud 2 et vérifiez le transfert d"agrégats lors d"une mise à niveau manuelle du transfert d"agrégats depuis des contrôleurs exécutant ONTAP 9.7 ou une version antérieure.' 
+---
+= Transférer des agrégats non racines du nœud 1 vers le nœud 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avant de remplacer le nœud 1 par le nœud 3, vous devez déplacer les agrégats non racines du nœud 1 vers le nœud 2 en utilisant la commande Storage Aggregate Move, puis en vérifiant le transfert.
+
+.Étapes
+. [[step1]]déplacez les agrégats non-racines en effectuant les sous-étapes suivantes :
++
+.. Définissez le niveau de privilège sur avancé :
++
+`set -privilege advanced`
+
+.. Saisissez la commande suivante :
++
+`storage aggregate relocation start -node _node1_ -destination _node2_ -aggregate-list * -ndo-controller-upgrade true`
+
+.. Entrez-le lorsque vous y êtes invité `y`.
++
+La réinstallation se fera en arrière-plan. Le transfert d'un agrégat peut prendre quelques secondes ou quelques minutes, Cette durée inclut à la fois les parties en cas d'interruption du client et les parties en cas d'interruption de service. La commande ne permet pas de transférer des agrégats hors ligne ou restreints.
+
+.. Revenir au niveau admin en entrant la commande suivante :
++
+`set -privilege admin`
+
+
+
+. Vérifiez le statut de la relocalisation en entrant la commande suivante sur le noeud 1 :
++
+`storage aggregate relocation show -node _node1_`
+
++
+La sortie s'affiche `Done` pour un agrégat après son transfert.
+
++
+
+NOTE: Attendez que tous les agrégats non-racines appartenant au nœud 1 aient été transférés vers le nœud 2 avant de passer à l'étape suivante.
+
+. Effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| En cas de mutation... | Alors... 
+
+
+| De tous les agrégats réussi | Accédez à ,Étape 4. 
+
+
+| Tout agrégat est défaillant ou mis au veto  a| 
+.. Vérifiez les journaux EMS pour obtenir l'action corrective correspondante.
+.. Effectuez l'action corrective.
+.. Transfert d'agrégats défaillants ou vetotés :
+`storage aggregate relocation start -node _node1_ - destination _node2_ -aggregate-list * -ndo-controller-upgrade true`
+.. Entrez-le lorsque vous y êtes invité `y`.
+.. Revenir au niveau admin:
+`set -privilege admin`Si nécessaire, vous pouvez forcer le déplacement en utilisant l'une des méthodes suivantes :
++
+*** Remplacer les contrôles de veto :
+`storage aggregate relocation start -override-vetoes true -ndo-controller-upgrade`
+*** Remplacer les vérifications de destination :
+`storage aggregate relocation start -override-destination-checks true -ndo-controller-upgrade`
+
+
+
+
+Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers la gestion des _disques et des agrégats à l'aide de CLI_ content et des commandes _ONTAP 9 : Manual page Reference_ pour plus d'informations sur les commandes de transfert des agrégats de stockage.
+
+|===
+. [[man_replace_1_2_step4]] vérifier que tous les agrégats non racines sont en ligne et leur état sur le nœud 2 :
++
+`storage aggregate show -node _node2_ -state online -root false`
+
++
+L'exemple suivant montre que les agrégats non-root du noeud 2 sont en ligne :
+
++
+[listing]
+----
+cluster::> storage aggregate show -node node2 state online -root false
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+aggr_1
+           744.9GB 744.8GB      0% online       5 node2            raid_dp,
+                                                                   normal
+aggr_2     825.0GB 825.0GB      0% online       1 node2            raid_dp,
+                                                                   normal
+2 entries were displayed.
+----
++
+Si les agrégats ont été mis hors ligne ou sont devenus étrangers sur le nœud 2, les mettre en ligne en utilisant la commande suivante sur le nœud 2, une fois pour chaque agrégat :
+
++
+`storage aggregate online -aggregate _aggr_name_`
+
+. Vérifier que tous les volumes sont en ligne sur le nœud 2 en entrant la commande suivante sur le nœud 2 et en examinant la sortie correspondante :
++
+`volume show -node _node2_ -state offline`
+
++
+Si un volume est hors ligne sur le nœud 2, mettez-le en ligne à l'aide de la commande suivante sur le nœud 2, une fois pour chaque volume :
+
++
+`volume online -vserver _vserver-name_ -volume _volume-name_`
+
++
+Le `vserver-name` pour utiliser cette commande avec cette commande, figure dans la sortie du précédent `volume show` commande.
+
+. Entrez la commande suivante sur le nœud 2 :
++
+`storage failover show -node _node2_`
+
++
+Le résultat doit afficher le message suivant :
+
++
+[listing]
+----
+Node owns partner's aggregates as part of the nondisruptive controller upgrade procedure.
+----
+. Vérifiez que le nœud 1 ne possède pas d'agrégats non racines qui sont en ligne :
++
+`storage aggregate show -owner-name _node1_ -ha-policy sfo -state online`
+
++
+Le résultat ne doit pas afficher d'agrégats non racines en ligne, déjà transférés vers le nœud 2.
+
+

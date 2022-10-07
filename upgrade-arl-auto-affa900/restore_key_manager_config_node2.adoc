@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/restore_key_manager_config_node2.html 
+keywords: restore key-manager, configuration, node1, nve, arl, volume, encryption 
+summary: 'Si nécessaire, restaurez la configuration du gestionnaire de clés sur le nœud 2 lors d"une mise à niveau du système AFF A700 vers AFF A900.' 
+---
+= Restaurez la configuration du gestionnaire de clés sur le noeud 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si vous utilisez NetApp Volume Encryption (NVE) pour chiffrer les volumes sur le système que vous mettez à niveau, la configuration de chiffrement doit être synchronisée avec les nouveaux nœuds. Si vous ne restaurez pas le gestionnaire de clés, lorsque vous transférez les agrégats du nœud 2 vers le nœud mis à niveau 1 vers le nœud 2 mis à niveau à l'aide du transfert d'agrégats (ARL), les volumes chiffrés sont mis hors ligne.
+
+Synchronisez la configuration de cryptage avec les nouveaux nœuds en effectuant les étapes suivantes :
+
+.Étapes
+. Synchronisez la configuration de chiffrement pour Onboard Key Manager (OKM) en utilisant la commande suivante à l'invite du cluster :
++
+`security key-manager onboard sync`
+
+. Saisissez la phrase secrète pour l'ensemble du cluster pour le OKM.
+

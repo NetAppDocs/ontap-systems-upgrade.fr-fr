@@ -1,0 +1,126 @@
+---
+section: upgrade-arl-auto-app
+title: Utilisez les commandes « system contrôleur replace » pour mettre à niveau le
+  matériel du contrôleur exécutant ONTAP 9.8 ou une version ultérieure
+entries:
+- title: Présentation
+  url: "/upgrade-arl-auto-app/index.html"
+- title: Automatisation du processus de mise à niveau des contrôleurs
+  url: "/upgrade-arl-auto-app/automate_the_controller_upgrade_process.html"
+- title: Décider d'utiliser le contenu de transfert d'agrégats
+  url: "/upgrade-arl-auto-app/decide_to_use_the_aggregate_relocation_guide.html"
+- title: Outils et documentation requis
+  url: "/upgrade-arl-auto-app/required_tools_and_documentation.html"
+- title: Instructions de mise à niveau des contrôleurs avec l'ARL
+  url: "/upgrade-arl-auto-app/guidelines_for_upgrading_controllers_with_arl.html"
+- title: Vérifier l'état de santé de la configuration MetroCluster
+  url: "/upgrade-arl-auto-app/verify_health_of_metrocluster_config.html"
+- title: Recherchez les erreurs de configuration MetroCluster
+  url: "/upgrade-arl-auto-app/check_for_metrocluster_config_errors.html"
+- title: Vérification du basculement, de la résolution et du rétablissement
+  url: "/upgrade-arl-auto-app/verify_switchover_healing_switchback.html"
+- title: Présentation de la mise à niveau ARL
+  url: "/upgrade-arl-auto-app/overview_of_the_arl_upgrade.html"
+- title: Étape 1. Préparation de la mise à niveau
+  pdf-filename: Étape 1. Préparation à la mise à niveau (mise à niveau par « remplacement
+    du contrôleur système » dans ONTAP 9.8 ou version ultérieure)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-auto-app/stage_1_index.html"
+  - title: Préparer les nœuds pour une mise à niveau
+    url: "/upgrade-arl-auto-app/prepare_nodes_for_upgrade.html"
+  - title: Procurez-vous une adresse IP d'un serveur de gestion externe des clés pour
+      le cryptage du stockage
+    url: "/upgrade-arl-auto-app/get_ip_address_of_external_kms_for_storage_encryption.html"
+- title: Étape 2. Transférez et retirez le nœud 1
+  pdf-filename: Étape 2. Relocalisation et retrait du nœud 1 (mise à niveau par «
+    remplacement du contrôleur système » dans ONTAP 9.8 ou version ultérieure)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-auto-app/stage_2_index.html"
+  - title: Transférez les agrégats non racine et les LIF de données NAS qui appartiennent
+      au nœud1 vers le nœud2
+    url: "/upgrade-arl-auto-app/relocate_non_root_aggr_nas_data_lifs_node1_node2.html"
+  - title: Le transfert d'agrégats a échoué ou a été veto
+    url: "/upgrade-arl-auto-app/relocate_failed_vetoed_aggr.html"
+  - title: Retirer le nœud 1
+    url: "/upgrade-arl-auto-app/retire_node1.html"
+  - title: Préparation à la mise sur le réseau
+    url: "/upgrade-arl-auto-app/prepare_for_netboot.html"
+- title: Étape 3. Installez et démarrez le nœud 3
+  pdf-filename: Étape 3. Installer et démarrer le nœud 3 (mise à niveau par ‘remplacement
+    du contrôleur système’ dans ONTAP 9.8 ou version ultérieure)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-auto-app/stage_3_index.html"
+  - title: Installez et démarrez le nœud 3
+    url: "/upgrade-arl-auto-app/install_boot_node3.html"
+  - title: Définissez la configuration FC ou UTA/UTA2 sur le nœud 3
+    url: "/upgrade-arl-auto-app/set_fc_or_uta_uta2_config_on_node3.html"
+  - title: Vérifiez l'installation du noeud 3
+    url: "/upgrade-arl-auto-app/verify_node3_installation.html"
+  - title: Restaurez la configuration du gestionnaire de clés sur le noeud 3
+    url: "/upgrade-arl-auto-app/restore_key-manager_configuration_node3.html"
+  - title: Déplacement des agrégats non racines et des LIF de données NAS qui appartiennent
+      au nœud 1 du nœud 2 vers le nœud 3
+    url: "/upgrade-arl-auto-app/move_non-root_aggr_and_nas_data_lifs_node1_from_node2_to_node3.html"
+- title: Étape 4. Transférez et retirez le nœud 2
+  pdf-filename: Étape 4. Relocalisation et retrait du nœud 2 (mise à niveau par «
+    remplacement du contrôleur système » dans ONTAP 9.8 ou version ultérieure)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-auto-app/stage_4_index.html"
+  - title: Transférez des agrégats non racines et des LIF de données NAS du nœud 2
+      vers le nœud 3
+    url: "/upgrade-arl-auto-app/relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html"
+  - title: Retrait du nœud 2
+    url: "/upgrade-arl-auto-app/retire_node2.html"
+- title: Étape 5. Installez et démarrez Node4
+  pdf-filename: Étape 5. Installer et démarrer le node4 (mise à niveau par ‘remplacement
+    du contrôleur système’ dans ONTAP 9.8 ou version ultérieure)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-auto-app/stage_5_index.html"
+  - title: Installez et démarrez Node4
+    url: "/upgrade-arl-auto-app/install_boot_node4.html"
+  - title: Définissez la configuration FC ou UTA/UTA2 sur le nœud 4
+    url: "/upgrade-arl-auto-app/set_fc_or_uta_uta2_config_node4.html"
+  - title: Vérifiez l'installation du node4
+    url: "/upgrade-arl-auto-app/verify_node4_installation.html"
+  - title: Restaurez la configuration du gestionnaire de clés sur le nœud 4
+    url: "/upgrade-arl-auto-app/restore_key-manager_config_node4.html"
+  - title: Déplacement des agrégats non racines et des LIF de données NAS qui appartiennent
+      au nœud 2 du nœud 3 vers le nœud 4
+    url: "/upgrade-arl-auto-app/move_non_root_aggr_and_nas_data_lifs_node2_from_node3_to_node4.html"
+- title: Étape 6. Terminez la mise à niveau
+  pdf-filename: Étape 6. Terminer la mise à niveau (mise à niveau par « remplacement
+    du contrôleur système » dans ONTAP 9.8 ou version ultérieure)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-auto-app/stage_6_index.html"
+  - title: Vérifiez que les nouveaux contrôleurs sont correctement configurés
+    url: "/upgrade-arl-auto-app/ensure_new_controllers_are_set_up_correctly.html"
+  - title: Configurez Storage Encryption sur le nouveau module de contrôleur
+    url: "/upgrade-arl-auto-app/set_up_storage_encryption_new_module.html"
+  - title: Configurez NetApp Volume Encryption sur le nouveau module de contrôleur
+    url: "/upgrade-arl-auto-app/set_up_netapp_volume_encryption_new_module.html"
+  - title: Désaffectation de l'ancien système
+    url: "/upgrade-arl-auto-app/decommission_old_system.html"
+  - title: Reprendre les opérations SnapMirror
+    url: "/upgrade-arl-auto-app/resume_snapmirror_operations.html"
+- title: Résoudre les problèmes
+  pdf-filename: Dépanner (mise à niveau avec ‘remplacement du contrôleur système’
+    dans ONTAP 9.8 ou version ultérieure)
+  entries:
+  - title: Présentation
+    url: "/upgrade-arl-auto-app/troubleshoot_index.html"
+  - title: Défaillance du transfert d'agrégats
+    url: "/upgrade-arl-auto-app/aggregate_relocation_failures.html"
+  - title: Redémarre, fonctionne de façon incohérente ou fonctionne tout cycle d'alimentation
+    url: "/upgrade-arl-auto-app/reboots_panics_or_power_cycles.html"
+  - title: Problèmes pouvant survenir à plusieurs étapes de la procédure
+    url: "/upgrade-arl-auto-app/issues_in_multiple_stages_of_procedure.html"
+  - title: Échec de la migration de LIF
+    url: "/upgrade-arl-auto-app/lif_migration_failure.html"
+- title: Références
+  url: "/upgrade-arl-auto-app/other_references.html"

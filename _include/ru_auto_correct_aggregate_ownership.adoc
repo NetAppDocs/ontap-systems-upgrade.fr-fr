@@ -1,0 +1,44 @@
+= Corriger la propriété de l'agrégat en cas d'échec d'une vérification préalable du transfert d'agrégats
+:allow-uri-read: 
+
+
+
+
+== Corriger la propriété de l'agrégat en cas d'échec d'une vérification préalable du transfert d'agrégats
+
+En cas d'échec de la vérification de l'état de l'agrégat, vous devez renvoyer les agrégats qui appartiennent au nœud partenaire au nœud propriétaire du nœud de rattachement et relancer le processus de vérification préalable.
+
+.Étapes
+. Renvoyez les agrégats actuellement détenus par le nœud partenaire au nœud propriétaire de rattachement :
++
+`storage aggregate relocation start -node _source_node_ -destination _destination-node_ -aggregate-list *`
+
+. Vérifiez que ni le nœud1 ni le nœud2 ne possède toujours des agrégats pour lesquels il s'agit du propriétaire actuel (mais pas le propriétaire du domicile) :
++
+`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
+
++
+L'exemple suivant montre la sortie de la commande lorsqu'un nœud est à la fois le propriétaire actuel et le propriétaire du domicile des agrégats :
+
++
+[listing]
+----
+cluster::> storage aggregate show -nodes node1 -is-home true -fields owner-name,home-name,state
+aggregate   home-name  owner-name  state
+---------   ---------  ----------  ------
+aggr1       node1      node1       online
+aggr2       node1      node1       online
+aggr3       node1      node1       online
+aggr4       node1      node1       online
+
+4 entries were displayed.
+----
+
+
+
+
+=== Une fois que vous avez terminé
+
+Vous devez redémarrer la procédure de remplacement des contrôleurs :
+
+`system controller replace start -nodes _node_names_`

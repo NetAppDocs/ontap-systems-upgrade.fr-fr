@@ -1,0 +1,22 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/stage_4_index.html 
+keywords: stage 4, node2, retire, information 
+summary: 'Étape 4 : processus de mise à niveau manuelle d"ARL sur les contrôleurs exécutant ONTAP 9.8 ou une version ultérieure' 
+---
+= Étape 4. Enregistrez les informations sur le noeud 2 et retirez le noeud 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Lors de l'étape 4, vous enregistrez les informations sur le noeud 2, puis retirez le noeud 2.
+
+.Étapes
+. link:record_node2_information.html["Enregistrer les informations sur le noeud 2"]
+. link:retire_node2.html["Retrait du nœud 2"]
+

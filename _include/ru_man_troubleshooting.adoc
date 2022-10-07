@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+Cette procédure comprend des suggestions de dépannage.
+
+En cas de problème lors de la mise à niveau des contrôleurs, vous pouvez vous référer au link:troubleshoot_index.html["Résoudre les problèmes"] section à la fin de la procédure pour plus d'informations et des solutions possibles.
+
+Si vous ne trouvez pas de solution au problème que vous rencontrez, contactez le support technique.

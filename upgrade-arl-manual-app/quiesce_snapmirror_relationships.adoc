@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/quiesce_snapmirror_relationships.html 
+keywords: quiesce, snapmirror, relationship, netboot, destination cluster 
+summary: 'Avant de démarrer le système, arrêter toutes les relations SnapMirror au cours d"une mise à niveau manuelle d"ARL sur les contrôleurs exécutant ONTAP 9.8 ou version ultérieure.' 
+---
+= Suspendre les relations SnapMirror
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avant de démarrer le système, vous devez confirmer que toutes les relations SnapMirror sont suspendues. Lorsqu'une relation SnapMirror est mise en veille, elle reste suspension sur l'ensemble des redémarrages et basculements.
+
+.Étapes
+. Vérifier l'état de la relation SnapMirror sur le cluster destination :
++
+`snapmirror show`
+
++
+
+NOTE: Si l'état est `Transferring`, vous devez abandonner ces transferts :
+`snapmirror abort -destination-vserver _vserver name_`
+
++
+L'annulation échoue si la relation SnapMirror n'est pas dans le `Transferring` état.
+
+. Arrêter toutes les relations entre le cluster :
++
+`snapmirror quiesce -destination-vserver _vserver-name_`
+
+

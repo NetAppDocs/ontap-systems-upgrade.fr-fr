@@ -1,0 +1,253 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/map_ports_node2_node4.html 
+keywords: map, node2, node4, physical ports, cluster, network, connectivity 
+summary: 'Vérifiez que les ports physiques du nœud 2 sont correctement redirigés vers le nœud 4 lors d"une mise à niveau manuelle du transfert d"agrégats sur des contrôleurs exécutant ONTAP 9.7 ou une version antérieure.' 
+---
+= Mappage des ports du node2 au node4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous devez vous assurer que les ports physiques du node2 sont correctement associés aux ports physiques du node4, ce qui permet au node4 de communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
+
+Vous devez déjà disposer d'informations sur les ports sur les nouveaux nœuds. Pour accéder à ces informations, reportez-vous à la section link:other_references.html["Références"] Pour accéder au _Hardware Universe_. Vous utilisez ces informations ultérieurement dans cette section.
+
+La configuration logicielle du nœud4 doit correspondre à la connectivité physique du nœud4, et la connectivité IP doit être restaurée avant de poursuivre la mise à niveau.
+
+Les paramètres de port peuvent varier en fonction du modèle des nœuds. Vous devez rendre le port du nœud d'origine et la configuration LIF compatibles avec ce que vous prévoyez de configurer le nouveau nœud. En effet, le nouveau nœud relit la même configuration au démarrage, ce qui signifie que, lors du démarrage du nœud 4, Data ONTAP tentera d'héberger les LIF sur les mêmes ports que celui utilisé sur le nœud 2.
+
+Par conséquent, si les ports physiques du nœud 2 ne sont pas directement associés aux ports physiques du nœud 4, des modifications de configuration logicielle seront nécessaires pour restaurer le cluster, la gestion et la connectivité réseau après le démarrage. De plus, si les ports du cluster du nœud 2 ne sont pas directement mis en correspondance avec les ports du cluster du nœud 4, le nœud 4 peut ne pas réintégrer automatiquement le quorum au redémarrage, jusqu'à ce qu'une modification de configuration logicielle soit apportée pour héberger les LIFs de cluster sur les ports physiques appropriés.
+
+.Étapes
+. Enregistrez toutes les informations de câblage du nœud 2 pour le nœud 2, les ports, les domaines de diffusion et les IPspaces, dans ce tableau :
++
+[cols="7*"]
+|===
+| LIF | Ports du nœud 2 | Les IPspaces du nœud 2 | Domaines de diffusion node2 | Ports node4 | Les IPspaces du nœud 4 | Domaines de diffusion node4 
+
+
+| Cluster 1 |  |  |  |  |  |  
+
+
+| Cluster 2 |  |  |  |  |  |  
+
+
+| Cluster 3 |  |  |  |  |  |  
+
+
+| Cluster 4 |  |  |  |  |  |  
+
+
+| Cluster 5 |  |  |  |  |  |  
+
+
+| Cluster 6 |  |  |  |  |  |  
+
+
+| Gestion de nœuds |  |  |  |  |  |  
+
+
+| Gestion du cluster |  |  |  |  |  |  
+
+
+| Données 1 |  |  |  |  |  |  
+
+
+| Données 2 |  |  |  |  |  |  
+
+
+| Données 3 |  |  |  |  |  |  
+
+
+| Données 4 |  |  |  |  |  |  
+
+
+| SAN |  |  |  |  |  |  
+
+
+| Port intercluster |  |  |  |  |  |  
+|===
++
+Pour obtenir ces informations, reportez-vous à la section « enregistrement des informations sur le node2 ».
+
+. Enregistrez toutes les informations de câblage pour le nœud 4, les ports, les domaines de diffusion et les IPspaces, dans le tableau précédent, en suivant la même procédure dans le link:record_node2_information.html["Enregistrer les informations sur le noeud 2"] pour obtenir ces informations, reportez-vous à la section.
+. Procédez comme suit pour vérifier si la configuration est un cluster à deux nœuds sans commutateur :
++
+.. Définissez le niveau de privilège sur avancé :
+.. Vérifiez si la configuration est un cluster à 2 nœuds sans commutateur :
++
+[listing]
+----
+cluster::*> network options switchless-cluster show
+Enable Switchless Cluster: false/true
+----
++
+La valeur de cette commande doit correspondre à l'état physique du système.
+
+.. Retour au niveau de privilège d'administration :
++
+[listing]
+----
+cluster::*> set -privilege admin
+cluster::>
+----
+
+
+. Faites passer le nœud 4 au quorum en effectuant les étapes suivantes :
++
+.. Démarrez le nœud 4. Voir link:install_boot_node4.html["Installez et démarrez Node4"] pour démarrer le nœud si vous ne l'avez pas encore fait.
+.. Vérifier que les nouveaux ports du cluster sont dans le Cluster broadcast domain :
++
+`network port show -node _node_ -port _port_ -fields broadcast-domain`L'exemple suivant montre que le port « e0a » se trouve dans le domaine Cluster Domain sur le nœud4 :
+
++
+[listing]
+----
+cluster::> network port show -node node4 -port e0a -fields broadcast-domain
+
+node       port broadcast-domain
+---------- ---- ----------------
+node4      e1a  Cluster
+----
+.. Si les ports de cluster ne se trouvent pas dans Cluster broadcast-domain, ajoutez-les à l'aide de la commande suivante :
++
+`broadcast-domain add-ports -ipspace Cluster -broadcast-domain Cluster -ports _node:port_`
+
+.. Ajouter les ports adéquats au Cluster broadcast domain :
++
+`network port modify -node -port -ipspace Cluster -mtu 9000`
+
++
+Cet exemple ajoute le port Cluster « e1b » sur le nœud 4 :
+
++
+`network port modify -node node4 -port e1b -ipspace Cluster -mtu 9000`
+
++
+
+NOTE: Dans le cas d'une configuration MetroCluster, il peut ne pas être possible de modifier le broadcast domain d'un port, car il est associé à un port hébergeant la LIF d'un SVM de destination synchrone et voir les erreurs similaires, mais sans s'y limiter :
+
++
+[listing]
+----
+command failed: This operation is not permitted on a Vserver that is configured as the destination of a MetroCluster Vserver relationship.
+----
++
+Entrez la commande suivante du SVM source synchrone correspondant sur le site distant afin de réaffecter le LIF de destination synchrone à un port approprié :
+
++
+`metrocluster vserver resync -vserver _vserver_name_`
+
+.. Migrer les LIFs du cluster sur les nouveaux ports, une seule fois pour chaque LIF :
++
+`network interface migrate -vserver Cluster -lif _lif_name_ -source-node node4 - destination-node node4 -destination-port _port_name_`
+
+.. Modifier le home port des LIFs du cluster :
++
+`network interface modify -vserver Cluster -lif _lif_name_ –home-port _port_name_`
+
+.. Retirer les anciens ports du Cluster broadcast domain :
++
+`network port broadcast-domain remove-ports`
+
++
+Cette commande supprime le port « e0d » sur le nœud 4 :
+`network port broadcast-domain remove-ports -ipspace Cluster -broadcast-domain Cluster ‑ports node4:e0d`
+
+.. Vérifiez que le quorum du noeud 4 a été rerejoint :
++
+`cluster show -node node4 -fields health`
+
+
+
+. [[man_map_2_step5]]ajustez les domaines de diffusion qui hébergent les LIFs de votre cluster et les LIF node-management/cluster-management. Assurez-vous que chaque domaine de diffusion contient les ports appropriés. Un port ne peut pas être déplacé entre broadcast domain s'il héberge ou héberge un LIF. Il peut donc être nécessaire de migrer et de modifier les LIFs comme indiqué ci-dessous :
++
+.. Afficher le home port d'une LIF :
++
+`network interface show -fields home-node,home-port`
+
+.. Afficher le broadcast domain contenant ce port :
++
+`network port broadcast-domain show -ports _node_name:port_name_`
+
+.. Ajouter ou supprimer des ports des domaines de diffusion :
++
+`network port broadcast-domain add-ports`
+
++
+`network port broadcast-domain remove-ports`
+
+.. Modifier le port d'origine d'une LIF :
++
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ –home-port _port_name_`
+
+
+
+. Ajuster les domaines de broadcast intercluster et migrer les LIFs intercluster, le cas échéant, à l'aide des mêmes commandes indiquées sur la ,Étape 5.
+. Ajustez tout autre domaine de diffusion et migrez les LIF de données, le cas échéant, à l'aide des mêmes commandes que celles illustrées dans la ,Étape 5.
+. S'il y avait des ports sur le nœud2 qui n'existent plus sur le nœud4, procédez comme suit pour les supprimer :
++
+.. Accéder au niveau de privilège avancé sur l'un des nœuds :
++
+`set -privilege advanced`
+
+.. Pour supprimer les ports :
++
+`network port delete -node _node_name_ -port _port_name_`
+
+.. Revenir au niveau admin:
++
+`set -privilege admin`
+
+
+
+. Ajustez tous les failover groups LIF :
+`network interface modify -failover-group _failover_group_ -failover-policy _failover_policy_`
++
+La commande suivante définit la règle de basculement sur `broadcast-domain-wide` et utilise les ports du failover group `fg1` En tant que cibles de basculement pour LIF `data1` marche `node4`:
+
++
+`network interface modify -vserver node4 -lif data1 failover-policy broadcast-domain-wide -failover-group fg1`
+
++
+Pour plus d'informations, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Network Management_ ou les commandes _ONTAP 9 : Manual page Reference_, et allez à _Configuration des paramètres de basculement sur une LIF_.
+
+. Vérifiez les modifications sur le nœud 4 :
++
+`network port show -node node4`
+
+. Chaque LIF de cluster doit écouter sur le port 7700. Vérifiez que les LIFs de cluster écoutent sur le port 7700 :
++
+`::> network connections listening show -vserver Cluster`
+
++
+Le port 7700 en écoute sur les ports de cluster est le résultat attendu, comme illustré dans l'exemple suivant pour un cluster à deux nœuds :
+
++
+[listing]
+----
+Cluster::> network connections listening show -vserver Cluster
+Vserver Name     Interface Name:Local Port     Protocol/Service
+---------------- ----------------------------  -------------------
+Node: NodeA
+Cluster          NodeA_clus1:7700               TCP/ctlopcp
+Cluster          NodeA_clus2:7700               TCP/ctlopcp
+Node: NodeB
+Cluster          NodeB_clus1:7700               TCP/ctlopcp
+Cluster          NodeB_clus2:7700               TCP/ctlopcp
+4 entries were displayed.
+----
+. Si nécessaire, pour chaque LIF de cluster qui ne écoute pas sur le port 7700, mettre le statut administratif de la LIF sur `down` puis `up`:
++
+`::> net int modify -vserver Cluster -lif _cluster-lif_ -status-admin down; net int modify -vserver Cluster -lif _cluster-lif_ -status-admin up`
+
++
+Répétez l'étape 11 pour vérifier que la LIF de cluster écoute désormais sur le port 7700.
+
+

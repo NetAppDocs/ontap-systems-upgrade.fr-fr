@@ -1,0 +1,134 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/overview_of_the_arl_upgrade.html 
+keywords: overview, arl, upgrade, owner, controller, hardware 
+summary: 'Description de la procédure à suivre pour mettre à niveau les contrôleurs exécutant ONTAP 9.8 ou version ultérieure en utilisant `system controller replace` les commandes fonctionnent.' 
+---
+= Présentation de la mise à niveau ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avant de mettre à niveau les nœuds à l'aide de l'ARL, il est important de connaître son fonctionnement. Dans ce contenu, la procédure est divisée en plusieurs étapes.
+
+
+
+== Mettre à niveau la paire de nœuds
+
+Pour mettre à niveau la paire de nœuds, vous devez préparer les nœuds d'origine, puis effectuer une série d'étapes sur les nœuds d'origine et nouveaux. Vous pouvez ensuite désaffecter les nœuds d'origine.
+
+
+
+== Présentation de la séquence de mise à niveau ARL
+
+Durant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, un contrôleur à la fois, en tirant parti de la configuration de paires haute disponibilité pour transférer la propriété d'agrégats non racines. Tous les agrégats non racines doivent être reloisés afin d'atteindre leur destination finale, qui est le nœud mis à niveau correct.
+
+Chaque agrégat possède un propriétaire d'origine et un propriétaire actuel. Le propriétaire de la maison est le propriétaire réel de l'agrégat, et le propriétaire actuel est le propriétaire temporaire.
+
+Le tableau ci-après décrit les tâches générales que vous effectuez à chaque étape ainsi que l'état de propriété de l'agrégat à la fin de cette étape. Les étapes détaillées sont fournies ultérieurement dans la procédure :
+
+[cols="35,65"]
+|===
+| Étape | Étapes 
+
+
+| link:stage_1_index.html["Étape 1. Préparation de la mise à niveau"]  a| 
+. Exécutez des contrôles préalables pour vérifier que vous pouvez effectuer l'opération.
+. Propriété correcte de l'agrégat en cas d'échec d'un contrôle préalable.
+. Saisissez les clés de licence du cluster-base.
+. Obtenir une adresse IP pour le cryptage du stockage.
+. Gérez l'authentification à l'aide d'un serveur KMIP.
+. Gérez le chiffrement du stockage à l'aide d'un gestionnaire de clés intégré (OKM).
+. Suspendre les relations SnapMirror (facultatif).
+
+
+Propriété d'un agrégat à la fin de la phase 1 :
+
+* NODE1 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 1.
+* NODE2 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 2.
+
+
+
+
+| link:stage_2_index.html["Étape 2. Transférez et retirez le nœud 1"]  a| 
+. Transférer des agrégats non racines du nœud 1 vers le nœud 2.
+. Transférez les LIF de données non-SAN qui sont détenues par le nœud1 vers le nœud2.
+. Le transfert d'agrégats a échoué ou a été veto.
+. Retirer le nœud 1.
+. Préparation pour le démarrage réseau (facultatif).
+
+
+Propriété d'un agrégat à la fin de la phase 2 :
+
+* NODE2 est le propriétaire actuel des agrégats du nœud 1.
+* NODE2 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 2.
+
+
+
+
+| link:stage_3_index.html["Étape 3. Installez et démarrez le nœud 3"]  a| 
+. Installez et démarrez le nœud 3.
+. Définissez la configuration CNA FC ou (Converged network adapter).
+. Configurez les ports FC.
+. Vérifiez et configurez les ports UTA/UTA2.
+. Vérifiez que le noeud 3 a été correctement installé.
+. Restaurez la configuration réseau node3.
+. Déplacez les LIF de données non-SAN qui appartiennent au nœud 1 du nœud 2 vers le nœud 3.
+. Transférer des agrégats non racines détenus par le nœud 1 entre le nœud 2 et le nœud 3
+
+
+Propriété globale à la fin de la phase 3 :
+
+* NODE3 est le propriétaire et propriétaire actuel des agrégats du nœud 1.
+* NODE2 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 2.
+
+
+
+
+| link:stage_4_index.html["Étape 4. Transférez et retirez le nœud 2"]  a| 
+. Transférer des agrégats non racines du nœud 2 vers le nœud 3
+. Transférez les LIF de données non-SAN qui appartiennent au nœud2 vers le nœud3.
+. Retrait du nœud 2.
+
+
+Propriété globale à la fin de la phase 4 :
+
+* NODE3 est le propriétaire et propriétaire actuel des agrégats qui appartenaient initialement au noeud 1.
+* Node4 est le propriétaire accueil des agrégats du nœud 2.
+* NODE3 est le propriétaire actuel des agrégats du nœud 2.
+
+
+
+
+| link:stage_5_index.html["Étape 5. Installez et démarrez Node4"]  a| 
+. Installez et démarrez Node4.
+. Définissez la configuration FC ou CNA sur le nœud 4.
+. Configurez les ports FC.
+. Vérifiez et configurez les ports UTA/UTA2.
+. Vérifiez que le nœud4 a bien été installé.
+. Restaurez la configuration réseau node4
+. Transférez les LIF de données non-SAN qui appartiennent au nœud 2 du nœud 3 vers le nœud 4, et vérifiez les LIF SAN sur le nœud 4.
+
+
+Propriété globale à la fin de la phase 5 :
+
+* NODE3 est le propriétaire et propriétaire actuel des agrégats qui appartenaient initialement au noeud 1.
+* NODE4 est le propriétaire et propriétaire actuel des agrégats qui appartenaient initialement au nœud2.
+
+
+
+
+| link:stage_6_index.html["Étape 6. Terminez la mise à niveau"]  a| 
+. Vérifiez que le système est correctement configuré.
+. Configurez Storage Encryption sur le nouveau module de contrôleur.
+. Configurez NetApp Volume Encryption sur le nouveau module de contrôleur.
+. Désaffectation de l'ancien système.
+. Reprenez les opérations NetApp SnapMirror, le cas échéant.
+
+
+|===

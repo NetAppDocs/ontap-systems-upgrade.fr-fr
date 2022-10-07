@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/install_a900_nvs_and_controller_on_node2.html 
+keywords: install, NVRAM, aff, a900, node2, controller, module 
+summary: 'Instructions d"installation pour un module NVRAM AFF A900 et un module de contrôleur lors de la procédure de mise à niveau du contrôleur ARL.' 
+---
+= Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur le nœud 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous devez installer les modules NVRAM et contrôleur AFF A900 ou FAS9500 que vous avez reçus pour la mise à niveau sur le nœud 2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.
+
+Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement.
+
+
+
+== Installez le module NVRAM AFF A900 ou FAS9500
+
+Utilisez la procédure suivante pour installer le module NVRAM AFF A900 ou FAS9500 dans le logement 6 du node2.
+
+.Étapes
+. Alignez le module NVRAM sur les bords de l'ouverture du châssis dans le logement 6.
+. Faites glisser doucement le module NVRAM dans le slot jusqu'à ce que le loquet de came d'E/S numéroté et numéroté commence à s'engager avec la broche de came d'E/S, puis poussez le loquet de came d'E/S jusqu'à ce que le module NVRAM soit en place.
+
+
+
+
+== Installez le module de contrôleur AFF A900 ou FAS9500 sur le nœud 2
+
+Utilisez la procédure suivante pour installer le module de contrôleur AFF A900 ou FAS9500 sur le noeud 2.
+
+.Étapes
+. Alignez l'extrémité du module de contrôleur avec la baie B du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.
++
+
+TIP: L'étiquette de la baie se trouve sur le châssis, directement au-dessus du module de contrôleur.
+
++
+
+NOTE: N'insérez pas complètement le module de contrôleur dans le châssis tant que vous n'y êtes pas invité.
+
+. Reliez les ports de gestion et de console au module de contrôleur node2.
++
+
+NOTE: Comme le châssis est déjà sous tension, le nœud 2 commence à démarrer dès qu'il est entièrement installé. Pour éviter le démarrage du nœud 2, il est recommandé de connecter les câbles de console et de gestion au module de contrôleur node2 avant d'insérer complètement le module de contrôleur dans le slot.
+
+. Poussez fermement le module de contrôleur dans le châssis jusqu'à ce qu'il rencontre le fond de panier central et qu'il soit bien en place.
++
+Le loquet de verrouillage s'élève lorsque le module de contrôleur est bien en place.
+
++
+
+WARNING: Pour éviter d'endommager les connecteurs, n'utilisez pas de force excessive lorsque vous faites glisser le module de contrôleur dans le châssis.
+
+. Connectez la console série dès que le module est assis et soyez prêt à interrompre AUTOBOOT du nœud 1.
+. Après l'interruption DE L'AUTOBOOT, le nœud 2 s'arrête à l'invite DU CHARGEUR. Si vous n'interrompez pas AUTOBOOT à temps et que le nœud2 démarre, attendez l'invite et appuyez sur *Ctrl-C* pour accéder au menu de démarrage. Une fois le nœud arrêté dans le menu de démarrage, utilisez l'option `8` Pour redémarrer le nœud et interrompre L'AUTOBOOT pendant le redémarrage.
+

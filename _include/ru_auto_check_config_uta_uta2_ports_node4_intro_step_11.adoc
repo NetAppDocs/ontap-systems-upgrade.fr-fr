@@ -1,0 +1,155 @@
+= Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4
+:allow-uri-read: 
+
+
+
+
+== Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4
+
+Si le NODE4 dispose de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2A, vous devez vérifier la configuration des ports et les configurer, en fonction de votre mode d'utilisation du système mis à niveau.
+
+Vous devez disposer des modules SFP+ appropriés pour les ports UTA/UTA2.
+
+Les ports UTA/UTA2 peuvent être configurés en mode FC natif ou UTA/UTA2A. Le mode FC prend en charge les initiateurs FC et la cible FC ; le mode UTA/UTA2 permet d'utiliser simultanément le trafic FCoE et les cartes réseau sur la même interface SFP+ 10 GbE et prend en charge la cible FC.
+
+
+NOTE: Les documents marketing NetApp peuvent utiliser le terme UTA2 pour faire référence aux adaptateurs et ports CNA. Cependant, l'interface de ligne de commandes utilise le terme CNA.
+
+Les ports UTA/UTA2 peuvent être situés sur un adaptateur ou sur le contrôleur dans les configurations suivantes :
+
+* Les cartes UTA/UTA2 commandées en même temps que le contrôleur sont configurées avant l'expédition pour obtenir la personnalité demandée.
+* Les cartes UTA/UTA2 commandées séparément du contrôleur sont fournies avec la personnalité de la cible FC par défaut.
+* Les ports UTA/UTA2 intégrés dans les nouveaux contrôleurs sont configurés (avant l'expédition) pour utiliser le profil demandé.
+
+
+Toutefois, vous devez vérifier la configuration des ports UTA/UTA2 sur le nœud 4 et la modifier si nécessaire.
+
+
+WARNING: *Attention* : si votre système dispose de disques de stockage, entrez les commandes de cette section à l'invite du cluster, sauf si vous êtes invité à passer en mode Maintenance. Si vous utilisez un système FC MetroCluster, un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez être en mode de maintenance pour configurer les ports UTA/UTA2.
+
+.Étapes
+. Vérifiez la configuration actuelle des ports à l'aide de l'une des commandes suivantes sur le nœud4 :
++
+[cols="30,70"]
+|===
+| Si le système... | Puis… 
+
+
+| Possède des disques de stockage | `system node hardware unified-connect show` 
+
+
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | `ucadmin show` 
+|===
++
+Un résultat similaire à l'exemple suivant s'affiche :
+
++
+....
+*> ucadmin show
+                Current  Current    Pending   Pending   Admin
+Node   Adapter  Mode     Type       Mode      Type      Status
+----   -------  ---      ---------  -------   --------  -------
+f-a    0e       fc       initiator  -          -        online
+f-a    0f       fc       initiator  -          -        online
+f-a    0g       cna      target     -          -        online
+f-a    0h       cna      target     -          -        online
+f-a    0e       fc       initiator  -          -        online
+f-a    0f       fc       initiator  -          -        online
+f-a    0g       cna      target     -          -        online
+f-a    0h       cna      target     -          -        online
+*>
+....
+. Si le module SFP+ actuel ne correspond pas à l'utilisation souhaitée, remplacez-le par le module SFP+ approprié.
++
+Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ approprié.
+
+. Examiner la sortie du `ucadmin show` Déterminez si les ports UTA/UTA2 ont le profil souhaité.
+. Effectuer l'une des actions suivantes :
++
+[cols="30,70"]
+|===
+| Si les ports CNA... | Puis… 
+
+
+| N'avez pas la personnalité que vous voulez | Accédez à ,Étape 5. 
+
+
+| Avoir la personnalité que vous voulez | Passez aux étapes 5 à 12 et passez à ,Étape 13. 
+|===
+. [[auto_check_4_step5]]effectuez l'une des opérations suivantes :
++
+[cols="30,70"]
+|===
+| Si vous configurez... | Puis… 
+
+
+| Ports sur carte UTA/UTA2 | Accédez à ,Étape 7 
+
+
+| Ports UTA/UTA2 intégrés | Ignorez l'étape 7 et passez à ,Étape 8. 
+|===
+. Si l'adaptateur est en mode initiateur et si le port UTA/UTA2 est en ligne, mettez le port UTA/UTA2 hors ligne :
++
+`storage disable adapter _adapter_name_`
+
++
+Les adaptateurs en mode cible sont automatiquement hors ligne en mode maintenance.
+
+. [[auto_check_4_step7]]si la configuration actuelle ne correspond pas à l'utilisation souhaitée, modifiez la configuration comme nécessaire :
++
+`ucadmin modify -m fc|cna -t initiator|target _adapter_name_`
+
++
+** `-m` Est le mode Personality, FC ou UTA 10 GbE.
+** `-t` Est de type FC4, `target` ou `initiator`.
++
+
+NOTE: Vous devez utiliser un initiateur FC pour les lecteurs de bande, les systèmes de virtualisation FlexArray et les configurations MetroCluster. Vous devez utiliser la cible FC pour les clients SAN.
+
+
+
+. [[auto_check_4_step8]]Vérifiez les paramètres à l'aide de la commande suivante et en examinant la sortie :
++
+`ucadmin show`
+
+. Vérifiez les paramètres :
++
+[cols="40,60"]
+|===
+| Si le système... | Puis… 
+
+
+| Possède des disques de stockage | `ucadmin show` 
+
+
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | `ucadmin show` 
+|===
++
+Le résultat des exemples suivants montre que le type FC4 d'adaptateur « 1b » passe à `initiator` et que le mode des adaptateurs « 2a » et « 2b » passe à `cna`:
+
++
+....
+*> ucadmin show
+Node  Adapter  Current Mode  Current Type  Pending Mode  Pending Type  Admin Status
+----  -------  ------------  ------------  ------------  ------------  ------------
+f-a   1a       fc             initiator    -             -             online
+f-a   1b       fc             target       -             initiator     online
+f-a   2a       fc             target       cna           -             online
+f-a   2b       fc             target       cna           -             online
+4 entries were displayed.
+*>
+....
+. Placez n'importe quel port cible en ligne en entrant l'une des commandes suivantes, une fois pour chaque port :
++
+[cols="30,70"]
+|===
+| Si le système... | Puis… 
+
+
+| Possède des disques de stockage | `network fcp adapter modify -node _node_name_ -adapter _adapter_name_ -state up` 
+
+
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | `fcp config _adapter_name_ up` 
+|===
+. Reliez le port.
+

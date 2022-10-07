@@ -1,0 +1,18 @@
+---
+permalink: upgrade/upgrade-complete-ontap-9-8.html 
+sidebar: sidebar 
+keywords: complete, upgrade, ontap, complete the upgrade in ontap 9.8 
+summary: Procédez comme suit pour terminer la mise à niveau dans ONTAP 9.8 ou version ultérieure. 
+---
+= Présentation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Suivez ces étapes pour terminer la mise à niveau dans ONTAP 9.8 ou version ultérieure :
+
+* link:upgrade-map-network-ports-ontap-9-8.html["Mappe les ports réseau avec ONTAP 9.8 ou version ultérieure"]
+* link:upgrade-final-upgrade-steps-in-ontap-9-8.html["Effectuez les dernières étapes de mise à niveau dans ONTAP 9.8 ou version ultérieure"]
+

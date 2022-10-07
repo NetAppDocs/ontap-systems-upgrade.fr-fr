@@ -1,0 +1,31 @@
+---
+permalink: upgrade/upgrade-recable-system.html 
+sidebar: sidebar 
+keywords: run, diagnostic, recable, controller, module, storage, network, connection, recable the system 
+summary: 'Après l"exécution des diagnostics, vous devez recâter les connexions réseau et stockage du module de contrôleur.' 
+---
+= Désactivation du système
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Après l'exécution des diagnostics, vous devez recâter les connexions réseau et stockage du module de contrôleur.
+
+. Recâblage du système.
+. Vérifiez que le câblage est correct à l'aide de Config Advisor.
++
+.. Téléchargement et installation de Config Advisor sur le site de support NetApp.
++
+http://mysupport.netapp.com/["mysupport.netapp.com"]
+
+.. Entrez les informations du système cible, puis cliquez sur *collecter les données*.
+.. Cliquez sur l'onglet *Cabling*, puis examinez la sortie.
++
+Vérifiez que tous les tiroirs disques sont affichés et que tous les disques apparaissent dans le résultat, en corrigeant les problèmes de câblage que vous rencontrez.
+
+.. Pour vérifier les autres câbles, cliquez sur l'onglet approprié, puis examinez les résultats de Config Advisor.
+
+
+

@@ -1,0 +1,29 @@
+---
+permalink: upgrade/upgrade-by-moving-storage-parent.html 
+sidebar: sidebar 
+keywords: upgrade 
+summary: 'Si vous effectuez une mise à niveau en déplaçant le stockage, vous préparez les nœuds d"origine et configurez les nouveaux nœuds. Certains modèles de plateforme prennent en charge le transfert du stockage interne vers les nouveaux nœuds. Vous réaffectez les disques et restaurez la configuration du volume racine aux nouveaux nœuds et configurez les ports réseau. La mise à niveau via le déplacement du stockage est une procédure perturbatrice.' 
+---
+= Flux de travail
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous mettez à niveau le matériel du contrôleur en déplaçant le stockage, vous préparez les nœuds d'origine et configurez les nouveaux nœuds. Certains modèles de plateforme prennent en charge le transfert du stockage interne vers les nouveaux nœuds. Vous réaffectez les disques et restaurez la configuration du volume racine aux nouveaux nœuds et configurez les ports réseau. La mise à niveau via le déplacement du stockage est une procédure perturbatrice.
+
+image::../upgrade/media/workflow_for_upgrading_by_moving_storage.png[Flux de production de mise à niveau du matériel du contrôleur en déplaçant le stockage]
+
+.Étapes
+. xref:upgrade-prepare-when-moving-storage.adoc[Préparation à la mise à niveau lors du déplacement du stockage]
+. xref:upgrade-shutdown-remove-original-nodes.adoc[Arrêtez les nœuds d'origine]
+. xref:upgrade-remove-disk-ownership-new-nodes.adoc[Supprime la propriété des disques connectés aux nouveaux nœuds]
+. xref:upgrade-reset-default-configuration-node3-and-node4.adoc[Réinitialise la configuration par défaut sur les nouveaux nœuds]
+. xref:upgrade-install-new-nodes.adoc[Installez les nouveaux nœuds]
+. xref:upgrade-set-up-new-nodes.adoc[Configurez les nouveaux nœuds]
+. xref:upgrade-optional-move-internal-storage.adoc[Facultatif : déplacez le stockage interne ou convertissez le système en tiroir disque]
+. xref:upgrade-attach-shelves-reassign-disks.adoc[Ajout de tiroirs de stockage et réaffectation de la propriété des disques]
+. xref:upgrade-restore-root-volume-config.adoc[Restaurez la configuration du volume racine]
+. xref:upgrade-complete.adoc[Terminez la mise à niveau]
+

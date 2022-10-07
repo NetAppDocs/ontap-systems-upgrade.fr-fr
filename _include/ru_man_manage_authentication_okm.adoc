@@ -1,0 +1,20 @@
+= 
+:allow-uri-read: 
+
+
+Vous pouvez utiliser un gestionnaire de clés intégré pour gérer les clés d'authentification. Si vous prévoyez d'utiliser un gestionnaire de clés intégré (OKM), vous devez enregistrer la phrase de passe et les supports de sauvegarde avant de commencer la mise à niveau.
+
+.Étapes
+. Vérifiez que les serveurs de gestion des clés sont disponibles pour tous les nœuds du cluster :
++
+`security key-manager key show`
+
+. ReKey tous les disques avec autocryptage à l'aide de la nouvelle clé d'authentification :
++
+`storage encryption disk modify -disk * [-data-key-id nonMSID AK>]`
+
+. Si vous utilisez la norme FIPS (Federal information Processing Standard), ressaisissez tous les disques auto-cryptés à l'aide de la nouvelle clé d'authentification :
++
+`storage encryption disk* modify -disk * [-fips-key-id nonMSID AK]`
+
+

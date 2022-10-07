@@ -1,0 +1,16 @@
+= 
+:allow-uri-read: 
+
+
+Vous pouvez reprendre les transferts SnapMirror suspendus avant de mettre à niveau et reprendre les relations SnapMirror. Les mises à jour sont planifiées une fois la mise à niveau terminée.
+
+.Étapes
+. Vérifier le statut SnapMirror sur la destination :
++
+`snapmirror show`
+
+. Reprendre la relation SnapMirror :
++
+`snapmirror resume -destination–vserver _vserver_name_`
+
+

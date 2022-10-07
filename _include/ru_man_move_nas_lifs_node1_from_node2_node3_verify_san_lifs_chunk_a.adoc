@@ -1,0 +1,123 @@
+= 
+:allow-uri-read: 
+
+
+Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Vous vérifierez que les LIFs sont saines et situées sur les ports appropriés après avoir mis le nœud3 en ligne.
+
+.Étapes
+. [[step1]]Répertorier toutes les LIFs de données NAS qui ne possédaient pas le noeud 2 en entrant la commande suivante sur l'un ou l'autre des nœuds et en capturant la sortie :
++
+`network interface show -role data -curr-node _node2_ -is-home false -home-node _node3_`
+
+. [[Worksheet_step2]]si le cluster est configuré pour les LIFs SAN, enregistrez les LIFs SAN `adapter` et `switch-port` informations de configuration dans cette link:worksheet_information_before_moving_san_lifs_node3.html["feuille de calcul"] pour une utilisation ultérieure dans la procédure.
++
+.. Lister les LIFs SAN sur le nœud2 et examiner le résultat :
++
+`network interface show -data-protocol fc*`
+
++
+Le système renvoie une sortie similaire à l'exemple suivant :
+
++
+[listing]
+----
+cluster1::> net int show -data-protocol fc*
+  (network interface show)
+             Logical     Status     Network            Current        Current Is
+Vserver      Interface   Admin/Oper Address/Mask       Node           Port    Home
+-----------  ----------  ---------- ------------------ -------------  ------- ----
+svm2_cluster1
+             lif_svm2_cluster1_340
+                         up/up      20:02:00:50:56:b0:39:99
+                                                       cluster1-01    1b      true
+             lif_svm2_cluster1_398
+                         up/up      20:03:00:50:56:b0:39:99
+                                                       cluster1-02    1a      true
+             lif_svm2_cluster1_691
+                         up/up      20:01:00:50:56:b0:39:99
+                                                       cluster1-01    1a      true
+             lif_svm2_cluster1_925
+                         up/up      20:04:00:50:56:b0:39:99
+                                                       cluster1-02    1b      true
+4 entries were displayed.
+----
+.. Dressez la liste des configurations existantes et examinez les résultats :
++
+`fcp adapter show -fields switch-port,fc-wwpn`
+
++
+Le système renvoie une sortie similaire à l'exemple suivant :
+
++
+[listing]
+----
+cluster1::> fcp adapter show -fields switch-port,fc-wwpn
+  (network fcp adapter show)
+node         adapter  fc-wwpn                  switch-port
+-----------  -------  -----------------------  -------------
+cluster1-01  0a       50:0a:09:82:9c:13:38:00  ACME Switch:0
+cluster1-01  0b       50:0a:09:82:9c:13:38:01  ACME Switch:1
+cluster1-01  0c       50:0a:09:82:9c:13:38:02  ACME Switch:2
+cluster1-01  0d       50:0a:09:82:9c:13:38:03  ACME Switch:3
+cluster1-01  0e       50:0a:09:82:9c:13:38:04  ACME Switch:4
+cluster1-01  0f       50:0a:09:82:9c:13:38:05  ACME Switch:5
+cluster1-01  1a       50:0a:09:82:9c:13:38:06  ACME Switch:6
+cluster1-01  1b       50:0a:09:82:9c:13:38:07  ACME Switch:7
+cluster1-02  0a       50:0a:09:82:9c:6c:36:00  ACME Switch:0
+cluster1-02  0b       50:0a:09:82:9c:6c:36:01  ACME Switch:1
+cluster1-02  0c       50:0a:09:82:9c:6c:36:02  ACME Switch:2
+cluster1-02  0d       50:0a:09:82:9c:6c:36:03  ACME Switch:3
+cluster1-02  0e       50:0a:09:82:9c:6c:36:04  ACME Switch:4
+cluster1-02  0f       50:0a:09:82:9c:6c:36:05  ACME Switch:5
+cluster1-02  1a       50:0a:09:82:9c:6c:36:06  ACME Switch:6
+cluster1-02  1b       50:0a:09:82:9c:6c:36:07  ACME Switch:7
+16 entries were displayed
+----
+
+
+. [[step3]]effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si le noeud 1... | Alors... 
+
+
+| Des groupes d'interface ou des VLAN ont été configurés | Accédez à ,Étape 4. 
+
+
+| Aucun groupe d'interfaces ou VLAN n'a été configuré | Ignorez l'étape 4 et passez à ,Étape 5. 
+|===
+. [[man_lif_revérification_3_step3]]effectuez les sous-étapes suivantes pour migrer toutes les LIF de données NAS hébergées sur des groupes d'interfaces et des VLAN situés à l'origine sur le nœud 1, du nœud 2 vers le nœud 3 :
++
+.. [[man_lif_verify_3_sub-pa]]migrer toutes les LIF de données hébergées sur le nœud 2 qui appartenaient précédemment au nœud 1 sur un groupe d'interface vers un port du nœud 3 capable d'héberger les LIFs sur le même réseau en entrant la commande suivante, une fois pour chaque LIF :
++
+`network interface migrate -vserver _vserver_name_ -lif _LIF_name_ -destination-node _node3_ –destination-port _netport|ifgrp_`
+
+.. Modifier le home port et le home node de la LIF dans ,Sous-étape a Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :
++
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _node3_ -home-port _netport|ifgrp_`
+
+.. [[man_lif_verify_3_sub-epc]]migrer n'importe quelle LIF de données hébergée sur le nœud 2 qui appartenait auparavant à celui-ci sur un port VLAN vers un port sur le nœud 3 capable d'héberger les LIFs sur le même réseau en entrant la commande suivante, une fois pour chaque LIF :
++
+`network interface migrate -vserver _vserver_name_ -lif _LIF_name_ -destination-node _node3_ –destination-port _netport|ifgrp_`
+
+.. Modifier le home port et le home node des LIFs dans ,Sous-étape c Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :
++
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _node3_ -home-port _netport|ifgrp_`
+
+
+
+. [[man_lif_verify_3_step4]]effectuer l'une des actions suivantes :
++
+[cols="25,75"]
+|===
+| Si le cluster est configuré pour... | Alors... 
+
+
+| NAS | Terminé ,Étape 6 et ,Étape 7, Ignorez l'étape 8 et terminez ,Étape 9 à ,Étape 12. 
+
+
+| SAN | Désactiver toutes les LIFs SAN du nœud pour les désactiver pour la mise à niveau :
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _node_to_upgrade_ -home-port _netport|ifgrp_ -status-admin down` 
+|===
+

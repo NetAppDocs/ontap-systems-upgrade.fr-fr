@@ -1,0 +1,7 @@
+= 
+:allow-uri-read: 
+
+
+Les nœuds d'origine ou les nouveaux nœuds peuvent être activés pour Storage Encryption. Dans ce cas, vous devez effectuer d'autres étapes de cette procédure pour vérifier que Storage Encryption est correctement configuré.
+
+Si vous souhaitez utiliser le chiffrement du stockage, tous les disques associés aux nœuds doivent être dotés de disques à autocryptage.

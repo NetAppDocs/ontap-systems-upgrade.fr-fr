@@ -1,0 +1,39 @@
+---
+permalink: upgrade/upgrade-install-and-join-new-nodes-move-vols.html 
+sidebar: sidebar 
+keywords: install, node, join, cluster, volume, original, node, install the new nodes and joining them to the cluster 
+summary: 'Vous devez installer les nouveaux nœuds et les joindre au cluster pour pouvoir déplacer des volumes des nœuds d"origine.' 
+---
+= Installez les nouveaux nœuds et joignez-les au cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez installer les nouveaux nœuds et les joindre au cluster pour pouvoir déplacer des volumes des nœuds d'origine.
+
+Lorsque vous mettez à niveau le matériel des contrôleurs en déplaçant les volumes, les nœuds d'origine et les nouveaux nœuds doivent se trouver dans le même cluster.
+
+.Étape
+. Installez les nouveaux nœuds et connectez-les au cluster :
++
+[cols="1,2"]
+|===
+| Si le cluster est en cours d'exécution... | Suivez les instructions de la section... 
+
+
+ a| 
+ONTAP 9.0 ou version ultérieure
+ a| 
+https://docs.netapp.com/us-en/ontap-sm-classic/expansion/index.html["Administration de l'extension de cluster"^]
+
+
+
+ a| 
+Versions antérieures à ONTAP 9.0
+ a| 
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=30092["Recherchez le Guide d'extension de cluster Express pour votre version de Data ONTAP 8"^]
+
+|===
+

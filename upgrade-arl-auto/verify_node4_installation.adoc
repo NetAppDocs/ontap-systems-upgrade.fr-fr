@@ -1,0 +1,90 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/verify_node4_installation.html 
+keywords: verify, node4, installation, MetroCluster, restore, key, manager 
+summary: 'Vérifiez que le nœud4 rejoint le quorum, recréez les VLAN du nœud 1, les groupes d"interface et les domaines de diffusion, puis restaurez la configuration du gestionnaire de clés lors de la mise à niveau des contrôleurs exécutant ONTAP 9.5 vers 9.7 à l"aide de `system controller replace` commandes.' 
+---
+= Vérifiez l'installation du node4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Une fois que vous avez installé et installé le nœud 4, vous devez vérifier qu'il est installé correctement, qu'il fait partie du cluster et qu'il peut communiquer avec le nœud 3.
+
+À ce stade de la procédure, l'opération aura été interrompue au fur et à mesure que le noeud 4 rejoint le quorum.
+
+.Étapes
+. Vérifiez que le noeud 4 a rejoint le quorum :
++
+`cluster show -node node4 -fields health`
+
+. Vérifiez que le nœud 4 fait partie du même cluster que le nœud 3 et qu'il est sain en saisissant la commande suivante :
++
+`cluster show`
+
+. Vérifier l'état de l'opération et vérifier que les informations de configuration du noeud 4 sont identiques à celles du noeud 2 :
++
+`system controller replace show-details`
+
++
+Si la configuration est différente pour le nœud 4, une interruption du système peut se produire ultérieurement au cours de la procédure.
+
+. Vérifier que le contrôleur remplacé est configuré correctement pour la configuration MetroCluster et non en mode commutation.
++
+
+CAUTION: *Attention:* à ce stade, la configuration de MetroCluster ne sera pas dans un état normal et vous aurez peut-être des erreurs à résoudre. Voir link:verify_health_of_metrocluster_config.html["Vérifier l'état de santé de la configuration MetroCluster"].
+
+
+
+
+
+== Recréez des VLAN, des groupes d'interface et des domaines de diffusion sur le node4
+
+Une fois que vous avez confirmé que le nœud4 est quorum et que vous pouvez communiquer avec le nœud3, vous devez recréer les VLAN, les groupes d'interface et les domaines de diffusion du nœud2 sur le nœud4. Vous devez également ajouter les ports node3 aux domaines de diffusion nouvellement créés.
+
+Pour plus d'informations sur la création et la recrércréation de VLAN, de groupes d'interfaces et de domaines de diffusion, accédez à link:other_references.html["Références"] Et lien vers _Network Management_.
+
+.Étapes
+. Recréez les réseaux locaux virtuels sur le nœud 4 à l'aide des informations du nœud 2 enregistrées dans le système link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Transférez des agrégats non racines et des LIF de données NAS du nœud 2 vers le nœud 3"] section :
++
+`network port vlan create -node _node4_ -vlan _vlan-names_`
+
+. Recréez les groupes d'interface sur le node4 à l'aide des informations du node2 enregistrées dans le link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Transférez des agrégats non racines et des LIF de données NAS du nœud 2 vers le nœud 3"] section :
++
+`network port ifgrp create -node _node4_ -ifgrp _port_ifgrp_names_-distr-func`
+
+. Recréez les domaines de diffusion sur le node4 à l'aide des informations node2 enregistrées dans le link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Transférez des agrégats non racines et des LIF de données NAS du nœud 2 vers le nœud 3"] section :
++
+`network port broadcast-domain create -ipspace Default -broadcast-domain _broadcast_domain_names_ -mtu _mtu_size_ -ports _node_name:port_name,node_name:port_name_`
+
+. Ajoutez les ports node4 aux domaines de diffusion nouvellement créés :
++
+`network port broadcast-domain add-ports -broadcast-domain _broadcast_domain_names_ -ports _node_name:port_name,node_name:port_name_`
+
+
+
+
+
+== Restaurez la configuration du gestionnaire de clés sur le nœud 4
+
+Si vous utilisez NetApp Volume Encryption (NVE) pour chiffrer les volumes sur le système que vous mettez à niveau, la configuration de chiffrement doit être synchronisée avec les nouveaux nœuds. Si vous ne restaurez pas le gestionnaire de clés, lorsque vous transférez les agrégats du nœud 2 vers le nœud 4 à l'aide du transfert d'agrégats (ARL), les volumes chiffrés sont mis hors ligne.
+
+.Étapes
+. Pour synchroniser la configuration du chiffrement pour Onboard Key Manager, exécutez la commande suivante à l'invite du cluster :
++
+|===
+| Pour cette version de ONTAP… | Utilisez cette commande... 
+
+
+| ONTAP 9.6 ou 9.7 | `security key-manager onboard sync` 
+
+
+| ONTAP 9.5 | `security key-manager setup -node _node_name_` 
+|===
+. Saisissez la phrase secrète pour l'ensemble du cluster pour le gestionnaire de clés intégré.
+

@@ -1,0 +1,16 @@
+= 
+:allow-uri-read: 
+
+
+* La mise à niveau du contrôleur avec l'ARL est prise en charge sur les systèmes configurés avec les volumes SnapLock Enterprise et SnapLock Compliance.
+
+
+Vous devez vérifier si l'ARL peut être réalisé sur les contrôleurs d'origine et de remplacement. Vous devez vérifier la taille de tous les agrégats définis et le nombre de disques pris en charge par le système d'origine. Ensuite, comparez-les avec la taille et le nombre de disques pris en charge par le nouveau système. Pour accéder à ces informations, reportez-vous à la section link:other_references.html["Références"] Pour accéder au _Hardware Universe_. La taille de l'agrégat et le nombre de disques pris en charge par le nouveau système doivent être égaux ou supérieurs à la taille et au nombre de disques pris en charge par le système d'origine.
+
+Vous devez valider dans le cluster des règles de combinaison de nouveaux nœuds que les nouveaux nœuds peuvent intégrer au cluster avec les nœuds existants lors du remplacement du contrôleur d'origine. Pour plus d'informations sur les règles de mélange des clusters, reportez-vous à link:other_references.html["Références"] Pour accéder au _Hardware Universe_.
+
+
+NOTE: Les deux systèmes sont haute disponibilité ou non HA. Les deux nœuds doivent avoir la personnalisation activée ou désactivée. Vous ne pouvez pas combiner un nœud avec la personnalité optimisée pour la technologie 100 % Flash activée ou un nœud sur lequel l'utilisateur n'est pas activé au sein de la même paire haute disponibilité. Si les personnalités sont différentes, contactez l'assistance technique.
+
+
+NOTE: Si le nouveau système comporte moins de slots que le système d'origine ou s'il comporte moins de ports ou des ports différents, vous devrez peut-être ajouter un adaptateur au nouveau système. Reportez-vous à la section link:other_references.html["Références"] Pour obtenir des informations détaillées sur les plateformes spécifiques, accédez au site de support NetApp _Hardware Universe_.

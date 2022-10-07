@@ -1,0 +1,84 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/relocate_non_root_aggr_nas_data_lifs_node1_node2.html 
+keywords: relocating, non-root, aggregates, nas, data, lif, node1, node2 
+summary: 'Déplacez les agrégats non racines et les LIF de données NAS du nœud 1 vers le nœud 2, puis déplacez les ressources du nœud 1 vers le nœud 3 lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+---
+= Transférez les agrégats non racine et les LIF de données NAS qui appartiennent au nœud1 vers le nœud2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avant de remplacer le nœud 1 par le nœud 3, vous devez déplacer les agrégats non racines et les LIF de données NAS du nœud 1 vers le nœud 2 avant de déplacer les ressources du nœud 1 vers le nœud 3.
+
+L'opération doit déjà être mise en pause au début de la tâche ; vous devez reprendre manuellement l'opération.
+
+Une fois les agrégats et les LIF migrés, l'opération est interrompue à des fins de vérification. À ce stade, vous devez vérifier si tous les agrégats non-racine et toutes les LIF de données non-SAN sont migrés vers le nœud 3.
+
+
+NOTE: Le propriétaire du home-home pour les agrégats et les LIFs n'est pas modifié ; seul le propriétaire actuel est modifié.
+
+.Étapes
+. Reprendre les opérations de transfert d'agrégats et de déplacement de LIF de données NAS :
++
+`system controller replace resume`
+
++
+Tous les agrégats non racine et les LIF de données NAS sont migrés du nœud 1 vers le nœud 2.
+
++
+L'opération s'interrompt pour vous permettre de vérifier si tous les agrégats non-racine du nœud 1 et les LIF de données non-SAN ont été migrés vers le nœud 2.
+
+. Vérifier le statut du transfert d'agrégats et du déplacement des LIF de données NAS :
++
+`system controller replace show-details`
+
+. Lorsque l'opération est toujours en pause, vérifiez que tous les agrégats non racines sont en ligne pour leur état sur le nœud 2 :
++
+`storage aggregate show -node _node2_ -state online -root false`
+
++
+L'exemple suivant montre que les agrégats non-root du noeud 2 sont en ligne :
+
++
+[listing]
+----
+cluster::> storage aggregate show -node node2 state online -root false
+
+Aggregate  Size     Available  Used%  State  #Vols  Nodes  RAID Status
+---------  -------  ---------  -----  ------ -----  ------ --------------
+aggr_1     744.9GB  744.8GB    0%     online     5  node2  raid_dp,normal
+aggr_2     825.0GB  825.0GB    0%     online     1  node2  raid_dp,normal
+2 entries were displayed.
+----
++
+Si les agrégats ont été mis hors ligne ou sont devenus étrangers sur le nœud 2, les mettre en ligne en utilisant la commande suivante sur le nœud 2, une fois pour chaque agrégat :
+
++
+`storage aggregate online -aggregate _aggr_name_`
+
+. Vérifier que tous les volumes sont en ligne sur le nœud 2 à l'aide de la commande suivante sur le nœud 2 et en examinant la sortie correspondante :
++
+`volume show -node _node2_ -state offline`
+
++
+Si un volume est hors ligne sur le nœud 2, mettez-le en ligne à l'aide de la commande suivante sur le nœud 2, une fois pour chaque volume :
+
++
+`volume online -vserver _vserver_name_ -volume _volume_name_`
+
++
+Le `_vserver_name_` pour utiliser cette commande avec cette commande, figure dans la sortie du précédent `volume show` commande.
+
+
+
+. [[step5]]si l'une des LIFs est inactive, définissez le statut administratif des LIFs sur `up` En utilisant la commande suivante, une fois pour chaque LIF :
++
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _nodename_ -status-admin up`
+
+

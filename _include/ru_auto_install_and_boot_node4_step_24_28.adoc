@@ -1,0 +1,28 @@
+= 
+:allow-uri-read: 
+
+
+. Ajoutez les ports d'initiateur FC à la baie de stockage en tant que nouveaux hôtes, en mappant les LUN de la baie aux nouveaux hôtes.
++
+Reportez-vous à la documentation relative à votre matrice de stockage et au zoning pour obtenir des instructions.
+
+. Modifier les valeurs de nom de port mondial (WWPN) dans les groupes d'hôtes ou de volumes associés aux LUN de baies de la baie de stockage.
++
+L'installation d'un nouveau module de contrôleur modifie les valeurs WWPN associées à chaque port FC intégré.
+
+. Si votre configuration utilise un zoning basé sur des commutateurs, ajustez le zoning en fonction des nouvelles valeurs WWPN.
+. [[step27]]si NetApp Storage Encryption (NSE) est utilisé sur cette configuration, le `setenv bootarg.storageencryption.support` la commande doit être définie sur `true`, et le `kmip.init.maxwait` la variable doit être définie sur `off` pour éviter une boucle d'amorçage après le chargement de la configuration du nœud2 :
++
+`setenv bootarg.storageencryption.support true`
+
++
+`setenv kmip.init.maxwait off`
+
+. Nœud de démarrage dans le menu de démarrage :
++
+`boot_ontap menu`
+
++
+Si vous ne disposez pas de configuration FC ou UTA/UTA2, exécutez l'application link:set_fc_or_uta_uta2_config_node4.html#auto_check_node4_step15["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4, étape 15"] afin que le nœud4 puisse reconnaître les disques du nœud2.
+
+

@@ -1,0 +1,83 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/worksheet_information_before_during_upgrade.html 
+keywords: worksheet, stage, information, node ID, LIF, licensing key, IP address 
+summary: 'Collecter certaines informations lors d"une mise à niveau manuelle du transfert d"agrégats sur des contrôleurs exécutant ONTAP 9.8 ou une version ultérieure.' 
+---
+= Fiche : informations à collecter avant et pendant la mise à niveau du contrôleur
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous devez collecter certaines informations pour mettre à niveau les nœuds d'origine. Ces informations incluent les ID de nœud, les détails de port et de LIF, les clés de licence et les adresses IP.
+
+Vous pouvez utiliser la fiche suivante pour enregistrer des informations à utiliser ultérieurement dans la procédure :
+
+|===
+| Informations nécessaires | Lorsqu'il est collecté | Lorsqu'il est utilisé | Informations collectées 
+
+
+| Modèle, ID système, numéro de série des nœuds d'origine | Étape 1 : _préparer les nœuds pour la mise à niveau_ | Étape 3 : _Install and boot node3_ Stage 5 : _Install and boot node4_ Stage 6 : _Decommission l'ancien système_ |  
+
+
+| Informations sur le tiroir et le disque, détails du stockage Flash, mémoire, NVRAM et cartes d'adaptateur sur les nœuds d'origine | Étape 1 : _préparation des nœuds pour la mise à niveau_ | Tout au long de la procédure |  
+
+
+| Agrégats et volumes en ligne sur les nœuds d'origine | Étape 1 : _préparer les nœuds pour la mise à niveau_ | Tout au long de la procédure pour vérifier que les agrégats et les volumes restent en ligne, sauf lors d'une brève relocalisation |  
+
+
+| Résultat des commandes `network port vlan show` et `network port ifgrp show` | Étape 1 : _préparer les nœuds pour la mise à niveau_ | Étape 3 : _Map ports du node1 au node3_ Etape 5 : _Map ports du node2 au node4_ |  
+
+
+| (Environnements SAN uniquement) configuration par défaut des ports FC | Étape 1 : _préparer les nœuds pour la mise à niveau_ | Lors de la configuration des ports FC sur les nouveaux nœuds |  
+
+
+| (Systèmes V-Series ou systèmes avec le logiciel de virtualisation FlexArray uniquement) topologie pour les systèmes V-Series ou les systèmes avec le logiciel de virtualisation FlexArray | Étape 1 : _préparer les nœuds pour la mise à niveau_ | Étape 3 : _installer et démarrer node3_ étape 5 : _installer et démarrer node4_ |  
+
+
+| Adresse IP des SP | Étape 1 : _préparer les nœuds pour la mise à niveau_ | Etape 6 : _Confirmez que les nouveaux contrôleurs sont correctement configurés_ |  
+
+
+| Clés de licence | Étape 1 : _préparer les nœuds pour la mise à niveau_ | Etape 6 : _Confirmez que les nouveaux contrôleurs sont correctement configurés_ |  
+
+
+| Adresse IP du serveur de gestion externe des clés | Étape 1 : _Rekey disks for Storage Encryption_ | Étape 6 : _configurer le cryptage du stockage sur les nouveaux nœuds_ |  
+
+
+| Nom et chemin d'accès au répertoire accessible via le Web dans lequel vous téléchargez des fichiers sur netboot les nœuds | Étape 1 : _préparation à netboot_ | Étape 3 : _installer et démarrer node3_ étape 5 : _installer et démarrer node4_ |  
+
+
+| LIF de données non-SAN détenues par le nœud1 | Étape 2 : _Move des LIFs de données non SAN détenues par le nœud1 to nœud2_ | Plus loin dans la section |  
+
+
+| Cluster, intercluster, node-management, cluster-management et ports physiques | Étape 2 : _Enregistrer les informations sur le noeud 1_ | Étape 3 : _installer et démarrer node3_ Etape 3 : _mapper les ports du node1 au node3_ |  
+
+
+| Sur les nouveaux nœuds | Etape 3 : _Map des ports du node1 au node3_ | Plus loin dans la section et dans la section _mapper les ports du node2 au node4_ |  
+
+
+| Ports et domaines de diffusion disponibles sur le node3 | Etape 3 : _Map des ports du node1 au node3_ | Plus loin dans la section |  
+
+
+| LIF de données non-SAN qui n'appartiennent pas au nœud2 | _Déplacement des LIF de données non-SAN appartenant au nœud 1 du nœud 2 vers le nœud 3 et vérification des LIF SAN sur le nœud 3_ | Plus loin dans la section |  
+
+
+| LIF de données non-SAN détenues par NODE2 | Étape 3 : _Move des LIF de données non SAN détenues par le nœud2 to node 3_ | Plus loin dans la section |  
+
+
+| Cluster, intercluster, node-management, cluster-management et ports physiques | Étape 4 : _Enregistrer l'information node2_ | Étape 5 : _installer et démarrer node4_ Etape 5:_ faire un mappage entre les ports du node2 et du node4_ |  
+
+
+| Ports réseau du cluster sur le nœud 4 | Étape 5 : _mapper les ports du node2 au node4_ | Plus loin dans la section |  
+
+
+| Ports et domaines de diffusion disponibles sur le node4 | Étape 5 : _mapper les ports du node2 au node4_ | Plus loin dans la section |  
+
+
+| Certificats SSL privés et publics pour le système de stockage et certificats SSL privés pour chaque serveur de gestion des clés | Étape 6 : _configurer le cryptage du stockage sur les nouveaux nœuds_ | Plus loin dans la section |  
+|===

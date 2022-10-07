@@ -1,0 +1,141 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/arl_upgrade_workflow.html 
+keywords: upgrade workflow, procedure steps, stages 
+summary: 'Découvrez le fonctionnement de la procédure manuelle de mise à niveau d"ARL pour une paire de contrôleurs exécutant ONTAP 9.8 ou version ultérieure.' 
+---
+= Workflow de mise à niveau ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avant de mettre à niveau les nœuds à l'aide de l'ARL, vous devez comprendre son fonctionnement. Dans ce document, la procédure est divisée en plusieurs étapes.
+
+
+
+== Mettre à niveau la paire de nœuds
+
+Pour mettre à niveau la paire de nœuds, vous devez préparer les nœuds d'origine, puis effectuer une série d'étapes sur les nœuds d'origine et nouveaux. Vous pouvez ensuite désaffecter les nœuds d'origine.
+
+
+
+== Présentation de la séquence de mise à niveau ARL
+
+Durant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, un contrôleur à la fois, en tirant parti de la configuration de paires haute disponibilité pour transférer la propriété d'agrégats non racines. Tous les agrégats non racines doivent être reloisés afin d'atteindre leur destination finale, qui est le nœud mis à niveau correct.
+
+Chaque agrégat possède un propriétaire d'origine et un propriétaire actuel. Le propriétaire de la maison est le propriétaire réel de l'agrégat, et le propriétaire actuel est le propriétaire temporaire.
+
+L'illustration suivante montre les étapes de la procédure. Les flèches gris clair et épaisses représentent le déplacement des agrégats et du déplacement des LIF. Les flèches noires plus fines représentent le retrait des nœuds d'origine. Les images de contrôleur plus petites représentent les nœuds d'origine et les images de contrôleur plus grandes représentent les nouveaux nœuds.
+
+image:arl_upgrade_manual_image1.PNG["Illustration des étapes de la procédure ARL"]
+
+Le tableau ci-après décrit les tâches générales que vous effectuez à chaque étape ainsi que l'état de propriété de l'agrégat à la fin de cette étape. Les étapes détaillées sont fournies ultérieurement dans la procédure :
+
+[cols="35,65"]
+|===
+| Étape | Étapes 
+
+
+| link:stage_1_index.html["Étape 1 : préparer la mise à niveau"]  a| 
+. Déterminez si le contrôleur possède des agrégats sur des disques internes.
++
+Cette étape n'est requise que si vous effectuez une mise à niveau à partir d'un contrôleur doté d'un lecteur de disque interne.
+
+. Préparer les nœuds pour une mise à niveau.
+. Disques de reKey pour Storage Encryption.
++
+Cette tâche est uniquement nécessaire pour la mise à niveau à partir d'un système avec disques à autochiffrement.
+
+. Vérifiez l'état de la relation SnapMirror sur le cluster et assurez-vous de suspendre toutes les relations entre les clusters.
+. Préparation à la mise sur le réseau.
+
+
+Propriété d'un agrégat à la fin de la phase 1 :
+
+* NODE1 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 1.
+* NODE2 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 2.
+
+
+
+
+| link:stage_2_index.html["Étape 2 : retrait du noeud 1"]  a| 
+. Transférer des agrégats non racines du nœud 1 vers le nœud 2.
+. Déplacement des LIFS de données non SAN appartenant au nœud 1 vers le nœud 2.
+. Enregistrer les informations sur le noeud 1.
+. Le transfert d'agrégats a échoué ou a été veto.
+. Retirer le nœud 1.
+
+
+Propriété d'un agrégat à la fin de la phase 2 :
+
+* NODE1 est le propriétaire personnel des agrégats du nœud 1.
+* NODE2 est le propriétaire actuel des agrégats du nœud 1.
+* NODE2 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 2.
+
+
+
+
+| link:stage_3_index.html["Etape 3 : installation et démarrage du node3"]  a| 
+. Installez et démarrez le nœud 3.
+. Définissez la configuration UTA/UTA2 sur le nœud 3.
+. Mapper les ports du node1 vers le node3.
+. Déplacez les LIF de données non-SAN qui appartiennent au nœud 1 du nœud 2 vers le nœud 3 et vérifiez les LIF SNA sur le nœud 3.
+. Transférer des agrégats non racines du nœud 2 vers le nœud 3
+. Déplacez les LIF de données non-SAN qui appartiennent au nœud2 vers le nœud3.
+
+
+Propriété globale à la fin de la phase 3 :
+
+* Node4 est le propriétaire accueil des agrégats du nœud 2, mais pas le propriétaire actuel.
+* NODE3 est le propriétaire du site et le propriétaire actuel des agrégats appartenant à l'origine au nœud 1.
+* NODE2 est le propriétaire du site et le propriétaire actuel d'agrégats appartenant au nœud2, mais non le propriétaire du site.
+
+
+
+
+| link:stage_4_index.html["Étape 4 : retirer le noeud 2"]  a| 
+. Enregistrer les informations sur le noeud 2.
+. Retrait du nœud 2.
+
+
+La propriété globale n'a aucun changement.
+
+
+
+| link:stage_5_index.html["Etape 5 : installation et démarrage du node4"]  a| 
+. Installez et démarrez Node4.
+. Définissez la configuration UTA/UTA2 sur le nœud 4.
+. Mappage des ports du node2 au node4.
+. Déplacez les LIF de données non-SAN qui appartiennent au nœud 2 du nœud 3 vers le nœud 4, puis vérifiez les LIF SNA sur le nœud 4.
+. Transférez les agrégats non racine du nœud 2 depuis le nœud 3 vers le nœud 4.
+
+
+Propriété globale à la fin de la phase 5 :
+
+* NODE3 est le propriétaire et propriétaire actuel des agrégats qui appartenaient initialement au noeud 1.
+* NODE4 est le propriétaire et propriétaire actuel des agrégats qui appartenaient initialement au nœud2.
+
+
+
+
+| link:stage_6_index.html["Étape 6 : terminez la mise à niveau"]  a| 
+. Vérifiez que les nouveaux contrôleurs sont correctement configurés.
+. Configurez Storage Encryption sur les nouveaux nœuds.
++
+Cette tâche est uniquement nécessaire si vous effectuez une mise à niveau vers un système avec des disques autochiffrés.
+
+. Désaffectation de l'ancien système.
+. Reprendre les relations NetApp SnapMirror.
++
+*Remarque :* les mises à jour de reprise sur incident de la machine virtuelle de stockage (SVM) ne seront pas interrompues conformément aux plannings affectés.
+
+
+
+La propriété globale n'a aucun changement.
+
+|===

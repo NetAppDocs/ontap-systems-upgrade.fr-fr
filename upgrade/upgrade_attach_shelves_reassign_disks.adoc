@@ -1,0 +1,101 @@
+---
+permalink: upgrade/upgrade-attach-shelves-reassign-disks.html 
+sidebar: sidebar 
+keywords: reassign, disk, belong, node1, node2, node3, node4, node, attach, storage, shelves, shelf, reassign, ownership, attach storage shelves reassign disk ownership 
+summary: Vous devez réattribuer les disques qui appartenaient aux nœuds 1 et 2 respectivement aux nœuds 3 et 4. 
+---
+= Ajout de tiroirs de stockage et réaffectation de la propriété des disques
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez réattribuer les disques qui appartenaient aux nœuds 1 et 2 respectivement aux nœuds 3 et 4.
+
+Effectuez les étapes de cette section sur les noeuds 3 et 4, puis effectuez chaque étape sur le noeud 3, puis sur le noeud 4 avant de passer à l'étape suivante.
+
+.Étapes
+. Connectez les câbles du tiroir de stockage du nœud 1/node2 au nœud 3/node4. Vérification de l'alimentation électrique et de la connectivité physique des tiroirs
+. Dans l'invite DU CHARGEUR du nœud 3, démarrez en mode maintenance :
++
+`boot_ontap maint`
+
+. Afficher l'ID système du noeud 3 :
++
+`disk show -v`
+
++
+[listing]
+----
+*> disk show -v
+Local System ID: 101268854
+...
+----
++
+Notez l'ID système du node3 à utiliser à l'étape 4 ci-dessous.
+
+. Réaffectez les disques de spare du nœud1, les disques appartenant à l'agrégat racine et tous les agrégats de données :
++
+`disk reassign -s _node1_sysid_ -d _node3_sysid_ -p _node2_sysID_`
+
++
+--
+** Le paramètre `_node1_sysid_` Est la valeur que vous avez enregistrée dans _l'arrêt des nœuds d'origine_, link:upgrade-shutdown-remove-original-nodes.html#shutdown_node_step5["Étape 5"].
+** Spécifier le paramètre `_-p partner_sysID_` uniquement lorsque des disques partagés sont présents.
+
+
+[NOTE]
+====
+Lors de la réaffectation des disques de spare du nœud2, des disques appartenant à l'agrégat racine et de tout agrégat de données, la commande est la suivante :
+
+`disk reassign -s node2_sysid -d node4_sysid -p node3_sysID`
+
+====
+--
++
+Un message similaire au message suivant s'affiche :
+
++
+[listing]
+----
+Partner node must not be in Takeover mode during disk reassignment from maintenance mode.
+Serious problems could result!!
+Do not proceed with reassignment if the partner is in takeover mode. Abort reassignment (y/n)?n
+
+After the node becomes operational, you must perform a takeover and giveback of the HA partner node to ensure disk reassignment is successful.
+Do you want to continue (y/n)?y
+----
+. Entrez `y` pour continuer.
++
+Un message similaire au message suivant s'affiche :
+
++
+[listing]
+----
+The system displays the following message:
+Disk ownership will be updated on all disks previously belonging to Filer with sysid
+<sysid>.
+Do you want to continue (y/n)? y
+----
+. Entrez `y` pour continuer.
+. Confirmer que l'agrégat racine du nœud 1 est défini sur `root` dans le champ options et que les autres agrégats sont en ligne :
++
+`aggr status`
+
++
+Vous devez voir les résultats similaires à ce qui suit :
+
++
+[listing]
+----
+*> aggr status
+           Aggr State           Status                Options
+          aggr0 online          raid_dp, aggr         root
+                                64-bit
+----
+. Quitter le mode Maintenance :
++
+`halt`
+
+

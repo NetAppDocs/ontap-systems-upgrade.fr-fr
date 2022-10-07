@@ -1,0 +1,92 @@
+---
+permalink: upgrade/upgrade-considerations.html 
+sidebar: sidebar 
+keywords: plan, upgrade, consideration, contact, technical, support, recommendation, guidance, cluster, considerations for upgrading controller hardware 
+summary: Pour planifier la mise à niveau, vous devez vous familiariser avec les considérations générales de mise à niveau. Si nécessaire, contactez le support technique pour obtenir des recommandations et des conseils spécifiques à la configuration de votre cluster. 
+---
+= Considérations relatives à la mise à niveau du matériel du contrôleur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour planifier la mise à niveau, vous devez vous familiariser avec les considérations générales de mise à niveau. Si nécessaire, contactez le support technique pour obtenir des recommandations et des conseils spécifiques à la configuration de votre cluster.
+
+Exigences et restrictions
+
+* La procédure de mise à niveau vers du stockage est perturbatrice. La procédure de mise à niveau via le déplacement de volumes ne génère aucune interruption.
+* Les nouveaux nœuds doivent prendre en charge la même version logicielle que les nœuds d'origine.
++
+link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Mettez à niveau ONTAP"^]
+
+* Vous devez observer la taille maximale du cluster.
++
+Lorsque vous effectuez une mise à niveau en déplaçant des volumes, de nouveaux nœuds sont reliés au cluster avant que les nœuds d'origine ne soient supprimés. Assurez-vous que le nombre de contrôleurs du cluster ne dépasse pas la taille maximale de cluster prise en charge au cours de la procédure.
+
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+* Lorsque vous associez un modèle de plateforme de contrôleur différent au sein d'un cluster, vous devez respecter les règles relatives à la combinaison de plateformes de stockage.
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+* Les nouveaux nœuds doivent disposer de suffisamment d'espace de stockage pour prendre en charge le stockage associé aux nœuds d'origine.
++
+https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Gestion des disques et de l'agrégat via l'interface de ligne de commande"^]
+
+* La taille de l'agrégat root et le nombre de disques pris en charge par le nouveau système doivent être égaux ou supérieurs à ceux pris en charge par le système d'origine.
++
+Pour connaître les exigences relatives à la taille de l'agrégat racine, consultez le https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+* Les contrôleurs d'une paire haute disponibilité doivent être deux modèles AFF ou deux modèles FAS.
+* Vous pouvez procéder à la mise à niveau en déplaçant des volumes ou du stockage physique d'un FAS2xxx vers un FAS2xxx plus récent si les nœuds se trouvent dans le même cluster. Par exemple, vous pouvez déplacer des volumes ou du stockage physique d'un système FAS2552 vers un FAS2750.
+* Si vous mettez à niveau une paire haute disponibilité dans un cluster avec plusieurs paires haute disponibilité, vous devez déplacer epsilon vers le nœud d'une paire haute disponibilité qui ne fait pas l'objet d'une mise à niveau du contrôleur. Par exemple, si vous mettez à niveau NODEA/NodeB dans un cluster avec la configuration de paire haute disponibilité NODEA/NodeB et le nœud C/noadé, vous devez déplacer epsilon vers le nœud C ou le nœud noadé.
+* Si vous utilisez ONTAP 9.6P11, 9.7P8 ou des versions ultérieures, il est recommandé d'activer le basculement de la connectivité, de la vivacité et du contrôle de disponibilité (CLAM) afin de rétablir le quorum du cluster en cas de certaines défaillances de nœud. Le `kernel-service` la commande nécessite un accès au niveau de privilège avancé. Pour plus d'informations, voir : https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU436["Article de la base de connaissances NetApp SU436 : modification de la configuration par défaut de CLAM Takeover"^]. Avec ONTAP 9.8, le `kcs-enable-takeover` paramètre activé par défaut.
+* Si vous mettez à niveau la configuration MetroCluster à deux nœuds, reportez-vous à la section : https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Choisissez une méthode de mise à niveau ou de rafraîchissement"^]
+
+
+Aux systèmes de stockage interne
+
+
+NOTE: Les systèmes suivants disposent d'un stockage interne : FAS2520, FAS2552, FAS2554, FAS2620, FAS2650 ou FAS2720, FAS2750, AFF A200, AFF A220, AFF A700S, AFF A800, AFF A250 ET AFF C190.
+
+* Si votre système n'est pas répertorié ci-dessus, reportez-vous à la section https://hwu.netapp.com["NetApp Hardware Universe"^] pour vérifier s'il dispose de disques internes.
+* Si vous disposez d'un système avec stockage interne, la méthode de mise à niveau recommandée est la mise à niveau en déplaçant des volumes.
+* Si vous disposez d'un système à stockage interne, vous pouvez convertir le système en tiroir disque et le connecter à un nouveau nœud du même cluster. Les contrôleurs FAS2520 ne peuvent pas être convertis en tiroir disque.
++
+La conversion d'un système FAS255x en un tiroir de disque est une tâche facultative du workflow pour la mise à niveau en déplaçant le stockage.
+
+* Si vous disposez d'un système avec stockage interne ou d'un système avec des volumes ou des agrégats sur des disques SATA internes ou SSD, vous pouvez mettre à niveau le stockage interne vers un tiroir disque connecté au nouveau nœud du même cluster.
++
+Le transfert du stockage interne est une tâche facultative du flux de travail pour la mise à niveau en déplaçant le stockage.
+
+
+
+Situations où des étapes supplémentaires peuvent être nécessaires
+
+* Si le nouveau système possède moins de slots que le système d'origine ou s'il comporte moins ou des types de ports différents, vous devrez peut-être ajouter un adaptateur au nouveau système.
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+* Si les nœuds d'origine ou les nouveaux nœuds utilisent le logiciel de virtualisation FlexArray.
++
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/V_Series/What_are_the_specific_steps_involved_in_FlexArray_for_NetApp_controller_upgrades%2F%2Freplacements%3F["Article de la base de connaissances NetApp : quelles sont les étapes spécifiques impliquées dans FlexArray pour la mise à niveau et le remplacement des contrôleurs NetApp"^]
+
+* Si votre cluster possède des hôtes SAN, vous devrez peut-être suivre les étapes nécessaires pour résoudre les problèmes liés aux modifications du numéro de série des LUN.
++
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FlexPod_with_Infrastructure_Automation/resolve_issues_during_storage_controller_motherboard_replacement_and_head_upgrades_with_iSCSI_and_FCP["Comment résoudre les problèmes lors du remplacement de la carte mère du contrôleur de stockage et des mises à niveau des têtes avec iSCSI et FCP"^]
+
+* Si votre système utilise une configuration ACP hors bande, il vous faudra peut-être migrer d'une configuration ACP hors bande vers un ACP intrabande.
++
+https://kb.netapp.com/app/answers/answer_view/a_id/1029778["Article 1029778 de la base de connaissances NetApp : configuration ACP intrabande et support"^]
+
+
+
+*Informations connexes*
+
+xref:upgrade-methods.adoc[Choisissez des méthodes de mise à niveau du matériel du contrôleur]
+
+xref:upgrade-by-moving-storage-parent.adoc[Mettez à niveau le matériel du contrôleur en déplaçant le stockage]
+
+xref:upgrade-by-moving-volumes-parent.adoc[Mise à niveau du matériel des contrôleurs en déplaçant les volumes]

@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/automate_the_controller_upgrade_process.html 
+keywords: automate, controller, upgrade, nondisruptive 
+summary: Utilisez la procédure ARL partiellement automatisée pour mettre à niveau les contrôleurs exécutant ONTAP 9.5 vers 9.7. 
+---
+= Automatisation du processus de mise à niveau des contrôleurs
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Lors d'une mise à niveau du contrôleur, le contrôleur est remplacé par un autre contrôleur exécutant une plateforme plus récente ou plus puissante.
+
+Les versions précédentes de ce contenu contenaient des instructions pour mettre à jour le contrôleur sans interruption, constituées d'étapes entièrement manuelles. Ce contenu fournit les étapes de la nouvelle procédure automatisée.
+
+Le processus manuel était long et complexe, mais dans cette procédure simplifiée, vous pouvez mettre en œuvre une mise à jour du contrôleur en utilisant le transfert d'agrégats, ce qui permet des mises à niveau sans interruption plus efficaces pour les paires haute disponibilité. Il y a beaucoup moins d'étapes manuelles, en particulier concernant la validation, la collecte d'informations et les contrôles post.

@@ -1,0 +1,136 @@
+= 
+:allow-uri-read: 
+
+
+Si vous mettez à niveau les contrôleurs avec des disques internes, vous devez exécuter plusieurs commandes et examiner leurs résultats pour vérifier qu'aucun disque interne ne contient des agrégats racine ou des agrégats de données.
+
+Si vous ne mettez pas à niveau les contrôleurs avec des agrégats sur disques internes, ignorez cette section et passez à la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"].
+
+.Étapes
+. Entrez le nodeshell une fois pour chaque nœud d'origine.
++
+`system node run -node _node_name_`
+
+. Afficher les lecteurs internes :
++
+`sysconfig -av`
+
++
+Le système affiche des informations détaillées sur la configuration du nœud, y compris le stockage, comme l'indique la sortie partielle affichée dans l'exemple suivant :
+
++
+....
+
+node> sysconfig -av
+slot 0: SAS Host Adapter 0a (PMC-Sierra PM8001 rev. C, SAS, UP)
+                Firmware rev: 01.11.06.00
+                 Base WWN: 5:00a098:0008a3b:b0
+                 Phy State: [0] Enabled, 6.0 Gb/s
+                            [1] Enabled, 6.0 Gb/s
+                            [2] Enabled, 6.0 Gb/s
+                            [3] Enabled, 6.0 Gb/s
+                ID Vendor Model FW Size
+                00.0 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.1 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.2 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.3 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.4 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.5 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.6 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.7 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.8 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.9 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.10: NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.11: NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+...
+....
+. Examinez la sortie de stockage du `sysconfig -av` commande permettant d'identifier les lecteurs de disque internes, puis d'enregistrer les informations.
++
+Les disques internes ont « 00 » au début de leur ID. Le terme « 00 » indique un tiroir disque interne, et le numéro suivant la virgule indique chaque disque.
+
+. [[man_aggr_step4]]Entrez la commande suivante sur les deux contrôleurs :
++
+`aggr status -r`
+
++
+Le système affiche l'état d'agrégat du nœud, comme indiqué dans la sortie partielle dans l'exemple suivant :
+
++
+[listing]
+----
+node> aggr status -r
+Aggregate aggr2 (online, raid_dp, parity uninit'd!) (block checksums)
+Plex /aggr2/plex0 (online, normal, active)
+RAID group /aggr2/plex0/rg0 (normal, block checksums)
+
+RAID Disk Device    HA SHELF BAY CHAN Pool Type RPM  Used (MB/blks)     Phys (MB/blks)
+--------- --------- -- ----- --- ---- ---- ---- ---- ------------------ ------------------
+dparity   0a.00.1   0a   0    1  SA:B  0   BSAS 7200 1695466/3472315904 1695759/3472914816
+parity    0a.00.3   0a   0    3  SA:B  0   BSAS 7200 1695466/3472315904 1695759/3472914816
+data      0a.00.9   0a   0    9  SA:B  0   BSAS 7200 1695466/3472315904 1695759/3472914816
+...
+----
++
+
+NOTE: Le périphérique utilisé pour créer l'agrégat peut ne pas être un disque physique mais être une partition.
+
+. Examiner la sortie du `aggr status -r` commande permettant d'identifier les agrégats à l'aide de disques internes, puis d'enregistrer les informations.
++
+Dans l'exemple de l'étape précédente, « aggr2 » utilise des disques internes, comme indiqué par l'ID de tiroir « 0 ».
+
+. Entrez la commande suivante sur les deux contrôleurs :
++
+`aggr status -y`
+
++
+Le système affiche des informations sur les volumes de l'agrégat, comme indiqué dans la sortie partielle dans l'exemple suivant :
+
++
+....
+node> aggr status -v
+...
+ aggr2   online   raid_dp, aggr    nosnap=off, raidtype=raid_dp, raidsize=14,
+                  64-bit           raid_lost_write=on, ignore_inconsistent=off,
+                  rlw_on           snapmirrored=off, resyncsnaptime=60,
+                                   fs_size_fixed=off, lost_write_protect=on,
+                                   ha_policy=cfo, hybrid_enabled=off, percent_snapshot_space=0%,
+                                   free_space_realloc=off, raid_cv=on, thorough_scrub=off
+         Volumes: vol6, vol5, vol14
+...
+ aggr0   online   raid_dp, aggr    root, diskroot, nosnap=off, raidtype=raid_dp,
+                  64-bit           raidsize=14, raid_lost_write=on, ignore_inconsistent=off,
+                  rlw_on           snapmirrored=off,  resyncsnaptime=60, fs_size_fixed=off,
+                                   lost_write_protect=on, ha_policy=cfo, hybrid_enabled=off,
+                                   percent_snapshot_space=0%, free_space_realloc=off, raid_cv=on
+         Volumes: vol0
+....
++
+Basé sur la sortie dans ,Étape 4 Et à l'étape 6, aggr2 utilise trois disques internes — 0A.00.1, 0a.00.3 et 0a.00.9 — et les volumes aggr2 sont "vol6", "vol5" et "vol14". En outre, dans le résultat de l'étape 6, l'affichage de "aggr0" contient le mot "root" au début de l'information pour l'agrégat. Elle contient un volume root.
+
+. Examiner la sortie du `aggr status -v` commande permettant d'identifier les volumes appartenant à n'importe quel agrégat situé sur un disque interne et si l'un de ces volumes contient un volume root.
+. Quittez le nodeshell en entrant la commande suivante sur chaque contrôleur :
++
+`exit`
+
+. Effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si les contrôleurs | Alors... 
+
+
+| Ne contiennent aucun agrégat sur les disques internes | Poursuivre cette procédure. 
+
+
+| Contiennent des agrégats mais pas de volumes sur les disques internes | Poursuivre cette procédure. *Remarque* : avant de continuer, vous devez placer les agrégats hors ligne, puis les détruire sur les disques internes. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers la gestion _Disk et de l'agrégat avec le contenu CLI_ pour des informations sur la gestion des agrégats. 
+
+
+| Contiennent des volumes non-racines sur les disques internes | Poursuivre cette procédure. *Remarque* : avant de continuer, vous devez déplacer les volumes vers un tiroir disque externe, mettre les agrégats hors ligne, puis détruire les agrégats sur les disques internes. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers la gestion _Disk et d'agrégats avec le contenu CLI_ pour des informations sur le déplacement de volumes. 
+
+
+| Contiennent des volumes racines sur les disques internes | Ne pas poursuivre cette procédure. Vous pouvez mettre à niveau les contrôleurs en faisant référence à link:other_references.html["Références"] Pour établir un lien vers le _site de support NetApp_ et à l'aide de la procédure _mise à niveau du matériel de contrôleur sur une paire de nœuds exécutant clustered Data ONTAP en déplaçant des volumes_. 
+
+
+| Contiennent des volumes non-racines sur les disques internes et vous ne pouvez pas déplacer les volumes vers un stockage externe | Ne pas poursuivre cette procédure. Vous pouvez mettre à niveau les contrôleurs en suivant la procédure _mise à niveau du matériel de contrôleur sur une paire de nœuds exécutant clustered Data ONTAP en déplaçant des volumes_. Reportez-vous à la section link:other_references.html["Références"] Lien vers le site de support _NetApp_ où vous pouvez accéder à cette procédure. 
+|===
+

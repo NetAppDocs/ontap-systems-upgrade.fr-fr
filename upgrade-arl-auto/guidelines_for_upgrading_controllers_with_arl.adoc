@@ -1,0 +1,67 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/guidelines_for_upgrading_controllers_with_arl.html 
+keywords: upgrade, controllers, guidelines, ARL, aggregate relocation, supported upgrades, two-node, cluster, troubleshoot 
+summary: 'Comprenez si vous pouvez mettre à niveau les contrôleurs exécutant ONTAP 9.5 vers 9.7 en utilisant `system controller replace` commandes.' 
+---
+= Instructions de mise à niveau des contrôleurs avec l'ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Pour savoir si vous pouvez utiliser le transfert d'agrégats (ARL) pour mettre à niveau une paire de contrôleurs exécutant ONTAP 9.5 vers ONTAP 9.7, les performances de la plateforme et la configuration des contrôleurs d'origine et de remplacement.
+
+
+
+== Mises à niveau prises en charge pour l'ARL
+
+Lorsque vous mettez à niveau une paire de nœuds à l'aide de cette procédure d'ARL pour ONTAP 9.5 vers ONTAP 9.7, vous devez vérifier que l'ARL peut être réalisé sur les contrôleurs d'origine et de remplacement.
+
+Vous devez vérifier la taille de tous les agrégats définis et le nombre de disques pris en charge par le système d'origine. Vous devez ensuite comparer les tailles d'agrégat et le nombre de disques pris en charge avec la taille et le nombre de disques pris en charge par le nouveau système. Reportez-vous à la section link:other_references.html["Références"] Pour accéder à _Hardware Universe_ où ces informations sont disponibles. La taille de l'agrégat et le nombre de disques pris en charge par le nouveau système doivent être égaux ou supérieurs à la taille et au nombre de disques pris en charge par le système d'origine.
+
+Vous devez vérifier dans le cluster les règles de combinaison des nouveaux nœuds que les nouveaux nœuds peuvent intégrer au cluster avec les nœuds existants lors du remplacement du contrôleur d'origine. Pour plus d'informations sur les règles de mélange des clusters, reportez-vous à link:other_references.html["Références"] Pour accéder au _Hardware Universe_.
+
+
+NOTE: Avant d'effectuer une mise à niveau du système AFF, vous devez mettre à niveau ONTAP vers la version 9.5P1 ou ultérieure. Ces versions sont requises pour une mise à niveau réussie.
+
+
+NOTE: Si vous mettez à niveau un système qui prend en charge les disques internes (par exemple, les systèmes FAS2700 ou AFF A250) sans disques internes, reportez-vous à la link:other_references.html["Références"] Et utilisez la procédure décrite dans le document _Aggregate Relocation (transfert d'agrégats) pour mettre à niveau manuellement le contenu matériel_ du contrôleur correspondant à votre version de ONTAP.
+
+Si vous utilisez ONTAP 9.6P11, 9.7P8 ou des versions ultérieures, il est recommandé d'activer le basculement de la connectivité, de la vivacité et du contrôle de disponibilité (CLAM) afin de rétablir le quorum du cluster en cas de certaines défaillances de nœud. Le `kernel-service` la commande nécessite un accès au niveau de privilège avancé. Pour plus d'informations, voir : https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU436["Article de la base de connaissances NetApp SU436 : modification de la configuration par défaut de CLAM Takeover"^].
+
+La mise à niveau du contrôleur avec l'ARL est prise en charge sur les systèmes configurés avec les volumes SnapLock Enterprise et SnapLock Compliance.
+
+
+
+== Clusters à 2 nœuds sans commutateur
+
+Si vous mettez à niveau des nœuds dans un cluster sans commutateur à 2 nœuds, vous pouvez quitter le cluster sans commutateur tout en effectuant la mise à niveau. Il n'est pas nécessaire de les convertir en cluster commuté.
+
+
+
+== Mises à niveau non prises en charge pour l'ARL
+
+Vous ne pouvez pas effectuer les mises à niveau suivantes :
+
+* Remplacement des contrôleurs qui ne prennent pas en charge les tiroirs disques connectés aux contrôleurs d'origine
++
+Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Hardware Universe_ pour des informations sur la prise en charge des disques.
+
+* Pour des contrôleurs d'entrée de gamme avec disques internes, par exemple : un FAS 2500.
++
+Pour mettre à niveau les contrôleurs d'entrée de gamme avec des disques internes, reportez-vous à la link:other_references.html["Références"] Pour lier votre système à _mise à niveau en déplaçant des volumes ou du stockage_ et aller à la procédure _mettre à niveau une paire de nœuds exécutant clustered Data ONTAP en déplaçant des volumes_.
+
+
+
+
+
+== Dépannage
+
+En cas de problème lors de la mise à niveau des contrôleurs, vous pouvez vous référer au link:troubleshoot_index.html["Résoudre les problèmes"] section à la fin de la procédure pour plus d'informations et des solutions possibles.
+
+Si vous ne trouvez pas de solution au problème que vous rencontrez, contactez le support technique.

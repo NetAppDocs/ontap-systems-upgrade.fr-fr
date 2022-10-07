@@ -1,0 +1,27 @@
+---
+permalink: upgrade/upgrade-methods.html 
+sidebar: sidebar 
+keywords:  
+summary: 'De manière générale, la mise à niveau du matériel du contrôleur dépend des modèles de plateforme des nœuds d"origine. Pour la mise à niveau, vous déplacez le stockage \(procédure d"interruption\) ou les volumes \(procédure sans interruption\).' 
+---
+= Choisissez des méthodes de mise à niveau du matériel du contrôleur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+De manière générale, la mise à niveau du matériel du contrôleur dépend des modèles de plateforme des nœuds d'origine. Pour la mise à niveau, vous devez déplacer le stockage (une procédure perturbateur) ou déplacer les volumes (une procédure sans interruption).
+
+image::../upgrade/media/methods_for_upgrading_controller_hardware.png[Méthodes de mise à niveau du matériel du contrôleur]
+
+
+NOTE: Les modèles avec disques internes sont les suivants : FAS2520, FAS2552, FAS2554, FAS2620, FAS2650 ou FAS2720, FAS2750, AFF A200, AFF A220, AFF A700S, AFF A800, AFF A250.
+
+Si votre système n'est pas répertorié ci-dessus, reportez-vous à la section https://hwu.netapp.com["NetApp Hardware Universe"^] pour vérifier s'il dispose de disques internes.
+
+*Informations connexes*
+
+link:upgrade-by-moving-storage-parent.html["Flux de production de mise à niveau par déplacement du stockage"]
+
+link:upgrade-by-moving-volumes-parent.html["Flux de travail de mise à niveau par déplacement de volumes"]

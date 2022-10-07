@@ -1,0 +1,18 @@
+= 
+:allow-uri-read: 
+
+
+.Étapes
+. Pour synchroniser la configuration du chiffrement pour Onboard Key Manager, exécutez la commande suivante à l'invite du cluster :
++
+|===
+| Pour cette version de ONTAP… | Utilisez cette commande... 
+
+
+| ONTAP 9.6 ou 9.7 | `security key-manager onboard sync` 
+
+
+| ONTAP 9.5 | `security key-manager setup -node _node_name_` 
+|===
+. Saisissez la phrase secrète pour l'ensemble du cluster pour le gestionnaire de clés intégré.
+

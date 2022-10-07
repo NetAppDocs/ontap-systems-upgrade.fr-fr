@@ -1,0 +1,51 @@
+---
+permalink: upgrade/upgrade-prepare-when-moving-volumes.html 
+sidebar: sidebar 
+keywords: perform, preparation, upgrading, upgrade, controller, hardware, moving, move, volume, prepare for the upgrade when moving volumes 
+summary: Avant de mettre à niveau le matériel du contrôleur, vous devez effectuer quelques étapes de préparation en déplaçant des volumes. 
+---
+= Préparation à la mise à niveau lors du déplacement de volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez effectuer quelques étapes de préparation avant de mettre à niveau le matériel du contrôleur en déplaçant des volumes.
+
+.Étapes
+. Afficher les volumes sur les nœuds d'origine :
++
+`volume show`
+
++
+Vous utilisez la sortie de la commande pour préparer la liste de volumes à déplacer vers les nouveaux nœuds.
+
+. Afficher et enregistrer les informations de licence à partir des nœuds d'origine :
++
+`system license show`
+
+. Si vous utilisez Storage Encryption sur les nœuds d'origine et sur les nouveaux nœuds disposent de disques compatibles avec le chiffrement, veillez à ce que les disques des nœuds d'origine soient correctement saisis :
++
+.. Afficher des informations sur les disques à autochiffrement (SED) :
++
+`storage encryption disk show`
+
+.. Si des disques sont associés à une clé d'ID sécurisée (non-MSID) non-constructeur, refixez-les à une clé MSID :
++
+`storage encryption disk modify`
+
+
+
+. Si le cluster se trouve actuellement dans une configuration sans commutateur à deux nœuds, migrez-le vers un cluster à deux nœuds avec commutateur en utilisant le type de commutateur que vous préférez.
++
+https://library.netapp.com/ecm/ecm_download_file/ECMP1140536["Migration vers un cluster à deux nœuds avec commutateur avec commutateurs de cluster Cisco"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMP1140535["Migration vers un cluster à deux nœuds avec commutateurs de cluster NetApp CN1610"^]
+
+. Envoyer un message AutoSupport de chaque nœud d'origine pour informer le support technique de la mise à niveau :
++
+`system node autosupport invoke -node _node_name_ -type all -message "Upgrading node_name from _platform_original_ to _platform_new_"`
+
+

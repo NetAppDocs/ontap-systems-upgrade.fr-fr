@@ -1,0 +1,68 @@
+---
+settings:
+  name: Upgrade controllers
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  langs: fr-fr,us-en,ja-jp,zh-cn,zh-tw,ko-kr,de-de
+sidebar:
+  entries:
+  - title: Documentation de mise à niveau des systèmes AFF et FAS
+    url: "/index.html"
+  - section: upgrade
+  - section: upgrade-arl
+homepage:
+  tiles:
+  - title: Commencez
+    links:
+    - title: Notes de version de ONTAP
+      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
+  - title: Mise à niveau par déplacement du stockage ou des volumes (la plupart des
+      systèmes)
+    links:
+    - title: Mettre à niveau le matériel du contrôleur
+      url: "/upgrade/upgrade-decide-to-use-this-guide.html"
+  - title: Mise à niveau en déplaçant des agrégats sur des systèmes exécutant ONTAP
+      9.8 et versions ultérieures
+    links:
+    - title: Utiliser les commandes « system contrôleur replace » (AFF A700 to AFF
+        A900)
+      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/
+    - title: Utiliser les commandes « system Controller replace » (la plupart des
+        systèmes)
+      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/
+    - title: Utiliser des commandes manuelles
+      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual-app/
+  - title: Mise à niveau en déplaçant des agrégats sur des systèmes exécutant ONTAP
+      9.7 et versions antérieures
+    links:
+    - title: Utiliser les commandes de remplacement du contrôleur système (la plupart
+        des systèmes)
+      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto/
+    - title: Utiliser des commandes manuelles
+      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual/
+  - title: Mettre à niveau les systèmes avec une configuration MetroCluster
+    links:
+    - title: Sélectionnez la procédure de mise à niveau pour votre configuration MetroCluster
+      url: https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html
+  - title: Ressources supplémentaires
+    links:
+    - title: Documentation sur les systèmes ONTAP
+      url: https://docs.netapp.com/us-en/ontap-systems/index.html
+    - title: Documentation sur les commutateurs ONTAP
+      url: https://docs.netapp.com/us-en/ontap-systems-switches/index.html
+    - title: Documentation du logiciel ONTAP
+      url: https://docs.netapp.com/us-en/ontap/index.html
+    - title: NetApp Hardware Universe
+      url: https://hwu.netapp.com/
+    - title: NetApp Active IQ Config Advisor
+      url: https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor
+    - title: Matrice d'interopérabilité NetApp
+      url: https://mysupport.netapp.com/matrix/#welcome
+    - title: Communauté NetApp
+      url: https://community.netapp.com/t5/ONTAP-and-FAS/ct-p/fas-ontap-oncommand-and-related-plug-ins
+product-family:
+  name: AFF and FAS Systems
+  repo: ontap-systems-family

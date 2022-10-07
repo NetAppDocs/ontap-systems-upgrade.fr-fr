@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/recreate_vlans_ifgrps_broadcast_domains_node3.html 
+keywords: node3, interface group, VLANs, broadcast domains, re-create 
+summary: 'Créez à nouveau les VLAN, les groupes d"interfaces et les domaines de diffusion du nœud 1 sur le nœud 3 lors de la mise à niveau des contrôleurs exécutant ONTAP 9.5 vers 9.7 à l"aide de `system controller replace` commandes.' 
+---
+= Recréez des VLAN, des groupes d'interface et des domaines de diffusion sur le node3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Une fois que vous avez confirmé que le noeud 3 est dans le quorum et que vous pouvez communiquer avec le noeud 2, vous devez recréer les VLAN, les groupes d'interface et les domaines de diffusion du noeud 1 sur le noeud 3. Vous devez également ajouter les ports node3 aux domaines de diffusion nouvellement créés.
+
+Pour plus d'informations sur la création et la recrércréation de VLAN, de groupes d'interfaces et de domaines de diffusion, accédez à link:other_references.html["Références"] Et lien vers _Network Management_.
+
+.Étapes
+. Recréez les réseaux locaux virtuels sur le nœud 3 à l'aide des informations du nœud 1 enregistrées dans le système link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Transférez les agrégats non racine et les LIF de données NAS qui appartiennent au nœud1 vers le nœud2"] section :
++
+`network port vlan create -node _node_name_ -vlan _vlan-names_`
+
+. Recréez les groupes d'interface sur le noeud 3 à l'aide des informations du noeud 1 enregistrées dans le link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Transférez les agrégats non racine et les LIF de données NAS qui appartiennent au nœud1 vers le nœud2"] section :
++
+`network port ifgrp create -node _node_name_ -ifgrp _port_ifgrp_names_-distr-func`
+
+. Recréez les domaines de diffusion sur le node3 à l'aide des informations node1 enregistrées dans le link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Transférez les agrégats non racine et les LIF de données NAS qui appartiennent au nœud1 vers le nœud2"] section :
++
+`network port broadcast-domain create -ipspace Default -broadcast-domain _broadcast_domain_names_ -mtu _mtu_size_ -ports _node_name:port_name,node_name:port_name_`
+
+. Ajoutez les ports node3 aux domaines de diffusion nouvellement créés :
++
+`network port broadcast-domain add-ports -broadcast-domain _broadcast_domain_names_ -ports _node_name:port_name,node_name:port_name_`
+
+

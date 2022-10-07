@@ -1,0 +1,47 @@
+---
+permalink: upgrade/upgrade-move-internal-drives.html 
+sidebar: sidebar 
+keywords: node, support, model, upgrading, upgrade, moving, move, storage, internal, sata, drive, ssd, drive, shelf, attach, cluster, transfer, sas, drive, move internal drives from an original node 
+summary: 'Si votre nœud d"origine est l"un des modèles pris en charge, pendant la mise à niveau en déplaçant le stockage, vous pouvez déplacer les disques SATA, SSD ou SAS internes du nœud vers un tiroir disque connecté au nouveau nœud du même cluster.' 
+---
+= Déplacez les disques internes d'un nœud d'origine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si votre nœud d'origine est l'un des modèles pris en charge, pendant la mise à niveau en déplaçant le stockage, vous pouvez déplacer les disques SATA, SSD ou SAS internes du nœud vers un tiroir disque connecté au nouveau nœud du même cluster.
+
+.Avant de commencer
+* Vous devez avoir passé en revue link:upgrade-considerations.html["Considérations relatives à la mise à niveau du matériel du contrôleur"] à propos du déplacement des disques internes.
++
+Contactez le support technique si vous avez besoin d'instructions spécifiques pour la configuration de votre entreprise.
+
+* Les supports de disques durs SATA, SSD ou SAS du nœud d'origine doivent être compatibles avec le nouveau tiroir disque.
+* Un tiroir disque compatible doit déjà être connecté au nouveau nœud.
+* Le tiroir disque doit disposer de suffisamment de baies disponibles pour prendre en charge les supports de disques SATA, SSD ou SAS à partir du nœud d'origine.
+
+
+.Étapes
+. Retirez délicatement le cadre de l'avant du système.
+. [[Move_int_Drive_2]]appuyez sur le bouton de déverrouillage situé sur le côté gauche du support de lecteur.
++
+La poignée de came sur le support ressort partiellement ouvert et le support se dégage du fond de panier central.
+
+. Tirez la poignée de came jusqu'à sa position d'ouverture complète pour dégager le support du fond de panier central, puis faites glisser doucement le support hors de la tablette du lecteur.
++
+
+NOTE: Utilisez toujours deux mains lors du retrait, de l'installation ou du transport d'un lecteur. Cependant, ne placez pas vos mains sur les cartes d'entraînement exposées sur le dessous du support.
+
+. Avec la poignée de came en position ouverte, insérez le support dans une fente de la nouvelle étagère, en poussant fermement jusqu'à ce que le support s'arrête.
++
+
+NOTE: Utilisez deux mains lors de l'insertion du support.
+
+. [[Move_int_Drive_5]] Fermez la poignée de came de façon à ce que le support soit bien en place dans le fond de panier et que la poignée s'enclenche.
++
+Vous devez fermer la poignée lentement de manière à ce qu'elle s'aligne correctement sur la face du support.
+
+. Recommencez ,Étape 2 à ,Étape 5 pour tous les disques que vous déplacez vers le nouveau système.
+

@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/required_tools_and_documentation.html 
+keywords: required, tools, documentation, install, worksheet, ontap 
+summary: Vous devez disposer de certains outils et de la documentation nécessaires pour effectuer une mise à niveau de AFF A700 vers AFF A900. 
+---
+= Outils et documentation requis
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous devez disposer d'une bride de mise à la terre pour effectuer la mise à niveau et vous devez vous référer à d'autres documents pendant le processus de mise à niveau.
+
+Reportez-vous à la section link:other_references.html["Références"] pour accéder à la liste des documents de référence et des sites de référence requis pour cette mise à niveau.

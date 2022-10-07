@@ -1,0 +1,113 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/retire_node2.html 
+keywords: retire, node2, cluster, SAN, LIFs 
+summary: 'Arrêtez le nœud 2 correctement et retirez-le du rack ou du châssis lors d"une mise à niveau manuelle du transfert d"agrégats (ARL) sur les contrôleurs exécutant ONTAP 9.8 ou une version ultérieure.' 
+---
+= Retrait du nœud 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Pour retirer le nœud 2, vous devez arrêter le nœud 2 correctement et le retirer du rack ou du châssis. Si le cluster se trouve dans un environnement SAN, vous devez également supprimer les LIFs SAN.
+
+.Étapes
+. Effectuer l'une des actions suivantes :
++
+[cols="35,65"]
+|===
+| Si le cluster est... | Alors... 
+
+
+| Un cluster à deux nœuds | Accédez à ,Étape 2. 
+
+
+| Un cluster comprenant plus de deux nœuds | Accédez à ,Étape 9. 
+|===
+. [[man_reate_2_Step2]]accédez au niveau de privilège avancé en entrant la commande suivante sur l'un des nœuds :
++
+`set -privilege advanced`
+
+. Vérifiez que le cluster HA a été désactivé en saisissant la commande suivante et en examinant son résultat :
++
+`cluster ha show`
+
++
+Le système affiche le message suivant :
+
++
+[listing]
+----
+High Availability Configured: false
+----
+. Vérifier si le nœud2 contient actuellement epsilon en entrant la commande suivante et en examinant sa sortie :
++
+`cluster show`
+
++
+L'exemple suivant montre que le nœud2 contient epsilon :
+
++
+[listing]
+----
+cluster*::> cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  -----------
+node1                true    true          false
+node2                true    true          true
+
+Warning: Cluster HA has not been configured. Cluster HA must be configured on a two-node cluster to ensure data access availability in the event of storage failover. Use the "cluster ha modify -configured true" command to configure cluster HA.
+
+2 entries were displayed.
+----
++
+
+NOTE: Si vous mettez à niveau une paire haute disponibilité dans un cluster avec plusieurs paires haute disponibilité, vous devez déplacer epsilon vers le nœud d'une paire haute disponibilité qui ne fait pas l'objet d'une mise à niveau du contrôleur. Par exemple, si vous mettez à niveau NODEA/NodeB dans un cluster avec la configuration de paire haute disponibilité NODEA/NodeB et le nœud C/noadé, vous devez déplacer epsilon vers le nœud C ou le nœud noadé.
+
+. Si le nœud2 contient epsilon, marquer epsilon AS `false` sur le nœud afin qu'il puisse être transféré vers le nœud 3 :
++
+`cluster modify -node _node2_ -epsilon false`
+
+. Transfert epsilon vers node3 par marquage epsilon `true` sur le nœud 3 :
++
+`cluster modify -node _node3_ -epsilon true`
+
+. Vérifiez si la configuration est un cluster à 2 nœuds sans commutateur :
++
+`network options switchless-cluster show`
+
++
+[listing]
+----
+cluster::*> network options switchless-cluster show
+Enable Switchless Cluster: false/true
+----
++
+La valeur de cette commande doit correspondre à l'état physique du système.
+
+. Vérifiez si la configuration est un cluster à 2 nœuds sans commutateur :
++
+`network options switchless-cluster show`
+
++
+[listing]
+----
+cluster::*> network options switchless-cluster show
+Enable Switchless Cluster: false/true
+----
++
+La valeur de cette commande doit correspondre à l'état physique du système.
+
+. [[man_leavate_2_Step9]]Retour au niveau administratif :
++
+`set -privilege admin`
+
+. Arrêtez le nœud 2 en entrant la commande suivante sur l'un des contrôleurs :
+`system node halt -node _node2_`
+. Une fois l'arrêt complet du nœud 2 terminé, retirez-le du châssis ou du rack. Vous pouvez désaffecter le nœud2 une fois la mise à niveau terminée. Voir link:decommission_old_system.html["Désaffectation de l'ancien système"].
+

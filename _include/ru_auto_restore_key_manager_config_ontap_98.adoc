@@ -1,0 +1,13 @@
+= 
+:allow-uri-read: 
+
+
+Synchronisez la configuration de cryptage avec les nouveaux nœuds en effectuant les étapes suivantes :
+
+.Étapes
+. Synchronisez la configuration de chiffrement pour Onboard Key Manager (OKM) en utilisant la commande suivante à l'invite du cluster :
++
+`security key-manager onboard sync`
+
+. Saisissez la phrase secrète pour l'ensemble du cluster pour le OKM.
+
