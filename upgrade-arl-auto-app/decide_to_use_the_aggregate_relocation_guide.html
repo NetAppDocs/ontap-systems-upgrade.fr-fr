@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-11-25 07:36:04 +0000">11/25/2022</time>
     
   
 
@@ -4672,7 +4672,7 @@ Si la combinaison de modèle de mise à niveau du contrôleur ne se trouve pas d
 <p><sup>3</sup>pour les mises à niveau des systèmes FAS8020, FAS8040, AFF8020 et AFF8040 vers les contrôleurs de remplacement cibles répertoriés dans le tableau ci-dessus, les contrôleurs de remplacement doivent exécuter la même version ONTAP que l&#8217;ancien contrôleur. Notez que les systèmes FAS8020, FAS8040, AFF8020 et AFF8040 ne prennent pas en charge les versions ONTAP ultérieures à ONTAP 9.8.</p>
 </div>
 <div class="paragraph">
-<p><sup>4</sup>Vérifiez les versions ONTAP prises en charge pour la mise à niveau de votre contrôleur.</p>
+<p><sup>4</sup>le tableau suivant indique les versions ONTAP minimum et ultérieures prises en charge pour ces combinaisons de mise à niveau de contrôleur.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -4704,28 +4704,55 @@ Si la combinaison de modèle de mise à niveau du contrôleur ne se trouve pas d
 <td class="tableblock halign-left valign-top"><p class="tableblock">AFF 8060</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Correctifs 9.8P13 ou version ultérieure</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AFF A900</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9.10.1 ou ultérieure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.10.1 à 9.12.1</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AFF 8080</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Correctifs 9.8P10 ou version ultérieure</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AFF A900</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9.10.1 ou ultérieure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.10.1 à 9.12.1</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">FAS8060</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Correctifs 9.8P13 ou version ultérieure</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">FAS9500</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9.10.1P3 ou ultérieur</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.10.1P3 à 9.12.1</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">FAS8080</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Correctifs 9.8P12 ou version ultérieure</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">FAS9500</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9.10.1P3 ou ultérieur</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.10.1P3 à 9.12.1</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-upgrade/images/note.svg" alt="Note">
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pour les combinaisons de mise à niveau indiquées dans le tableau précédent :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Il n&#8217;est pas nécessaire d&#8217;utiliser la même version ONTAP sur les contrôleurs existants et de les remplacer. La mise à niveau logicielle de ONTAP est effectuée lors de la mise à niveau du contrôleur.</p>
+</li>
+<li>
+<p>Lors de la mise à niveau, vous devez installer un contrôleur de remplacement avec une version ONTAP et un niveau de patch pris en charge.</p>
+</li>
+<li>
+<p>Il n&#8217;est pas possible d&#8217;annuler ou de retirer une mise à niveau de contrôleur après avoir démarré la procédure et mis à niveau le premier nœud.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la <a href="other_references.html">"Références"</a> Pour établir un lien vers <em>Upgrade en déplaçant des volumes ou du stockage</em>.</p>
 </div>
