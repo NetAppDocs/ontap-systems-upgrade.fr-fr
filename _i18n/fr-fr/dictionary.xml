@@ -2185,7 +2185,6 @@
   <block id="c9ee572a8e71e6ba4e03747ac09a21a8" category="list-text">Pour un système AFF A400 ou FAS8300 avec une configuration de type FC, vous devez ajouter une carte d'interface réseau 10GbE à quatre ports (référence X1147A) pour fournir les ports de cluster temporaires.</block>
   <block id="652f24bc7c2d2709481afa47ee0f81bf" category="list-text">Après avoir effectué la mise à niveau du contrôleur en utilisant des ports de cluster temporaires, vous pouvez migrer les LIF de cluster vers les ports e3a et e3b, 100 GbE sur un système AFF A400 et e0c et e0d, 100 GbE sur un système FAS8300 sans interruption.</block>
   <block id="e9dc6fafb0f1f8ce64537ec567468d16" category="paragraph">^3^pour les mises à niveau des systèmes FAS8020, FAS8040, AFF8020 et AFF8040 vers les contrôleurs de remplacement cibles répertoriés dans le tableau ci-dessus, les contrôleurs de remplacement doivent exécuter la même version ONTAP que l'ancien contrôleur. Notez que les systèmes FAS8020, FAS8040, AFF8020 et AFF8040 ne prennent pas en charge les versions ONTAP ultérieures à ONTAP 9.8.</block>
-  <block id="58639a55064ac1eb8afcb76dee256457" category="paragraph">^4^Vérifiez les versions ONTAP prises en charge pour la mise à niveau de votre contrôleur.</block>
   <block id="a45da96d0bf6575970f2d27af22be28a" category="cell">Système</block>
   <block id="73ab298c8e00d66d28156892903a39ce" category="cell">AFF A320</block>
   <block id="d85bd4eac4ae2ba50be5c03b292af8f8" category="cell">9.9.1 ou ultérieure</block>
@@ -2195,7 +2194,6 @@
   <block id="23ec9249d03285a513eaaf182a7bcd49" category="cell">AFF 8080</block>
   <block id="728152178b0535e4c7e93f53223fbfff" category="cell">Correctifs 9.8P10 ou version ultérieure</block>
   <block id="edbeb952c4054f67ce1836afbda00903" category="cell">FAS8060</block>
-  <block id="eb30343e3b73c36d3224c319d83cc2e6" category="cell">9.10.1P3 ou ultérieur</block>
   <block id="8ed24dd5fb292ecefe76fe92a5fc3988" category="cell">FAS8080</block>
   <block id="e2060bf680bf4facfccf3befec69ef04" category="cell">Correctifs 9.8P12 ou version ultérieure</block>
   <block id="3d241889b517139955243b1b9ae6111a" category="summary">Diagnostiquez les défaillances qui peuvent se produire lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou version ultérieure en utilisant<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> commandes.</block>
@@ -4468,4 +4466,11 @@
   <block id="48839137eaf0562b138582edd90137cb" category="sidebar">Étape 5. Installation et démarrage du nœud 4 (mise à niveau manuelle dans ONTAP 9.8 ou version ultérieure)</block>
   <block id="dae43a2f9b6862b045e06fc8e8a1f0fa" category="sidebar">Étape 6. Terminer la mise à niveau (mise à niveau manuelle dans ONTAP 9.8 ou version ultérieure)</block>
   <block id="5c57d2af87e466b26b2b4fc39ddb3528" category="sidebar">Dépannage (mise à niveau manuelle dans ONTAP 9.8 ou version ultérieure)</block>
+  <block id="e48a139c95341faecb199d5908a54e2e" category="paragraph">^4^le tableau suivant indique les versions ONTAP minimum et ultérieures prises en charge pour ces combinaisons de mise à niveau de contrôleur.</block>
+  <block id="b8e707d2be1c734648eb91b029352369" category="cell">9.10.1 à 9.12.1</block>
+  <block id="4f0b48e1f65ca4ae15a6720f28d58824" category="cell">9.10.1P3 à 9.12.1</block>
+  <block id="04d01679d16bbccad3f9da82789a187b" category="paragraph">Pour les combinaisons de mise à niveau indiquées dans le tableau précédent :</block>
+  <block id="1c328c36316a518e9532ed77177daa6c" category="list-text">Il n'est pas nécessaire d'utiliser la même version ONTAP sur les contrôleurs existants et de les remplacer. La mise à niveau logicielle de ONTAP est effectuée lors de la mise à niveau du contrôleur.</block>
+  <block id="da74cb1ad73d862a786d9f20938d9c7a" category="list-text">Lors de la mise à niveau, vous devez installer un contrôleur de remplacement avec une version ONTAP et un niveau de patch pris en charge.</block>
+  <block id="dee716592bbae6fdba2b32d2854360ba" category="list-text">Il n'est pas possible d'annuler ou de retirer une mise à niveau de contrôleur après avoir démarré la procédure et mis à niveau le premier nœud.</block>
 </blocks>

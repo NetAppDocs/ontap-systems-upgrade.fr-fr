@@ -76,7 +76,7 @@ NOTE: Si la combinaison de modèle de mise à niveau du contrôleur ne se trouve
 
 ^3^pour les mises à niveau des systèmes FAS8020, FAS8040, AFF8020 et AFF8040 vers les contrôleurs de remplacement cibles répertoriés dans le tableau ci-dessus, les contrôleurs de remplacement doivent exécuter la même version ONTAP que l'ancien contrôleur. Notez que les systèmes FAS8020, FAS8040, AFF8020 et AFF8040 ne prennent pas en charge les versions ONTAP ultérieures à ONTAP 9.8.
 
-^4^Vérifiez les versions ONTAP prises en charge pour la mise à niveau de votre contrôleur.
+^4^le tableau suivant indique les versions ONTAP minimum et ultérieures prises en charge pour ces combinaisons de mise à niveau de contrôleur.
 
 [cols="20,30,20,30"]
 |===
@@ -89,17 +89,27 @@ NOTE: Si la combinaison de modèle de mise à niveau du contrôleur ne se trouve
 | AFF A320 | 9.9.1 ou ultérieure | AFF A400 | 9.9.1 ou ultérieure 
 
 
-| AFF 8060 | Correctifs 9.8P13 ou version ultérieure | AFF A900 | 9.10.1 ou ultérieure 
+| AFF 8060 | Correctifs 9.8P13 ou version ultérieure | AFF A900 | 9.10.1 à 9.12.1 
 
 
-| AFF 8080 | Correctifs 9.8P10 ou version ultérieure | AFF A900 | 9.10.1 ou ultérieure 
+| AFF 8080 | Correctifs 9.8P10 ou version ultérieure | AFF A900 | 9.10.1 à 9.12.1 
 
 
-| FAS8060 | Correctifs 9.8P13 ou version ultérieure | FAS9500 | 9.10.1P3 ou ultérieur 
+| FAS8060 | Correctifs 9.8P13 ou version ultérieure | FAS9500 | 9.10.1P3 à 9.12.1 
 
 
-| FAS8080 | Correctifs 9.8P12 ou version ultérieure | FAS9500 | 9.10.1P3 ou ultérieur 
+| FAS8080 | Correctifs 9.8P12 ou version ultérieure | FAS9500 | 9.10.1P3 à 9.12.1 
 |===
+[NOTE]
+====
+Pour les combinaisons de mise à niveau indiquées dans le tableau précédent :
+
+* Il n'est pas nécessaire d'utiliser la même version ONTAP sur les contrôleurs existants et de les remplacer. La mise à niveau logicielle de ONTAP est effectuée lors de la mise à niveau du contrôleur.
+* Lors de la mise à niveau, vous devez installer un contrôleur de remplacement avec une version ONTAP et un niveau de patch pris en charge.
+* Il n'est pas possible d'annuler ou de retirer une mise à niveau de contrôleur après avoir démarré la procédure et mis à niveau le premier nœud.
+
+
+====
 Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
 
 Reportez-vous à la section link:other_references.html["Références"] Lien vers le Centre de documentation _ONTAP 9_ où vous pouvez accéder à la documentation produit ONTAP 9.
