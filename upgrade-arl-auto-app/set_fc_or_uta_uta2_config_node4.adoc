@@ -295,6 +295,7 @@ Si vous migrez vers une A800, rendez-vous sur ,Étape 23
 . [[auto_check_4_step15]]]sur le noeud 4, allez au menu de démarrage et utilisez 22/7 et sélectionnez l'option masquée `boot_after_controller_replacement`. À l'invite, entrez node2 pour réaffecter les disques du nœud2 au nœud4, comme dans l'exemple suivant.
 +
 .Développez l'exemple de sortie de la console
+[%collapsible]
 ====
 [listing]
 ----

@@ -14,7 +14,14 @@ summary: 'Instructions d"installation pour un module NVRAM AFF A900 et un module
 
 
 [role="lead"]
-Vous devez installer les modules NVRAM et contrôleur AFF A900 ou FAS9500 que vous avez reçus pour la mise à niveau sur le nœud 2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.
+Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 que vous avez reçus pour la mise à niveau sur le nœud 2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.
+
+Lors de l'installation, vous devez prendre note des points suivants :
+
+* Déplacez tous les modules de remplissage vides dans les emplacements 6-1 et 6-2 de l'ancien module NVRAM vers le nouveau module NVRAM.
+* Ne déplacez PAS le périphérique coredump du module NVRAM AFF A700 vers le module NVRAM AFF A900.
+* Déplacez tous les modules de cache Flash installés dans le module NVRAM FAS9000 vers le module NVRAM FAS9500.
+
 
 Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement.
 

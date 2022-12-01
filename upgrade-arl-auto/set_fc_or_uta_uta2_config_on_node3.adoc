@@ -310,6 +310,7 @@ Adapter  Mode       Type        Mode     Type        Status
 . [[auto9597_check_node3_step15]]]sur le noeud 3, allez au menu de démarrage à l'aide de 22/7 et sélectionnez l'option masquée `boot_after_controller_replacement`. À l'invite, entrez node1 pour réaffecter les disques du nœud1 au nœud3, comme dans l'exemple suivant.
 +
 .Développez l'exemple de sortie de la console
+[%collapsible]
 ====
 [listing]
 ----
