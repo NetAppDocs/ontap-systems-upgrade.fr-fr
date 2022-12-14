@@ -16,8 +16,8 @@ summary: 'Contenu de référence et sites Web requis pour la prise en charge d"u
 [role="lead"]
 Lorsque vous effectuez les procédures de ce contenu, vous devrez peut-être consulter le contenu de référence ou accéder aux sites Web de référence.
 
-*  content
-*  sites
+* <<Contenu de référence>>
+* <<Sites de référence>>
 
 
 

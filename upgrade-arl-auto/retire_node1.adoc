@@ -27,4 +27,5 @@ Pour retirer le nœud 1, vous reprenez l'opération automatisée pour désactive
 
 
 
+.Une fois que vous avez terminé
 Vous pouvez désaffecter le nœud1 une fois la mise à niveau terminée. Voir link:decommission_old_system.html["Désaffectation de l'ancien système"].

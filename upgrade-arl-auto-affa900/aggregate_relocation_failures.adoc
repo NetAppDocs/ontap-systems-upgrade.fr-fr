@@ -48,6 +48,7 @@ Pour des informations détaillées sur le `storage aggregate relocation start`, 
 
 À la fin de la procédure de mise à niveau, le nœud 1 doit être le nouveau nœud de rattachement d'agrégats où disposait le nœud 1 initialement en tant que nœud de rattachement. Vous pouvez les transférer après la mise à niveau.
 
+.Description de la tâche
 Les agrégats n'ont pas pu transférer correctement les données, c'est-à-dire que le nœud 2 est leur nœud de rattachement au lieu du nœud 1 ; dans les cas suivants :
 
 * Lors de la phase 3, lorsque les agrégats sont déplacés du nœud 2 vers le nœud 1.

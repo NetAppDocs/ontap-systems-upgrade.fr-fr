@@ -16,6 +16,7 @@ summary: 'Au cours de la phase 3, vérifiez que le nouveau nœud rejoint le quor
 [role="lead"]
 Le nœud sur lequel le nouveau contrôleur démarre et tente de se joindre automatiquement au cluster en premier. Cependant, si le nouveau nœud possède un ensemble différent de ports réseau, vous devez effectuer les étapes suivantes pour confirmer que le nœud rejoint le quorum.
 
+.Description de la tâche
 Ces instructions peuvent être utilisées pour tout nœud concerné. NODE3 est utilisé dans l'échantillon suivant.
 
 .Étapes

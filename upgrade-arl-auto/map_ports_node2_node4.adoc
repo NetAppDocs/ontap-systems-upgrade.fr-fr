@@ -16,6 +16,7 @@ summary: 'Vérifiez que les ports physiques du nœud 2 sont correctement redirig
 [role="lead"]
 Vous devez vérifier que les ports physiques du nœud2 sont correctement associés aux ports physiques du nœud4, ce qui permettra au nœud4 de communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
 
+.Description de la tâche
 Reportez-vous à la section link:other_references.html["Références"] Pour établir une liaison avec _Hardware Universe_ afin de capturer des informations sur les ports des nouveaux nœuds. Vous utiliserez ces informations plus loin dans cette section.
 
 La configuration logicielle du nœud4 doit correspondre à la connectivité physique du nœud4 et la connectivité IP doit être restaurée avant de poursuivre la mise à niveau.
@@ -173,8 +174,8 @@ Cette commande supprime le port « e0d » sur le nœud 4 :
 
 
 
-. Ajuster les domaines de broadcast intercluster et migrer les LIFs intercluster, le cas échéant, à l'aide des mêmes commandes indiquées sur la ,Étape 5.
-. Ajustez tout autre domaine de diffusion et migrez les LIF de données, le cas échéant, à l'aide des mêmes commandes que celles illustrées dans la ,Étape 5.
+. Ajuster les domaines de broadcast intercluster et migrer les LIFs intercluster, le cas échéant, à l'aide des mêmes commandes indiquées sur la <<auto_map_4_Step5,Étape 5>>.
+. Ajustez tout autre domaine de diffusion et migrez les LIF de données, le cas échéant, à l'aide des mêmes commandes que celles illustrées dans la <<auto_map_4_Step5,Étape 5>>.
 . S'il y avait des ports sur le nœud2 qui n'existent plus sur le nœud4, procédez comme suit pour les supprimer :
 +
 .. Accéder au niveau de privilège avancé sur l'un des nœuds :

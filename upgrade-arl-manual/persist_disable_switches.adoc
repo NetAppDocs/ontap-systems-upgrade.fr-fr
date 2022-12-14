@@ -16,8 +16,10 @@ summary: 'Désactivez les commutateurs Brocade et Cisco dans la structure et mod
 [role="lead"]
 Vous devez désactiver les commutateurs dans la structure de manière persistante pour modifier sa configuration.
 
+.Description de la tâche
 Vous désactivez les switchs en exécutant les commandes sur la ligne de commande du switch ; les commandes utilisées pour ce faire ne sont pas des commandes ONTAP.
 
+.Étape
 Désactiver le commutateur de manière persistante :
 
 * Pour les commutateurs Brocade, utilisez le `switchCfgPersistentDisable` commande.

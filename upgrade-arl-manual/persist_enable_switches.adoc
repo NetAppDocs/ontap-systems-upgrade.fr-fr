@@ -16,6 +16,7 @@ summary: 'Activez de manière persistante les commutateurs Brocade et Cisco dans
 [role="lead"]
 Vous devez activer de manière persistante les commutateurs dans la structure.
 
+.Étape
 Activer le commutateur de manière persistante :
 
 * Pour les commutateurs Brocade, utilisez le `switchCfgPersistentenable` commande.

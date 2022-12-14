@@ -16,15 +16,16 @@ summary: 'Vous pouvez configurer des ports FC intégrés node4, des ports UTA/UT
 [role="lead"]
 Si le système Node4 est doté de ports FC intégrés, de ports UTA/UTA2 (ou d'une carte UTA/UTA2), vous devez configurer les paramètres avant de suivre la procédure.
 
-Vous devrez peut-être le faire  FC ports on node4, le  and configure UTA/UTA2 ports on node4, ou les deux sections.
+.Description de la tâche
+Vous devrez peut-être le faire <<Configurez les ports FC sur le nœud 4>>, le <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>, ou les deux sections.
 
 Si le nœud 4 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2 et effectuez une mise à niveau du système avec des disques de stockage, vous pouvez ignorer la section link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"].
 
 Cependant, si vous disposez d'un système V-Series ou d'un logiciel de virtualisation FlexArray et que vous êtes connecté aux baies de stockage, et que le nœud 4 n'est pas équipé de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez revenir à la section _Install and Boot node4_, puis reprendre le processus à l'adresse link:install_boot_node4.html#Step9["Étape 9"]. Assurez-vous que le noeud 4 dispose d'un espace de rack suffisant. Si le noeud 4 se trouve dans un châssis distinct du noeud 2, vous pouvez placer le noeud 4 au même emplacement que le noeud 3. Si les nœuds 2 et 4 se trouvent dans le même châssis, le nœud 4 se trouve déjà dans son emplacement de rack approprié.
 
 .Choix
-*  FC ports on node4
-*  and configure UTA/UTA2 ports on node4
+* <<Configurez les ports FC sur le nœud 4>>
+* <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>
 
 
 
@@ -33,9 +34,11 @@ Cependant, si vous disposez d'un système V-Series ou d'un logiciel de virtualis
 
 Si le nœud 4 possède des ports FC intégrés ou sur un adaptateur FC, vous devez définir des configurations de ports sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés. Si les ports ne sont pas configurés, le service peut subir une interruption.
 
+.Avant de commencer
 Vous devez avoir les valeurs des paramètres du port FC du noeud 2 que vous avez enregistrées dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"].
 
-Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'un adaptateur UTA/UTA2, vous devez les configurer dans  and configure UTA/UTA2 ports on node4.
+.Description de la tâche
+Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'un adaptateur UTA/UTA2, vous devez les configurer dans <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>.
 
 *Important* : si votre système dispose de disques de stockage, vous devez entrer les commandes dans cette section à l'invite du cluster. Si vous disposez d'un système V-Series ou d'un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous pouvez saisir les commandes décrites dans cette section en mode Maintenance.
 
@@ -47,10 +50,10 @@ Vous pouvez ignorer cette section si votre système ne dispose pas de configurat
 | Si le système que vous mettez à niveau... | Puis… 
 
 
-| Possède des disques de stockage | Accédez à ,Étape 5. 
+| Possède des disques de stockage | Accédez à <<man_config_4_Step5,Étape 5>>. 
 
 
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Accédez à ,Étape 2. 
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Accédez à <<man_config_4_Step2,Étape 2>>. 
 |===
 . [[man_config_4_Step2]]accéder au mode de maintenance :
 +
@@ -122,10 +125,10 @@ Modifier les ports FC sur le nœud 4 si nécessaire :
 | Si les paramètres FC par défaut sont définis sur les nouveaux nœuds... | Puis… 
 
 
-| Identique à ceux que vous avez capturés sur les noeuds d'origine | Accédez à ,Étape 11. 
+| Identique à ceux que vous avez capturés sur les noeuds d'origine | Accédez à <<man_config_4_Step11,Étape 11>>. 
 
 
-| Différent de ceux que vous avez capturés sur les nœuds d'origine | Accédez à ,Étape 8. 
+| Différent de ceux que vous avez capturés sur les nœuds d'origine | Accédez à <<man_config_4_Step8,Étape 8>>. 
 |===
 . [[man_config_4_Step8]]Quitter le mode Maintenance :
 +
@@ -154,14 +157,14 @@ Modifier les ports FC sur le nœud 4 si nécessaire :
 
 
 | Possède des disques de stockage  a| 
-** Accédez à  and configure UTA/UTA2 ports on node4 Si le nœud 4 est doté d'une carte UTA/UTA2A ou de ports intégrés UTA/UTA2.
+** Accédez à <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>> Si le nœud 4 est doté d'une carte UTA/UTA2A ou de ports intégrés UTA/UTA2.
 ** Ignorez la section et accédez à link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"] Si le nœud Node4 ne est pas doté d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
 
 
 
 
 | Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
-** Accédez à  and configure UTA/UTA2 ports on node4 Si le nœud 4 est doté d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
+** Accédez à <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>> Si le nœud 4 est doté d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
 ** Ignorez la section _Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4_ si le nœud 4 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, puis revenez à la section _Install and Boot node4_, puis reprenez la section à l'adresse link:install_boot_node4.html#Step9["Étape 9"].
 
 
@@ -174,8 +177,10 @@ Modifier les ports FC sur le nœud 4 si nécessaire :
 
 Si le NODE4 dispose de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2A, vous devez vérifier la configuration des ports et les configurer, en fonction de votre mode d'utilisation du système mis à niveau.
 
+.Avant de commencer
 Vous devez disposer des modules SFP+ appropriés pour les ports UTA/UTA2.
 
+.Description de la tâche
 Les ports UTA/UTA2 peuvent être configurés en mode FC natif ou UTA/UTA2A. Le mode FC prend en charge les initiateurs FC et la cible FC ; le mode UTA/UTA2 permet d'utiliser simultanément les cartes réseau et le trafic FCoE pour partager la même interface SFP+ 10 GbE et prend en charge la cible FC.
 
 
@@ -236,10 +241,10 @@ Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ appropr
 | Si les ports CNA... | Alors... 
 
 
-| N'avez pas la personnalité que vous voulez | Accédez à ,Étape 5. 
+| N'avez pas la personnalité que vous voulez | Accédez à <<man_check_4_Step5,Étape 5>>. 
 
 
-| Avoir la personnalité que vous voulez | Passez aux étapes 5 à 12 et passez à ,Étape 13. 
+| Avoir la personnalité que vous voulez | Passez aux étapes 5 à 12 et passez à <<man_check_4_Step13,Étape 13>>. 
 |===
 . [[man_check_4_Step5]]effectuer l'une des actions suivantes :
 +
@@ -252,7 +257,7 @@ Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ appropr
 `boot_ontap maint` 
 
 
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Accédez à ,Étape 6. Vous devez déjà être en mode Maintenance. 
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Accédez à <<man_check_4_Step6,Étape 6>>. Vous devez déjà être en mode Maintenance. 
 |===
 . [[man_check_4_Step6]]effectuer l'une des actions suivantes :
 +
@@ -261,10 +266,10 @@ Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ appropr
 | Si vous configurez... | Alors... 
 
 
-| Ports sur une carte UTA/UTA2A | Accédez à ,Étape 7. 
+| Ports sur une carte UTA/UTA2A | Accédez à <<man_check_4_Step7,Étape 7>>. 
 
 
-| Ports UTA/UTA2 intégrés | Ignorez l'étape 7 et passez à ,Étape 8. 
+| Ports UTA/UTA2 intégrés | Ignorez l'étape 7 et passez à <<man_check_4_Step8,Étape 8>>. 
 |===
 . [[man_check_4_Step7]]si l'adaptateur est en mode initiateur, et si le port UTA/UTA2 est en ligne, mettez le port UTA/UTA2 hors ligne :
 +

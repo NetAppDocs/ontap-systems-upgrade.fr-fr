@@ -195,13 +195,13 @@ aggr4         node1        node2        online
 +
 [cols="35,65"]
 |===
-| Si la commande dans ,Étape 9... | Alors... 
+| Si la commande dans <<man_prepare_nodes_step9,Étape 9>>... | Alors... 
 
 
-| Sortie vide | Ignorez l'étape 11 et passez à ,Étape 12. 
+| Sortie vide | Ignorez l'étape 11 et passez à <<man_prepare_nodes_step12,Étape 12>>. 
 
 
-| Sortie | Accédez à ,Étape 11. 
+| Sortie | Accédez à <<man_prepare_nodes_step11,Étape 11>>. 
 |===
 . [[man_prepare_nodes_step11]]] si le nœud1 ou le nœud2 possède des agrégats pour lesquels il s'agit du propriétaire actuel, mais pas du propriétaire de la maison, procédez comme suit :
 +
@@ -320,7 +320,7 @@ vs0
 
 2 entries were displayed.
 ....
-. Si la sortie est entrée ,Étape 15 Indique que le nœud 1 ou le nœud 2 possède des LIF de données détenues par d'autres nœuds du cluster, afin de migrer les LIF de données hors du nœud 1 ou du nœud 2 :
+. Si la sortie est entrée <<man_prepare_nodes_step15,Étape 15>> Indique que le nœud 1 ou le nœud 2 possède des LIF de données détenues par d'autres nœuds du cluster, afin de migrer les LIF de données hors du nœud 1 ou du nœud 2 :
 +
 `network interface revert -vserver * -lif *`
 
@@ -439,10 +439,10 @@ node1   e1b-70    e1b     70      00:15:17:76:7b:69
 | Si les groupes d'interfaces ou LES VLAN sont... | Alors... 
 
 
-| Sur le nœud 1 ou le nœud 2 | Terminé ,Étape 23 et ,Étape 24. 
+| Sur le nœud 1 ou le nœud 2 | Terminé <<man_prepare_nodes_step23,Étape 23>> et <<man_prepare_nodes_step24,Étape 24>>. 
 
 
-| Pas sur le nœud1 ou le nœud2 | Accédez à ,Étape 24. 
+| Pas sur le nœud1 ou le nœud2 | Accédez à <<man_prepare_nodes_step24,Étape 24>>. 
 |===
 .. [[man_prepare_nodes_step23]] si vous ne savez pas si le nœud1 et le nœud2 se trouvent dans un environnement SAN ou non-SAN, entrez la commande suivante et examinez sa sortie :
 +
@@ -521,10 +521,10 @@ Les nœuds d'un cluster sont dans le quorum lorsqu'une simple majorité de nœud
 | Si le cluster... | Alors... 
 
 
-| A configuré SAN | Accédez à ,Étape 26. 
+| A configuré SAN | Accédez à <<man_prepare_nodes_step26,Étape 26>>. 
 
 
-| Aucun SAN n'est configuré | Accédez à ,Étape 29. 
+| Aucun SAN n'est configuré | Accédez à <<man_prepare_nodes_step29,Étape 29>>. 
 |===
 .. [[man_prepare_nodes_step26]]vérifier la présence de LIF SAN sur le nœud1 et le nœud2 pour chaque SVM dont le service SAN iSCSI ou FC est activé en entrant la commande suivante et en examinant sa sortie :
 +
@@ -678,7 +678,7 @@ node2            enable    Postmaster    -                 mailhost
 
 
 | A activé AutoSupport...  a| 
-... Accédez à ,Étape 34.
+... Accédez à <<man_prepare_nodes_step34,Étape 34>>.
 ... Accédez à la section link:get_address_key_management_server_encryption.html["Obtenir l'adresse IP d'un serveur de gestion externe des clés pour Storage Encryption"].
 
 

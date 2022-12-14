@@ -2,6 +2,7 @@
 :allow-uri-read: 
 
 
+.Description de la tâche
 Synchronisez la configuration de cryptage avec les nouveaux nœuds en effectuant les étapes suivantes :
 
 .Étapes

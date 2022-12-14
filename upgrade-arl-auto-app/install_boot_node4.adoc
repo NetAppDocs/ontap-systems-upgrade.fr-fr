@@ -16,12 +16,13 @@ summary: 'Installez et démarrez le nœud 4 et installez le logiciel ONTAP lors 
 [role="lead"]
 Vous devez installer NODE4 dans le rack, transférer les connexions de node2 vers node4, démarrer node4 et installer ONTAP. Vous devez ensuite réaffecter l'un des disques de réserve du nœud2, tout disque appartenant au volume racine, ainsi que tout agrégat non racine qui n'a pas été déplacé vers celui-ci plus tôt dans le processus, comme indiqué dans cette section.
 
+.Description de la tâche
 L'opération de déplacement est mise en pause au début de cette étape. Ce processus est principalement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement.
 
 Vous devez netboot nœud4 si cette version de ONTAP 9 n'est pas installée sur le nœud 2. Une fois le noeud 4 installé, démarrez-le à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système, en suivant les instructions de la section link:prepare_for_netboot.html["Préparation à la mise sur le réseau"].
 
 .Important :
-* Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire ,Étape 1 à ,Étape 21, quittez ensuite cette section et suivez les instructions à link:set_fc_or_uta_uta2_config_node4.html#configure-fc-ports-on-node4["Configurez les ports FC sur le nœud 4"] et à link:set_fc_or_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4"], Saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec ,Étape 23.
+* Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<auto_install4_step1,Étape 1>> à <<auto_install4_step21,Étape 21>>, quittez ensuite cette section et suivez les instructions à link:set_fc_or_uta_uta2_config_node4.html#configure-fc-ports-on-node4["Configurez les ports FC sur le nœud 4"] et à link:set_fc_or_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4"], Saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <<auto_install4_step23,Étape 23>>.
 * Cependant, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière et passer à link:set_fc_or_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"], saisie de commandes à l'invite du cluster.
 
 
@@ -231,12 +232,12 @@ Interrompez l'AUTOBOOT en appuyant sur Ctrl-C dans l'invite de l'environnement d
 | Si votre système... | Alors... 
 
 
-| Possède des disques et aucun stockage interne | Accédez à ,Étape 23. 
+| Possède des disques et aucun stockage interne | Accédez à <<auto_install4_step23,Étape 23>>. 
 
 
 | Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage  a| 
 .. Passez à la section link:set_fc_or_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] complétez les sous-sections de cette section.
-.. Revenez à cette section et suivez les étapes restantes, en commençant par ,Étape 23.
+.. Revenez à cette section et suivez les étapes restantes, en commençant par <<auto_install4_step23,Étape 23>>.
 
 
 *Important* : vous devez reconfigurer les ports intégrés FC, les ports CNA intégrés et les cartes CNA avant de démarrer ONTAP sur les systèmes V-Series ou avec le logiciel de virtualisation FlexArray.

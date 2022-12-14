@@ -8,8 +8,10 @@
 
 Si le nœud 3 est équipé de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez vérifier la configuration des ports et éventuellement les reconfigurer, en fonction du mode d'utilisation du système mis à niveau.
 
+.Avant de commencer
 Vous devez disposer des modules SFP+ appropriés pour les ports UTA/UTA2.
 
+.Description de la tâche
 Si vous souhaitez utiliser un port UTA/UTA2 (Unified Target adapter) pour FC, vous devez d'abord vérifier la configuration du port.
 
 
@@ -87,10 +89,10 @@ Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ appropr
 | Si les ports UTA/UTA2... | Puis… 
 
 
-| N'avez pas la personnalité que vous voulez | Accédez à ,Étape 5. 
+| N'avez pas la personnalité que vous voulez | Accédez à <<auto_check3_step5,Étape 5>>. 
 
 
-| Avoir la personnalité que vous voulez | Passez aux étapes 5 à 12 et passez à ,Étape 13. 
+| Avoir la personnalité que vous voulez | Passez aux étapes 5 à 12 et passez à <<auto_check3_step13,Étape 13>>. 
 |===
 . [[auto_check3_step5]]effectuer l'une des actions suivantes :
 +
@@ -99,10 +101,10 @@ Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ appropr
 | Si vous configurez... | Puis… 
 
 
-| Ports sur carte UTA/UTA2 | Accédez à ,Étape 7 
+| Ports sur carte UTA/UTA2 | Accédez à <<auto_check3_step7,Étape 7>> 
 
 
-| Ports UTA/UTA2 intégrés | Ignorez l'étape 7 et passez à ,Étape 8. 
+| Ports UTA/UTA2 intégrés | Ignorez l'étape 7 et passez à <<auto_check3_step8,Étape 8>>. 
 |===
 . [[step6]]]si l'adaptateur est en mode initiateur et si le port UTA/UTA2 est en ligne, mettez le port UTA/UTA2 hors ligne :
 +

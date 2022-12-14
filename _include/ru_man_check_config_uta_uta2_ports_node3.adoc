@@ -8,8 +8,10 @@
 
 Si le nœud 3 est équipé de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez vérifier la configuration des ports et éventuellement les reconfigurer, en fonction du mode d'utilisation du système mis à niveau.
 
+.Avant de commencer
 Vous devez disposer des modules SFP+ appropriés pour les ports UTA/UTA2.
 
+.Description de la tâche
 Si vous souhaitez utiliser un port UTA/UTA2 (Unified Target adapter) pour FC, vous devez d'abord vérifier la configuration du port.
 
 
@@ -107,10 +109,10 @@ Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ appropr
 | Si les ports UTA/UTA2... | Alors... 
 
 
-| N'avez pas la personnalité que vous voulez | Accédez à ,Étape 5. 
+| N'avez pas la personnalité que vous voulez | Accédez à <<man_check_3_step5,Étape 5>>. 
 
 
-| Avoir la personnalité que vous voulez | Passez aux étapes 5 à 12 et passez à ,Étape 13. 
+| Avoir la personnalité que vous voulez | Passez aux étapes 5 à 12 et passez à <<man_check_3_step13,Étape 13>>. 
 |===
 . [[man_check_3_step5]]effectuez l'une des opérations suivantes :
 +
@@ -123,7 +125,7 @@ Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ appropr
 `boot_ontap maint` 
 
 
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Accédez à ,Étape 6. Vous devez déjà être en mode de maintenance. 
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Accédez à <<man_check_3_step6,Étape 6>>. Vous devez déjà être en mode de maintenance. 
 |===
 . [[man_check_3_step6]]effectuez l'une des opérations suivantes :
 +
@@ -132,10 +134,10 @@ Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ appropr
 | Si vous configurez... | Alors... 
 
 
-| Ports sur carte UTA/UTA2 | Accédez à ,Étape 7. 
+| Ports sur carte UTA/UTA2 | Accédez à <<man_check_3_step7,Étape 7>>. 
 
 
-| Ports UTA/UTA2 intégrés | Ignorez l'étape 7 et passez à ,Étape 8. 
+| Ports UTA/UTA2 intégrés | Ignorez l'étape 7 et passez à <<man_check_3_step8,Étape 8>>. 
 |===
 . [[man_check_3_step7]]si l'adaptateur est en mode initiateur, et si le port UTA/UTA2 est en ligne, mettez le port UTA/UTA2 hors ligne :
 +

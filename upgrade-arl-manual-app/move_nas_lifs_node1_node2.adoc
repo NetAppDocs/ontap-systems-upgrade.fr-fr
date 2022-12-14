@@ -16,6 +16,7 @@ summary: 'Déplacez les LIF de données du nœud 1 vers le nœud 2 si vous dispo
 [role="lead"]
 Avant de remplacer le nœud 1 par le nœud 3, vous devez déplacer les LIF de données NAS qui appartiennent au nœud 1 vers le nœud 2 si vous disposez d'un cluster à deux nœuds ou vers un troisième nœud si votre cluster possède plus de deux nœuds. La méthode que vous utilisez varie selon que le cluster est configuré pour NAS ou SAN.
 
+.Description de la tâche
 Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Vous devez vérifier que les LIFs sont bonnes et situées sur les ports appropriés une fois que vous avez mis le nœud3 en ligne.
 
 .Étapes
@@ -50,7 +51,7 @@ Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mi
 +
 `network interface migrate -vserver _Vserver_name_ -lif _LIF_name_ -destination-node _node2_ –destination-port _netport|ifgrp_`
 
-.. Modifier le port de rattachement et le nœud de rattachement des LIFs et des VLAN dans ,Sous-étape a Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :
+.. Modifier le port de rattachement et le nœud de rattachement des LIFs et des VLAN dans <<substepa,Sous-étape a>> Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :
 +
 `network interface modify -vserver _Vserver_name_ -lif _LIF_name_ -home-node _node2_ - home-port _netport|ifgrp_`
 
@@ -63,7 +64,7 @@ Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mi
 | Si le cluster est configuré pour... | Alors... 
 
 
-| NAS | Terminé ,Étape 5 à ,Étape 8. 
+| NAS | Terminé <<man_lif_1_2_step5,Étape 5>> à <<man_lif_1_2_step8,Étape 8>>. 
 
 
 | SAN | Désactiver toutes les LIFs SAN du nœud pour les désactiver pour la mise à niveau :
@@ -81,7 +82,7 @@ Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mi
 +
 `network interface modify -vserver _Vserver-name_ -lif _LIF_name_ -home-node _node2_ -home-port _port_name_`
 
-. [[man_lif_1_2_step8]]Vérifiez si la LIF utilise le port comme port home ou courant. Si le port n'est pas à la maison ou le port actuel, allez à ,Étape 9:
+. [[man_lif_1_2_step8]]Vérifiez si la LIF utilise le port comme port home ou courant. Si le port n'est pas à la maison ou le port actuel, allez à <<man_lif_1_2_step9,Étape 9>>:
 +
 `network interface show -home-node _node2_ -home-port _port_name_`
 

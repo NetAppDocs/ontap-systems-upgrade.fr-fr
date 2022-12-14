@@ -4,7 +4,8 @@
 
 Si le système Node4 est doté de ports FC intégrés, de ports UTA/UTA2 (ou d'une carte UTA/UTA2), vous devez configurer les paramètres avant de suivre la procédure.
 
-Vous devrez peut-être le faire  FC ports on node3, ou  and configure UTA/UTA2 ports on node3, ou les deux sections.
+.Description de la tâche
+Vous devrez peut-être le faire <<Configurez les ports FC sur le nœud 3>>, ou <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>, ou les deux sections.
 
 
 NOTE: Les documents marketing NetApp peuvent utiliser le terme « UTA2 » pour faire référence aux adaptateurs et ports CNA. Cependant, l'interface de ligne de commandes utilise le terme « CNA ».
@@ -14,6 +15,6 @@ NOTE: Les documents marketing NetApp peuvent utiliser le terme « UTA2 » pour f
 
 
 .Choix :
-*  FC ports on node3
-*  and configure UTA/UTA2 ports on node3
+* <<Configurez les ports FC sur le nœud 3>>
+* <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>
 

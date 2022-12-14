@@ -16,6 +16,7 @@ summary: 'Informez le support technique de NetApp que la maintenance est en cour
 [role="lead"]
 Avant de reconfigurer vos commutateurs, vous devez émettre un message AutoSupport pour informer le support technique de NetApp que la maintenance est en cours. Informer le support technique que la maintenance est en cours empêche l'ouverture d'un dossier en supposant une interruption de l'activité.
 
+.Description de la tâche
 Cette tâche doit être effectuée sur chaque site MetroCluster.
 
 .Étapes

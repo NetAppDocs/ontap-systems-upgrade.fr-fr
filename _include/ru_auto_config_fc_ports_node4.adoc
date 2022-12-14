@@ -8,9 +8,11 @@
 
 Si le nœud 4 possède des ports FC intégrés ou sur un adaptateur FC, vous devez définir des configurations de ports sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés. Si les ports ne sont pas configurés, le service peut subir une interruption.
 
+.Avant de commencer
 Vous devez avoir les valeurs des paramètres du port FC du noeud 2 que vous avez enregistrées dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"].
 
-Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'un adaptateur UTA/UTA2, vous devez les configurer dans  and configure UTA/UTA2 ports on node4.
+.Description de la tâche
+Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'un adaptateur UTA/UTA2, vous devez les configurer dans <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>.
 
 *Important* : si votre système dispose de disques de stockage, vous devez entrer les commandes dans cette section à l'invite du cluster. Si vous disposez d'un système V-Series ou d'un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous pouvez saisir les commandes décrites dans cette section en mode Maintenance.
 

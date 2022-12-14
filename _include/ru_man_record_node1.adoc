@@ -76,7 +76,7 @@ Le système affiche les LIFs cluster, intercluster, node-management et cluster-m
 
 NOTE: Il se peut que votre système ne dispose pas de LIF intercluster.
 
-. Capturer les informations dans la sortie de la commande dans ,Étape 3 à utiliser dans la section link:map_ports_node1_node3.html["Mapper les ports du node1 vers le node3"].
+. Capturer les informations dans la sortie de la commande dans <<man_record_node1_step3,Étape 3>> à utiliser dans la section link:map_ports_node1_node3.html["Mapper les ports du node1 vers le node3"].
 +
 Les informations de sortie sont nécessaires pour mapper les nouveaux ports du contrôleur sur les anciens ports du contrôleur.
 
@@ -161,7 +161,7 @@ Vous utiliserez les informations de la section link:map_ports_node1_node3.html["
 | Numéro d'ID du système NVRAM enregistré dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour la mise à niveau"]. | Passer à la section suivante, link:retire_node1.html["Retirer le nœud 1"]. 
 
 
-| N'a pas enregistré le numéro d'ID système NVRAM dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour la mise à niveau"] | Terminé ,Étape 11 et ,Étape 12 puis continuez à link:retire_node1.html["Retirer le nœud 1"]. 
+| N'a pas enregistré le numéro d'ID système NVRAM dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour la mise à niveau"] | Terminé <<man_record_node1_step11,Étape 11>> et <<man_record_node1_step12,Étape 12>> puis continuez à link:retire_node1.html["Retirer le nœud 1"]. 
 |===
 . [[man_record_node1_step11]]Entrez la commande suivante sur l'un des contrôleurs :
 +

@@ -35,7 +35,7 @@ cluster::> net int show -data-protocol iscsi|fcp -home-node node3
               lif1        up/up       172.17.176.120/24   node3          e0c      true
               lif2        up/up       172.17.176.121/24   node3          e1a      true
 ----
-.. Vérifiez que les nouvelles et `adapter` et `switch-port` les configurations sont correctes en comparant la sortie du `fcp adapter show` commande avec les informations de configuration que vous avez enregistrées dans la fiche ,Étape 2.
+.. Vérifiez que les nouvelles et `adapter` et `switch-port` les configurations sont correctes en comparant la sortie du `fcp adapter show` commande avec les informations de configuration que vous avez enregistrées dans la fiche <<worksheet_step2,Étape 2>>.
 +
 Lister les nouvelles configurations LIF SAN sur le nœud3 :
 

@@ -43,5 +43,5 @@ NOTE: Utilisez deux mains lors de l'insertion du support.
 +
 Vous devez fermer la poignée lentement de manière à ce qu'elle s'aligne correctement sur la face du support.
 
-. Recommencez ,Étape 2 à ,Étape 5 pour tous les disques que vous déplacez vers le nouveau système.
+. Recommencez <<move_int_drive_2,Étape 2>> à <<move_int_drive_5,Étape 5>> pour tous les disques que vous déplacez vers le nouveau système.
 

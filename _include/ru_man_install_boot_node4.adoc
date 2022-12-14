@@ -4,13 +4,14 @@
 
 Vous devez installer NODE4 dans le rack, transférer les connexions node2 vers node4 et démarrer node4. Vous devez également réaffecter toutes les unités de rechange du nœud 2, tous les disques appartenant à la racine et tous les agrégats non racines qui n'ont pas été transférés auparavant sur le nœud 3.
 
+.Description de la tâche
 Vous devez netboot Node4 si cette version de ONTAP 9 n'est pas installée sur le nœud 2. Une fois le noeud 4 installé, démarrez-le à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système en suivant les instructions de la section link:prepare_for_netboot.html["Préparation à la mise sur le réseau"]
 
 Toutefois, vous n'avez pas besoin de netboot Node4 si vous disposez de la même version ou ultérieure de Data ONTAP 9 et que vous êtes installé sur le nœud 2.
 
 *Information importante:*
 
-* Si vous mettez à niveau un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire ,Étape 1 à ,Étape 7, laissez cette section à ,Étape 8 et suivez les instructions de la section link:set_fc_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] Si nécessaire, saisir les commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre la procédure à ,Étape 9.
+* Si vous mettez à niveau un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<man_install4_Step1,Étape 1>> à <<man_install4_Step7,Étape 7>>, laissez cette section à <<man_install4_Step8,Étape 8>> et suivez les instructions de la section link:set_fc_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] Si nécessaire, saisir les commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre la procédure à <<man_install4_Step9,Étape 9>>.
 * Toutefois, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière, puis passer à la section link:set_fc_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"], saisie de commandes à l'invite du cluster.
 
 
@@ -22,10 +23,10 @@ Toutefois, vous n'avez pas besoin de netboot Node4 si vous disposez de la même 
 | Si node4 sera dans ... | Alors... 
 
 
-| Châssis séparé du nœud3 | Accédez à ,Étape 2. 
+| Châssis séparé du nœud3 | Accédez à <<man_install4_Step2,Étape 2>>. 
 
 
-| Châssis identique à celui du nœud3 | Ignorez les étapes 2 et 3 et passez à ,Étape 4. 
+| Châssis identique à celui du nœud3 | Ignorez les étapes 2 et 3 et passez à <<man_install4_Step4,Étape 4>>. 
 |===
 . [[man_install4_Step2]] Assurez-vous que le noeud 4 dispose d'un espace de rack suffisant.
 +
@@ -62,10 +63,10 @@ NOTE: Il n'est pas nécessaire de déplacer la carte d'interconnexion/carte FC_V
 | Si le noeud 4 est dans... | Alors... 
 
 
-| Châssis identique à celui du nœud 3 | Accédez à ,Étape 8. 
+| Châssis identique à celui du nœud 3 | Accédez à <<man_install4_Step8,Étape 8>>. 
 
 
-| Châssis séparé du nœud3 | Accédez à ,Étape 6. 
+| Châssis séparé du nœud3 | Accédez à <<man_install4_Step6,Étape 6>>. 
 |===
 . [[man_install4_Step6]]mettez le noeud 4 sous tension, puis interrompez le démarrage en appuyant sur `Ctrl-C` pour accéder à l'invite de l'environnement de démarrage.
 +
@@ -100,12 +101,12 @@ WARNING: *Avertissement : ne pas annuler le délai. Si la batterie n'est pas cha
 | Si votre système... | Alors... 
 
 
-| Possède des disques et aucun stockage interne | Passez aux étapes 9 à 14 et passez à ,Étape 15. 
+| Possède des disques et aucun stockage interne | Passez aux étapes 9 à 14 et passez à <<man_install4_Step15,Étape 15>>. 
 
 
 | Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
 .. Allez dans la section _définissez la configuration FC ou UTA/UTA2 sur le nœud 4_ et complétez les sections link:set_fc_uta_uta2_config_node4.html#configure-fc-ports-on-node4["Configurez les ports FC sur le nœud 4"] et link:set_fc_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4"], en fonction de votre système.
-.. Revenez à cette section et suivez les étapes restantes, en commençant par ,Étape 9.
+.. Revenez à cette section et suivez les étapes restantes, en commençant par <<man_install4_Step9,Étape 9>>.
 
 
 *Important* : vous devez reconfigurer les ports intégrés FC, les ports intégrés UTA/UTA2 et les cartes UTA/UTA2 avant de démarrer Data ONTAP sur le système V-Series.
@@ -161,10 +162,10 @@ Le système s'arrête à l'invite de l'environnement d'amorçage.
 | Si le système que vous mettez à niveau... | Alors... 
 
 
-| Ne dispose pas de la version ONTAP correcte ou actuelle du système node4 | Accédez à ,Étape 20. 
+| Ne dispose pas de la version ONTAP correcte ou actuelle du système node4 | Accédez à <<man_install4_Step20,Étape 20>>. 
 
 
-| Dispose de la version correcte ou à jour de ONTAP sur le nœud 4 | Accédez à ,Étape 25. 
+| Dispose de la version correcte ou à jour de ONTAP sur le nœud 4 | Accédez à <<man_install4_Step25,Étape 25>>. 
 |===
 . [[man_install4_Step20]]configurez la connexion netboot en choisissant l'une des actions suivantes.
 +
@@ -286,7 +287,7 @@ DISK         OWNER                       POOL   SERIAL NUMBER   HOME
 `_node2_sysid_ -d _node4_sysid_` 
 |===
 +
-Pour le `<node2_sysid>` valeur, utilisez les informations capturées dans link:record_node2_information.html#man_node2_info_step10["Étape 10"] De la section _Record node2 information_. Pour `_node4_sysid_`, utilisez les informations capturées dans ,Étape 23.
+Pour le `<node2_sysid>` valeur, utilisez les informations capturées dans link:record_node2_information.html#man_node2_info_step10["Étape 10"] De la section _Record node2 information_. Pour `_node4_sysid_`, utilisez les informations capturées dans <<man_install4_step23,Étape 23>>.
 
 +
 
@@ -429,7 +430,7 @@ Le système s'arrête à l'invite de l'environnement d'amorçage.
 +
 `set time _hh:mm:ss_`
 
-. Vérifiez que l'ID du système partenaire est correctement défini comme indiqué dans la ,Étape 26 sous option.
+. Vérifiez que l'ID du système partenaire est correctement défini comme indiqué dans la <<man_install4_Step26,Étape 26>> sous option.
 +
 `printenv partner-sysid`
 

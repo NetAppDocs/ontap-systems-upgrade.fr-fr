@@ -16,6 +16,7 @@ summary: 'Lors de la mise à niveau des contrôleurs exécutant ONTAP 9.5 vers 9
 [role="lead"]
 Après avoir vérifié l'installation du nœud 3 et avant de transférer des agrégats du nœud 2 vers le nœud 3, vous devez déplacer les LIF de données NAS appartenant au nœud 1 qui se trouvent actuellement sur le nœud 2 vers le nœud 3. Vous devez également vérifier que des LIFs SAN existent sur le noeud 3.
 
+.Description de la tâche
 Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Vous vérifierez que les LIFs sont saines et situées sur les ports appropriés après avoir mis le nœud3 en ligne.
 
 .Étapes

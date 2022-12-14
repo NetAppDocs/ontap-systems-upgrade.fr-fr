@@ -32,7 +32,7 @@ Une fois que vous avez installé et installé le nœud 3, vous devez vérifier q
 | Si le cluster est... | Alors... 
 
 
-| Dans un environnement SAN | Terminé ,Étape 4 ensuite, passez à la section link:move_nas_lifs_node1_from_node2_node3_verify_san_lifs_node3.html["Déplacement des LIF de données NAS qui appartiennent au nœud 1, du nœud 2 au nœud 3, et vérification des LIF SAN sur le nœud 3"]. 
+| Dans un environnement SAN | Terminé <<step4,Étape 4>> ensuite, passez à la section link:move_nas_lifs_node1_from_node2_node3_verify_san_lifs_node3.html["Déplacement des LIF de données NAS qui appartiennent au nœud 1, du nœud 2 au nœud 3, et vérification des LIF SAN sur le nœud 3"]. 
 
 
 | Pas dans un environnement SAN | Ignorez l'étape 4 et passez à link:move_nas_lifs_node1_from_node2_node3_verify_san_lifs_node3.html["Déplacement des LIF de données NAS qui appartiennent au nœud 1, du nœud 2 au nœud 3, et vérification des LIF SAN sur le nœud 3"]. 

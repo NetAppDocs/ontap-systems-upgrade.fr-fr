@@ -16,6 +16,7 @@ summary: 'Déplacez les LIF de données NAS du nœud 2 qui se trouvent sur le n�
 [role="lead"]
 Après avoir mapper les ports du nœud 2 vers le nœud 4 et avant de transférer les agrégats du nœud 2 du nœud 3 vers le nœud 4, vous devez déplacer les LIF de données NAS qui appartiennent actuellement au nœud 2 du nœud 3 vers le nœud 4. Vous devez également vérifier les LIFs SAN sur le nœud4.
 
+.Description de la tâche
 Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Vous vérifiez que les LIFs sont saines et situées sur les ports appropriés après avoir mis le nœud4 en ligne.
 
 .Étapes
@@ -96,10 +97,10 @@ cluster1-02  1b       50:0a:09:82:9c:6c:36:07  ACME Switch:7
 | Si le noeud 2... | Description 
 
 
-| Des groupes d'interface ou des VLAN ont été configurés | Accédez à ,Étape 4. 
+| Des groupes d'interface ou des VLAN ont été configurés | Accédez à <<man_lif_verify_4_Step3,Étape 4>>. 
 
 
-| Aucun groupe d'interfaces ou VLAN n'a été configuré | Ignorez l'étape 4 et passez à ,Étape 5. 
+| Aucun groupe d'interfaces ou VLAN n'a été configuré | Ignorez l'étape 4 et passez à <<man_lif_verify_4_Step4,Étape 5>>. 
 |===
 . [[man_lif_revérification_4_Step3]]effectuez les étapes suivantes pour migrer toutes les LIF de données NAS hébergées sur des groupes d'interface et des VLAN qui se trouvaient au départ sur le nœud 2, du nœud 3 vers le nœud 4.
 +
@@ -107,7 +108,7 @@ cluster1-02  1b       50:0a:09:82:9c:6c:36:07  ACME Switch:7
 +
 `network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node node4 –destination-port _netport|ifgrp_`
 
-.. Modifier le home port et le home node des LIFs dans ,Sous-étape a Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :
+.. Modifier le home port et le home node des LIFs dans <<man_lif_verify_4_substepa,Sous-étape a>> Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :
 +
 `network interface modify -vserver _vserver_name_ -lif _datalif_name_ -home-node node4 home-port _netport|ifgrp_`
 
@@ -115,7 +116,7 @@ cluster1-02  1b       50:0a:09:82:9c:6c:36:07  ACME Switch:7
 +
 `network interface migrate -vserver _vserver_name_ -lif _datalif_name_ -destination-node node4 –destination-port _netport|ifgrp_`
 
-.. Modifier le home port et le home node des LIFs dans ,Sous-étape c Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :
+.. Modifier le home port et le home node des LIFs dans <<man_lif_verify_4_substepc,Sous-étape c>> Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :
 +
 `network interface modify -vserver _vserver_name_ -lif _datalif_name_ -home-node _node4_ home-port _netport|ifgrp_`
 
@@ -128,13 +129,13 @@ cluster1-02  1b       50:0a:09:82:9c:6c:36:07  ACME Switch:7
 | Si le cluster est configuré pour... | Alors... 
 
 
-| NAS | Terminé ,Étape 6 à ,Étape 9, Ignorez l'étape 10 et terminez ,Étape 11 à ,Étape 14. 
+| NAS | Terminé <<man_lif_verify_4_Step5,Étape 6>> à <<man_lif_verify_4_Step8,Étape 9>>, Ignorez l'étape 10 et terminez <<man_lif_verify_4_Step10,Étape 11>> à <<man_lif_verify_4_Step13,Étape 14>>. 
 
 
-| SAN | Passez les étapes 6 à 9 et terminez ,Étape 10 à ,Étape 14. 
+| SAN | Passez les étapes 6 à 9 et terminez <<man_lif_verify_4_Step9,Étape 10>> à <<man_lif_verify_4_Step13,Étape 14>>. 
 
 
-| NAS et SAN | Terminé ,Étape 6 à ,Étape 14. 
+| NAS et SAN | Terminé <<man_lif_verify_4_Step5,Étape 6>> à <<man_lif_verify_4_Step13,Étape 14>>. 
 |===
 . [[man_lif_verify_4_Step5]]si vous disposez de ports de données qui ne sont pas les mêmes sur vos plates-formes, entrez la commande suivante pour ajouter les ports au broadcast domain :
 +
@@ -227,7 +228,7 @@ vs1
             lif1         up/up    172.17.176.120/24  node4         e0c     true
             lif2         up/up    172.17.176.121/24  node4
 ----
-.. Vérifiez que le nouveau `adapter` et `switch-port` les configurations sont correctes en comparant la sortie du `fcp adapter show` commande avec les nouvelles informations de configuration que vous avez enregistrées dans la fiche technique du ,Étape 2.
+.. Vérifiez que le nouveau `adapter` et `switch-port` les configurations sont correctes en comparant la sortie du `fcp adapter show` commande avec les nouvelles informations de configuration que vous avez enregistrées dans la fiche technique du <<worksheet_step2_node2,Étape 2>>.
 +
 Lister les nouvelles configurations LIF SAN sur le nœud4 :
 

@@ -16,6 +16,7 @@ summary: 'Utilisez l"outil Config Advisor pour rechercher les erreurs de configu
 [role="lead"]
 Vous pouvez utiliser l'outil Active IQ Config Advisor disponible sur le site de support NetApp pour rechercher des erreurs de configuration courantes.
 
+.Description de la tâche
 Active IQ Config Advisor est un outil de validation de la configuration et de vérification de l'état de santé. Vous pouvez le déployer sur des sites sécurisés et sur des sites non sécurisés à des fins de collecte des données et d'analyse du système.
 
 

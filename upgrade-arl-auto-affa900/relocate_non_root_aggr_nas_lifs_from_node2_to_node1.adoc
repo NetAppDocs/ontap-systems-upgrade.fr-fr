@@ -16,8 +16,10 @@ summary: 'Transférer les agrégats non racines de nœud2 vers le nœud 1 lors d
 [role="lead"]
 Avant de remplacer le nœud 2 par le module de contrôleur AFF A900 ou FAS9500 et le module NVRAM, vous devez d'abord transférer les agrégats non racines qui appartiennent au nœud 2 vers le nœud 1.
 
+.Avant de commencer
 Une fois les post-contrôles effectués à partir de l'étape précédente, la version de ressource pour le noeud 2 démarre automatiquement. Les agrégats non-racines et les LIF de données non-SAN sont migrées depuis le nœud 2 vers le nouveau nœud 1.
 
+.Description de la tâche
 Une fois les agrégats et les LIF migrés, l'opération est interrompue à des fins de vérification. À ce stade, vous devez vérifier que tous les agrégats non racine et toutes les LIF de données non-SAN sont migrés vers le nouveau nœud 1.
 
 Le propriétaire home des agrégats et des LIF n'est pas modifié ; seul le propriétaire actuel est modifié.

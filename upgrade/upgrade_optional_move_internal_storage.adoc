@@ -13,6 +13,7 @@ summary: 'Si votre nœud d"origine est l"un des modèles pris en charge, vous po
 [role="lead"]
 Si votre nœud d'origine est l'un des modèles pris en charge, vous pouvez déplacer vos disques SATA, SSD ou SAS internes vers un tiroir disque relié aux nouveaux nœuds lors de la mise à niveau du stockage. Vous pouvez également convertir le système en tiroir disque et le connecter aux nouveaux nœuds.
 
+.Description de la tâche
 Vous pouvez déplacer des disques ou des tiroirs disques uniquement au sein du même cluster.
 
 .Choix

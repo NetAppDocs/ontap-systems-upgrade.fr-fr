@@ -16,11 +16,12 @@ summary: 'Vérifiez que les ports physiques du nœud 2 sont correctement mappée
 [role="lead"]
 Vous devez vérifier que les ports physiques du nœud2 sont correctement mis en correspondance avec les ports physiques du nœud4. Ainsi, le nœud4 pourra communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
 
+.Description de la tâche
 Reportez-vous à la section link:other_references.html["Références"] Pour établir une liaison avec _Hardware Universe_ afin de capturer des informations sur les ports des nouveaux nœuds. Vous utiliserez ces informations plus loin dans cette section.
 
 L'organisation des ports physiques peut varier en fonction du modèle des nœuds. Au démarrage du nouveau nœud, ONTAP tente de déterminer les ports qui doivent héberger les LIFs du cluster afin de se mettre automatiquement en quorum.
 
-Si les ports physiques du node2 ne sont pas directement mis en correspondance avec les ports physiques du node4, la section suivante  network configuration on node4 doit être utilisé pour réparer la connectivité réseau.
+Si les ports physiques du node2 ne sont pas directement mis en correspondance avec les ports physiques du node4, la section suivante <<Restaurez la configuration du réseau sur le noeud 4>> doit être utilisé pour réparer la connectivité réseau.
 
 Après avoir installé et démarrer node4, vous devez vérifier qu'il est correctement installé. Vous devez attendre que le noeud 4 rejoint le quorum et reprendre l'opération de transfert.
 
@@ -79,7 +80,7 @@ Répétez l'étape 3 pour vérifier que la LIF de cluster écoute désormais sur
 
 . Si vous travaillez sur un système MetroCluster, vérifiez que le contrôleur remplacé est configuré correctement pour la configuration MetroCluster ; la configuration MetroCluster doit être en état de fonctionnement. Reportez-vous à la section link:verify_health_of_metrocluster_config.html["Vérifier l'état de santé de la configuration MetroCluster"].
 +
-Reconfigurer les LIFs intercluster sur le nœud MetroCluster node4, et vérifier le peering de cluster pour restaurer la communication entre les nœuds MetroCluster avant de poursuivre l'opération ,Étape 6.
+Reconfigurer les LIFs intercluster sur le nœud MetroCluster node4, et vérifier le peering de cluster pour restaurer la communication entre les nœuds MetroCluster avant de poursuivre l'opération <<auto_verify_4_Step6,Étape 6>>.
 
 +
 Vérifier l'état du nœud MetroCluster :
@@ -130,6 +131,7 @@ NOTE: Dans cette procédure, la section _recréation des VLAN, ifgrps et des dom
 
 Une fois que vous avez confirmé que le nœud4 est quorum et peut communiquer avec le nœud3, vérifiez que les VLAN, les groupes d'interface et les domaines de diffusion du nœud2 sont visibles sur le nœud4. Vérifiez également que tous les ports réseau node4 sont configurés dans leurs domaines de diffusion appropriés.
 
+.Description de la tâche
 Pour plus d'informations sur la création et la recrércréation de VLAN, de groupes d'interfaces et de domaines de diffusion, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Network Management_.
 
 .Étapes
@@ -317,7 +319,7 @@ Attendez environ une minute pour placer les VLAN nouvellement restaurés dans le
 `network port reachability show`
 
 +
-Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le `network port reachability show` la commande doit indiquer l'état de la capacité d'accessibilité `ok` pour tous les ports connectés et l'état en tant que `no-reachability` pour les ports sans connectivité physique. Si un port signale un état autre que ces deux ports, effectuez la réparation de la capacité d'accessibilité et ajoutez ou supprimez des ports de leurs domaines de diffusion comme indiqué dans ,Étape 4.
+Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le `network port reachability show` la commande doit indiquer l'état de la capacité d'accessibilité `ok` pour tous les ports connectés et l'état en tant que `no-reachability` pour les ports sans connectivité physique. Si un port signale un état autre que ces deux ports, effectuez la réparation de la capacité d'accessibilité et ajoutez ou supprimez des ports de leurs domaines de diffusion comme indiqué dans <<auto_restore_4_Step4,Étape 4>>.
 
 . Vérifier que tous les ports ont été placés dans des domaines de diffusion :
 +

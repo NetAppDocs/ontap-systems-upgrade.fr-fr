@@ -13,6 +13,7 @@ summary: 'Vous créez au moins un agrégat sur chacun des nouveaux nœuds afin d
 [role="lead"]
 Vous créez au moins un agrégat sur chacun des nouveaux nœuds afin de stocker les volumes que vous voulez déplacer des nœuds d'origine. Vous devez identifier un agrégat pour chaque volume et les déplacer individuellement.
 
+.Avant de commencer
 Les relations de miroir de protection des données doivent avoir été initialisées avant de déplacer un volume.
 
 https://docs.netapp.com/us-en/ontap/data-protection-disaster-recovery/index.html["Rechercher la procédure de protection des données requise"^].

@@ -125,7 +125,7 @@ Vous utiliserez les informations de la section link:map_ports_node2_node4.html["
 | Numéro d'ID système NVRAM enregistré dans link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] | Accédez à link:retire_node2.html["Retrait du nœud 2"]. 
 
 
-| N'a pas enregistré le numéro d'ID système NVRAM dans link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] | Terminé ,Étape 9 et ,Étape 10 puis passer à la section suivante, link:retire_node2.html["Retrait du nœud 2"]. 
+| N'a pas enregistré le numéro d'ID système NVRAM dans link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] | Terminé <<man_record_2_step9,Étape 9>> et <<man_record_2_step10,Étape 10>> puis passer à la section suivante, link:retire_node2.html["Retrait du nœud 2"]. 
 |===
 . [[man_record_2_step9]]Afficher les attributs du noeud 2 :
 +

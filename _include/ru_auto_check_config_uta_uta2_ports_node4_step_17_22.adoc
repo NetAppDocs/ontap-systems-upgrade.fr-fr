@@ -28,9 +28,9 @@ Modifier les ports en mode initiateur :
 +
 [NOTE]
 ====
-Si vous effectuez une mise à niveau à partir d'un système prenant en charge des disques externes vers un système qui prend également en charge des disques externes, accédez à ,Étape 22.
+Si vous effectuez une mise à niveau à partir d'un système prenant en charge des disques externes vers un système qui prend également en charge des disques externes, accédez à <<auto_check_4_step22,Étape 22>>.
 
-Si vous effectuez une mise à niveau à partir d'un système qui utilise des disques externes vers un système prenant en charge des disques internes et externes, par exemple un système AFF A800, rendez-vous sur ,Étape 23.
+Si vous effectuez une mise à niveau à partir d'un système qui utilise des disques externes vers un système prenant en charge des disques internes et externes, par exemple un système AFF A800, rendez-vous sur <<auto_check_4_step23,Étape 23>>.
 
 ====
 . [[auto_check_4_step22]]à l'invite du chargeur, démarrez :

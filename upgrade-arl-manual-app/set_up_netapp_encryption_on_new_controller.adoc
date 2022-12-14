@@ -16,6 +16,7 @@ summary: 'Si nécessaire, configurez le nouveau module de contrôleur pour NVE l
 [role="lead"]
 Si le remplacement du contrôleur ou le partenaire de haute disponibilité du nouveau contrôleur utilise NetApp Volume Encryption (NVE), vous devez configurer le nouveau module de contrôleur pour NVE.
 
+.Description de la tâche
 Cette procédure comprend les étapes réalisées sur le nouveau module de contrôleur. Vous devez saisir la commande sur le nœud approprié.
 
 .Étapes
@@ -62,6 +63,7 @@ Vous devez installer les mêmes serveurs de gestion des clés que ceux installé
 |===
 
 
+.Une fois que vous avez terminé
 Vérifiez si des volumes ont été mis hors ligne, car les clés d'authentification ne sont pas disponibles ou si les serveurs de gestion des clés externes n'ont pas pu être atteints. Remettre ces volumes en ligne à l'aide de la commande suivante :
 
 `volume online`

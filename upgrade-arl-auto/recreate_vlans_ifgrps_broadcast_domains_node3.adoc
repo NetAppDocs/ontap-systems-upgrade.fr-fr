@@ -16,6 +16,7 @@ summary: 'Créez à nouveau les VLAN, les groupes d"interfaces et les domaines d
 [role="lead"]
 Une fois que vous avez confirmé que le noeud 3 est dans le quorum et que vous pouvez communiquer avec le noeud 2, vous devez recréer les VLAN, les groupes d'interface et les domaines de diffusion du noeud 1 sur le noeud 3. Vous devez également ajouter les ports node3 aux domaines de diffusion nouvellement créés.
 
+.Description de la tâche
 Pour plus d'informations sur la création et la recrércréation de VLAN, de groupes d'interfaces et de domaines de diffusion, accédez à link:other_references.html["Références"] Et lien vers _Network Management_.
 
 .Étapes

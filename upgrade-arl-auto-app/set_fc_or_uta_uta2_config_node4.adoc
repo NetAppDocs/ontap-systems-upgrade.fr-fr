@@ -16,14 +16,15 @@ summary: 'Vous pouvez configurer les ports FC intégrés des nœuds node4, les p
 [role="lead"]
 Si le système Node4 est doté de ports FC intégrés, de ports UTA/UTA2 (ou d'une carte UTA/UTA2), vous devez configurer les paramètres avant de suivre la procédure.
 
-Vous devrez peut-être compléter la  FC ports on node4 la section  and configure UTA/UTA2 ports on node4, ou les deux sections.
+.Description de la tâche
+Vous devrez peut-être compléter la <<Configurez les ports FC sur le nœud 4>> la section <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>, ou les deux sections.
 
 
 NOTE: Si le nœud 4 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2 et effectuez une mise à niveau du système avec des disques de stockage, vous pouvez ignorer la section link:verify_node4_installation.html["Vérifiez l'installation du node4"]. Cependant, si vous disposez d'un système V-Series ou d'un logiciel de virtualisation FlexArray et que vous êtes connecté aux baies de stockage, et que le nœud 4 n'intègre pas de ports FC, de ports UTA/UTA2 intégrés ou de carte UTA/UTA2, vous devez revenir à la section _installation et démarrage sur le nœud 4_, puis reprendre le processus à l'adresse link:install_boot_node4.html#step22["Étape 22"]. Assurez-vous que le noeud 4 dispose d'un espace de rack suffisant. Si le noeud 4 se trouve dans un châssis distinct du noeud 2, vous pouvez placer le noeud 4 au même emplacement que le noeud 3. Si les nœuds 2 et 4 se trouvent dans le même châssis, le nœud 4 se trouve déjà dans son emplacement de rack approprié.
 
 .Choix
-*  FC ports on node4
-*  and configure UTA/UTA2 ports on node4
+* <<Configurez les ports FC sur le nœud 4>>
+* <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>
 
 
 
@@ -32,9 +33,11 @@ NOTE: Si le nœud 4 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 int
 
 Si le nœud 4 possède des ports FC intégrés ou sur un adaptateur FC, vous devez définir des configurations de ports sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés. Si les ports ne sont pas configurés, le service peut subir une interruption.
 
+.Avant de commencer
 Vous devez avoir les valeurs des paramètres du port FC du noeud 2 que vous avez enregistrées dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"].
 
-Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'un adaptateur UTA/UTA2, vous devez les configurer dans  and configure UTA/UTA2 ports on node4.
+.Description de la tâche
+Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'un adaptateur UTA/UTA2, vous devez les configurer dans <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>.
 
 *Important* : si votre système dispose de disques de stockage, vous devez entrer les commandes dans cette section à l'invite du cluster. Si vous disposez d'un système V-Series ou d'un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous pouvez saisir les commandes décrites dans cette section en mode Maintenance.
 
@@ -110,7 +113,7 @@ Modifier les ports FC sur le nœud 4 si nécessaire :
 
 
 | Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
-** Accédez à  and configure UTA/UTA2 ports on node4 Si le nœud 4 est doté d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
+** Accédez à <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>> Si le nœud 4 est doté d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
 ** Ignorez la section _Check et configurez les ports UTA/UTA2 sur le nœud 4_ si le nœud 4 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, puis revenez à la section _Install and Boot node4_, puis reprenez le contrôle link:install_boot_node4.html#step23["Étape 23"].
 
 
@@ -123,8 +126,10 @@ Modifier les ports FC sur le nœud 4 si nécessaire :
 
 Si le NODE4 dispose de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2A, vous devez vérifier la configuration des ports et les configurer, en fonction de votre mode d'utilisation du système mis à niveau.
 
+.Avant de commencer
 Vous devez disposer des modules SFP+ appropriés pour les ports UTA/UTA2.
 
+.Description de la tâche
 Les ports UTA/UTA2 peuvent être configurés en mode FC natif ou UTA/UTA2A. Le mode FC prend en charge les initiateurs FC et la cible FC ; le mode UTA/UTA2 permet d'utiliser simultanément le trafic FCoE et les cartes réseau sur la même interface SFP+ 10 GbE et prend en charge la cible FC.
 
 
@@ -186,10 +191,10 @@ Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ appropr
 | Si les ports CNA... | Puis… 
 
 
-| N'avez pas la personnalité que vous voulez | Accédez à ,Étape 5. 
+| N'avez pas la personnalité que vous voulez | Accédez à <<auto_check_4_step5,Étape 5>>. 
 
 
-| Avoir la personnalité que vous voulez | Passez aux étapes 5 à 12 et passez à ,Étape 13. 
+| Avoir la personnalité que vous voulez | Passez aux étapes 5 à 12 et passez à <<auto_check_4_step13,Étape 13>>. 
 |===
 . [[auto_check_4_step5]]effectuez l'une des opérations suivantes :
 +
@@ -198,10 +203,10 @@ Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ appropr
 | Si vous configurez... | Puis… 
 
 
-| Ports sur carte UTA/UTA2 | Accédez à ,Étape 7 
+| Ports sur carte UTA/UTA2 | Accédez à <<auto_check_4_step7,Étape 7>> 
 
 
-| Ports UTA/UTA2 intégrés | Ignorez l'étape 7 et passez à ,Étape 8. 
+| Ports UTA/UTA2 intégrés | Ignorez l'étape 7 et passez à <<auto_check_4_step8,Étape 8>>. 
 |===
 . Si l'adaptateur est en mode initiateur et si le port UTA/UTA2 est en ligne, mettez le port UTA/UTA2 hors ligne :
 +
@@ -290,7 +295,7 @@ f-a   2b       fc             target       cna           -             online
 `boot_ontap menu`.
 
 +
-Si vous migrez vers une A800, rendez-vous sur ,Étape 23
+Si vous migrez vers une A800, rendez-vous sur <<auto_check_4_step23,Étape 23>>
 
 . [[auto_check_4_step15]]]sur le noeud 4, allez au menu de démarrage et utilisez 22/7 et sélectionnez l'option masquée `boot_after_controller_replacement`. À l'invite, entrez node2 pour réaffecter les disques du nœud2 au nœud4, comme dans l'exemple suivant.
 +
@@ -419,7 +424,7 @@ Login:
 
 NOTE: Dans l'exemple de sortie de la console ci-dessus, ONTAP vous invite à entrer le nom du nœud partenaire si le système utilise des disques du partitionnement de disque avancé.
 
-. Si le système passe en boucle de redémarrage avec le message `no disks found`, Il indique que le système a réinitialisé les ports FC ou UTA/UTA2 dans le mode cible et ne parvient donc pas à voir les disques. Pour résoudre ce problème, passez à la ,Étape 17 à ,Étape 22 ou allez à la section link:verify_node4_installation.html["Vérifiez l'installation du node4"].
+. Si le système passe en boucle de redémarrage avec le message `no disks found`, Il indique que le système a réinitialisé les ports FC ou UTA/UTA2 dans le mode cible et ne parvient donc pas à voir les disques. Pour résoudre ce problème, passez à la <<auto_check_4_step17,Étape 17>> à <<auto_check_4_step22,Étape 22>> ou allez à la section link:verify_node4_installation.html["Vérifiez l'installation du node4"].
 . [[auto_check_4_step17]]appuyez sur `Ctrl-C` dans le cas de l'autoboot, cette variable permet d'arrêter le nœud sur le `LOADER>` à l'invite.
 . À l'invite du chargeur, passez en mode maintenance :
 +
@@ -446,9 +451,9 @@ Modifier les ports en mode initiateur :
 +
 [NOTE]
 ====
-Si vous effectuez une mise à niveau à partir d'un système prenant en charge des disques externes vers un système qui prend également en charge des disques externes, accédez à ,Étape 22.
+Si vous effectuez une mise à niveau à partir d'un système prenant en charge des disques externes vers un système qui prend également en charge des disques externes, accédez à <<auto_check_4_step22,Étape 22>>.
 
-Si vous effectuez une mise à niveau à partir d'un système qui utilise des disques externes vers un système prenant en charge des disques internes et externes, par exemple un système AFF A800, rendez-vous sur ,Étape 23.
+Si vous effectuez une mise à niveau à partir d'un système qui utilise des disques externes vers un système prenant en charge des disques internes et externes, par exemple un système AFF A800, rendez-vous sur <<auto_check_4_step23,Étape 23>>.
 
 ====
 . [[auto_check_4_step22]]à l'invite du chargeur, démarrez :

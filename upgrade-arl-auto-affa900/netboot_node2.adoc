@@ -26,6 +26,7 @@ NOTE: Vous pouvez également utiliser l'option de démarrage USB pour effectuer 
 * Téléchargez les fichiers système nécessaires pour votre système et la version correcte de ONTAP depuis le site _support NetApp_. Reportez-vous à la section link:other_references.html["Références"] Lien vers le _site de support NetApp_.
 
 
+.Description de la tâche
 Vous devez netboot les nouveaux contrôleurs si la même version de ONTAP 9 est installée sur les contrôleurs d'origine. Après avoir installé chaque nouveau contrôleur, vous démarrez le système à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système.
 
 .Étapes
@@ -103,7 +104,7 @@ Utilisez toujours netboot pour mettre à jour le nouveau nœud vers l'image souh
 . Si vous êtes invité à poursuivre la procédure, entrez `y`, Et lorsque vous êtes invité à saisir l'URL du pack :
 `\http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz`
 +
-Le `<path_to_the_web-accessible_directory>` vous devez indiquer où vous avez téléchargé le `<ontap_version>_image.tgz` dans ,Étape 2.
+Le `<path_to_the_web-accessible_directory>` vous devez indiquer où vous avez téléchargé le `<ontap_version>_image.tgz` dans <<netboot_node2_step2,Étape 2>>.
 
 . Procédez comme suit pour redémarrer le module de contrôleur :
 +

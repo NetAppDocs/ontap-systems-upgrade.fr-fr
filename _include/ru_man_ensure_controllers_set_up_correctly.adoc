@@ -36,7 +36,7 @@ node4          node3          true     Connected to node3
 `cluster ha modify -configured true` 
 
 
-| Cluster à plus de deux nœuds | Accédez à ,Étape 4. 
+| Cluster à plus de deux nœuds | Accédez à <<man_ensure_setup_Step4,Étape 4>>. 
 |===
 . [[man_Assurez_setup_Step4]]Vérifiez que les noeuds 3 et node4 appartiennent au même cluster en saisissant la commande suivante et en examinant la sortie :
 +
@@ -127,4 +127,5 @@ Accédez à link:other_references.html["Références"] Pour accéder à _System 
 . Pour configurer un cluster sans commutateur sur les nouveaux nœuds, rendez-vous sur link:other_references.html["Références"] Pour accéder au _Network support site_ et suivre les instructions de la section _transition vers un cluster sans commutateur à deux nœuds_.
 
 
+.Une fois que vous avez terminé
 Si le cryptage du stockage est activé sur les nœuds 3 et 4, procédez comme suit dans link:set_up_storage_encryption_new_controller.html["Configurez Storage Encryption sur le nouveau module de contrôleur"]. Dans le cas contraire, suivez les étapes de la section link:decommission_old_system.html["Désaffectation de l'ancien système"].

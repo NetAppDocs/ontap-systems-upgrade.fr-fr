@@ -16,6 +16,7 @@ summary: 'Installez les fichiers RCF pour reconfigurer les commutateurs Cisco et
 [role="lead"]
 Vous devez appliquer les fichiers de configuration de référence (RCFs) appropriés pour reconfigurer vos commutateurs afin d'adapter les nouveaux nœuds. Après avoir appliqué les RCFs, vous pouvez recâter les commutateurs.
 
+.Avant de commencer
 L'utilisation du port de commutateur FC doit correspondre à l'utilisation décrite dans le contenu _MetroCluster installation et Configuration_ de manière à pouvoir utiliser les RCFC. Accédez à link:other_references.html["Références"] Pour établir un lien vers le contenu _MetroCluster installation and Configuration_ joint à la structure.
 
 .Étapes

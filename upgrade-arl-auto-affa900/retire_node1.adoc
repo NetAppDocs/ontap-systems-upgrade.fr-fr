@@ -36,6 +36,7 @@ Une fois le nœud 1 complètement arrêté, le nœud 1 doit se trouver à l'invi
 
 À ce stade, le nœud 1 est en panne et toutes les données sont servies par le nœud 2. Les nœuds 1 et 2 se trouvant dans le même châssis et alimentés par le même ensemble d'alimentations, NE mettez PAS le châssis hors tension. Vous devez faire attention de ne retirer que le module de contrôleur node1 et le module NVRAM node1. En général, le nœud 1 est le contrôleur A, situé sur le côté gauche du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système. L'étiquette du contrôleur se trouve sur le châssis, directement au-dessus du module de contrôleur.
 
+.Avant de commencer
 Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement.
 
 
@@ -133,6 +134,7 @@ Lors de l'installation, vous devez prendre note des points suivants :
 * Déplacez tous les modules de cache Flash installés dans le module NVRAM FAS9000 vers le module NVRAM FAS9500.
 
 
+.Avant de commencer
 Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement.
 
 

@@ -13,8 +13,10 @@ summary: 'Pour permettre aux noeuds 3 et nœud4 de communiquer entre eux au sein
 [role="lead"]
 Pour permettre aux nœuds 3 et Node4 de communiquer entre eux dans le cluster et avec le réseau après la mise à niveau, vous devez confirmer que les ports physiques sont correctement configurés avec les paramètres requis pour l'utilisation prévue, tels que le cluster, les données, etc.
 
+.Avant de commencer
 Ces étapes s'appliquent aux systèmes exécutant ONTAP 9.8 ou version ultérieure. Si vous exécutez ONTAP 9.7 ou une version antérieure, vous devez suivre la procédure de la section xref:upgrade-map-network-ports-ontap-9-7-or-earlier.adoc[Mappez les ports réseau avec ONTAP 9.7 ou version antérieure].
 
+.Description de la tâche
 Vous devez effectuer ces étapes sur les noeuds 3 et 4.
 
 
@@ -144,7 +146,7 @@ NOTE: En fonction de la complexité de la configuration réseau du système mis 
 
 
 
-. Si aucun VLAN n'est configuré sur le système, passez à l' ,Étape 7. Si des VLAN sont configurés, restaurez des VLAN déplacés qui étaient précédemment configurés sur des ports qui n'existent plus ou qui étaient configurés sur des ports déplacés vers un autre domaine de diffusion.
+. Si aucun VLAN n'est configuré sur le système, passez à l' <<map_98_7,Étape 7>>. Si des VLAN sont configurés, restaurez des VLAN déplacés qui étaient précédemment configurés sur des ports qui n'existent plus ou qui étaient configurés sur des ports déplacés vers un autre domaine de diffusion.
 +
 .. Afficher les réseaux locaux virtuels déplacés :
 +
@@ -179,7 +181,7 @@ NOTE: En fonction de la complexité de la configuration réseau du système mis 
 `displaced-interface show`
 
 +
-Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion corrects, la commande network port reachable show doit indiquer que l'état de la capacité d'accessibilité est ok pour tous les ports connectés et que l'état n'est pas de capacité d'accès pour les ports sans connectivité physique. Si des ports indiquent un état autre que ces deux, réparez la capacité d'accessibilité comme indiqué dans la section ,Étape 5.
+Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion corrects, la commande network port reachable show doit indiquer que l'état de la capacité d'accessibilité est ok pour tous les ports connectés et que l'état n'est pas de capacité d'accès pour les ports sans connectivité physique. Si des ports indiquent un état autre que ces deux, réparez la capacité d'accessibilité comme indiqué dans la section <<map_98_5,Étape 5>>.
 
 
 

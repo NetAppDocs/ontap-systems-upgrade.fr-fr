@@ -13,6 +13,7 @@ summary: Vous devez réattribuer les disques qui appartenaient aux nœuds 1 et 2
 [role="lead"]
 Vous devez réattribuer les disques qui appartenaient aux nœuds 1 et 2 respectivement aux nœuds 3 et 4.
 
+.Description de la tâche
 Effectuez les étapes de cette section sur les noeuds 3 et 4, puis effectuez chaque étape sur le noeud 3, puis sur le noeud 4 avant de passer à l'étape suivante.
 
 .Étapes

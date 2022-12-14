@@ -16,10 +16,12 @@ summary: 'Vérifiez que les ports physiques du nœud 2 sont correctement redirig
 [role="lead"]
 Vous devez vous assurer que les ports physiques du node2 sont correctement associés aux ports physiques du node4, ce qui permet au node4 de communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
 
+.Avant de commencer
 Vous devez déjà disposer d'informations sur les ports sur les nouveaux nœuds. Pour accéder à ces informations, reportez-vous à la section link:other_references.html["Références"] Pour accéder au _Hardware Universe_. Vous utilisez ces informations ultérieurement dans cette section.
 
 La configuration logicielle du nœud4 doit correspondre à la connectivité physique du nœud4, et la connectivité IP doit être restaurée avant de poursuivre la mise à niveau.
 
+.Description de la tâche
 Les paramètres de port peuvent varier en fonction du modèle des nœuds.
 
 .Étapes
@@ -168,7 +170,7 @@ Créez des ports VLAN :
 
 NOTE: En fonction de la complexité de la configuration réseau du système mis à niveau, vous devrez peut-être répéter les sous-étapes (a) à (g) jusqu'à ce que tous les ports soient correctement placés le cas échéant.
 
-. Si aucun VLAN n'est configuré sur le système, passez à l' ,Étape 5. Si des VLAN sont configurés, restaurez des VLAN déplacés qui étaient précédemment configurés sur des ports qui n'existent plus ou qui étaient configurés sur des ports déplacés vers un autre domaine de diffusion.
+. Si aucun VLAN n'est configuré sur le système, passez à l' <<man_map_2_Step5,Étape 5>>. Si des VLAN sont configurés, restaurez des VLAN déplacés qui étaient précédemment configurés sur des ports qui n'existent plus ou qui étaient configurés sur des ports déplacés vers un autre domaine de diffusion.
 +
 .. Afficher les réseaux locaux virtuels déplacés :
 +
@@ -205,7 +207,7 @@ NOTE: En fonction de la complexité de la configuration réseau du système mis 
 
 
 +
-Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le `network port reachability show` la commande doit indiquer l'état de la capacité d'accessibilité `ok` pour tous les ports connectés et l'état en tant que `no-reachability` pour les ports sans connectivité physique. Si des ports indiquent un état autre que ces deux, réparez la capacité d'accessibilité comme indiqué dans la section ,Étape 3.
+Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le `network port reachability show` la commande doit indiquer l'état de la capacité d'accessibilité `ok` pour tous les ports connectés et l'état en tant que `no-reachability` pour les ports sans connectivité physique. Si des ports indiquent un état autre que ces deux, réparez la capacité d'accessibilité comme indiqué dans la section <<man_map_2_Step3,Étape 3>>.
 
 . Vérifier que toutes les LIFs sont administrativement présentes sur les ports appartenant aux domaines de diffusion appropriés.
 +

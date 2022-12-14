@@ -16,6 +16,7 @@ summary: 'Transférez manuellement les agrégats défaillants ou vetotés lors d
 [role="lead"]
 Si un agrégat ne peut pas transférer ou est vetoté, vous devez transférer manuellement les agrégats ou, si nécessaire, remplacer les vetos ou les vérifications de destination.
 
+.Description de la tâche
 L'opération de relocalisation a été interrompue en raison de l'erreur.
 
 .Étapes

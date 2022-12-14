@@ -20,7 +20,7 @@ Maintenant que vous avez déplacé des agrégats non racines du nœud 2 vers le 
 `storage aggregate relocation start -node _node3_ -destination _node4_ -aggregate-list _aggr_name1, aggr_name2..._ -ndo-controller-upgrade true`
 
 +
-La liste d'agrégats correspond à la liste des agrégats possédés par le noeud 4 que vous avez obtenu dans ,Étape 1.
+La liste d'agrégats correspond à la liste des agrégats possédés par le noeud 4 que vous avez obtenu dans <<man_relocate_3_4_Step1,Étape 1>>.
 
 .. Entrez-le lorsque vous y êtes invité `y`.
 +
@@ -50,7 +50,7 @@ NOTE: Attendez que tous les agrégats du nœud 2 aient été transférés vers l
 | En cas de déménagement de... | Alors... 
 
 
-| Tous les agrégats ont réussi | Accédez à ,Étape 5. 
+| Tous les agrégats ont réussi | Accédez à <<man_relocate_3_4_Step5,Étape 5>>. 
 
 
 | Tout agrégat a échoué ou a été vetoté  a| 
@@ -94,7 +94,7 @@ Pour plus d'informations sur les commandes de transfert d'agrégats de stockage,
 `storage aggregate show -node _node4_ -state offline -root false`
 
 +
-Les agrégats du nœud 2 étaient répertoriés dans le résultat de la commande dans ,Étape 1.
+Les agrégats du nœud 2 étaient répertoriés dans le résultat de la commande dans <<man_relocate_3_4_Step1,Étape 1>>.
 
 . Si un agrégat est mis hors ligne ou devenu étranger, le mettre en ligne en utilisant la commande suivante pour chaque agrégat :
 +

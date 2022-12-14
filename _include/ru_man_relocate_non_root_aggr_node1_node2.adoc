@@ -43,7 +43,7 @@ NOTE: Attendez que tous les agrégats non-racines appartenant au nœud 1 aient �
 | En cas de mutation... | Alors... 
 
 
-| De tous les agrégats réussi | Accédez à ,Étape 4. 
+| De tous les agrégats réussi | Accédez à <<man_relocate_1_2_step4,Étape 4>>. 
 
 
 | Tout agrégat est défaillant ou mis au veto  a| 

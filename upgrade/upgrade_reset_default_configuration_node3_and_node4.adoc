@@ -13,6 +13,7 @@ summary: 'Pour vérifier que les informations de configuration du support de dé
 [role="lead"]
 Pour vérifier que les informations de configuration du support de démarrage n'interfèrent pas avec la mise à niveau du contrôleur, vous devez réinitialiser les configurations des noeuds 3 et nœud4 sur les paramètres de configuration par défaut.
 
+.Description de la tâche
 Vous devez effectuer les étapes suivantes sur les noeuds 3 et 4. Vous pouvez effectuer les étapes sur chaque nœud en parallèle.
 
 . Démarrez le nœud sur le menu de démarrage :

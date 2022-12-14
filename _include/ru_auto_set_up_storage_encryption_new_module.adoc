@@ -4,6 +4,7 @@
 
 Si le contrôleur remplacé ou le partenaire de haute disponibilité du nouveau contrôleur utilise Storage Encryption, vous devez configurer le nouveau module de contrôleur pour Storage Encryption, y compris l'installation de certificats SSL et la configuration de serveurs de gestion des clés.
 
+.Description de la tâche
 Cette procédure comprend les étapes réalisées sur le nouveau module de contrôleur. Vous devez saisir la commande sur le nœud approprié.
 
 .Étapes

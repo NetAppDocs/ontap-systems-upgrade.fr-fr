@@ -37,12 +37,12 @@ Connectez l'interconnexion haute disponibilité entre les nœuds en procédant c
 
 .. Connectez le port d'interconnexion supérieur du nœud3 au port d'interconnexion supérieur du nœud4.
 .. Connectez le port d'interconnexion inférieur du nœud3 au port d'interconnexion inférieur du nœud4.
-.. Accédez à ,Étape 5.
+.. Accédez à <<step5,Étape 5>>.
 
 
 
 
-| Dans le même châssis que le nœud 3 | Accédez à ,Étape 5. Inutile de connecter manuellement l'interconnexion haute disponibilité entre les nœuds. Dans les configurations de même châssis, l'interconnexion haute disponibilité est connectée automatiquement via le fond de panier. 
+| Dans le même châssis que le nœud 3 | Accédez à <<step5,Étape 5>>. Inutile de connecter manuellement l'interconnexion haute disponibilité entre les nœuds. Dans les configurations de même châssis, l'interconnexion haute disponibilité est connectée automatiquement via le fond de panier. 
 |===
 . [[étape 5]]effectuer l'une des actions suivantes :
 +

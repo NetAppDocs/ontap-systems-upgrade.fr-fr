@@ -16,6 +16,7 @@ summary: 'Vérifiez l"installation du node2 avec le module de contrôleur AFF A9
 [role="lead"]
 Vous devez vérifier l'installation du nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM. Comme il n'y a pas de modification des ports physiques, vous n'avez pas besoin d'mapper les ports physiques de l'ancien nœud 2 vers le nœud de remplacement 2.
 
+.Description de la tâche
 Après avoir démarrer le nœud1 avec le module de contrôleur AFF A900 ou FAS9500, vous devez vérifier qu'il est correctement installé. Vous devez patienter jusqu'à ce que le nœud 2 rejoint le quorum, puis reprendre l'opération de remplacement du contrôleur.
 
 À ce stade de la procédure, l'opération s'interrompt pendant que le noeud 2 rejoint le quorum.
@@ -72,7 +73,7 @@ To complete the Network Reachability task, the ONTAP network configuration must 
 
 NOTE: Dans cette procédure, la section _Re-création de VLAN, ifgrps et broadcast domain_ a été renommée _Restore network configuration sur node2_.
 
-. Lorsque le remplacement du contrôleur est en pause, passer à  network configuration on node2.
+. Lorsque le remplacement du contrôleur est en pause, passer à <<Restaurez la configuration réseau sur le noeud 2>>.
 
 
 
@@ -81,6 +82,7 @@ NOTE: Dans cette procédure, la section _Re-création de VLAN, ifgrps et broadca
 
 Une fois que vous avez confirmé que le nœud2 est dans le quorum et peut communiquer avec le nœud1, vérifiez que les VLAN, les groupes d'interface et les domaines de diffusion du nœud1 sont visibles sur le nœud2. Vérifiez également que tous les ports réseau du node2 sont configurés dans leurs domaines de diffusion appropriés.
 
+.Description de la tâche
 Pour plus d'informations sur la création et la recrércréation de VLAN, de groupes d'interfaces et de domaines de diffusion, reportez-vous à la section link:other_references.html["Références"] Pour créer un lien vers le contenu _Network Management_.
 
 .Étapes
@@ -168,7 +170,7 @@ Au fur et à mesure que la réparation de l'accessibilité est effectuée, ONTAP
 `network port reachability show`
 
 +
-Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le `network port reachability show` la commande doit indiquer l'état de la capacité d'accessibilité `ok` pour tous les ports connectés et l'état en tant que `no-reachability` pour les ports sans connectivité physique. Si un port signale un état autre que ces deux, effectuez la réparation de la capacité d'accès et ajoutez ou supprimez des ports de leurs domaines de diffusion comme indiqué dans ,Étape 4.
+Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le `network port reachability show` la commande doit indiquer l'état de la capacité d'accessibilité `ok` pour tous les ports connectés et l'état en tant que `no-reachability` pour les ports sans connectivité physique. Si un port signale un état autre que ces deux, effectuez la réparation de la capacité d'accès et ajoutez ou supprimez des ports de leurs domaines de diffusion comme indiqué dans <<restore_node2_step4,Étape 4>>.
 
 . Vérifier que tous les ports ont été placés dans des domaines de diffusion :
 +

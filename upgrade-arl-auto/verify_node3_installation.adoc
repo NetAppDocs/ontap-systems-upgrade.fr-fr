@@ -16,6 +16,7 @@ summary: 'Vérifiez que le nœud 3 rejoint le quorum, recréez les VLAN du nœud
 [role="lead"]
 Après avoir installé et démarrer node3, vous devez vérifier qu'il est correctement installé. Vous devez attendre que le noeud 3 rejoint le quorum et reprendre l'opération de transfert.
 
+.Description de la tâche
 À ce stade de la procédure, l'opération aura été interrompue au fur et à mesure que le noeud 3 rejoint le quorum.
 
 .Étapes
@@ -43,6 +44,7 @@ Si la configuration est différente pour le nœud 3, une interruption du systèm
 
 Une fois que vous avez confirmé que le noeud 3 est dans le quorum et que vous pouvez communiquer avec le noeud 2, vous devez recréer les VLAN, les groupes d'interface et les domaines de diffusion du noeud 1 sur le noeud 3. Vous devez également ajouter les ports node3 aux domaines de diffusion nouvellement créés.
 
+.Description de la tâche
 Pour plus d'informations sur la création et la recrércréation de VLAN, de groupes d'interfaces et de domaines de diffusion, accédez à link:other_references.html["Références"] Et lien vers _Network Management_.
 
 .Étapes

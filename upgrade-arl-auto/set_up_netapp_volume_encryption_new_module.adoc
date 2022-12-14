@@ -16,6 +16,7 @@ summary: 'Si nécessaire, configurez le nouveau module de contrôleur pour NVE l
 [role="lead"]
 Si le contrôleur remplacé ou le partenaire de haute disponibilité du nouveau contrôleur utilise NetApp Volume Encryption, vous devez configurer le nouveau module de contrôleur pour NetApp Volume Encryption.
 
+.Description de la tâche
 Cette procédure comprend les étapes réalisées sur le nouveau module de contrôleur. Vous devez saisir la commande sur le nœud approprié.
 
 .Étapes
@@ -84,4 +85,5 @@ Cette commande nécessite la phrase secrète Onboard Key Manager (OKM).
 
 
 
+.Une fois que vous avez terminé
 Vérifiez si des volumes ont été mis hors ligne, car les clés d'authentification n'étaient pas disponibles ou les serveurs de gestion de clés externes n'ont pas pu être atteints. Remettre ces volumes en ligne à l'aide du `volume online` commande.

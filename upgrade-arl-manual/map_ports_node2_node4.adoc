@@ -16,10 +16,12 @@ summary: 'Vérifiez que les ports physiques du nœud 2 sont correctement redirig
 [role="lead"]
 Vous devez vous assurer que les ports physiques du node2 sont correctement associés aux ports physiques du node4, ce qui permet au node4 de communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
 
+.Avant de commencer
 Vous devez déjà disposer d'informations sur les ports sur les nouveaux nœuds. Pour accéder à ces informations, reportez-vous à la section link:other_references.html["Références"] Pour accéder au _Hardware Universe_. Vous utilisez ces informations ultérieurement dans cette section.
 
 La configuration logicielle du nœud4 doit correspondre à la connectivité physique du nœud4, et la connectivité IP doit être restaurée avant de poursuivre la mise à niveau.
 
+.Description de la tâche
 Les paramètres de port peuvent varier en fonction du modèle des nœuds. Vous devez rendre le port du nœud d'origine et la configuration LIF compatibles avec ce que vous prévoyez de configurer le nouveau nœud. En effet, le nouveau nœud relit la même configuration au démarrage, ce qui signifie que, lors du démarrage du nœud 4, Data ONTAP tentera d'héberger les LIF sur les mêmes ports que celui utilisé sur le nœud 2.
 
 Par conséquent, si les ports physiques du nœud 2 ne sont pas directement associés aux ports physiques du nœud 4, des modifications de configuration logicielle seront nécessaires pour restaurer le cluster, la gestion et la connectivité réseau après le démarrage. De plus, si les ports du cluster du nœud 2 ne sont pas directement mis en correspondance avec les ports du cluster du nœud 4, le nœud 4 peut ne pas réintégrer automatiquement le quorum au redémarrage, jusqu'à ce qu'une modification de configuration logicielle soit apportée pour héberger les LIFs de cluster sur les ports physiques appropriés.
@@ -189,8 +191,8 @@ Cette commande supprime le port « e0d » sur le nœud 4 :
 
 
 
-. Ajuster les domaines de broadcast intercluster et migrer les LIFs intercluster, le cas échéant, à l'aide des mêmes commandes indiquées sur la ,Étape 5.
-. Ajustez tout autre domaine de diffusion et migrez les LIF de données, le cas échéant, à l'aide des mêmes commandes que celles illustrées dans la ,Étape 5.
+. Ajuster les domaines de broadcast intercluster et migrer les LIFs intercluster, le cas échéant, à l'aide des mêmes commandes indiquées sur la <<man_map_2_step5,Étape 5>>.
+. Ajustez tout autre domaine de diffusion et migrez les LIF de données, le cas échéant, à l'aide des mêmes commandes que celles illustrées dans la <<man_map_2_step5,Étape 5>>.
 . S'il y avait des ports sur le nœud2 qui n'existent plus sur le nœud4, procédez comme suit pour les supprimer :
 +
 .. Accéder au niveau de privilège avancé sur l'un des nœuds :

@@ -95,10 +95,10 @@ Consultez la colonne *Status Admin/Oper* pour voir si des LIF sont en panne. Si 
 | Si le cluster est... | Alors... 
 
 
-| Un cluster à deux nœuds | Accédez à ,Étape 6. 
+| Un cluster à deux nœuds | Accédez à <<man_retire_1_step6,Étape 6>>. 
 
 
-| Un cluster comprenant plus de deux nœuds | Accédez à ,Étape 8. 
+| Un cluster comprenant plus de deux nœuds | Accédez à <<man_retire_1_step8,Étape 8>>. 
 |===
 . [[man_hrete_1_step6]]accéder au niveau de privilège avancé sur l'un des nœuds :
 +
@@ -117,7 +117,7 @@ Le système affiche le message suivant :
 High Availability Configured: false
 ----
 +
-Si la haute disponibilité du cluster n'a pas été désactivée, répétez l'opération ,Étape 2.
+Si la haute disponibilité du cluster n'a pas été désactivée, répétez l'opération <<man_retire_1_step2,Étape 2>>.
 
 . [[man_revolve_1_step8]]vérifier si le nœud1 possède actuellement epsilon :
 +

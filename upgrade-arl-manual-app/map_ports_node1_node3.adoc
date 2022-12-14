@@ -16,10 +16,12 @@ summary: 'Vérifiez que les ports physiques du nœud 1 sont correctement redirig
 [role="lead"]
 Vous devez vous assurer que les ports physiques du nœud1 sont correctement associés aux ports physiques du nœud3, ce qui permettra au noeud 3 de communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
 
+.Avant de commencer
 Vous devez déjà disposer d'informations sur les ports sur les nouveaux nœuds à partir du _Hardware Universe_. (Allez à link:other_references.html["Références"] Pour établir un lien vers le _Hardware Universe_). Vous utilisez ces informations ultérieurement dans cette section et dans link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"].
 
 La configuration logicielle du nœud3 doit correspondre à la connectivité physique du nœud3, et la connectivité IP doit être restaurée avant de poursuivre la mise à niveau.
 
+.Description de la tâche
 Les paramètres de port peuvent varier en fonction du modèle des nœuds.
 
 .Étapes
@@ -170,7 +172,7 @@ NOTE: En fonction de la complexité de la configuration réseau du système mis 
 
 
 
-. [[step4]]si aucun VLAN n'est configuré sur le système, passez à l' ,Étape 5. Si des VLAN sont configurés, restaurez des VLAN déplacés qui étaient précédemment configurés sur des ports qui n'existent plus ou qui étaient configurés sur des ports déplacés vers un autre domaine de diffusion.
+. [[step4]]si aucun VLAN n'est configuré sur le système, passez à l' <<man_map_1_step5,Étape 5>>. Si des VLAN sont configurés, restaurez des VLAN déplacés qui étaient précédemment configurés sur des ports qui n'existent plus ou qui étaient configurés sur des ports déplacés vers un autre domaine de diffusion.
 +
 .. Afficher les réseaux locaux virtuels déplacés :
 +
@@ -207,7 +209,7 @@ NOTE: En fonction de la complexité de la configuration réseau du système mis 
 
 
 +
-Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le `network port reachability show` command doit indiquer l'état de la capacité d'accessibilité comme « ok » pour tous les ports connectés et l'état comme « non-accessibilité » pour les ports sans connectivité physique. Si des ports indiquent un état autre que ces deux, réparez la capacité d'accessibilité comme indiqué dans la section ,Étape 3.
+Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le `network port reachability show` command doit indiquer l'état de la capacité d'accessibilité comme « ok » pour tous les ports connectés et l'état comme « non-accessibilité » pour les ports sans connectivité physique. Si des ports indiquent un état autre que ces deux, réparez la capacité d'accessibilité comme indiqué dans la section <<man_map_1_step3,Étape 3>>.
 
 . [[man_map_1_step6]]vérifier que toutes les LIFs sont administrativement configurées sur des ports appartenant aux bons domaines de diffusion.
 +

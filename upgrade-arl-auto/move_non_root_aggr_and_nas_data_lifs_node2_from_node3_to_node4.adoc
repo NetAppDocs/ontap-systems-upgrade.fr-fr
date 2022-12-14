@@ -16,6 +16,7 @@ summary: 'Déplacez les LIF de données NAS du nœud 2 vers le nœud 3, puis ver
 [role="lead"]
 Après avoir vérifié l'installation du nœud 4 et avant de transférer les agrégats du nœud 3 vers le nœud 4, vous devez déplacer les LIF de données NAS appartenant au nœud 2 qui se trouvent actuellement sur le nœud 3 vers le nœud 4. Vous devez également vérifier que des LIF SAN existent sur le nœud 4.
 
+.Description de la tâche
 Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Vous devez vérifier que les LIF sont en bon état et situées sur les ports appropriés une fois que vous avez mis le nœud 4 en ligne.
 
 .Étapes

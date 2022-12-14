@@ -16,6 +16,7 @@ summary: 'Vérifiez que les disques internes ne contiennent pas de racine ni d"a
 [role="lead"]
 Si vous mettez à niveau les contrôleurs avec des disques internes, vous devez exécuter plusieurs commandes et examiner leurs résultats pour vérifier qu'aucun disque interne ne contient des agrégats racine ou des agrégats de données.
 
+.Description de la tâche
 Si vous ne mettez pas à niveau les contrôleurs avec des agrégats sur disques internes, ignorez cette section et passez à la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"].
 
 .Étapes
@@ -117,7 +118,7 @@ node> aggr status -v
          Volumes: vol0
 ....
 +
-Basé sur la sortie dans ,Étape 4 Et à l'étape 6, aggr2 utilise trois disques internes — 0A.00.1, 0a.00.3 et 0a.00.9 — et les volumes aggr2 sont "vol6", "vol5" et "vol14". En outre, dans le résultat de l'étape 6, l'affichage de "aggr0" contient le mot "root" au début de l'information pour l'agrégat. Elle contient un volume root.
+Basé sur la sortie dans <<man_aggr_step4,Étape 4>> Et à l'étape 6, aggr2 utilise trois disques internes — 0A.00.1, 0a.00.3 et 0a.00.9 — et les volumes aggr2 sont "vol6", "vol5" et "vol14". En outre, dans le résultat de l'étape 6, l'affichage de "aggr0" contient le mot "root" au début de l'information pour l'agrégat. Elle contient un volume root.
 
 . Examiner la sortie du `aggr status -v` commande permettant d'identifier les volumes appartenant à n'importe quel agrégat situé sur un disque interne et si l'un de ces volumes contient un volume root.
 . Quittez le nodeshell en entrant la commande suivante sur chaque contrôleur :

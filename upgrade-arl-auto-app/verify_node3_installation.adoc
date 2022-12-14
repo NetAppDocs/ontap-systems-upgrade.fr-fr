@@ -16,11 +16,12 @@ summary: 'Vérifiez que les ports physiques du nœud 1 sont correctement mappée
 [role="lead"]
 Vous devez vérifier que les ports physiques du nœud1 sont correctement mis en correspondance avec les ports physiques du nœud3. Cela permettra au noeud 3 de communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
 
+.Description de la tâche
 Reportez-vous à la section link:other_references.html["Références"] Pour établir une liaison avec _Hardware Universe_ afin de capturer des informations sur les ports des nouveaux nœuds. Vous utiliserez ces informations plus loin dans cette section.
 
 L'organisation des ports physiques peut varier en fonction du modèle des nœuds. Au démarrage du nouveau nœud, ONTAP tente de déterminer les ports qui doivent héberger les LIFs du cluster afin de se mettre automatiquement en quorum.
 
-Si les ports physiques du nœud1 ne sont pas directement mis en correspondance avec les ports physiques du nœud3, la section suivante  network configuration on node3 doit être utilisé pour réparer la connectivité réseau.
+Si les ports physiques du nœud1 ne sont pas directement mis en correspondance avec les ports physiques du nœud3, la section suivante <<Restaurez la configuration du réseau sur le noeud 3>> doit être utilisé pour réparer la connectivité réseau.
 
 Après avoir installé et démarrer node3, vous devez vérifier qu'il est correctement installé. Vous devez attendre que le noeud 3 rejoint le quorum et reprendre l'opération de transfert.
 
@@ -124,6 +125,7 @@ NOTE: Dans cette procédure, la section _Re-création de VLAN, ifgrps et broadca
 
 Une fois que vous avez confirmé que le noeud 3 est dans le quorum et que vous pouvez communiquer avec le noeud 2, vérifiez que les VLAN, les groupes d'interface et les domaines de diffusion du noeud 1 sont visibles sur le noeud 3. Vérifiez également que tous les ports réseau du node3 sont configurés dans leurs domaines de diffusion appropriés.
 
+.Description de la tâche
 Pour plus d'informations sur la création et la recrércréation de VLAN, de groupes d'interfaces et de domaines de diffusion, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Network Management_.
 
 .Étapes
@@ -315,7 +317,7 @@ Attendez environ une minute pour placer les VLAN nouvellement restaurés dans le
 `network port reachability show`
 
 +
-Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le `network port reachability show` la commande doit indiquer l'état de la capacité d'accessibilité `ok` pour tous les ports connectés et l'état en tant que `no-reachability` pour les ports sans connectivité physique. Si un port signale un état autre que ces deux, effectuez la réparation de la capacité d'accès et ajoutez ou supprimez des ports de leurs domaines de diffusion comme indiqué dans ,Étape 4.
+Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le `network port reachability show` la commande doit indiquer l'état de la capacité d'accessibilité `ok` pour tous les ports connectés et l'état en tant que `no-reachability` pour les ports sans connectivité physique. Si un port signale un état autre que ces deux, effectuez la réparation de la capacité d'accès et ajoutez ou supprimez des ports de leurs domaines de diffusion comme indiqué dans <<auto_verify_3_step4,Étape 4>>.
 
 . Vérifier que tous les ports ont été placés dans des domaines de diffusion :
 +

@@ -16,12 +16,13 @@ summary: 'Installez et démarrez le nœud 3 et installez le logiciel ONTAP lors 
 [role="lead"]
 Vous devez installer NODE3 dans le rack, transférer les connexions du noeud 1 vers le noeud 3, démarrer le noeud 3 et installer ONTAP. Vous devez également réaffecter les disques de spare du nœud1, tous les disques appartenant au volume racine et tous les agrégats non racines qui ne sont pas transférés vers le nœud2 plus tôt.
 
+.Description de la tâche
 Vous devez netboot nœud3 si aucune version de ONTAP 9 n'est installée sur le nœud 1. Une fois le noeud 3 installé, démarrez-le à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système. Voir link:prepare_for_netboot.html["Préparation à la mise sur le réseau"].
 
 Toutefois, vous n'avez pas besoin de netboot sur les nœuds 3 si les versions de ONTAP 9 sont identiques ou ultérieures, installées sur le nœud 1.
 
 
-NOTE: *Important* : si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système doté du logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire ,Étape 1 à ,Étape 5, laissez cette section à ,Étape 6 et suivez les instructions de la section link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] si nécessaire, la saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec ,Étape 7. Cependant, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière et passer à link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"], saisie de commandes à l'invite du cluster.
+NOTE: *Important* : si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système doté du logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<man_install3_step1,Étape 1>> à <<man_install3_step5,Étape 5>>, laissez cette section à <<man_install3_step6,Étape 6>> et suivez les instructions de la section link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] si nécessaire, la saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <<man_install3_step7,Étape 7>>. Cependant, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière et passer à link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"], saisie de commandes à l'invite du cluster.
 
 .Étapes
 . [[man_install3_step1]]Assurez-vous que vous disposez d'un espace rack pour node3.
@@ -74,7 +75,7 @@ WARNING: The battery is unfit to retain data during a power outage. This is like
 When the battery is ready, the boot process will complete and services will be engaged.
 To override this delay, press 'c' followed by 'Enter'
 ----
-. [[man_install3_step5]]si vous voyez le message d'avertissement dans ,Étape 4, procédez comme suit :
+. [[man_install3_step5]]si vous voyez le message d'avertissement dans <<man_install3_step4,Étape 4>>, procédez comme suit :
 +
 .. Vérifiez s'il y a un message de console susceptible d'indiquer un problème autre que celui d'une batterie NVRAM faible et, le cas échéant, effectuez les actions correctives nécessaires.
 .. Laissez la batterie se charger et le processus de démarrage s'achever.
@@ -91,12 +92,12 @@ NOTE: *Attention*: Ne pas neutraliser le délai; si la batterie n'est pas charg�
 | Si votre système... | Alors... 
 
 
-| Possède des disques et aucun stockage interne | Passez aux étapes 7 à 12 et passez à ,Étape 13. 
+| Possède des disques et aucun stockage interne | Passez aux étapes 7 à 12 et passez à <<man_install3_step13,Étape 13>>. 
 
 
 | Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage  a| 
 .. Accédez à link:set_fc_uta_uta2_config_node3.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 3"] et complétez les sous-sections link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"], en fonction de votre système.
-.. Revenez à cette section et suivez les étapes restantes, en commençant par ,Étape 7.
+.. Revenez à cette section et suivez les étapes restantes, en commençant par <<man_install3_step7,Étape 7>>.
 
 
 *Important* : vous devez reconfigurer les ports intégrés FC, les ports CNA intégrés et les cartes CNA avant de démarrer ONTAP sur les systèmes V-Series ou avec le logiciel de virtualisation FlexArray.
@@ -137,7 +138,7 @@ Le système s'arrête à l'invite de l'environnement d'amorçage.
 | Si le système auquel vous effectuez la mise à niveau est dans... | Alors... 
 
 
-| Configuration à châssis double (avec contrôleurs dans un châssis différent) | Accédez à ,Étape 15. 
+| Configuration à châssis double (avec contrôleurs dans un châssis différent) | Accédez à <<man_install3_step15,Étape 15>>. 
 
 
 | Configuration à châssis unique (avec contrôleurs dans le même châssis)  a| 
@@ -149,9 +150,9 @@ Si les deux contrôleurs se trouvent dans le même châssis, l'alimentation doit
 +
 *Remarque* : quittez le nœud4 à l'invite de l'environnement d'initialisation ; vous revenez au node4 dans link:install_boot_node4.html["Installez et démarrez Node4"].
 
-.. Si le message d'avertissement s'affiche dans ,Étape 4, suivez les instructions de la section ,Étape 5
+.. Si le message d'avertissement s'affiche dans <<man_install3_step4,Étape 4>>, suivez les instructions de la section <<man_install3_step5,Étape 5>>
 .. Retournez le câble de la console du nœud 4 au nœud 3.
-.. Accédez à ,Étape 15.
+.. Accédez à <<man_install3_step15,Étape 15>>.
 
 
 |===
@@ -182,10 +183,10 @@ WARNING: *Avertissement* : si ce nouveau nœud a déjà été utilisé dans un a
 | Si le système que vous mettez à niveau... | Alors... 
 
 
-| _NOT_ dispose de la version ONTAP correcte ou actuelle sur le noeud 3 | Accédez à ,Étape 20. 
+| _NOT_ dispose de la version ONTAP correcte ou actuelle sur le noeud 3 | Accédez à <<man_install3_step20,Étape 20>>. 
 
 
-| Dispose de la version correcte ou à jour de ONTAP sur le noeud 3 | Accédez à ,Étape 25. 
+| Dispose de la version correcte ou à jour de ONTAP sur le noeud 3 | Accédez à <<man_install3_step25,Étape 25>>. 
 |===
 . [[man_install3_step20]]configurez la connexion netboot en choisissant l'une des actions suivantes.
 +
@@ -489,7 +490,7 @@ Le système s'arrête à l'invite de l'environnement d'amorçage.
 +
 `set time _hh:mm:ss_`
 
-. [[man_install3_step42]]Vérifiez que l'ID du système partenaire est correctement défini comme indiqué dans ,Étape 28 interrupteur sous -p :
+. [[man_install3_step42]]Vérifiez que l'ID du système partenaire est correctement défini comme indiqué dans <<man_install3_step28,Étape 28>> interrupteur sous -p :
 +
 `printenv partner-sysid`
 

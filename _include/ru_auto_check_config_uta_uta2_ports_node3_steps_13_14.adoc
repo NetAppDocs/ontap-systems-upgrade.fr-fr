@@ -6,5 +6,5 @@
 +
 `halt`
 
-. [[step14]]démarrez le nœud dans le menu d'amorçage en exécutant `boot_ontap menu`. Si vous migrez vers une A800, rendez-vous sur ,Étape 23.
+. [[step14]]démarrez le nœud dans le menu d'amorçage en exécutant `boot_ontap menu`. Si vous migrez vers une A800, rendez-vous sur <<auto_check3_step23,Étape 23>>.
 

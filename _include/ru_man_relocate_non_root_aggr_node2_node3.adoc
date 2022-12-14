@@ -62,7 +62,7 @@ NOTE: Vous devez patienter jusqu'à ce que tous les agrégats qui appartiennent 
 | En cas de déménagement de... | Alors... 
 
 
-| Tous les agrégats ont réussi | Accédez à ,Étape 6. 
+| Tous les agrégats ont réussi | Accédez à <<man_relocate_2_3_step6,Étape 6>>. 
 
 
 | Tout agrégat a échoué ou a été vetoté  a| 

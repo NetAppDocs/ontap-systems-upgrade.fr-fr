@@ -28,6 +28,7 @@ La solution à ces problèmes dépend du moment où ils se produisent.
 
 Si le nœud 1 ou le nœud 2 tombe en panne avant la phase de vérification préalable, aucun agrégat n'a encore été déplacé et la configuration de la paire haute disponibilité est toujours activée.
 
+.Description de la tâche
 Le basculement et le rétablissement peuvent se poursuivre normalement.
 
 .Étapes
@@ -45,6 +46,7 @@ Le basculement et le rétablissement peuvent se poursuivre normalement.
 
 Un ou plusieurs agrégats ont été transférés du nœud 1 vers le nœud 2, et la paire haute disponibilité est toujours activée. NODE2 reprend le volume racine du nœud 1 et tout agrégat non racine qui n'a pas été déplacé.
 
+.Description de la tâche
 La propriété des agrégats qui ont été transférés ressemble à celle des agrégats non racines pris en charge, car le propriétaire d'origine n'a pas changé.
 
 Lorsque le noeud 1 entre dans `waiting for giveback` état, le nœud 2 renvoie à tous les agrégats non racine du nœud 1.
@@ -72,6 +74,7 @@ Le nœud 2 ne prend pas le relais, mais il transmet toujours les données à par
 
 NODE1 a déplacé un ou la totalité de ses agrégats vers le nœud 2. La paire HA est activée.
 
+.Description de la tâche
 NODE1 reprend tous les agrégats du nœud 2 ainsi que l'un de ses propres agrégats qu'il avait relocalisés sur le nœud 2. Au démarrage du nœud 2, le transfert d'agrégats est terminé automatiquement.
 
 .Étapes
@@ -132,6 +135,7 @@ Le nœud 2 ne prend pas le relais, mais il transmet toujours les données à par
 
 NODE2 a déplacé un ou la totalité de ses agrégats du nœud 1 vers le nœud 3. Le nœud 3 transmet les données depuis des agrégats qui ont été déplacés. La paire haute disponibilité est désactivée, ce qui évite tout basculement.
 
+.Description de la tâche
 Pour les agrégats qui n'ont pas été transférés, une panne se produit au niveau du client. Au démarrage du nœud 2, les agrégats du nœud 1 sont transférés vers le nœud 3.
 
 .Étapes
@@ -145,6 +149,7 @@ Pour les agrégats qui n'ont pas été transférés, une panne se produit au niv
 
 Si le nœud 3 tombe en panne alors que le nœud 2 replace les agrégats sur le nœud 3, la tâche se poursuit après le démarrage du nœud 3.
 
+.Description de la tâche
 Le nœud 2 continue de servir les agrégats restants, mais les agrégats qui ont déjà été transférés vers le nœud 3 rencontrent une panne du client lors du démarrage du nœud 3.
 
 .Étapes
@@ -177,6 +182,7 @@ La paire haute disponibilité est désactivée, ce qui évite tout basculement. 
 
 Si le nœud 3 tombe en panne lors du déplacement des agrégats sur le nœud 2, la tâche se poursuit après le démarrage du nœud 3.
 
+.Description de la tâche
 Le nœud 2 continue de servir les agrégats restants, mais les agrégats qui ont déjà été transférés vers le nœud 3 et les agrégats du nœud 3 rencontrent des pannes client lors du démarrage du nœud 3.
 
 .Étapes
@@ -190,6 +196,7 @@ Le nœud 2 continue de servir les agrégats restants, mais les agrégats qui ont
 
 Si le nœud 2 tombe en panne lors du transfert de l'agrégat, le nœud 2 n'est pas pris en charge.
 
+.Description de la tâche
 NODE3 continue de servir les agrégats qui ont été transférés, mais les agrégats détenus par le nœud 2 rencontrent des pannes clients.
 
 .Étapes
@@ -207,6 +214,7 @@ NODE3 continue de servir les agrégats qui ont été transférés, mais les agr�
 
 Si le nœud 3 tombe en panne pendant cette phase, le basculement n'a pas lieu, car la paire haute disponibilité est déjà désactivée.
 
+.Description de la tâche
 Une panne client est survenue pour tous les agrégats jusqu'au redémarrage du nœud 3.
 
 .Étapes
@@ -220,6 +228,7 @@ Une panne client est survenue pour tous les agrégats jusqu'au redémarrage du n
 
 En cas de panne du nœud 4 lors de cette phase, le basculement n'a pas lieu. Le nœud 3 transmet les données depuis les agrégats.
 
+.Description de la tâche
 Une panne se produit pour les agrégats non racines qui ont déjà été transférés jusqu'au redémarrage du nœud 4.
 
 .Étapes

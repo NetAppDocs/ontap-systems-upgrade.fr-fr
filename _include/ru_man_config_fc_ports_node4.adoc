@@ -8,9 +8,11 @@
 
 Si le nœud 4 possède des ports FC intégrés ou sur un adaptateur FC, vous devez définir des configurations de ports sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés. Si les ports ne sont pas configurés, le service peut subir une interruption.
 
+.Avant de commencer
 Vous devez avoir les valeurs des paramètres du port FC du noeud 2 que vous avez enregistrées dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"].
 
-Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'un adaptateur UTA/UTA2, vous devez les configurer dans  and configure UTA/UTA2 ports on node4.
+.Description de la tâche
+Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'un adaptateur UTA/UTA2, vous devez les configurer dans <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>.
 
 *Important* : si votre système dispose de disques de stockage, vous devez entrer les commandes dans cette section à l'invite du cluster. Si vous disposez d'un système V-Series ou d'un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous pouvez saisir les commandes décrites dans cette section en mode Maintenance.
 
@@ -22,10 +24,10 @@ Vous pouvez ignorer cette section si votre système ne dispose pas de configurat
 | Si le système que vous mettez à niveau... | Puis… 
 
 
-| Possède des disques de stockage | Accédez à ,Étape 5. 
+| Possède des disques de stockage | Accédez à <<man_config_4_Step5,Étape 5>>. 
 
 
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Accédez à ,Étape 2. 
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Accédez à <<man_config_4_Step2,Étape 2>>. 
 |===
 . [[man_config_4_Step2]]accéder au mode de maintenance :
 +
@@ -97,10 +99,10 @@ Modifier les ports FC sur le nœud 4 si nécessaire :
 | Si les paramètres FC par défaut sont définis sur les nouveaux nœuds... | Puis… 
 
 
-| Identique à ceux que vous avez capturés sur les noeuds d'origine | Accédez à ,Étape 11. 
+| Identique à ceux que vous avez capturés sur les noeuds d'origine | Accédez à <<man_config_4_Step11,Étape 11>>. 
 
 
-| Différent de ceux que vous avez capturés sur les nœuds d'origine | Accédez à ,Étape 8. 
+| Différent de ceux que vous avez capturés sur les nœuds d'origine | Accédez à <<man_config_4_Step8,Étape 8>>. 
 |===
 . [[man_config_4_Step8]]Quitter le mode Maintenance :
 +
@@ -129,14 +131,14 @@ Modifier les ports FC sur le nœud 4 si nécessaire :
 
 
 | Possède des disques de stockage  a| 
-** Accédez à  and configure UTA/UTA2 ports on node4 Si le nœud 4 est doté d'une carte UTA/UTA2A ou de ports intégrés UTA/UTA2.
+** Accédez à <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>> Si le nœud 4 est doté d'une carte UTA/UTA2A ou de ports intégrés UTA/UTA2.
 ** Ignorez la section et accédez à link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"] Si le nœud Node4 ne est pas doté d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
 
 
 
 
 | Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
-** Accédez à  and configure UTA/UTA2 ports on node4 Si le nœud 4 est doté d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
+** Accédez à <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>> Si le nœud 4 est doté d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
 ** Ignorez la section _Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4_ si le nœud 4 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, puis revenez à la section _Install and Boot node4_, puis reprenez la section à l'adresse link:install_boot_node4.html#Step9["Étape 9"].
 
 

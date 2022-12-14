@@ -25,6 +25,7 @@ Cette procédure décrit la procédure de mise à niveau du matériel du contrô
 |===
 Pendant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, délocalisant ainsi la propriété des agrégats non racines. Vous migrez plusieurs fois des agrégats entre nœuds et nœuds pour confirmer qu'au moins un nœud transmet des données depuis les agrégats tout au long de la procédure de mise à niveau. Vous migrez également les interfaces de données logiques (LIF) et vous affectez les ports réseau sur le nouveau contrôleur aux groupes d'interface.
 
+.Terminologie utilisée dans ces informations
 Dans ces informations, les nœuds d'origine sont appelés « nœud1 » et « nœud2 », ainsi que « nœud3 » et « nœud4 ». Au cours de la procédure décrite, "node1" est remplacé par "node3", et "node2" est remplacé par "node4".
 
 Les termes « node1 », « node2 », « node3 » et « node4 » servent uniquement à la distinction entre les nœuds d'origine et les nouveaux. Lorsque vous suivez la procédure, vous devez remplacer les véritables noms de vos nœuds d'origine et de vos nouveaux nœuds. Toutefois, en réalité, les noms des nœuds ne changent pas : le nom du nœud 3 est identique à celui du nœud 1 et celui du nœud 4 est identique à celui du nœud 2 une fois le matériel mis à niveau.

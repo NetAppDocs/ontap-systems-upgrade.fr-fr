@@ -16,10 +16,12 @@ summary: 'Vérifiez que les ports physiques du nœud 1 sont correctement redirig
 [role="lead"]
 Vous devez vous assurer que les ports physiques du nœud1 sont correctement associés aux ports physiques du nœud3, ce qui permettra au noeud 3 de communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
 
+.Avant de commencer
 Vous devez déjà disposer d'informations sur les ports sur les nouveaux nœuds à partir du _Hardware Universe_. (Allez à link:other_references.html["Références"] Pour établir un lien vers le _Hardware Universe_). Vous utilisez ces informations ultérieurement dans cette section et dans link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"].
 
 La configuration logicielle du nœud3 doit correspondre à la connectivité physique du nœud3, et la connectivité IP doit être restaurée avant de poursuivre la mise à niveau.
 
+.Description de la tâche
 Les paramètres de port peuvent varier en fonction du modèle des nœuds.
 
 Vous devez rendre le port du nœud d'origine et la configuration LIF compatibles avec ce que vous prévoyez de configurer le nouveau nœud. En effet, le nouveau nœud relit la même configuration au démarrage, ce qui signifie que, lorsque vous démarrez le nœud 3, ONTAP tentera d'héberger les LIF sur les mêmes ports que celui utilisé sur le nœud 1.
@@ -206,8 +208,8 @@ network port broadcast-domain remove-ports -ipspace Cluster -broadcast-domain Cl
 
 
 
-. [[man_map_1_step6]]ajuster les domaines de broadcast intercluster et migrer les LIFs intercluster, si nécessaire, à l'aide des mêmes commandes affichées dans ,Étape 5.
-. [[step7]]ajustez n'importe quel autre domaine de diffusion et migrez si nécessaire les LIF de données à l'aide des commandes indiquées dans la ,Étape 5.
+. [[man_map_1_step6]]ajuster les domaines de broadcast intercluster et migrer les LIFs intercluster, si nécessaire, à l'aide des mêmes commandes affichées dans <<man_map_1_step5,Étape 5>>.
+. [[step7]]ajustez n'importe quel autre domaine de diffusion et migrez si nécessaire les LIF de données à l'aide des commandes indiquées dans la <<man_map_1_step5,Étape 5>>.
 . [[step8]]si des ports du noeud 1 n'existent plus sur le noeud 3, procédez comme suit pour les supprimer :
 +
 .. Accéder au niveau de privilège avancé sur l'un des nœuds :

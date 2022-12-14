@@ -10,6 +10,7 @@ Certains problèmes peuvent survenir au cours des différentes étapes de la pro
 
 Durant la procédure, si le nœud hébergeant tous les agrégats de données fonctionne de façon incohérente ou est redémarré accidentellement, vous pouvez voir la sortie inattendue de `storage failover show` commande avant et après le redémarrage, de type panic ou power cycle.
 
+.Description de la tâche
 Vous verrez peut-être des résultats inattendus de la `storage failover show` Commande aux étapes 2, 3, 4 ou 5.
 
 L'exemple suivant montre la sortie attendue de l' `storage failover show` commande s'il n'y a pas de redémarrages ou de incohérences sur le nœud qui héberge tous les agrégats de données :
@@ -36,4 +37,5 @@ node2    node1     false     Waiting for node1, Partial giveback, Takeover is no
 ....
 Bien que la sortie indique qu'un nœud a été en cours de rétablissement partiel et que le basculement du stockage est désactivé, vous pouvez ignorer ce message.
 
+.Étapes
 Aucune action n'est requise ; continuer la procédure de mise à niveau de la paire de nœuds.

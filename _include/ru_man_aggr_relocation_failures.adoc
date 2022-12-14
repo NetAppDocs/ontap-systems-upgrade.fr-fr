@@ -36,6 +36,7 @@ Pour des informations détaillées sur le `storage aggregate relocation start`, 
 
 À la fin de la procédure de mise à niveau, le nœud 3 doit être le nouveau nœud de rattachement des agrégats qui disposait initialement du nœud 1 comme nœud de rattachement. Vous pouvez les transférer après la mise à niveau.
 
+.Description de la tâche
 Les agrégats peuvent ne pas être relocalisés correctement, le nœud 1 étant alors leur nœud de rattachement au lieu du nœud 3 dans les cas suivants :
 
 * Lors de la phase 3, lorsque les agrégats sont déplacés du nœud 2 vers le nœud 3. Certains agrégats transférés possèdent le nœud 1 comme nœud de rattachement. Par exemple, un tel agrégat peut être appelé aggr_node_1. Si le transfert de aggr_node_1 échoue lors de l'étape 3 et le transfert ne peut pas être forcé, l'agrégat sera laissé derrière sur le nœud 2.
@@ -52,7 +53,7 @@ Une 6 fois le basculement du stockage activé, vous pouvez résoudre le problèm
 +
 Pour identifier les agrégats qui n'ont pas été correctement transférés, reportez-vous à la liste des agrégats avec le propriétaire du nœud 1 que vous avez obtenu dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] et comparer ce résultat avec le résultat de la commande ci-dessus.
 
-. [[step2]]Comparer la sortie de ,Étape 1 avec la sortie que vous avez capturée pour le noeud 1 dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] et notez tous les agrégats qui n'ont pas été correctement transférés.
+. [[step2]]Comparer la sortie de <<man_aggr_fail_step1,Étape 1>> avec la sortie que vous avez capturée pour le noeud 1 dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] et notez tous les agrégats qui n'ont pas été correctement transférés.
 . [[man_aggr_fail_Step3]]transférer les agrégats restants sur le nœud 4 :
 +
 `storage aggregate relocation start -node _node4_ -aggr _aggr_node_1_ -destination _node3_`
@@ -68,6 +69,6 @@ N'utilisez pas le `-ndo-controller-upgrade` paramètre pendant cette relocalisat
 `_aggr1,aggr2,aggr3..._` est la liste des agrégats qui possédaient le nœud 1 comme propriétaire initial.
 
 +
-Les agrégats qui ne possèdent pas le noeud 3 en tant que propriétaire de maison peuvent être transférés vers le noeud 3 à l'aide de la même commande de déplacement dans ,Étape 3.
+Les agrégats qui ne possèdent pas le noeud 3 en tant que propriétaire de maison peuvent être transférés vers le noeud 3 à l'aide de la même commande de déplacement dans <<man_aggr_fail_Step3,Étape 3>>.
 
 

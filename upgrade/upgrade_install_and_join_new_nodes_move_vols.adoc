@@ -13,6 +13,7 @@ summary: 'Vous devez installer les nouveaux nœuds et les joindre au cluster pou
 [role="lead"]
 Vous devez installer les nouveaux nœuds et les joindre au cluster pour pouvoir déplacer des volumes des nœuds d'origine.
 
+.Description de la tâche
 Lorsque vous mettez à niveau le matériel des contrôleurs en déplaçant les volumes, les nœuds d'origine et les nouveaux nœuds doivent se trouver dans le même cluster.
 
 .Étape

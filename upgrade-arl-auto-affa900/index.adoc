@@ -28,6 +28,7 @@ Cette procédure décrit la procédure de mise à niveau du matériel du contrô
 |===
 Vous pouvez mettre à niveau le matériel de contrôleur sans interruption sur une paire haute disponibilité en remplaçant le contrôleur et les modules NVRAM. Tout d'abord, vous migrez les agrégats non racines entre les anciens nœuds de contrôleur. Une fois l'installation terminée, migrez les agrégats non-racines des anciens nœuds de contrôleur vers les nœuds de contrôleur de remplacement. Les données hébergées sur les nœuds que vous mettez à niveau sont accessibles lors de la procédure de mise à niveau.
 
+.Description de la tâche
 Durant cette procédure de mise à niveau du contrôleur, vous remplacez uniquement les deux unités remplaçables sur site par chaque nœud des systèmes AFF A700 ou FAS9000 par les nouvelles unités remplaçables sur site.
 
 

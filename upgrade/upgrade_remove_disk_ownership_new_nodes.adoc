@@ -13,6 +13,7 @@ summary: 'Si les nouveaux nœuds disposent de disques internes ou de tiroirs d"e
 [role="lead"]
 Si les nouveaux nœuds disposent de disques internes ou de tiroirs d'extension connectés au système, ces derniers peuvent interférer avec la mise à niveau du contrôleur. Procédez comme suit pour supprimer la propriété de tout nouveau disque fourni avec le noeud 3/node4.
 
+.Description de la tâche
 Ces étapes sont effectuées l'une après l'autre sur les noeuds 3 et 4. La séquence de nœuds n'a pas d'importance.
 
 [NOTE]

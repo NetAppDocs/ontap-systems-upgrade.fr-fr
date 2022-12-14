@@ -4475,4 +4475,7 @@
   <block id="d9e40d62315bfc8bad4f1329f7f9b867" category="paragraph">Lors de l'installation, vous devez prendre note des points suivants :</block>
   <block id="342f3ca2519e4e92f56675a89236fce6" category="list-text">Déplacez tous les modules de remplissage vides dans les emplacements 6-1 et 6-2 de l'ancien module NVRAM vers le nouveau module NVRAM.</block>
   <block id="97bcf885640a80425f98f36e28630da4" category="paragraph">Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 que vous avez reçus pour la mise à niveau sur le nœud 1.</block>
+  <block id="bbe48fb854ea022537208eeeff822f91" category="paragraph-title">Description de la tâche</block>
+  <block id="3468b73fe010ca505a63fcddaa4f3601" category="paragraph-title">Terminologie utilisée dans ces informations</block>
+  <block id="5d022d26a75a4e30fae6648d5bcdd9e5" category="paragraph-title">Pour la configuration MetroCluster FC</block>
 </blocks>

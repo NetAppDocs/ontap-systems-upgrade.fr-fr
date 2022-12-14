@@ -16,6 +16,7 @@ summary: 'Vérifiez que les ports physiques du nœud 1 sont correctement redirig
 [role="lead"]
 Vous devez vérifier que les ports physiques du nœud1 sont correctement associés aux ports physiques du nœud3, ce qui permettra au nœud3 de communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
 
+.Description de la tâche
 Reportez-vous à la section link:other_references.html["Références"] Pour établir une liaison avec _Hardware Universe_ afin de capturer des informations sur les ports des nouveaux nœuds. Vous utiliserez ces informations plus loin dans cette section.
 
 Les paramètres de port peuvent varier en fonction du modèle des nœuds. Vous devez rendre la configuration des ports et LIF sur le nœud d'origine compatible avec l'utilisation et la configuration planifiées du nouveau nœud. En effet, le nouveau nœud relit la même configuration au démarrage, ce qui signifie que, lorsque vous démarrez le nœud 3, ONTAP tentera d'héberger les LIF sur les mêmes ports que celui utilisé sur le nœud 1.
@@ -185,8 +186,8 @@ La commande suivante supprime le port « e0d » sur le nœud 3 :
 
 
 
-. Ajustez l'appartenance des broadcast domain des ports réseau utilisés pour les LIFs intercluster à l'aide des mêmes commandes indiquées dans ,Étape 5.
-. Ajustez tout autre domaine de diffusion et migrez les LIF de données, le cas échéant, à l'aide des mêmes commandes que celles illustrées dans la ,Étape 5.
+. Ajustez l'appartenance des broadcast domain des ports réseau utilisés pour les LIFs intercluster à l'aide des mêmes commandes indiquées dans <<auto_map_3_step5,Étape 5>>.
+. Ajustez tout autre domaine de diffusion et migrez les LIF de données, le cas échéant, à l'aide des mêmes commandes que celles illustrées dans la <<auto_map_3_step5,Étape 5>>.
 . S'il y avait des ports sur le nœud1 qui n'existent plus sur le nœud3, procédez comme suit pour les supprimer :
 +
 .. Accéder au niveau de privilège avancé sur l'un des nœuds :

@@ -24,10 +24,10 @@ Pour retirer le nœud 2, vous devez arrêter le nœud 2 correctement et le retir
 | Si le cluster est... | Alors... 
 
 
-| Un cluster à deux nœuds | Accédez à ,Étape 2. 
+| Un cluster à deux nœuds | Accédez à <<man_retire_2_Step2,Étape 2>>. 
 
 
-| Un cluster comprenant plus de deux nœuds | Accédez à ,Étape 9. 
+| Un cluster comprenant plus de deux nœuds | Accédez à <<man_retire_2_Step9,Étape 9>>. 
 |===
 . [[man_reate_2_Step2]]accédez au niveau de privilège avancé en entrant la commande suivante sur l'un des nœuds :
 +

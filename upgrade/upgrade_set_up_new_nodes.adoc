@@ -13,6 +13,7 @@ summary: 'Lors de la mise à niveau en déplaçant le stockage, vous mettez les 
 [role="lead"]
 Lors de la mise à niveau en déplaçant le stockage, vous mettez les nœuds 3 et 4 sous tension, démarrez l'image logicielle et configurez les nœuds. L'organisation des ports physiques entre les nœuds d'origine et les nouveaux peut être différente. Le mappage des ports entre les nœuds d'origine et de remplacement doit être réalisé afin d'identifier le schéma approprié des ports et des connexions.
 
+.Avant de commencer
 Si la version de ONTAP exécutée sur les nouveaux nœuds est différente de celle des nœuds d'origine, vous devez avoir téléchargé la version correcte `<ontap_version>_image.tgz` Fichier du site de support NetApp vers un répertoire accessible via le Web (voir _préparer la mise à niveau lors du déplacement du stockage_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_5["STEP5"]). Vous avez besoin de la `<ontap_version>_image.tgz` fichier pour effectuer un démarrage sur le réseau de votre système.
 
 .Étapes

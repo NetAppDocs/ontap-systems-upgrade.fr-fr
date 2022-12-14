@@ -3,6 +3,6 @@
 
 
 .Choix
-*  FC ports on node3
-*  and configure UTA/UTA2 ports on node3
+* <<Configurez les ports FC sur le nœud 3>>
+* <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>
 

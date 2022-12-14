@@ -16,8 +16,10 @@ summary: 'Déterminez l"infrastructure de câblage des nouveaux modules de contr
 [role="lead"]
 Vous devez déterminer le câblage reliant les nouveaux modules de contrôleur et les nouveaux tiroirs disques aux commutateurs FC existants.
 
+.Description de la tâche
 Cette tâche doit être effectuée sur chaque site MetroCluster.
 
+.Étape
 Utilisez le contenu _Fabric-Attached MetroCluster installation and Configuration_ pour déterminer la disposition du câblage pour votre type de commutateur, en utilisant l'utilisation des ports pour une configuration MetroCluster à huit nœuds. L'utilisation du port de commutateur FC doit correspondre à l'utilisation décrite dans le contenu pour que les fichiers de configuration de référence (RCFs) puissent être utilisés.
 
 Accédez à link:other_references.html["Références"] Pour établir un lien vers le contenu _MetroCluster installation and Configuration_ joint à la structure.

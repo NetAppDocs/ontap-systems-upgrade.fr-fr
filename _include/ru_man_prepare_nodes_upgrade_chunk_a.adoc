@@ -183,13 +183,13 @@ aggr4         node1        node2        online
 +
 [cols="35,65"]
 |===
-| Si la commande dans ,Étape 9... | Alors... 
+| Si la commande dans <<man_prepare_nodes_step9,Étape 9>>... | Alors... 
 
 
-| Sortie vide | Ignorez l'étape 11 et passez à ,Étape 12. 
+| Sortie vide | Ignorez l'étape 11 et passez à <<man_prepare_nodes_step12,Étape 12>>. 
 
 
-| Sortie | Accédez à ,Étape 11. 
+| Sortie | Accédez à <<man_prepare_nodes_step11,Étape 11>>. 
 |===
 . [[man_prepare_nodes_step11]]] si le nœud1 ou le nœud2 possède des agrégats pour lesquels il s'agit du propriétaire actuel, mais pas du propriétaire de la maison, procédez comme suit :
 +
@@ -308,7 +308,7 @@ vs0
 
 2 entries were displayed.
 ....
-. Si la sortie est entrée ,Étape 15 Indique que le nœud 1 ou le nœud 2 possède des LIF de données détenues par d'autres nœuds du cluster, afin de migrer les LIF de données hors du nœud 1 ou du nœud 2 :
+. Si la sortie est entrée <<man_prepare_nodes_step15,Étape 15>> Indique que le nœud 1 ou le nœud 2 possède des LIF de données détenues par d'autres nœuds du cluster, afin de migrer les LIF de données hors du nœud 1 ou du nœud 2 :
 +
 `network interface revert -vserver * -lif *`
 

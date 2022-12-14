@@ -12,4 +12,5 @@ Au cours de l'étape 6, assurez-vous que les nouveaux nœuds sont correctement c
 . link:resume_snapmirror_operations.html["Reprendre les opérations SnapMirror"]
 
 
+.Pour la configuration MetroCluster FC
 Pour la configuration MetroCluster FC, il est nécessaire de remplacer les nœuds de site de reprise après incident/basculement le plus rapidement possible. Les différences entre les modèles de contrôleur et MetroCluster ne sont pas prises en charge, car une non-concordance de modèle de contrôleur peut entraîner la mise en miroir de la reprise après incident. Utiliser la commande -`skip-metrocluster-check true` Option permettant de contourner les vérifications MetroCluster lorsque vous remplacez des nœuds sur un second site.

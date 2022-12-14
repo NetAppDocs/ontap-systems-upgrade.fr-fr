@@ -8,8 +8,10 @@
 
 Si le NODE4 dispose de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2A, vous devez vérifier la configuration des ports et les configurer, en fonction de votre mode d'utilisation du système mis à niveau.
 
+.Avant de commencer
 Vous devez disposer des modules SFP+ appropriés pour les ports UTA/UTA2.
 
+.Description de la tâche
 Les ports UTA/UTA2 peuvent être configurés en mode FC natif ou UTA/UTA2A. Le mode FC prend en charge les initiateurs FC et la cible FC ; le mode UTA/UTA2 permet d'utiliser simultanément le trafic FCoE et les cartes réseau sur la même interface SFP+ 10 GbE et prend en charge la cible FC.
 
 
@@ -71,10 +73,10 @@ Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ appropr
 | Si les ports CNA... | Puis… 
 
 
-| N'avez pas la personnalité que vous voulez | Accédez à ,Étape 5. 
+| N'avez pas la personnalité que vous voulez | Accédez à <<auto_check_4_step5,Étape 5>>. 
 
 
-| Avoir la personnalité que vous voulez | Passez aux étapes 5 à 12 et passez à ,Étape 13. 
+| Avoir la personnalité que vous voulez | Passez aux étapes 5 à 12 et passez à <<auto_check_4_step13,Étape 13>>. 
 |===
 . [[auto_check_4_step5]]effectuez l'une des opérations suivantes :
 +
@@ -83,10 +85,10 @@ Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ appropr
 | Si vous configurez... | Puis… 
 
 
-| Ports sur carte UTA/UTA2 | Accédez à ,Étape 7 
+| Ports sur carte UTA/UTA2 | Accédez à <<auto_check_4_step7,Étape 7>> 
 
 
-| Ports UTA/UTA2 intégrés | Ignorez l'étape 7 et passez à ,Étape 8. 
+| Ports UTA/UTA2 intégrés | Ignorez l'étape 7 et passez à <<auto_check_4_step8,Étape 8>>. 
 |===
 . Si l'adaptateur est en mode initiateur et si le port UTA/UTA2 est en ligne, mettez le port UTA/UTA2 hors ligne :
 +

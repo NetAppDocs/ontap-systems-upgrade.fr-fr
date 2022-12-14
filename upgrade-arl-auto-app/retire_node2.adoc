@@ -26,4 +26,5 @@ Le nœud s'arrête automatiquement.
 
 
 
+.Une fois que vous avez terminé
 Vous pouvez désaffecter le nœud2 une fois la mise à niveau terminée. Voir link:decommission_old_system.html["Désaffectation de l'ancien système"].

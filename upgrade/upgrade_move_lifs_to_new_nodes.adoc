@@ -13,6 +13,7 @@ summary: 'Une fois les volumes déplacés des nœuds d"origine, vous devez migre
 [role="lead"]
 Une fois les volumes déplacés des nœuds d'origine, vous devez migrer les LIF de données non SAN et les LIF de Cluster-management des nœuds d'origine vers les nouveaux nœuds.
 
+.Description de la tâche
 Vous ne pouvez pas migrer une LIF utilisée pour effectuer des opérations de déchargement des copies avec VMware vStorage APIs for Array Integration (VAAI).
 
 .Étapes
