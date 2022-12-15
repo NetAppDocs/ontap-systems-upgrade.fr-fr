@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4551,6 +4551,7 @@
 <p>Vous devez installer NODE3 dans le rack, transférer les connexions du noeud 1 vers le noeud 3, démarrer le noeud 3 et installer ONTAP. Vous devez ensuite réaffecter l&#8217;un des disques de spare du nœud1, tous les disques appartenant au volume racine et tous les agrégats non racines qui n&#8217;ont pas été transférés vers le nœud2 plus tôt dans le processus, comme indiqué dans cette section.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>L&#8217;opération de déplacement est mise en pause au début de cette étape. Ce processus est largement automatisé. L&#8217;opération s&#8217;interrompt pour vous permettre de vérifier son état. Vous devez reprendre l&#8217;opération manuellement. En outre, vous devez vérifier que les LIF SAN ont bien été déplacées vers le nœud 3.</p>
 </div>
 <div class="paragraph">
@@ -4560,7 +4561,7 @@
 <div class="title">Important :</div>
 <ul>
 <li>
-<p>Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire ,Étape 1 à ,Étape 21, quittez ensuite cette section et suivez les instructions de la section <a href="set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3">"Configurez les ports FC sur le nœud 3"</a> et <a href="set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3">"Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"</a> Sections si nécessaire, en saisissant des commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec ,Étape 23.</p>
+<p>Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <a href="#auto_install3_step1">Étape 1</a> à <a href="#auto_install3_step21">Étape 21</a>, quittez ensuite cette section et suivez les instructions de la section <a href="set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3">"Configurez les ports FC sur le nœud 3"</a> et <a href="set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3">"Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"</a> Sections si nécessaire, en saisissant des commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <a href="#auto_install3_step23">Étape 23</a>.</p>
 </li>
 <li>
 <p>Si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière, puis aller à <a href="set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3">"Configurez les ports FC sur le nœud 3"</a> et <a href="set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3">"Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"</a> sections, saisie de commandes à l&#8217;invite du cluster.</p>
@@ -4660,7 +4661,7 @@ To override this delay, press 'c' followed by 'Enter'</pre>
 </div>
 </li>
 <li>
-<p><a id="auto_install3_step5"></a>si vous voyez le message d&#8217;avertissement dans ,Étape 4, procédez comme suit :</p>
+<p><a id="auto_install3_step5"></a>si vous voyez le message d&#8217;avertissement dans <a href="#auto_install3_step4">Étape 4</a>, procédez comme suit :</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -4951,7 +4952,7 @@ Le système enregistre dans une PROM, qu&#8217;il soit dans une paire HA ou dans
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Possède des disques et aucun stockage interne</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#auto_install3_step23">Étape 23</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage</p></td>
@@ -4961,7 +4962,7 @@ Le système enregistre dans une PROM, qu&#8217;il soit dans une paire HA ou dans
 <p>Passez à la section <a href="set_fc_or_uta_uta2_config_on_node3.html">"Configuration FC ou UTA/UTA2 sur le nœud 3"</a> complétez les sous-sections de cette section.</p>
 </li>
 <li>
-<p>Revenez à cette section et suivez les étapes restantes, en commençant par ,Étape 23.</p>
+<p>Revenez à cette section et suivez les étapes restantes, en commençant par <a href="#auto_install3_step23">Étape 23</a>.</p>
 </li>
 </ol>
 </div>

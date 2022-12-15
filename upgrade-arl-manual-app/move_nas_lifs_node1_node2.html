@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4551,6 +4551,7 @@
 <p>Avant de remplacer le nœud 1 par le nœud 3, vous devez déplacer les LIF de données NAS qui appartiennent au nœud 1 vers le nœud 2 si vous disposez d&#8217;un cluster à deux nœuds ou vers un troisième nœud si votre cluster possède plus de deux nœuds. La méthode que vous utilisez varie selon que le cluster est configuré pour NAS ou SAN.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n&#8217;est pas nécessaire pour assurer l&#8217;intégrité du cluster ou du service pendant la mise à niveau. Vous devez vérifier que les LIFs sont bonnes et situées sur les ports appropriés une fois que vous avez mis le nœud3 en ligne.</p>
 </div>
 <div class="olist arabic">
@@ -4596,7 +4597,7 @@
 </div>
 </li>
 <li>
-<p>Modifier le port de rattachement et le nœud de rattachement des LIFs et des VLAN dans ,Sous-étape a Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :</p>
+<p>Modifier le port de rattachement et le nœud de rattachement des LIFs et des VLAN dans <a href="#substepa">Sous-étape a</a> Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :</p>
 <div class="paragraph">
 <p><code>network interface modify -vserver <em>Vserver_name</em> -lif <em>LIF_name</em> -home-node <em>node2</em> - home-port <em>netport|ifgrp</em></code></p>
 </div>
@@ -4620,7 +4621,7 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NAS</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Terminé ,Étape 5 à ,Étape 8.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Terminé <a href="#man_lif_1_2_step5">Étape 5</a> à <a href="#man_lif_1_2_step8">Étape 8</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SAN</p></td>
@@ -4649,7 +4650,7 @@
 </div>
 </li>
 <li>
-<p><a id="man_lif_1_2_step8"></a>Vérifiez si la LIF utilise le port comme port home ou courant. Si le port n&#8217;est pas à la maison ou le port actuel, allez à ,Étape 9:</p>
+<p><a id="man_lif_1_2_step8"></a>Vérifiez si la LIF utilise le port comme port home ou courant. Si le port n&#8217;est pas à la maison ou le port actuel, allez à <a href="#man_lif_1_2_step9">Étape 9</a>:</p>
 <div class="paragraph">
 <p><code>network interface show -home-node <em>node2</em> -home-port <em>port_name</em></code></p>
 </div>

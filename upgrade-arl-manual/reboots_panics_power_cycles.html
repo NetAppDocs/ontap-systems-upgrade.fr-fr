@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4566,6 +4566,7 @@
 <p>Si le nœud 1 ou le nœud 2 tombe en panne avant la phase 2, aucun agrégat n&#8217;a été déplacé et la configuration haute disponibilité est toujours activée.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Le basculement et le rétablissement peuvent se poursuivre normalement.</p>
 </div>
 <div class="olist arabic">
@@ -4586,6 +4587,7 @@
 <p>Un ou plusieurs agrégats ont été transférés du nœud 1 vers le nœud 2, et la haute disponibilité est toujours activée. NODE2 prendra le relais du volume racine du nœud 1 et de tout agrégat non racine qui n&#8217;a pas été déplacé.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>La propriété des agrégats transférés semble identique à celle des agrégats non racines pris en charge, car le propriétaire du site n&#8217;a pas changé. Lorsque le noeud 1 entre dans <code>waiting for giveback state</code>, node2 redonnera tous les agrégats non-root du nœud 1.</p>
 </div>
 <div class="olist arabic">
@@ -4626,6 +4628,7 @@
 <p>NODE1 a déplacé un ou la totalité de ses agrégats vers le nœud 2. LA HAUTE DISPONIBILITÉ est activée.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>NODE1 prendra en charge l&#8217;ensemble des agrégats du nœud 2 ainsi que l&#8217;un de ses propres agrégats qu&#8217;il avait transférés vers le nœud 2. Lorsque le noeud 2 entre dans <code>Waiting for Giveback</code> état, le nœud 1 renvoie tous les agrégats du nœud 2.</p>
 </div>
 <div class="olist arabic">
@@ -4694,6 +4697,7 @@
 <p>Le nœud 2 a déplacé une partie ou la totalité de ses agrégats vers le nœud 3, qui transmet des données depuis les agrégats qui ont été déplacés. LA HAUTE DISPONIBILITÉ est désactivée.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Pour les agrégats qui n&#8217;ont pas été transférés, une panne se produit au niveau du client.</p>
 </div>
 <div class="olist arabic">
@@ -4734,6 +4738,7 @@
 <p>En cas de panne du nœud 3 alors que le nœud 2 replace les agrégats sur le nœud 3, le nœud 2 annulera le déplacement d&#8217;agrégats restants.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Le nœud 2 continue de servir les agrégats restants, mais les agrégats qui ont déjà été transférés vers le nœud 3 rencontrent une panne du client lors du démarrage du nœud 3.</p>
 </div>
 <div class="olist arabic">
@@ -4816,6 +4821,7 @@
 <p>NODE3 a déplacé tout ou partie des agrégats du nœud 2 vers le nœud 4. NODE4 ne prend pas le contrôle, mais continue de servir des agrégats non racines que le nœud 3 a déjà déplacé. La paire HA est désactivée.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Une panne se produit au niveau du reste des agrégats jusqu&#8217;au démarrage du nœud 3.</p>
 </div>
 <div class="olist arabic">
@@ -4839,6 +4845,7 @@
 <p>NODE3 a déplacé tout ou partie des agrégats du nœud 2 vers le nœud 4. NODE3 ne prend pas le contrôle, mais continue de servir des agrégats non racines que NODE3 détient ainsi que ceux qui n&#8217;ont pas été transférés. LA HAUTE DISPONIBILITÉ est désactivée.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Une panne se produit au niveau des agrégats non racines qui ont déjà été transférés jusqu&#8217;au démarrage du nœud 4.</p>
 </div>
 <div class="olist arabic">

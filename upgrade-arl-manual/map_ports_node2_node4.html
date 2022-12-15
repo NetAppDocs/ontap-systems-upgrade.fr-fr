@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4551,12 +4551,14 @@
 <p>Vous devez vous assurer que les ports physiques du node2 sont correctement associés aux ports physiques du node4, ce qui permet au node4 de communiquer avec d&#8217;autres nœuds du cluster et avec le réseau après la mise à niveau.</p>
 </div>
 <div class="paragraph">
+<div class="title">Avant de commencer</div>
 <p>Vous devez déjà disposer d&#8217;informations sur les ports sur les nouveaux nœuds. Pour accéder à ces informations, reportez-vous à la section <a href="other_references.html">"Références"</a> Pour accéder au <em>Hardware Universe</em>. Vous utilisez ces informations ultérieurement dans cette section.</p>
 </div>
 <div class="paragraph">
 <p>La configuration logicielle du nœud4 doit correspondre à la connectivité physique du nœud4, et la connectivité IP doit être restaurée avant de poursuivre la mise à niveau.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Les paramètres de port peuvent varier en fonction du modèle des nœuds. Vous devez rendre le port du nœud d&#8217;origine et la configuration LIF compatibles avec ce que vous prévoyez de configurer le nouveau nœud. En effet, le nouveau nœud relit la même configuration au démarrage, ce qui signifie que, lors du démarrage du nœud 4, Data ONTAP tentera d&#8217;héberger les LIF sur les mêmes ports que celui utilisé sur le nœud 2.</p>
 </div>
 <div class="paragraph">
@@ -4892,10 +4894,10 @@ Dans le cas d&#8217;une configuration MetroCluster, il peut ne pas être possibl
 </div>
 </li>
 <li>
-<p>Ajuster les domaines de broadcast intercluster et migrer les LIFs intercluster, le cas échéant, à l&#8217;aide des mêmes commandes indiquées sur la ,Étape 5.</p>
+<p>Ajuster les domaines de broadcast intercluster et migrer les LIFs intercluster, le cas échéant, à l&#8217;aide des mêmes commandes indiquées sur la <a href="#man_map_2_step5">Étape 5</a>.</p>
 </li>
 <li>
-<p>Ajustez tout autre domaine de diffusion et migrez les LIF de données, le cas échéant, à l&#8217;aide des mêmes commandes que celles illustrées dans la ,Étape 5.</p>
+<p>Ajustez tout autre domaine de diffusion et migrez les LIF de données, le cas échéant, à l&#8217;aide des mêmes commandes que celles illustrées dans la <a href="#man_map_2_step5">Étape 5</a>.</p>
 </li>
 <li>
 <p>S&#8217;il y avait des ports sur le nœud2 qui n&#8217;existent plus sur le nœud4, procédez comme suit pour les supprimer :</p>

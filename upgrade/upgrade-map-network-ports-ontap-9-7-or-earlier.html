@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4551,9 +4551,11 @@
 <p>Pour permettre aux nœuds 3 et Node4 de communiquer entre eux dans le cluster et avec le réseau après la mise à niveau, vous devez confirmer que les ports physiques sont correctement configurés avec les paramètres requis pour l&#8217;utilisation prévue, tels que le cluster, les données, etc.</p>
 </div>
 <div class="paragraph">
+<div class="title">Avant de commencer</div>
 <p>Ces étapes s&#8217;appliquent aux systèmes exécutant ONTAP 9.7 ou version antérieure. Si vous exécutez ONTAP 9.8 ou une version ultérieure, vous devez suivre la procédure de la section <a href="upgrade-map-network-ports-ontap-9-8.html">Mappe les ports réseau avec ONTAP 9.8 ou version ultérieure</a>.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Vous devez effectuer ces étapes sur les noeuds 3 et 4.</p>
 </div>
 <div class="admonitionblock note">
@@ -4712,10 +4714,10 @@ Cluster          NodeB_clus2:7700               TCP/ctlopcp
 </div>
 </li>
 <li>
-<p>Ajuster les domaines de broadcast intercluster et migrer les LIFs intercluster, le cas échéant, à l&#8217;aide des commandes de ,Étape 7.</p>
+<p>Ajuster les domaines de broadcast intercluster et migrer les LIFs intercluster, le cas échéant, à l&#8217;aide des commandes de <a href="#map_97_7">Étape 7</a>.</p>
 </li>
 <li>
-<p>Ajustez tout autre domaine de diffusion et migrez les LIF de données, si nécessaire, à l&#8217;aide des commandes de la section ,Étape 7.</p>
+<p>Ajustez tout autre domaine de diffusion et migrez les LIF de données, si nécessaire, à l&#8217;aide des commandes de la section <a href="#map_97_7">Étape 7</a>.</p>
 </li>
 <li>
 <p>Ajustez tous les failover groups LIF :</p>
@@ -4738,6 +4740,7 @@ Cluster          NodeB_clus2:7700               TCP/ctlopcp
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Une fois que vous avez terminé</div>
 <p>Le mappage des ports physiques est terminé. Pour terminer la mise à niveau, rendez-vous sur <a href="upgrade-final-steps-ontap-9-7-or-earlier-move-storage.html">Exécutez les étapes finales de mise à niveau sous ONTAP 9.7 ou version antérieure</a>.</p>
 </div>
 

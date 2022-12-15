@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4553,13 +4553,14 @@
 <p>Vous devez vérifier que les ports physiques du nœud2 sont correctement mis en correspondance avec les ports physiques du nœud4. Ainsi, le nœud4 pourra communiquer avec d&#8217;autres nœuds du cluster et avec le réseau après la mise à niveau.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Reportez-vous à la section <a href="other_references.html">"Références"</a> Pour établir une liaison avec <em>Hardware Universe</em> afin de capturer des informations sur les ports des nouveaux nœuds. Vous utiliserez ces informations plus loin dans cette section.</p>
 </div>
 <div class="paragraph">
 <p>L&#8217;organisation des ports physiques peut varier en fonction du modèle des nœuds. Au démarrage du nouveau nœud, ONTAP tente de déterminer les ports qui doivent héberger les LIFs du cluster afin de se mettre automatiquement en quorum.</p>
 </div>
 <div class="paragraph">
-<p>Si les ports physiques du node2 ne sont pas directement mis en correspondance avec les ports physiques du node4, la section suivante  network configuration on node4 doit être utilisé pour réparer la connectivité réseau.</p>
+<p>Si les ports physiques du node2 ne sont pas directement mis en correspondance avec les ports physiques du node4, la section suivante <a href="#restaurez-la-configuration-du-réseau-sur-le-noeud-4">Restaurez la configuration du réseau sur le noeud 4</a> doit être utilisé pour réparer la connectivité réseau.</p>
 </div>
 <div class="paragraph">
 <p>Après avoir installé et démarrer node4, vous devez vérifier qu&#8217;il est correctement installé. Vous devez attendre que le noeud 4 rejoint le quorum et reprendre l&#8217;opération de transfert.</p>
@@ -4635,7 +4636,7 @@ Cluster          NodeB_clus2:7700               TCP/ctlopcp
 <li>
 <p>Si vous travaillez sur un système MetroCluster, vérifiez que le contrôleur remplacé est configuré correctement pour la configuration MetroCluster ; la configuration MetroCluster doit être en état de fonctionnement. Reportez-vous à la section <a href="verify_health_of_metrocluster_config.html">"Vérifier l&#8217;état de santé de la configuration MetroCluster"</a>.</p>
 <div class="paragraph">
-<p>Reconfigurer les LIFs intercluster sur le nœud MetroCluster node4, et vérifier le peering de cluster pour restaurer la communication entre les nœuds MetroCluster avant de poursuivre l&#8217;opération ,Étape 6.</p>
+<p>Reconfigurer les LIFs intercluster sur le nœud MetroCluster node4, et vérifier le peering de cluster pour restaurer la communication entre les nœuds MetroCluster avant de poursuivre l&#8217;opération <a href="#auto_verify_4_Step6">Étape 6</a>.</p>
 </div>
 <div class="paragraph">
 <p>Vérifier l&#8217;état du nœud MetroCluster :</p>
@@ -4705,6 +4706,7 @@ Dans cette procédure, la section <em>recréation des VLAN, ifgrps et des domain
 <p>Une fois que vous avez confirmé que le nœud4 est quorum et peut communiquer avec le nœud3, vérifiez que les VLAN, les groupes d&#8217;interface et les domaines de diffusion du nœud2 sont visibles sur le nœud4. Vérifiez également que tous les ports réseau node4 sont configurés dans leurs domaines de diffusion appropriés.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Pour plus d&#8217;informations sur la création et la recrércréation de VLAN, de groupes d&#8217;interfaces et de domaines de diffusion, reportez-vous à la section <a href="other_references.html">"Références"</a> Pour établir un lien vers <em>Network Management</em>.</p>
 </div>
 <div class="olist arabic">
@@ -4944,7 +4946,7 @@ Node1       a0a           822, 823
 <p><code>network port reachability show</code></p>
 </div>
 <div class="paragraph">
-<p>Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le <code>network port reachability show</code> la commande doit indiquer l&#8217;état de la capacité d&#8217;accessibilité <code>ok</code> pour tous les ports connectés et l&#8217;état en tant que <code>no-reachability</code> pour les ports sans connectivité physique. Si un port signale un état autre que ces deux ports, effectuez la réparation de la capacité d&#8217;accessibilité et ajoutez ou supprimez des ports de leurs domaines de diffusion comme indiqué dans ,Étape 4.</p>
+<p>Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le <code>network port reachability show</code> la commande doit indiquer l&#8217;état de la capacité d&#8217;accessibilité <code>ok</code> pour tous les ports connectés et l&#8217;état en tant que <code>no-reachability</code> pour les ports sans connectivité physique. Si un port signale un état autre que ces deux ports, effectuez la réparation de la capacité d&#8217;accessibilité et ajoutez ou supprimez des ports de leurs domaines de diffusion comme indiqué dans <a href="#auto_restore_4_Step4">Étape 4</a>.</p>
 </div>
 </li>
 <li>

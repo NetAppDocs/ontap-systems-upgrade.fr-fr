@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4551,6 +4551,7 @@
 <p>Après avoir vérifié l&#8217;installation du nœud 3 et avant de transférer des agrégats du nœud 2 vers le nœud 3, vous devez déplacer les LIF de données NAS appartenant au nœud 1 qui se trouvent actuellement sur le nœud 2 vers le nœud 3. Vous devez également vérifier les LIF SAN sur le nœud 3.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n&#8217;est pas nécessaire pour assurer l&#8217;intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Vous vérifierez que les LIFs sont saines et situées sur les ports appropriés après avoir mis le nœud3 en ligne.</p>
 </div>
 <div class="olist arabic">
@@ -4651,11 +4652,11 @@ cluster1-02  1b       50:0a:09:82:9c:6c:36:07  ACME Switch:7
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Des groupes d&#8217;interface ou des VLAN ont été configurés</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 4.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_lif_verify_3_step3">Étape 4</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Aucun groupe d&#8217;interfaces ou VLAN n&#8217;a été configuré</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ignorez l&#8217;étape 4 et passez à ,Étape 5.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ignorez l&#8217;étape 4 et passez à <a href="#man_lif_verify_3_step4">Étape 5</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4671,7 +4672,7 @@ cluster1-02  1b       50:0a:09:82:9c:6c:36:07  ACME Switch:7
 </div>
 </li>
 <li>
-<p>Modifier le home port et le home node de la LIF dans ,Sous-étape a Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :</p>
+<p>Modifier le home port et le home node de la LIF dans <a href="#man_lif_verify_3_substepa">Sous-étape a</a> Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :</p>
 <div class="paragraph">
 <p><code>network interface modify -vserver <em>vserver_name</em> -lif <em>LIF_name</em> -home-node <em>node3</em> -home-port <em>netport|ifgrp</em></code></p>
 </div>
@@ -4683,7 +4684,7 @@ cluster1-02  1b       50:0a:09:82:9c:6c:36:07  ACME Switch:7
 </div>
 </li>
 <li>
-<p>Modifier le home port et le home node des LIFs dans ,Sous-étape c Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :</p>
+<p>Modifier le home port et le home node des LIFs dans <a href="#man_lif_verify_3_substepc">Sous-étape c</a> Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :</p>
 <div class="paragraph">
 <p><code>network interface modify -vserver <em>vserver_name</em> -lif <em>LIF_name</em> -home-node <em>node3</em> -home-port <em>netport|ifgrp</em></code></p>
 </div>
@@ -4707,7 +4708,7 @@ cluster1-02  1b       50:0a:09:82:9c:6c:36:07  ACME Switch:7
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NAS</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Terminé ,Étape 6 et ,Étape 7, Ignorez l&#8217;étape 8 et terminez ,Étape 9 à ,Étape 12.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Terminé <a href="#man_lif_verify_3_step5">Étape 6</a> et <a href="#man_lif_verify_3_step6">Étape 7</a>, Ignorez l&#8217;étape 8 et terminez <a href="#man_lif_verify_3_step8">Étape 9</a> à <a href="#man_lif_verify_3_step11">Étape 12</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SAN</p></td>
@@ -4773,7 +4774,7 @@ cluster1-02  1b       50:0a:09:82:9c:6c:36:07  ACME Switch:7
 </div>
 </li>
 <li>
-<p>Vérifiez que les nouvelles et <code>adapter</code> et <code>switch-port</code> les configurations sont correctes en comparant la sortie du <code>fcp adapter show</code> commande avec les informations de configuration que vous avez enregistrées dans la fiche ,Étape 2.</p>
+<p>Vérifiez que les nouvelles et <code>adapter</code> et <code>switch-port</code> les configurations sont correctes en comparant la sortie du <code>fcp adapter show</code> commande avec les informations de configuration que vous avez enregistrées dans la fiche <a href="#worksheet_step2">Étape 2</a>.</p>
 <div class="paragraph">
 <p>Lister les nouvelles configurations LIF SAN sur le nœud3 :</p>
 </div>

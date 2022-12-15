@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4551,6 +4551,7 @@
 <p>Vous devez installer NODE4 dans le rack, transférer les connexions de node2 vers node4, démarrer node4 et installer ONTAP. Vous devez ensuite réaffecter l&#8217;un des disques de réserve du nœud2, tout disque appartenant au volume racine, ainsi que tout agrégat non racine qui n&#8217;a pas été déplacé vers celui-ci plus tôt dans le processus, comme indiqué dans cette section.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>L&#8217;opération de déplacement est mise en pause au début de cette étape. Ce processus est principalement automatisé. L&#8217;opération s&#8217;interrompt pour vous permettre de vérifier son état. Vous devez reprendre l&#8217;opération manuellement. En outre, vous devez vérifier que les LIF de données NAS ont bien été déplacées vers le nœud 4.</p>
 </div>
 <div class="paragraph">
@@ -4560,7 +4561,7 @@
 <div class="title">Important :</div>
 <ul>
 <li>
-<p>Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire ,Étape 1 à ,Étape 21, quittez ensuite cette section et suivez les instructions à <a href="set_fc_or_uta_uta2_config_node4.html#configure-fc-ports-on-node4">"Configurez les ports FC sur le nœud 4"</a> et à <a href="set_fc_or_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4">"Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4"</a>, Saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec ,Étape 23.</p>
+<p>Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <a href="#auto_install4_step1">Étape 1</a> à <a href="#auto_install4_step21">Étape 21</a>, quittez ensuite cette section et suivez les instructions à <a href="set_fc_or_uta_uta2_config_node4.html#configure-fc-ports-on-node4">"Configurez les ports FC sur le nœud 4"</a> et à <a href="set_fc_or_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4">"Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4"</a>, Saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <a href="#auto_install4_step23">Étape 23</a>.</p>
 </li>
 <li>
 <p>Cependant, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière et passer à <a href="set_fc_or_uta_uta2_config_node4.html">"Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"</a>, saisie de commandes à l&#8217;invite du cluster.</p>
@@ -4943,7 +4944,7 @@ Le système enregistre dans une PROM, qu&#8217;il soit dans une paire HA ou dans
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Possède des disques et aucun stockage interne</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 23.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#auto_install4_step23">Étape 23</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage</p></td>
@@ -4953,7 +4954,7 @@ Le système enregistre dans une PROM, qu&#8217;il soit dans une paire HA ou dans
 <p>Passez à la section <a href="set_fc_or_uta_uta2_config_node4.html">"Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"</a> complétez les sous-sections de cette section.</p>
 </li>
 <li>
-<p>Revenez à cette section et suivez les étapes restantes, en commençant par ,Étape 23.</p>
+<p>Revenez à cette section et suivez les étapes restantes, en commençant par <a href="#auto_install4_step23">Étape 23</a>.</p>
 </li>
 </ol>
 </div>

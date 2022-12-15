@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4553,6 +4553,7 @@
 <p>Vous devez vérifier l&#8217;installation du nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM. Comme il n&#8217;y a pas de modification des ports physiques, vous n&#8217;avez pas besoin d&#8217;mapper les ports physiques de l&#8217;ancien nœud 2 vers le nœud de remplacement 2.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Après avoir démarrer le nœud1 avec le module de contrôleur AFF A900 ou FAS9500, vous devez vérifier qu&#8217;il est correctement installé. Vous devez patienter jusqu&#8217;à ce que le nœud 2 rejoint le quorum, puis reprendre l&#8217;opération de remplacement du contrôleur.</p>
 </div>
 <div class="paragraph">
@@ -4633,7 +4634,7 @@ Dans cette procédure, la section <em>Re-création de VLAN, ifgrps et broadcast 
 </div>
 </li>
 <li>
-<p>Lorsque le remplacement du contrôleur est en pause, passer à  network configuration on node2.</p>
+<p>Lorsque le remplacement du contrôleur est en pause, passer à <a href="#restaurez-la-configuration-réseau-sur-le-noeud-2">Restaurez la configuration réseau sur le noeud 2</a>.</p>
 </li>
 </ol>
 </div>
@@ -4646,6 +4647,7 @@ Dans cette procédure, la section <em>Re-création de VLAN, ifgrps et broadcast 
 <p>Une fois que vous avez confirmé que le nœud2 est dans le quorum et peut communiquer avec le nœud1, vérifiez que les VLAN, les groupes d&#8217;interface et les domaines de diffusion du nœud1 sont visibles sur le nœud2. Vérifiez également que tous les ports réseau du node2 sont configurés dans leurs domaines de diffusion appropriés.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Pour plus d&#8217;informations sur la création et la recrércréation de VLAN, de groupes d&#8217;interfaces et de domaines de diffusion, reportez-vous à la section <a href="other_references.html">"Références"</a> Pour créer un lien vers le contenu <em>Network Management</em>.</p>
 </div>
 <div class="olist arabic">
@@ -4751,7 +4753,7 @@ Node2
 <p><code>network port reachability show</code></p>
 </div>
 <div class="paragraph">
-<p>Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le <code>network port reachability show</code> la commande doit indiquer l&#8217;état de la capacité d&#8217;accessibilité <code>ok</code> pour tous les ports connectés et l&#8217;état en tant que <code>no-reachability</code> pour les ports sans connectivité physique. Si un port signale un état autre que ces deux, effectuez la réparation de la capacité d&#8217;accès et ajoutez ou supprimez des ports de leurs domaines de diffusion comme indiqué dans ,Étape 4.</p>
+<p>Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le <code>network port reachability show</code> la commande doit indiquer l&#8217;état de la capacité d&#8217;accessibilité <code>ok</code> pour tous les ports connectés et l&#8217;état en tant que <code>no-reachability</code> pour les ports sans connectivité physique. Si un port signale un état autre que ces deux, effectuez la réparation de la capacité d&#8217;accès et ajoutez ou supprimez des ports de leurs domaines de diffusion comme indiqué dans <a href="#restore_node2_step4">Étape 4</a>.</p>
 </div>
 </li>
 <li>

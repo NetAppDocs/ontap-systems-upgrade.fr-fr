@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4551,6 +4551,7 @@
 <p>Après avoir déplacé les agrégats du nœud 2 vers le nœud 3, vous devez déplacer les LIF de données NAS détenues par le nœud 2 vers le nœud 3.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n&#8217;est pas nécessaire pour assurer l&#8217;intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Vous devez vérifier que les LIF sont en bon état et situées sur les ports appropriés après avoir déplacé les LIF du nœud 3 vers le nœud 4 et mis le nœud 4 en ligne.</p>
 </div>
 <div class="olist arabic">
@@ -4597,11 +4598,11 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Dispose de groupes d&#8217;interface ou de VLAN configurés</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 3.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_move_lif_2_3_step3">Étape 3</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Aucun groupe d&#8217;interface ou VLAN n&#8217;est configuré</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ignorez l&#8217;étape 3 et passez à ,Étape 4.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ignorez l&#8217;étape 3 et passez à <a href="#man_move_lif_2_3_step4">Étape 4</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4617,7 +4618,7 @@
 </div>
 </li>
 <li>
-<p>Modifier le home port et le home node des LIFs dans ,Sous-étape a Sur le port et le nœud qui héberge actuellement les LIFs en entrant la commande suivante, une fois pour chaque nœud :</p>
+<p>Modifier le home port et le home node des LIFs dans <a href="#man_move_lif_2_3_substepa">Sous-étape a</a> Sur le port et le nœud qui héberge actuellement les LIFs en entrant la commande suivante, une fois pour chaque nœud :</p>
 <div class="paragraph">
 <p><code>network interface modify -vserver <em>Vserver_name</em> -lif <em>LIF_name</em> -home-node <em>node3</em> -homeport <em>netport|ifgrp</em></code></p>
 </div>
@@ -4629,7 +4630,7 @@
 </div>
 </li>
 <li>
-<p>Modifier le home port et le home node des LIFs dans ,Sous-étape c Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :</p>
+<p>Modifier le home port et le home node des LIFs dans <a href="#man_move_lif_2_3_substepc">Sous-étape c</a> Au port et au nœud qui hébergent actuellement les LIFs en entrant la commande suivante, une fois pour chaque LIF :</p>
 <div class="paragraph">
 <p><code>network interface modify -vserver <em>Vserver_name</em> -lif <em>LIF_name</em> -home-node <em>node3</em> -homeport <em>netport|ifgrp</em></code></p>
 </div>
@@ -4653,15 +4654,15 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NAS</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Terminé ,Étape 5 à ,Étape 8.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Terminé <a href="#man_move_lif_2_3_step5">Étape 5</a> à <a href="#man_move_lif_2_3_step8">Étape 8</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SAN</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Passez les étapes 5 à 8, puis terminez ,Étape 9.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Passez les étapes 5 à 8, puis terminez <a href="#man_move_lif_2_3_step9">Étape 9</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NAS et SAN</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Terminé ,Étape 5 à ,Étape 9.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Terminé <a href="#man_move_lif_2_3_step5">Étape 5</a> à <a href="#man_move_lif_2_3_step9">Étape 9</a>.</p></td>
 </tr>
 </tbody>
 </table>

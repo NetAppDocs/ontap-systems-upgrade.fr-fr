@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4551,9 +4551,11 @@
 <p>Pour permettre aux nœuds 3 et Node4 de communiquer entre eux dans le cluster et avec le réseau après la mise à niveau, vous devez confirmer que les ports physiques sont correctement configurés avec les paramètres requis pour l&#8217;utilisation prévue, tels que le cluster, les données, etc.</p>
 </div>
 <div class="paragraph">
+<div class="title">Avant de commencer</div>
 <p>Ces étapes s&#8217;appliquent aux systèmes exécutant ONTAP 9.8 ou version ultérieure. Si vous exécutez ONTAP 9.7 ou une version antérieure, vous devez suivre la procédure de la section <a href="upgrade-map-network-ports-ontap-9-7-or-earlier.html">Mappez les ports réseau avec ONTAP 9.7 ou version antérieure</a>.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Vous devez effectuer ces étapes sur les noeuds 3 et 4.</p>
 </div>
 <div class="admonitionblock note">
@@ -4745,7 +4747,7 @@ En fonction de la complexité de la configuration réseau du système mis à niv
 </div>
 </li>
 <li>
-<p>Si aucun VLAN n&#8217;est configuré sur le système, passez à l' ,Étape 7. Si des VLAN sont configurés, restaurez des VLAN déplacés qui étaient précédemment configurés sur des ports qui n&#8217;existent plus ou qui étaient configurés sur des ports déplacés vers un autre domaine de diffusion.</p>
+<p>Si aucun VLAN n&#8217;est configuré sur le système, passez à l' <a href="#map_98_7">Étape 7</a>. Si des VLAN sont configurés, restaurez des VLAN déplacés qui étaient précédemment configurés sur des ports qui n&#8217;existent plus ou qui étaient configurés sur des ports déplacés vers un autre domaine de diffusion.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -4800,7 +4802,7 @@ En fonction de la complexité de la configuration réseau du système mis à niv
 </ol>
 </div>
 <div class="paragraph">
-<p>Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion corrects, la commande network port reachable show doit indiquer que l&#8217;état de la capacité d&#8217;accessibilité est ok pour tous les ports connectés et que l&#8217;état n&#8217;est pas de capacité d&#8217;accès pour les ports sans connectivité physique. Si des ports indiquent un état autre que ces deux, réparez la capacité d&#8217;accessibilité comme indiqué dans la section ,Étape 5.</p>
+<p>Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion corrects, la commande network port reachable show doit indiquer que l&#8217;état de la capacité d&#8217;accessibilité est ok pour tous les ports connectés et que l&#8217;état n&#8217;est pas de capacité d&#8217;accès pour les ports sans connectivité physique. Si des ports indiquent un état autre que ces deux, réparez la capacité d&#8217;accessibilité comme indiqué dans la section <a href="#map_98_5">Étape 5</a>.</p>
 </div>
 </li>
 <li>

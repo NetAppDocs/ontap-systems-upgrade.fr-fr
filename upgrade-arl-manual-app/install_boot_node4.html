@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4551,6 +4551,7 @@
 <p>Vous devez installer NODE4 dans le rack, transférer les connexions node2 vers node4 et démarrer node4. Vous devez également réaffecter toutes les unités de rechange du nœud 2, tous les disques appartenant à la racine et tous les agrégats non racines qui n&#8217;ont pas été transférés auparavant sur le nœud 3.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Vous devez netboot Node4 si cette version de ONTAP 9 n&#8217;est pas installée sur le nœud 2. Une fois le noeud 4 installé, démarrez-le à partir de l&#8217;image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système en suivant les instructions de la section <a href="prepare_for_netboot.html">"Préparation à la mise sur le réseau"</a></p>
 </div>
 <div class="paragraph">
@@ -4562,7 +4563,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Si vous mettez à niveau un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire ,Étape 1 à ,Étape 7, laissez cette section à ,Étape 8 et suivez les instructions de la section <a href="set_fc_uta_uta2_config_node4.html">"Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"</a> Si nécessaire, saisir les commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre la procédure à ,Étape 9.</p>
+<p>Si vous mettez à niveau un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <a href="#man_install4_Step1">Étape 1</a> à <a href="#man_install4_Step7">Étape 7</a>, laissez cette section à <a href="#man_install4_Step8">Étape 8</a> et suivez les instructions de la section <a href="set_fc_uta_uta2_config_node4.html">"Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"</a> Si nécessaire, saisir les commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre la procédure à <a href="#man_install4_Step9">Étape 9</a>.</p>
 </li>
 <li>
 <p>Toutefois, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière, puis passer à la section <a href="set_fc_uta_uta2_config_node4.html">"Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"</a>, saisie de commandes à l&#8217;invite du cluster.</p>
@@ -4588,11 +4589,11 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Châssis séparé du nœud3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 2.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_install4_Step2">Étape 2</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Châssis identique à celui du nœud3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ignorez les étapes 2 et 3 et passez à ,Étape 4.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ignorez les étapes 2 et 3 et passez à <a href="#man_install4_Step4">Étape 4</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4674,11 +4675,11 @@ Il n&#8217;est pas nécessaire de déplacer la carte d&#8217;interconnexion/cart
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Châssis identique à celui du nœud 3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 8.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_install4_Step8">Étape 8</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Châssis séparé du nœud3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 6.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_install4_Step6">Étape 6</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4750,7 +4751,7 @@ Lorsque vous démarrez le nœud 4, le message suivant peut s&#8217;afficher :
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Possède des disques et aucun stockage interne</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Passez aux étapes 9 à 14 et passez à ,Étape 15.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Passez aux étapes 9 à 14 et passez à <a href="#man_install4_Step15">Étape 15</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage</p></td>
@@ -4760,7 +4761,7 @@ Lorsque vous démarrez le nœud 4, le message suivant peut s&#8217;afficher :
 <p>Allez dans la section <em>définissez la configuration FC ou UTA/UTA2 sur le nœud 4</em> et complétez les sections <a href="set_fc_uta_uta2_config_node4.html#configure-fc-ports-on-node4">"Configurez les ports FC sur le nœud 4"</a> et <a href="set_fc_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4">"Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4"</a>, en fonction de votre système.</p>
 </li>
 <li>
-<p>Revenez à cette section et suivez les étapes restantes, en commençant par ,Étape 9.</p>
+<p>Revenez à cette section et suivez les étapes restantes, en commençant par <a href="#man_install4_Step9">Étape 9</a>.</p>
 </li>
 </ol>
 </div>
@@ -4850,11 +4851,11 @@ Lorsque vous démarrez le nœud 4, le message suivant peut s&#8217;afficher :
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ne dispose pas de la version ONTAP correcte ou actuelle du système node4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 20.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_install4_Step20">Étape 20</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Dispose de la version correcte ou à jour de ONTAP sur le nœud 4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 25.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_install4_Step25">Étape 25</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -5050,7 +5051,7 @@ DISK         OWNER                       POOL   SERIAL NUMBER   HOME
 </tbody>
 </table>
 <div class="paragraph">
-<p>Pour le <code>&lt;node2_sysid&gt;</code> valeur, utilisez les informations capturées dans <a href="record_node2_information.html#man_node2_info_step10">"Étape 10"</a> De la section <em>Record node2 information</em>. Pour <code><em>node4_sysid</em></code>, utilisez les informations capturées dans ,Étape 23.</p>
+<p>Pour le <code>&lt;node2_sysid&gt;</code> valeur, utilisez les informations capturées dans <a href="record_node2_information.html#man_node2_info_step10">"Étape 10"</a> De la section <em>Record node2 information</em>. Pour <code><em>node4_sysid</em></code>, utilisez les informations capturées dans <a href="#man_install4_step23">Étape 23</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5251,7 +5252,7 @@ Do you want to continue (y/n)? y</pre>
 </div>
 </li>
 <li>
-<p>Vérifiez que l&#8217;ID du système partenaire est correctement défini comme indiqué dans la ,Étape 26 sous option.</p>
+<p>Vérifiez que l&#8217;ID du système partenaire est correctement défini comme indiqué dans la <a href="#man_install4_Step26">Étape 26</a> sous option.</p>
 <div class="paragraph">
 <p><code>printenv partner-sysid</code></p>
 </div>

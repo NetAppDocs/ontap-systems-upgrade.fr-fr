@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4551,12 +4551,14 @@
 <p>Vous devez vous assurer que les ports physiques du node2 sont correctement associés aux ports physiques du node4, ce qui permet au node4 de communiquer avec d&#8217;autres nœuds du cluster et avec le réseau après la mise à niveau.</p>
 </div>
 <div class="paragraph">
+<div class="title">Avant de commencer</div>
 <p>Vous devez déjà disposer d&#8217;informations sur les ports sur les nouveaux nœuds. Pour accéder à ces informations, reportez-vous à la section <a href="other_references.html">"Références"</a> Pour accéder au <em>Hardware Universe</em>. Vous utilisez ces informations ultérieurement dans cette section.</p>
 </div>
 <div class="paragraph">
 <p>La configuration logicielle du nœud4 doit correspondre à la connectivité physique du nœud4, et la connectivité IP doit être restaurée avant de poursuivre la mise à niveau.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Les paramètres de port peuvent varier en fonction du modèle des nœuds.</p>
 </div>
 <div class="olist arabic">
@@ -4764,7 +4766,7 @@ En fonction de la complexité de la configuration réseau du système mis à niv
 </div>
 </li>
 <li>
-<p>Si aucun VLAN n&#8217;est configuré sur le système, passez à l' ,Étape 5. Si des VLAN sont configurés, restaurez des VLAN déplacés qui étaient précédemment configurés sur des ports qui n&#8217;existent plus ou qui étaient configurés sur des ports déplacés vers un autre domaine de diffusion.</p>
+<p>Si aucun VLAN n&#8217;est configuré sur le système, passez à l' <a href="#man_map_2_Step5">Étape 5</a>. Si des VLAN sont configurés, restaurez des VLAN déplacés qui étaient précédemment configurés sur des ports qui n&#8217;existent plus ou qui étaient configurés sur des ports déplacés vers un autre domaine de diffusion.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -4819,7 +4821,7 @@ En fonction de la complexité de la configuration réseau du système mis à niv
 </ol>
 </div>
 <div class="paragraph">
-<p>Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le <code>network port reachability show</code> la commande doit indiquer l&#8217;état de la capacité d&#8217;accessibilité <code>ok</code> pour tous les ports connectés et l&#8217;état en tant que <code>no-reachability</code> pour les ports sans connectivité physique. Si des ports indiquent un état autre que ces deux, réparez la capacité d&#8217;accessibilité comme indiqué dans la section ,Étape 3.</p>
+<p>Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de diffusion appropriés, le <code>network port reachability show</code> la commande doit indiquer l&#8217;état de la capacité d&#8217;accessibilité <code>ok</code> pour tous les ports connectés et l&#8217;état en tant que <code>no-reachability</code> pour les ports sans connectivité physique. Si des ports indiquent un état autre que ces deux, réparez la capacité d&#8217;accessibilité comme indiqué dans la section <a href="#man_map_2_Step3">Étape 3</a>.</p>
 </div>
 </li>
 <li>

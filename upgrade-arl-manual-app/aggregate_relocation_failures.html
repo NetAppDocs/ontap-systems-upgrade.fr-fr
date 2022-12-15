@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4602,6 +4602,7 @@
 <p>À la fin de la procédure de mise à niveau, le nœud 3 doit être le nouveau nœud de rattachement des agrégats qui disposait initialement du nœud 1 comme nœud de rattachement. Vous pouvez les transférer après la mise à niveau.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Les agrégats peuvent ne pas être relocalisés correctement, le nœud 1 étant alors leur nœud de rattachement au lieu du nœud 3 dans les cas suivants :</p>
 </div>
 <div class="ulist">
@@ -4630,7 +4631,7 @@
 </div>
 </li>
 <li>
-<p><a id="step2"></a>Comparer la sortie de ,Étape 1 avec la sortie que vous avez capturée pour le noeud 1 dans la section <a href="prepare_nodes_for_upgrade.html">"Préparer les nœuds pour une mise à niveau"</a> et notez tous les agrégats qui n&#8217;ont pas été correctement transférés.</p>
+<p><a id="step2"></a>Comparer la sortie de <a href="#man_aggr_fail_step1">Étape 1</a> avec la sortie que vous avez capturée pour le noeud 1 dans la section <a href="prepare_nodes_for_upgrade.html">"Préparer les nœuds pour une mise à niveau"</a> et notez tous les agrégats qui n&#8217;ont pas été correctement transférés.</p>
 </li>
 <li>
 <p><a id="man_aggr_fail_Step3"></a>transférer les agrégats restants sur le nœud 4 :</p>
@@ -4650,7 +4651,7 @@
 <p><code><em>aggr1,aggr2,aggr3&#8230;&#8203;</em></code> est la liste des agrégats qui possédaient le nœud 1 comme propriétaire initial.</p>
 </div>
 <div class="paragraph">
-<p>Les agrégats qui ne possèdent pas le noeud 3 en tant que propriétaire de maison peuvent être transférés vers le noeud 3 à l&#8217;aide de la même commande de déplacement dans ,Étape 3.</p>
+<p>Les agrégats qui ne possèdent pas le noeud 3 en tant que propriétaire de maison peuvent être transférés vers le noeud 3 à l&#8217;aide de la même commande de déplacement dans <a href="#man_aggr_fail_Step3">Étape 3</a>.</p>
 </div>
 </li>
 </ol>

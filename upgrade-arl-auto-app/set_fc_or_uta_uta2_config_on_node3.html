@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-12-01 08:12:15 +0000">12/01/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4553,7 +4553,8 @@
 <p>Si le système Node4 est doté de ports FC intégrés, de ports UTA/UTA2 (ou d&#8217;une carte UTA/UTA2), vous devez configurer les paramètres avant de suivre la procédure.</p>
 </div>
 <div class="paragraph">
-<p>Vous devrez peut-être compléter cette section  FC ports on node3, la section  and configure UTA/UTA2 ports on node3, ou les deux sections.</p>
+<div class="title">Description de la tâche</div>
+<p>Vous devrez peut-être compléter cette section <a href="#configurez-les-ports-fc-sur-le-nœud-3">Configurez les ports FC sur le nœud 3</a>, la section <a href="#vérifiez-et-configurez-les-ports-utauta2-sur-le-nœud-3">Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3</a>, ou les deux sections.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4581,10 +4582,10 @@ Les documents marketing NetApp peuvent utiliser le terme UTA2 pour faire référ
 <div class="title">Choix</div>
 <ul>
 <li>
-<p>FC ports on node3</p>
+<p><a href="#configurez-les-ports-fc-sur-le-nœud-3">Configurez les ports FC sur le nœud 3</a></p>
 </li>
 <li>
-<p>and configure UTA/UTA2 ports on node3</p>
+<p><a href="#vérifiez-et-configurez-les-ports-utauta2-sur-le-nœud-3">Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3</a></p>
 </li>
 </ul>
 </div>
@@ -4597,10 +4598,12 @@ Les documents marketing NetApp peuvent utiliser le terme UTA2 pour faire référ
 <p>Si le nœud 3 dispose de ports FC intégrés ou d&#8217;un adaptateur FC, vous devez définir des configurations de ports sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés. Si les ports ne sont pas configurés, le service peut subir une interruption.</p>
 </div>
 <div class="paragraph">
+<div class="title">Avant de commencer</div>
 <p>Vous devez avoir les valeurs des paramètres du port FC du noeud 1 que vous avez enregistrées dans la section <a href="prepare_nodes_for_upgrade.html">"Préparer les nœuds pour une mise à niveau"</a>.</p>
 </div>
 <div class="paragraph">
-<p>Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d&#8217;une carte UTA/UTA2, vous devez les configurer dans  and configure UTA/UTA2 ports on node3.</p>
+<div class="title">Description de la tâche</div>
+<p>Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d&#8217;une carte UTA/UTA2, vous devez les configurer dans <a href="#vérifiez-et-configurez-les-ports-utauta2-sur-le-nœud-3">Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3</a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Important</strong> : si votre système dispose de disques de stockage, entrez les commandes de cette section à l&#8217;invite du cluster. Si vous disposez d&#8217;un système « V-Series » ou d&#8217;un logiciel de virtualisation FlexArray et êtes connecté aux baies de stockage, saisissez les commandes dans cette section en mode maintenance.</p>
@@ -4727,10 +4730,10 @@ Les documents marketing NetApp peuvent utiliser le terme UTA2 pour faire référ
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>Si le nœud 3 dispose d&#8217;une carte UTA/UTA2 ou de ports intégrés UTA/UTA2, consultez la section  and configure UTA/UTA2 ports on node3.</p>
+<p>Si le nœud 3 dispose d&#8217;une carte UTA/UTA2 ou de ports intégrés UTA/UTA2, consultez la section <a href="#vérifiez-et-configurez-les-ports-utauta2-sur-le-nœud-3">Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3</a>.</p>
 </li>
 <li>
-<p>Si le nœud 3 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, ignorez la section  and configure UTA/UTA2 ports on node3 et allez à la section <a href="verify_node3_installation.html">"Vérifiez l&#8217;installation du noeud 3"</a>.</p>
+<p>Si le nœud 3 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, ignorez la section <a href="#vérifiez-et-configurez-les-ports-utauta2-sur-le-nœud-3">Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3</a> et allez à la section <a href="verify_node3_installation.html">"Vérifiez l&#8217;installation du noeud 3"</a>.</p>
 </li>
 </ul>
 </div></div></td>
@@ -4740,10 +4743,10 @@ Les documents marketing NetApp peuvent utiliser le terme UTA2 pour faire référ
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>Si le nœud 3 dispose d&#8217;une carte UTA/UTA2 ou de ports intégrés UTA/UTA2, consultez la section  and configure UTA/UTA2 ports on node3.</p>
+<p>Si le nœud 3 dispose d&#8217;une carte UTA/UTA2 ou de ports intégrés UTA/UTA2, consultez la section <a href="#vérifiez-et-configurez-les-ports-utauta2-sur-le-nœud-3">Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3</a>.</p>
 </li>
 <li>
-<p>Si le nœud 3 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, ignorez la section  and configure UTA/UTA2 ports on node3 Et revenez à la section <em>Install and boot node3</em> et reprenez à <a href="install_boot_node3.html#step23">"Étape 23"</a>.</p>
+<p>Si le nœud 3 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, ignorez la section <a href="#vérifiez-et-configurez-les-ports-utauta2-sur-le-nœud-3">Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3</a> Et revenez à la section <em>Install and boot node3</em> et reprenez à <a href="install_boot_node3.html#step23">"Étape 23"</a>.</p>
 </li>
 </ul>
 </div></div></td>
@@ -4762,9 +4765,11 @@ Les documents marketing NetApp peuvent utiliser le terme UTA2 pour faire référ
 <p>Si le nœud 3 est équipé de ports UTA/UTA2 intégrés ou d&#8217;une carte UTA/UTA2, vous devez vérifier la configuration des ports et éventuellement les reconfigurer, en fonction du mode d&#8217;utilisation du système mis à niveau.</p>
 </div>
 <div class="paragraph">
+<div class="title">Avant de commencer</div>
 <p>Vous devez disposer des modules SFP+ appropriés pour les ports UTA/UTA2.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Si vous souhaitez utiliser un port UTA/UTA2 (Unified Target adapter) pour FC, vous devez d&#8217;abord vérifier la configuration du port.</p>
 </div>
 <div class="admonitionblock note">
@@ -4901,11 +4906,11 @@ Adapter  Mode     Type        Mode      Type       Status
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N&#8217;avez pas la personnalité que vous voulez</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 5.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#auto_check3_step5">Étape 5</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Avoir la personnalité que vous voulez</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Passez aux étapes 5 à 12 et passez à ,Étape 13.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Passez aux étapes 5 à 12 et passez à <a href="#auto_check3_step13">Étape 13</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4926,11 +4931,11 @@ Adapter  Mode     Type        Mode      Type       Status
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ports sur carte UTA/UTA2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#auto_check3_step7">Étape 7</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ports UTA/UTA2 intégrés</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ignorez l&#8217;étape 7 et passez à ,Étape 8.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ignorez l&#8217;étape 7 et passez à <a href="#auto_check3_step8">Étape 8</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -5079,7 +5084,7 @@ Adapter  Mode       Type        Mode     Type        Status
 </div>
 </li>
 <li>
-<p><a id="step14"></a>démarrez le nœud dans le menu d&#8217;amorçage en exécutant <code>boot_ontap menu</code>. Si vous migrez vers une A800, rendez-vous sur ,Étape 23.</p>
+<p><a id="step14"></a>démarrez le nœud dans le menu d&#8217;amorçage en exécutant <code>boot_ontap menu</code>. Si vous migrez vers une A800, rendez-vous sur <a href="#auto_check3_step23">Étape 23</a>.</p>
 </li>
 <li>
 <p><a id="auto9597_check_node3_step15"></a>]sur le noeud 3, allez au menu de démarrage à l&#8217;aide de 22/7 et sélectionnez l&#8217;option masquée <code>boot_after_controller_replacement</code>. À l&#8217;invite, entrez node1 pour réaffecter les disques du nœud1 au nœud3, comme dans l&#8217;exemple suivant.</p>
@@ -5199,7 +5204,7 @@ Dans l&#8217;exemple de sortie de la console ci-dessus, ONTAP vous invite à ent
 </div>
 </li>
 <li>
-<p>Si le système passe en boucle de redémarrage avec le message <code>no disks found</code>, Il indique que le système a réinitialisé les ports FC ou UTA/UTA2 dans le mode cible et ne parvient donc pas à voir les disques. Pour résoudre ce problème, continuez avec ,Étape 17 à ,Étape 22, ou allez à la section <a href="verify_node3_installation.html">"Vérifiez l&#8217;installation du noeud 3"</a>.</p>
+<p>Si le système passe en boucle de redémarrage avec le message <code>no disks found</code>, Il indique que le système a réinitialisé les ports FC ou UTA/UTA2 dans le mode cible et ne parvient donc pas à voir les disques. Pour résoudre ce problème, continuez avec <a href="#auto_check3_step17">Étape 17</a> à <a href="#auto_check3_step22">Étape 22</a>, ou allez à la section <a href="verify_node3_installation.html">"Vérifiez l&#8217;installation du noeud 3"</a>.</p>
 </li>
 <li>
 <p><a id="auto_check3_step17"></a>appuyez sur <code>Ctrl-C</code> dans le cas de l&#8217;autoboot, cette variable permet d&#8217;arrêter le nœud sur le <code>LOADER&gt;</code> à l&#8217;invite.</p>
@@ -5241,10 +5246,10 @@ Dans l&#8217;exemple de sortie de la console ci-dessus, ONTAP vous invite à ent
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Si vous effectuez une mise à niveau à partir d&#8217;un système prenant en charge des disques externes vers un système qui prend également en charge des disques externes, accédez à ,Étape 22.</p>
+<p>Si vous effectuez une mise à niveau à partir d&#8217;un système prenant en charge des disques externes vers un système qui prend également en charge des disques externes, accédez à <a href="#auto_check3_step22">Étape 22</a>.</p>
 </div>
 <div class="paragraph">
-<p>Si vous mettez à niveau à partir d&#8217;un système prenant en charge des disques externes vers un système prenant en charge des disques internes et externes, par exemple un système AFF A800, rendez-vous sur ,Étape 23.</p>
+<p>Si vous mettez à niveau à partir d&#8217;un système prenant en charge des disques externes vers un système prenant en charge des disques internes et externes, par exemple un système AFF A800, rendez-vous sur <a href="#auto_check3_step23">Étape 23</a>.</p>
 </div>
 </td>
 </tr>

@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4551,6 +4551,7 @@
 <p>Vous devez installer NODE3 dans le rack, transférer les connexions du noeud 1 vers le noeud 3, démarrer le noeud 3 et installer ONTAP. Vous devez également réaffecter les disques de spare du nœud1, tous les disques appartenant au volume racine et tous les agrégats non racines qui ne sont pas transférés vers le nœud2 plus tôt.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Vous devez netboot nœud3 si aucune version de ONTAP 9 n&#8217;est installée sur le nœud 1. Une fois le noeud 3 installé, démarrez-le à partir de l&#8217;image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système. Voir <a href="prepare_for_netboot.html">"Préparation à la mise sur le réseau"</a>.</p>
 </div>
 <div class="paragraph">
@@ -4563,7 +4564,7 @@
 <img src="/us-en/ontap-systems-upgrade/images/note.svg" alt="Note">
 </td>
 <td class="content">
-<strong>Important</strong> : si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système doté du logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire ,Étape 1 à ,Étape 5, laissez cette section à ,Étape 6 et suivez les instructions de la section <a href="set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3">"Configurez les ports FC sur le nœud 3"</a> et <a href="set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3">"Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"</a> si nécessaire, la saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec ,Étape 7. Cependant, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière et passer à <a href="set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3">"Configurez les ports FC sur le nœud 3"</a> et <a href="set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3">"Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"</a>, saisie de commandes à l&#8217;invite du cluster.
+<strong>Important</strong> : si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système doté du logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <a href="#man_install3_step1">Étape 1</a> à <a href="#man_install3_step5">Étape 5</a>, laissez cette section à <a href="#man_install3_step6">Étape 6</a> et suivez les instructions de la section <a href="set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3">"Configurez les ports FC sur le nœud 3"</a> et <a href="set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3">"Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"</a> si nécessaire, la saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <a href="#man_install3_step7">Étape 7</a>. Cependant, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière et passer à <a href="set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3">"Configurez les ports FC sur le nœud 3"</a> et <a href="set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3">"Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"</a>, saisie de commandes à l&#8217;invite du cluster.
 </td>
 </tr>
 </table>
@@ -4670,7 +4671,7 @@ To override this delay, press 'c' followed by 'Enter'</pre>
 </div>
 </li>
 <li>
-<p><a id="man_install3_step5"></a>si vous voyez le message d&#8217;avertissement dans ,Étape 4, procédez comme suit :</p>
+<p><a id="man_install3_step5"></a>si vous voyez le message d&#8217;avertissement dans <a href="#man_install3_step4">Étape 4</a>, procédez comme suit :</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -4710,7 +4711,7 @@ To override this delay, press 'c' followed by 'Enter'</pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Possède des disques et aucun stockage interne</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Passez aux étapes 7 à 12 et passez à ,Étape 13.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Passez aux étapes 7 à 12 et passez à <a href="#man_install3_step13">Étape 13</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage</p></td>
@@ -4720,7 +4721,7 @@ To override this delay, press 'c' followed by 'Enter'</pre>
 <p>Accédez à <a href="set_fc_uta_uta2_config_node3.html">"Définissez la configuration FC ou UTA/UTA2 sur le nœud 3"</a> et complétez les sous-sections <a href="set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3">"Configurez les ports FC sur le nœud 3"</a> et <a href="set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3">"Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"</a>, en fonction de votre système.</p>
 </li>
 <li>
-<p>Revenez à cette section et suivez les étapes restantes, en commençant par ,Étape 7.</p>
+<p>Revenez à cette section et suivez les étapes restantes, en commençant par <a href="#man_install3_step7">Étape 7</a>.</p>
 </li>
 </ol>
 </div>
@@ -4789,7 +4790,7 @@ To override this delay, press 'c' followed by 'Enter'</pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Configuration à châssis double (avec contrôleurs dans un châssis différent)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 15.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_install3_step15">Étape 15</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Configuration à châssis unique (avec contrôleurs dans le même châssis)</p></td>
@@ -4808,13 +4809,13 @@ To override this delay, press 'c' followed by 'Enter'</pre>
 </div>
 </li>
 <li>
-<p>Si le message d&#8217;avertissement s&#8217;affiche dans ,Étape 4, suivez les instructions de la section ,Étape 5</p>
+<p>Si le message d&#8217;avertissement s&#8217;affiche dans <a href="#man_install3_step4">Étape 4</a>, suivez les instructions de la section <a href="#man_install3_step5">Étape 5</a></p>
 </li>
 <li>
 <p>Retournez le câble de la console du nœud 4 au nœud 3.</p>
 </li>
 <li>
-<p>Accédez à ,Étape 15.</p>
+<p>Accédez à <a href="#man_install3_step15">Étape 15</a>.</p>
 </li>
 </ol>
 </div></div></td>
@@ -4874,11 +4875,11 @@ To override this delay, press 'c' followed by 'Enter'</pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>NOT</em> dispose de la version ONTAP correcte ou actuelle sur le noeud 3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 20.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_install3_step20">Étape 20</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Dispose de la version correcte ou à jour de ONTAP sur le noeud 3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 25.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_install3_step25">Étape 25</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -5345,7 +5346,7 @@ Si vous ne procédez pas à la sous-étape précédente, le noeud 3 risque de d�
 </div>
 </li>
 <li>
-<p><a id="man_install3_step42"></a>Vérifiez que l&#8217;ID du système partenaire est correctement défini comme indiqué dans ,Étape 28 interrupteur sous -p :</p>
+<p><a id="man_install3_step42"></a>Vérifiez que l&#8217;ID du système partenaire est correctement défini comme indiqué dans <a href="#man_install3_step28">Étape 28</a> interrupteur sous -p :</p>
 <div class="paragraph">
 <p><code>printenv partner-sysid</code></p>
 </div>

@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:21:19 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
     
   
 
@@ -4553,7 +4553,8 @@
 <p>Si le système Node4 est doté de ports FC intégrés, de ports UTA/UTA2 (ou d&#8217;une carte UTA/UTA2), vous devez configurer les paramètres avant de suivre la procédure.</p>
 </div>
 <div class="paragraph">
-<p>Vous devrez peut-être le faire  FC ports on node3, ou  and configure UTA/UTA2 ports on node3, ou les deux sections.</p>
+<div class="title">Description de la tâche</div>
+<p>Vous devrez peut-être le faire <a href="#configurez-les-ports-fc-sur-le-nœud-3">Configurez les ports FC sur le nœud 3</a>, ou <a href="#vérifiez-et-configurez-les-ports-utauta2-sur-le-nœud-3">Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3</a>, ou les deux sections.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4581,10 +4582,10 @@ Les documents marketing NetApp peuvent utiliser le terme « UTA2 » pour faire r
 <div class="title">Choix :</div>
 <ul>
 <li>
-<p>FC ports on node3</p>
+<p><a href="#configurez-les-ports-fc-sur-le-nœud-3">Configurez les ports FC sur le nœud 3</a></p>
 </li>
 <li>
-<p>and configure UTA/UTA2 ports on node3</p>
+<p><a href="#vérifiez-et-configurez-les-ports-utauta2-sur-le-nœud-3">Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3</a></p>
 </li>
 </ul>
 </div>
@@ -4597,10 +4598,12 @@ Les documents marketing NetApp peuvent utiliser le terme « UTA2 » pour faire r
 <p>Si le nœud 3 dispose de ports FC intégrés ou d&#8217;un adaptateur FC, vous devez définir des configurations de ports sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés. Si les ports ne sont pas configurés, le service peut subir une interruption.</p>
 </div>
 <div class="paragraph">
+<div class="title">Avant de commencer</div>
 <p>Vous devez avoir les valeurs des paramètres du port FC du noeud 1 que vous avez enregistrées dans <a href="prepare_nodes_for_upgrade.html">"Préparer les nœuds pour une mise à niveau"</a>.</p>
 </div>
 <div class="paragraph">
-<p>Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d&#8217;une carte UTA/UTA2, vous devez les configurer dans  and configure UTA/UTA2 ports on node3.</p>
+<div class="title">Description de la tâche</div>
+<p>Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d&#8217;une carte UTA/UTA2, vous devez les configurer dans <a href="#vérifiez-et-configurez-les-ports-utauta2-sur-le-nœud-3">Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4633,11 +4636,11 @@ Les documents marketing NetApp peuvent utiliser le terme « UTA2 » pour faire r
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Possède des disques de stockage</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_config_3_step5">Étape 5</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_config_3_step2">Étape 2</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -4697,11 +4700,11 @@ Les documents marketing NetApp peuvent utiliser le terme « UTA2 » pour faire r
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identique à ceux que vous avez capturés sur le noeud 1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 11.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_config_3_step11">Étape 11</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Différent de ceux que vous avez capturés sur le nœud1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 6.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_config_3_step6">Étape 6</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4835,10 +4838,10 @@ Les documents marketing NetApp peuvent utiliser le terme « UTA2 » pour faire r
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>Si le nœud 3 dispose d&#8217;une carte UTA/UTA2 ou de ports intégrés UTA/UTA2, rendez-vous sur  and configure UTA/UTA2 ports on node3.</p>
+<p>Si le nœud 3 dispose d&#8217;une carte UTA/UTA2 ou de ports intégrés UTA/UTA2, rendez-vous sur <a href="#vérifiez-et-configurez-les-ports-utauta2-sur-le-nœud-3">Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3</a>.</p>
 </li>
 <li>
-<p>Si le nœud 3 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, ignorez-le  and configure UTA/UTA2 ports on node3 et allez à <a href="map_ports_node1_node3.html">"Mapper les ports du node1 vers le node3"</a>.</p>
+<p>Si le nœud 3 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, ignorez-le <a href="#vérifiez-et-configurez-les-ports-utauta2-sur-le-nœud-3">Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3</a> et allez à <a href="map_ports_node1_node3.html">"Mapper les ports du node1 vers le node3"</a>.</p>
 </li>
 </ul>
 </div></div></td>
@@ -4848,10 +4851,10 @@ Les documents marketing NetApp peuvent utiliser le terme « UTA2 » pour faire r
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>Si le nœud3 possède une carte ou des ports intégrés, rendez-vous à  and configure UTA/UTA2 ports on node3.</p>
+<p>Si le nœud3 possède une carte ou des ports intégrés, rendez-vous à <a href="#vérifiez-et-configurez-les-ports-utauta2-sur-le-nœud-3">Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3</a>.</p>
 </li>
 <li>
-<p>Si le nœud3 ne possède pas de carte ni de ports intégrés, ignorez-le  and configure UTA/UTA2 ports on node3, Puis revenez à <em>Install and boot node3</em> et reprenez à <a href="install_boot_node3.html#step7">"Étape 7"</a>.</p>
+<p>Si le nœud3 ne possède pas de carte ni de ports intégrés, ignorez-le <a href="#vérifiez-et-configurez-les-ports-utauta2-sur-le-nœud-3">Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3</a>, Puis revenez à <em>Install and boot node3</em> et reprenez à <a href="install_boot_node3.html#step7">"Étape 7"</a>.</p>
 </li>
 </ul>
 </div></div></td>
@@ -4870,9 +4873,11 @@ Les documents marketing NetApp peuvent utiliser le terme « UTA2 » pour faire r
 <p>Si le nœud 3 est équipé de ports UTA/UTA2 intégrés ou d&#8217;une carte UTA/UTA2, vous devez vérifier la configuration des ports et éventuellement les reconfigurer, en fonction du mode d&#8217;utilisation du système mis à niveau.</p>
 </div>
 <div class="paragraph">
+<div class="title">Avant de commencer</div>
 <p>Vous devez disposer des modules SFP+ appropriés pour les ports UTA/UTA2.</p>
 </div>
 <div class="paragraph">
+<div class="title">Description de la tâche</div>
 <p>Si vous souhaitez utiliser un port UTA/UTA2 (Unified Target adapter) pour FC, vous devez d&#8217;abord vérifier la configuration du port.</p>
 </div>
 <div class="admonitionblock note">
@@ -5027,11 +5032,11 @@ Adapter  Mode     Type       Mode     Type     Status
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N&#8217;avez pas la personnalité que vous voulez</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 5.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_check_3_step5">Étape 5</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Avoir la personnalité que vous voulez</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Passez aux étapes 5 à 12 et passez à ,Étape 13.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Passez aux étapes 5 à 12 et passez à <a href="#man_check_3_step13">Étape 13</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -5057,7 +5062,7 @@ Adapter  Mode     Type       Mode     Type     Status
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 6. Vous devez déjà être en mode de maintenance.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_check_3_step6">Étape 6</a>. Vous devez déjà être en mode de maintenance.</p></td>
 </tr>
 </tbody>
 </table>
@@ -5078,11 +5083,11 @@ Adapter  Mode     Type       Mode     Type     Status
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ports sur carte UTA/UTA2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à ,Étape 7.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accédez à <a href="#man_check_3_step7">Étape 7</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ports UTA/UTA2 intégrés</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ignorez l&#8217;étape 7 et passez à ,Étape 8.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ignorez l&#8217;étape 7 et passez à <a href="#man_check_3_step8">Étape 8</a>.</p></td>
 </tr>
 </tbody>
 </table>
