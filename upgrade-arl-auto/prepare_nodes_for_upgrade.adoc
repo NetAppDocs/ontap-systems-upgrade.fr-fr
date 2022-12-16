@@ -125,10 +125,28 @@ Vous devez exécuter et enregistrer séparément les valeurs de sortie des comma
 ** `storage encryption disk show`
 
 
-
-
++
 
 NOTE: Si NetApp Volume Encryption utilisant Onboard Key Manager est en cours d'utilisation, conservez la phrase secrète du gestionnaire de clés pour terminer la resynchronisation du gestionnaire de clés plus tard dans la procédure.
+
+. Si votre système utilise des lecteurs auto-cryptés, consultez l'article de la base de connaissances https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Comment savoir si des lecteurs FIPS sont installés"^] Pour déterminer le type de disques à autocryptage utilisés sur la paire haute disponibilité que vous mettez à niveau. Le logiciel ONTAP prend en charge deux types de disques avec autocryptage :
++
+--
+** Disques SAS ou NVMe NetApp Storage Encryption (NSE) certifiés FIPS
+** Disques NVMe non-FIPS à autochiffrement (SED)
+
+
+[NOTE]
+====
+** Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur le même nœud ou la même paire HA.
+** Vous pouvez utiliser les disques SED avec des disques sans cryptage sur le même nœud ou une paire haute disponibilité.
+
+
+====
+https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryption-concept.html#supported-self-encrypting-drive-types["En savoir plus sur les disques à autochiffrement pris en charge"^].
+
+--
+
 
 
 

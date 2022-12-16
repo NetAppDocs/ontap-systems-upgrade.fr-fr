@@ -156,13 +156,39 @@ Le système s'arrête à l'invite de l'environnement d'amorçage.
 +
 `set-defaults`
 
-. Si FDE est utilisé dans cette configuration, le `setenv bootarg.storageencryption.support` la variable doit être définie sur `true`, et le `kmip.init.maxwait` la variable doit être définie sur `off` pour éviter une boucle d'amorçage après le chargement de la configuration du nœud2 :
+. Réglez le `bootarg.storageencryption.support` et `kmip.init.maxwait` variables pour éviter une boucle d'amorçage après le chargement de la configuration node2.
 +
-`setenv bootarg.storageencryption.support true`
+Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Comment savoir si des lecteurs FIPS sont installés"^] déterminer le type de disques à autocryptage utilisés.
 
 +
-`setenv kmip.init.maxwait off`
+[cols="35,65"]
+|===
+| Si les lecteurs suivants sont utilisés… | Puis… 
 
+
+| Les disques NetApp Storage Encryption (NSE) conformes à la norme FIPS 140-2 de niveau 2  a| 
+** `setenv bootarg.storageencryption.support *true*`
+** `setenv kmip.init.maxwait off`
+
+
+
+
+| NetApp non-SED FIPS  a| 
+** `setenv bootarg.storageencryption.support *false*`
+** `setenv kmip.init.maxwait off`
+
+
+|===
++
+[NOTE]
+====
+** Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur le même nœud ou la même paire HA.
+** Vous pouvez utiliser les disques SED avec des disques sans cryptage sur le même nœud ou une paire haute disponibilité.
+** Si une coupure de courant se produit après avoir configuré le `kmip.init.maxwait` variable à `off`, contactez le support technique pour obtenir de l'aide afin d'éviter toute perte de données.
+** Dès que la mise à niveau du contrôleur s'achève sur la paire haute disponibilité, vous devez en outre annuler la `kmip.init.maxwait` variable. Voir link:ensure_controllers_set_up_correctly.html["Vérifiez que les nouveaux contrôleurs sont correctement configurés"].
+
+
+====
 . Si la version de ONTAP installée sur le nœud 4 est identique ou ultérieure à celle de ONTAP 9 installée sur le nœud 2, entrez la commande suivante :
 +
 `boot_ontap menu`
@@ -283,6 +309,10 @@ DISK         OWNER                       POOL   SERIAL NUMBER   HOME
 ......
 ----
 . Réaffectez les disques de secours du nœud 2, les disques appartenant à la racine et tout agrégat non racine qui n'a pas été déplacé vers le nœud 3 plus tôt dans la section link:relocate_non_root_aggr_node2_node3.html["Transférer des agrégats non racines du nœud 2 vers le nœud 3"]:
++
+
+NOTE: Si vous avez des disques partagés, des agrégats hybrides ou les deux sur votre système, vous devez utiliser le bon `disk reassign` commande du tableau suivant.
+
 +
 [cols="35,65"]
 |===

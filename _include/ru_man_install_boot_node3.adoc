@@ -148,20 +148,46 @@ Si les deux contrôleurs se trouvent dans le même châssis, l'alimentation doit
 +
 `set-defaults`
 
-. [[man_install3_step16]]si NetApp Storage Encryption (NSE) est utilisé dans cette configuration, le système `setenv bootarg.storageencryption.support` la commande doit être définie sur `true`, et le `kmip.init.maxwait` la variable doit être définie sur `off` pour éviter une boucle d'amorçage après le chargement de la configuration du noeud 1 :
+. [[man_install3_step16]]définissez l' `bootarg.storageencryption.support` et `kmip.init.maxwait` variables pour éviter une boucle d'amorçage après le chargement de la configuration node1.
 +
-`setenv bootarg.storageencryption.support true`
+Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Comment savoir si des lecteurs FIPS sont installés"^] déterminer le type de disques à autocryptage utilisés.
 
 +
-`setenv kmip.init.maxwait off`
+[cols="35,65"]
+|===
+| Si les lecteurs suivants sont utilisés… | Puis… 
 
+
+| Les disques NetApp Storage Encryption (NSE) conformes à la norme FIPS 140-2 de niveau 2  a| 
+** `setenv bootarg.storageencryption.support *true*`
+** `setenv kmip.init.maxwait off`
+
+
+
+
+| NetApp non-SED FIPS  a| 
+** `setenv bootarg.storageencryption.support *false*`
+** `setenv kmip.init.maxwait off`
+
+
+|===
++
+[NOTE]
+====
+** Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur le même nœud ou la même paire HA.
+** Vous pouvez utiliser les disques SED avec des disques sans cryptage sur le même nœud ou une paire haute disponibilité.
+** Si une coupure de courant se produit après avoir configuré le `kmip.init.maxwait` variable à `off`, contactez le support technique pour obtenir de l'aide afin d'éviter toute perte de données.
+** Dès que la mise à niveau du contrôleur s'achève sur la paire haute disponibilité, vous devez en outre annuler la `kmip.init.maxwait` variable. Voir link:ensure_controllers_set_up_correctly.html["Vérifiez que les nouveaux contrôleurs sont correctement configurés"].
+
+
+====
 . [[man_install3_step17]]] si la version de ONTAP installée sur le noeud 3 est identique ou ultérieure à la version de ONTAP 9 installée sur le noeud 1, répertoriez et réaffectez les disques au nouveau noeud 3 :
 +
 `boot_ontap`
 
 +
 
-WARNING: *Avertissement* : si ce nouveau nœud a déjà été utilisé dans un autre cluster ou une autre paire haute disponibilité, vous devez exécuter `wipeconfig` avant de continuer. Le non-respect de cette consigne peut entraîner des pannes du service ou des pertes de données. Contactez le support technique si le contrôleur de remplacement était auparavant utilisé, en particulier si les contrôleurs exécutaient ONTAP sous 7-mode.
+WARNING: Si ce nouveau nœud a déjà été utilisé dans un autre cluster ou une paire HA, vous devez exécuter `wipeconfig` avant de continuer. Le non-respect de cette consigne peut entraîner des pannes du service ou des pertes de données. Contactez le support technique si le contrôleur de remplacement était auparavant utilisé, en particulier si les contrôleurs exécutaient ONTAP sous 7-mode.
 
 . [[man_install3_step18]]appuyez sur CTRL-C pour afficher le menu de démarrage.
 . [[man_install3_step19]]effectuer l'une des actions suivantes :
@@ -296,6 +322,10 @@ NOTE: Le message peut s'afficher `disk show: No disks match option -a.` après a
 . [[man_install3_step28]]Réassigner les unités de rechange du node1, tous les disques appartenant à la racine et tous les agrégats non-racines qui n'ont pas été déplacés vers node2 plus tôt dans link:relocate_non_root_aggr_node1_node2.html["Transférer des agrégats non racines du nœud 1 vers le nœud 2"].
 +
 Entrez le formulaire approprié du `disk reassign` commande basée sur si votre système possède des disques partagés :
+
++
+
+NOTE: Si vous avez des disques partagés, des agrégats hybrides ou les deux sur votre système, vous devez utiliser le bon `disk reassign` commande du tableau suivant.
 
 +
 [cols="35,65"]

@@ -45,6 +45,10 @@ node2                 true    true
 | Un cluster comprenant plus de deux nœuds | Désactiver le basculement du stockage :
 `storage failover modify -node _node1_ -enabled false` 
 |===
++
+
+WARNING: Si vous ne désactivez pas le basculement du stockage, une défaillance de mise à niveau du contrôleur peut entraîner une interruption de l'accès aux données et une perte de données.
+
 . Vérifier que le basculement du stockage a été désactivé :
 +
 `storage failover show`

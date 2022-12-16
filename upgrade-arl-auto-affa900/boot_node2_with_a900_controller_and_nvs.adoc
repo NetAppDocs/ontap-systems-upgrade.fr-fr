@@ -17,13 +17,39 @@ summary: Démarrez le nœud 2 avec le module de contrôleur AFF A900 et le modul
 Le nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM est maintenant prêt pour la mise à niveau. Une mise à niveau d'un système AFF A700 vers un système AFF A900 ou FAS9000 vers un système FAS9500 en remplaçant le contrôleur et les modules NVRAM implique le déplacement uniquement de la console et des connexions de gestion. Cette section décrit les étapes requises pour démarrer le nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM.
 
 .Étapes
-. [[A900_boot_node2]]si NetApp Storage Encryption (NSE) est utilisé sur cette configuration, le `setenv bootarg.storageencryption.support` la commande doit être définie sur `true`, et le `kmip.init.maxwait` la variable doit être définie sur `off` pour éviter une boucle d'amorçage après le chargement de la configuration du nœud2 :
+. [[boot_node2_step1]]définissez l' `bootarg.storageencryption.support` et `kmip.init.maxwait` variables pour éviter une boucle d'amorçage après le chargement de la configuration node2.
 +
-`setenv bootarg.storageencryption.support true`
+Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Comment savoir si des lecteurs FIPS sont installés"^] déterminer le type de disques à autocryptage utilisés.
 
 +
-`setenv kmip.init.maxwait off`
+[cols="35,65"]
+|===
+| Si les lecteurs suivants sont utilisés… | Puis… 
 
+
+| Les disques NetApp Storage Encryption (NSE) conformes à la norme FIPS 140-2 de niveau 2  a| 
+** `setenv bootarg.storageencryption.support *true*`
+** `setenv kmip.init.maxwait off`
+
+
+
+
+| NetApp non-SED FIPS  a| 
+** `setenv bootarg.storageencryption.support *false*`
+** `setenv kmip.init.maxwait off`
+
+
+|===
++
+[NOTE]
+====
+** Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur le même nœud ou la même paire HA.
+** Vous pouvez utiliser les disques SED avec des disques sans cryptage sur le même nœud ou une paire haute disponibilité.
+** Si une coupure de courant se produit après avoir configuré le `kmip.init.maxwait` variable à `off`, contactez le support technique pour obtenir de l'aide afin d'éviter toute perte de données.
+** Dès que la mise à niveau du contrôleur s'achève sur la paire haute disponibilité, vous devez en outre annuler la `kmip.init.maxwait` variable. Voir link:ensure_new_controllers_are_set_up_correctly.html["Vérifiez que les nouveaux contrôleurs sont correctement configurés"].
+
+
+====
 . Démarrez le nœud dans le menu de démarrage :
 +
 `boot_ontap menu`

@@ -74,8 +74,10 @@ Si le nœud 3 ou le nœud 4 possède des LIF de données détenues en privé par
 +
 Le paramètre License-code accepte une liste de 28 clés de caractères alphabétiques majuscules. Vous pouvez ajouter une licence à la fois ou plusieurs licences à la fois, chaque clé de licence séparée par une virgule.
 
-. Si NetApp Storage Encryption (NSE) était utilisé sur la configuration et que vous définissez le `setenv bootarg.storageencryption.support` commande « vrai » avec le `kmip.init.maxwait` variable « off » (désactivée) (in link:install_boot_node3.html#step16["Étape 16"] De _Install and boot node3_), vous devez réinitialiser la variable :
+. Si vous utilisez des disques à chiffrement automatique dans la configuration, et que vous avez défini le `kmip.init.maxwait` variable à `off` (par exemple, dans link:install_boot_node3.html#step16["Étape 16"] De _Install and boot node3_), vous devez annuler la variable :
++
 `set diag; systemshell -node _node_name_ -command sudo kenv -u -p kmip.init.maxwait`
+
 . Pour supprimer toutes les anciennes licences des nœuds d'origine, entrez l'une des commandes suivantes :
 +
 `system license clean-up -unused -expired`

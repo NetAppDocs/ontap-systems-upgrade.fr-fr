@@ -21,6 +21,7 @@ Utilisez ce contenu dans les circonstances suivantes :
 * Vous ne voulez pas ajouter les nouveaux contrôleurs comme une nouvelle paire haute disponibilité au cluster et migrer les données en utilisant les déplacements de volumes.
 * Vous avez de l'expérience dans l'administration de ONTAP et vous êtes à l'aise avec les risques de travailler en mode de privilèges de diagnostic.
 * Le système repose sur des configurations Fabric MetroCluster à 4 et 8 nœuds qui exécutent ONTAP 9.8 ou une version ultérieure.
+* Vous avez des agrégats hybrides sur votre système.
 
 
 
