@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
+    <time datetime="2022-12-16 09:47:03 +0000">12/16/2022</time>
     
   
 
@@ -4691,7 +4691,7 @@ Do you want to continue? {y|n}: y</pre>
 </div>
 </li>
 <li>
-<p>Si NetApp Storage Encryption (NSE) était utilisé sur la configuration et que vous définissez le <code>setenv bootarg.storageencryption.support</code> commande à <code>true</code> avec le <code>&lt;kmip.init.maxwait&gt;</code> variable <code>off</code> (Dans le nœud de démarrage <em>2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM</em>, <a href="boot_node2_with_a900_controller_and_nvs.html#A900_boot_node2">"Étape 1"</a>), vous devez réinitialiser la variable :</p>
+<p>Si vous utilisez des disques à chiffrement automatique dans la configuration, et que vous avez défini le <code>kmip.init.maxwait</code> variable à <code>off</code> (Par exemple, dans le nœud de démarrage 2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM_, <a href="boot_node2_with_a900_controller_and_nvs.html#boot_node2_step1">"Étape 1"</a>), vous devez annuler la variable :</p>
 <div class="paragraph">
 <p><code>set diag; systemshell -node <em>node_name</em> -command sudo kenv -u -p kmip.init.maxwait</code></p>
 </div>

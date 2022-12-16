@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
+    <time datetime="2022-12-16 09:47:03 +0000">12/16/2022</time>
     
   
 
@@ -4655,8 +4655,10 @@ node4          node3          true     Connected to node3</pre>
 </div>
 </li>
 <li>
-<p>Si NetApp Storage Encryption (NSE) était utilisé sur la configuration et que vous définissez le <code>setenv bootarg.storageencryption.support</code> commande « vrai » avec le <code>kmip.init.maxwait</code> variable « off » (désactivée) (in <a href="install_boot_node3.html#step16">"Étape 16"</a> De <em>Install and boot node3</em>), vous devez réinitialiser la variable :<br>
-<code>set diag; systemshell -node <em>node_name</em> -command sudo kenv -u -p kmip.init.maxwait</code></p>
+<p>Si vous utilisez des disques à chiffrement automatique dans la configuration, et que vous avez défini le <code>kmip.init.maxwait</code> variable à <code>off</code> (par exemple, dans <a href="install_boot_node3.html#step16">"Étape 16"</a> De <em>Install and boot node3</em>), vous devez annuler la variable :</p>
+<div class="paragraph">
+<p><code>set diag; systemshell -node <em>node_name</em> -command sudo kenv -u -p kmip.init.maxwait</code></p>
+</div>
 </li>
 <li>
 <p>Pour supprimer toutes les anciennes licences des nœuds d&#8217;origine, entrez l&#8217;une des commandes suivantes :</p>

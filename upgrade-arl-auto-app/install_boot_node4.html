@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-12-14 18:26:04 +0000">12/14/2022</time>
+    <time datetime="2022-12-16 09:47:03 +0000">12/16/2022</time>
     
   
 
@@ -4984,12 +4984,76 @@ Le système enregistre dans une PROM, qu&#8217;il soit dans une paire HA ou dans
 <p>Si votre configuration utilise un zoning basé sur des commutateurs, ajustez le zoning en fonction des nouvelles valeurs WWPN.</p>
 </li>
 <li>
-<p><a id="step27"></a>si NetApp Storage Encryption (NSE) est utilisé sur cette configuration, le <code>setenv bootarg.storageencryption.support</code> la commande doit être définie sur <code>true</code>, et le <code>kmip.init.maxwait</code> la variable doit être définie sur <code>off</code> pour éviter une boucle d&#8217;amorçage après le chargement de la configuration du nœud2 :</p>
+<p><a id="step27"></a>réglez le <code>bootarg.storageencryption.support</code> et <code>kmip.init.maxwait</code> variables pour éviter une boucle d&#8217;amorçage après le chargement de la configuration node2.</p>
 <div class="paragraph">
-<p><code>setenv bootarg.storageencryption.support true</code></p>
+<p>Si ce n&#8217;est déjà fait, consultez l&#8217;article de la base de connaissances <a href="https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed" target="_blank" rel="noopener">"Comment savoir si des lecteurs FIPS sont installés"</a> déterminer le type de disques à autocryptage utilisés.</p>
 </div>
-<div class="paragraph">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 35%;">
+<col style="width: 65%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Si les lecteurs suivants sont utilisés…</th>
+<th class="tableblock halign-left valign-top">Puis…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Les disques NetApp Storage Encryption (NSE) conformes à la norme FIPS 140-2 de niveau 2</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>setenv bootarg.storageencryption.support <strong>true</strong></code></p>
+</li>
+<li>
 <p><code>setenv kmip.init.maxwait off</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp non-SED FIPS</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>setenv bootarg.storageencryption.support <strong>false</strong></code></p>
+</li>
+<li>
+<p><code>setenv kmip.init.maxwait off</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-upgrade/images/note.svg" alt="Note">
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Vous ne pouvez pas combiner des disques FIPS avec d&#8217;autres types de disques sur le même nœud ou la même paire HA.</p>
+</li>
+<li>
+<p>Vous pouvez utiliser les disques SED avec des disques sans cryptage sur le même nœud ou une paire haute disponibilité.</p>
+</li>
+<li>
+<p>Si une coupure de courant se produit après avoir configuré le <code>kmip.init.maxwait</code> variable à <code>off</code>, contactez le support technique pour obtenir de l&#8217;aide afin d&#8217;éviter toute perte de données.</p>
+</li>
+<li>
+<p>Dès que la mise à niveau du contrôleur s&#8217;achève sur la paire haute disponibilité, vous devez en outre annuler la <code>kmip.init.maxwait</code> variable. Voir <a href="ensure_new_controllers_are_set_up_correctly.html">"Vérifiez que les nouveaux contrôleurs sont correctement configurés"</a>.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </li>
 <li>
