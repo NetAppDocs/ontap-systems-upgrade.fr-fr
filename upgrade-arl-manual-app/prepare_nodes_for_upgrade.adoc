@@ -335,16 +335,16 @@ Pour des informations détaillées sur le `network interface revert` commande, v
 Si l'un des disques est défectueux, supprimez-les en suivant les instructions de la section _Disk and Aggregate management à l'aide de la CLI_. (Voir link:other_references.html["Références"] Pour établir un lien vers _Disk et la gestion de l'agrégat avec l'interface de ligne de commande_.)
 
 . Collectez des informations sur node1 et node2 en effectuant les sous-étapes suivantes et en enregistrant la sortie de chaque commande :
-
-
++
 [NOTE]
 ====
-* Vous utiliserez ces informations plus tard dans la procédure.
-* Si vous possédez un système doté de plus de deux ports de cluster par nœud, par exemple un système FAS8080 ou AFF8080, avant de démarrer la mise à niveau, vous devez migrer et ré-home les LIF de cluster sur deux ports de cluster par nœud. Si vous effectuez la mise à niveau du contrôleur avec plus de deux ports de cluster par nœud, des LIF de cluster risquent d'être manquantes sur le nouveau contrôleur après la mise à niveau.
+** Vous utiliserez ces informations plus tard dans la procédure.
+** Si vous possédez un système doté de plus de deux ports de cluster par nœud, par exemple un système FAS8080 ou AFF8080, avant de démarrer la mise à niveau, vous devez migrer et ré-home les LIF de cluster sur deux ports de cluster par nœud. Si vous effectuez la mise à niveau du contrôleur avec plus de deux ports de cluster par nœud, des LIF de cluster risquent d'être manquantes sur le nouveau contrôleur après la mise à niveau.
 
 
 ====
-. Enregistrez le modèle, l'ID du système et le numéro de série des deux nœuds :
++
+.. Enregistrez le modèle, l'ID du système et le numéro de série des deux nœuds :
 +
 `system node show -node _node1,node2_ -instance`
 
@@ -352,7 +352,7 @@ Si l'un des disques est défectueux, supprimez-les en suivant les instructions d
 
 NOTE: Vous utiliserez les informations pour réaffecter des disques et désaffecter les nœuds d'origine.
 
-. Entrez la commande suivante sur les nœuds 1 et 2, et notez les informations sur les tiroirs, le nombre de disques de chaque tiroir, les détails du stockage Flash, la mémoire, la mémoire NVRAM et les cartes réseau depuis la sortie :
+.. Entrez la commande suivante sur les nœuds 1 et 2, et notez les informations sur les tiroirs, le nombre de disques de chaque tiroir, les détails du stockage Flash, la mémoire, la mémoire NVRAM et les cartes réseau depuis la sortie :
 +
 `run -node _node_name_ sysconfig`
 
@@ -360,7 +360,7 @@ NOTE: Vous utiliserez les informations pour réaffecter des disques et désaffec
 
 NOTE: Vous pouvez utiliser ces informations pour identifier des pièces ou des accessoires que vous souhaitez transférer vers node3 ou node4. Si vous ne savez pas si les nœuds sont des systèmes V-Series ou si vous disposez du logiciel de virtualisation FlexArray, vous pouvez également l'apprendre de la sortie.
 
-. Entrez la commande suivante sur les nœuds 1 et 2, puis enregistrez les agrégats en ligne sur les deux nœuds :
+.. Entrez la commande suivante sur les nœuds 1 et 2, puis enregistrez les agrégats en ligne sur les deux nœuds :
 +
 `storage aggregate show -node _node_name_ -state online`
 
@@ -368,7 +368,7 @@ NOTE: Vous pouvez utiliser ces informations pour identifier des pièces ou des a
 
 NOTE: Vous pouvez utiliser ces informations ainsi que les informations de la sous-étape suivante pour vérifier que les agrégats et les volumes restent en ligne tout au long de la procédure, à l'exception de la brève période pendant laquelle ils sont hors ligne pendant le transfert.
 
-. [[man_prepare_nodes_step19]]Entrez la commande suivante sur les nœuds 1 et 2 et enregistrez les volumes hors ligne sur les deux nœuds :
+.. [[man_prepare_nodes_step19]]Entrez la commande suivante sur les nœuds 1 et 2 et enregistrez les volumes hors ligne sur les deux nœuds :
 +
 `volume show -node _node_name_ -state offline`
 
@@ -376,8 +376,9 @@ NOTE: Vous pouvez utiliser ces informations ainsi que les informations de la sou
 
 NOTE: Après la mise à niveau, vous exécuteront de nouveau la commande et comparerez la sortie avec la sortie de cette étape pour voir si d'autres volumes se sont déconnectés.
 
-+
-.. Entrez les commandes suivantes pour vérifier si des groupes d'interfaces ou des VLAN sont configurés sur le nœud 1 ou le nœud 2 :
+
+
+. Entrez les commandes suivantes pour vérifier si des groupes d'interfaces ou des VLAN sont configurés sur le nœud 1 ou le nœud 2 :
 +
 `network port ifgrp show`
 
@@ -387,10 +388,9 @@ NOTE: Après la mise à niveau, vous exécuteront de nouveau la commande et comp
 +
 Notez que les groupes d'interface ou les VLAN sont configurés sur le node1 ou le node2 ; vous avez besoin de ces informations à l'étape suivante et ultérieurement de la procédure.
 
-.. Pour vérifier que les ports physiques peuvent être correctement mappés ultérieurement au cours de la procédure, procédez comme suit sur les sous-étapes suivantes du node1 et du node2 :
-
-
-. Entrez la commande suivante pour vérifier la présence de groupes de basculement sur le nœud autre que `clusterwide`:
+. Pour vérifier que les ports physiques peuvent être correctement mappés ultérieurement au cours de la procédure, procédez comme suit sur les sous-étapes suivantes du node1 et du node2 :
++
+.. Entrez la commande suivante pour vérifier la présence de groupes de basculement sur le nœud autre que `clusterwide`:
 +
 `network interface failover-groups show`
 
@@ -415,8 +415,8 @@ fg_6210_e0c         Default           node1:e0c, node1:e0d
 
 2 entries were displayed.
 ....
-. Si des groupes de basculement sont présents, ils sont différents de `clusterwide`, enregistrez les noms des groupes de basculement et les ports appartenant aux groupes de basculement.
-. Entrez la commande suivante pour vérifier s'il existe des VLAN configurés sur le nœud :
+.. Si des groupes de basculement sont présents, ils sont différents de `clusterwide`, enregistrez les noms des groupes de basculement et les ports appartenant aux groupes de basculement.
+.. Entrez la commande suivante pour vérifier s'il existe des VLAN configurés sur le nœud :
 +
 `network port vlan show -node _node_name_`
 
@@ -435,9 +435,10 @@ Node    VLAN Name Port    VLAN ID MAC Address
 ------  --------- ------- ------- ------------------
 node1   e1b-70    e1b     70      00:15:17:76:7b:69
 ....
-. Si des VLAN sont configurés sur le nœud, notez le couplage de chaque port réseau et de l'ID VLAN.
-+
-.. Effectuer l'une des actions suivantes :
+.. Si des VLAN sont configurés sur le nœud, notez le couplage de chaque port réseau et de l'ID VLAN.
+
+
+. Effectuer l'une des actions suivantes :
 +
 [cols="35,65"]
 |===
@@ -449,7 +450,7 @@ node1   e1b-70    e1b     70      00:15:17:76:7b:69
 
 | Pas sur le nœud1 ou le nœud2 | Accédez à <<man_prepare_nodes_step24,Étape 24>>. 
 |===
-.. [[man_prepare_nodes_step23]] si vous ne savez pas si le nœud1 et le nœud2 se trouvent dans un environnement SAN ou non-SAN, entrez la commande suivante et examinez sa sortie :
+. [[man_prepare_nodes_step23]] si vous ne savez pas si le nœud1 et le nœud2 se trouvent dans un environnement SAN ou non-SAN, entrez la commande suivante et examinez sa sortie :
 +
 `network interface show -vserver _vserver_name_ -data-protocol iscsi|fcp`
 
@@ -476,10 +477,9 @@ Vserver  Interface  Admin/Oper Address/Mask       Node     Port    Home
 -------- ---------- ---------- ------------------ -------- ------- ----
 vs1      vs1_lif1   up/down    172.17.176.20/24   node1    0d      true
 ....
-.. [[man_prepare_nodes_step24]]Vérifiez que tous les nœuds du cluster sont au quorum en effectuant les sous-étapes suivantes :
-
-
-. Saisissez le niveau de privilège avancé :
+. [[man_prepare_nodes_step24]]Vérifiez que tous les nœuds du cluster sont au quorum en effectuant les sous-étapes suivantes :
++
+.. Saisissez le niveau de privilège avancé :
 +
 `set -privilege advanced`
 
@@ -491,8 +491,8 @@ Le système affiche le message suivant :
 Warning: These advanced commands are potentially dangerous; use them only when directed to do so by NetApp personnel.
 Do you wish to continue? (y or n):
 ....
-. Entrez `y`.
-. Vérifiez l'état du service du cluster dans le noyau, une fois pour chaque nœud :
+.. Entrez `y`.
+.. Vérifiez l'état du service du cluster dans le noyau, une fois pour chaque nœud :
 +
 `cluster kernel-service show`
 
@@ -514,12 +514,13 @@ node1         node1         in-quorum     true          operational
 +
 Les nœuds d'un cluster sont dans le quorum lorsqu'une simple majorité de nœuds sont en bon état et peuvent communiquer entre eux. Pour plus d'informations, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.
 
-. Revenir au niveau de privilège administratif :
+.. Revenir au niveau de privilège administratif :
 +
 `set -privilege admin`
 
-+
-.. Effectuer l'une des actions suivantes :
+
+
+. Effectuer l'une des actions suivantes :
 +
 [cols="35,65"]
 |===
@@ -531,7 +532,7 @@ Les nœuds d'un cluster sont dans le quorum lorsqu'une simple majorité de nœud
 
 | Aucun SAN n'est configuré | Accédez à <<man_prepare_nodes_step29,Étape 29>>. 
 |===
-.. [[man_prepare_nodes_step26]]vérifier la présence de LIF SAN sur le nœud1 et le nœud2 pour chaque SVM dont le service SAN iSCSI ou FC est activé en entrant la commande suivante et en examinant sa sortie :
+. [[man_prepare_nodes_step26]]vérifier la présence de LIF SAN sur le nœud1 et le nœud2 pour chaque SVM dont le service SAN iSCSI ou FC est activé en entrant la commande suivante et en examinant sa sortie :
 +
 `network interface show -data-protocol iscsi|fcp -home-node _node_name_`
 
@@ -561,7 +562,7 @@ Vous pouvez également afficher des informations plus détaillées sur les LIF e
 +
 `network interface show -instance -data-protocol iscsi|fcp`
 
-.. Capturer la configuration par défaut de n'importe quel port FC sur les nœuds d'origine en saisissant la commande suivante et en enregistrant la sortie de vos systèmes :
+. Capturer la configuration par défaut de n'importe quel port FC sur les nœuds d'origine en saisissant la commande suivante et en enregistrant la sortie de vos systèmes :
 +
 `ucadmin show`
 
@@ -588,7 +589,7 @@ node2   0d      fc      initiator -       -         online
 +
 Vous pouvez utiliser les informations après la mise à niveau pour définir la configuration des ports FC sur les nouveaux nœuds.
 
-.. Si vous mettez à niveau un système V-Series ou un système avec le logiciel de virtualisation FlexArray, capturez les informations relatives à la topologie des nœuds d'origine en entrant la commande suivante et en enregistrant le résultat :
+. Si vous mettez à niveau un système V-Series ou un système avec le logiciel de virtualisation FlexArray, capturez les informations relatives à la topologie des nœuds d'origine en entrant la commande suivante et en enregistrant le résultat :
 +
 `storage array config show -switch`
 
@@ -613,24 +614,24 @@ node2 0   50  I_1818FAStT_1
                             208600a0b84772da   vgbr6510b:5  vgbr6510s163:4  2a
 7 entries were displayed.
 ....
-.. [[man_prepare_nodes_step29]]effectuez les sous-étapes suivantes :
-
-
-. Entrez la commande suivante sur l'un des nœuds d'origine et enregistrez le résultat :
+. [[man_prepare_nodes_step29]]effectuez les sous-étapes suivantes :
++
+.. Entrez la commande suivante sur l'un des nœuds d'origine et enregistrez le résultat :
 +
 `service-processor show -node * -instance`
 
 +
 Le système affiche des informations détaillées sur le processeur de service sur les deux nœuds.
 
-. Vérifiez que le statut du processeur de service est `online`.
-. Vérifiez que le réseau du processeur de service est configuré.
-. Enregistrez l'adresse IP et d'autres informations sur le processeur de service.
+.. Vérifiez que le statut du processeur de service est `online`.
+.. Vérifiez que le réseau du processeur de service est configuré.
+.. Enregistrez l'adresse IP et d'autres informations sur le processeur de service.
 +
 Vous pouvez réutiliser les paramètres réseau des périphériques de gestion à distance, dans ce cas les SP, du système d'origine pour les SP sur les nouveaux nœuds. Pour plus d'informations sur le processeur de service, reportez-vous à link:other_references.html["Références"] Pour établir un lien vers les _System Administration Reference_ et les _ONTAP 9 Commands: Manual page Reference_.
 
-+
-.. [[man_prepare_nodes_step30]]si vous souhaitez que les nouveaux nœuds disposent de la même fonctionnalité sous licence que les nœuds d'origine, entrez la commande suivante pour afficher les licences de cluster sur le système d'origine :
+
+
+. [[man_prepare_nodes_step30]]si vous souhaitez que les nouveaux nœuds disposent de la même fonctionnalité sous licence que les nœuds d'origine, entrez la commande suivante pour afficher les licences de cluster sur le système d'origine :
 +
 `system license show -owner *`
 
@@ -653,11 +654,11 @@ FlexClone         site    FlexClone License     -
 SnapVault         site    SnapVault License     -
 6 entries were displayed.
 ....
-.. Obtenir de nouvelles clés de licence pour les nouveaux nœuds sur le site _NetApp support site_. Reportez-vous à la section link:other_references.html["Références"] Lien vers _site de support NetApp_.
+. Obtenir de nouvelles clés de licence pour les nouveaux nœuds sur le site _NetApp support site_. Reportez-vous à la section link:other_references.html["Références"] Lien vers _site de support NetApp_.
 +
 Si le site ne dispose pas des clés de licence dont vous avez besoin, contactez votre ingénieur commercial NetApp.
 
-.. Vérifiez si AutoSupport est activé sur le système d'origine en entrant la commande suivante sur chaque nœud et en examinant son résultat :
+. Vérifiez si AutoSupport est activé sur le système d'origine en entrant la commande suivante sur chaque nœud et en examinant son résultat :
 +
 `system node autosupport show -node _node1,node2_`
 
@@ -675,7 +676,7 @@ node1            enable    Postmaster    admin@netapp.com  mailhost
 node2            enable    Postmaster    -                 mailhost
 2 entries were displayed.
 ....
-.. Effectuer l'une des actions suivantes :
+. Effectuer l'une des actions suivantes :
 +
 [cols="35,65"]
 |===
@@ -683,29 +684,29 @@ node2            enable    Postmaster    -                 mailhost
 
 
 | A activé AutoSupport...  a| 
-... Accédez à <<man_prepare_nodes_step34,Étape 34>>.
-... Accédez à la section link:get_address_key_management_server_encryption.html["Obtenir l'adresse IP d'un serveur de gestion externe des clés pour Storage Encryption"].
+.. Accédez à <<man_prepare_nodes_step34,Étape 34>>.
+.. Accédez à la section link:get_address_key_management_server_encryption.html["Obtenir l'adresse IP d'un serveur de gestion externe des clés pour Storage Encryption"].
 
 
 
 
 | AutoSupport n'est pas activé...  a| 
-... Activez AutoSupport en suivant les instructions de la _System Administration Reference_. (Voir link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.)
+.. Activez AutoSupport en suivant les instructions de la _System Administration Reference_. (Voir link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.)
 +
 *Remarque :* AutoSupport est activé par défaut lorsque vous configurez votre système de stockage pour la première fois. Bien que vous puissiez désactiver AutoSupport à tout moment, vous devez le laisser activé. L'activation d'AutoSupport peut considérablement aider à identifier les problèmes et les solutions qui pourraient survenir sur votre système de stockage.
 
-... Accédez au link:get_address_key_management_server_encryption.html["Obtenir l'adresse IP d'un serveur de gestion externe des clés pour Storage Encryption"] section.
+.. Accédez au link:get_address_key_management_server_encryption.html["Obtenir l'adresse IP d'un serveur de gestion externe des clés pour Storage Encryption"] section.
 
 
 |===
-.. [[man_prepare_nodes_step34]]Vérifiez que AutoSupport est configuré avec les informations de l'hôte de courrier et les ID de courrier électronique de destinataire en entrant la commande suivante sur les deux nœuds d'origine et en examinant la sortie :
+. [[man_prepare_nodes_step34]]Vérifiez que AutoSupport est configuré avec les informations de l'hôte de courrier et les ID de courrier électronique de destinataire en entrant la commande suivante sur les deux nœuds d'origine et en examinant la sortie :
 +
 `system node autosupport show -node node_name -instance`
 
 +
 Pour plus d'informations sur AutoSupport, reportez-vous à link:other_references.html["Références"] Pour établir un lien vers les _System Administration Reference_ et les _ONTAP 9 Commands: Manual page Reference_.
 
-.. [[man_prepare_nodes_ste35,étape 35]] Envoyer un message AutoSupport à NetApp pour le nœud 1 en entrant la commande suivante :
+. [[man_prepare_nodes_ste35,étape 35]] Envoyer un message AutoSupport à NetApp pour le nœud 1 en entrant la commande suivante :
 +
 `system node autosupport invoke -node node1 -type all -message "Upgrading node1 from platform_old to platform_new"`
 
@@ -713,30 +714,28 @@ Pour plus d'informations sur AutoSupport, reportez-vous à link:other_references
 
 NOTE: N'envoyez pas de message AutoSupport à NetApp pour le noeud 2 à ce stade ; vous le faites plus tard dans la procédure.
 
-.. [[man_prepare_nodes_step36, étape 36]] Vérifiez que le message AutoSupport a été envoyé en entrant la commande suivante et en examinant sa sortie :
+. [[man_prepare_nodes_step36, étape 36]] Vérifiez que le message AutoSupport a été envoyé en entrant la commande suivante et en examinant sa sortie :
 +
 `system node autosupport show -node _node1_ -instance`
 
 +
 Les champs `Last Subject Sent:` et `Last Time Sent:` contient le titre du message du dernier message envoyé et l'heure à laquelle le message a été envoyé.
 
-.. Si votre système utilise des lecteurs auto-cryptés, consultez l'article de la base de connaissances https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Comment savoir si des lecteurs FIPS sont installés"^] Pour déterminer le type de disques à autocryptage utilisés sur la paire haute disponibilité que vous mettez à niveau. Le logiciel ONTAP prend en charge deux types de disques avec autocryptage :
+. Si votre système utilise des lecteurs auto-cryptés, consultez l'article de la base de connaissances https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Comment savoir si des lecteurs FIPS sont installés"^] Pour déterminer le type de disques à autocryptage utilisés sur la paire haute disponibilité que vous mettez à niveau. Le logiciel ONTAP prend en charge deux types de disques avec autocryptage :
 +
 --
-*** Disques SAS ou NVMe NetApp Storage Encryption (NSE) certifiés FIPS
-*** Disques NVMe non-FIPS à autochiffrement (SED)
+** Disques SAS ou NVMe NetApp Storage Encryption (NSE) certifiés FIPS
+** Disques NVMe non-FIPS à autochiffrement (SED)
 
 
 [NOTE]
 ====
-*** Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur le même nœud ou la même paire HA.
-*** Vous pouvez utiliser les disques SED avec des disques sans cryptage sur le même nœud ou une paire haute disponibilité.
+** Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur le même nœud ou la même paire HA.
+** Vous pouvez utiliser les disques SED avec des disques sans cryptage sur le même nœud ou une paire haute disponibilité.
 
 
 ====
 https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryption-concept.html#supported-self-encrypting-drive-types["En savoir plus sur les disques à autochiffrement pris en charge"^].
 
 --
-
-
 
