@@ -4537,7 +4537,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-12-16 09:47:03 +0000">12/16/2022</time>
+    <time datetime="2022-12-21 09:05:38 +0000">12/21/2022</time>
     
   
 
@@ -4970,9 +4970,6 @@ vs0
 </li>
 <li>
 <p>Collectez des informations sur node1 et node2 en effectuant les sous-étapes suivantes et en enregistrant la sortie de chaque commande :</p>
-</li>
-</ol>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -4994,8 +4991,8 @@ vs0
 </tr>
 </table>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
 <li>
 <p>Enregistrez le modèle, l&#8217;ID du système et le numéro de série des deux nœuds :</p>
 <div class="paragraph">
@@ -5055,6 +5052,9 @@ Vous pouvez utiliser ces informations ainsi que les informations de la sous-éta
 <div class="paragraph">
 <p><code>volume show -node <em>node_name</em> -state offline</code></p>
 </div>
+</li>
+</ol>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -5067,8 +5067,7 @@ Après la mise à niveau, vous exécuteront de nouveau la commande et comparerez
 </tr>
 </table>
 </div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+</li>
 <li>
 <p>Entrez les commandes suivantes pour vérifier si des groupes d&#8217;interfaces ou des VLAN sont configurés sur le nœud 1 ou le nœud 2 :</p>
 <div class="paragraph">
@@ -5077,20 +5076,14 @@ Après la mise à niveau, vous exécuteront de nouveau la commande et comparerez
 <div class="paragraph">
 <p><code>network port vlan show</code></p>
 </div>
-</li>
-</ol>
-</div>
 <div class="paragraph">
 <p>Notez que les groupes d&#8217;interface ou les VLAN sont configurés sur le node1 ou le node2 ; vous avez besoin de ces informations à l&#8217;étape suivante et ultérieurement de la procédure.</p>
 </div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+</li>
 <li>
 <p>Pour vérifier que les ports physiques peuvent être correctement mappés ultérieurement au cours de la procédure, procédez comme suit sur les sous-étapes suivantes du node1 et du node2 :</p>
-</li>
-</ol>
-</div>
-</li>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
 <li>
 <p>Entrez la commande suivante pour vérifier la présence de groupes de basculement sur le nœud autre que <code>clusterwide</code>:</p>
 <div class="paragraph">
@@ -5133,6 +5126,9 @@ fg_6210_e0c         Default           node1:e0c, node1:e0d
 <div class="paragraph">
 <p>Le système affiche les VLAN configurés sur le nœud, comme illustré dans l&#8217;exemple suivant :</p>
 </div>
+</li>
+</ol>
+</div>
 <div class="literalblock">
 <div class="content">
 <pre>cluster::&gt; network port vlan show
@@ -5143,11 +5139,14 @@ Node    VLAN Name Port    VLAN ID MAC Address
 node1   e1b-70    e1b     70      00:15:17:76:7b:69</pre>
 </div>
 </div>
-</li>
-<li>
-<p>Si des VLAN sont configurés sur le nœud, notez le couplage de chaque port réseau et de l&#8217;ID VLAN.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
+<li>
+<p>Si des VLAN sont configurés sur le nœud, notez le couplage de chaque port réseau et de l&#8217;ID VLAN.</p>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p>Effectuer l&#8217;une des actions suivantes :</p>
 <table class="tableblock frame-all grid-all stretch">
@@ -5193,9 +5192,6 @@ There are no entries matching your query.</pre>
 <div class="paragraph">
 <p>Si iSCSI ou FC est configuré pour le SVM, la commande affiche un message similaire à l&#8217;exemple suivant :</p>
 </div>
-</li>
-</ol>
-</div>
 <div class="literalblock">
 <div class="content">
 <pre>cluster::&gt; network interface show -vserver vs1 -data-protocol iscsi|fcp
@@ -5206,14 +5202,11 @@ Vserver  Interface  Admin/Oper Address/Mask       Node     Port    Home
 vs1      vs1_lif1   up/down    172.17.176.20/24   node1    0d      true</pre>
 </div>
 </div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+</li>
 <li>
 <p><a id="man_prepare_nodes_step24"></a>Vérifiez que tous les nœuds du cluster sont au quorum en effectuant les sous-étapes suivantes :</p>
-</li>
-</ol>
-</div>
-</li>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
 <li>
 <p>Saisissez le niveau de privilège avancé :</p>
 <div class="paragraph">
@@ -5240,6 +5233,9 @@ Do you wish to continue? (y or n):</pre>
 <div class="paragraph">
 <p>Un message similaire à l&#8217;exemple suivant s&#8217;affiche :</p>
 </div>
+</li>
+</ol>
+</div>
 <div class="literalblock">
 <div class="content">
 <pre>cluster::*&gt; cluster kernel-service show
@@ -5254,16 +5250,20 @@ node1         node1         in-quorum     true          operational
 </div>
 </div>
 <div class="paragraph">
-<p>Les nœuds d&#8217;un cluster sont dans le quorum lorsqu&#8217;une simple majorité de nœuds sont en bon état et peuvent communiquer entre eux. Pour plus d&#8217;informations, reportez-vous à la section <a href="other_references.html">"Références"</a> Pour établir un lien vers <em>System Administration Reference</em>.</p>
+<p>+<br>
+Les nœuds d&#8217;un cluster sont dans le quorum lorsqu&#8217;une simple majorité de nœuds sont en bon état et peuvent communiquer entre eux. Pour plus d&#8217;informations, reportez-vous à la section <a href="other_references.html">"Références"</a> Pour établir un lien vers <em>System Administration Reference</em>.</p>
 </div>
-</li>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
 <li>
 <p>Revenir au niveau de privilège administratif :</p>
 <div class="paragraph">
 <p><code>set -privilege admin</code></p>
 </div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p>Effectuer l&#8217;une des actions suivantes :</p>
 <table class="tableblock frame-all grid-all stretch">
@@ -5360,9 +5360,6 @@ node2   0d      fc      initiator -       -         online
 <div class="paragraph">
 <p>Le système affiche les informations relatives à la topologie, comme le montre l&#8217;exemple suivant :</p>
 </div>
-</li>
-</ol>
-</div>
 <div class="literalblock">
 <div class="content">
 <pre>cluster::&gt; storage array config show -switch
@@ -5382,23 +5379,24 @@ node2 0   50  I_1818FAStT_1
 7 entries were displayed.</pre>
 </div>
 </div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+</li>
 <li>
 <p><a id="man_prepare_nodes_step29"></a>effectuez les sous-étapes suivantes :</p>
-</li>
-</ol>
-</div>
-</li>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
 <li>
 <p>Entrez la commande suivante sur l&#8217;un des nœuds d&#8217;origine et enregistrez le résultat :</p>
 <div class="paragraph">
 <p><code>service-processor show -node * -instance</code></p>
 </div>
+</li>
+</ol>
+</div>
 <div class="paragraph">
 <p>Le système affiche des informations détaillées sur le processeur de service sur les deux nœuds.</p>
 </div>
-</li>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
 <li>
 <p>Vérifiez que le statut du processeur de service est <code>online</code>.</p>
 </li>
@@ -5410,8 +5408,10 @@ node2 0   50  I_1818FAStT_1
 <div class="paragraph">
 <p>Vous pouvez réutiliser les paramètres réseau des périphériques de gestion à distance, dans ce cas les SP, du système d&#8217;origine pour les SP sur les nouveaux nœuds. Pour plus d&#8217;informations sur le processeur de service, reportez-vous à <a href="other_references.html">"Références"</a> Pour établir un lien vers les <em>System Administration Reference</em> et les <em>ONTAP 9 Commands: Manual page Reference</em>.</p>
 </div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><a id="man_prepare_nodes_step30"></a>si vous souhaitez que les nouveaux nœuds disposent de la même fonctionnalité sous licence que les nœuds d&#8217;origine, entrez la commande suivante pour afficher les licences de cluster sur le système d&#8217;origine :</p>
 <div class="paragraph">
@@ -5481,8 +5481,8 @@ node2            enable    Postmaster    -                 mailhost
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A activé AutoSupport&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="olist lowerroman">
-<ol class="lowerroman" type="i">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="olist loweralpha">
+<ol class="loweralpha" type="a">
 <li>
 <p>Accédez à <a href="#man_prepare_nodes_step34">Étape 34</a>.</p>
 </li>
@@ -5494,8 +5494,8 @@ node2            enable    Postmaster    -                 mailhost
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AutoSupport n&#8217;est pas activé&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="olist lowerroman">
-<ol class="lowerroman" type="i">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="olist loweralpha">
+<ol class="loweralpha" type="a">
 <li>
 <p>Activez AutoSupport en suivant les instructions de la <em>System Administration Reference</em>. (Voir <a href="other_references.html">"Références"</a> Pour établir un lien vers <em>System Administration Reference</em>.)</p>
 <div class="paragraph">
@@ -5543,14 +5543,10 @@ N&#8217;envoyez pas de message AutoSupport à NetApp pour le noeud 2 à ce stade
 <div class="paragraph">
 <p><code>system node autosupport show -node <em>node1</em> -instance</code></p>
 </div>
-</li>
-</ol>
-</div>
 <div class="paragraph">
 <p>Les champs <code>Last Subject Sent:</code> et <code>Last Time Sent:</code> contient le titre du message du dernier message envoyé et l&#8217;heure à laquelle le message a été envoyé.</p>
 </div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+</li>
 <li>
 <p>Si votre système utilise des lecteurs auto-cryptés, consultez l&#8217;article de la base de connaissances <a href="https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed" target="_blank" rel="noopener">"Comment savoir si des lecteurs FIPS sont installés"</a> Pour déterminer le type de disques à autocryptage utilisés sur la paire haute disponibilité que vous mettez à niveau. Le logiciel ONTAP prend en charge deux types de disques avec autocryptage :</p>
 <div class="openblock">
@@ -5590,9 +5586,6 @@ N&#8217;envoyez pas de message AutoSupport à NetApp pour le noeud 2 à ce stade
 <p><a href="https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryption-concept.html#supported-self-encrypting-drive-types" target="_blank" rel="noopener">"En savoir plus sur les disques à autochiffrement pris en charge"</a>.</p>
 </div>
 </div>
-</div>
-</li>
-</ol>
 </div>
 </li>
 </ol>
