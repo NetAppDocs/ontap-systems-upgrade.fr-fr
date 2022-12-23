@@ -21,10 +21,10 @@ Cette procédure décrit la procédure de mise à niveau du matériel du contrô
 | Méthode | Version ONTAP | Systèmes pris en charge | Description 
 
 
-| À l'aide de `system controller replace` commandes | 9.10.1 ou ultérieure | DE AFF A700 À AFF A900 | Convertit un système AFF A700 en un système AFF A900 qui maintient le châssis A700 
+| À l'aide de `system contlroller replace` commandes | 9.11.1P6 ou 9.10.1P10 (visé à février 2023) | DE AFF A700 À AFF A900 | Convertit un système AFF A700 en un système AFF A900 qui maintient le châssis A700 
 
 
-| À l'aide de `system controller replace` commandes | 9.10.1 P3 ou version ultérieure | FAS9000 vers FAS9500 | Convertit un système FAS9000 en un système FAS9500 tout en conservant le châssis FAS9000. 
+| À l'aide de `system controller replace` commandes | 9.11.1P6 ou 9.10.1P10 (visé à février 2023) | FAS9000 vers FAS9500 | Convertit un système FAS9000 en un système FAS9500 tout en conservant le châssis FAS9000. 
 |===
 Vous pouvez mettre à niveau le matériel de contrôleur sans interruption sur une paire haute disponibilité en remplaçant le contrôleur et les modules NVRAM. Tout d'abord, vous migrez les agrégats non racines entre les anciens nœuds de contrôleur. Une fois l'installation terminée, migrez les agrégats non-racines des anciens nœuds de contrôleur vers les nœuds de contrôleur de remplacement. Les données hébergées sur les nœuds que vous mettez à niveau sont accessibles lors de la procédure de mise à niveau.
 

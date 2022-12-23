@@ -1091,7 +1091,6 @@
   <block id="638610cc5c3557800c38be4545f5cf40" category="paragraph"><block ref="82702d4f2de9a9473e069c5df3b3dca4" prefix="" category="inline-code"></block></block>
   <block id="26284a568c7e38bb6355694c41ff5f8d" category="paragraph">Si l'un des disques est défectueux, supprimez-les en suivant les instructions de la section _Disk and Aggregate management à l'aide de la CLI_. (Voir <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block> Pour établir un lien vers _Disk et la gestion de l'agrégat avec l'interface de ligne de commande_.)</block>
   <block id="897a592bf71f640f9c341f736bc9ee4e" category="list-text">Collectez des informations sur node1 et node2 en effectuant les sous-étapes suivantes et en enregistrant la sortie de chaque commande :</block>
-  <block id="930e54e1be27588126529911ee1a66bb" category="paragraph">+ REMARQUE : vous utiliserez ces informations plus loin dans la procédure.</block>
   <block id="86bd7b7efad49e1892e19e0073d55fb5" category="list-text">Enregistrez le modèle, l'ID du système et le numéro de série des deux nœuds :</block>
   <block id="32f6df046e4deff82e2d7aa91a76c76e" category="paragraph"><block ref="6bc782222fc7bc038f7fa69c982334fb" prefix="" category="inline-code"></block></block>
   <block id="dfb5c700fcc3e30efac3db32160fbcf2" category="admonition">Vous utiliserez les informations pour réaffecter des disques et désaffecter les nœuds d'origine.</block>
@@ -3240,7 +3239,6 @@
   <block id="5d0e6c628fa55718654de0f71041a32a" category="summary">Vous pouvez mettre à niveau le matériel du contrôleur d'un système AFF A700 vers un système AFF A900 en permutant le module de contrôleur et le système NVS.</block>
   <block id="1c962f08f92ca556b5f958f512421f7b" category="cell">DE AFF A700 À AFF A900</block>
   <block id="a8785e7ad1cb0d71507bbcb99df9c1f7" category="cell">Convertit un système AFF A700 en un système AFF A900 qui maintient le châssis A700</block>
-  <block id="e1b003e7f655a9b7177c226f66898500" category="cell">9.10.1 P3 ou version ultérieure</block>
   <block id="3029eeb5ee6e861b02eb2a1ffd3d3b8e" category="cell">FAS9000 vers FAS9500</block>
   <block id="92edbfe3ededa1bb85b931ec295f360d" category="cell">Convertit un système FAS9000 en un système FAS9500 tout en conservant le châssis FAS9000.</block>
   <block id="a5ce3ab443f38c92fc244c3533db25fd" category="paragraph">Vous pouvez mettre à niveau le matériel de contrôleur sans interruption sur une paire haute disponibilité en remplaçant le contrôleur et les modules NVRAM. Tout d'abord, vous migrez les agrégats non racines entre les anciens nœuds de contrôleur. Une fois l'installation terminée, migrez les agrégats non-racines des anciens nœuds de contrôleur vers les nœuds de contrôleur de remplacement. Les données hébergées sur les nœuds que vous mettez à niveau sont accessibles lors de la procédure de mise à niveau.</block>
@@ -4497,4 +4495,6 @@
   <block id="9d5ce6c4c82bf9a0ff455a50cadc1ab6" category="list-text">Si vous utilisez des disques à chiffrement automatique dans la configuration, et que vous avez défini le<block ref="fd93f52ab7757855a2e3e5cbb717ab40" prefix=" " category="inline-code"></block> variable à<block ref="3262d48df5d75e3452f0f16b313b7808" prefix=" " category="inline-code"></block> (Par exemple, dans le nœud de démarrage 2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM_, <block ref="30eda0c27e5ac7524ed5f5f264f13489" category="inline-link-macro-rx"></block>), vous devez annuler la variable :</block>
   <block id="21b9417932c23289b6932c3a0ac2517f" category="list-text">[[boot_node2_step1]]définissez l'<block ref="e0224203ce4fa326049e3e770300ce8f" prefix=" " category="inline-code"></block> et<block ref="fd93f52ab7757855a2e3e5cbb717ab40" prefix=" " category="inline-code"></block> variables pour éviter une boucle d'amorçage après le chargement de la configuration node2.</block>
   <block id="083a0c049526537d6b95a268054814fb" category="list-text">Vous avez des agrégats hybrides sur votre système.</block>
+  <block id="5c8ce8c10b94248d147cb23bb490fd9d" category="cell">À l'aide de<block ref="0cdc21b7c964923f382c6248332e0a1d" prefix=" " category="inline-code"></block> commandes</block>
+  <block id="6e1f6dfb0fcbfac6c4067f6818568970" category="cell">9.11.1P6 ou 9.10.1P10 (visé à février 2023)</block>
 </blocks>
