@@ -14,10 +14,10 @@ summary: 'Comprenez si vous pouvez utiliser le transfert d"agrégats pour mettre
 
 
 [role="lead"]
-Utilisation de l'ARL pour mettre à niveau une paire de contrôleurs dans les configurations système suivantes :
+Utilisation du transfert d'agrégats pour la mise à niveau de deux contrôleurs exécutant ONTAP 9.11.1P6 ou 9.10.1P10 (prévu à février 2023) dans les configurations système suivantes :
 
-* Mettez à niveau deux contrôleurs AFF A700 vers un système AFF A900 qui exécute ONTAP 9.10.1 ou une version ultérieure
-* Mettez à niveau une paire de contrôleurs FAS9000 vers un système FAS9500 qui exécute ONTAP 9.10.1P3 ou version ultérieure
+* Contrôleurs AFF A700 vers un système AFF A900
+* Contrôleurs FAS9000 vers un système FAS9500
 
 
 
@@ -27,7 +27,7 @@ Utilisation de l'ARL pour mettre à niveau une paire de contrôleurs dans les co
 La combinaison prise en charge est la mise à niveau du contrôleur d'un système AFF A700 vers un système AFF A900 ou d'un système FAS9000 vers un système FAS9500 via le transfert d'agrégats (ARL) et le module NVRAM. Si vous avez reçu un nouveau système AFF A900 ou FAS9500 comme système complet, incluant un nouveau châssis, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _utilisez les commandes "System Controller replace" pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ content.
 
 
-WARNING: Cette procédure s'applique exclusivement à une mise à niveau d'un système AFF A700 vers un système AFF A900 qui exécute ONTAP 9.10.1 ou une version ultérieure et à une mise à niveau d'un système FAS9000 vers un système FAS9500 exécutant 9.10.1P3 ou une version ultérieure. N'utilisez PAS cette procédure pour effectuer une mise à niveau entre d'autres combinaisons de systèmes.
+WARNING: Cette procédure s'applique exclusivement aux baies AFF A700, AFF A900 ou à la mise à niveau FAS9000 vers FAS9500, sous ONTAP 9.1P6 ou 9.10.1P10 (cible à février 2023). N'utilisez PAS cette procédure pour effectuer une mise à niveau entre d'autres combinaisons de systèmes.
 
 La mise à niveau du contrôleur avec l'ARL est prise en charge sur les systèmes configurés avec les volumes SnapLock Enterprise et SnapLock Compliance.
 

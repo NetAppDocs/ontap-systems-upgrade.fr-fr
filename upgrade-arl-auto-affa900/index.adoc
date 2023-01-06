@@ -21,7 +21,7 @@ Cette procédure décrit la procédure de mise à niveau du matériel du contrô
 | Méthode | Version ONTAP | Systèmes pris en charge | Description 
 
 
-| À l'aide de `system contlroller replace` commandes | 9.11.1P6 ou 9.10.1P10 (visé à février 2023) | DE AFF A700 À AFF A900 | Convertit un système AFF A700 en un système AFF A900 qui maintient le châssis A700 
+| À l'aide de `system controller replace` commandes | 9.11.1P6 ou 9.10.1P10 (visé à février 2023) | DE AFF A700 À AFF A900 | Convertit un système AFF A700 en un système AFF A900 qui maintient le châssis A700 
 
 
 | À l'aide de `system controller replace` commandes | 9.11.1P6 ou 9.10.1P10 (visé à février 2023) | FAS9000 vers FAS9500 | Convertit un système FAS9000 en un système FAS9500 tout en conservant le châssis FAS9000. 
