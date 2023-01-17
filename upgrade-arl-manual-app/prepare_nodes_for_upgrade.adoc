@@ -25,11 +25,13 @@ Reportez-vous à la section link:other_references.html["Références"] Pour éta
 +
 .. S'assurer que le compte utilisateur de diagnostic est déverrouillé.
 +
-*Important*: Le compte utilisateur de diagnostic est destiné uniquement à des fins de diagnostic de bas niveau et ne doit être utilisé qu'avec des conseils du support technique.
+[IMPORTANT]
+====
+Le compte d'utilisateur de diagnostic est uniquement destiné à des fins de diagnostic de bas niveau et ne doit être utilisé qu'avec l'aide du support technique.
 
-+
-*Important* : pour plus d'informations sur le déverrouillage des comptes utilisateur, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.
+Pour plus d'informations sur le déverrouillage des comptes utilisateur, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.
 
+====
 .. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers le site de support de _NetApp_ et télécharger le collecteur de performances et de statistiques (Perfstat Converged).
 +
 L'outil Perfstat Converged permet d'établir une base de performance comparée après la mise à niveau.

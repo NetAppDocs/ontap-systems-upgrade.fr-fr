@@ -1,0 +1,22 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/stage_4_index.html 
+keywords: upgrade, preparing, preparation, prepare, overview, stage 1 
+summary: 'Étape 1 : séquence de processus pour une mise à niveau d"ARL à l"aide de `system controller replace` Commandes sur les contrôleurs exécutant ONTAP 9.8 ou version ultérieure.' 
+---
+= Étape 4. Transférez les ressources depuis le nœud 2 et retirez le nœud 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Lors de la phase 4, vous transférez les agrégats non racines et les LIF de données NAS du nœud 2 vers le nœud mis à niveau 1, puis retirez le nœud 2.
+
+.Étapes
+. link:relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html["Transférez des agrégats non racines et des LIF de données NAS du nœud 2 vers le nœud 1"]
+. link:retire_node2.html["Retrait du nœud 2"]
+

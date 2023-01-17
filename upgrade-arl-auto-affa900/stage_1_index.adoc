@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/stage_1_index.html 
+keywords: upgrade, preparing, preparation, prepare, overview, stage 1 
+summary: 'Étape 1 : séquence de processus pour une mise à niveau d"ARL à l"aide de `system controller replace` Commandes sur les contrôleurs exécutant ONTAP 9.8 ou version ultérieure.' 
+---
+= Étape 1. Préparation de la mise à niveau
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Lors de la première étape, vous vérifiez que vous disposez du matériel approprié pour une mise à niveau d'un système AFF A700 vers un système AFF A900 ou FAS9000 vers un système FAS9500, exécutez des contrôles préalables et, le cas échéant, vérifiez que vous êtes propriétaire d'un agrégat correct. Vous devez enregistrer certaines informations si vous gérez Storage Encryption à l'aide de OKM et vous pouvez choisir de suspendre les relations SnapMirror.
+
+.Étapes
+. link:verify_upgrade_hardware.html["Vérifiez la mise à niveau matérielle"]
+. link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"]
+. link:manage_storage_encryption_using_okm.html["Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré"]
+

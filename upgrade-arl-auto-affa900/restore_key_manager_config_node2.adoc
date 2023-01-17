@@ -14,7 +14,7 @@ summary: 'Si nécessaire, restaurez la configuration du gestionnaire de clés su
 
 
 [role="lead"]
-Si vous utilisez NetApp Volume Encryption (NVE) pour chiffrer les volumes sur le système que vous mettez à niveau, la configuration de chiffrement doit être synchronisée avec les nouveaux nœuds. Si vous ne restaurez pas le gestionnaire de clés, lorsque vous transférez les agrégats du nœud 2 vers le nœud mis à niveau 1 vers le nœud 2 mis à niveau à l'aide du transfert d'agrégats (ARL), les volumes chiffrés sont mis hors ligne.
+Si vous utilisez NetApp Aggregate Encryption (NAE) ou NetApp Volume Encryption (NVE) pour chiffrer les volumes sur le système que vous mettez à niveau, la configuration de chiffrement doit être synchronisée avec les nouveaux nœuds. Si vous ne restaurez pas le gestionnaire de clés, lorsque vous transférez les agrégats du nœud 2 vers le nœud mis à niveau 1 vers le nœud 2 mis à niveau à l'aide du transfert d'agrégats (ARL), les volumes chiffrés sont mis hors ligne.
 
 .Description de la tâche
 Synchronisez la configuration de cryptage avec les nouveaux nœuds en effectuant les étapes suivantes :

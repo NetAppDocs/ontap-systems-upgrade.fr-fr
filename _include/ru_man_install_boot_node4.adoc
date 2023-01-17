@@ -109,7 +109,8 @@ WARNING: *Avertissement : ne pas annuler le délai. Si la batterie n'est pas cha
 .. Revenez à cette section et suivez les étapes restantes, en commençant par <<man_install4_Step9,Étape 9>>.
 
 
-*Important* : vous devez reconfigurer les ports intégrés FC, les ports intégrés UTA/UTA2 et les cartes UTA/UTA2 avant de démarrer Data ONTAP sur le système V-Series.
+
+IMPORTANT: Vous devez reconfigurer les ports intégrés FC, les ports intégrés UTA/UTA2 et les cartes UTA/UTA2 avant de démarrer Data ONTAP sur le système V-Series.
 
 |===
 . [[man_install4_Step9]]Ajouter les ports d'initiateur FC du nouveau nœud aux zones de commutation.
@@ -199,23 +200,30 @@ Si ce n'est déjà fait, consultez l'article de la base de connaissances https:/
 NOTE: Vous devez utiliser le port de gestion et l'adresse IP comme connexion netboot. N'utilisez pas d'adresse IP de la LIF de données et ne subit aucune panne lors de l'exécution de la mise à niveau.
 
 +
-[cols="30,70"]
+[cols="35,75"]
 |===
 | Si le protocole DHCP (Dynamic Host Configuration Protocol) est... | Alors... 
 
 
-| Exécution | Configurez la connexion automatiquement en entrant la commande suivante à l'invite de l'environnement d'amorçage :
-`ifconfig e0M -auto` 
+| Exécution  a| 
+Configurez la connexion automatiquement en entrant la commande suivante à l'invite de l'environnement d'amorçage :
+`ifconfig e0M -auto`
 
 
-| Non en cours d'exécution | Configurez manuellement la connexion en entrant la commande suivante à l'invite de l'environnement d'amorçage :
+
+| Non en cours d'exécution  a| 
+Configurez manuellement la connexion en entrant la commande suivante à l'invite de l'environnement d'amorçage :
 `ifconfig e0M -addr=_filer_addr_ mask=_netmask_ -gw=_gateway_ dns=_dns_addr_ domain=_dns_domain_`
 
-`_filer_addr_` Est l'adresse IP du système de stockage.
-`_netmask_` est le masque de réseau du système de stockage.
-`_gateway_` est la passerelle du système de stockage.
-`_dns_addr_` Est l'adresse IP d'un serveur de noms sur votre réseau.
-`_dns_domain_` Est le nom de domaine DNS (Domain Name Service). Si vous utilisez ce paramètre facultatif, vous n'avez pas besoin d'un nom de domaine complet dans l'URL du serveur netboot ; vous n'avez besoin que du nom d'hôte du serveur. *Remarque*: D'autres paramètres peuvent être nécessaires pour votre interface. Entrez `help ifconfig` à l'invite du micrologiciel pour plus de détails. 
+`_filer_addr_` Est l'adresse IP du système de stockage (obligatoire).
+`_netmask_` est le masque de réseau du système de stockage (obligatoire).
+`_gateway_` est la passerelle du système de stockage (obligatoire).
+`_dns_addr_` Est l'adresse IP d'un serveur de noms sur votre réseau (facultatif).
+`_dns_domain_` Est le nom de domaine DNS (Domain Name Service). Si vous utilisez ce paramètre facultatif, vous n'avez pas besoin d'un nom de domaine complet dans l'URL du serveur netboot ; vous n'avez besoin que du nom d'hôte du serveur.
+
+
+NOTE: D'autres paramètres peuvent être nécessaires pour votre interface. Entrez `help ifconfig` à l'invite du micrologiciel pour plus de détails.
+
 |===
 . Démarrage sur le nœud 4 :
 +
@@ -245,10 +253,14 @@ Cette option de menu permet de télécharger et d'installer la nouvelle image Da
 Ne tenez pas compte du message suivant :
 
 +
-`"This procedure is not supported for NonDisruptive Upgrade on an HA pair"`
+`This procedure is not supported for Non-Disruptive Upgrade on an HA pair`
 
 +
 Cette remarque s'applique aux mises à niveau de Data ONTAP sans interruption et non aux mises à niveau des contrôleurs.
+
++
+
+NOTE: Utilisez toujours netboot pour mettre à jour le nouveau nœud vers l'image souhaitée. Si vous utilisez une autre méthode pour installer l'image sur le nouveau contrôleur, il est possible que l'image incorrecte soit installée. Ce problème s'applique à toutes les versions d'ONTAP. Procédure netboot combinée avec l'option `(7) Install new software` Efface le support de démarrage et place la même version de ONTAP sur les deux partitions d'image.
 
 . [[man_install4_step23]] si vous êtes invité à poursuivre la procédure, entrez y et, lorsque vous y êtes invité, entrez l'URL :
 +

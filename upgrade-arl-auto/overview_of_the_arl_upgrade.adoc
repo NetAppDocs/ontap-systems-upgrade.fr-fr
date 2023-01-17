@@ -38,9 +38,7 @@ Le tableau ci-après décrit les tâches générales que vous effectuez à chaqu
 
 
 | link:stage_1_index.html["Étape 1. Préparation à la mise à niveau"]  a| 
-. Exécutez des contrôles préalables pour vérifier que vous pouvez effectuer l'opération.
-. Préparation pour le démarrage réseau (facultatif).
-
+Lors de l'étape 1, vous exécutez des contrôles préalables et, le cas échéant, vous devez corriger la propriété globale. Vous devez enregistrer certaines informations si vous gérez le chiffrement du stockage à l'aide de OKM et que vous pouvez choisir de suspendre les relations SnapMirror.
 
 Propriété d'un agrégat à la fin de la phase 1 :
 
@@ -51,10 +49,7 @@ Propriété d'un agrégat à la fin de la phase 1 :
 
 
 | link:stage_2_index.html["Étape 2. Transférez et retirez le nœud 1"]  a| 
-. Déplacement d'agrégats non racines du nœud 1 vers le nœud 2.
-. Déplacez les LIF de données non-SAN qui appartiennent au nœud 1 vers le nœud 2.
-. Retirer le nœud 1.
-
+Lors de la phase 2, vous transférez les agrégats non racines et les LIF de données du nœud 1 vers le nœud 2. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement. Si nécessaire, vous transférez des agrégats défaillants ou vetotés. Vous devez enregistrer les informations nécessaires sur le nœud1 pour pouvoir les utiliser ultérieurement dans la procédure, puis retirer le nœud1. Vous pouvez également préparer votre infrastructure sur le nœud 3 et sur le nœud 4 plus tard dans la procédure.
 
 Propriété d'un agrégat à la fin de la phase 2 :
 
@@ -65,13 +60,7 @@ Propriété d'un agrégat à la fin de la phase 2 :
 
 
 | link:stage_3_index.html["Étape 3. Installez et démarrez le nœud 3"]  a| 
-. Installez et démarrez le nœud 3.
-. Définir la configuration FC ou CNA.
-. Mapper les ports du node1 vers le node3.
-. Vérifiez que le noeud 3 a été correctement installé.
-. Déplacez les LIF de données non-SAN qui appartiennent au nœud 1 du nœud 2 vers le nœud 3.
-. Transférer des agrégats non racines détenus par le nœud 1 entre le nœud 2 et le nœud 3
-
+Lors de l'étape 3, vous installez et démarrez le noeud 3, mappez le cluster et les ports de gestion des nœuds du noeud 1 au noeud 3 et vérifiez l'installation du noeud 3. Si nécessaire, définissez la configuration FC ou UTA/UTA2 sur le nœud 3 et vérifiez que le nœud 3 a rejoint le quorum. Vous pouvez également transférer les LIF de données NAS du nœud 1 et les agrégats non racine du nœud 2 vers le nœud 3, puis vérifier que les LIF SAN existent sur le nœud 3.
 
 Propriété globale à la fin de la phase 3 :
 
@@ -82,10 +71,7 @@ Propriété globale à la fin de la phase 3 :
 
 
 | link:stage_4_index.html["Étape 4. Transférez et retirez le nœud 2"]  a| 
-. Transférer des agrégats non racines du nœud 2 vers le nœud 3
-. Déplacez les LIF de données non-SAN qui appartiennent au nœud2 vers le nœud3.
-. Retrait du nœud 2.
-
+Lors de la phase 4, vous transférez les agrégats non racines du nœud 2 et les LIF de données non-SAN vers le nœud 3. Vous enregistrez également les informations nécessaires sur le noeud 2, puis vous retirez le noeud 2.
 
 Propriété globale à la fin de la phase 4 :
 
@@ -97,12 +83,7 @@ Propriété globale à la fin de la phase 4 :
 
 
 | link:stage_5_index.html["Étape 5. Installez et démarrez Node4"]  a| 
-. Installez et démarrez Node4.
-. Définissez la configuration FC ou CNA sur le nœud 4.
-. Mappage des ports du node2 au node4.
-. Vérifiez l'installation du node4.
-. Transférez les LIF de données non-SAN qui appartiennent au nœud 2 du nœud 3 vers le nœud 4, et vérifiez les LIF SAN sur le nœud 4.
-
+Lors de l'étape 5, vous installez et démarrez le nœud4, mappez les ports cluster et node-management du node2 au node4, puis vérifiez l'installation du node4. Si nécessaire, définissez la configuration FC ou UTA/UTA2 sur le nœud 4 et vérifiez que le quorum du nœud 4 est atteint. Vous pouvez également transférer les LIF de données NAS du nœud 2 et les agrégats non racine du nœud 3 vers le nœud 4, puis vérifier que les LIF SAN existent sur le nœud 4.
 
 Propriété globale à la fin de la phase 5 :
 
@@ -113,9 +94,6 @@ Propriété globale à la fin de la phase 5 :
 
 
 | link:stage_6_index.html["Étape 6. Terminez la mise à niveau"]  a| 
-. Vérifiez que le système est correctement configuré.
-. Configurez Storage Encryption sur le nouveau module de contrôleur.
-. Reprendre les opérations SnapMirror si nécessaire.
-
+Lors de la phase 6, vous vérifiez que les nouveaux nœuds sont correctement configurés et que, si les nouveaux nœuds sont activés pour le chiffrement, vous configurez et configurez Storage Encryption ou NetApp Volume Encryption. Vous devez également désaffecter les anciens nœuds et reprendre les opérations SnapMirror.
 
 |===

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-manual/move_nas_lifs_node1_from_node2_node3_verify_san_lifs_node3.html 
 keywords: move, nas, san, lif, ports, broadcast domain, node1, node2, node3 
-summary: 'Déplacez les LIF de données NAS du nœud 1 qui se trouvent sur le nœud 2, depuis le nœud 2 vers le nœud 3, lors d"une mise à niveau manuelle du transfert d"agrégats (ARL) sur les contrôleurs exécutant ONTAP 9.7 ou une version antérieure.' 
+summary: 'Déplacez les LIF de données NAS du nœud 1 sur le nœud 2 vers le nœud 3 lors d"une mise à niveau manuelle d"agrégats ARL sur les contrôleurs qui exécutent ONTAP 9.7 ou une version antérieure.' 
 ---
 = Déplacez les LIF de données NAS qui appartiennent au nœud 1, du nœud 2 au nœud 3, et vérifiez les LIF SAN sur le nœud 3
 :hardbreaks:

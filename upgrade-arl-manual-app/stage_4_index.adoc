@@ -14,7 +14,7 @@ summary: 'Étape 4 : processus de mise à niveau manuelle d"ARL sur les contrôl
 
 
 [role="lead"]
-Lors de l'étape 4, vous enregistrez les informations sur le noeud 2, puis retirez le noeud 2.
+Au cours de l'étape 4, vous enregistrez les informations du node2 pour une utilisation ultérieure dans la procédure, puis vous retirez le node2.
 
 .Étapes
 . link:record_node2_information.html["Enregistrer les informations sur le noeud 2"]

@@ -22,7 +22,7 @@ link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Mettez à niveau ON
 
 * Vous devez observer la taille maximale du cluster.
 +
-Lorsque vous effectuez une mise à niveau en déplaçant des volumes, de nouveaux nœuds sont reliés au cluster avant que les nœuds d'origine ne soient supprimés. Assurez-vous que le nombre de contrôleurs du cluster ne dépasse pas la taille maximale de cluster prise en charge au cours de la procédure.
+Lorsque vous effectuez une mise à niveau en déplaçant des volumes, de nouveaux nœuds sont reliés au cluster avant que les nœuds d'origine ne soient supprimés. Vérifiez que le nombre de contrôleurs du cluster ne dépasse pas la taille maximale de cluster prise en charge au cours de la procédure.
 
 +
 https://hwu.netapp.com["NetApp Hardware Universe"^]

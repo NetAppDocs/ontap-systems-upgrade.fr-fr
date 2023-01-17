@@ -14,7 +14,7 @@ summary: 'Étape 2 : processus de mise à niveau manuelle d"ARL sur les contrôl
 
 
 [role="lead"]
-Lors de la phase 2, vous déplacez les agrégats et les LIF du nœud 1 vers le nœud 2, enregistrez les informations sur le nœud 1, puis retirez le nœud 1. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement.
+Lors de la phase 2, vous transférez des agrégats non-racines du nœud 1 vers le nœud 2, et déplacez les LIF de données non-SAN qui appartiennent au nœud 1 vers le nœud 2, y compris les agrégats défaillants ou vetotés. Vous enregistrez également les informations nécessaires sur le nœud1 pour une utilisation ultérieure dans la procédure, puis retirez le nœud1.
 
 .Étapes
 . link:relocate_non_root_aggr_node1_node2.html["Déplacement des agrégats non racines et des LIF de données NAS qui appartiennent au nœud 1 vers le nœud 2"]

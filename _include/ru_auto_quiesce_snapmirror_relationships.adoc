@@ -25,6 +25,6 @@ L'annulation échoue si la relation SnapMirror n'est pas à l'état « Transferr
 
 . Arrêter toutes les relations entre le cluster :
 +
-`snapmirror quiesce -destination-vserver _vserver_name_`
+`snapmirror quiesce -destination-vserver *`
 
 

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app/verify_node3_installation.html 
 keywords: verifying, verify, node, install, installation 
-summary: 'Vérifiez que les ports physiques du nœud 1 sont correctement mappées sur le nœud 3 et restaurez la configuration réseau sur le nœud 3 lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+summary: 'Vérifiez que les ports physiques du nœud 1 sont correctement mappés sur le nœud 3 et restaurez la configuration du réseau sur le nœud 3 lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou version ultérieure à l"aide de `system controller replace` commandes.' 
 ---
 = Vérifiez l'installation du noeud 3
 :hardbreaks:
@@ -138,7 +138,7 @@ Tous les ports réseau physiques, les ports VLAN et les ports de groupe d'interf
 
 . [[step2]]lister les domaines de diffusion sur le cluster :
 +
-`broadcast-domain show`
+`network port broadcast-domain show`
 
 . [[step3]]Indiquez la capacité de port réseau de tous les ports sur le noeud 3 :
 +
@@ -310,7 +310,7 @@ Attendez environ une minute pour placer les VLAN nouvellement restaurés dans le
 
 . [[step9]]supprimez tous les domaines de diffusion vides une fois toutes les réparations de port terminées :
 +
-`broadcast-domain delete -broadcast-domain _broadcast_domain_name_`
+`network port broadcast-domain delete -broadcast-domain _broadcast_domain_name_`
 
 . [[step10]]vérifier l'accessibilité des ports :
 +

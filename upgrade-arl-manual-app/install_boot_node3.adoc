@@ -21,9 +21,13 @@ Vous devez netboot nœud3 si aucune version de ONTAP 9 n'est installée sur le n
 
 Toutefois, vous n'avez pas besoin de netboot sur les nœuds 3 si les versions de ONTAP 9 sont identiques ou ultérieures, installées sur le nœud 1.
 
+[IMPORTANT]
+====
+Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<man_install3_step1,Étape 1>> à <<man_install3_step5,Étape 5>>, laissez cette section à <<man_install3_step6,Étape 6>> et suivez les instructions de la section link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] si nécessaire, la saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <<man_install3_step7,Étape 7>>.
 
-NOTE: *Important* : si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système doté du logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<man_install3_step1,Étape 1>> à <<man_install3_step5,Étape 5>>, laissez cette section à <<man_install3_step6,Étape 6>> et suivez les instructions de la section link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] si nécessaire, la saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <<man_install3_step7,Étape 7>>. Cependant, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière et passer à link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"], saisie de commandes à l'invite du cluster.
+Cependant, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière et passer à link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"], saisie de commandes à l'invite du cluster.
 
+====
 .Étapes
 . [[man_install3_step1]]Assurez-vous que vous disposez d'un espace rack pour node3.
 +
@@ -100,7 +104,8 @@ NOTE: *Attention*: Ne pas neutraliser le délai; si la batterie n'est pas charg�
 .. Revenez à cette section et suivez les étapes restantes, en commençant par <<man_install3_step7,Étape 7>>.
 
 
-*Important* : vous devez reconfigurer les ports intégrés FC, les ports CNA intégrés et les cartes CNA avant de démarrer ONTAP sur les systèmes V-Series ou avec le logiciel de virtualisation FlexArray.
+
+IMPORTANT: Vous devez reconfigurer les ports intégrés FC, les ports intégrés CNA et les cartes CNA avant de démarrer ONTAP sur le système V-Series ou sur le système avec le logiciel de virtualisation FlexArray.
 
 |===
 . [[man_install3_step7]]Ajoutez les ports d'initiateur FC du nouveau nœud aux zones de commutation.
@@ -148,7 +153,8 @@ Le système s'arrête à l'invite de l'environnement d'amorçage.
 Si les deux contrôleurs se trouvent dans le même châssis, l'alimentation doit déjà être mise sous tension.
 
 +
-*Remarque* : quittez le nœud4 à l'invite de l'environnement d'initialisation ; vous revenez au node4 dans link:install_boot_node4.html["Installez et démarrez Node4"].
+
+NOTE: Quittez le nœud4 à l'invite de l'environnement de démarrage ; vous revenez au nœud 4 dans link:install_boot_node4.html["Installez et démarrez Node4"].
 
 .. Si le message d'avertissement s'affiche dans <<man_install3_step4,Étape 4>>, suivez les instructions de la section <<man_install3_step5,Étape 5>>
 .. Retournez le câble de la console du nœud 4 au nœud 3.
@@ -229,14 +235,19 @@ NOTE: Vous devez utiliser le port de gestion et l'IP comme connexion netboot. N'
 `ifconfig e0M -auto` 
 
 
-| Non en cours d'exécution | Configurez manuellement la connexion en entrant la commande suivante à l'invite de l'environnement d'amorçage :
+| Non en cours d'exécution  a| 
+Configurez manuellement la connexion en entrant la commande suivante à l'invite de l'environnement d'amorçage :
 `ifconfig e0M -addr=_filer_addr_ -mask=_netmask_ -gw=_gateway_ -dns=_dns_addr_ -domain=_dns_domain_`
 
-`_filer_addr_` Est l'adresse IP du système de stockage.
-`_netmask_` est le masque de réseau du système de stockage.
-`_gateway_` est la passerelle du système de stockage.
-`_dns_addr_` Est l'adresse IP d'un serveur de noms sur votre réseau.
-`_dns_domain_` Est le nom de domaine DNS (Domain Name Service). Si vous utilisez ce paramètre facultatif, vous n'avez pas besoin d'un nom de domaine complet dans l'URL du serveur netboot ; vous n'avez besoin que du nom d'hôte du serveur. *Remarque*: D'autres paramètres peuvent être nécessaires pour votre interface. Entrez `help ifconfig` à l'invite du micrologiciel pour plus de détails. 
+`_filer_addr_` Est l'adresse IP du système de stockage (obligatoire).
+`_netmask_` est le masque de réseau du système de stockage (obligatoire).
+`_gateway_` est la passerelle du système de stockage (obligatoire).
+`_dns_addr_` Est l'adresse IP d'un serveur de noms sur votre réseau (facultatif).
+`_dns_domain_` Est le nom de domaine DNS (Domain Name Service). Si vous utilisez ce paramètre facultatif, vous n'avez pas besoin d'un nom de domaine complet dans l'URL du serveur netboot ; vous n'avez besoin que du nom d'hôte du serveur.
+
+
+NOTE: D'autres paramètres peuvent être nécessaires pour votre interface. Entrez `help ifconfig` à l'invite du micrologiciel pour plus de détails.
+
 |===
 . [[man_install3_step21]]exécutez netboot sur les nœuds 3 :
 +
@@ -262,20 +273,17 @@ NOTE: N'interrompez pas l'amorçage.
 Cette option de menu permet de télécharger et d'installer la nouvelle image ONTAP sur le périphérique d'amorçage.
 
 +
-
-NOTE: Ne tenez pas compte du message suivant :
+Ne tenez pas compte du message suivant :
 
 +
-[listing]
-----
-This procedure is not supported for Non-Disruptive Upgrade on an HA pair.
-----
+`This procedure is not supported for Non-Disruptive Upgrade on an HA pair`
+
 +
 Cette remarque s'applique aux mises à niveau de ONTAP sans interruption et non aux mises à niveau des contrôleurs.
 
 +
 
-NOTE: Utilisez toujours netboot pour mettre à jour le nouveau nœud vers l'image souhaitée. Si vous utilisez une autre méthode pour installer l'image sur le nouveau contrôleur, il est possible que la mauvaise image soit installée. Ce problème s'applique à toutes les versions d'ONTAP.
+NOTE: Utilisez toujours netboot pour mettre à jour le nouveau nœud vers l'image souhaitée. Si vous utilisez une autre méthode pour installer l'image sur le nouveau contrôleur, il est possible que la mauvaise image soit installée. Ce problème s'applique à toutes les versions d'ONTAP. Procédure netboot combinée avec l'option `(7) Install new software` Efface le support de démarrage et place la même version de ONTAP ONTAP sur les deux partitions d'images.
 
 . [[man_install3_step23]]si vous êtes invité à poursuivre la procédure, entrez `y`, Et lorsque vous êtes invité à saisir l'URL suivante :
 +

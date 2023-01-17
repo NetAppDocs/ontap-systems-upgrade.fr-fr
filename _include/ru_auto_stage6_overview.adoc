@@ -2,12 +2,13 @@
 :allow-uri-read: 
 
 
-Au cours de l'étape 6, assurez-vous que les nouveaux nœuds sont correctement configurés. Si l'un des nouveaux nœuds dispose d'un adaptateur cible unifié, vous devez restaurer toute configuration de port et peut-être avoir besoin de modifier la personnalité de l'adaptateur. Vous devez également configurer Storage Encryption si les nouveaux nœuds sont compatibles avec le chiffrement. Vous devez également désaffecter les anciens nœuds.
+Lors de la phase 6, vous vérifiez que les nouveaux nœuds sont correctement configurés et que, si les nouveaux nœuds sont activés pour le chiffrement, vous configurez et configurez Storage Encryption ou NetApp Volume Encryption. Vous devez également désaffecter les anciens nœuds et reprendre les opérations SnapMirror.
 
 .Étapes
+. link:get_ip_address_of_external_kms_for_storage_encryption.html["Procurez-vous une adresse IP d'un serveur de gestion externe des clés pour le cryptage du stockage"]
 . link:ensure_new_controllers_are_set_up_correctly.html["Vérifiez que les nouveaux contrôleurs sont correctement configurés"]
 . link:set_up_storage_encryption_new_module.html["Configurez Storage Encryption sur le nouveau module de contrôleur"]
-. link:set_up_netapp_volume_encryption_new_module.html["Configuration de NetApp Encryption sur le nouveau module de contrôleur"]
+. link:set_up_netapp_volume_encryption_new_module.html["Configurez NetApp Volume Encryption ou Aggregate Encryption sur le nouveau module de contrôleur"]
 . link:decommission_old_system.html["Désaffectation de l'ancien système"]
 . link:resume_snapmirror_operations.html["Reprendre les opérations SnapMirror"]
 

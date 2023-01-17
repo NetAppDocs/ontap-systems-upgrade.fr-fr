@@ -14,7 +14,7 @@ summary: 'Étape 5 : séquence de processus pour la mise à niveau d"ARL à l"ai
 
 
 [role="lead"]
-Lors de la phase 5, vous installez et démarrez le nœud 4, vérifiez que le cluster et les ports de gestion des nœuds du nœud 2 sont connectés sur le nœud 4, puis vérifiez l'installation du nœud 4. Vous pouvez également déplacer les LIF de données NAS qui appartiennent au nœud 2 du nœud 3 vers le nœud 4, puis déplacer les agrégats du nœud 2 vers le nœud 4.
+Lors de la phase 5, vous installez et démarrez le nœud 4, vérifiez que le cluster et les ports de gestion des nœuds du nœud 2 sont connectés sur le nœud 4, puis vérifiez l'installation du nœud 4. Si vous utilisez NVE, restaurez la configuration du gestionnaire de clés. Si nécessaire, définissez la configuration FC ou UTA/UTA2 sur le nœud 4. Vous pouvez également transférer les LIF de données NAS du nœud 2 et les agrégats non racine du nœud 3 vers le nœud 4, puis vérifier que les LIF SAN existent sur le nœud 4.
 
 .Étapes
 . link:install_boot_node4.html["Installez et démarrez Node4"]

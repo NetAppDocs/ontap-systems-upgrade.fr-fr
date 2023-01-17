@@ -123,10 +123,20 @@ Basé sur la sortie dans <<man_aggr_step4,Étape 4>> Et à l'étape 6, aggr2 uti
 | Ne contiennent aucun agrégat sur les disques internes | Poursuivre cette procédure. 
 
 
-| Contiennent des agrégats mais pas de volumes sur les disques internes | Poursuivre cette procédure. *Remarque* : avant de continuer, vous devez placer les agrégats hors ligne, puis les détruire sur les disques internes. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers la gestion _Disk et de l'agrégat avec le contenu CLI_ pour des informations sur la gestion des agrégats. 
+| Contiennent des agrégats mais pas de volumes sur les disques internes  a| 
+Poursuivre cette procédure.
 
 
-| Contiennent des volumes non-racines sur les disques internes | Poursuivre cette procédure. *Remarque* : avant de continuer, vous devez déplacer les volumes vers un tiroir disque externe, mettre les agrégats hors ligne, puis détruire les agrégats sur les disques internes. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers la gestion _Disk et d'agrégats avec le contenu CLI_ pour des informations sur le déplacement de volumes. 
+NOTE: Avant de continuer, vous devez placer les agrégats hors ligne, puis les détruire sur les disques internes. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers la gestion _Disk et de l'agrégat avec le contenu CLI_ pour des informations sur la gestion des agrégats.
+
+
+
+| Contiennent des volumes non-racines sur les disques internes  a| 
+Poursuivre cette procédure.
+
+
+NOTE: Avant de continuer, vous devez déplacer les volumes vers un tiroir disque externe, mettre ces agrégats hors ligne, puis les détruire sur les disques internes. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers la gestion _Disk et d'agrégats avec le contenu CLI_ pour des informations sur le déplacement de volumes.
+
 
 
 | Contiennent des volumes racines sur les disques internes | Ne pas poursuivre cette procédure. Vous pouvez mettre à niveau les contrôleurs en faisant référence à link:other_references.html["Références"] Pour établir un lien vers le _site de support NetApp_ et à l'aide de la procédure _mise à niveau du matériel de contrôleur sur une paire de nœuds exécutant clustered Data ONTAP en déplaçant des volumes_. 

@@ -144,7 +144,7 @@ Tous les ports réseau physiques, les ports VLAN et les ports de groupe d'interf
 
 . Lister les rebroadcast domain sur le cluster :
 +
-`broadcast-domain show`
+`network port broadcast-domain show`
 
 . Lister la possibilité de port réseau de tous les ports du node4 :
 +
@@ -312,7 +312,7 @@ Attendez environ une minute pour placer les VLAN nouvellement restaurés dans le
 
 . Supprimez tous les domaines de diffusion vides une fois que toutes les réparations de port ont été effectuées :
 +
-`broadcast-domain delete -broadcast-domain _broadcast_domain_name_`
+`network port broadcast-domain delete -broadcast-domain _broadcast_domain_name_`
 
 . Vérifiez l'accessibilité des ports :
 +

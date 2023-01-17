@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-manual-app/move_nas_lifs_node1_node2.html 
 keywords: nas, node1, node2, lifs, cluster, san 
-summary: 'Déplacez les LIF de données du nœud 1 vers le nœud 2 si vous disposez d"un cluster à deux nœuds ou vers un troisième nœud si votre cluster possède plus de deux nœuds, au cours d"une mise à niveau manuelle du transfert d"agrégats (ARL) sur les contrôleurs qui exécutent ONTAP 9.8 ou une version ultérieure.' 
+summary: 'Déplacez les LIF de données des nœuds 1 vers le nœud 2 si vous disposez d"un cluster à deux nœuds ou vers un troisième nœud si votre cluster possède plus de deux nœuds, au cours d"une mise à niveau manuelle du transfert d"agrégats basé sur des agrégats exécutant ONTAP 9.8 ou une version ultérieure.' 
 ---
 = Déplacez les LIF de données NAS qui appartiennent au nœud 1 vers le nœud 2
 :hardbreaks:

@@ -36,7 +36,7 @@ NOTE: Il n'est donc pas nécessaire de déplacer, déconnecter ou reconnecter le
 
 Cette procédure utilise une méthode de transfert d'agrégats (ARL), qui tire parti de la configuration haute disponibilité pour déplacer la propriété des agrégats non-racines d'un nœud vers un autre si ceux-ci partagent le stockage au sein d'un même cluster.
 
-Pendant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, délocalisant ainsi la propriété des agrégats non racines. Vous migrez plusieurs fois des agrégats à partir d'un nœud vers un autre afin de vous assurer qu'au moins un nœud transmet des données depuis les agrégats tout au long de la procédure de mise à niveau. Vous migrez également les LIF de données entre les nœuds du cluster lorsque vous continuez.
+Pendant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, délocalisant ainsi la propriété des agrégats non racines. Vous migrez plusieurs fois des agrégats entre nœuds et nœuds pour confirmer qu'au moins un nœud transmet des données depuis les agrégats tout au long de la procédure de mise à niveau. Vous migrez également les LIF de données entre les nœuds du cluster lorsque vous continuez.
 
 
 NOTE: Les termes *node1* et *node2* sont utilisés uniquement comme référence aux noms de noeud dans ce document. Lorsque vous suivez la procédure, vous devez remplacer les véritables noms de vos nœuds.

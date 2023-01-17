@@ -44,7 +44,7 @@ Vous devez avoir les valeurs des paramètres du port FC du noeud 1 que vous avez
 Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez les configurer dans <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>.
 
 
-NOTE: *Important* : si votre système dispose de disques de stockage, entrez les commandes de cette section à l'invite du cluster. Si vous disposez d'un système V-Series ou d'un logiciel de virtualisation FlexArray et êtes connecté aux baies de stockage, entrez les commandes de cette section en mode maintenance.
+IMPORTANT: Si votre système dispose de disques de stockage, entrez les commandes dans cette section à l'invite du cluster. Si vous disposez d'un système V-Series ou d'un logiciel de virtualisation FlexArray et êtes connecté aux baies de stockage, entrez les commandes de cette section en mode maintenance.
 
 .Étapes
 . Effectuer l'une des actions suivantes :
@@ -113,10 +113,16 @@ Modifiez les ports FC sur le nœud 3 en saisissant l'une des commandes suivantes
 
 
 
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Modifiez les ports FC sur le nœud 3 si nécessaire en entrant la commande suivante :
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
+Modifiez les ports FC sur le nœud 3 si nécessaire en entrant la commande suivante :
+
 `ucadmin modify -m fc -t initiator -f _adapter_port_name_`
 
-`-t` Est le type, la cible ou l'initiateur FC4. *Remarque* : les ports FC doivent être programmés comme initiateurs. 
+`-t` Est le type, la cible ou l'initiateur FC4.
+
+
+NOTE: Les ports FC doivent être programmés comme initiateurs.
+
 |===
 . [[step7]]effectuer l'une des actions suivantes :
 +

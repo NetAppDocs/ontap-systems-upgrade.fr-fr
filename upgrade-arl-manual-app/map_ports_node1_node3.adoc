@@ -137,7 +137,7 @@ WARNING: Repairing port "node_name:port" might cause it to move into a different
 .. Pour activer ONTAP pour terminer la réparation, attendez environ une minute après l'exécution du `reachability repair` commande sur le dernier port.
 .. Lister tous les broadcast domain sur le cluster :
 +
-`broadcast-domain show`
+`network port broadcast-domain show`
 
 .. Au fur et à mesure que la réparation de l'accessibilité est effectuée, ONTAP tente de placer les ports dans les domaines de diffusion appropriés. Cependant, si la réaptitude d'un port ne peut pas être déterminée et ne correspond à aucun des domaines de diffusion existants, ONTAP créera de nouveaux domaines de diffusion pour ces ports. Si nécessaire, vous pouvez supprimer les nouveaux domaines de diffusion si tous leurs ports membres deviennent des ports membres des groupes d'interfaces. Supprimer les domaines de diffusion :
 +

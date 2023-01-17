@@ -129,7 +129,7 @@ image::../upgrade/media/reassign_lifs.PNG[Réaffectation des LIFs sur les ports 
 --
 . [[Prepare_Move_store_5]]Télécharger et préparer les fichiers utilisés pour effectuer netboot.
 +
-Une fois les nouveaux nœuds installés, vous pouvez avoir besoin de netboot pour les nouvelles versions du ONTAP et les nœuds d'origine. Le terme netboot signifie que vous êtes en cours de démarrage à partir d'une image ONTAP stockée sur un serveur distant. Lorsque vous vous préparez à netboot, vous devez placer une copie de l'image de démarrage ONTAP 9 sur un serveur web auquel le système peut accéder.
+Une fois les nouveaux nœuds installés, vous pouvez avoir besoin de netboot pour vérifier que les nouveaux nœuds exécutent la même version d'ONTAP que les nœuds d'origine. Le terme netboot signifie que vous êtes en cours de démarrage à partir d'une image ONTAP stockée sur un serveur distant. Lorsque vous vous préparez à netboot, vous devez placer une copie de l'image de démarrage ONTAP 9 sur un serveur web auquel le système peut accéder.
 
 +
 .. Accédez au https://mysupport.netapp.com/site/["Site de support NetApp"^] pour télécharger les fichiers utilisés pour effectuer le démarrage sur le réseau du système.

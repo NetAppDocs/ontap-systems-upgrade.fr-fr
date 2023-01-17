@@ -95,7 +95,7 @@ Tous les ports réseau physique, les ports VLAN et les ports de groupe d'interfa
 
 . Lister les rebroadcast domain sur le cluster :
 +
-`broadcast-domain show`
+`network port broadcast-domain show`
 
 . Lister la possibilité de port réseau de tous les ports du node2 :
 +

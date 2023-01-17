@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/stage_6_index.html 
+keywords: upgrade, preparing, preparation, prepare, overview, stage 1 
+summary: 'Étape 1 : séquence de processus pour une mise à niveau d"ARL à l"aide de `system controller replace` Commandes sur les contrôleurs exécutant ONTAP 9.8 ou version ultérieure.' 
+---
+= Étape 6. Démarrez le nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Lors de la phase 6, vous démarrez le nœud 2 à l'aide du contrôleur et des modules NVRAM mis à niveau et vérifiez l'installation du nœud 2 mis à niveau. Si vous utilisez NetApp Volume Encryption (NVE), vous restaurez la configuration du gestionnaire de clés. Vous pouvez également transférer des agrégats non racines et des LIF de données NAS du nœud 1 vers le nœud 2 mis à niveau, puis vérifier que des LIF SAN existent sur le nœud 2.
+
+. link:boot_node2_with_a900_controller_and_nvs.html["Démarrez le nœud 2 avec un contrôleur AFF A900 ou FAS9500 et des modules NVRAM"]
+. link:verify_node2_installation.html["Vérifiez l'installation du node2"]
+. link:restore_key_manager_config_node2.html["Restaurez la configuration du gestionnaire de clés sur le noeud 2"]
+. link:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Déplacement des agrégats non racines et des LIF de données NAS vers le nœud 2"]
+

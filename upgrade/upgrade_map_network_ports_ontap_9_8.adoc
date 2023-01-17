@@ -2,7 +2,7 @@
 permalink: upgrade/upgrade-map-network-ports-ontap-9-8.html 
 sidebar: sidebar 
 keywords: enable, node3, node4, node, communicate, cluster, network, upgrade, physical, port, correct, configure, setting, data, map network ports using ontap 9.8 
-summary: 'Pour permettre aux noeuds 3 et nœud4 de communiquer entre eux au sein du cluster et avec le réseau après la mise à niveau, vous devez vous assurer que les ports physiques sont correctement configurés avec les paramètres de l"utilisation prévue, tels que le cluster, les données, etc.' 
+summary: 'Pour permettre aux nœuds 3 et Node4 de communiquer entre eux dans le cluster et avec le réseau après la mise à niveau, vous devez confirmer que les ports physiques sont correctement configurés avec les paramètres requis pour l"utilisation prévue, tels que le cluster, les données, etc.' 
 ---
 = Mappe les ports réseau avec ONTAP 9.8 ou version ultérieure
 :allow-uri-read: 
@@ -114,7 +114,7 @@ from the port. Are you sure you want to continue? {y|n}:
 .. Pour activer ONTAP pour terminer la réparation, attendez environ une minute après l'exécution du `reachability repair` commande sur le dernier port.
 .. Lister tous les broadcast domain sur le cluster :
 +
-`broadcast-domain show`
+`network port broadcast-domain show`
 
 .. Au fur et à mesure que la réparation de l'accessibilité est effectuée, ONTAP tente de placer les ports dans les domaines de diffusion appropriés. Cependant, si la capacité d'un port ne peut pas être déterminée et ne correspond à aucun des domaines de diffusion existants, ONTAP crée de nouveaux domaines de diffusion pour ces ports. Si nécessaire, vous pouvez supprimer les nouveaux domaines de diffusion si tous leurs ports membres deviennent des ports membres des groupes d'interfaces. Supprimer les domaines de diffusion :
 +

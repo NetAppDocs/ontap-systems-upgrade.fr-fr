@@ -28,7 +28,7 @@ Pour la mise à niveau des configurations MetroCluster IP, reportez-vous à la s
 
 
 
-NOTE: Vous pouvez utiliser NetApp Storage Encryption (NSE) et NetApp Volume Encryption (NVE) dans le cadre de cette procédure.
+NOTE: Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE).
 
 [[sys_commands_98_supported_Systems]]le tableau suivant montre la matrice de modèles prise en charge pour la mise à niveau du contrôleur.
 

@@ -101,13 +101,19 @@ NOTE: Vous devez utiliser le port de gestion et l'IP comme connexion netboot. N'
 `ifconfig e0M -auto` 
 
 
-| Non en cours d'exécution | Configurez manuellement la connexion en entrant la commande suivante à l'invite de l'environnement d'amorçage :
+| Non en cours d'exécution  a| 
+Configurez manuellement la connexion en entrant la commande suivante à l'invite de l'environnement d'amorçage :
 `ifconfig e0M -addr=_filer_addr_ -mask=_netmask_ -gw=_gateway_ -dns=_dns_addr_ -domain=_dns_domain_`
-`_filer_addr_` Est l'adresse IP du système de stockage.
-`_netmask_` est le masque de réseau du système de stockage.
-`_gateway_` est la passerelle du système de stockage.
-`_dns_addr_` Est l'adresse IP d'un serveur de noms sur votre réseau.
-`_dns_domain_` Est le nom de domaine DNS (Domain Name Service). Si vous utilisez ce paramètre facultatif, vous n'avez pas besoin d'un nom de domaine complet dans l'URL du serveur netboot ; vous n'avez besoin que du nom d'hôte du serveur. *Remarque :* d'autres paramètres peuvent être nécessaires pour votre interface. Entrez `help ifconfig` à l'invite du micrologiciel pour plus de détails. 
+
+`_filer_addr_` Est l'adresse IP du système de stockage (obligatoire).
+`_netmask_` est le masque de réseau du système de stockage (obligatoire).
+`_gateway_` est la passerelle du système de stockage. (obligatoire).
+`_dns_addr_` Est l'adresse IP d'un serveur de noms sur votre réseau (facultatif).
+`_dns_domain_` Est le nom de domaine DNS (Domain Name Service). Si vous utilisez ce paramètre facultatif, vous n'avez pas besoin d'un nom de domaine complet dans l'URL du serveur netboot ; vous n'avez besoin que du nom d'hôte du serveur.
+
+
+NOTE: D'autres paramètres peuvent être nécessaires pour votre interface. Entrez `help ifconfig` à l'invite du micrologiciel pour plus de détails.
+
 |===
 . [[step7]]exécutez sur le nœud 3 :
 +
@@ -133,8 +139,17 @@ NOTE: N'interrompez pas l'amorçage.
 Cette option de menu permet de télécharger et d'installer la nouvelle image ONTAP sur le périphérique d'amorçage.
 
 +
+Ne tenez pas compte du message suivant :
 
-NOTE: Ne tenez pas compte du message suivant : `This procedure is not supported for Non-Disruptive Upgrade on an HA pair`. Cette remarque s'applique aux mises à niveau de ONTAP sans interruption et non aux mises à niveau des contrôleurs. Utilisez toujours netboot pour mettre à jour le nouveau nœud vers l'image souhaitée. Si vous utilisez une autre méthode pour installer l'image sur le nouveau contrôleur, il est possible que la mauvaise image soit installée. Ce problème s'applique à toutes les versions de ONTAP.
++
+`This procedure is not supported for Non-Disruptive Upgrade on an HA pair`
+
++
+Cette remarque s'applique aux mises à niveau de ONTAP sans interruption et non aux mises à niveau des contrôleurs.
+
++
+
+NOTE: Utilisez toujours netboot pour mettre à jour le nouveau nœud vers l'image souhaitée. Si vous utilisez une autre méthode pour installer l'image sur le nouveau contrôleur, il est possible que l'image incorrecte soit installée. Ce problème s'applique à toutes les versions de ONTAP. Procédure netboot combinée avec l'option `(7) Install new software` Efface le support de démarrage et place la même version de ONTAP sur les deux partitions d'image.
 
 . [[step9]]si vous êtes invité à poursuivre la procédure, entrez `y`, Et lorsque vous êtes invité à saisir l'URL du pack :
 +
@@ -215,9 +230,12 @@ Interrompez l'AUTOBOOT en appuyant sur `Ctrl-C` à l'invite de l'environnement d
 +
 `set time _hh:mm:ss_`
 
-. [[step20]]si nécessaire, définissez l'ID système partenaire sur le noeud 3 :
+. [[step20]]dans le chargeur de démarrage, définissez l'ID système partenaire sur le noeud 3 :
 +
 `setenv partner-sysid _node2_sysid_`
+
++
+Pour le nœud 3, `partner-sysid` doit être celui du node2.
 
 +
 .. Enregistrer les paramètres :
@@ -226,7 +244,7 @@ Interrompez l'AUTOBOOT en appuyant sur `Ctrl-C` à l'invite de l'environnement d
 
 
 
-. [[auto_install3_step21]]sur le nouveau nœud, dans le chargeur d'amorçage, le `partner-sysid` le paramètre doit être défini. Pour le nœud 3, `partner-sysid` doit être celui du node2. Vérifiez le `partner-sysid` pour le nœud 3 :
+. [[auto_install3_step21]]Vérifiez l' `partner-sysid` pour le nœud 3 :
 +
 `printenv partner-sysid`
 
@@ -245,7 +263,8 @@ Interrompez l'AUTOBOOT en appuyant sur `Ctrl-C` à l'invite de l'environnement d
 .. Revenez à cette section et suivez les étapes restantes, en commençant par <<auto_install3_step23,Étape 23>>.
 
 
-*Important* : vous devez reconfigurer les ports intégrés FC, les ports CNA intégrés et les cartes CNA avant de démarrer ONTAP sur les systèmes V-Series ou avec le logiciel de virtualisation FlexArray.
+
+IMPORTANT: Vous devez reconfigurer les ports intégrés FC, les ports intégrés CNA et les cartes CNA avant de démarrer ONTAP sur le système V-Series ou sur le système avec le logiciel de virtualisation FlexArray.
 
 |===
 . [[auto_install3_step23]]Ajoutez les ports d'initiateur FC du nouveau nœud aux zones de commutation.

@@ -2,7 +2,7 @@
 permalink: upgrade/upgrade-map-network-ports-ontap-9-7-or-earlier.html 
 sidebar: sidebar 
 keywords: enable, node3, node4, node, communicate, cluster, network, upgrade, physical, port, configure, setting, intend, data, map, map network ports using ontap 9.7 or earlier 
-summary: 'Pour permettre aux noeuds 3 et nœud4 de communiquer entre eux au sein du cluster et avec le réseau après la mise à niveau, vous devez vous assurer que les ports physiques sont correctement configurés avec les paramètres de l"utilisation prévue, tels que le cluster, les données, etc.' 
+summary: 'Pour permettre aux nœuds 3 et Node4 de communiquer entre eux dans le cluster et avec le réseau après la mise à niveau, vous devez confirmer que les ports physiques sont correctement configurés avec les paramètres requis pour l"utilisation prévue, tels que le cluster, les données, etc.' 
 ---
 = Mappez les ports réseau avec ONTAP 9.7 ou version antérieure
 :allow-uri-read: 

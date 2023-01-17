@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Avant de remplacer le nœud 2 par le nœud 4, vous devez transférer les agrégats non racines qui sont détenus par le nœud 2 vers le nœud 3.
+Avant de remplacer le nœud 2 par le nœud 4, vous devez transférer les agrégats non racines et les LIF de données NAS qui appartiennent au nœud 2 vers le nœud 3.
 
 .Avant de commencer
 Une fois les post-contrôles effectués à partir de l'étape précédente, la version de ressource pour le noeud 2 démarre automatiquement. Les agrégats non-racines et les LIF de données non-SAN sont migrées du nœud 2 vers le nœud 3.

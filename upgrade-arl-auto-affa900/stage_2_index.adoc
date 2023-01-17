@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/stage_2_index.html 
+keywords: upgrade, preparing, preparation, prepare, overview, stage 1 
+summary: 'Processus de la phase 2 pour une mise à niveau d"ARL à l"aide de `system controller replace` Commandes sur les contrôleurs exécutant ONTAP 9.8 ou version ultérieure.' 
+---
+= Étape 2. Transférez des ressources depuis le nœud 1 et retirez le système AFF A700 ou FAS9000 node1
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Lors de la phase 2, vous transférez les agrégats non racines et les LIF de données du nœud 1 vers le nœud 2. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement. Si nécessaire, vous transférez des agrégats défaillants ou vetotés. Vous devez enregistrer les informations du nœud 1 pour une utilisation ultérieure dans la procédure, puis intervertir le contrôleur no1 et les modules NVRAM correspondants, retirer le nœud 1 et netboot le nœud mis à niveau.
+
+.Étapes
+. link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Transférez les agrégats non racine et les LIF de données NAS qui appartiennent au nœud1 vers le nœud2"]
+. link:relocate_failed_or_vetoed_aggr.html["Le transfert d'agrégats a échoué ou a été veto"]
+. link:retire_node1.html["Retirer le nœud 1"]
+. link:netboot_node1.html["NetBoot"]
+

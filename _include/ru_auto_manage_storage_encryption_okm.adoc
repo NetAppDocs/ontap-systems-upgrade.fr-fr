@@ -1,10 +1,6 @@
-= Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré
+= 
 :allow-uri-read: 
 
-
-
-
-== Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré
 
 Vous pouvez utiliser OKM pour gérer les clés de chiffrement. Si vous prévoyez d'utiliser OKM, vous devez enregistrer la phrase de passe et les supports de sauvegarde avant de commencer la mise à niveau.
 

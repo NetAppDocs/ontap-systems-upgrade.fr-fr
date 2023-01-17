@@ -52,11 +52,12 @@ NOTE: Vous devez utiliser le port de gestion et l'IP comme connexion netboot. N'
 | Non en cours d'exécution  a| 
 Configurez manuellement la connexion à l'aide de la commande suivante à l'invite de l'environnement d'initialisation :
 `ifconfig e0M -addr=_filer_addr_ -mask=_netmask_ -gw=_gateway_ -dns=_dns_addr_ -domain=_dns_domain_`
-`_filer_addr_` Est l'adresse IP du système de stockage.
-`_netmask_` est le masque de réseau du système de stockage.
-`_gateway_` est la passerelle du système de stockage.
-`_dns_addr_` Est l'adresse IP d'un serveur de noms sur votre réseau. Ce paramètre est facultatif.
-`_dns_domain_` Est le nom de domaine DNS (Domain Name Service). Ce paramètre est facultatif.
+
+`_filer_addr_` Est l'adresse IP du système de stockage (obligatoire).
+`_netmask_` est le masque de réseau du système de stockage (obligatoire).
+`_gateway_` est la passerelle du système de stockage (obligatoire).
+`_dns_addr_` Est l'adresse IP d'un serveur de noms sur votre réseau (facultatif).
+`_dns_domain_` Est le nom de domaine DNS (Domain Name Service) (facultatif).
 
 
 NOTE: D'autres paramètres peuvent être nécessaires pour votre interface. Entrez `help ifconfig` à l'invite du micrologiciel pour plus de détails.
@@ -94,13 +95,18 @@ Selection (1-11)?
 Cette option de menu permet de télécharger et d'installer la nouvelle image ONTAP sur le périphérique d'amorçage.
 
 +
-[NOTE]
-====
-Ne tenez pas compte du message suivant : `This procedure is not supported for Non-Disruptive Upgrade on an HA pair`. Cette remarque s'applique aux mises à niveau logicielles ONTAP sans interruption et non aux mises à niveau du contrôleur.
+Ne tenez pas compte du message suivant :
 
-Utilisez toujours netboot pour mettre à jour le nouveau nœud vers l'image souhaitée. Si vous utilisez une autre méthode pour installer l'image sur le nouveau contrôleur, il est possible que la mauvaise image soit installée. Ce problème s'applique à toutes les versions de ONTAP.
++
+`This procedure is not supported for Non-Disruptive Upgrade on an HA pair`
 
-====
++
+Cette remarque s'applique aux mises à niveau logicielles ONTAP sans interruption et non aux mises à niveau du contrôleur.
+
++
+
+NOTE: Utilisez toujours netboot pour mettre à jour le nouveau nœud vers l'image souhaitée. Si vous utilisez une autre méthode pour installer l'image sur le nouveau contrôleur, il est possible que l'image incorrecte soit installée. Ce problème s'applique à toutes les versions de ONTAP. Procédure netboot combinée avec l'option `(7) Install new software` Efface le support de démarrage et place la même version de ONTAP sur les deux partitions d'image.
+
 . Si vous êtes invité à poursuivre la procédure, entrez `y`, Et lorsque vous êtes invité à saisir l'URL du pack :
 `\http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz`
 +
@@ -194,13 +200,12 @@ NOTE: Définissez la date UTC correspondante sur le node2.
 
 NOTE: Définissez l'heure UTC correspondante sur le node2.
 
-. Si nécessaire, définissez l'ID système partenaire sur le noeud 2 :
-+
-
-NOTE: Il s'agit de l'ID système du nœud 1 que vous mettez à niveau vers un AFF A900.
-
+. Définissez l'ID du système partenaire sur le nœud 2 :
 +
 `setenv partner-sysid _node1_sysid_`
+
++
+Pour le noeud 2, le `partner-sysid` Doit être celui du nœud 1 que vous mettez à niveau vers un système AFF A900 ou FAS9500.
 
 +
 .. Enregistrer les paramètres :
@@ -209,11 +214,8 @@ NOTE: Il s'agit de l'ID système du nœud 1 que vous mettez à niveau vers un AF
 
 
 
-. Sur le nœud 2, à l'invite DU CHARGEUR, vérifiez le `partner-sysid` pour le nœud 1 :
+. Sur le nœud 2, à l'invite DU CHARGEUR, vérifiez le `partner-sysid` pour le nœud 2 :
 +
 `printenv partner-sysid`
-
-+
-Pour le noeud 2, le `partner-sysid` doit être celui du noeud 1.
 
 

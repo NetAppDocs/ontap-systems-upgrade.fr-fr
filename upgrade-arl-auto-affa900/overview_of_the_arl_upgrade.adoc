@@ -37,16 +37,8 @@ Le tableau ci-après décrit les tâches générales que vous effectuez à chaqu
 | Étape | Étapes 
 
 
-| link:verify_upgrade_hardware.html["Étape 1 : préparer la mise à niveau"]  a| 
-. Vérifiez la mise à niveau matérielle
-. Exécutez des contrôles préalables pour vérifier que vous pouvez effectuer l'opération
-. Propriété correcte de l'agrégat en cas d'échec d'un contrôle préalable
-. Entrer les clés de licence de la base du cluster
-. Obtenir une adresse IP pour le cryptage du stockage
-. Gestion de l'authentification à l'aide d'un serveur KMIP (Key Management Operabilité Protocol)
-. Gestion du chiffrement du stockage à l'aide d'un gestionnaire de clés intégré (OKM)
-. Suspendre les relations SnapMirror (facultatif)
-
+| link:stage_1_index.html["Étape 1 : préparer la mise à niveau"]  a| 
+Lors de la phase 2, vous transférez les agrégats non racines et les LIF de données du nœud 1 vers le nœud 2. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement. Si nécessaire, vous transférez des agrégats défaillants ou vetotés. Vous devez enregistrer les informations sur le nœud 1 nécessaires pour une utilisation ultérieure dans la procédure, puis échanger le contrôleur node1 et les modules NVRAM correspondants, retirer le nœud 1 et netboot le nœud 1 mis à niveau.
 
 Propriété d'un agrégat à la fin de la phase 1 :
 
@@ -56,14 +48,8 @@ Propriété d'un agrégat à la fin de la phase 1 :
 
 
 
-| link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["2e étape : transférer des ressources depuis le nœud 1 et retirer le système AFF A700 ou FAS9000 node1"]  a| 
-. Transférez les agrégats non racine et les LIF de données NAS qui appartiennent au nœud1 vers le nœud2
-. Le transfert d'agrégats a échoué ou a été veto
-. Retirer le nœud 1
-. Retirez le contrôleur AFF A700 ou FAS9000 et les modules NVRAM
-. Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur le nœud 1
-. NetBoot node1
-
+| link:stage_2_index.html["2e étape : transférer des ressources depuis le nœud 1 et retirer le système AFF A700 ou FAS9000 node1"]  a| 
+Lors de la phase 2, vous transférez les agrégats non racines et les LIF de données du nœud 1 vers le nœud 2. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement. Si nécessaire, vous transférez des agrégats défaillants ou vetotés. Vous enregistrez les informations sur le noeud 1 pour les utiliser ultérieurement dans la procédure avant de retirer le noeud 1. Vous pouvez également préparer le nœud 1 plus tard dans la procédure.
 
 Propriété d'un agrégat à la fin de la phase 2 :
 
@@ -73,13 +59,8 @@ Propriété d'un agrégat à la fin de la phase 2 :
 
 
 
-| link:boot_node1_with_a900_controller_and_nvs.html["Etape 3 : démarrez le nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM"]  a| 
-. Démarrez le nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM
-. Vérifiez que le noeud 1 a bien été installé
-. Restaurez la configuration réseau node1
-. Restaurez la configuration du gestionnaire de clés sur le noeud mis à niveau 1
-. Déplacement des agrégats non racines et des LIF de données NAS qui appartiennent au nœud 1 du nœud 2 vers le nœud mis à niveau 1
-
+| link:stage_3_index.html["Etape 3 : démarrez le nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM"]  a| 
+Au cours de la phase 3, vous démarrez le nœud 1 avec un contrôleur et des modules NVRAM mis à niveau et vérifiez l'installation du nœud 1 mis à niveau. Si vous utilisez NetApp Volume Encryption (NVE), vous restaurez la configuration du gestionnaire de clés. Vous pouvez également transférer des agrégats non racines et des LIF de données NAS du nœud 2 vers le nœud mis à niveau 1, puis vérifier que des LIF SAN existent sur le nœud 1.
 
 Propriété globale à la fin de la phase 3 :
 
@@ -89,10 +70,8 @@ Propriété globale à la fin de la phase 3 :
 
 
 
-| link:relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html["Étape 4 : déplacer des ressources depuis le nœud 2 et retirer le nœud 2"]  a| 
-. Transférez des agrégats non racines et des LIF de données NAS du nœud 2 vers le nœud 1
-. Retrait du nœud 2
-
+| link:stage_4_index.html["Étape 4 : déplacer des ressources depuis le nœud 2 et retirer le nœud 2"]  a| 
+Lors de la phase 4, vous transférez les agrégats non racines et les LIF de données NAS du nœud 2 vers le nœud mis à niveau 1, puis retirez le nœud 2.
 
 Propriété globale à la fin de la phase 4 :
 
@@ -102,10 +81,8 @@ Propriété globale à la fin de la phase 4 :
 
 
 
-| link:install_a900_nvs_and_controller_on_node2.html["Etape 5 : installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur le nœud 2"]  a| 
-. Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur le nœud 2
-. NetBoot node2
-
+| link:stage_5_index.html["Etape 5 : installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur le nœud 2"]  a| 
+Lors de la phase 5, vous installez les nouveaux modules NVRAM et contrôleur que vous avez reçus pour le nœud 2 mis à niveau, puis sur le nœud 2.
 
 Propriété globale à la fin de la phase 5 :
 
@@ -115,21 +92,12 @@ Propriété globale à la fin de la phase 5 :
 
 
 
-| link:boot_node2_with_a900_controller_and_nvs.html["Etape 6 : démarrez le nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM"]  a| 
-. Démarrez le nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM
-. Vérifiez que le nœud2 est correctement installé
-. Restaurez la configuration réseau node2
-. Déplacement des agrégats non racines et des LIF de données NAS vers le nœud 2
+| link:stage_6_index.html["Etape 6 : démarrez le nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM"]  a| 
+Lors de la phase 6, vous démarrez le nœud 2 à l'aide du contrôleur et des modules NVRAM mis à niveau et vérifiez l'installation du nœud 2 mis à niveau. Si vous utilisez NVE, restaurez la configuration du gestionnaire de clés. Vous pouvez également transférer des agrégats non racines et des LIF de données NAS du nœud 1 vers le nœud 2 mis à niveau, puis vérifier que des LIF SAN existent sur le nœud 2.
 
 
 
-
-| link:ensure_new_controllers_are_set_up_correctly.html["Étape 7 : terminez la mise à niveau"]  a| 
-. Vérifier que les nouveaux contrôleurs sont correctement configurés
-. Configurez Storage Encryption sur le nouveau module de contrôleur
-. Configurez NetApp Volume Encryption sur le nouveau module de contrôleur.
-. Désaffectation de l'ancien système.
-. Reprendre les opérations NetApp SnapMirror
-
+| link:stage_7_index.html["Étape 7 : terminez la mise à niveau"]  a| 
+Lors de la phase 7, vous vérifiez que les nouveaux nœuds sont correctement configurés et que, si les nouveaux nœuds sont activés pour le chiffrement, vous configurez et configurez Storage Encryption ou NVE. Vous devez également désaffecter les anciens nœuds et reprendre les opérations SnapMirror.
 
 |===

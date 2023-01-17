@@ -4,7 +4,7 @@ permalink: upgrade-arl-manual-app/relocate_node2_non_root_aggr_node3_node4.html
 keywords: relocate, non-root, aggregates, node3, node4 
 summary: 'Transférez les agrégats non racines de node2 vers le nœud 3 vers le nœud 4 lors d"une mise à niveau manuelle du transfert d"agrégats (ARL) sur les contrôleurs qui exécutent ONTAP 9.8 ou une version ultérieure.' 
 ---
-= Déplacez les agrégats non racines de node2 du noeud 3 vers le noeud 4
+= Déplacez les agrégats non racines nœud2 du nœud 3 vers le nœud 4
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

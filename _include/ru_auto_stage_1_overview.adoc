@@ -2,9 +2,9 @@
 :allow-uri-read: 
 
 
-Lors de l'étape 1, vous devez préparer les nœuds pour la mise à niveau et exécuter une série de contrôles préalables. Vous devrez peut-être changer de disque pour Storage Encryption. Vous devez également préparer votre démarrage sur le réseau de nouveaux contrôleurs.
+Lors de l'étape 1, vous exécutez des contrôles préalables et, le cas échéant, vous devez corriger la propriété globale. Vous devez enregistrer certaines informations si vous gérez le chiffrement du stockage à l'aide de OKM et vous pouvez choisir de suspendre les relations SnapMirror.
 
 .Étapes
 . link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"]
-. link:get_ip_address_of_external_kms_for_storage_encryption.html["Procurez-vous une adresse IP d'un serveur de gestion externe des clés pour le cryptage du stockage"]
+. link:manage_storage_encryption_using_okm.html["Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré"]
 

@@ -24,12 +24,21 @@ Toutefois, vous n'avez pas besoin d'effectuer le démarrage sur les contrôleurs
 | Pour... | Alors... 
 
 
-| Systèmes de la gamme FAS/AFF8000 | Extraire le contenu du `<ontap_version>_image.tgz` fichier dans le répertoire cible :
-`tar -zxvf <ontap_version>_image.tgz`*Remarque* : si vous extrayez le contenu sous Windows, utilisez 7-Zip ou WinRAR pour extraire l'image netboot. Votre liste de répertoires doit contenir un dossier netboot avec un fichier du noyau :
-`netboot/kernel` 
+| Systèmes de la gamme FAS/AFF8000  a| 
+Extraire le contenu du `<ontap_version>_image.tgz` fichier dans le répertoire cible :
+
+`tar -zxvf <ontap_version>_image.tgz`
 
 
-| Tous les autres systèmes | Votre liste de répertoires doit contenir le fichier suivant : `<ontap_version>_image.tgz`*Remarque*: Vous n'avez pas besoin d'extraire le contenu du `<ontap_version>_image.tgz` fichier. 
+NOTE: Si vous extrayez le contenu sous Windows, utilisez 7-Zip ou WinRAR pour extraire l'image netboot.
+
+Votre liste de répertoires doit contenir un dossier netboot avec un fichier du noyau :
+
+`netboot/kernel`
+
+
+
+| Tous les autres systèmes | Votre liste de répertoires doit contenir le fichier suivant : `<ontap_version>_image.tgz`REMARQUE : il n'est pas nécessaire d'extraire le contenu du `<ontap_version>_image.tgz` fichier. 
 |===
 +
 Vous utiliserez les informations dans les répertoires de link:stage_3_install_boot_node3.html["Étape 3"].

@@ -168,7 +168,7 @@ Cette commande supprime le port « e0d » sur le nœud 4 :
 
 
 
-. [[man_map_2_step5]]ajustez les domaines de diffusion qui hébergent les LIFs de votre cluster et les LIF node-management/cluster-management. Assurez-vous que chaque domaine de diffusion contient les ports appropriés. Un port ne peut pas être déplacé entre broadcast domain s'il héberge ou héberge un LIF. Il peut donc être nécessaire de migrer et de modifier les LIFs comme indiqué ci-dessous :
+. [[man_map_2_step5]]ajustez les domaines de diffusion qui hébergent les LIFs de votre cluster et les LIF node-management/cluster-management. Vérifiez que chaque broadcast domain contient les bons ports. Un port ne peut pas être déplacé entre broadcast domain s'il héberge ou héberge un LIF. Il peut donc être nécessaire de migrer et de modifier les LIFs comme indiqué ci-dessous :
 +
 .. Afficher le home port d'une LIF :
 +

@@ -1,0 +1,12 @@
+= 
+:allow-uri-read: 
+
+
+Lors de la phase 2, vous transférez les agrégats non racines et les LIF de données du nœud 1 vers le nœud 2. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement. Si nécessaire, vous transférez des agrégats défaillants ou vetotés. Vous devez enregistrer les informations nécessaires sur le noeud 1, puis retirer le noeud 1. Vous pouvez également préparer votre infrastructure sur le nœud 3 et sur le nœud 4 plus tard dans la procédure.
+
+.Étapes
+. link:relocate_non_root_aggr_nas_data_lifs_node1_node2.html["Transférez les agrégats non racine et les LIF de données NAS qui appartiennent au nœud1 vers le nœud2"]
+. link:relocate_failed_vetoed_aggr.html["Le transfert d'agrégats a échoué ou a été veto"]
+. link:retire_node1.html["Retirer le nœud 1"]
+. link:prepare_for_netboot.html["Préparation à la mise sur le réseau"]
+

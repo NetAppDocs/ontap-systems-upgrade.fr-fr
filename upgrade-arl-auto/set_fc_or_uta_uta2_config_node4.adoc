@@ -39,7 +39,8 @@ Vous devez avoir les valeurs des paramètres du port FC du noeud 2 que vous avez
 .Description de la tâche
 Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'un adaptateur UTA/UTA2, vous devez les configurer dans <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>.
 
-*Important* : si votre système dispose de disques de stockage, vous devez entrer les commandes dans cette section à l'invite du cluster. Si vous disposez d'un système V-Series ou d'un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous pouvez saisir les commandes décrites dans cette section en mode Maintenance.
+
+IMPORTANT: Si votre système est doté de disques de stockage, vous devez saisir les commandes de cette section à l'invite du cluster. Si vous disposez d'un système V-Series ou d'un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous pouvez saisir les commandes décrites dans cette section en mode Maintenance.
 
 .Étapes
 . Effectuer l'une des actions suivantes :
@@ -82,10 +83,16 @@ Modifier les ports FC sur le nœud 4 si nécessaire :
 
 
 
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Modifier les ports FC sur le nœud 4 si nécessaire :
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
+Modifier les ports FC sur le nœud 4 si nécessaire :
+
 `ucadmin modify -m fc -t initiator -f _adapter_port_name_`
 
-`-t` Est le type, la cible ou l'initiateur FC4. *Remarque* : les ports FC doivent être programmés comme initiateurs. 
+`-t` Est le type, la cible ou l'initiateur FC4.
+
+
+NOTE: Les ports FC doivent être programmés comme initiateurs.
+
 |===
 . Quitter le mode Maintenance :
 +
@@ -419,7 +426,7 @@ Maintenant, au démarrage, le nœud peut détecter tous les disques qui lui éta
 
 
 
-. [[auto_check_4_step23]]si vous effectuez une mise à niveau d'un système à disques externes vers un système qui prend en charge des disques internes et externes (systèmes AFF A800, par exemple), définissez l'agrégat node2 comme agrégat racine afin de garantir quatre initialisation à partir de l'agrégat racine du nœud 2. Pour définir l'agrégat root, aller au menu de boot et faire une sélection `5` pour passer en mode maintenance.
+. [[auto_check_4_step23]]si vous effectuez une mise à niveau d'un système à disques externes vers un système qui prend en charge des disques internes et externes (systèmes AFF A800, par exemple), définissez l'agrégat node2 en tant qu'agrégat racine pour confirmer que le nœud4 démarre à partir de l'agrégat racine du nœud2. Pour définir l'agrégat root, aller au menu de boot et faire une sélection `5` pour passer en mode maintenance.
 +
 
 WARNING: *Vous devez exécuter les sous-étapes suivantes dans l'ordre exact indiqué ; le non-respect de cette consigne peut entraîner une panne ou même une perte de données.*
