@@ -465,14 +465,56 @@ Si vous effectuez une mise à niveau à partir d'un système qui utilise des dis
 ====
 . [[auto_check_4_step22]]à l'invite du chargeur, démarrez :
 +
-`boot_ontap`
+`boot_ontap menu`
 
 +
 Maintenant, au démarrage, le nœud peut détecter tous les disques qui lui étaient précédemment affectés et peut démarrer comme prévu.
 
++
+Lorsque les nœuds de cluster que vous remplacez utilisent le chiffrement de volume root, le logiciel ONTAP ne peut pas lire les informations de volume des disques. Restaurer les clés du volume root:
+
++
+.. Revenir au menu de démarrage spécial :
+`LOADER> boot_ontap menu`
++
+[listing]
+----
+Please choose one of the following:
+(1) Normal Boot.
+(2) Boot without /etc/rc.
+(3) Change password.
+(4) Clean configuration and initialize all disks.
+(5) Maintenance mode boot.
+(6) Update flash from backup config.
+(7) Install new software first.
+(8) Reboot node.
+(9) Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+
+Selection (1-11)? 10
+----
+.. Sélectionnez *(10) définir les secrets de récupération du gestionnaire de clés intégré*
+.. Entrez `y` à l'invite suivante :
++
+`This option must be used only in disaster recovery procedures. Are you sure? (y or n): y`
+
+.. À l'invite, entrez la phrase de passe du gestionnaire de clés.
+.. Entrez les données de sauvegarde lorsque vous y êtes invité.
++
+
+NOTE: Vous devez avoir obtenu la phrase de passe et les données de sauvegarde dans le link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] section de cette procédure.
+
+.. Une fois que le système a de nouveau démarré dans le menu de démarrage spécial, exécutez l'option *(1) démarrage normal*
++
+
+NOTE: Il se peut que vous rencontriez une erreur à ce stade. Si une erreur se produit, répétez les sous-étapes de la section <<auto_check_4_step22,Étape 22>> jusqu'à ce que le système démarre normalement.
 
 
-. [[auto_check_4_step23]]si vous effectuez une mise à niveau d'un système à disques externes vers un système qui prend en charge des disques internes et externes (systèmes AFF A800, par exemple), définissez l'agrégat node2 comme agrégat racine afin de garantir quatre initialisation à partir de l'agrégat racine du nœud 2. Pour définir l'agrégat root, aller au menu de boot et faire une sélection `5` pour passer en mode maintenance.
+
+
+
+. [[auto_check_4_step23]]] si vous effectuez une mise à niveau d'un système avec des disques externes vers un système qui prend en charge des disques internes et externes (systèmes AFF A800, par exemple), définissez l'agrégat node2 comme agrégat racine afin de vous assurer que les quatre initialisation à partir de l'agrégat racine du noeud 2. Pour définir l'agrégat root, aller au menu de boot et faire une sélection `5` pour passer en mode maintenance.
 +
 
 WARNING: *Vous devez exécuter les sous-étapes suivantes dans l'ordre exact indiqué ; le non-respect de cette consigne peut entraîner une panne ou même une perte de données.*

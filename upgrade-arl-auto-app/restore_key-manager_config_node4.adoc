@@ -14,15 +14,31 @@ summary: 'Si nécessaire, restaurez la configuration du gestionnaire de clés su
 
 
 [role="lead"]
-Si vous utilisez NetApp Aggregate Encryption (NAE) ou NetApp Volume Encryption (NVE) pour chiffrer des volumes sur le système que vous mettez à niveau, la configuration de chiffrement doit être synchronisée avec les nouveaux nœuds. Si vous ne restaurez pas le gestionnaire de clés, lorsque vous transférez les agrégats du nœud 2 vers le nœud 4 à l'aide du transfert d'agrégats (ARL), les volumes chiffrés sont mis hors ligne.
+Si vous utilisez NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE) pour le chiffrement des volumes sur le système que vous mettez à niveau, la configuration de chiffrement doit être synchronisée avec les nouveaux nœuds. Si vous ne synchronisez pas le gestionnaire de clés, lorsque vous transférez les agrégats du nœud 2 depuis le nœud 3 vers le nœud 4 à l'aide du transfert d'agrégats, des défaillances peuvent survenir, car le nœud 4 ne dispose pas des clés de cryptage requises pour mettre en ligne les volumes et les agrégats chiffrés.
 
 .Description de la tâche
 Synchronisez la configuration de cryptage avec les nouveaux nœuds en effectuant les étapes suivantes :
 
 .Étapes
-. Synchronisez la configuration de chiffrement pour Onboard Key Manager (OKM) en utilisant la commande suivante à l'invite du cluster :
+. Exécutez la commande suivante depuis le nœud 4 :
 +
 `security key-manager onboard sync`
 
-. Saisissez la phrase secrète pour l'ensemble du cluster pour le OKM.
+. Vérifier que la clé SVM-KEK est restaurée sur « true » sur le nœud4 avant de transférer les agrégats de données :
++
+[listing]
+----
+::> security key-manager key query -node node4 -fields restored -key-type SVM-KEK
+----
++
+.Exemple
+[listing]
+----
+::> security key-manager key query -node node4 -fields restored -key-type SVM-KEK
+
+node     vserver   key-server   key-id                                  restored
+-------- --------- -----------  --------------------------------------- --------
+node4    svm1      ""           00000000000000000200000000000a008a81976 true
+                                2190178f9350e071fbb90f00000000000000000
+----
 
