@@ -19,7 +19,7 @@ Vous découvrirez comment mettre à niveau les contrôleurs de stockage d'une pa
 Utiliser cette procédure dans les cas suivants :
 
 * Vous avez vérifié auprès de votre ingénieur commercial NetApp que vous avez reçu le contrôleur AFF A900 ou FAS9500, ainsi que les modules NVRAM et les pièces nécessaires à la mise à niveau.
-* Vous exécutez ONTAP 9.11.1P6 ou 9.10.1P10 (à partir de février 2023).
+* Vous exécutez ONTAP 9.10.1P10, 9.11.1P6 ou une version ultérieure.
 * Vous ne souhaitez pas ajouter de nouveaux contrôleurs et migrer les données en utilisant les déplacements de volumes pour une nouvelle paire haute disponibilité vers le cluster.
 * Vous avez de l'expérience dans l'administration de ONTAP et vous êtes à l'aise avec les risques de travailler en mode de privilèges de diagnostic.
 
