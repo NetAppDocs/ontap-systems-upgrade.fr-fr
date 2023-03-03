@@ -125,8 +125,7 @@ Depuis le port série connecté à chaque nœud, exécutez et enregistrez les va
 ** `storage encryption disk show`
 
 
-
-
++
 
 NOTE: Si NetApp Volume Encryption (NVE) ou NetApp Aggregate Encryption (NAE) utilise le gestionnaire de clés intégré, conservez la phrase secrète du gestionnaire de clés pour terminer la resynchronisation du gestionnaire de clés plus tard dans la procédure.
 
@@ -139,9 +138,9 @@ NOTE: Si NetApp Volume Encryption (NVE) ou NetApp Aggregate Encryption (NAE) uti
 
 [NOTE]
 ====
-** Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur le même nœud ou la même paire HA.
-** Vous pouvez utiliser les disques SED avec des disques sans cryptage sur le même nœud ou une paire haute disponibilité.
+Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur le même nœud ou la même paire HA.
 
+Vous pouvez utiliser les disques SED avec des disques sans cryptage sur le même nœud ou une paire haute disponibilité.
 
 ====
 https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryption-concept.html#supported-self-encrypting-drive-types["En savoir plus sur les disques à autochiffrement pris en charge"^].
