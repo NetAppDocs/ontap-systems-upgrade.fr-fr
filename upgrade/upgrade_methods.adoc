@@ -16,7 +16,7 @@ De manière générale, la mise à niveau du matériel du contrôleur dépend de
 image::../upgrade/media/methods_for_upgrading_controller_hardware.png[Méthodes de mise à niveau du matériel du contrôleur]
 
 
-NOTE: Les modèles avec disques internes sont les suivants : FAS2520, FAS2552, FAS2554, FAS2620, FAS2650 ou FAS2720, FAS2750, AFF A200, AFF A220, AFF A700S, AFF A800, AFF A250.
+NOTE: Modèles avec disques internes : FAS2520, FAS2552, FAS2554, FAS2620, FAS2650, FAS2720, FAS2750, AFF A200, AFF A220, AFF A700s, AFF A800, AFF A250 et AFF C250.
 
 Si votre système n'est pas répertorié ci-dessus, reportez-vous à la section https://hwu.netapp.com["NetApp Hardware Universe"^] pour vérifier s'il dispose de disques internes.
 

@@ -55,6 +55,6 @@ NOTE: Il n'est pas nécessaire d'extraire le contenu du `<ontap_version>_image.t
 
 |===
 +
-Vous utiliserez les informations dans les répertoires de link:stage_3_install_boot_node3_overview.html["Étape 3"].
+Vous utiliserez les informations dans les répertoires de link:install_boot_node3.html["Étape 3"].
 
 

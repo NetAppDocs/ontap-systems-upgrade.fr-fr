@@ -12,7 +12,7 @@ Si vous installez physiquement les nœuds 3 et 4e dans la procédure, vous devre
 .Description de la tâche
 Vous devez netboot les nouveaux contrôleurs si la même version de ONTAP 9 est installée sur les contrôleurs d'origine. Après avoir installé chaque nouveau contrôleur, vous démarrez le système à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système.
 
-Toutefois, vous n'avez pas besoin d'effectuer le démarrage sur les contrôleurs si la même version de ONTAP 9 est installée sur les contrôleurs d'origine. Si c'est le cas, vous pouvez ignorer cette section et passer à link:stage_3_install_boot_node3.html["Etape 3 : installation et démarrage du node3"].
+Toutefois, vous n'avez pas besoin d'effectuer le démarrage sur les contrôleurs si la même version de ONTAP 9 est installée sur les contrôleurs d'origine. Si c'est le cas, vous pouvez ignorer cette section et passer à link:install_boot_node3.html["Etape 3 : installation et démarrage du node3"].
 
 .Étapes
 . [[man_netboot_Step1]]accédez au site de support NetApp pour télécharger les fichiers utilisés pour effectuer le démarrage sur le réseau du système.
@@ -41,6 +41,6 @@ Votre liste de répertoires doit contenir un dossier netboot avec un fichier du 
 | Tous les autres systèmes | Votre liste de répertoires doit contenir le fichier suivant : `<ontap_version>_image.tgz`REMARQUE : il n'est pas nécessaire d'extraire le contenu du `<ontap_version>_image.tgz` fichier. 
 |===
 +
-Vous utiliserez les informations dans les répertoires de link:stage_3_install_boot_node3.html["Étape 3"].
+Vous utiliserez les informations dans les répertoires de link:stage_3_index.html["Étape 3"].
 
 

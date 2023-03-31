@@ -49,7 +49,7 @@ Pour connaître les exigences relatives à la taille de l'agrégat racine, consu
 Aux systèmes de stockage interne
 
 
-NOTE: Les systèmes suivants disposent d'un stockage interne : FAS2520, FAS2552, FAS2554, FAS2620, FAS2650 ou FAS2720, FAS2750, AFF A200, AFF A220, AFF A700S, AFF A800, AFF A250 ET AFF C190.
+NOTE: Les systèmes suivants disposent d'un stockage interne : FAS2520, FAS2552, FAS2554, FAS2620, FAS2650 FAS2720, FAS2750, AFF A200, AFF A220, AFF A700s, AFF A800, AFF A250, AFF C250 et AFF C190.
 
 * Si votre système n'est pas répertorié ci-dessus, reportez-vous à la section https://hwu.netapp.com["NetApp Hardware Universe"^] pour vérifier s'il dispose de disques internes.
 * Si vous disposez d'un système avec stockage interne, la méthode de mise à niveau recommandée est la mise à niveau en déplaçant des volumes.
@@ -79,7 +79,7 @@ https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FlexPod_wi
 
 * Si votre système utilise une configuration ACP hors bande, il vous faudra peut-être migrer d'une configuration ACP hors bande vers un ACP intrabande.
 +
-https://kb.netapp.com/app/answers/answer_view/a_id/1029778["Article 1029778 de la base de connaissances NetApp : configuration ACP intrabande et support"^]
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/In-Band_ACP_Setup_and_Support["Article de la base de connaissances NetApp : configuration et support ACP intrabande"^]
 
 
 
