@@ -41,7 +41,7 @@ entries:
       au nœud1 vers le nœud2
     url: "/upgrade-arl-auto-app/relocate_non_root_aggr_nas_data_lifs_node1_node2.html"
   - title: Le transfert d'agrégats a échoué ou a été veto
-    url: "/upgrade-arl-auto-app/relocate_failed_vetoed_aggr.html"
+    url: "/upgrade-arl-auto-app/relocate_failed_or_vetoed_aggr.html"
   - title: Retirer le nœud 1
     url: "/upgrade-arl-auto-app/retire_node1.html"
   - title: Préparation à la mise sur le réseau
