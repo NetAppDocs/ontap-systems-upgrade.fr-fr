@@ -25,13 +25,13 @@ Toutefois, vous n'avez pas besoin de netboot sur les nœuds 3 si les versions de
 ====
 Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<man_install3_step1,Étape 1>> à <<man_install3_step5,Étape 5>>, laissez cette section à <<man_install3_step6,Étape 6>> et suivez les instructions de la section link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] si nécessaire, la saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <<man_install3_step7,Étape 7>>.
 
-Cependant, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière et passer à link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"], saisie de commandes à l'invite du cluster.
+Toutefois, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière, puis passer à link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"], saisie de commandes à l'invite du cluster.
 
 ====
 .Étapes
 . [[man_install3_step1]]Assurez-vous que vous disposez d'un espace rack pour node3.
 +
-Si les nœuds 1 et 2 se trouvent dans un châssis distinct, vous pouvez placer le nœud 3 au même emplacement de rack que le nœud 1. Toutefois, si le nœud 1 se trouvait dans le même châssis avec le nœud 2, il faut placer le nœud 3 dans son propre espace rack, de préférence à proximité de l'emplacement du nœud 1.
+Si les nœuds 1 et 2 se trouvent dans un châssis distinct, vous pouvez placer le nœud 3 au même emplacement de rack que le nœud 1. Cependant, si le nœud 1 se trouvait dans le même châssis avec le nœud 2, vous devez placer le nœud 3 dans son propre espace rack, de préférence à proximité de l'emplacement du nœud 1.
 
 . [[step2]]installez le noeud 3 dans le rack, en suivant les instructions _installation and Setup_ pour votre modèle de nœud.
 +
@@ -60,7 +60,7 @@ Reliez les connexions suivantes :
 ** Configurations SAN : ports de switch iSCSI Ethernet et FC
 +
 
-NOTE: Il n'est pas nécessaire de déplacer la carte d'interconnexion ou la connexion du câble d'interconnexion de cluster du nœud 1 vers le nœud 3, car la plupart des modèles de plateforme possèdent un modèle de carte d'interconnexion unique. Pour la configuration MetroCluster, vous devez déplacer les connexions des câbles FC-VI du nœud 1 vers le nœud 3. Si le nouvel hôte ne dispose pas de carte FC-VI, il vous faudra peut-être déplacer la carte FC-VI.
+NOTE: Il n'est pas nécessaire de déplacer la carte d'interconnexion ou la connexion du câble d'interconnexion de cluster du nœud 1 vers le nœud 3, car la plupart des modèles de plateforme possèdent un modèle de carte d'interconnexion unique. Pour la configuration MetroCluster, vous devez déplacer les connexions de câble FC-VI du nœud 1 vers le nœud 3. Si le nouvel hôte ne dispose pas de carte FC-VI, il vous faudra peut-être déplacer la carte FC-VI.
 
 
 
@@ -166,33 +166,26 @@ NOTE: Quittez le nœud4 à l'invite de l'environnement de démarrage ; vous reve
 +
 `set-defaults`
 
-. [[man_install3_step16]]définissez l' `bootarg.storageencryption.support` et `kmip.init.maxwait` variables pour éviter une boucle d'amorçage après le chargement de la configuration node1.
+. [[man_install3_step16]]si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
 +
-Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Comment savoir si des lecteurs FIPS sont installés"^] déterminer le type de disques à autocryptage utilisés.
 
+NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] déterminer le type de disques à autocryptage utilisés.
+
++
+.. Réglez `bootarg.storageencryption.support` à `true` ou `false`:
 +
 [cols="35,65"]
 |===
+
+
 | Si les lecteurs suivants sont utilisés… | Puis… 
 
 
-| Les disques NetApp Storage Encryption (NSE) conformes à la norme FIPS 140-2 de niveau 2  a| 
-** `setenv bootarg.storageencryption.support *true*`
-** `setenv kmip.init.maxwait off`
+| Disques NSE conformes aux exigences de chiffrement automatique FIPS 140-2 de niveau 2 | `setenv bootarg.storageencryption.support *true*` 
 
 
-
-
-| NetApp non-SED FIPS  a| 
-** `setenv bootarg.storageencryption.support *false*`
-** `setenv kmip.init.maxwait off`
-
-
+| NetApp non-SED FIPS | `setenv bootarg.storageencryption.support *false*` 
 |===
-+
-
-WARNING: *Dès que la mise à niveau du contrôleur est terminée sur la paire haute disponibilité, vous devez annuler la configuration de `kmip.init.maxwait` variable. Voir link:ensure_controllers_set_up_correctly.html#unset_maxwait_manual["Vérifier que les nouveaux contrôleurs sont correctement configurés, étape 11"]. Le non-respect de cette consigne peut entraîner une perte de données en cas de coupure de courant.*
-
 +
 [NOTE]
 ====
@@ -201,6 +194,12 @@ Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur 
 Vous pouvez utiliser les disques SED avec des disques sans cryptage sur le même nœud ou une paire haute disponibilité.
 
 ====
+.. Accédez au menu de démarrage spécial et sélectionnez option `(10) Set Onboard Key Manager recovery secrets`.
++
+Saisissez la phrase de passe et les informations de sauvegarde que vous avez enregistrées lors de la procédure précédente. Voir link:manage_authentication_okm.html["Gérez les clés d'authentification à l'aide du gestionnaire de clés intégré"].
+
+
+
 . [[man_install3_step17]]] si la version de ONTAP installée sur le noeud 3 est identique ou ultérieure à la version de ONTAP 9 installée sur le noeud 1, répertoriez et réaffectez les disques au nouveau noeud 3 :
 +
 `boot_ontap`

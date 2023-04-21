@@ -103,9 +103,8 @@ entries:
   entries:
   - title: Présentation
     url: "/upgrade-arl-auto/stage_6_index.html"
-  - title: Obtenir l'adresse IP d'un serveur de gestion externe des clés pour Storage
-      Encryption
-    url: "/upgrade-arl-auto/get_ip_address_of_external_kms_for_storage_encryption.html"
+  - title: Gérez l'authentification à l'aide de serveurs KMIP
+    url: "/upgrade-arl-auto/manage-authentication-using-kmip-servers.html"
   - title: Vérifiez que les nouveaux contrôleurs sont correctement configurés
     url: "/upgrade-arl-auto/ensure_new_controllers_are_set_up_correctly.html"
   - title: Configurez Storage Encryption sur le nouveau module de contrôleur

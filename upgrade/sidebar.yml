@@ -83,3 +83,22 @@ entries:
     url: "/upgrade/upgrade-unjoin-original-nodes-move-volumes.html"
   - title: Mise à niveau terminée
     url: "/upgrade/upgrade-complete-move-volumes.html"
+- title: Mise à niveau de AFF A250 vers AFF A400 en convertissant en tiroir disque
+  entries:
+  - title: Flux de travail
+    url: "/upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html"
+  - title: Migration des LIF et des agrégats de données du nœud 2 vers le nœud 1
+    url: "/upgrade/upgrade_migrate_lifs_aggregates_node2_to_node1.html"
+  - title: Convertissez le nœud 2 en tiroir disque et connectez-vous au nœud 4
+    url: "/upgrade/upgrade_convert_node2_drive_shelf_connect_node4.html"
+  - title: Réaffectez des lecteurs du nœud 2 au nœud 4
+    url: "/upgrade/upgrade_reassign_drives_node2_to_node4.html"
+  - title: Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le nœud
+      4
+    url: "/upgrade/upgrade_migrate_aggregates_epsilon_lifs_node1_to_node4.html"
+  - title: Convertissez le nœud 1 en tiroir disque et connectez-vous au nœud 3
+    url: "/upgrade/upgrade_convert_node1_drive_shelf_connect_node3.html"
+  - title: Réaffectez des lecteurs du nœud 1 au nœud 3
+    url: "/upgrade/upgrade_reassign_drives_node1_to_node3.html"
+  - title: Migration des LIF et des agrégats de données du nœud 4 vers le nœud 3
+    url: "/upgrade/upgrade_migrate_lIFs_aggregates_node4_node3.html"

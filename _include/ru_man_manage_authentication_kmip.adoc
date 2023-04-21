@@ -21,12 +21,4 @@ Avec ONTAP 9.5 et les versions ultérieures, vous pouvez utiliser des serveurs K
 +
 `security key-manager restore -node _new_controller_name_`
 
-. ReKey tous les disques avec autocryptage à l'aide de la nouvelle clé d'authentification :
-+
-`storage encryption disk modify -disk * [-data-key-id nonMSID AK]`
-
-. Si vous utilisez la norme FIPS (Federal information Processing Standard), ressaisissez tous les disques auto-cryptés à l'aide de la nouvelle clé d'authentification :
-+
-`storage encryption disk* modify -disk * [-fips-key-id nonMSID AK]`
-
 

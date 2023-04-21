@@ -19,12 +19,12 @@ Vous devez installer NODE4 dans le rack, transférer les connexions node2 vers n
 .Description de la tâche
 Vous devez netboot Node4 si cette version de ONTAP 9 n'est pas installée sur le nœud 2. Une fois le noeud 4 installé, démarrez-le à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système en suivant les instructions de la section link:prepare_for_netboot.html["Préparation à la mise sur le réseau"]
 
-Toutefois, vous n'avez pas besoin de netboot Node4 si vous disposez de la même version ou ultérieure de Data ONTAP 9 et que vous êtes installé sur le nœud 2.
+Cependant, vous n'êtes pas obligé de netboot node4 s'il possède la même version ou une version ultérieure de ONTAP 9 installée sur le node2.
 
 *Information importante:*
 
 * Si vous mettez à niveau un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<man_install4_Step1,Étape 1>> à <<man_install4_Step7,Étape 7>>, laissez cette section à <<man_install4_Step8,Étape 8>> et suivez les instructions de la section link:set_fc_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] Si nécessaire, saisir les commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre la procédure à <<man_install4_Step9,Étape 9>>.
-* Toutefois, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière, puis passer à la section link:set_fc_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"], saisie de commandes à l'invite du cluster.
+* Toutefois, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière et passer à la section link:set_fc_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"], saisie de commandes à l'invite du cluster.
 
 
 .Étapes
@@ -122,7 +122,7 @@ WARNING: *Avertissement : ne pas annuler le délai. Si la batterie n'est pas cha
 
 
 
-IMPORTANT: Vous devez reconfigurer les ports intégrés FC, les ports intégrés UTA/UTA2 et les cartes UTA/UTA2 avant de démarrer Data ONTAP sur le système V-Series.
+IMPORTANT: Vous devez reconfigurer les ports intégrés FC, les ports intégrés UTA/UTA2 et les cartes UTA/UTA2 avant de démarrer ONTAP sur le système V-Series.
 
 |===
 . [[man_install4_Step9]]Ajouter les ports d'initiateur FC du nouveau nœud aux zones de commutation.
@@ -157,33 +157,26 @@ Le système s'arrête à l'invite de l'environnement d'amorçage.
 +
 `set-defaults`
 
-. Réglez le `bootarg.storageencryption.support` et `kmip.init.maxwait` variables pour éviter une boucle d'amorçage après le chargement de la configuration node2.
+. Si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
 +
-Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Comment savoir si des lecteurs FIPS sont installés"^] déterminer le type de disques à autocryptage utilisés.
 
+NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] déterminer le type de disques à autocryptage utilisés.
+
++
+.. Réglez `bootarg.storageencryption.support` à `true` ou `false`:
 +
 [cols="35,65"]
 |===
+
+
 | Si les lecteurs suivants sont utilisés… | Puis… 
 
 
-| Les disques NetApp Storage Encryption (NSE) conformes à la norme FIPS 140-2 de niveau 2  a| 
-** `setenv bootarg.storageencryption.support *true*`
-** `setenv kmip.init.maxwait off`
+| Disques NSE conformes aux exigences de chiffrement automatique FIPS 140-2 de niveau 2 | `setenv bootarg.storageencryption.support *true*` 
 
 
-
-
-| NetApp non-SED FIPS  a| 
-** `setenv bootarg.storageencryption.support *false*`
-** `setenv kmip.init.maxwait off`
-
-
+| NetApp non-SED FIPS | `setenv bootarg.storageencryption.support *false*` 
 |===
-+
-
-WARNING: *Dès que la mise à niveau du contrôleur est terminée sur la paire haute disponibilité, vous devez annuler la configuration de `kmip.init.maxwait` variable. Voir link:ensure_controllers_set_up_correctly.html#unset_maxwait_manual["Vérifier que les nouveaux contrôleurs sont correctement configurés, étape 11"]. Le non-respect de cette consigne peut entraîner une perte de données en cas de coupure de courant.*
-
 +
 [NOTE]
 ====
@@ -192,6 +185,12 @@ Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur 
 Vous pouvez utiliser les disques SED avec des disques sans cryptage sur le même nœud ou une paire haute disponibilité.
 
 ====
+.. Accédez au menu de démarrage spécial et sélectionnez option `(10) Set Onboard Key Manager recovery secrets`.
++
+Saisissez la phrase de passe et les informations de sauvegarde que vous avez enregistrées lors de la procédure précédente. Voir link:manage_authentication_okm.html["Gérez les clés d'authentification à l'aide du gestionnaire de clés intégré"].
+
+
+
 . Si la version de ONTAP installée sur le nœud 4 est identique ou ultérieure à celle de ONTAP 9 installée sur le nœud 2, entrez la commande suivante :
 +
 `boot_ontap menu`

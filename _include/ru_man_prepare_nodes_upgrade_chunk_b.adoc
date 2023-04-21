@@ -341,19 +341,14 @@ node2            enable    Postmaster    -                 mailhost
 
 
 | A activé AutoSupport...  a| 
-... Accédez à <<man_prepare_nodes_step34,Étape 34>>.
-... Accédez à la section link:get_address_key_management_server_encryption.html["Obtenir l'adresse IP d'un serveur de gestion externe des clés pour Storage Encryption"].
-
+Accédez à <<man_prepare_nodes_step34,Étape 34>>.
 
 
 
 | AutoSupport n'est pas activé...  a| 
-... Activez AutoSupport en suivant les instructions de la _System Administration Reference_. (Voir link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.)
-+
-*Remarque :* AutoSupport est activé par défaut lorsque vous configurez votre système de stockage pour la première fois. Bien que vous puissiez désactiver AutoSupport à tout moment, vous devez le laisser activé. L'activation d'AutoSupport peut considérablement aider à identifier les problèmes et les solutions qui pourraient survenir sur votre système de stockage.
+Activez AutoSupport en suivant les instructions de la _System Administration Reference_. (Voir link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.)
 
-... Accédez au link:get_address_key_management_server_encryption.html["Obtenir l'adresse IP d'un serveur de gestion externe des clés pour Storage Encryption"] section.
-
++ *Remarque :* AutoSupport est activé par défaut lorsque vous configurez votre système de stockage pour la première fois. Bien que vous puissiez désactiver AutoSupport à tout moment, vous devez le laisser activé. L'activation d'AutoSupport peut considérablement aider à identifier les problèmes et les solutions qui pourraient survenir sur votre système de stockage.
 
 |===
 .. [[man_prepare_nodes_step34]]Vérifiez que AutoSupport est configuré avec les informations de l'hôte de courrier et les ID de courrier électronique de destinataire en entrant la commande suivante sur les deux nœuds d'origine et en examinant la sortie :
@@ -378,7 +373,7 @@ NOTE: N'envoyez pas de message AutoSupport à NetApp pour le noeud 2 à ce stade
 +
 Les champs `Last Subject Sent:` et `Last Time Sent:` contient le titre du message du dernier message envoyé et l'heure à laquelle le message a été envoyé.
 
-.. Si votre système utilise des lecteurs auto-cryptés, consultez l'article de la base de connaissances https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Comment savoir si des lecteurs FIPS sont installés"^] Pour déterminer le type de disques à autocryptage utilisés sur la paire haute disponibilité que vous mettez à niveau. Le logiciel ONTAP prend en charge deux types de disques avec autocryptage :
+.. Si votre système utilise des lecteurs auto-cryptés, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] Pour déterminer le type de disques à autocryptage utilisés sur la paire haute disponibilité que vous mettez à niveau. Le logiciel ONTAP prend en charge deux types de disques avec autocryptage :
 +
 --
 *** Disques SAS ou NVMe NetApp Storage Encryption (NSE) certifiés FIPS

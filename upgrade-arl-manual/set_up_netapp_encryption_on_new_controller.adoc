@@ -66,6 +66,9 @@ Vous devez installer les mêmes serveurs de gestion des clés que ceux installé
 +
 Cette commande nécessite la phrase secrète Onboard Key Manager (OKM)
 
++
+Pour plus d'informations, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/dm/Encryption/How_to_restore_external_key_manager_server_configuration_from_the_ONTAP_boot_menu["Restauration de la configuration du serveur de gestionnaire de clés externe à partir du menu de démarrage ONTAP"^].
+
 ** Restaurer l'authentification pour OKM :
 +
 [cols="35,65"]
@@ -83,6 +86,4 @@ Cette commande nécessite la phrase secrète Onboard Key Manager (OKM)
 
 
 .Une fois que vous avez terminé
-Vérifiez si des volumes ont été mis hors ligne, car les clés d'authentification ne sont pas disponibles ou si les serveurs de gestion des clés externes n'ont pas pu être atteints. Remettre ces volumes en ligne à l'aide de la commande suivante :
-
-`volume online`
+Vérifiez si des volumes ont été mis hors ligne, car les clés d'authentification ne sont pas disponibles ou si les serveurs de gestion des clés externes n'ont pas pu être atteints. Remettre ces volumes en ligne à l'aide du `volume online` commande.

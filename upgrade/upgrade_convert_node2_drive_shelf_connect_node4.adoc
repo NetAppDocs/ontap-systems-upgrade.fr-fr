@@ -1,0 +1,35 @@
+---
+permalink: upgrade/upgrade_convert_node2_drive_shelf_connect_node4.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node2, node4, reassign, drives 
+summary: 'Conversion du nœud 2 (AFF A250) en tiroir disque NS224, puis connexion au nœud 4 (AFF A400)' 
+---
+= Convertissez le nœud 2 en tiroir disque et connectez-vous au nœud 4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Convertissez le nœud 2 AFF A250 en tiroir disque NS224, puis connectez-vous au nœud 4 AFF A400 avant de réaffecter les disques du nœud 2 au nœud 4.
+
+.Étapes
+. Déconnectez tous les câbles réseau du nœud 2.
+. Retirez le nœud 2 du châssis AFF A250.
+. Insérez le module de tiroir NVMe (NSM) dans la baie du node2.
+. Connectez le NSM au nœud 4 en connectant le port e0c 100 GbE du nœud 4 au port e0a de NSM B.
++
+image::../upgrade/media/a400_with_ns224_shelf.PNG[AFF A400 avec un tiroir NS224]
+
+. Connectez le câblage 25 GbE des ports e0c et e0d du nœud 2 à tous les ports intégrés 25 GbE (e0e, e0f, e0g ou e0h) du nœud 4.
++
+
+NOTE: Si les ports intégrés 25 GbE ne sont pas présents sur le nœud 4, vous pouvez utiliser un adaptateur PCIe 25 GbE pour établir la connexion.
+
+. Si le système AFF A400 utilise des ports FC comme ports intégrés, installez un adaptateur Ethernet 25 Gb dans chaque nœud pour la connectivité du cluster pendant la migration :
++
+.. Connectez les câbles des paires haute disponibilité entre les nœuds AFF A400 à l'aide des ports e0a et e0b.
+.. Connectez les câbles du cluster entre les nœuds AFF A400 à l'aide des ports e3a et e3b.
+
+
+

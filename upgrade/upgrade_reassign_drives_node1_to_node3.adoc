@@ -1,0 +1,57 @@
+---
+permalink: upgrade/upgrade_reassign_drives_node1_to_node3.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
+summary: Connectez physiquement le nœud 1 au nœud 3 avant de réaffecter les lecteurs du nœud 1 au nœud 3 
+---
+= Réaffectez des lecteurs du nœud 1 au nœud 3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Après avoir converti le nœud 1 de AFF A250 en tiroir de disque NS224 et connecté au nœud 3 de AFF A400, vous devez réaffecter les disques qui appartenaient auparavant au nœud 1 au nœud 3.
+
+.Étapes
+. À l'invite DU CHARGEUR, démarrez le nœud 3 en mode maintenance :
++
+`boot_ontap maint`
+
+. Afficher l'état des interfaces 100 GbE :
++
+`storage port show`
+
+. Configurez les interfaces 100 GbE sur les ports de stockage :
++
+`storage port modify -p e0c -m storage`
+
++
+`storage port modify -p e0d -m storage`
+
+. Vérifiez que le mode change pour les interfaces 100 GbE :
++
+`storage port show`
+
+. Afficher tous les disques connectés :
++
+`disk show -v`
+
+. Notez l'ID du système local.
+. Réaffectez tous les disques du nœud 1 au nœud 3 :
++
+`disk reassign -s _node1_ -d _node3_ -p _node2_`
+
+. Vérifiez que tous les disques réaffectés sont visibles pour le nouvel ID système :
++
+`disk show -s _node3 system ID_`
+
++
+
+NOTE: Si les lecteurs ne sont pas visibles, *STOP* et contactez le support technique pour obtenir de l'aide.
+
+. Quitter le mode Maintenance :
++
+`halt`
+
+

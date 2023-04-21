@@ -1,0 +1,103 @@
+---
+permalink: upgrade/upgrade_migrate_aggregates_epsilon_lifs_node1_to_node4.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node1, node4, migrate, aggregates, lifs 
+summary: Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le nœud 4. 
+---
+= Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le nœud 4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant de convertir le nœud AFF A250 1 en tiroir disque, vous migrez les agrégats de données, epsilon et les interfaces logiques (LIF) du nœud 1 vers AFF A400 node 4.
+
+.Étapes
+. À l'invite DU CHARGEUR pour le nœud, démarrez le nœud dans le menu de démarrage :
++
+`boot_ontap menu`
+
+. Sélectionnez option `6 Update flash from backup config` pour restaurer le système de fichiers /var sur node4.
++
+Cette opération remplace toute configuration Flash par la dernière sauvegarde sur disque.
+
+. Entrez `y` pour continuer.
++
+[NOTE]
+====
+Comme prévu, le nœud redémarre automatiquement pour charger la nouvelle copie du système de fichiers /var.
+
+Le nœud signale un avertissement de non-concordance d'ID système. Entrez `y` Pour remplacer l'ID système.
+
+====
+. Migrer les LIFs du cluster :
++
+`set -privilege advanced`
+
++
+`network port show`
+
++
+[NOTE]
+====
+Si les ports du cluster système ne sont pas similaires lors de la mise à niveau d'un système AFF A250 vers un système AFF A400, vous devrez peut-être modifier temporairement les interfaces du nœud 4 en ports de cluster :
+
+.. `network port modify -node _node4_ -port _port_name_ -mtu 9000 -ipspace Cluster`
+.. `network interface migrate -vserver Cluster -lif _cluster_LIF_  -destination-node _node4_ -destination-port _port_name_`
+
+
+====
+. Migrer les agrégats de données du nœud 1 vers le nœud 4 :
++
+`storage aggregate relocation start -aggregate-list _aggregate_list_name_ -node _node1_ -destination _node4_ -ndo-controller-upgrade true -override-destination-checks true`
+
+. Afficher l'état de tous les agrégats de données du cluster :
++
+`storage aggregate show`
+
+. Migrez l'epsilon en le supprimant si du nœud 1, et en le déplaçant vers le nœud 4.
++
+.. Supprimer epsilon du nœud 1 :
++
+`cluster modify -epsilon false -node _local_node_name_`
+
+.. Déplacer epsilon vers NODE4 :
++
+`cluster modify -epsilon true -node _partner_node_name_`
+
+
+
+. Afficher l'état du cluster :
++
+`cluster show`
+
+. Afficher toutes les LIFs du réseau de données :
++
+`network interface show -role data`
+
+. Migrer toutes les LIF de données vers le nœud 4 :
++
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_`
+
+. Afficher le statut de toutes les LIFs data dans le cluster :
++
+`network interface show -role data`
+
+. Si l'un des LIFs est arrêté, définissez le statut administratif des LIFs sur `up` En saisissant la commande suivante, une fois pour chaque LIF :
++
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-node _node_name_ -status-admin up`
+
+. Migrer la LIF cluster management :
++
+`network interface migrate -vserver _vserver_name_ -lif cluster_mgmt -destination-node _node4_ -destination-port _port_name_`
+
+. Afficher le statut de la LIF cluster management :
++
+`network interface show cluster_mgmt`
+
+. Arrêt du nœud 1 :
++
+`halt -node _node1_ -inhibit-takeover true -ignore-quorum-warnings true`
+
+

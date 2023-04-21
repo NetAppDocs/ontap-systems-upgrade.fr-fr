@@ -1,0 +1,134 @@
+---
+permalink: upgrade/upgrade_migrate_lIFs_aggregates_node4_node3.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node3, node4, migrate, aggregates, lif 
+summary: Préparez le nœud 3, connectez le nœud 3 au nœud 4, puis migrez les LIF de données et les agrégats de données du nœud 4 vers le nœud 3. 
+---
+= Migration des LIF et des agrégats de données du nœud 4 vers le nœud 3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour terminer la mise à niveau, vous connectez le nœud 3 au nœud 4, puis vous migrez les interfaces logiques des données (LIF) et les agrégats de données du nœud 4 vers le nœud 3.
+
+.Étapes
+. À l'invite DU CHARGEUR du nœud, démarrez le nœud dans le menu de démarrage :
++
+`boot_ontap menu`
+
+. Sélectionnez option `6 Update flash from backup config` pour restaurer le système de fichiers /var sur le node3.
++
+Cette opération remplace toute configuration Flash par la dernière sauvegarde sur disque.
+
+. Entrez `y` pour continuer.
+. Laissez le nœud démarrer normalement.
++
+[NOTE]
+====
+Comme prévu, le nœud redémarre automatiquement pour charger la nouvelle copie du système de fichiers /var.
+
+Le nœud signale un avertissement de non-concordance de l'ID système. Entrez `y` Pour remplacer l'ID système.
+
+====
+. Connectez le nœud 3 au nœud 4 :
++
+.. Connectez des câbles MPHA (haute disponibilité multivoie) au tiroir NS224 pour assurer la redondance.
+.. Connectez les câbles des paires haute disponibilité (s'il existe des interfaces distinctes) entre les nœuds.
+.. Connectez les câbles du cluster (s'il existe des interfaces distinctes) entre les nœuds.
+
+
+. Migrer les LIFs du cluster :
++
+`set -privilege advanced`
+
++
+`network port show`
+
+. Modifier le broadcast domain de cluster pour inclure les ports de cluster souhaités :
++
+`network port broadcast-domain remove-ports -broadcast-domain _broadcast_domain_name_ -ports _port_names_`
+
++
+`network port broadcast-domain add-ports -broadcast-domain Cluster -ports _port_names_`
+
++
+
+NOTE: À partir de ONTAP 9.8, les nouveaux IPspaces et un ou plusieurs domaines de diffusion peuvent être désignés sur des ports physiques existants destinés à la connectivité du cluster.
+
+. Modifier le cluster IPspace pour inclure les ports de cluster souhaités et définir l'unité de transmission maximale sur 9000 si ce n'est pas déjà fait :
++
+`network port modify -node _node_name_ -port _port_name_ -mtu 9000 -ipspace Cluster`
+
+. Afficher toutes les LIFs cluster network :
++
+`network interface show -role cluster`
+
+. Migrer toutes les LIFs cluster network vers les ports home :
++
+`network interface show -role cluster`
+
+. Afficher toutes les LIFs du réseau de données :
++
+`network interface show -role data`
+
+. Migration de toutes les LIF de données vers le nœud 3 :
++
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_`
+
+. Afficher toutes les LIFs du réseau de données :
++
+`network interface show -role data`
+
++
+La LIF de cluster et de gestion ne peut pas migrer entre des nœuds. Si l'un des LIFs est arrêté, définissez le statut administratif des LIFs sur `up` En saisissant la commande suivante, une fois pour chaque LIF :
+
++
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-node _node_name_ -status-admin up`
+
+. Migrer la LIF cluster management :
++
+`network interface migrate -vserver _vserver_name_ -lif cluster_mgmt -destination-node _node3_ -destination-port _port_name_`
+
+. Afficher le statut de la LIF cluster management :
++
+`network interface show cluster_mgmt`
+
+. Afficher l'état de tous les agrégats de données du cluster :
++
+`storage aggregate show`
+
+. Activer la paire HA, le basculement du stockage et l'auto-giveback :
++
+`cluster ha modify -configured true`
+
+. Migration des agrégats de données détenus par le nœud 4 vers le nœud 3 :
++
+`storage aggregate relocation start -aggregate _aggregate_name_ -node _node4_ -destination _node3_`
+
+. Afficher l'état de tous les agrégats de données du cluster :
++
+`storage aggregate show`
+
+. Activer la restauration automatique des LIFs réseau sur les nœuds :
++
+`network interface modify -lif * -auto-revert true`
+
+. Afficher l'état du cluster :
++
+`cluster show`
+
+. Afficher l'éligibilité au basculement :
++
+`storage failover show`
+
++
+
+NOTE: Dans le résultat du rapport de cluster, un nœud peut détenir de manière incorrecte des agrégats appartenant à un autre nœud. Si cela se produit, effectuez une normalisation en effectuant un basculement et un retour des deux côtés du cluster.
+
+. Afficher l'état de tous les agrégats de données du cluster :
++
+`storage aggregate show`
+
+

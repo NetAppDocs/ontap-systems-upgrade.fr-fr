@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: upgrade-arl-manual/manage_authentication_okm.html 
 keywords: manage, authentication, onboard key manager, okm, key, passphrase, fips 
-summary: 'Utilisez un gestionnaire de clés intégré pour gérer les clés d"authentification lors d"une mise à niveau manuelle du transfert d"agrégats sur des contrôleurs exécutant ONTAP 9.7 ou une version antérieure.' 
+summary: 'Il vous permet de gérer les clés d"authentification lors d"une mise à niveau manuelle d"ARL sur les contrôleurs exécutant ONTAP 9.7 ou une version antérieure.' 
 ---
-= Gérez l'authentification à l'aide d'un gestionnaire de clés intégré
+= Gérez les clés d'authentification à l'aide du gestionnaire de clés intégré
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,19 +14,12 @@ summary: 'Utilisez un gestionnaire de clés intégré pour gérer les clés d"au
 
 
 [role="lead"]
-Vous pouvez utiliser un gestionnaire de clés intégré pour gérer les clés d'authentification. Si vous prévoyez d'utiliser un gestionnaire de clés intégré (OKM), vous devez enregistrer la phrase de passe et les supports de sauvegarde avant de commencer la mise à niveau.
+Vous pouvez utiliser le gestionnaire de clés intégré (OKM) pour gérer les clés d'authentification. Si vous avez configuré le gestionnaire de clés intégré OKM, vous devez enregistrer la phrase de passe et les éléments de sauvegarde avant de commencer la mise à niveau.
 
 .Étapes
-. Vérifiez que les serveurs de gestion des clés sont disponibles pour tous les nœuds du cluster :
+. Notez la phrase de passe à l'échelle du cluster.
 +
-`security key-manager key show`
+Il s'agit de la phrase secrète saisie lorsque le gestionnaire de clés intégré OKM a été configuré ou mis à jour via l'interface de ligne de commandes ou l'API REST.
 
-. ReKey tous les disques avec autocryptage à l'aide de la nouvelle clé d'authentification :
-+
-`storage encryption disk modify -disk * [-data-key-id nonMSID AK>]`
-
-. Si vous utilisez la norme FIPS (Federal information Processing Standard), ressaisissez tous les disques auto-cryptés à l'aide de la nouvelle clé d'authentification :
-+
-`storage encryption disk* modify -disk * [-fips-key-id nonMSID AK]`
-
+. Sauvegardez les informations du gestionnaire de clés en exécutant `security key-manager onboard show-backup` commande.
 

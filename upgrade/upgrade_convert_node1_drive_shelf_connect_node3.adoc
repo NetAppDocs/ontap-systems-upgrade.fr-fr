@@ -1,0 +1,29 @@
+---
+permalink: upgrade/upgrade_convert_node1_drive_shelf_connect_node3.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
+summary: Connectez physiquement le nœud 1 au nœud 3 avant de réaffecter les lecteurs du nœud 1 au nœud 3 
+---
+= Convertissez le nœud 1 en tiroir disque et connectez-vous au nœud 3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Convertissez le nœud 1 AFF A250 en tiroir disque NS224, puis connectez-vous au nœud 3 AFF A400 avant de réaffecter les disques du nœud 1 au nœud 3.
+
+.Étapes
+. Déconnectez tous les câbles réseau du nœud 1.
+. Retirez le nœud 1 du châssis AFF A250.
+. Insérez le module de tiroir NVMe (NSM) dans la baie du nœud 1.
+. Connectez le NSM au nœud 3 en connectant le nœud 3 du port e0c 100 GbE au port NSM A e0a.
++
+image::../upgrade/media/a400_with_ns224_shelf.PNG[AFF A400 avec un tiroir NS224]
+
+. Connectez le câblage 25 GbE des ports e0c et e0d du nœud 1 à tous les ports intégrés 25 GbE (e0e, e0f, e0g ou e0h) du nœud 3.
++
+
+NOTE: Si des ports intégrés 25 GbE ne sont pas présents sur le nœud 3, vous pouvez utiliser un adaptateur PCIe 25 GbE pour établir la connexion.
+
+

@@ -1,0 +1,85 @@
+---
+permalink: upgrade/upgrade_reassign_drives_node2_to_node4.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node2, node4, reassign, drives 
+summary: Connectez physiquement le nœud 2 au nœud 4 avant de réaffecter les lecteurs du nœud 2 au nœud 4. 
+---
+= Réaffectez des lecteurs du nœud 2 au nœud 4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Après avoir converti le nœud AFF A250 2 en tiroir disque NS224 et connecté au nœud AFF A400 4, vous devez réaffecter les disques qui appartenaient auparavant au nœud 2 au nœud 4.
+
+.Avant de commencer
+Vérifiez que les deux nœuds 2 et 4 sont en veille à l'invite DU CHARGEUR.
+
+.Description de la tâche
+Vous effectuez les étapes suivantes sur le node4.
+
+.Étapes
+. À l'invite DU CHARGEUR, démarrez le nœud 4 en mode maintenance :
++
+`boot_ontap maint`
+
+. Afficher l'état des interfaces 100 GbE :
++
+`storage port show`
+
+. Configurez les interfaces 100 GbE sur les ports de stockage :
++
+`storage port modify -p e0c -m storage`
+
++
+`storage port modify -p e0d -m storage`
+
+. Vérifiez que le mode change pour les interfaces 100 GbE :
++
+`storage port show`
+
++
+Les valeurs de sortie suivantes doivent s'afficher :
+
++
+[listing]
+----
+*> storage port modify -p e0c -m storage
+Nov 10 16:27:23 [localhost:nvmeof.port.modify:notice]: Changing NVMe-oF port e0c to storage mode.
+
+Nov 10 16:27:29 [localhost:nvmeof.subsystem.add:notice]: NVMe-oF subsystem added at address fe80::2a0:98ff:fefa:8885.
+
+*> storage port modify -p e0d -m storage
+Nov 10 16:27:34 [localhost:nvmeof.port.modify:notice]: Changing NVMe-oF port e0d to storage mode.
+
+Nov 10 16:27:38 [localhost:nvmeof.subsystem.add:notice]: NVMe-oF subsystem added at address fe80::2a0:98ff:fefa:8886.
+
+*> storage port show
+Port Type Mode    Speed(Gb/s) State    Status  VLAN ID
+---- ---- ------- ----------- -------- ------- -------
+e0c  ENET storage 100 Gb/s    enabled  online  30
+e0d  ENET storage 100 Gb/s    enabled  online  30
+----
+. Afficher tous les disques connectés :
++
+`disk show -v`
+
+. Notez l'ID du système local.
+. Réaffectez tous les disques du nœud 2 au nœud 4 :
++
+`disk reassign -s _node2_ -d _node4_ -p _node1_`
+
+. Vérifiez que tous les disques réaffectés sont visibles pour le nouvel ID système :
++
+`disk show -s _node4_System_ID_`
+
++
+
+NOTE: Si les lecteurs ne sont pas visibles, *STOP* et contactez le support technique pour obtenir de l'aide.
+
+. Quitter le mode maintenance :
++
+`halt`
+
+

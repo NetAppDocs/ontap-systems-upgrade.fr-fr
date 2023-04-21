@@ -167,46 +167,4 @@ Reportez-vous à la documentation relative à votre matrice de stockage et au zo
 L'installation d'un nouveau module de contrôleur modifie les valeurs WWPN associées à chaque port FC intégré.
 
 . [[step26]]si votre configuration utilise un zoning basé sur des commutateurs, ajustez le zoning pour refléter les nouvelles valeurs WWPN.
-. [[step27]]réglez le `bootarg.storageencryption.support` et `kmip.init.maxwait` variables pour éviter une boucle d'amorçage après le chargement de la configuration node1.
-+
-Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Comment savoir si des lecteurs FIPS sont installés"^] déterminer le type de disques à autocryptage utilisés.
-
-+
-[cols="35,65"]
-|===
-| Si les lecteurs suivants sont utilisés… | Puis… 
-
-
-| Les disques NetApp Storage Encryption (NSE) conformes à la norme FIPS 140-2 de niveau 2  a| 
-** `setenv bootarg.storageencryption.support *true*`
-** `setenv kmip.init.maxwait off`
-
-
-
-
-| NetApp non-SED FIPS  a| 
-** `setenv bootarg.storageencryption.support *false*`
-** `setenv kmip.init.maxwait off`
-
-
-|===
-+
-
-WARNING: *Dès que la mise à niveau du contrôleur est terminée sur la paire haute disponibilité, vous devez annuler la configuration de `kmip.init.maxwait` variable. Voir link:ensure_new_controllers_are_set_up_correctly.html#unset_maxwait_system_commands["Vérifier que les nouveaux contrôleurs sont correctement configurés, étape 12"]. Le non-respect de cette consigne peut entraîner une perte de données en cas de coupure de courant.*
-
-+
-[NOTE]
-====
-Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur le même nœud ou la même paire HA.
-
-Vous pouvez utiliser les disques SED avec des disques sans cryptage sur le même nœud ou une paire haute disponibilité.
-
-====
-. [[step28]]nœud d'amorçage dans le menu d'amorçage :
-+
-`boot_ontap menu`
-
-+
-Si vous ne disposez pas de configuration FC ou UTA/UTA2, exécutez l'application link:set_fc_or_uta_uta2_config_on_node3.html#auto9597_check_node3_step15["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3, étape 15"] afin que le nœud3 puisse reconnaître les disques du nœud1.
-
 

@@ -1,0 +1,96 @@
+---
+permalink: upgrade/upgrade_migrate_lifs_aggregates_node2_to_node1.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node1, node2, migrate, aggregates, lifs 
+summary: 'Migrez les interfaces logiques (LIF) et les agrégats de données du nœud 2 vers le nœud 1.' 
+---
+= Migration des LIF et des agrégats de données du nœud 2 vers le nœud 1
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant de convertir le nœud AFF A250 2 en tiroir disque, vous migrez les interfaces logiques (LIF) et les agrégats de données du nœud 2 vers le nœud 1.
+
+.Avant de commencer
+Vérifiez que vous répondez aux exigences suivantes :
+
+* Les contrôleurs AFF A250 et AFF A400 disposent de la même version de correctif et de la même version de ONTAP installée.
+* Les deux contrôleurs AFF A400 sont en veille au niveau du `Maintenance Mode` à l'invite.
+* Vous disposez de tous les câbles appropriés.
+
+
+.Description de la tâche
+Les étapes suivantes sont effectuées sur le nœud AFF A250 1.
+
+.Étapes
+. Désactiver le rétablissement automatique de basculement de cluster :
++
+`storage failover modify -node _node_name_ -auto-giveback false`
+
+. Désactiver la restauration automatique des LIFs sur les deux nœuds de la paire HA :
++
+`network interface modify -lif * -auto-revert false`
+
+. Afficher le statut de toutes les LIFs du réseau de données :
++
+`network interface show -role data`
+
+. Afficher le statut des LIFs cluster management :
++
+`network interface show cluster_mgmt`
+
+. Migrer toutes les LIFs de données à partir des machines virtuelles de stockage hébergées sur le node2 :
++
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_ -destination-port _port_name_`
+
++
+
+NOTE: Cette commande migre uniquement les LIFs non-SAN. Vous ne pouvez pas l'utiliser pour migrer les LIF iSCSI et FCP.
+
+. Afficher le statut de toutes les LIFs data dans le cluster :
++
+`network interface show -role data`
+
+. Si l'un des LIFs est arrêté, définissez le statut administratif des LIFs sur `up` En saisissant la commande suivante, une fois pour chaque LIF :
++
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-node _node_name_ -status-admin up`
+
+. Afficher l'état de tous les agrégats de données du cluster :
++
+`storage aggregate show`
+
+. Afficher l'éligibilité au basculement :
++
+`storage failover show`
+
+. Migrer les agrégats de données du nœud 2 vers le nœud 1 :
++
+`storage aggregate relocation start -aggregate _aggregate_name_ -node _node2_ -destination _node1_`
+
+. Afficher l'état de tous les agrégats de données du cluster :
++
+`storage aggregate show`
+
+. Afficher l'état de tous les volumes de données du cluster :
++
+`volume show`
+
+. Affiche le `ha` statut et propriété d'epsilon :
++
+`cluster show`
+
+. Désactiver `cluster ha`:
++
+`cluster ha modify -configured false`
+
+. Affiche le `ha` statut et propriété d'epsilon :
++
+`cluster show`
+
+. Arrêt du nœud 2 :
++
+`halt -node _node2_ -inhibit-takeover true -ignore-quorum-warnings true`
+
+

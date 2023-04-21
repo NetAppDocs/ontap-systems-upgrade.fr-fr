@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/manage-authentication-using-kmip-servers.html 
+keywords: ip, address, external, key, management, server, storage, encryption, upgrading, authentication 
+summary: 'Configurez et gérez le cryptage du stockage, gérez les clés d"authentification et mettez au repos les relations SnapMirror lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou une version ultérieure à l"aide de `system controller replace` commande.' 
+---
+= Gérez l'authentification à l'aide de serveurs KMIP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avec ONTAP 9.8 ou version ultérieure, vous pouvez utiliser des serveurs KMIP (Key Management Interoperability Protocol) pour gérer les clés d'authentification.
+
+.Étapes
+. Ajout d'un nouveau contrôleur :
++
+`security key-manager external enable`
+
+. Ajouter le gestionnaire de clés :
++
+`security key-manager external add-servers -key-servers _key_management_server_ip_address_`
+
+. Vérifier que les serveurs de gestion des clés sont configurés et disponibles pour tous les nœuds du cluster :
++
+`security key-manager external show-status`
+
+. Restaurez les clés d'authentification de tous les serveurs de gestion de clés liés vers le nouveau nœud :
++
+`security key-manager external restore -node _new_controller_name_`
+
+

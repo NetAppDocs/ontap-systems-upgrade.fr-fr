@@ -14,14 +14,14 @@ summary: 'Configurez et gérez le cryptage du stockage, gérez les clés d"authe
 
 
 [role="lead"]
-Vous pouvez utiliser OKM pour gérer les clés de chiffrement. Si vous prévoyez d'utiliser OKM, vous devez enregistrer la phrase de passe et les supports de sauvegarde avant de commencer la mise à niveau.
+Vous pouvez utiliser le gestionnaire de clés intégré (OKM) pour gérer les clés de chiffrement. Si vous avez configuré le gestionnaire de clés intégré OKM, vous devez enregistrer la phrase de passe et les éléments de sauvegarde avant de commencer la mise à niveau.
 
 .Étapes
-. Enregistrez la phrase de passe dans un emplacement sécurisé.
-. Créer une sauvegarde pour une restauration. Exécutez la commande suivante et enregistrez les valeurs de sortie :
+. Notez la phrase de passe à l'échelle du cluster.
 +
-`security key-manager onboard show-backup`
+Il s'agit de la phrase secrète saisie lorsque le gestionnaire de clés intégré OKM a été configuré ou mis à jour via l'interface de ligne de commandes ou l'API REST.
 
+. Sauvegardez les informations du gestionnaire de clés en exécutant `security key-manager onboard show-backup` commande.
 
 
 

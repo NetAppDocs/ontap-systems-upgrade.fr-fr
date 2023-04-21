@@ -14,7 +14,7 @@ summary: 'Avant de démarrer le système, arrêter toutes les relations SnapMirr
 
 
 [role="lead"]
-Avant de démarrer le système, vous devez confirmer que toutes les relations SnapMirror sont suspendues. Lorsqu'une relation SnapMirror est mise en veille, elle reste suspension sur l'ensemble des redémarrages et basculements.
+Avant de démarrer le système par netboot, vous devez vérifier que toutes les relations SnapMirror sont suspendues. Lorsqu'une relation SnapMirror est mise en veille, elle reste suspension sur l'ensemble des redémarrages et basculements.
 
 .Étapes
 . Vérifier l'état de la relation SnapMirror sur le cluster destination :

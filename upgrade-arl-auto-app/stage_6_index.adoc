@@ -17,7 +17,7 @@ summary: 'Étape 6 : séquence de processus pour la mise à niveau d"ARL à l"ai
 Lors de la phase 6, vous vérifiez que les nouveaux nœuds sont correctement configurés et que, si les nouveaux nœuds sont activés pour le chiffrement, vous configurez et configurez Storage Encryption ou NetApp Volume Encryption. Vous devez également désaffecter les anciens nœuds et reprendre les opérations SnapMirror.
 
 .Étapes
-. link:get_ip_address_of_external_kms_for_storage_encryption.html["Procurez-vous une adresse IP d'un serveur de gestion externe des clés pour le cryptage du stockage"]
+. link:manage-authentication-using-kmip-servers.html["Gérez l'authentification à l'aide de serveurs KMIP"]
 . link:ensure_new_controllers_are_set_up_correctly.html["Vérifiez que les nouveaux contrôleurs sont correctement configurés"]
 . link:set_up_storage_encryption_new_module.html["Configurez Storage Encryption sur le nouveau module de contrôleur"]
 . link:set_up_netapp_volume_encryption_new_module.html["Configurez NetApp Volume Encryption ou Aggregate Encryption sur le nouveau module de contrôleur"]
