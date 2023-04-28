@@ -56,7 +56,7 @@ Vous devez installer les mêmes serveurs de gestion des clés que ceux installé
 | Pour... | Utilisez cette commande... 
 
 
-| Gestionnaire de clés externe (EKM) | `security key-manager external restore`Cette commande a besoin de la phrase de passe OKM 
+| Gestionnaire de clés externe | `security key-manager external restore`Cette commande a besoin de la phrase de passe OKM 
 
 
 | Gestionnaire de clés intégré Onboard Key Manager (OKM) | `security key-manager onboard sync` 

@@ -4,7 +4,7 @@ permalink: upgrade-arl-manual-app/stage_1_index.html
 keywords: stage 1, prepare, upgrade, steps 
 summary: 'Étape 1 : processus de mise à niveau manuelle d"ARL sur les contrôleurs exécutant ONTAP 9.8 ou une version ultérieure' 
 ---
-= Étape 1. Préparation à la mise à niveau
+= Présentation
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

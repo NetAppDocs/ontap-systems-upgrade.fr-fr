@@ -281,16 +281,16 @@ L'installation d'un nouveau module de contrôleur modifie les valeurs WWPN assoc
 . Si votre configuration utilise un zoning basé sur des commutateurs, ajustez le zoning en fonction des nouvelles valeurs WWPN.
 
 
-. Si des disques NetApp Storage Encryption (NSE) sont installés, définissez-les `bootarg.storageencryption.support` à `true` ou `false`.
+. Si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
 +
 
 NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] déterminer le type de disques à autocryptage utilisés.
 
 +
+.. Réglez `bootarg.storageencryption.support` à `true` ou `false`.
++
 [cols="35,65"]
 |===
-
-
 | Si les lecteurs suivants sont utilisés… | Puis… 
 
 
@@ -305,9 +305,11 @@ NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances h
 Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur le même nœud ou la même paire HA. Vous pouvez utiliser les disques SED avec des disques sans cryptage sur le même nœud ou une paire haute disponibilité.
 
 ====
-. Accédez au menu de démarrage spécial et sélectionnez option `(10) Set Onboard Key Manager recovery secrets`.
+.. Accédez au menu de démarrage spécial et sélectionnez option `(10) Set Onboard Key Manager recovery secrets`.
 +
-Saisissez la phrase de passe et les informations de sauvegarde que vous avez enregistrées lors de la procédure précédente. Voir link:manage_storage_encryption_using_okm.html["Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré"]
+Saisissez la phrase de passe et les informations de sauvegarde que vous avez enregistrées lors de la procédure précédente. Voir link:manage_storage_encryption_using_okm.html["Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré"].
+
+
 
 . Nœud de démarrage dans le menu de démarrage :
 +

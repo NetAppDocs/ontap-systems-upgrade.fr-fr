@@ -17,7 +17,7 @@ summary: Démarrez le nœud 1 avec le module de contrôleur AFF A900 et le modul
 Le nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM est maintenant prêt pour le démarrage. Une mise à niveau d'un système AFF A700 vers un système AFF A900 ou FAS9000 vers FAS9500 en remplaçant le contrôleur et les modules NVRAM implique le déplacement uniquement de la console et des connexions de gestion. Cette section décrit les étapes requises pour démarrer le nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM.
 
 .Étapes
-. Si des disques NetApp Storage Encryption sont installés, effectuez les opérations suivantes.
+. Si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
 +
 
 NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] déterminer le type de disques à autocryptage utilisés.
@@ -27,8 +27,6 @@ NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances h
 +
 [cols="35,65"]
 |===
-
-
 | Si les lecteurs suivants sont utilisés… | Puis… 
 
 

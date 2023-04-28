@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto/stage_3_index.html
 keywords: stage 3, install node3, non-SAN data LIFs, non-root aggregates 
 summary: 'Étape 3 : séquence de processus pour la mise à niveau d"ARL à l"aide de `system controller replace` Commandes des contrôleurs exécutant ONTAP 9.5 à 9.7.' 
 ---
-= Étape 3. Installez et démarrez le nœud 3
+= Présentation
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

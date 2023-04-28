@@ -689,7 +689,7 @@ Accédez à <<man_prepare_nodes_step34,Étape 34>>.
 | AutoSupport n'est pas activé...  a| 
 Activez AutoSupport en suivant les instructions de la _System Administration Reference_. (Voir link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.)
 
-+ *Remarque :* AutoSupport est activé par défaut lorsque vous configurez votre système de stockage pour la première fois. Bien que vous puissiez désactiver AutoSupport à tout moment, vous devez le laisser activé. L'activation d'AutoSupport peut considérablement aider à identifier les problèmes et les solutions qui pourraient survenir sur votre système de stockage.
+*Remarque :* AutoSupport est activé par défaut lorsque vous configurez votre système de stockage pour la première fois. Bien que vous puissiez désactiver AutoSupport à tout moment, vous devez le laisser activé. L'activation d'AutoSupport peut considérablement aider à identifier les problèmes et les solutions qui pourraient survenir sur votre système de stockage.
 
 |===
 . [[man_prepare_nodes_step34]]Vérifiez que AutoSupport est configuré avec les informations de l'hôte de courrier et les ID de courrier électronique de destinataire en entrant la commande suivante sur les deux nœuds d'origine et en examinant la sortie :

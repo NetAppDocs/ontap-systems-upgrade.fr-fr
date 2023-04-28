@@ -45,6 +45,8 @@ entries:
   - title: Déterminez si le contrôleur possède des agrégats sur des disques internes
     url: "/upgrade-arl-manual/determine_aggregates_on_internal_drives.html"
   - title: Préparer les nœuds pour une mise à niveau
+    url: "/upgrade-arl-manual/prepare_nodes_for_upgrade.html"
+  - title: Gérez les clés d'authentification à l'aide du gestionnaire de clés intégré
     url: "/upgrade-arl-manual/manage_authentication_okm.html"
   - title: Suspendre les relations SnapMirror
     url: "/upgrade-arl-manual/quiesce_snapmirror_relationships.html"

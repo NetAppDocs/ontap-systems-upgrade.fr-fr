@@ -167,8 +167,6 @@ NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances h
 +
 [cols="35,65"]
 |===
-
-
 | Si les lecteurs suivants sont utilisés… | Puis… 
 
 

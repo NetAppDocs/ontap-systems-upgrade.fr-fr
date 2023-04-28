@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-affa900/stage_2_index.html
 keywords: upgrade, preparing, preparation, prepare, overview, stage 1 
 summary: 'Processus de la phase 2 pour une mise à niveau d"ARL à l"aide de `system controller replace` Commandes sur les contrôleurs exécutant ONTAP 9.8 ou version ultérieure.' 
 ---
-= Étape 2. Transférez des ressources depuis le nœud 1 et retirez le système AFF A700 ou FAS9000 node1
+= Présentation
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

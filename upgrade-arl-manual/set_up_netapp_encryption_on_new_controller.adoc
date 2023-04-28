@@ -59,7 +59,7 @@ Vous devez installer les mêmes serveurs de gestion des clés que ceux installé
 
 . Restaurez les clés d'authentification de tous les serveurs de gestion de clés liés vers le nouveau nœud.
 +
-** Restaurer l'authentification pour External Key Manager (EKD) :
+** Restauration de l'authentification pour le gestionnaire de clés externe :
 +
 `security key-manager external restore`
 

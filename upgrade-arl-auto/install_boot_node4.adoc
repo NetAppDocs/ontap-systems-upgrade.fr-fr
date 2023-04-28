@@ -276,7 +276,7 @@ L'installation d'un nouveau module de contrôleur modifie les valeurs WWPN assoc
 . Si votre configuration utilise un zoning basé sur des commutateurs, ajustez le zoning en fonction des nouvelles valeurs WWPN.
 
 
-. Si des disques NetApp Storage Encryption sont installés, effectuez les opérations suivantes.
+. Si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
 +
 
 NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] déterminer le type de disques à autocryptage utilisés.
@@ -289,7 +289,7 @@ NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances h
 | Si les lecteurs suivants sont utilisés… | Puis… 
 
 
-| Les disques NetApp Storage Encryption (NSE) conformes à la norme FIPS 140-2 de niveau 2 | `setenv bootarg.storageencryption.support *true*` 
+| Disques NSE conformes aux exigences de chiffrement automatique FIPS 140-2 de niveau 2 | `setenv bootarg.storageencryption.support *true*` 
 
 
 | NetApp non-SED FIPS | `setenv bootarg.storageencryption.support *false*` 
