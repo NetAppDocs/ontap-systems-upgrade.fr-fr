@@ -14,7 +14,7 @@ summary: Connectez physiquement le nœud 2 au nœud 4 avant de réaffecter les l
 Après avoir converti le nœud AFF A250 2 en tiroir disque NS224 et connecté au nœud AFF A400 4, vous devez réaffecter les disques qui appartenaient auparavant au nœud 2 au nœud 4.
 
 .Avant de commencer
-Vérifiez que les deux nœuds 2 et 4 sont en veille à l'invite DU CHARGEUR.
+Vérifiez que le nœud 3 et le nœud 4 sont en veille à l'invite DU CHARGEUR.
 
 .Description de la tâche
 Vous effectuez les étapes suivantes sur le node4.
@@ -40,7 +40,7 @@ Vous effectuez les étapes suivantes sur le node4.
 `storage port show`
 
 +
-Les valeurs de sortie suivantes doivent s'afficher :
+Comme dans l'exemple suivant, le résultat doit s'afficher :
 
 +
 [listing]
@@ -59,16 +59,16 @@ Nov 10 16:27:38 [localhost:nvmeof.subsystem.add:notice]: NVMe-oF subsystem added
 Port Type Mode    Speed(Gb/s) State    Status  VLAN ID
 ---- ---- ------- ----------- -------- ------- -------
 e0c  ENET storage 100 Gb/s    enabled  online  30
-e0d  ENET storage 100 Gb/s    enabled  online  30
+e0d  ENET storage 100 Gb/s    enabled  offline 30
 ----
 . Afficher tous les disques connectés :
 +
 `disk show -v`
 
-. Notez l'ID du système local.
+. Notez la valeur de l'ID système local ; il s'agit de l'ID système du nœud 4. Notez également les ID système du nœud 1 et du nœud 2 dans la colonne "PROPRIÉTAIRE".
 . Réaffectez tous les disques du nœud 2 au nœud 4 :
 +
-`disk reassign -s _node2_ -d _node4_ -p _node1_`
+`disk reassign -s _node2_system_ID_ -d _node4_system_ID_ -p _node1_system_ID_`
 
 . Vérifiez que tous les disques réaffectés sont visibles pour le nouvel ID système :
 +
@@ -78,8 +78,15 @@ e0d  ENET storage 100 Gb/s    enabled  online  30
 
 NOTE: Si les lecteurs ne sont pas visibles, *STOP* et contactez le support technique pour obtenir de l'aide.
 
+. Vérifier que l'agrégat racine du node2 est signalé dans le résultat et que l'agrégat est en ligne :
++
+`aggr status`
+
 . Quitter le mode maintenance :
 +
 `halt`
 
 
+
+.Et la suite ?
+link:upgrade_migrate_aggregates_epsilon_lifs_node1_to_node4.html["Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le nœud 4"]

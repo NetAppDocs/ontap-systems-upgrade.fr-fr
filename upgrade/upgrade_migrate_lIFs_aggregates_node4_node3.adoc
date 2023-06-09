@@ -14,7 +14,7 @@ summary: Préparez le nœud 3, connectez le nœud 3 au nœud 4, puis migrez les 
 Pour terminer la mise à niveau, vous connectez le nœud 3 au nœud 4, puis vous migrez les interfaces logiques des données (LIF) et les agrégats de données du nœud 4 vers le nœud 3.
 
 .Étapes
-. À l'invite DU CHARGEUR du nœud, démarrez le nœud dans le menu de démarrage :
+. À l'invite DU CHARGEUR pour le NODE3, démarrez le nœud dans le menu de démarrage :
 +
 `boot_ontap menu`
 
@@ -27,16 +27,16 @@ Cette opération remplace toute configuration Flash par la dernière sauvegarde 
 +
 [NOTE]
 ====
-Comme prévu, le nœud redémarre automatiquement pour charger la nouvelle copie du système de fichiers /var.
+Le nœud redémarre automatiquement pour charger la nouvelle copie du système de fichiers /var.
 
 Le nœud signale un avertissement de non-concordance de l'ID système. Entrez `y` Pour remplacer l'ID système.
 
 ====
 . Connectez le nœud 3 au nœud 4 :
 +
-.. Connectez des câbles MPHA (haute disponibilité multivoie) au tiroir NS224 pour assurer la redondance.
-.. Connectez les câbles des paires haute disponibilité (s'il existe des interfaces distinctes) entre les nœuds.
-.. Connectez les câbles du cluster (s'il existe des interfaces distinctes) entre les nœuds.
+.. Connectez des câbles MPHA (haute disponibilité multivoie) au tiroir NS224 pour assurer la redondance. Connectez le port e0d 100 GbE du nœud 3 au port e0b de NSM et le port e0d du nœud 4 100 GbE au port e0a de NSM.
+.. Vérifiez que les ports HA e0a et e0b sont connectés entre les nœuds.
+.. Vérifiez que les ports de cluster e3a et e3b sont connectés entre les nœuds.
 
 
 . Migrer les LIFs du cluster :
@@ -65,27 +65,29 @@ NOTE: À partir de ONTAP 9.8, les nouveaux IPspaces et un ou plusieurs domaines 
 +
 `network interface show -role cluster`
 
-. Migrer toutes les LIFs cluster network vers les ports home :
+. Migrer toutes les LIFs cluster network sur les deux nœuds vers leurs ports de base :
++
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_ -destination-port _port_name_`
+
+. Afficher toutes les LIFs cluster network :
 +
 `network interface show -role cluster`
 
-. Afficher toutes les LIFs du réseau de données :
+. Vérifier les ports home des LIFs cluster network :
 +
-`network interface show -role data`
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-port _port_name_`
 
 . Migration de toutes les LIF de données vers le nœud 3 :
 +
-`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_`
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_ -destination-port _port_name_`
 
 . Afficher toutes les LIFs du réseau de données :
 +
 `network interface show -role data`
 
+. Configurez le home node et le home port pour toutes les LIFs data. Si l'un des LIFs est arrêté, définissez le statut administratif des LIFs sur `up` En saisissant la commande suivante, une fois pour chaque LIF :
 +
-La LIF de cluster et de gestion ne peut pas migrer entre des nœuds. Si l'un des LIFs est arrêté, définissez le statut administratif des LIFs sur `up` En saisissant la commande suivante, une fois pour chaque LIF :
-
-+
-`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-node _node_name_ -status-admin up`
+`network interface modify -vserver _vserver_name_ -lif lif_name -home-node _node_name_ -home-port _port_name_ -status-admin up`
 
 . Migrer la LIF cluster management :
 +
@@ -114,6 +116,10 @@ La LIF de cluster et de gestion ne peut pas migrer entre des nœuds. Si l'un des
 . Activer la restauration automatique des LIFs réseau sur les nœuds :
 +
 `network interface modify -lif * -auto-revert true`
+
+. Activer le rétablissement automatique du basculement du stockage :
++
+`storage failover modify -node * -auto-giveback true`
 
 . Afficher l'état du cluster :
 +

@@ -16,8 +16,17 @@ Avant de convertir le nœud AFF A250 2 en tiroir disque, vous migrez les interfa
 .Avant de commencer
 Vérifiez que vous répondez aux exigences suivantes :
 
-* Les contrôleurs AFF A250 et AFF A400 disposent de la même version de correctif et de la même version de ONTAP installée.
-* Les deux contrôleurs AFF A400 sont en veille au niveau du `Maintenance Mode` à l'invite.
+* Les contrôleurs AFF A250 et AFF A400 exécutent la même version de correctif et la même version de ONTAP.
++
+[NOTE]
+====
+** Vous devez netboot et installer la version ONTAP sur chaque AFF A400 identique à la version exécutée sur le AFF A250.
+** L'image de démarrage principale et l'image de démarrage de sauvegarde de chaque système AFF A400 doivent avoir la même version de ONTAP.
+** Si les clusters AFF A400 ont déjà été configurés, vous devez effacer toute configuration résiduelle du cluster en effectuant une `wipeconfig` dans le menu de démarrage.
+
+
+====
+* Les deux contrôleurs AFF A400 sont en veille à l'invite DU CHARGEUR.
 * Vous disposez de tous les câbles appropriés.
 
 
@@ -25,9 +34,13 @@ Vérifiez que vous répondez aux exigences suivantes :
 Les étapes suivantes sont effectuées sur le nœud AFF A250 1.
 
 .Étapes
-. Désactiver le rétablissement automatique de basculement de cluster :
+. Accéder au niveau de privilège avancé :
 +
-`storage failover modify -node _node_name_ -auto-giveback false`
+`set -privilege advanced`
+
+. Désactiver le rétablissement automatique du basculement du stockage :
++
+`storage failover modify -node _node1_ -auto-giveback false`
 
 . Désactiver la restauration automatique des LIFs sur les deux nœuds de la paire HA :
 +
@@ -39,11 +52,11 @@ Les étapes suivantes sont effectuées sur le nœud AFF A250 1.
 
 . Afficher le statut des LIFs cluster management :
 +
-`network interface show cluster_mgmt`
+`network interface show -role cluster_mgmt`
 
 . Migrer toutes les LIFs de données à partir des machines virtuelles de stockage hébergées sur le node2 :
 +
-`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_ -destination-port _port_name_`
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node1_ -destination-port _port_name_`
 
 +
 
@@ -55,7 +68,7 @@ NOTE: Cette commande migre uniquement les LIFs non-SAN. Vous ne pouvez pas l'uti
 
 . Si l'un des LIFs est arrêté, définissez le statut administratif des LIFs sur `up` En saisissant la commande suivante, une fois pour chaque LIF :
 +
-`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-node _node_name_ -status-admin up`
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -status-admin up`
 
 . Afficher l'état de tous les agrégats de données du cluster :
 +
@@ -94,3 +107,6 @@ NOTE: Cette commande migre uniquement les LIFs non-SAN. Vous ne pouvez pas l'uti
 `halt -node _node2_ -inhibit-takeover true -ignore-quorum-warnings true`
 
 
+
+.Et la suite ?
+link:upgrade_convert_node2_drive_shelf_connect_node4.html["Convertissez le nœud 2 en tiroir disque et connectez-vous au nœud 4"]

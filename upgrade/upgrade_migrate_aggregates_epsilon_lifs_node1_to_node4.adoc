@@ -14,7 +14,7 @@ summary: Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le
 Avant de convertir le nœud AFF A250 1 en tiroir disque, vous migrez les agrégats de données, epsilon et les interfaces logiques (LIF) du nœud 1 vers AFF A400 node 4.
 
 .Étapes
-. À l'invite DU CHARGEUR pour le nœud, démarrez le nœud dans le menu de démarrage :
+. À l'invite DU CHARGEUR pour le node4, démarrez le nœud dans le menu de démarrage :
 +
 `boot_ontap menu`
 
@@ -26,7 +26,7 @@ Cette opération remplace toute configuration Flash par la dernière sauvegarde 
 +
 [NOTE]
 ====
-Comme prévu, le nœud redémarre automatiquement pour charger la nouvelle copie du système de fichiers /var.
+Le nœud redémarre automatiquement pour charger la nouvelle copie du système de fichiers /var.
 
 Le nœud signale un avertissement de non-concordance d'ID système. Entrez `y` Pour remplacer l'ID système.
 
@@ -43,11 +43,31 @@ Le nœud signale un avertissement de non-concordance d'ID système. Entrez `y` P
 ====
 Si les ports du cluster système ne sont pas similaires lors de la mise à niveau d'un système AFF A250 vers un système AFF A400, vous devrez peut-être modifier temporairement les interfaces du nœud 4 en ports de cluster :
 
-.. `network port modify -node _node4_ -port _port_name_ -mtu 9000 -ipspace Cluster`
-.. `network interface migrate -vserver Cluster -lif _cluster_LIF_  -destination-node _node4_ -destination-port _port_name_`
-
+`network port modify -node _node4_ -port _port_name_ -mtu 9000 -ipspace Cluster`
 
 ====
++
+`network interface migrate -vserver Cluster -lif _cluster_LIF_  -destination-node _node4_ -destination-port _port_name_`
+
+. Attendez que le cluster passe au quorum, puis vérifiez que les nœuds du cluster fonctionnent correctement :
++
+`– cluster show`
+
++
+
+NOTE: La paire haute disponibilité et le basculement du stockage restent désactivés dans l'état actuel.
+
+. Déplacer les LIFs du cluster sur les ports de cluster 25G temporaires du node4 :
++
+`network interface modify`
+
+. Si des groupes d'interface et des VLAN de données sont utilisés sur le cluster AFF A250 que vous mettez à niveau, effectuez cette étape. Si ce n'est pas le cas, passez à l' <<migrate_node1_nod4,Étape 8>>.
++
+Les noms des ports réseau physiques diffèrent entre les systèmes AFF A250 et AFF A400. Par conséquent, il est possible que des groupes d'interface et des VLAN déplacés soient mal configurés sur le node4. Vérifiez et, le cas échéant, corrigez les groupes d'interface et les VLAN déplacés qui ne sont pas configurés correctement.
+
+
+
+[[migrate_node1_nod4]]
 . Migrer les agrégats de données du nœud 1 vers le nœud 4 :
 +
 `storage aggregate relocation start -aggregate-list _aggregate_list_name_ -node _node1_ -destination _node4_ -ndo-controller-upgrade true -override-destination-checks true`
@@ -60,11 +80,11 @@ Si les ports du cluster système ne sont pas similaires lors de la mise à nivea
 +
 .. Supprimer epsilon du nœud 1 :
 +
-`cluster modify -epsilon false -node _local_node_name_`
+`cluster modify -epsilon false -node _node1_`
 
 .. Déplacer epsilon vers NODE4 :
 +
-`cluster modify -epsilon true -node _partner_node_name_`
+`cluster modify -epsilon true -node _node4_`
 
 
 
@@ -78,7 +98,7 @@ Si les ports du cluster système ne sont pas similaires lors de la mise à nivea
 
 . Migrer toutes les LIF de données vers le nœud 4 :
 +
-`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_`
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node4_ -destination-port _port_name_`
 
 . Afficher le statut de toutes les LIFs data dans le cluster :
 +
@@ -86,7 +106,7 @@ Si les ports du cluster système ne sont pas similaires lors de la mise à nivea
 
 . Si l'un des LIFs est arrêté, définissez le statut administratif des LIFs sur `up` En saisissant la commande suivante, une fois pour chaque LIF :
 +
-`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-node _node_name_ -status-admin up`
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -status-admin up`
 
 . Migrer la LIF cluster management :
 +
@@ -101,3 +121,6 @@ Si les ports du cluster système ne sont pas similaires lors de la mise à nivea
 `halt -node _node1_ -inhibit-takeover true -ignore-quorum-warnings true`
 
 
+
+.Et la suite ?
+link:upgrade_convert_node1_drive_shelf_connect_node3.html["Convertissez le nœud 1 en tiroir disque et connectez-vous au nœud 3"]

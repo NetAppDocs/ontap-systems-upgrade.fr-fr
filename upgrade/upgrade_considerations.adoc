@@ -65,7 +65,7 @@ Le transfert du stockage interne est une tâche facultative du flux de travail p
 
 Situations où des étapes supplémentaires peuvent être nécessaires
 
-* Si vous effectuez une mise à niveau d'un système AFF A250 vers un système AFF A400, reportez-vous à la section xref:upgrade-aff_a250_to_aff_a400_ndu_upgrade_workflow.adoc[Mise à niveau de AFF A250 vers AFF A400 en convertissant en tiroir disque].
+* Si vous effectuez une mise à niveau d'un système AFF A250 vers un système AFF A400, reportez-vous à la section xref:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.adoc[Mise à niveau de AFF A250 vers AFF A400 en convertissant en tiroir disque].
 * Si le nouveau système possède moins de slots que le système d'origine ou s'il comporte moins ou des types de ports différents, vous devrez peut-être ajouter un adaptateur au nouveau système.
 +
 https://hwu.netapp.com["NetApp Hardware Universe"^]

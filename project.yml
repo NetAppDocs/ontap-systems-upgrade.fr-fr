@@ -24,6 +24,8 @@ homepage:
     links:
     - title: Mettre à niveau le matériel du contrôleur
       url: "/upgrade/upgrade-decide-to-use-this-guide.html"
+    - title: Mise à niveau de AFF A250 vers AFF A400 en convertissant en tiroir disque
+      url: "/upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html"
   - title: Mise à niveau en déplaçant des agrégats sur des systèmes exécutant ONTAP
       9.8 et versions ultérieures
     links:

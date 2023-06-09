@@ -33,18 +33,40 @@ Après avoir converti le nœud 1 de AFF A250 en tiroir de disque NS224 et connec
 +
 `storage port show`
 
++
+Comme dans l'exemple suivant, le résultat doit s'afficher :
+
++
+[listing]
+----
+*> storage port modify -p e0c -m storage
+Nov 10 16:27:23 [localhost:nvmeof.port.modify:notice]: Changing NVMe-oF port e0c to storage mode.
+
+Nov 10 16:27:29 [localhost:nvmeof.subsystem.add:notice]: NVMe-oF subsystem added at address fe80::2a0:98ff:fefa:8885.
+
+*> storage port modify -p e0d -m storage
+Nov 10 16:27:34 [localhost:nvmeof.port.modify:notice]: Changing NVMe-oF port e0d to storage mode.
+
+Nov 10 16:27:38 [localhost:nvmeof.subsystem.add:notice]: NVMe-oF subsystem added at address fe80::2a0:98ff:fefa:8886.
+
+*> storage port show
+Port Type Mode    Speed(Gb/s) State    Status  VLAN ID
+---- ---- ------- ----------- -------- ------- -------
+e0c  ENET storage 100 Gb/s    enabled  online  30
+e0d  ENET storage 100 Gb/s    enabled  offline 30
+----
 . Afficher tous les disques connectés :
 +
 `disk show -v`
 
-. Notez l'ID du système local.
+. Notez la valeur de l'ID système local ; il s'agit de l'ID système du nœud 3. Notez également les ID système du nœud 1 et du nœud 2 dans la colonne "PROPRIÉTAIRE".
 . Réaffectez tous les disques du nœud 1 au nœud 3 :
 +
-`disk reassign -s _node1_ -d _node3_ -p _node2_`
+`disk reassign -s _node1_system_ID_ -d _node3_system_ID_ -p _node4_system_ID_`
 
 . Vérifiez que tous les disques réaffectés sont visibles pour le nouvel ID système :
 +
-`disk show -s _node3 system ID_`
+`disk show -s _node3_system_ID_`
 
 +
 
@@ -55,3 +77,6 @@ NOTE: Si les lecteurs ne sont pas visibles, *STOP* et contactez le support techn
 `halt`
 
 
+
+.Et la suite ?
+link:upgrade_migrate_lIFs_aggregates_node4_node3.html["Migration des LIF et des agrégats de données du nœud 4 vers le nœud 3"]
