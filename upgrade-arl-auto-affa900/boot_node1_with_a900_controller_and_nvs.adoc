@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/boot_node1_with_a900_controller_and_nvs.html 
-keywords: boot, NVRAM, controller, module, node1, aff, a700, a900 
-summary: Démarrez le nœud 1 avec le module de contrôleur AFF A900 et le module NVRAM. 
+keywords: boot, NVRAM, controller, module, node1, replacement 
+summary: 'Démarrez le nœud 1 avec les modules de contrôleur de remplacement lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
 ---
-= Démarrez le nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM
+= Démarrez le nœud 1 avec les modules système de remplacement
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,29 @@ summary: Démarrez le nœud 1 avec le module de contrôleur AFF A900 et le modul
 
 
 [role="lead"]
-Le nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM est maintenant prêt pour le démarrage. Une mise à niveau d'un système AFF A700 vers un système AFF A900 ou FAS9000 vers FAS9500 en remplaçant le contrôleur et les modules NVRAM implique le déplacement uniquement de la console et des connexions de gestion. Cette section décrit les étapes requises pour démarrer le nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM.
+Le nœud 1 avec les modules de remplacement est maintenant prêt pour le démarrage. Cette section fournit les étapes requises pour démarrer node1 avec les modules de remplacement pour les configurations de mise à niveau suivantes :
+
+[cols="35,65"]
+|===
+| Ancien contrôleur du nœud 1 | Remplacement des modules système du nœud 1 
+
+
+| AVEC AFF A220
+Solution AFF A200
+Baie AFF C190 | Module contrôleur AFF A150 ^1^ 
+
+
+| FAS2620
+FAS2720 | Module contrôleur FAS2820 ^1^ 
+
+
+| AFF A700 | Contrôleur AFF A900 et modules NVRAM ^2^ 
+
+
+| FAS9000 | Contrôleur FAS9500 et modules NVRAM ^2^ 
+|===
+^1^ la mise à niveau par permutation du module de contrôleur implique le déplacement de toutes les connexions de l'ancien vers le module de contrôleur de remplacement.
+^2^ la mise à niveau en permutant le contrôleur et les modules NVRAM implique de déplacer uniquement la console et les connexions de gestion.
 
 .Étapes
 . Si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
@@ -51,7 +73,7 @@ Saisissez la phrase de passe et les informations de sauvegarde que vous avez enr
 +
 `boot_ontap menu`
 
-. Réaffectez les disques du nœud 1 AFF A700 au nœud 1 AFF A900 en entrant « 22/7 » et en sélectionnant l'option masquée `boot_after_controller_replacement` lorsque le nœud s'arrête au menu de démarrage.
+. Réaffectez les anciens disques du nœud 1 au nœud de remplacement 1 en entrant « 22/7 » et en sélectionnant l'option cachée `boot_after_controller_replacement` lorsque le nœud s'arrête au menu de démarrage.
 +
 Après un bref délai, vous êtes invité à saisir le nom du nœud en cours de remplacement. S'il existe des disques partagés (également appelés partitionnement de disque avancé ou des disques partitionnés), vous êtes invité à saisir le nom de nœud du partenaire haute disponibilité.
 

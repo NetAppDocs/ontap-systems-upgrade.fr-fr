@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/retire_node2.html 
-keywords: retire, node2 
-summary: 'Arrêtez le nœud 2 et retirez-le du rack ou du châssis lors d"une mise à niveau d"un système AFF A700 vers un système AFF A900.' 
+keywords: retire, node2, retiring, node 
+summary: 'Arrêtez le nœud 2 et retirez-le du rack ou du châssis lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
 ---
 = Retrait du nœud 2
 :hardbreaks:

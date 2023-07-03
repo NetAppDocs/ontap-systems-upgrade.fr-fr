@@ -29,8 +29,8 @@ homepage:
   - title: Mise à niveau en déplaçant des agrégats sur des systèmes exécutant ONTAP
       9.8 et versions ultérieures
     links:
-    - title: Utiliser les commandes « system contrôleur replace » (AFF A700 to AFF
-        A900)
+    - title: Utilisez les commandes « system Controller replace » pour mettre à niveau
+        les modèles de contrôleurs d'un même châssis
       url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/
     - title: Utiliser les commandes « system Controller replace » (la plupart des
         systèmes)

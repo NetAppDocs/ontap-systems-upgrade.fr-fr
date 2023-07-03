@@ -131,7 +131,7 @@ NOTE: Vous devez confirmer que vous déplacez les LIFs SAN vers un port dont la 
 +
 `network interface show -home-node <node4> -role data`
 
-.. Si l'une des LIFs est inactive, définir le statut administratif des LIFs à être active en saisissant la commande suivante, une seule fois pour chaque LIF :
+.. Si l'un des LIFs est arrêté, définissez le statut administratif des LIFs sur `up` En saisissant la commande suivante, une fois pour chaque LIF :
 +
 `network interface modify -vserver _vserver_name_ -lif _lif_name_ -status-admin up`
 

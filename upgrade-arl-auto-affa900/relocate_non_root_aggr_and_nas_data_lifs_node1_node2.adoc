@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html 
-keywords: relocating, non-root, aggregates, nas, data, lif, node1, node2, aff, a900, NVRAM, controller 
-summary: 'Déplacez les agrégats non racines et les LIF de données NAS du nœud 1 vers le nœud 2, puis restaurez les ressources du nœud 1 lors d"une mise à niveau vers AFF A900 via AFF A700.' 
+keywords: relocating, non-root, aggregates, nas, data, lif, node1, node2, NVRAM, controller, module, modules 
+summary: 'Déplacez les agrégats non racines et les LIF de données NAS du nœud 1 vers le nœud 2 et restaurez les ressources du nœud 1 lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
 ---
 = Transférez les agrégats non racine et les LIF de données NAS qui appartiennent au nœud1 vers le nœud2
 :hardbreaks:
@@ -14,13 +14,13 @@ summary: 'Déplacez les agrégats non racines et les LIF de données NAS du nœu
 
 
 [role="lead"]
-Avant de remplacer le nœud 1 par le contrôleur AFF A900 ou FAS9500 et des modules NVRAM, vous devez déplacer les agrégats non racines et les LIF de données NAS du nœud 1 vers le nœud 2 avant de restaurer ultérieurement les ressources du nœud 1 sur le nœud 1 s'exécutant sur le système AFF A900 ou FAS9500. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état.
+Avant de remplacer le nœud 1 par des modules de remplacement pour la mise à niveau de votre système, vous devez déplacer les agrégats non racines et les LIF de données NAS du nœud 1 vers le nœud 2 avant de restaurer à terme les ressources du nœud 1 sur le nœud 1 exécuté sur le système de remplacement. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état.
 
 .Avant de commencer
 L'opération doit déjà être mise en pause au début de la tâche ; vous devez reprendre manuellement l'opération.
 
 .Description de la tâche
-Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Vous n'avez pas besoin de déplacer les LIF SAN pour assurer l'état du cluster ou du service au cours de la mise à niveau. Vous devez vérifier que les LIFs sont saines et situées sur les ports appropriés, après avoir mis le nœud1 en ligne en tant que système AFF A900 ou FAS9500.
+Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Vous n'avez pas besoin de déplacer les LIF SAN pour assurer l'état du cluster ou du service au cours de la mise à niveau. Vous devez vérifier que les LIFs sont saines et situées sur les ports appropriés après avoir mis le node1 en ligne en tant que système de remplacement.
 
 
 NOTE: Le propriétaire du home-home pour les agrégats et les LIFs n'est pas modifié ; seul le propriétaire actuel est modifié.

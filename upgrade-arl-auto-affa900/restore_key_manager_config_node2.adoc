@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/restore_key_manager_config_node2.html 
 keywords: restore key-manager, configuration, node1, nve, arl, volume, encryption 
-summary: 'Si nécessaire, restaurez la configuration du gestionnaire de clés sur le nœud 2 lors d"une mise à niveau du système AFF A700 vers AFF A900.' 
+summary: 'Si nécessaire, restaurez la configuration du gestionnaire de clés sur le nœud 2 lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
 ---
 = Restaurez la configuration du gestionnaire de clés sur le noeud 2
 :hardbreaks:

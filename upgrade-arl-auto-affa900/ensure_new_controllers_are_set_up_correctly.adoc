@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/ensure_new_controllers_are_set_up_correctly.html 
 keywords: ensure, controllers, new, setup, ha, pair, node1, node2, lif, cluster, high, availability 
-summary: 'Vérifiez que la paire haute disponibilité est activée, vérifiez l"accès au stockage des nœuds 1 et 2, ainsi que la LIF, et confirmez le propriétaire de l"agrégat après la mise à niveau d"un système AFF A700 vers un système AFF A900.' 
+summary: 'Vérifiez que la paire haute disponibilité est activée, vérifiez l"accès au stockage et les LIF des nœuds 1 et 2, puis confirmez la propriété de l"agrégat après la mise à niveau des modèles de contrôleur dans le même châssis.' 
 ---
 = Vérifiez que les nouveaux contrôleurs sont correctement configurés
 :hardbreaks:
@@ -29,11 +29,11 @@ L'exemple suivant montre la sortie de la commande lorsque le basculement du stoc
 [listing]
 ----
 cluster::> storage failover show
-                                Takeover
-Node	         Partner	        Possible	      State Description
--------------  --------------   --------------  ------------------
-node1	         node2            true	           Connected to node2
-node2	         node1            true	           Connected to node1
+                          Takeover
+Node	    Partner       Possible      State Description
+----------  -----------   ------------  ------------------
+node1	    node2         true	        Connected to node2
+node2	    node1         true	        Connected to node1
 ----
 . Vérifiez que les nœuds 1 et 2 appartiennent au même cluster via la commande suivante et en examinant le résultat :
 +
@@ -123,7 +123,7 @@ Entrez `y` pour supprimer tous les paquets.
 +
 Vous pouvez comparer la sortie avec celle que vous avez capturée dans le link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] section.
 
-. [[unset_maxwait]] si des lecteurs auto-cryptés sont utilisés dans la configuration et que vous avez défini le `kmip.init.maxwait` variable à `off` (Par exemple, dans le nœud de démarrage 2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM_, link:boot_node2_with_a900_controller_and_nvs.html#boot_node2_step1["Étape 1"]), vous devez annuler la variable :
+. [[unset_maxwait]] si des lecteurs auto-cryptés sont utilisés dans la configuration et que vous avez défini le `kmip.init.maxwait` variable à `off` (Par exemple, dans _Boot node2 avec les modules système de remplacement_, link:boot_node2_with_a900_controller_and_nvs.html#boot_node2_step1["Étape 1"]), vous devez annuler la variable :
 +
 `set diag; systemshell -node _node_name_ -command sudo kenv -u -p kmip.init.maxwait`
 

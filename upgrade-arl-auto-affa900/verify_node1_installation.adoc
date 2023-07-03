@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/verify_node1_installation.html 
-keywords: verifying, verify, node1, install, installation, aff, a900, NVRAM, controller 
-summary: 'Vérifiez l"installation du node1 avec le module de contrôleur AFF A900 et le module NVRAM.' 
+keywords: verifying, verify, node1, install, installation, NVRAM, controller, module, modules 
+summary: 'Vérifiez l"installation du nœud 1 avec les modules de remplacement lorsque vous utilisez ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
 ---
 = Vérifiez l'installation du noeud 1
 :hardbreaks:
@@ -14,10 +14,10 @@ summary: 'Vérifiez l"installation du node1 avec le module de contrôleur AFF A9
 
 
 [role="lead"]
-Vous devez vérifier l'installation du nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM. Comme il n'y a pas de modification des ports physiques, vous n'avez pas besoin de mapper les ports physiques de l'ancien nœud 1 vers le nœud de remplacement 1.
+Vous devez vérifier l'installation du nœud 1 avec les modules système de remplacement. Comme il n'y a pas de modification des ports physiques, vous n'avez pas besoin de mapper les ports physiques de l'ancien nœud 1 vers le nœud de remplacement 1.
 
 .Description de la tâche
-Après avoir démarrer le nœud1 avec le module de contrôleur AFF A900 ou FAS9500, vous devez vérifier qu'il est correctement installé. Vous devez patienter jusqu'à ce que le nœud 1 rejoint le quorum, puis reprendre l'opération de remplacement du contrôleur.
+Après avoir démarré le nœud 1 avec le module de contrôleur de remplacement, vous devez vérifier qu'il est correctement installé. Vous devez patienter jusqu'à ce que le nœud 1 rejoint le quorum, puis reprendre l'opération de remplacement du contrôleur.
 
 À ce stade de la procédure, l'opération de mise à niveau du contrôleur doit avoir été interrompue au moment où le nœud1 tente de rejoindre automatiquement le quorum.
 
@@ -141,7 +141,7 @@ Dans l'exemple précédent, le nœud 1 a démarré après le remplacement du con
 
 +
 
-NOTE: Lors d'une mise à niveau d'un contrôleur AFF A700 vers un système AFF A900 ou FAS9000 vers un système FAS9500, les ports réseau et leur connectivité ne doivent pas changer. Tous les ports doivent résider dans les domaines de diffusion appropriés et la capacité de port réseau ne doit pas changer. Toutefois, avant de déplacer les LIF du nœud 2 vers le nœud 1, vous devez vérifier l'état d'accessibilité et de santé des ports réseau.
+NOTE: Pendant la mise à niveau, les ports réseau et leur connectivité ne doivent pas changer. Tous les ports doivent résider dans les domaines de diffusion appropriés et la capacité de port réseau ne doit pas changer. Toutefois, avant de déplacer les LIF du nœud 2 vers le nœud 1, vous devez vérifier l'état d'accessibilité et de santé des ports réseau.
 
 . [[restore_node1_step4]]réparer l'accessibilité pour chacun des ports sur le noeud 1 avec un état de réabilité autre que `ok` en utilisant la commande suivante, dans l'ordre suivant :
 +

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/aggregate_relocation_failures.html 
 keywords: aggregate, relocation, failures, arl, stage 2, stage 3, stage 5 
-summary: 'Dépannage des défaillances de transfert d"agrégats pouvant survenir lors d"une mise à niveau d"un système AFF A700 vers un système AFF A900.' 
+summary: 'Dépannez les défaillances de transfert d"agrégats qui peuvent se produire lorsque vous utilisez ARL pour mettre à niveau les modèles de contrôleurs dans le même châssis.' 
 ---
 = Défaillance du transfert d'agrégats
 :hardbreaks:
@@ -55,7 +55,7 @@ Les agrégats n'ont pas pu transférer correctement les données, c'est-à-dire 
 +
 Certains agrégats transférés possèdent le nœud 1 comme nœud de rattachement. Par exemple, un tel agrégat peut être appelé aggr_node_1. Si le transfert de aggr_node_1 échoue lors de l'étape 3 et le transfert ne peut pas être forcé, l'agrégat reste derrière sur le nœud 2.
 
-* À l'issue de la phase 4, lorsque le nœud 2 est remplacé par le contrôleur AFF A900 ou FAS9500 et les modules NVRAM.
+* Après l'étape 4, lorsque le nœud 2 est remplacé par les nouveaux modules système.
 +
 Lorsque le nœud 2 est remplacé, aggr_node_1 sera connecté avec le nœud 1 comme nœud de base au lieu du nœud 2.
 

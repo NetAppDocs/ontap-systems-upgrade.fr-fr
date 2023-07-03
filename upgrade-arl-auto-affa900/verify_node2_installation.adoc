@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/verify_node2_installation.html 
-keywords: verifying, verify, node, install, installation, aff, a900, NVRAM, controller 
-summary: 'Vérifiez l"installation du node2 avec le module de contrôleur AFF A900 et le module NVRAM.' 
+keywords: verifying, verify, node, install, installation, NVRAM, controller, module, modules 
+summary: 'Vérifiez l"installation du nœud 2 avec des modules de remplacement lorsque vous utilisez ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
 ---
 = Vérifiez l'installation du node2
 :hardbreaks:
@@ -14,10 +14,10 @@ summary: 'Vérifiez l"installation du node2 avec le module de contrôleur AFF A9
 
 
 [role="lead"]
-Vous devez vérifier l'installation du nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les modules NVRAM. Comme il n'y a pas de modification des ports physiques, vous n'avez pas besoin d'mapper les ports physiques de l'ancien nœud 2 vers le nœud de remplacement 2.
+Vous devez vérifier l'installation du nœud 2 avec les modules système de remplacement. Comme il n'y a pas de modification des ports physiques, vous n'avez pas besoin d'mapper les ports physiques de l'ancien nœud 2 vers le nœud de remplacement 2.
 
 .Description de la tâche
-Après avoir démarrer le nœud1 avec le module de contrôleur AFF A900 ou FAS9500, vous devez vérifier qu'il est correctement installé. Vous devez patienter jusqu'à ce que le nœud 2 rejoint le quorum, puis reprendre l'opération de remplacement du contrôleur.
+Après avoir initialisé le nœud 1 avec le module système de remplacement, vous devez vérifier qu'il est correctement installé. Vous devez patienter jusqu'à ce que le nœud 2 rejoint le quorum, puis reprendre l'opération de remplacement du contrôleur.
 
 À ce stade de la procédure, l'opération s'interrompt pendant que le noeud 2 rejoint le quorum.
 

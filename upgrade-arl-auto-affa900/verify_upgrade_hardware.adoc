@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/verify_upgrade_hardware.html 
-keywords: preparing, nodes, upgrade 
-summary: 'Avant de commencer la mise à niveau, vérifiez que vous disposez du matériel approprié pour une mise à niveau d"un système AFF A700 vers un système AFF A900.' 
+keywords: nodes, upgrade, verify, hardware 
+summary: Avant de commencer la mise à niveau, vérifiez que vous disposez du matériel approprié pour mettre à niveau les modèles de contrôleurs dans le même châssis. 
 ---
 = Vérifiez la mise à niveau matérielle
 :hardbreaks:
@@ -14,4 +14,23 @@ summary: 'Avant de commencer la mise à niveau, vérifiez que vous disposez du m
 
 
 [role="lead"]
-Avant de commencer la mise à niveau, vous devez vérifier que vous disposez du matériel approprié pour une mise à niveau d'un système AFF A700 vers un système AFF A900 ou FAS9000 vers une mise à niveau vers un système FAS9500. Pour chaque paire haute disponibilité que vous mettez à niveau, vous devez disposer de deux modules de contrôleur système et de deux modules NVRAM. Si des pièces sont manquantes, contactez le support technique ou votre contact commercial NetApp pour obtenir de l'aide.
+Avant de commencer la mise à niveau, vous devez vérifier que vous disposez du matériel approprié pour votre mise à niveau. En fonction de votre mise à niveau, vous devez disposer de deux modules de contrôleur ou de deux modules de contrôleur et de deux modules NVRAM pour chaque paire haute disponibilité mise à niveau. Si des pièces sont manquantes, contactez le support technique ou votre contact commercial NetApp pour obtenir de l'aide.
+
+[cols="50,50"]
+|===
+| Si vous mettez à niveau ... | Vous devez avoir ... 
+
+
+| AFF A220 à AFF A150
+AFF A200 à AFF A150
+AFF C190 vers AFF A150 | Deux modules de contrôleur 
+
+
+| FAS2620 ou FAS2720 à FAS2820 | Deux modules de contrôleur 
+
+
+| DE AFF A700 À AFF A900 | Deux contrôleurs et deux modules NVRAM 
+
+
+| FAS9000 vers FAS9500 | Deux contrôleurs et deux modules NVRAM 
+|===

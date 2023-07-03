@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html 
-keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability, aff, a700, a900 
-summary: 'Choisissez d"utiliser la procédure ARL pour mettre à niveau un système AFF A700 vers un système AFF A900.' 
+keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability 
+summary: Décidez si vous souhaitez utiliser la procédure ARL qui met à niveau les modèles de contrôleurs du même châssis. 
 ---
 = Décider d'utiliser la procédure de transfert d'agrégats
 :hardbreaks:
@@ -14,12 +14,36 @@ summary: 'Choisissez d"utiliser la procédure ARL pour mettre à niveau un syst�
 
 
 [role="lead"]
-Vous découvrirez comment mettre à niveau les contrôleurs de stockage d'une paire haute disponibilité AFF A700 avec de nouveaux contrôleurs AFF A900 ou contrôleurs d'une paire haute disponibilité FAS9000 avec de nouveaux contrôleurs FAS9500, tout en conservant toutes les données et les disques existants. Il s'agit d'une procédure complexe qui ne doit être utilisée que par des administrateurs expérimentés.
+Ce contenu explique comment mettre à niveau les contrôleurs de stockage d'une paire haute disponibilité tout en conservant toutes les données et les disques existants. Il s'agit d'une procédure complexe qui ne doit être utilisée que par des administrateurs expérimentés.
 
 Utiliser cette procédure dans les cas suivants :
 
-* Vous avez vérifié auprès de votre ingénieur commercial NetApp que vous avez reçu le contrôleur AFF A900 ou FAS9500, ainsi que les modules NVRAM et les pièces nécessaires à la mise à niveau.
-* Vous exécutez ONTAP 9.10.1P10, 9.11.1P6 ou une version ultérieure.
+* Vous effectuez l'une des mises à niveau suivantes du contrôleur :
++
+[cols="50,50"]
+|===
+| Ancien contrôleur | Remplacement du contrôleur 
+
+
+| AFF A220, AFF A200 ou AFF C190 | AFF A150 
+
+
+| FAS2620 ou FAS2720 | FAS2820 
+
+
+| AFF A700 | AFF A900 
+
+
+| FAS9000 | FAS9500 
+|===
+* Vous avez vérifié auprès de votre ingénieur commercial NetApp que vous avez reçu le matériel nécessaire à la mise à niveau de votre contrôleur :
++
+** Contrôleur AFF A150
+** Contrôleur FAS2820
+** Contrôleur AFF A900 ou FAS9500 et modules NVRAM ainsi que les pièces requises pour la mise à niveau.
+
+
+* Vous exécutez la version minimale de ONTAP pour votre mise à niveau. Pour plus d'informations, voir link:index.html["Présentation"].
 * Vous ne souhaitez pas ajouter de nouveaux contrôleurs et migrer les données en utilisant les déplacements de volumes pour une nouvelle paire haute disponibilité vers le cluster.
 * Vous avez de l'expérience dans l'administration de ONTAP et vous êtes à l'aise avec les risques de travailler en mode de privilèges de diagnostic.
 
@@ -30,7 +54,7 @@ Ne pas utiliser *PAS* cette procédure dans les circonstances suivantes :
 * Vous utilisez un commutateur partagé pour l'interconnexion de cluster et le stockage Ethernet.
 
 
-Pour la mise à niveau des configurations Fabric MetroCluster ou MetroCluster IP, reportez-vous à la section link:other_references.html["Références"] Pour accéder au contenu _MetroCluster Upgrade and expansion_.
+Pour la mise à niveau des configurations Fabric MetroCluster ou MetroCluster IP sur les systèmes AFF A700 ou FAS9000, reportez-vous à la section link:other_references.html["Références"] Pour accéder au contenu _MetroCluster Upgrade and expansion_.
 
 
 NOTE: Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE).

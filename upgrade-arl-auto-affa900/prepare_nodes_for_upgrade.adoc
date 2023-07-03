@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/prepare_nodes_for_upgrade.html 
-keywords: preparing, nodes, upgrade, stage 1, prechecks 
-summary: 'Préparez les nœuds et exécutez une série de contrôles préalables lors d"une mise à niveau d"un système AFF A700 vers un système AFF A900.' 
+keywords: preparing, prepare, nodes, upgrade, stage 1, prechecks, old, system, chassis, disk, disks 
+summary: 'Préparez les nœuds et exécutez une série de précontrôles lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
 ---
 = Préparer les nœuds pour une mise à niveau
 :hardbreaks:
@@ -14,9 +14,36 @@ summary: 'Préparez les nœuds et exécutez une série de contrôles préalables
 
 
 [role="lead"]
-Lors de l'étape 1, vous devez préparer les nœuds pour la mise à niveau et exécuter une série de contrôles préalables. Vous devez également préparer votre démarrage sur le réseau de nouveaux contrôleurs.
+Le processus de remplacement du contrôleur commence par une série de contrôles préalables. Vous rassemblez également des informations sur les nœuds d'origine pour les utiliser plus tard dans la procédure et, si nécessaire, déterminez le type de disques à chiffrement automatique utilisés.
 
 .Étapes
+. Répertoriez la version du micrologiciel du processeur de service (SP) ou du contrôleur BMC (Baseboard Management Controller) s'exécutant sur l'ancien contrôleur :
++
+`service-processor show` commande :
+
++
+Vérifiez que vous disposez d'une version du micrologiciel du processeur de service ou du contrôleur BMC prise en charge :
+
++
+[cols="30,35,35"]
+|===
+| Ancien contrôleur | SP ou BMC | Version minimale du micrologiciel 
+
+
+| AVEC AFF A220 | BMC | 11.9P1 
+
+
+| Solution AFF A200 | SP | 5.11P1 
+
+
+| Baie AFF C190 | BMC | 11.9P1 
+
+
+| FAS2620 | SP | 5.11P1 
+
+
+| FAS2720 | BMC | 11.9P1 
+|===
 . Lancer le processus de remplacement du contrôleur en entrant la commande suivante en mode de privilège avancé sur la ligne de commande ONTAP :
 +
 `set -privilege advanced`
@@ -189,10 +216,10 @@ Vous devez redémarrer la procédure de remplacement des contrôleurs :
 
 == Licence
 
-Lorsque vous configurez un cluster, l'assistant d'installation vous demande d'entrer la clé de licence de base du cluster. Cependant, certaines fonctionnalités nécessitent des licences supplémentaires, qui sont émises sous la forme de _packages_ qui incluent une ou plusieurs fonctionnalités. Chaque nœud du cluster doit disposer de sa propre clé pour que chaque fonctionnalité soit utilisée dans le cluster.
+Chaque nœud du cluster doit avoir son propre fichier de licence NetApp (NLF).
 
-Si vous ne disposez pas de nouvelles clés de licence, les fonctionnalités actuellement sous licence dans le cluster sont disponibles pour le nouveau contrôleur. Toutefois, l'utilisation de fonctions sans licence sur le contrôleur peut vous mettre hors conformité avec votre contrat de licence. Vous devez donc installer la ou les nouvelles clés de licence pour le nouveau contrôleur une fois la mise à niveau terminée.
+Si vous ne disposez pas de NLF, les fonctions sous licence du cluster sont disponibles pour le nouveau contrôleur. Cependant, l'utilisation de fonctions sans licence sur le contrôleur peut vous mettre hors conformité avec votre contrat de licence. Vous devez donc installer le NLF pour le nouveau contrôleur une fois la mise à niveau terminée.
 
-Reportez-vous à la section link:other_references.html["Références"] Lien vers le site de support _NetApp_ où vous pouvez obtenir de nouvelles clés de licence de 2 caractères pour 9.10.1 ou une version ultérieure. Les clés sont disponibles dans la section _mon support_ sous _licences logicielles_. Si le site ne dispose pas des clés de licence dont vous avez besoin, contactez votre ingénieur commercial NetApp.
+Reportez-vous à la section link:other_references.html["Références"] Pour accéder au _site de support NetApp_ sur lequel vous pouvez obtenir votre NLF. Les fichiers NLF sont disponibles dans la section _My support_ sous _Software licenses_. Si le site ne dispose pas des NLF dont vous avez besoin, contactez votre ingénieur commercial NetApp.
 
 Pour plus d'informations sur les licences, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.

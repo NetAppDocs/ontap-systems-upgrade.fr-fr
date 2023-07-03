@@ -1,12 +1,10 @@
 ---
 section: upgrade-arl-auto-affa900
-title: Utilisez les commandes « remplacement du contrôleur système » pour mettre à
-  niveau AFF A700 vers AFF A900 ou FAS9000 vers FAS9500
+title: Utilisez les commandes « system Controller replace » pour mettre à niveau les
+  modèles de contrôleurs d'un même châssis
 entries:
 - title: Présentation
   url: "/upgrade-arl-auto-affa900/index.html"
-- title: Automatisation du processus de mise à niveau des contrôleurs
-  url: "/upgrade-arl-auto-affa900/automate_the_controller_upgrade_process.html"
 - title: Décider d'utiliser le contenu de transfert d'agrégats
   url: "/upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html"
 - title: Outils et documentation requis
@@ -27,8 +25,7 @@ entries:
     url: "/upgrade-arl-auto-affa900/prepare_nodes_for_upgrade.html"
   - title: Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré
     url: "/upgrade-arl-auto-affa900/manage_storage_encryption_using_okm.html"
-- title: Étape 2. Transférez des ressources et retirez le nœud AFF A700 ou FAS9000
-    1
+- title: Étape 2. Déplacer les ressources et retirer le nœud 1
   entries:
   - title: Présentation
     url: "/upgrade-arl-auto-affa900/stage_2_index.html"
@@ -39,15 +36,15 @@ entries:
     url: "/upgrade-arl-auto-affa900/relocate_failed_or_vetoed_aggr.html"
   - title: Retirer le nœud 1
     url: "/upgrade-arl-auto-affa900/retire_node1.html"
+  - title: Remplacez les modules système du nœud 1
+    url: "/upgrade-arl-auto-affa900/replace_node1_system_modules.html"
   - title: NetBoot node1
     url: "/upgrade-arl-auto-affa900/netboot_node1.html"
-- title: Étape 3. Démarrez le nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les
-    modules NVRAM
+- title: Étape 3. Démarrez le nœud 1 avec les modules système de remplacement
   entries:
   - title: Présentation
     url: "/upgrade-arl-auto-affa900/stage_3_index.html"
-  - title: Démarrez le nœud 1 avec le contrôleur AFF A900 ou FAS9500 et les modules
-      NVRAM
+  - title: Démarrez le nœud 1 avec les modules système de remplacement
     url: "/upgrade-arl-auto-affa900/boot_node1_with_a900_controller_and_nvs.html"
   - title: Vérifiez l'installation du noeud 1
     url: "/upgrade-arl-auto-affa900/verify_node1_installation.html"
@@ -57,7 +54,7 @@ entries:
   - title: Déplacement des agrégats non racines et des LIF de données NAS qui appartiennent
       au nœud 1 du nœud 2 vers le nœud mis à niveau 1
     url: "/upgrade-arl-auto-affa900/move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html"
-- title: Étape 4. Transférez les ressources depuis le nœud 2 et retirez le nœud 2
+- title: Étape 4. Déplacer les ressources et retirer le nœud 2
   entries:
   - title: Présentation
     url: "/upgrade-arl-auto-affa900/stage_4_index.html"
@@ -66,23 +63,19 @@ entries:
     url: "/upgrade-arl-auto-affa900/relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html"
   - title: Retrait du nœud 2
     url: "/upgrade-arl-auto-affa900/retire_node2.html"
-- title: Étape 5. Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur
-    le nœud 2
+- title: Étape 5. Installez les modules système de remplacement sur le nœud 2
   entries:
   - title: Présentation
     url: "/upgrade-arl-auto-affa900/stage_5_index.html"
-  - title: Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur le nœud
-      2
-    url: "/upgrade-arl-auto-affa900/install_a900_nvs_and_controller_on_node2.html"
+  - title: Installez les modules système de remplacement sur le nœud 2
+    url: "/upgrade-arl-auto-affa900/install_replacement_system_modules_on_node2.html"
   - title: NetBoot node2
     url: "/upgrade-arl-auto-affa900/netboot_node2.html"
-- title: Étape 6. Démarrez le nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les
-    modules NVRAM
+- title: Étape 6. Démarrez le nœud 2 avec les modules système de remplacement
   entries:
   - title: Présentation
     url: "/upgrade-arl-auto-affa900/stage_6_index.html"
-  - title: Démarrez le nœud 2 avec le contrôleur AFF A900 ou FAS9500 et les modules
-      NVRAM
+  - title: Démarrez le nœud 2 avec les modules système de remplacement
     url: "/upgrade-arl-auto-affa900/boot_node2_with_a900_controller_and_nvs.html"
   - title: Vérifiez l'installation du node2
     url: "/upgrade-arl-auto-affa900/verify_node2_installation.html"

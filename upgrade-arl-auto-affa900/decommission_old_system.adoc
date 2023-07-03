@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: /upgrade-arl-auto-affa900/decommission_old_system.html 
 keywords: decommission, old system, upgrade, databases, netapp, support, site, serial, number, cluster 
-summary: 'Faites savoir à NetApp que l"ancien système n"est plus opérationnel après une mise à niveau vers un système AFF A900.' 
+summary: 'Faites savoir à NetApp que l"ancien système ne fonctionne plus après la mise à niveau du contrôleur.' 
 ---
 = Désaffectation de l'ancien système
 :hardbreaks:

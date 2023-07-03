@@ -23,7 +23,7 @@ Cette procédure comprend les étapes réalisées sur le nouveau module de contr
 ====
 .Gestionnaire de clés intégré
 --
-*Configurer NVE ou NAE à l'aide du gestionnaire de clés intégré*
+Configurez NVE ou NAE à l'aide du Gestionnaire de clés intégré.
 
 .Étapes
 . Restaurer les clés d'authentification de tous les serveurs de gestion des clés liés vers le nouveau nœud :
@@ -35,7 +35,7 @@ Cette procédure comprend les étapes réalisées sur le nouveau module de contr
 --
 .Gestion externe des clés
 --
-*Configurer NVE ou NAE à l'aide de la gestion externe des clés*
+Configurez NVE ou NAE à l'aide de la gestion externe des clés.
 
 .Étapes
 . Vérifier que les serveurs de gestion des clés sont toujours disponibles, leur état et leurs informations de clé d'authentification :

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/issues_in_multiple_stages_of_procedure.html 
 keywords: issues, arise, multiple, stages, procedure 
-summary: 'Informations sur les problèmes susceptibles de se produire lors de la mise à niveau d"un système AFF A700 vers un système AFF A900.' 
+summary: 'Informations sur les problèmes susceptibles de se produire lors de l"utilisation d"ARL pour la mise à niveau des modèles de contrôleurs d"un même châssis.' 
 ---
 = Problèmes pouvant survenir à plusieurs étapes de la procédure
 :hardbreaks:

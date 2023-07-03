@@ -2,6 +2,6 @@
 :allow-uri-read: 
 
 
-Lorsque vous configurez un cluster, l'assistant d'installation vous demande d'entrer la clé de licence de base du cluster. Cependant, certaines fonctionnalités nécessitent des licences supplémentaires, qui sont émises sous la forme de _packages_ qui incluent une ou plusieurs fonctionnalités. Chaque nœud du cluster doit disposer de sa propre clé pour que chaque fonctionnalité soit utilisée dans le cluster.
+Certaines fonctionnalités nécessitent des licences, qui sont émises sous la forme _packages_ qui incluent une ou plusieurs fonctionnalités. Chaque nœud du cluster doit disposer de sa propre clé pour que chaque fonctionnalité soit utilisée dans le cluster.
 
 Si vous ne disposez pas de nouvelles clés de licence, les fonctionnalités actuellement sous licence dans le cluster sont disponibles pour le nouveau contrôleur et continueront de fonctionner. Toutefois, l'utilisation de fonctions sans licence sur le contrôleur peut vous mettre hors conformité avec votre contrat de licence. Vous devez donc installer la ou les nouvelles clés de licence pour le nouveau contrôleur une fois la mise à niveau terminée.

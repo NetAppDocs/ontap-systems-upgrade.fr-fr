@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/netboot_node2.html 
-keywords: preparing, netboot, ontap, aff, a900, node2 
-summary: Après avoir échangé le module de contrôleur AFF A900 node2 correspondant et le module NVRAM, vous devrez peut-être les netboot. 
+keywords: preparing, prepare, netboot, ontap, node2 
+summary: Après avoir remplacé les modules système du nœud 2 correspondants lorsque vous utilisez ARL pour mettre à niveau les modèles de contrôleurs du même châssis, vous devrez peut-être les démarrer en réseau. 
 ---
 = NetBoot node2
 :hardbreaks:
@@ -14,12 +14,11 @@ summary: Après avoir échangé le module de contrôleur AFF A900 node2 correspo
 
 
 [role="lead"]
-Après avoir échangé le module de contrôleur AFF A900 ou FAS9500 NODE2 et la mémoire NVRAM correspondants, vous devrez peut-être les netboot. Le terme netboot signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Lorsque vous vous préparez à netboot, vous devez placer une copie de l'image de démarrage ONTAP 9 sur un serveur web auquel le système peut accéder.
+Après avoir remplacé les modules système node2 correspondants, vous devrez peut-être les initialiser en réseau. Le terme netboot signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Lorsque vous vous préparez à netboot, vous devez placer une copie de l'image de démarrage ONTAP 9 sur un serveur web auquel le système peut accéder.
 
-Il n'est pas possible de vérifier la version de ONTAP installée sur le support de démarrage d'un AFF A900 ou d'un module de contrôleur FAS9500, sauf s'il est installé dans un châssis et sous tension. La version ONTAP du support de démarrage AFF A900 ou FAS9500 doit être identique à la version ONTAP exécutée sur AFF A700 ou le système FAS9000 que vous mettez à niveau. Les images de démarrage primaire et de sauvegarde doivent correspondre. Vous pouvez configurer les images en effectuant un démarrage suivi de l' `wipeconfig` commande dans le menu de démarrage. Si le module de contrôleur était auparavant utilisé dans un autre cluster, le `wipeconfig` commande efface toute configuration résiduelle sur le support d'amorçage.
+Il n'est pas possible de vérifier la version de ONTAP installée sur le support de démarrage du module de contrôleur de remplacement sauf s'il est installé dans un châssis et sous tension. La version ONTAP du support d'amorçage du système de remplacement doit être identique à la version ONTAP exécutée sur l'ancien système que vous mettez à niveau et les images d'amorçage principale et de sauvegarde doivent correspondre. Vous pouvez configurer les images en effectuant un démarrage suivi de l' `wipeconfig` commande dans le menu de démarrage. Si le module de contrôleur était auparavant utilisé dans un autre cluster, le `wipeconfig` commande efface toute configuration résiduelle sur le support d'amorçage.
 
-
-NOTE: Vous pouvez également utiliser l'option de démarrage USB pour effectuer le démarrage sur le réseau. Consultez l'article de la base de connaissances link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Utilisation de la commande boot_Recovery LOADER pour l'installation de ONTAP pour la configuration initiale d'un système"^].
+Vous pouvez également utiliser l'option de démarrage USB pour effectuer le démarrage sur le réseau. Consultez l'article de la base de connaissances link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Utilisation de la commande boot_Recovery LOADER pour l'installation de ONTAP pour la configuration initiale d'un système"^].
 
 .Avant de commencer
 * Vérifiez que vous pouvez accéder à un serveur HTTP avec le système.
@@ -71,7 +70,7 @@ NOTE: D'autres paramètres peuvent être nécessaires pour votre interface. Entr
 
 NOTE: N'interrompez pas l'amorçage.
 
-. Attendez que le nœud2 s'exécute sur le module de contrôleur AFF A900 ou FAS9500 pour démarrer et afficher les options du menu de démarrage comme indiqué dans la sortie suivante :
+. Attendez que le nœud 2 s'exécute sur le module de contrôleur de remplacement pour démarrer et afficher les options du menu de démarrage comme indiqué dans la sortie suivante :
 +
 [listing]
 ----
@@ -172,7 +171,7 @@ Controller HA configuration: ha
 +
 NODE2 doit s'arrêter à l'invite DU CHARGEUR>.
 
-. Sur le node2, vérifiez la date, l'heure et le fuseau horaire du système :
+. Sur le nœud 1, vérifiez la date, l'heure et le fuseau horaire du système :
 +
 `date`
 
@@ -205,7 +204,7 @@ NOTE: Définissez l'heure UTC correspondante sur le node2.
 `setenv partner-sysid _node1_sysid_`
 
 +
-Pour le noeud 2, le `partner-sysid` Doit être celui du nœud 1 que vous mettez à niveau vers un système AFF A900 ou FAS9500.
+Pour le noeud 2, le `partner-sysid` doit être celui du nœud 1 que vous mettez à niveau.
 
 +
 .. Enregistrer les paramètres :

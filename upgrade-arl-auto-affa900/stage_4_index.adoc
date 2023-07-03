@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/stage_4_index.html 
-keywords: upgrade, preparing, preparation, prepare, overview, stage 1 
-summary: 'Étape 1 : séquence de processus pour une mise à niveau d"ARL à l"aide de `system controller replace` Commandes sur les contrôleurs exécutant ONTAP 9.8 ou version ultérieure.' 
+keywords: upgrade, relocate, retire, overview, stage 4 
+summary: 'Étape 1 : séquence de processus pour une mise à niveau d"ARL à l"aide de `system controller replace` commandes de mise à niveau des modèles de contrôleur dans le même châssis.' 
 ---
 = Présentation
 :hardbreaks:

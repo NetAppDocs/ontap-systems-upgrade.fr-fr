@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/relocate_failed_or_vetoed_aggr.html 
 keywords: relocate, failed, vetoed, aggregates, relocation, operation 
-summary: 'Le transfert d"agrégats défaillants ou vetotés lors d"une mise à niveau d"un système AFF A700 vers un système AFF A900.' 
+summary: 'Transfert d"agrégats en panne ou avec véto. Lors de l"utilisation d"ARL pour la mise à niveau des modèles de contrôleurs du même châssis.' 
 ---
 = Le transfert d'agrégats a échoué ou a été veto
 :hardbreaks:

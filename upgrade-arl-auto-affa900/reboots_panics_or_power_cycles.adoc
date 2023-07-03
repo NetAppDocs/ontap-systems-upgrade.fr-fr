@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/reboots_panics_or_power_cycles.html 
 keywords: reboots, panics, power, cycles, node, crash 
-summary: 'Le système peut tomber en panne – un redémarrage, une panique ou une mise hors/sous tension – lors de différentes étapes lors de la mise à niveau d"un système AFF A700 vers un système AFF A900.' 
+summary: 'Le système peut tomber en panne (redémarrage, fonctionnement incohérent ou cycle d"alimentation) au cours de différentes étapes lors de l"utilisation d"ARL pour mettre à niveau les modèles de contrôleurs d"un même châssis.' 
 ---
 = Redémarre, fonctionne de façon incohérente ou fonctionne tout cycle d'alimentation
 :hardbreaks:

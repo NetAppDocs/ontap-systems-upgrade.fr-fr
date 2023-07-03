@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/stage_2_index.html 
-keywords: upgrade, preparing, preparation, prepare, overview, stage 1 
-summary: 'Processus de la phase 2 pour une mise à niveau d"ARL à l"aide de `system controller replace` Commandes sur les contrôleurs exécutant ONTAP 9.8 ou version ultérieure.' 
+keywords: upgrade, relocate, retire, replace, netboot, overview, stage 2 
+summary: 'Processus de la phase 2 pour une mise à niveau d"ARL à l"aide de `system controller replace` commandes de mise à niveau des modèles de contrôleur dans le même châssis.' 
 ---
 = Présentation
 :hardbreaks:
@@ -14,11 +14,12 @@ summary: 'Processus de la phase 2 pour une mise à niveau d"ARL à l"aide de `sy
 
 
 [role="lead"]
-Lors de la phase 2, vous transférez les agrégats non racines et les LIF de données du nœud 1 vers le nœud 2. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement. Si nécessaire, vous transférez des agrégats défaillants ou vetotés. Vous devez enregistrer les informations du nœud 1 pour une utilisation ultérieure dans la procédure, puis intervertir le contrôleur no1 et les modules NVRAM correspondants, retirer le nœud 1 et netboot le nœud mis à niveau.
+Lors de la phase 2, vous transférez les agrégats non racines et les LIF de données du nœud 1 vers le nœud 2. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement. Si nécessaire, vous transférez des agrégats défaillants ou vetotés. Vous devez enregistrer les informations du nœud 1 pour les utiliser ultérieurement dans la procédure, puis permuter les modules système du nœud 1 correspondants, retirer le nœud 1 et netboot le nœud 1 mis à niveau.
 
 .Étapes
 . link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Transférez les agrégats non racine et les LIF de données NAS qui appartiennent au nœud1 vers le nœud2"]
 . link:relocate_failed_or_vetoed_aggr.html["Le transfert d'agrégats a échoué ou a été veto"]
 . link:retire_node1.html["Retirer le nœud 1"]
-. link:netboot_node1.html["NetBoot"]
+. link:replace_node1_system_modules.html["Remplacez les modules système du nœud 1"]
+. link:netboot_node1.html["NetBoot node1"]
 

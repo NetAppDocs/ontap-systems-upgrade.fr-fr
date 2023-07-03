@@ -14,7 +14,7 @@ summary: 'Vous pouvez décider de mettre à niveau les contrôleurs exécutant O
 
 
 [role="lead"]
-Vous apprendrez à mettre à niveau les contrôleurs de stockage d'une paire haute disponibilité avec de nouveaux contrôleurs tout en conservant l'ensemble des données et disques existants. Il s'agit d'une procédure complexe qui ne doit être utilisée que par des administrateurs expérimentés.
+Ce contenu explique comment mettre à niveau les contrôleurs de stockage d'une paire haute disponibilité avec de nouveaux contrôleurs tout en conservant les données et les disques existants. Il s'agit d'une procédure complexe qui ne doit être utilisée que par des administrateurs expérimentés.
 
 Vous pouvez utiliser ce contenu dans les circonstances suivantes :
 

@@ -14,7 +14,7 @@ summary: 'Préparez les nœuds et exécutez une série de contrôles préalables
 
 
 [role="lead"]
-La procédure suivante permet de préparer les nœuds à la mise à niveau.
+Le processus de remplacement du contrôleur commence par une série de contrôles préalables. Vous rassemblez également des informations sur les nœuds d'origine pour les utiliser plus tard dans la procédure et, si nécessaire, déterminez le type de disques à chiffrement automatique utilisés.
 
 .Étapes
 . Lancer le processus de remplacement du contrôleur en entrant la commande suivante dans la ligne de commande ONTAP :
@@ -142,7 +142,7 @@ Depuis le port série connecté à chaque nœud, exécutez et enregistrez les va
 
 +
 
-NOTE: Si NetApp Volume Encryption (NVE) ou NetApp Aggregate Encryption (NAE) utilise le gestionnaire de clés intégré (OKM), conservez la phrase secrète pour le gestionnaire de clés pour terminer la resynchronisation des gestionnaires de clés plus tard dans la procédure.
+NOTE: Si vous utilisez NetApp Volume Encryption (NVE) ou NetApp Aggregate Encryption (NAE) avec le gestionnaire de clés intégré (OKM), conservez la phrase de passe du gestionnaire de clés prête pour effectuer la resynchronisation du gestionnaire de clés plus tard dans la procédure.
 
 . Si votre système utilise des lecteurs auto-cryptés, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] Pour déterminer le type de disques à autocryptage utilisés sur la paire haute disponibilité que vous mettez à niveau. Le logiciel ONTAP prend en charge deux types de disques avec autocryptage :
 +
@@ -208,10 +208,10 @@ Vous devez redémarrer la procédure de remplacement des contrôleurs :
 
 == Licence
 
-Lorsque vous configurez un cluster, l'assistant d'installation vous demande d'entrer la clé de licence de base du cluster. Cependant, certaines fonctionnalités nécessitent des licences supplémentaires, qui sont émises sous la forme de _packages_ qui incluent une ou plusieurs fonctionnalités. Chaque nœud du cluster doit disposer de sa propre clé pour que chaque fonctionnalité soit utilisée dans le cluster.
+Certaines fonctionnalités nécessitent des licences, qui sont émises sous la forme _packages_ qui incluent une ou plusieurs fonctionnalités. Chaque nœud du cluster doit disposer de sa propre clé pour que chaque fonctionnalité soit utilisée dans le cluster.
 
 Si vous ne disposez pas de nouvelles clés de licence, les fonctionnalités actuellement sous licence dans le cluster sont disponibles pour le nouveau contrôleur. Toutefois, l'utilisation de fonctions sans licence sur le contrôleur peut vous mettre hors conformité avec votre contrat de licence. Vous devez donc installer la ou les nouvelles clés de licence pour le nouveau contrôleur une fois la mise à niveau terminée.
 
-Reportez-vous à la section link:other_references.html["Références"] Lien vers le site de support _NetApp_ où vous pouvez obtenir de nouvelles clés de licence de deux caractères pour ONTAP. Les clés sont disponibles dans la section _mon support_ sous _licences logicielles_. Si le site ne dispose pas de clés de licence, vous pouvez contacter votre ingénieur commercial NetApp.
+Reportez-vous à la section link:other_references.html["Références"] Pour accéder au _site de support NetApp_ sur lequel vous pouvez obtenir de nouvelles clés de licence de 28 caractères pour ONTAP. Les clés sont disponibles dans la section _mon support_ sous _licences logicielles_. Si le site ne dispose pas de clés de licence, vous pouvez contacter votre ingénieur commercial NetApp.
 
 Pour plus d'informations sur les licences, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.

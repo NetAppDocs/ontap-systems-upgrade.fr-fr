@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/set_up_netapp_volume_encryption_new_module.html 
 keywords: set up, netapp volume encryption, controller, module, nve, node 
-summary: 'Si nécessaire, configurez le nouveau module de contrôleur pour NVE ou NAE lors d"une mise à niveau des systèmes AFF A700 vers AFF A900. »' 
+summary: 'Si nécessaire, configurez le nouveau module de contrôleur pour NVE ou NAE lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleur dans le même châssis. »' 
 ---
 = Configurez NetApp Volume Encryption ou Aggregate Encryption sur le nouveau module de contrôleur
 :hardbreaks:
@@ -23,7 +23,7 @@ Cette procédure comprend les étapes réalisées sur le nouveau module de contr
 ====
 .Gestionnaire de clés intégré
 --
-*Configurer NVE ou NAE à l'aide du gestionnaire de clés intégré*
+Configurez NVE ou NAE à l'aide du Gestionnaire de clés intégré.
 
 .Étapes
 . Restaurer les clés d'authentification de tous les serveurs de gestion des clés liés vers le nouveau nœud :
@@ -35,7 +35,7 @@ Cette procédure comprend les étapes réalisées sur le nouveau module de contr
 --
 .Gestion externe des clés
 --
-*Configurer NVE ou NAE à l'aide de la gestion externe des clés*
+Configurez NVE ou NAE à l'aide de la gestion externe des clés.
 
 .Étapes
 . Vérifier que les serveurs de gestion des clés sont toujours disponibles, leur état et leurs informations de clé d'authentification :

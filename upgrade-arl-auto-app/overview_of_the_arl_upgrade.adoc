@@ -38,7 +38,7 @@ Le tableau ci-après décrit les tâches générales que vous effectuez à chaqu
 
 
 | link:stage_1_index.html["Étape 1. Préparation de la mise à niveau"]  a| 
-Lors de l'étape 1, vous exécutez des contrôles préalables et, le cas échéant, vous devez corriger la propriété globale. Vous devez enregistrer certaines informations si vous gérez le chiffrement du stockage à l'aide de OKM et vous pouvez choisir de suspendre les relations SnapMirror.
+Lors de l'étape 1, vous exécutez des contrôles préalables et, le cas échéant, vous devez corriger la propriété globale. Vous devez enregistrer certaines informations si vous gérez le chiffrement du stockage à l'aide de OKM et si vous pouvez choisir de suspendre les relations SnapMirror.
 
 Propriété d'un agrégat à la fin de la phase 1 :
 

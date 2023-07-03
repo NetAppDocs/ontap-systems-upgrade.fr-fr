@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/netboot_node1.html 
-keywords: preparing, netboot, ontap, node1, aff, a900 
-summary: Après avoir échangé le module de contrôleur AFF A900 node1 correspondant et le module NVRAM, vous devez netboot nœud1. 
+keywords: preparing, prepare, netboot, ontap, node1 
+summary: 'Lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleurs du même châssis, vous devez netboot node1 après avoir remplacé le module système correspondant.' 
 ---
 = NetBoot node1
 :hardbreaks:
@@ -14,12 +14,13 @@ summary: Après avoir échangé le module de contrôleur AFF A900 node1 correspo
 
 
 [role="lead"]
-Après avoir échangé les contrôleurs de nœud 1 AFF A900 ou FAS9500 correspondants et les modules NVRAM, vous devez netboot sur le nœud 1. Le terme netboot signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Pour vous préparer à netboot, vous devez ajouter une copie de l'image de démarrage ONTAP 9 sur un serveur web auquel le système peut accéder.
+Après avoir remplacé les modules système correspondants, vous devez netboot node1. Le terme netboot signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Pour vous préparer à netboot, vous devez ajouter une copie de l'image de démarrage ONTAP 9 sur un serveur web auquel le système peut accéder.
 
-Il n'est pas possible de vérifier la version de ONTAP installée sur le support de démarrage d'un module de contrôleur AFF A900 ou FAS9500, sauf s'il est installé dans un châssis et sous tension. La version ONTAP du support de démarrage AFF A900 ou FAS9500 doit être identique à la version ONTAP exécutée sur un système AFF A700 ou FAS9000 que vous effectuez une mise à niveau. Les images de démarrage primaire et de sauvegarde doivent correspondre. Vous pouvez configurer les images en effectuant un démarrage suivi de l' `wipeconfig` commande dans le menu de démarrage. Si le module de contrôleur était auparavant utilisé dans un autre cluster, le `wipeconfig` commande efface toute configuration résiduelle sur le support d'amorçage.
+Il n'est pas possible de vérifier la version de ONTAP installée sur le support de démarrage du module de contrôleur de remplacement sauf s'il est installé dans un châssis et sous tension. La version ONTAP du support d'amorçage du système de remplacement doit être identique à la version ONTAP exécutée sur l'ancien système que vous mettez à niveau et les images d'amorçage principale et de sauvegarde doivent correspondre. Pour vérifier la version ONTAP minimale prise en charge pour votre mise à niveau, reportez-vous à la section link:index.html["Présentation"].
 
+Vous pouvez configurer les images en effectuant un démarrage suivi de l' `wipeconfig` commande dans le menu de démarrage. Si le module de contrôleur était auparavant utilisé dans un autre cluster, le `wipeconfig` commande efface toute configuration résiduelle sur le support d'amorçage.
 
-NOTE: Vous pouvez également utiliser l'option de démarrage USB pour effectuer le démarrage sur le réseau. Consultez l'article de la base de connaissances link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Utilisation de la commande boot_Recovery LOADER pour l'installation de ONTAP pour la configuration initiale d'un système"^].
+Vous pouvez également utiliser l'option de démarrage USB pour effectuer le démarrage sur le réseau. Consultez l'article de la base de connaissances link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Utilisation de la commande boot_Recovery LOADER pour l'installation de ONTAP pour la configuration initiale d'un système"^].
 
 .Avant de commencer
 * Vérifiez que vous pouvez accéder à un serveur HTTP avec le système.

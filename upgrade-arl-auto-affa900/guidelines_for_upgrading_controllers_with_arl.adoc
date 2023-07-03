@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/guidelines_for_upgrading_controllers_with_arl.html 
-keywords: guidelines, upgrade, aff, a900, a700, ontap, controllers 
-summary: 'Comprenez si vous pouvez utiliser le transfert d"agrégats pour mettre à niveau un système AFF A700 vers un système AFF A900.' 
+keywords: guidelines, upgrade, ontap, controllers, old, system, chassis, disk, disks 
+summary: 'Déterminez si vous pouvez utiliser l"ARL, en conservant l"ancien châssis et les anciens disques du système pour la configuration de la mise à niveau.' 
 ---
 = Instructions de mise à niveau des contrôleurs
 :hardbreaks:
@@ -14,20 +14,15 @@ summary: 'Comprenez si vous pouvez utiliser le transfert d"agrégats pour mettre
 
 
 [role="lead"]
-Utilisation de l'ARL pour mettre à niveau une paire de contrôleurs exécutant ONTAP 9.10.1P10, 9.11.1P6 ou une version ultérieure dans les configurations système suivantes :
-
-* Contrôleurs AFF A700 vers un système AFF A900
-* Contrôleurs FAS9000 vers un système FAS9500
-
+Pour savoir si vous pouvez utiliser le transfert d'agrégats (ARL), le conservation des anciens châssis et disques du système dépend de la configuration de la mise à niveau du système et de la version de ONTAP.
 
 
 
 == Mises à niveau prises en charge pour l'ARL
 
-La combinaison prise en charge est la mise à niveau du contrôleur d'un système AFF A700 vers un système AFF A900 ou d'un système FAS9000 vers un système FAS9500 via le transfert d'agrégats (ARL) et le module NVRAM. Si vous avez reçu un nouveau système AFF A900 ou FAS9500 comme système complet, incluant un nouveau châssis, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _utilisez les commandes "System Controller replace" pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ content.
+Des mises à niveau du contrôleur sont prises en charge pour certaines configurations système. Pour afficher la liste des systèmes pris en charge et des versions minimales de ONTAP, reportez-vous à la section link:index.html["Présentation"].
 
-
-WARNING: Cette procédure s'applique exclusivement à une mise à niveau d'un système AFF A700 vers AFF A900 ou FAS9000 vers FAS9500 qui exécute ONTAP 9.10.1P10, 9.11.1P6 ou une version ultérieure. N'utilisez PAS cette procédure pour effectuer une mise à niveau entre d'autres combinaisons de systèmes.
+Si vous avez reçu un nouveau système AFF A150, FAS2820, AFF A900 ou FAS9500 en tant que système complet, incluant un nouveau châssis, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _utilisez les commandes "System Controller replace" pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ content.
 
 La mise à niveau du contrôleur avec l'ARL est prise en charge sur les systèmes configurés avec les volumes SnapLock Enterprise et SnapLock Compliance.
 
@@ -36,6 +31,12 @@ La mise à niveau du contrôleur avec l'ARL est prise en charge sur les système
 == Clusters à 2 nœuds sans commutateur
 
 Si vous mettez à niveau des nœuds dans un cluster sans commutateur à 2 nœuds, vous pouvez quitter le cluster sans commutateur tout en effectuant la mise à niveau. Il n'est pas nécessaire de les convertir en cluster commuté.
+
+
+
+== Commutateurs connectés aux clusters
+
+Si vous mettez à niveau des nœuds d'un cluster connecté à un commutateur de cluster, vous devez vérifier que la marque, le modèle, la version du firmware, le fichier RCF et la version de ONTAP exécutés sur le commutateur sont identiques à ceux exécutés sur le contrôleur de remplacement après la mise à niveau. Si nécessaire, vous devez effectuer la mise à niveau du commutateur avant de mettre à niveau les contrôleurs à l'aide de la procédure ARL décrite dans cette documentation.
 
 
 
