@@ -14,7 +14,7 @@ summary: 'Vérifiez que la paire haute disponibilité est activée, vérifiez l"
 
 
 [role="lead"]
-Pour vérifier la configuration correcte, vous devez vérifier que la paire HA est activée. Vous devez également vérifier que les nœuds 1 et 2 peuvent accéder l'un à l'autre au stockage et qu'ils ne possèdent aucune LIF de données appartenant à d'autres nœuds du cluster. En outre, vous devez vérifier que tous les agrégats de données se trouvent sur leurs bons nœuds de rattachement et que les volumes des deux nœuds sont en ligne. Si l'un des nouveaux nœuds est doté d'un adaptateur cible unifié, vous devez restaurer les configurations de port et vous devrez peut-être modifier l'utilisation de l'adaptateur.
+Pour vérifier que la configuration est correcte, vérifiez que la paire haute disponibilité est activée. Vous vérifiez également que les nœuds 1 et 2 peuvent accéder au stockage de l'autre nœud et que ni les LIF de données appartenant à d'autres nœuds du cluster ne possèdent de LIF de données. De plus, vous devez vérifier que tous les agrégats de données se trouvent sur leurs nœuds de base corrects et que les volumes des deux nœuds sont en ligne. Si l'un des nouveaux nœuds est doté d'un adaptateur cible unifié, vous devez restaurer les configurations de port et vous devrez peut-être modifier l'utilisation de l'adaptateur.
 
 .Étapes
 . Après la vérification du post-nœud 2, le basculement du stockage et la paire HA du cluster pour le cluster node 2 sont activés. Lorsque l'opération est effectuée, les deux nœuds indiquent que l'opération est terminée et le système effectue certaines opérations de nettoyage.

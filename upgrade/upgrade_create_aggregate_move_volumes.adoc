@@ -4,13 +4,25 @@ sidebar: sidebar
 keywords: create, aggregate, node, store, volume, original, node, identify, aggregate, individually, create an aggregate and moving volumes to the new nodes 
 summary: 'Vous créez au moins un agrégat sur chacun des nouveaux nœuds afin de stocker les volumes que vous voulez déplacer des nœuds d"origine. Vous devez identifier un agrégat pour chaque volume et les déplacer individuellement.' 
 ---
-= Création d'un agrégat et déplacement des volumes vers les nouveaux nœuds
+= Créer un agrégat et déplacer des volumes
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
+Lors d'une mise à niveau du logiciel ONTAP, vous migrez vos données en créant un agrégat sur les nouveaux nœuds, puis en déplaçant les volumes.
+
+Si votre configuration de stockage inclut des volumes SAN ou des volumes chiffrés, vous devez également déplacer ces volumes :
+
+* <<move_san_vols,Déplacer des volumes SAN>>
+* <<Déplacement des volumes avec le chiffrement activé>>
+
+
+
+
+== Création d'un agrégat et déplacement des volumes vers les nouveaux nœuds
+
 Vous créez au moins un agrégat sur chacun des nouveaux nœuds afin de stocker les volumes que vous voulez déplacer des nœuds d'origine. Vous devez identifier un agrégat pour chaque volume et les déplacer individuellement.
 
 .Avant de commencer
@@ -18,12 +30,15 @@ Les relations de miroir de protection des données doivent avoir été initialis
 
 https://docs.netapp.com/us-en/ontap/data-protection-disaster-recovery/index.html["Rechercher la procédure de protection des données requise"^].
 
+
+NOTE: Pour chaque SVM (Storage Virtual machine), NetApp recommande de déplacer tous les volumes non root du cluster avant de déplacer le volume root, et d'effectuer cette procédure sur un SVM à la fois.
+
 .Étapes
 . Créer au moins un agrégat sur chaque nouveau nœud :
 +
-`storage aggregate create -aggregate aggr_name -node new_node_name -diskcount integer`
+`storage aggregate create -aggregate _aggr_name_ -node _new_node_name_ -diskcount integer`
 
-. Ajouter le nouvel agrégat au même SVM que l'agrégat sur le nœud d'origine depuis lequel vous voulez déplacer les volumes :
+. Ajouter le nouvel agrégat sur le même SVM (Storage Virtual machine) que l'agrégat sur le nœud d'origine depuis lequel déplacer les volumes :
 +
 `vserver add-aggregates`
 
@@ -36,7 +51,7 @@ Le nouvel agrégat et l'ancien agrégat depuis lequel le volume sera déplacé d
 
 . Afficher les informations relatives aux volumes que vous souhaitez déplacer des nœuds d'origine vers les nouveaux nœuds :
 +
-`volume show -vserver svm_name -node original_node_name`
+`volume show -vserver _svm_name_ -node _original_node_name_`
 
 +
 Vous devez conserver la sortie de la commande pour une référence ultérieure.
@@ -57,7 +72,7 @@ vs1       vs1root      aggr1        online     RW         20MB    18.88MB    5%
 ----
 . Déterminez un agrégat vers lequel vous pouvez déplacer un volume donné :
 +
-`volume move target-aggr show -vserver svm_name -volume vol_name`
+`volume move target-aggr show -vserver _svm_name_ -volume _vol_name_`
 
 +
 L'exemple suivant montre que le volume « user_max » du SVM « vs2 » peut être déplacé vers l'un des agrégats répertoriés :
@@ -77,28 +92,40 @@ node12a_aggr4    10.36GB         FCAL
 ----
 . Exécutez un contrôle de validation sur chaque volume que vous voulez déplacer afin de vérifier qu'il peut être déplacé vers l'agrégat spécifié :
 +
-`volume move start -vserver svm_name -volume volume_name -destination-aggregate destination_aggregate_name -perform-validation-only true`
+`volume move start -vserver _svm_name_ -volume _volume_name_ -destination-aggregate _destination_aggregate_name_ -perform-validation-only true`
 
 . Déplacez les volumes un par un (niveau de privilège avancé) :
 +
-`volume move start -vserver svm_name -volume vol_name -destination-aggregate destination_aggr_name -cutover-window integer`
+`volume move start -vserver _svm_name_ -volume _vol_name_ -destination-aggregate _destination_aggr_name_ -cutover-window integer`
 
 +
 Vous ne pouvez pas déplacer le volume racine du nœud (vol0). D'autres volumes, y compris des volumes root SVM, peuvent être déplacés.
 
 . Afficher le résultat du `volume move` opération pour vérifier que les volumes ont été déplacés correctement :
 +
-`volume move show -vserver svm_name -volume vol_name`
+`volume move show -vserver _svm_name_ -volume _vol_name_`
 
 . Si le `volume move` l'opération ne termine pas la phase finale après plusieurs tentatives, forcer le déplacement à se terminer :
 +
-`volume move trigger-cutover -vserver svm_name -volume vol_name -force true`
+`volume move trigger-cutover -vserver _svm_name_ -volume _vol_name_ -force true`
 
 +
 Le fait de forcer l'opération de déplacement du volume peut interrompre l'accès client au volume déplacé.
 
 . Vérifier que les volumes ont été déplacés correctement vers le SVM spécifié et qu'ils se trouvent dans l'agrégat approprié :
 +
-`volume show -vserver svm_name`
+`volume show -vserver _svm_name_`
 
 
+
+
+
+== Déplacer des volumes SAN
+
+Pour déplacer des volumes SAN, suivez les étapes de la section https://docs.netapp.com/us-en/ontap-metrocluster/transition/task_move_linux_iscsi_hosts_from_mcc_fc_to_mcc_ip_nodes.html["Déplacement des hôtes iSCSI Linux depuis les nœuds FC MetroCluster vers les nœuds IP MetroCluster"^]. Cela s'applique au déplacement de volumes SAN dans des configurations MetroCluster et non MetroCluster.
+
+
+
+== Déplacement des volumes avec le chiffrement activé
+
+Pour déplacer des volumes dont le chiffrement d'agrégat est activé, suivez les étapes de la section https://docs.netapp.com/us-en/ontap/encryption-at-rest/encrypt-existing-volume-task.html["Activez le chiffrement sur un volume existant à l'aide de la commande volume Move start"^].

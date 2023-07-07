@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Pour retirer le nœud 1, vous reprenez l'opération automatisée pour désactiver la paire HA avec le nœud 2 et arrêter le nœud 1 correctement. Vous devez retirer le nœud 1 du rack ou du châssis.
+Pour retirer le nœud 1, vous reprenez l'opération automatisée pour désactiver la paire HA avec le nœud 2 et arrêter le nœud 1 correctement. Plus tard dans la procédure, vous supprimez le nœud 1 du rack ou du châssis.
 
 .Étapes
 . Reprendre l'opération :

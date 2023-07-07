@@ -66,7 +66,7 @@ Les versions ONTAP minimales figurant dans le tableau précédent sont obligatoi
 Au cours de la procédure, vous migrez les agrégats non racines entre les anciens nœuds de contrôleur. Une fois l'installation terminée, migrez les agrégats non-racines des anciens nœuds de contrôleur vers les nœuds de contrôleur de remplacement. Les données hébergées sur les nœuds que vous mettez à niveau sont accessibles lors de la procédure de mise à niveau.
 
 .Description de la tâche
-Au cours de cette procédure de mise à niveau du contrôleur, vous effectuez l'une des opérations suivantes :
+Au cours de cette procédure de mise à niveau du contrôleur, vous effectuez l'une des mises à niveau suivantes :
 
 * Remplacez le module de contrôleur de chaque nœud du système AFF A220, AFF A200 ou AFF C190 par le nouveau module AFF A150.
 * Remplacez le module de contrôleur de chaque nœud du système FAS2620 ou FAS2720 par le nouveau module FAS2820.
@@ -97,4 +97,4 @@ NOTE: Les termes *node1* et *node2* sont utilisés uniquement comme référence 
 
 == Automatisation du processus de mise à niveau des contrôleurs
 
-Cette procédure prend en charge les mises à niveau de contrôleur suivantes et fournit les étapes de la procédure automatisée, qui utilise l'affectation automatique des disques et les vérifications d'accessibilité des ports réseau pour simplifier l'expérience de mise à niveau du contrôleur.
+Cette procédure fournit les étapes de la procédure automatisée, qui utilise l'affectation automatique des disques et les vérifications d'accessibilité des ports réseau pour simplifier l'expérience de mise à niveau du contrôleur.

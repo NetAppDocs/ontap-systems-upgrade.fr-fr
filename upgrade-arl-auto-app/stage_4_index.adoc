@@ -14,7 +14,7 @@ summary: 'Étape 4 : séquence de processus pour la mise à niveau d"ARL à l"ai
 
 
 [role="lead"]
-Lors de la phase 4, vous transférez les agrégats non racines et les LIF de données NAS du nœud 2 vers le nœud 3. Vous devez enregistrer les informations nécessaires sur le noeud 2 pour une utilisation ultérieure dans la procédure, puis retirer le noeud 2.
+Lors de la phase 4, vous transférez les agrégats non racines et les LIF de données NAS du nœud 2 vers le nœud 3. Vous enregistrez également les informations nécessaires sur le nœud 2 pour les utiliser plus tard dans la procédure, puis vous retirez le nœud 2.
 
 .Étapes
 . link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Transférez des agrégats non racines et des LIF de données NAS du nœud 2 vers le nœud 3"]

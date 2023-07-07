@@ -14,7 +14,7 @@ summary: 'Démarrez le nœud 1 avec les modules de contrôleur de remplacement l
 
 
 [role="lead"]
-Le nœud 1 avec les modules de remplacement est maintenant prêt pour le démarrage. Cette section fournit les étapes requises pour démarrer node1 avec les modules de remplacement pour les configurations de mise à niveau suivantes :
+Le nœud 1 avec les modules de remplacement est maintenant prêt à démarrer. Cette section fournit les étapes requises pour démarrer node1 avec les modules de remplacement pour les configurations de mise à niveau suivantes :
 
 [cols="35,65"]
 |===
@@ -35,8 +35,8 @@ FAS2720 | Module contrôleur FAS2820 ^1^
 
 | FAS9000 | Contrôleur FAS9500 et modules NVRAM ^2^ 
 |===
-^1^ la mise à niveau par permutation du module de contrôleur implique le déplacement de toutes les connexions de l'ancien vers le module de contrôleur de remplacement.
-^2^ la mise à niveau en permutant le contrôleur et les modules NVRAM implique de déplacer uniquement la console et les connexions de gestion.
+^1^ lors du remplacement des modules de contrôleur, vous déplacez toutes les connexions de l'ancien vers le module de contrôleur de remplacement.
+^2^ lors du remplacement du contrôleur et des modules NVRAM, vous déplacez uniquement les connexions de console et de gestion.
 
 .Étapes
 . Si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.

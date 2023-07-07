@@ -13,12 +13,15 @@ summary: Pour planifier la mise à niveau, vous devez vous familiariser avec les
 [role="lead"]
 Pour planifier la mise à niveau, vous devez vous familiariser avec les considérations générales de mise à niveau. Si nécessaire, contactez le support technique pour obtenir des recommandations et des conseils spécifiques à la configuration de votre cluster.
 
-Exigences et restrictions
-
+.Exigences et restrictions
 * La procédure de mise à niveau vers du stockage est perturbatrice. La procédure de mise à niveau via le déplacement de volumes ne génère aucune interruption.
-* Les nouveaux nœuds doivent prendre en charge la même version logicielle que les nœuds d'origine.
+* Les nœuds d'origine doivent prendre en charge la même version logicielle que les nouveaux nœuds.
 +
 link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Mettez à niveau ONTAP"^]
+
++
+
+NOTE: Pour plus d'informations sur les mises à niveau de clusters à versions logicielles mixtes, reportez-vous à la section https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["Clusters ONTAP à version mixte"^].
 
 * Vous devez observer la taille maximale du cluster.
 +

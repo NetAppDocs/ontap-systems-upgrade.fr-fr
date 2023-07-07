@@ -14,7 +14,7 @@ summary: 'Lorsque vous utilisez l"ARL pour mettre à niveau les modèles de cont
 
 
 [role="lead"]
-Après avoir remplacé les modules système correspondants, vous devez netboot node1. Le terme netboot signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Pour vous préparer à netboot, vous devez ajouter une copie de l'image de démarrage ONTAP 9 sur un serveur web auquel le système peut accéder.
+Après avoir remplacé les modules système correspondants, vous devez netboot node1. Le terme netboot signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Lors de la préparation de netboot, vous ajoutez une copie de l'image de démarrage de ONTAP 9 sur un serveur Web auquel le système peut accéder.
 
 Il n'est pas possible de vérifier la version de ONTAP installée sur le support de démarrage du module de contrôleur de remplacement sauf s'il est installé dans un châssis et sous tension. La version ONTAP du support d'amorçage du système de remplacement doit être identique à la version ONTAP exécutée sur l'ancien système que vous mettez à niveau et les images d'amorçage principale et de sauvegarde doivent correspondre. Pour vérifier la version ONTAP minimale prise en charge pour votre mise à niveau, reportez-vous à la section link:index.html["Présentation"].
 

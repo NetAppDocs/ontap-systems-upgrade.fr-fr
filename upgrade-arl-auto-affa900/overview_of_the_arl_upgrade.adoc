@@ -38,7 +38,7 @@ Le tableau ci-après décrit les tâches générales que vous effectuez à chaqu
 
 
 | link:stage_1_index.html["Étape 1 : préparer la mise à niveau"]  a| 
-Au cours de l'étape 1, vous vérifiez que vous disposez du matériel approprié pour votre mise à niveau, exécutez des contrôles préalables et, si nécessaire, corrigez la propriété globale. Vous devez enregistrer certaines informations si vous gérez Storage Encryption à l'aide du gestionnaire de clés intégré et que vous pouvez choisir de suspendre les relations SnapMirror.
+Au cours de l'étape 1, vous vérifiez que vous disposez du matériel approprié pour votre mise à niveau, exécutez des contrôles préalables et, si nécessaire, assurez-vous que la propriété globale est correcte. Vous devez enregistrer certaines informations si vous gérez Storage Encryption à l'aide du gestionnaire de clés intégré et que vous pouvez choisir de suspendre les relations SnapMirror.
 
 Propriété d'un agrégat à la fin de la phase 1 :
 

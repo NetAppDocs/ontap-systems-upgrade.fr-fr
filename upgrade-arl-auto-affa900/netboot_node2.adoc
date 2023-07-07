@@ -14,7 +14,7 @@ summary: Après avoir remplacé les modules système du nœud 2 correspondants l
 
 
 [role="lead"]
-Après avoir remplacé les modules système node2 correspondants, vous devrez peut-être les initialiser en réseau. Le terme netboot signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Lorsque vous vous préparez à netboot, vous devez placer une copie de l'image de démarrage ONTAP 9 sur un serveur web auquel le système peut accéder.
+Après avoir remplacé les modules système node2 correspondants, vous devrez peut-être les initialiser en réseau. Le terme netboot signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Lors de la préparation de netboot, vous placez une copie de l'image de démarrage ONTAP 9 sur un serveur Web auquel le système peut accéder.
 
 Il n'est pas possible de vérifier la version de ONTAP installée sur le support de démarrage du module de contrôleur de remplacement sauf s'il est installé dans un châssis et sous tension. La version ONTAP du support d'amorçage du système de remplacement doit être identique à la version ONTAP exécutée sur l'ancien système que vous mettez à niveau et les images d'amorçage principale et de sauvegarde doivent correspondre. Vous pouvez configurer les images en effectuant un démarrage suivi de l' `wipeconfig` commande dans le menu de démarrage. Si le module de contrôleur était auparavant utilisé dans un autre cluster, le `wipeconfig` commande efface toute configuration résiduelle sur le support d'amorçage.
 

@@ -14,7 +14,7 @@ summary: 'Désactivez la paire haute disponibilité avec le nœud 2 et arrêtez 
 
 
 [role="lead"]
-Pour retirer le nœud 1, reprendre l'opération automatisée afin de désactiver la paire HA avec le nœud 2 et d'arrêter le nœud 1 correctement. Vous devez par la suite retirer les anciens modules système du châssis node1, puis installer les modules de remplacement sur le node1.
+Pour désactiver le nœud 1, vous reprenez l'opération automatisée afin de désactiver la paire haute disponibilité avec le nœud 2 et d'arrêter le nœud 1 correctement.
 
 .Étapes
 . Reprendre l'opération :

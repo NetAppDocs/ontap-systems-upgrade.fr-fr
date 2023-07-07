@@ -14,7 +14,7 @@ summary: 'Vérifiez que les LIF de données NAS du nœud 2 sur le nœud 1 sont d
 
 
 [role="lead"]
-Après avoir vérifié la configuration réseau sur le nœud 2 et avant de transférer des agrégats du nœud 1 vers le nœud 2, vous devez vérifier que les LIF de données NAS appartenant au nœud 2 actuellement transférées du nœud 1 vers le nœud 2 sont bien transférées du nœud 1 vers le nœud 2. Vous devez également vérifier que les LIFs SAN existent sur le nœud2.
+Après avoir vérifié la configuration réseau sur le nœud 2 et avant de déplacer des agrégats du nœud 1 vers le nœud 2, vérifiez que les LIF de données NAS appartenant au nœud 2 qui se trouvent actuellement sur le nœud 1 sont déplacées du nœud 1 vers le nœud 2. Vous devez également vérifier que les LIFs SAN existent sur le nœud2.
 
 .Description de la tâche
 Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Une fois le nœud 2 mis en ligne, vous devez vérifier que les LIF sont saines et situées sur les ports appropriés.

@@ -65,7 +65,7 @@ entries:
     url: "/upgrade/upgrade-prepare-when-moving-volumes.html"
   - title: Installez et joignez les nouveaux nœuds
     url: "/upgrade/upgrade-install-and-join-new-nodes-move-vols.html"
-  - title: Création d'agrégats et déplacement de volumes
+  - title: Créer un agrégat et déplacer des volumes
     url: "/upgrade/upgrade-create-aggregate-move-volumes.html"
   - title: Déplacez les LIF de données non-SAN et les LIF de gestion du cluster
     url: "/upgrade/upgrade-move-lifs-to-new-nodes.html"

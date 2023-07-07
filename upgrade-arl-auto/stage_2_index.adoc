@@ -14,7 +14,7 @@ summary: 'Processus de la phase 2 pour une mise à niveau d"ARL à l"aide de `sy
 
 
 [role="lead"]
-Lors de la phase 2, vous transférez les agrégats non racines et les LIF de données du nœud 1 vers le nœud 2. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement. Si nécessaire, vous transférez des agrégats défaillants ou vetotés. Vous devez enregistrer les informations nécessaires sur le noeud 1, puis retirer le noeud 1. Vous pouvez également préparer votre infrastructure sur le nœud 3 et sur le nœud 4 plus tard dans la procédure.
+Lors de la phase 2, vous transférez les agrégats non racines et les LIF de données du nœud 1 vers le nœud 2. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement. Si nécessaire, vous transférez des agrégats défaillants ou vetotés. Vous enregistrez également les informations nécessaires sur le nœud 1, vous retirez le nœud 1 et vous préparez à netboot node3 et node4 plus tard dans la procédure.
 
 .Étapes
 . link:relocate_non_root_aggr_nas_data_lifs_node1_node2.html["Transférez les agrégats non racine et les LIF de données NAS qui appartiennent au nœud1 vers le nœud2"]

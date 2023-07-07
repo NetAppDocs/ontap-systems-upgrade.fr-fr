@@ -14,7 +14,7 @@ summary: 'Activez la paire haute disponibilité, vérifiez l"accès au stockage 
 
 
 [role="lead"]
-Pour confirmer la configuration correcte, vous devez activer la paire HA. Vous devez également vérifier que les nœuds 3 et Node4 ne sont pas en mesure d'accéder aux systèmes de stockage des autres et que les LIF de données ne sont pas membres du cluster. Vous devez également confirmer que le nœud 3 est propriétaire des agrégats du nœud 1 et que le nœud 4 est propriétaire des agrégats du nœud 2, et que les volumes des deux nœuds sont en ligne.
+Pour confirmer la configuration correcte, vous activez la paire HA. Vous vérifiez également que les nœuds 3 et 4 peuvent accéder au stockage de l'autre nœud et que ni les LIF de données appartenant à d'autres nœuds du cluster ne possèdent de LIF de données. En outre, vous confirmez que le nœud 3 possède les agrégats du nœud 1, que le nœud 4 possède les agrégats du nœud 2 et que les volumes des deux nœuds sont en ligne.
 
 .Étapes
 . Activer le basculement du stockage en entrant la commande suivante sur l'un des nœuds :

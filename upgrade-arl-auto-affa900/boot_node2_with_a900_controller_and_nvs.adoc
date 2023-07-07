@@ -14,7 +14,7 @@ summary: 'Démarrez le nœud 2 avec les modules de contrôleur de remplacement l
 
 
 [role="lead"]
-Le nœud 2 avec les modules de remplacement est maintenant prêt pour le démarrage. La mise à niveau par permutation des modules système implique de déplacer uniquement la console et les connexions de gestion. Cette section fournit les étapes requises pour démarrer node2 avec les modules de remplacement pour les configurations de mise à niveau suivantes :
+Le nœud 2 avec les modules de remplacement est maintenant prêt à démarrer. La mise à niveau par permutation des modules système implique de déplacer uniquement la console et les connexions de gestion. Cette section fournit les étapes requises pour démarrer node2 avec les modules de remplacement pour les configurations de mise à niveau suivantes :
 
 [cols="35,65"]
 |===

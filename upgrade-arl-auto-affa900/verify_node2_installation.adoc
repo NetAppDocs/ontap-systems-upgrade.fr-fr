@@ -17,7 +17,7 @@ summary: 'Vérifiez l"installation du nœud 2 avec des modules de remplacement l
 Vous devez vérifier l'installation du nœud 2 avec les modules système de remplacement. Comme il n'y a pas de modification des ports physiques, vous n'avez pas besoin d'mapper les ports physiques de l'ancien nœud 2 vers le nœud de remplacement 2.
 
 .Description de la tâche
-Après avoir initialisé le nœud 1 avec le module système de remplacement, vous devez vérifier qu'il est correctement installé. Vous devez patienter jusqu'à ce que le nœud 2 rejoint le quorum, puis reprendre l'opération de remplacement du contrôleur.
+Après avoir initialisé le nœud 1 avec le module système de remplacement, vérifiez qu'il est correctement installé. Vous devez patienter jusqu'à ce que le nœud 2 rejoint le quorum, puis reprendre l'opération de remplacement du contrôleur.
 
 À ce stade de la procédure, l'opération s'interrompt pendant que le noeud 2 rejoint le quorum.
 

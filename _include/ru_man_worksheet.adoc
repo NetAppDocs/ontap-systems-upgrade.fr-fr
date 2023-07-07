@@ -2,9 +2,9 @@
 :allow-uri-read: 
 
 
-Vous devez collecter certaines informations pour mettre à niveau les nœuds d'origine. Ces informations incluent les ID de nœud, les détails de port et de LIF, les clés de licence et les adresses IP.
+Vous devez rassembler certaines informations pour prendre en charge la mise à niveau des nœuds d'origine. Ces informations incluent les ID de nœud, les détails des ports et LIF, les clés de licence et les adresses IP.
 
-Vous pouvez utiliser la fiche suivante pour enregistrer des informations à utiliser ultérieurement dans la procédure :
+Vous pouvez utiliser le formulaire suivant pour enregistrer les informations à utiliser ultérieurement dans la procédure :
 
 |===
 | Informations nécessaires | Lorsqu'il est collecté | Lorsqu'il est utilisé | Informations collectées 

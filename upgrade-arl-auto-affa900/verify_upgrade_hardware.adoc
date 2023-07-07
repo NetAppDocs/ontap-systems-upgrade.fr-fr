@@ -14,7 +14,7 @@ summary: Avant de commencer la mise à niveau, vérifiez que vous disposez du ma
 
 
 [role="lead"]
-Avant de commencer la mise à niveau, vous devez vérifier que vous disposez du matériel approprié pour votre mise à niveau. En fonction de votre mise à niveau, vous devez disposer de deux modules de contrôleur ou de deux modules de contrôleur et de deux modules NVRAM pour chaque paire haute disponibilité mise à niveau. Si des pièces sont manquantes, contactez le support technique ou votre contact commercial NetApp pour obtenir de l'aide.
+Avant de commencer la mise à niveau, vérifiez que vous disposez du matériel approprié pour votre mise à niveau. En fonction de votre mise à niveau, vous devez disposer de deux modules de contrôleur ou de deux modules de contrôleur et de deux modules NVRAM pour chaque paire haute disponibilité mise à niveau. Si certaines pièces sont manquantes, contactez le support technique ou votre ingénieur commercial NetApp pour obtenir de l'aide.
 
 [cols="50,50"]
 |===
