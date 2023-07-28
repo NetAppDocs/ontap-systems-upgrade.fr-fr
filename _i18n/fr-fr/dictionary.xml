@@ -3644,7 +3644,6 @@
   <block id="fe82c8b7274d1544ce545c5b1bb60481" category="paragraph"><block ref="f1851eed8781f22db14d4f07a13e575d" prefix="" category="inline-code"></block></block>
   <block id="39e7eb0e1fd08f1ba6fea6e4df4f0d50" category="paragraph">Le nouvel agrégat et l'ancien agrégat depuis lequel le volume sera déplacé doivent se trouver dans le même SVM.</block>
   <block id="65c0e65d7f3d4f9b7e59695a5beed439" category="list-text">Vérifier que le nouvel agrégat est désormais attribué au même SVM que l'agrégat sur le nœud d'origine :</block>
-  <block id="d144782c7f277a43532b9873909babed" category="paragraph"><block ref="b186c066dc880b3c14ba26f8af3a00b8" prefix="" category="inline-code"></block></block>
   <block id="60ffd94dccfc67beb8507929d59460e3" category="list-text">Afficher les informations relatives aux volumes que vous souhaitez déplacer des nœuds d'origine vers les nouveaux nœuds :</block>
   <block id="045e4ac6df29d2cafc7b15a9d2d9e81e" category="paragraph">Vous devez conserver la sortie de la commande pour une référence ultérieure.</block>
   <block id="291a171e8b949620eda68d899d2e3e06" category="paragraph">L'exemple suivant affiche les volumes sur le SVM « vs1 » et le nœud « node0 » :</block>
@@ -4722,12 +4721,6 @@ AFF C190 vers AFF A150</block>
   <block id="4ca61b6580e69e11b24f59b9ac4072a9" category="list-text">Les nœuds d'origine doivent prendre en charge la même version logicielle que les nouveaux nœuds.</block>
   <block id="36596c0816df78df5e957f4a98189433" category="inline-link">Clusters ONTAP à version mixte</block>
   <block id="85e5b517efa68824f0234d73603eb6a7" category="admonition">Pour plus d'informations sur les mises à niveau de clusters à versions logicielles mixtes, reportez-vous à la section<block ref="d823e4718a376dd43333fd0519ed9811" category="inline-link-rx"></block>.</block>
-  <block id="b60ec04bcd2e9c2318176db5554a658d" category="doc">Créer un agrégat et déplacer des volumes</block>
-  <block id="963335c836d3a76f0b7a6fe41a21aa10" category="paragraph">Lors d'une mise à niveau du logiciel ONTAP, vous migrez vos données en créant un agrégat sur les nouveaux nœuds, puis en déplaçant les volumes.</block>
-  <block id="df6a90d1df953a09f0861a13f5b797ac" category="paragraph">Si votre configuration de stockage inclut des volumes SAN ou des volumes chiffrés, vous devez également déplacer ces volumes :</block>
-  <block id="2b6df1fd9c8637b8e45b452843b61251" category="inline-xref">Déplacer des volumes SAN</block>
-  <block id="5d3013f3192caf5b6d504d6b74b3c0bd" category="list-text"><block ref="bec3fd5974c2411b73ce484bc58515dc" category="inline-xref-macro-rx"></block></block>
-  <block id="c18328ed9c3f2ac31d9f3c316cc9e737" category="list-text"><block ref="4b487523353dbb4021f9c789f1abd771" category="inline-xref-macro-rx"></block></block>
   <block id="26e45a92e217288c9847a5d2ced10530" category="admonition">Pour chaque SVM (Storage Virtual machine), NetApp recommande de déplacer tous les volumes non root du cluster avant de déplacer le volume root, et d'effectuer cette procédure sur un SVM à la fois.</block>
   <block id="1c36e2804cb1ec373c2a554d3b816849" category="paragraph"><block ref="5f689443af4fd8e259550080d375f644" prefix="" category="inline-code"></block></block>
   <block id="d2d22984b72e7ba1d65fc825394c313c" category="list-text">Ajouter le nouvel agrégat sur le même SVM (Storage Virtual machine) que l'agrégat sur le nœud d'origine depuis lequel déplacer les volumes :</block>
@@ -4738,9 +4731,10 @@ AFF C190 vers AFF A150</block>
   <block id="cc3a467b8580d41426d4329faee0f040" category="paragraph"><block ref="f2384b5c154a2111fb6276b4aca913cf" prefix="" category="inline-code"></block></block>
   <block id="bffd5b081e9a5849648039713909f29e" category="paragraph"><block ref="0b16dbbb7b08013a425b1eda1ac6c38b" prefix="" category="inline-code"></block></block>
   <block id="ce294e2d50479fda57c6fd56279415cc" category="paragraph"><block ref="fb8ac527e5a233ade0c11a4584eca81d" prefix="" category="inline-code"></block></block>
-  <block id="ad6b5250334c326be9a638a7f4693ca4" category="inline-link">Déplacement des hôtes iSCSI Linux depuis les nœuds FC MetroCluster vers les nœuds IP MetroCluster</block>
-  <block id="0bdc5d6c2eb50e1cec81ff459335b642" category="paragraph">Pour déplacer des volumes SAN, suivez les étapes de la section<block ref="5da33795dc988979c1b6bb2285c365f5" category="inline-link-rx"></block>. Cela s'applique au déplacement de volumes SAN dans des configurations MetroCluster et non MetroCluster.</block>
-  <block id="2729d03a958013cde2327ff523899d85" category="section-title">Déplacement des volumes avec le chiffrement activé</block>
   <block id="c773b38bfd21b7a35d0d8783b04fa05f" category="inline-link">Activez le chiffrement sur un volume existant à l'aide de la commande volume Move start</block>
-  <block id="0a770440a8b9e6d0362d3a18060f162d" category="paragraph">Pour déplacer des volumes dont le chiffrement d'agrégat est activé, suivez les étapes de la section<block ref="f72c159bffbf92db3704805be06f351f" category="inline-link-rx"></block>.</block>
+  <block id="7dc9e3aa635e299178bab6d9a48bf453" category="inline-link">Déplacez les hôtes iSCSI Linux des nœuds FC MetroCluster vers les nœuds IP MetroCluster</block>
+  <block id="0345ed9888a23976d10ee4dbe39e5b1c" category="paragraph">Si votre configuration de stockage inclut des volumes SAN, suivez les étapes de la section<block ref="850d31fae3bf8532793cf4bdf951a1e7" category="inline-link-rx"></block> pour déplacer ces volumes vers les nouveaux nœuds.</block>
+  <block id="666b05db74464377ceeeff39f469bcde" category="paragraph"><block ref="e31e4085164f9a5d9e1c0ec1ca25fc65" prefix="" category="inline-code"></block></block>
+  <block id="214d6a2680fcbe83e2c825740dae5888" category="admonition">Si votre configuration de stockage inclut des volumes dont le chiffrement est activé, suivez les étapes de la section<block ref="f72c159bffbf92db3704805be06f351f" category="inline-link-rx"></block> pour déplacer ces volumes.</block>
+  <block id="565ead98cf39206ccfb37fb835c84352" category="sidebar">Créez un agrégat et déplacez des volumes vers le nouveau ndots</block>
 </blocks>

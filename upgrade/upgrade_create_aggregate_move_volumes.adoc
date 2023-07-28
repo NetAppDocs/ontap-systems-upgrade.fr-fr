@@ -4,27 +4,20 @@ sidebar: sidebar
 keywords: create, aggregate, node, store, volume, original, node, identify, aggregate, individually, create an aggregate and moving volumes to the new nodes 
 summary: 'Vous créez au moins un agrégat sur chacun des nouveaux nœuds afin de stocker les volumes que vous voulez déplacer des nœuds d"origine. Vous devez identifier un agrégat pour chaque volume et les déplacer individuellement.' 
 ---
-= Créer un agrégat et déplacer des volumes
+= Création d'un agrégat et déplacement des volumes vers les nouveaux nœuds
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Lors d'une mise à niveau du logiciel ONTAP, vous migrez vos données en créant un agrégat sur les nouveaux nœuds, puis en déplaçant les volumes.
-
-Si votre configuration de stockage inclut des volumes SAN ou des volumes chiffrés, vous devez également déplacer ces volumes :
-
-* <<move_san_vols,Déplacer des volumes SAN>>
-* <<Déplacement des volumes avec le chiffrement activé>>
-
-
-
-
-== Création d'un agrégat et déplacement des volumes vers les nouveaux nœuds
-
 Vous créez au moins un agrégat sur chacun des nouveaux nœuds afin de stocker les volumes que vous voulez déplacer des nœuds d'origine. Vous devez identifier un agrégat pour chaque volume et les déplacer individuellement.
 
+[NOTE]
+====
+Si votre configuration de stockage inclut des volumes SAN, suivez les étapes de la section https://docs.netapp.com/us-en/ontap-metrocluster/transition/task_move_linux_iscsi_hosts_from_mcc_fc_to_mcc_ip_nodes.html["Déplacez les hôtes iSCSI Linux des nœuds FC MetroCluster vers les nœuds IP MetroCluster"^] pour déplacer ces volumes vers les nouveaux nœuds.
+
+====
 .Avant de commencer
 Les relations de miroir de protection des données doivent avoir été initialisées avant de déplacer un volume.
 
@@ -47,7 +40,7 @@ Le nouvel agrégat et l'ancien agrégat depuis lequel le volume sera déplacé d
 
 . Vérifier que le nouvel agrégat est désormais attribué au même SVM que l'agrégat sur le nœud d'origine :
 +
-`vserver show -vserversvm_name`
+`vserver show -vserver _svm_name_`
 
 . Afficher les informations relatives aux volumes que vous souhaitez déplacer des nœuds d'origine vers les nouveaux nœuds :
 +
@@ -101,6 +94,10 @@ node12a_aggr4    10.36GB         FCAL
 +
 Vous ne pouvez pas déplacer le volume racine du nœud (vol0). D'autres volumes, y compris des volumes root SVM, peuvent être déplacés.
 
++
+
+NOTE: Si votre configuration de stockage inclut des volumes dont le chiffrement est activé, suivez les étapes de la section https://docs.netapp.com/us-en/ontap/encryption-at-rest/encrypt-existing-volume-task.html["Activez le chiffrement sur un volume existant à l'aide de la commande volume Move start"^] pour déplacer ces volumes.
+
 . Afficher le résultat du `volume move` opération pour vérifier que les volumes ont été déplacés correctement :
 +
 `volume move show -vserver _svm_name_ -volume _vol_name_`
@@ -117,15 +114,3 @@ Le fait de forcer l'opération de déplacement du volume peut interrompre l'acc�
 `volume show -vserver _svm_name_`
 
 
-
-
-
-== Déplacer des volumes SAN
-
-Pour déplacer des volumes SAN, suivez les étapes de la section https://docs.netapp.com/us-en/ontap-metrocluster/transition/task_move_linux_iscsi_hosts_from_mcc_fc_to_mcc_ip_nodes.html["Déplacement des hôtes iSCSI Linux depuis les nœuds FC MetroCluster vers les nœuds IP MetroCluster"^]. Cela s'applique au déplacement de volumes SAN dans des configurations MetroCluster et non MetroCluster.
-
-
-
-== Déplacement des volumes avec le chiffrement activé
-
-Pour déplacer des volumes dont le chiffrement d'agrégat est activé, suivez les étapes de la section https://docs.netapp.com/us-en/ontap/encryption-at-rest/encrypt-existing-volume-task.html["Activez le chiffrement sur un volume existant à l'aide de la commande volume Move start"^].
