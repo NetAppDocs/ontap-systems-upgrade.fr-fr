@@ -21,12 +21,16 @@ Avant de commencer la mise à niveau, vérifiez que vous disposez du matériel a
 | Si vous mettez à niveau ... | Vous devez avoir ... 
 
 
-| AFF A220 à AFF A150
-AFF A200 à AFF A150
-AFF C190 vers AFF A150 | Deux modules de contrôleur 
+| AFF A220 configuré en tant que ASA vers ASA A150 | Deux modules de contrôleur 
+
+
+| AFF A220, AFF A200 ou AFF C190 vers AFF A150 | Deux modules de contrôleur 
 
 
 | FAS2620 ou FAS2720 à FAS2820 | Deux modules de contrôleur 
+
+
+| AFF A700 configuré en tant que ASA vers ASA A900 | Deux contrôleurs et deux modules NVRAM 
 
 
 | DE AFF A700 À AFF A900 | Deux contrôleurs et deux modules NVRAM 

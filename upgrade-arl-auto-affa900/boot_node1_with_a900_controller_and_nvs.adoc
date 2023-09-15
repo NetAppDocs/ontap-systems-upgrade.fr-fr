@@ -21,6 +21,9 @@ Le nœud 1 avec les modules de remplacement est maintenant prêt à démarrer. C
 | Ancien contrôleur du nœud 1 | Remplacement des modules système du nœud 1 
 
 
+| AFF A220 configuré en tant que ASA | Module contrôleur AFF A150 ^1^ 
+
+
 | AVEC AFF A220
 Solution AFF A200
 Baie AFF C190 | Module contrôleur AFF A150 ^1^ 
@@ -28,6 +31,9 @@ Baie AFF C190 | Module contrôleur AFF A150 ^1^
 
 | FAS2620
 FAS2720 | Module contrôleur FAS2820 ^1^ 
+
+
+| AFF A700 configuré en tant que ASA | Contrôleur ASA A900 et modules NVRAM ^2^ 
 
 
 | AFF A700 | Contrôleur AFF A900 et modules NVRAM ^2^ 

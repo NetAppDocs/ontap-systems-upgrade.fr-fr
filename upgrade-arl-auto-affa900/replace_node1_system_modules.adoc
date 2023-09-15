@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/replace_node1_system_modules.html 
-keywords: replace, node1, system, modules 
+keywords: aff, asa, fas, replace, node1, system, modules 
 summary: 'Remplacez les modules système du nœud 1 lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
 ---
 = Remplacez les modules système du nœud 1
@@ -17,7 +17,15 @@ summary: 'Remplacez les modules système du nœud 1 lorsque vous utilisez l"ARL 
 Remplacez les modules système du nœud 1 pour votre configuration de mise à niveau :
 
 * <<replace_modules,Remplacez le module de contrôleur AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720>>
++
+
+NOTE: Vous pouvez également utiliser cette procédure pour remplacer un AFF A220 configuré en tant que ASA.
+
 * <<Remplacez le contrôleur AFF A700 ou FAS9000 et les modules NVRAM>>
++
+
+NOTE: Vous pouvez également utiliser cette procédure pour remplacer un système AFF A700 configuré en tant que ASA.
+
 
 
 
@@ -53,9 +61,9 @@ image::../media/drw_2240_x_opening_cam_latch.png[drw 2240 x verrou de came d'ouv
 
 
 
-=== Installez le module de contrôleur AFF A150 ou FAS2820
+=== Installez le module de contrôleur ASA A150, AFF A150 ou FAS2820
 
-Utilisez la procédure suivante pour installer le module de contrôleur AFF A150 ou FAS2820 dans le nœud 1.
+Utilisez la procédure suivante pour installer le module de contrôleur ASA A150, AFF A150 ou FAS2820 dans le nœud 1.
 
 .Étapes
 . Alignez l'extrémité du module de contrôleur avec l'ouverture du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.
@@ -178,14 +186,14 @@ image::../media/black_circle_two.png[Numéro deux]
 
 
 
-=== Installez les modules de contrôleur et la mémoire NVRAM du système AFF A900 ou FAS9500
+=== Installez les modules de contrôleur et la mémoire NVRAM du système ASA A900, AFF A900 ou FAS9500
 
-Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 que vous avez reçus pour la mise à niveau sur le nœud 1.
+Installez les modules de contrôleur et NVRAM du système ASA A900, AFF A900 ou FAS9500 que vous avez reçus pour la mise à niveau sur le nœud 1.
 
 Lors de l'installation, vous devez prendre note des points suivants :
 
 * Déplacez tous les modules de remplissage vides dans les emplacements 6-1 et 6-2 de l'ancien module NVRAM vers le nouveau module NVRAM.
-* Ne déplacez PAS le périphérique coredump du module NVRAM AFF A700 vers le module NVRAM AFF A900.
+* NE déplacez PAS le périphérique coredump du module NVRAM AFF A700 vers le module NVRAM ASA A900 ou AFF A900.
 * Déplacez tous les modules de cache Flash installés dans le module NVRAM FAS9000 vers le module NVRAM FAS9500.
 
 
@@ -194,9 +202,9 @@ Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement
 
 
 
-==== Installez le module NVRAM AFF A900 ou FAS9500
+==== Installez le module NVRAM ASA A900, AFF A900 ou FAS9500
 
-Utilisez la procédure suivante pour installer le module NVRAM AFF A900 ou FAS9500 dans le logement 6 du nœud1.
+Utilisez la procédure suivante pour installer le module NVRAM ASA A900, AFF A900 ou FAS9500 dans le logement 6 du nœud 1.
 
 .Étapes
 . Alignez le module NVRAM sur les bords de l'ouverture du châssis dans le logement 6.
@@ -222,9 +230,9 @@ image::../media/black_circle_two.png[Numéro deux]
 
 
 
-==== Installez le module de contrôleur AFF A900 ou FAS9500 sur le nœud 1.
+==== Installez le module de contrôleur ASA A900, AFF A900 ou FAS9500 sur le nœud 1.
 
-Utilisez la procédure suivante pour installer le module de contrôleur AFF A900 ou FAS9500 sur le nœud 1.
+Utilisez la procédure suivante pour installer le module de contrôleur ASA A900, AFA A900 ou FAS9500 dans le nœud 1.
 
 .Étapes
 . Alignez l'extrémité du module de contrôleur avec l'ouverture A du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.

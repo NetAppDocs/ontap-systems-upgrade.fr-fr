@@ -72,7 +72,7 @@ NOTE: D'autres paramètres peuvent être nécessaires pour votre interface. Entr
 
 NOTE: N'interrompez pas l'amorçage.
 
-. Attendez que le nœud1 s'exécute sur le module de contrôleur AFF A900 ou FAS9500 pour démarrer et afficher les options du menu de démarrage comme indiqué ci-dessous :
+. Attendre que le nœud 1 s'exécute sur le module de contrôleur ASA A900, AFF A900 ou FAS9500 pour démarrer et afficher les options du menu de démarrage comme illustré ci-dessous :
 +
 [listing]
 ----

@@ -25,10 +25,16 @@ Utiliser cette procédure dans les cas suivants :
 | Ancien contrôleur | Remplacement du contrôleur 
 
 
+| AFF A220 configuré en tant que ASA | ASA A150 
+
+
 | AFF A220, AFF A200 ou AFF C190 | AFF A150 
 
 
 | FAS2620 ou FAS2720 | FAS2820 
+
+
+| AFF A700 configuré en tant que ASA | ASA A900 
 
 
 | AFF A700 | AFF A900 
@@ -38,9 +44,8 @@ Utiliser cette procédure dans les cas suivants :
 |===
 * Vous avez vérifié auprès de votre ingénieur commercial NetApp que vous avez reçu le matériel nécessaire à la mise à niveau de votre contrôleur :
 +
-** Contrôleur AFF A150
-** Contrôleur FAS2820
-** Contrôleur AFF A900 ou FAS9500 et modules NVRAM ainsi que les pièces requises pour la mise à niveau.
+** Contrôleur ASA A150, AFF A150 ou FAS2820
+** Contrôleurs ASA A900, AFF A900 ou FAS9500 et modules NVRAM ainsi que les pièces requises pour la mise à niveau
 
 
 * Vous exécutez la version minimale de ONTAP pour votre mise à niveau. Pour plus d'informations, voir link:index.html["Présentation"].

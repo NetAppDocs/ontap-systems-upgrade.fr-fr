@@ -3002,7 +3002,6 @@
   <block id="4ed758f1326f5379f7dc30fe674ce726" category="inline-link-macro">Instructions de mise à niveau des contrôleurs</block>
   <block id="61bb0e064fd915427168b2e72e080eff" category="list-text">Cette procédure est complexe et suppose que vous avez des compétences avancées en administration de ONTAP. Vous devriez également lire et comprendre le <block ref="937d04c1dac5501bcacf105e8700fe45" category="inline-link-macro-rx"></block> et le <block ref="57e14e08755134bb6fef9ad899bb58ee" category="inline-link-macro-rx"></block> avant de commencer la mise à niveau.</block>
   <block id="51108f40a613018fdc6b3ad89f42122e" category="list-text">Cette procédure suppose que le matériel de remplacement du contrôleur est nouveau et qu'il n'a pas été utilisé dans un autre système. Étapes requises pour préparer les contrôleurs utilisés avec le<block ref="b433b76417b4f08166eb90cef3aa2a31" prefix=" " category="inline-code"></block> la commande n'est pas incluse dans cette procédure. Vous devez contacter le support technique si le matériel de remplacement de contrôleur était précédemment utilisé dans un autre cluster ONTAP ou en tant que système à un seul nœud autonome.</block>
-  <block id="f57bde3eaa64080d17b3c49dfac5f25f" category="list-text">Les systèmes AFF A900 et FAS9500 prennent uniquement en charge les blocs d'alimentation haut de gamme (200 V à 240 V). Si votre système AFF A700 ou FAS9000 fonctionne avec une alimentation à faible consommation électrique (100 V à 120 V), vous devez convertir l'alimentation d'entrée AFF A700 ou FAS9000 avant d'utiliser cette procédure.</block>
   <block id="c08f0b6d71108219929095cbd90d111d" category="paragraph">Utiliser cette procédure dans les cas suivants :</block>
   <block id="eb51502469d00e14522e17bfff4124ad" category="list-text">Vous ne souhaitez pas ajouter de nouveaux contrôleurs et migrer les données en utilisant les déplacements de volumes pour une nouvelle paire haute disponibilité vers le cluster.</block>
   <block id="a3bad37bbfc8cbb39ebdfc42ccfa6bec" category="list-text">Vous avez de l'expérience dans l'administration de ONTAP et vous êtes à l'aise avec les risques de travailler en mode de privilèges de diagnostic.</block>
@@ -3057,7 +3056,6 @@
   <block id="8fec9698e48614a1961275dcbf888442" category="doc">NetBoot node1</block>
   <block id="b3fa942f65431caf219b9891c77a7cc2" category="list-text">[[netboot_nœud1_step2]]Télécharger le logiciel ONTAP approprié depuis la section de téléchargement du logiciel du site de support _NetApp_ et stocker le<block ref="f466b354adfc3ad817d7c11c037c8797" prefix=" " category="inline-code"></block> fichier dans un répertoire accessible sur le web.</block>
   <block id="2e9296c7316d4c4c76380224c1db72b2" category="list-text">Démarrage sur le nœud 1 :</block>
-  <block id="fed5188660beab0c1ca98ade1cf9e488" category="list-text">Attendez que le nœud1 s'exécute sur le module de contrôleur AFF A900 ou FAS9500 pour démarrer et afficher les options du menu de démarrage comme indiqué ci-dessous :</block>
   <block id="e581180eb51e0c55c220313efa4f6d03" category="paragraph">Le<block ref="8dea39d32c263f1671cb84e9e84964a0" prefix=" " category="inline-code"></block> vous devez indiquer où vous avez téléchargé le<block ref="f466b354adfc3ad817d7c11c037c8797" prefix=" " category="inline-code"></block> dans <block ref="3c453ca3ddf73b988300a74fd18c23c3" category="inline-xref-macro-rx"></block>.</block>
   <block id="963f89f538a2fcd5d086c865807c540a" category="list-text">À l'invite, exécutez le<block ref="b433b76417b4f08166eb90cef3aa2a31" prefix=" " category="inline-code"></block> pour effacer toute configuration précédente sur le support de démarrage :</block>
   <block id="e3dcb6e98d703b4041ac7a4b6d40412e" category="list-text">Sélectionnez option<block ref="e4da3b7fbbce2345d7772b0674a318d5" prefix=" " category="inline-code"></block> pour passer en mode maintenance à partir du menu de démarrage. Réponse<block ref="a6105c0a611b41b08f1209506350279e" prefix=" " category="inline-code"></block> sur les invites jusqu'à ce que le nœud s'arrête en mode maintenance et à l'invite de commande<block ref="2cf8a3bab83c4d2618c18eeeca9ebc98" prefix=" " category="inline-code"></block>.</block>
@@ -3168,15 +3166,10 @@
   <block id="1ade29bb16a89d6eb1ac0378b26d08cc" category="image-alt">Retirez le module NVRAM</block>
   <block id="c6e52defde912721ad3ec5315c5d9664" category="cell">Loquet de came d'E/S numéroté et numéroté</block>
   <block id="0e50691d6ac3e9df529fa546f2486bd7" category="cell">Loquet d'E/S complètement déverrouillé</block>
-  <block id="32820fb65b578170b0fc242eb57ba80e" category="list-text">Ne déplacez PAS le périphérique coredump du module NVRAM AFF A700 vers le module NVRAM AFF A900.</block>
   <block id="d0106eeb656b11c6a07a8e45dcf1b214" category="list-text">Déplacez tous les modules de cache Flash installés dans le module NVRAM FAS9000 vers le module NVRAM FAS9500.</block>
-  <block id="c7fecf95820e09d00c74bf86805bc991" category="section-title">Installez le module NVRAM AFF A900 ou FAS9500</block>
-  <block id="1a841cb7f620c7f0684b56a8a034fb65" category="paragraph">Utilisez la procédure suivante pour installer le module NVRAM AFF A900 ou FAS9500 dans le logement 6 du nœud1.</block>
   <block id="3d6ee5006b58007aa6b243ac902837ac" category="list-text">Alignez le module NVRAM sur les bords de l'ouverture du châssis dans le logement 6.</block>
   <block id="a8ad32b9b5381f0e3f1c5897679ae7eb" category="list-text">Faites glisser doucement le module NVRAM dans le slot jusqu'à ce que le loquet de came d'E/S numéroté et numéroté commence à s'engager avec la broche de came d'E/S, puis poussez le loquet de came d'E/S jusqu'à ce que le module NVRAM soit en place.</block>
   <block id="5d555500d4c58002388a7088e1c8f510" category="image-alt">Installez le module NVRAM</block>
-  <block id="830a042377d7fdbd36c48ece8669e61c" category="section-title">Installez le module de contrôleur AFF A900 ou FAS9500 sur le nœud 1.</block>
-  <block id="bb0ced2b785386259d517f7ae7bd88d1" category="paragraph">Utilisez la procédure suivante pour installer le module de contrôleur AFF A900 ou FAS9500 sur le nœud 1.</block>
   <block id="a93447d104277da61e99f98be3016581" category="list-text">Alignez l'extrémité du module de contrôleur avec l'ouverture A du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.</block>
   <block id="8c3e973bd184c686de74d4c99763571c" category="admonition">N'insérez pas complètement le module de contrôleur dans le châssis avant d'en avoir été invité dans la procédure.</block>
   <block id="85b0e5132d3bec02fcda8eb6f24b6062" category="list-text">Reliez les ports de gestion et de console au module de contrôleur node1.</block>
@@ -3226,10 +3219,6 @@
   <block id="09e9f7abfe1cdfbd7b4465d4dbc6bd0c" category="paragraph">Si le cryptage du stockage est activé sur les nœuds 1 et 2, complétez la section <block ref="18c90c300c0b71334b8b427eaf4f38a3" category="inline-link-macro-rx"></block>. Sinon, complétez la section <block ref="6e48b929ca0767f00c15eeb6d7e78755" category="inline-link-macro-rx"></block>.</block>
   <block id="1b8060cb5ae9dd21090d2ec07cc376b2" category="paragraph">Vous devez disposer d'une bride de mise à la terre pour effectuer la mise à niveau et vous devez vous référer à d'autres documents pendant le processus de mise à niveau.</block>
   <block id="d72e37445f435123c47c01a1bd03271c" category="paragraph">Reportez-vous à la section <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block> pour accéder à la liste des documents de référence et des sites de référence requis pour cette mise à niveau.</block>
-  <block id="dbc99796dd5482cbc7660b57b686c30f" category="doc">Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur le nœud 2</block>
-  <block id="446e34a339be0fda54aae2fe862c868f" category="paragraph">Utilisez la procédure suivante pour installer le module NVRAM AFF A900 ou FAS9500 dans le logement 6 du node2.</block>
-  <block id="b5e3968706cd8f4fee9d9a918b1b867f" category="section-title">Installez le module de contrôleur AFF A900 ou FAS9500 sur le nœud 2</block>
-  <block id="43d062a38b70447bd532892c53e0817c" category="paragraph">Utilisez la procédure suivante pour installer le module de contrôleur AFF A900 ou FAS9500 sur le noeud 2.</block>
   <block id="9242c558140d9a52d10f2e6b57f75893" category="list-text">Alignez l'extrémité du module de contrôleur avec la baie B du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.</block>
   <block id="1ba57f7982d64e52fcc3eb0235996968" category="admonition">L'étiquette de la baie se trouve sur le châssis, directement au-dessus du module de contrôleur.</block>
   <block id="254d1495a725edffc2f7c4eb5441615a" category="admonition">N'insérez pas complètement le module de contrôleur dans le châssis tant que vous n'y êtes pas invité.</block>
@@ -4057,10 +4046,8 @@
   <block id="1c328c36316a518e9532ed77177daa6c" category="list-text">Il n'est pas nécessaire d'utiliser la même version ONTAP sur les contrôleurs existants et de les remplacer. La mise à niveau logicielle de ONTAP est effectuée lors de la mise à niveau du contrôleur.</block>
   <block id="da74cb1ad73d862a786d9f20938d9c7a" category="list-text">Lors de la mise à niveau, vous devez installer un contrôleur de remplacement avec une version ONTAP et un niveau de patch pris en charge.</block>
   <block id="dee716592bbae6fdba2b32d2854360ba" category="list-text">Il n'est pas possible d'annuler ou de retirer une mise à niveau de contrôleur après avoir démarré la procédure et mis à niveau le premier nœud.</block>
-  <block id="37ef3103c62f7c4c537260066ec1fcad" category="paragraph">Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 que vous avez reçus pour la mise à niveau sur le nœud 2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.</block>
   <block id="d9e40d62315bfc8bad4f1329f7f9b867" category="paragraph">Lors de l'installation, vous devez prendre note des points suivants :</block>
   <block id="342f3ca2519e4e92f56675a89236fce6" category="list-text">Déplacez tous les modules de remplissage vides dans les emplacements 6-1 et 6-2 de l'ancien module NVRAM vers le nouveau module NVRAM.</block>
-  <block id="97bcf885640a80425f98f36e28630da4" category="paragraph">Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 que vous avez reçus pour la mise à niveau sur le nœud 1.</block>
   <block id="bbe48fb854ea022537208eeeff822f91" category="paragraph-title">Description de la tâche</block>
   <block id="3468b73fe010ca505a63fcddaa4f3601" category="paragraph-title">Terminologie utilisée dans ces informations</block>
   <block id="5d022d26a75a4e30fae6648d5bcdd9e5" category="paragraph-title">Pour la configuration MetroCluster FC</block>
@@ -4521,9 +4508,6 @@ FAS2720</block>
   <block id="e1ea632cab9e8d0f0821fea579334839" category="cell">FAS2620 ou FAS2720</block>
   <block id="cac76ada4fbfca68ed190eb21810e1af" category="cell">FAS2820</block>
   <block id="d12ea131bf417fe3ef7b6423e508e706" category="list-text">Vous avez vérifié auprès de votre ingénieur commercial NetApp que vous avez reçu le matériel nécessaire à la mise à niveau de votre contrôleur :</block>
-  <block id="8e02c0c89f1b8ab4a56a9c71f0625665" category="list-text">Contrôleur AFF A150</block>
-  <block id="6378cfc8fa57ccbd128875c2ace0b13d" category="list-text">Contrôleur FAS2820</block>
-  <block id="7a91ac5d471b05d929d8adc1accb6f07" category="list-text">Contrôleur AFF A900 ou FAS9500 et modules NVRAM ainsi que les pièces requises pour la mise à niveau.</block>
   <block id="798f018ee352fb079a57a34119747a3b" category="list-text">Vous exécutez la version minimale de ONTAP pour votre mise à niveau. Pour plus d'informations, voir <block ref="8294b96e46ba28730c909aaac28da089" category="inline-link-macro-rx"></block>.</block>
   <block id="1155b04ebff43df03ca1b9ec1d6b56a7" category="paragraph">Pour la mise à niveau des configurations Fabric MetroCluster ou MetroCluster IP sur les systèmes AFF A700 ou FAS9000, reportez-vous à la section <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block> Pour accéder au contenu _MetroCluster Upgrade and expansion_.</block>
   <block id="0ad9e0a8a319618923e172d4571038eb" category="summary">Si nécessaire, restaurez la configuration du gestionnaire de clés sur le nœud mis à niveau 1 lorsque vous utilisez l'ARL pour mettre à niveau les modèles de contrôleurs du même châssis.</block>
@@ -4535,9 +4519,6 @@ FAS2720</block>
   <block id="644e220a44e1ff19f9d586b2ec3ee2d5" category="summary">Avant de commencer la mise à niveau, vérifiez que vous disposez du matériel approprié pour mettre à niveau les modèles de contrôleurs dans le même châssis.</block>
   <block id="03edb26b26a23464d3e656fd4bb1aa20" category="cell">Si vous mettez à niveau ...</block>
   <block id="010fb6bd96430e7065ef62ecb9af2e9b" category="cell">Vous devez avoir ...</block>
-  <block id="c44a10256b9f85d5e800b2ed43581a1f" category="cell">AFF A220 à AFF A150
-AFF A200 à AFF A150
-AFF C190 vers AFF A150</block>
   <block id="4e106a6c623eb6811b42be00dbde2ef3" category="cell">Deux modules de contrôleur</block>
   <block id="a96a413dc366d34740f0c82530514332" category="cell">FAS2620 ou FAS2720 à FAS2820</block>
   <block id="327579b68dffec79f2bcb176142f3d56" category="cell">Deux contrôleurs et deux modules NVRAM</block>
@@ -4563,10 +4544,6 @@ AFF C190 vers AFF A150</block>
   <block id="038a1f98f287c3e58631ad2264c784b5" category="summary">Installez les modules système de remplacement sur le nœud 2 lors d'une mise à niveau ARL des modèles de contrôleurs du même châssis.</block>
   <block id="7339c5b8269b308a3bb75b606b220a40" category="doc">Installez les modules système de remplacement sur le nœud 2</block>
   <block id="34fc38d77d703f82e3ea00d22de0aeb3" category="paragraph">Installez les modules système de remplacement que vous avez reçus pour la mise à niveau sur le node2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.</block>
-  <block id="5e7fd8c323cf342aa95dc80800a1fdc6" category="list-text"><block ref="97cf05fba75cf4dbb437038017dd54d4" category="inline-xref-macro-rx"></block></block>
-  <block id="ba64144c5d9737bf50bbe571abc9950d" category="list-text"><block ref="969846cffb9e5ea10d5ad5e6bf7f7cb4" category="inline-xref-macro-rx"></block></block>
-  <block id="6758213905204ffa4f80a34952db5e54" category="section-title">Installez le module de contrôleur AFF A150 ou FAS2820 sur le nœud 2</block>
-  <block id="7ceecefaf0c99b73e87c1d5f9cf924ab" category="paragraph">Installez le module de contrôleur AFF A150 ou FAS2820 que vous avez reçu pour la mise à niveau sur le node2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.</block>
   <block id="d1cf73ac3312e046217517b06817c8be" category="list-text">Déconnectez tous les câbles, y compris les câbles de la console, de la gestion, du stockage SAS et du réseau de données, du contrôleur à retirer.</block>
   <block id="d31ea2ed80c8ed7a812def7ec46c2274" category="admonition">La baie B se trouve sur le châssis, en bas.</block>
   <block id="e5c4a336c6c9037915d316eae71744e6" category="admonition">Comme le châssis est déjà sous tension, le nœud 2 commence à démarrer dès qu'il est entièrement installé. Pour éviter le démarrage du nœud 2, NetApp vous recommande de connecter les câbles de console et de gestion au module de contrôleur du nœud 2 avant d'insérer complètement le module de contrôleur dans le slot.</block>
@@ -4596,13 +4573,10 @@ AFF C190 vers AFF A150</block>
   <block id="1b96f3aa099b152fc864dedb115af912" category="list-text">Appuyez sur le loquet de la poignée de came jusqu'à ce qu'il se libère, ouvrez complètement la poignée de came pour libérer le module de contrôleur du fond de panier central, puis, à l'aide de deux mains, retirez le module de contrôleur du châssis.</block>
   <block id="d6daae29261c119313124d1d21a1c267" category="image-alt">drw 2240 x verrou de came d'ouverture</block>
   <block id="5fb9af22ffedd74df1492c91f96b8d7a" category="list-text">Retournez le module de contrôleur et placez-le sur une surface plane et stable.</block>
-  <block id="d6b285e69842dbc0d924036d7b995d3b" category="section-title">Installez le module de contrôleur AFF A150 ou FAS2820</block>
-  <block id="912a077db1a14ff7e811477241783af6" category="paragraph">Utilisez la procédure suivante pour installer le module de contrôleur AFF A150 ou FAS2820 dans le nœud 1.</block>
   <block id="0dc0820d363c65f7e12beec6160b793f" category="list-text">Alignez l'extrémité du module de contrôleur avec l'ouverture du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.</block>
   <block id="73c39df93369189180566421495bd86b" category="list-text">Avec la poignée de came en position ouverte, poussez fermement le module de contrôleur jusqu'à ce qu'il rencontre le fond de panier central et qu'il soit bien en place. Le loquet de verrouillage s'élève lorsque le module de contrôleur est bien en place. Fermer la poignée de came en position verrouillée.</block>
   <block id="3d642aff56195f4217e6874d1165bde1" category="list-text">Après l'interruption DE L'AUTOBOOT, le nœud 1 s'arrête à l'invite DU CHARGEUR. Si vous n'interrompez pas AUTOBOOT à temps et que le nœud1 commence à démarrer, attendez l'invite et appuyez sur *Ctrl-C* pour accéder au menu de démarrage. Une fois que le nœud s'arrête au menu de démarrage, utilisez l'option 8 pour redémarrer le nœud et interrompre le DÉMARRAGE AUTOMATIQUE pendant le redémarrage.</block>
   <block id="06fe1e1c3556d47d3a40caee57ba2411" category="section-title">Remplacez le contrôleur AFF A700 ou FAS9000 et les modules NVRAM</block>
-  <block id="72066ce06d5938f1862e6c83c33aada4" category="section-title">Installez les modules de contrôleur et la mémoire NVRAM du système AFF A900 ou FAS9500</block>
   <block id="98b9e41d81ea8470149a461f166a4b92" category="summary">Faites savoir à NetApp que l'ancien système ne fonctionne plus après la mise à niveau du contrôleur.</block>
   <block id="fd03f78134ad299c30781abefe876b6e" category="summary">Reprenez les transferts et les relations SnapMirror lorsque vous utilisez l'ARL pour mettre à niveau les modèles de contrôleurs dans le même châssis.</block>
   <block id="f941430cfefa788e4cbb0ace9529e703" category="summary">Étape 1 : séquence de processus pour une mise à niveau d'ARL à l'aide de<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> pour mettre à niveau des modèles de contrôleur dans le même châssis.</block>
@@ -4623,9 +4597,7 @@ AFF C190 vers AFF A150</block>
   <block id="9e87e1dea37ce673e27a23a144a4e0ad" category="cell">Système de remplacement</block>
   <block id="eae7ed824c301543a7e09d88d74d7b19" category="cell">Versions de ONTAP prises en charge</block>
   <block id="c0aa270d19e4484079bd0c1488dd7e54" category="cell">9.10.1P15, 9.11.1P11, 9.12.1P5 et versions ultérieures</block>
-  <block id="faa1e7a6bde5d1d403d386d297d27d7d" category="paragraph">9.10.1P15, 9.11.1P11 et versions ultérieures (AFF A200 et AFF A150)</block>
   <block id="1b09c77bbb88991cb420df4ea90eb3b8" category="admonition">AFF A200 ne prend pas en charge les versions ONTAP ultérieures à la version 9.11.1.</block>
-  <block id="d64804559c99c24fbbd319d9bee6abb7" category="paragraph">9.11.1P7 et versions ultérieures (FAS2620)</block>
   <block id="9558d12002264bd41bf4a596c8f8ac1c" category="admonition">Le FAS2620 ne prend pas en charge les versions ONTAP ultérieures à la version 9.11.1.</block>
   <block id="fe8a27b3504b515f0bd7508cfd89776a" category="paragraph">9.13.1 et versions ultérieures (FAS2820)</block>
   <block id="5abae7190ce598d45fe390e44304cde0" category="cell">9.13.1 et versions ultérieures</block>
@@ -4633,9 +4605,6 @@ AFF C190 vers AFF A150</block>
   <block id="17c022b189bd2857924f4bbe654cb97e" category="paragraph">NetApp recommande, si possible, que vous ayez la même version de ONTAP sur l'ancien et sur le système de remplacement.</block>
   <block id="9c1e88e5963163799eaba4d977d7d52f" category="paragraph">Les versions ONTAP minimales figurant dans le tableau précédent sont obligatoires. Ces versions de ONTAP sont dotées de la version de firmware du processeur de service ou du contrôleur BMC (Baseboard Management Controller) requise pour prendre en charge l'utilisation de différents types de contrôleurs au sein d'un châssis pendant une mise à niveau.</block>
   <block id="48adbf20fd6c8a4139f6b2da13a4ed5b" category="paragraph">Au cours de la procédure, vous migrez les agrégats non racines entre les anciens nœuds de contrôleur. Une fois l'installation terminée, migrez les agrégats non-racines des anciens nœuds de contrôleur vers les nœuds de contrôleur de remplacement. Les données hébergées sur les nœuds que vous mettez à niveau sont accessibles lors de la procédure de mise à niveau.</block>
-  <block id="a329d0cf2e9de4cf2f5e7d162573f7a5" category="list-text">Remplacez le module de contrôleur de chaque nœud du système AFF A220, AFF A200 ou AFF C190 par le nouveau module AFF A150.</block>
-  <block id="cc9c49df693f66fdb8e78aaa496a3ca9" category="list-text">Remplacez le module de contrôleur de chaque nœud du système FAS2620 ou FAS2720 par le nouveau module FAS2820.</block>
-  <block id="6617b5d0f699d4c1d9a03a9a07c8eeab" category="list-text">Remplacez les deux contrôleurs et les modules NVRAM de chaque nœud du système AFF A700 ou FAS9000 par les nouveaux modules AFF A900 ou FAS9500.</block>
   <block id="1f08ef6e3750d69789334fc412377b8b" category="list-text">Si vous disposez d'un commutateur qui n'est pas pris en charge par la version ONTAP et le système de remplacement vers lequel vous effectuez la mise à niveau, reportez-vous à la section <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block> Pour accéder au _Hardware Universe_.</block>
   <block id="9016b0ff2820f5a72022aceaaea6350a" category="list-text">Cette procédure s'applique uniquement aux systèmes AFF A200, AFF A220, AFF C190, FAS2620, FAS2720, FAS2720 et Systèmes AFF A700 et FAS9000. Pour tous les autres modèles de contrôleurs qui doivent être mis à niveau vers un système AFF A150, FAS2820, AFF A900 ou FAS9500, reportez-vous à la section <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block> Pour établir un lien vers les commandes _Use « system Controller replace » pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ et _Using Aggregate relocation to upgrade manuellement le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ content.</block>
   <block id="373edaf8d573901bcaba4be302784a3b" category="list-text">Si vous effectuez une mise à niveau à partir d'un système AFF A200, AFF A220, AFF C190, FAS2620, FAS2720, AFF A700 ou un système FAS9000 lorsque les temps d'indisponibilité sont fréquents, vous pouvez mettre à niveau le matériel des contrôleurs en déplaçant vos systèmes de stockage ou en contactant le support technique. Reportez-vous à la section <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block> Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.</block>
@@ -4737,4 +4706,49 @@ AFF C190 vers AFF A150</block>
   <block id="666b05db74464377ceeeff39f469bcde" category="paragraph"><block ref="e31e4085164f9a5d9e1c0ec1ca25fc65" prefix="" category="inline-code"></block></block>
   <block id="214d6a2680fcbe83e2c825740dae5888" category="admonition">Si votre configuration de stockage inclut des volumes dont le chiffrement est activé, suivez les étapes de la section<block ref="f72c159bffbf92db3704805be06f351f" category="inline-link-rx"></block> pour déplacer ces volumes.</block>
   <block id="565ead98cf39206ccfb37fb835c84352" category="sidebar">Créez un agrégat et déplacez des volumes vers le nouveau ndots</block>
+  <block id="d59048f21fd887ad520398ce677be586" category="inline-link-macro">En savoir plus &gt;&gt;</block>
+  <block id="bfa6cc72f08aa2823167e389b6677da0" category="cell"><block ref="70d1727ffc9c452707805fb17e6a5b52" category="inline-link-macro-rx"></block>
+
+Vous pouvez utiliser cette procédure pour mettre à niveau un contrôleur AFF configuré en tant que baie 100 % SAN (ASA) vers un contrôleur ASA pour certains modèles et versions logicielles ONTAP. <block ref="dd8a9320d133fc6bc4cebf159be26035" category="inline-link-macro-rx"></block>.</block>
+  <block id="7fbeff1dd4b772a22c3163f4be820b9c" category="cell">AFF A220 configuré en tant que ASA</block>
+  <block id="8b3182da28f8002496d5953dd474566c" category="cell">Module de contrôleur A150 ASA</block>
+  <block id="ac8778c8e9d09a5fbedc8eed17a252ae" category="cell">AFF A700 configuré en tant que ASA</block>
+  <block id="04d8a92a6a296cdc3dcff1b84bdc663d" category="cell">Contrôleur ASA A900 et modules NVRAM</block>
+  <block id="0814a528a6e09bdfa454da4598d03b6a" category="cell">ASA A150</block>
+  <block id="0e096ce16590ab86950913510752010e" category="cell">ASA A900</block>
+  <block id="0d1ed1043a9669e13b81f70da0ae56bb" category="list-text">Contrôleur ASA A150, AFF A150 ou FAS2820</block>
+  <block id="4ab38fe544b152aed6d17891d6b4942f" category="list-text">Contrôleurs ASA A900, AFF A900 ou FAS9500 et modules NVRAM ainsi que les pièces requises pour la mise à niveau</block>
+  <block id="eb33e3b941791062baa1b3c30813ebb4" category="list-text">Attendre que le nœud 1 s'exécute sur le module de contrôleur ASA A900, AFF A900 ou FAS9500 pour démarrer et afficher les options du menu de démarrage comme illustré ci-dessous :</block>
+  <block id="93f5e3175d1952ff3357d8c3f9f9ebcc" category="admonition">Vous pouvez également utiliser cette procédure pour remplacer un AFF A220 configuré en tant que ASA.</block>
+  <block id="fe86eeb48c828c1dfa6494efc6b765cd" category="admonition">Vous pouvez également utiliser cette procédure pour remplacer un système AFF A700 configuré en tant que ASA.</block>
+  <block id="23025a0dc68c759874f99e85d38e7ede" category="section-title">Installez le module de contrôleur ASA A150, AFF A150 ou FAS2820</block>
+  <block id="a75c1ab30ac0399f6d1308046a287763" category="paragraph">Utilisez la procédure suivante pour installer le module de contrôleur ASA A150, AFF A150 ou FAS2820 dans le nœud 1.</block>
+  <block id="d7a4c6633fbd09856927cf66880d4940" category="section-title">Installez les modules de contrôleur et la mémoire NVRAM du système ASA A900, AFF A900 ou FAS9500</block>
+  <block id="8c93dbb7f81c4c2f4b51369fa9829a6f" category="paragraph">Installez les modules de contrôleur et NVRAM du système ASA A900, AFF A900 ou FAS9500 que vous avez reçus pour la mise à niveau sur le nœud 1.</block>
+  <block id="70b323769da32749c57798f0d8e782e5" category="list-text">NE déplacez PAS le périphérique coredump du module NVRAM AFF A700 vers le module NVRAM ASA A900 ou AFF A900.</block>
+  <block id="74cfe385d1c40d7e412430b003bd358b" category="section-title">Installez le module NVRAM ASA A900, AFF A900 ou FAS9500</block>
+  <block id="ea5c1600c51a21564153c6355d751d45" category="paragraph">Utilisez la procédure suivante pour installer le module NVRAM ASA A900, AFF A900 ou FAS9500 dans le logement 6 du nœud 1.</block>
+  <block id="ad6cf4baff2cddaf65f868a474f4ace2" category="section-title">Installez le module de contrôleur ASA A900, AFF A900 ou FAS9500 sur le nœud 1.</block>
+  <block id="1e05d2a5422d862c8080573b0bffa1d7" category="paragraph">Utilisez la procédure suivante pour installer le module de contrôleur ASA A900, AFA A900 ou FAS9500 dans le nœud 1.</block>
+  <block id="d98f9591f3c1e658d83adfdac174718a" category="cell">Contrôleur ASA A900 et modules NVRAM ^2^</block>
+  <block id="400a12b5c5627da96b0587ceaacabfa4" category="inline-xref">Installez le module de contrôleur ASA A150, AFF A150 ou FAS2820 sur le nœud 2</block>
+  <block id="6d3b42496d1ff908492db44e6a7a996a" category="list-text"><block ref="4e16cb21c83d577e1da9298c1d3d7001" category="inline-xref-macro-rx"></block></block>
+  <block id="74cae3e1383e831697d2a89099232c43" category="inline-xref">Installez les modules de contrôleur et NVRAM ASA A900, AFF A900 ou FAS9500 sur le node2</block>
+  <block id="4f801783b3b54e6e155c8ba840a7984b" category="list-text"><block ref="090089409a807fc3646805d2e86db88d" category="inline-xref-macro-rx"></block></block>
+  <block id="abb999476ce6c21d1aa738091bf3cc58" category="section-title">Installez le module de contrôleur ASA A150, AFF A150 ou FAS2820 sur le nœud 2</block>
+  <block id="78bd224431479d8d5cafd763cca39b7c" category="paragraph">Installez le module de contrôleur ASA A150, AFF A150 ou FAS2820 que vous avez reçu pour la mise à niveau sur le node2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.</block>
+  <block id="a2f2586b0e85eb39267cb5c9d9e043d2" category="paragraph">Installez les modules de contrôleur et NVRAM du système ASA A900, AFF A900 ou FAS9500 que vous avez reçus pour la mise à niveau sur le nœud 2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.</block>
+  <block id="5dc4e3a6479ea8cf51106f2ac874a145" category="paragraph">Utilisez la procédure suivante pour installer le module NVRAM ASA A900, AFF A900 ou FAS9500 dans le logement 6 du nœud 2.</block>
+  <block id="f457531b113b8b894781ad94a1fa19d3" category="section-title">Installez le module de contrôleur ASA A900, AFF A900 ou FAS9500 dans le nœud 2</block>
+  <block id="839847d15e69edb34b89aa9634714fd2" category="paragraph">Utilisez la procédure suivante pour installer le module de contrôleur ASA A900, AFF A900 ou FAS9500 dans le node2.</block>
+  <block id="86e722dcbc94e4ea341e26dd6af9f76a" category="cell">AFF A220 configuré en tant que baie 100 % SAN (ASA)</block>
+  <block id="4fdc3efb53d664a8ab709272358f7966" category="cell">9.13.1P1 et versions ultérieures</block>
+  <block id="184f38916b6639f5bdbf7619d90cebc3" category="paragraph">9.10.1P15, 9.11.1P11 et versions ultérieures</block>
+  <block id="d243c4c373219990c87996aba8af4741" category="paragraph">9.11.1P7 (FAS2620)</block>
+  <block id="a4e58f4757b38ca2c59f5da9e90013a5" category="list-text">Remplacez le module de contrôleur de chaque nœud de l'ancien contrôleur par le nouveau. Cela s'applique aux mises à niveau de systèmes AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720.</block>
+  <block id="15f948008082950e48724b1453dd6e11" category="list-text">Remplacez le contrôleur et les modules NVRAM de chaque nœud de l'ancien contrôleur par les nouveaux modules. Cela s'applique aux mises à niveau des systèmes AFF A700 ou FAS9000.</block>
+  <block id="6e43ae996b970f40321b42d34dd0b4b8" category="list-text">Les systèmes ASA A900, AFF A900 et FAS9500 prennent uniquement en charge une alimentation haut de gamme (200 V à 240 V). Si votre système AFF A700 ou FAS9000 fonctionne avec une alimentation à faible consommation électrique (100 V à 120 V), vous devez convertir l'alimentation d'entrée AFF A700 ou FAS9000 avant d'utiliser cette procédure.</block>
+  <block id="97a6d360c94d9b7bc50b22cbefedff0a" category="cell">AFF A220 configuré en tant que ASA vers ASA A150</block>
+  <block id="d6e2de75372db4a1d57d81d7f91749d1" category="cell">AFF A220, AFF A200 ou AFF C190 vers AFF A150</block>
+  <block id="6370691b1097dc9c4671ff1a5e381609" category="cell">AFF A700 configuré en tant que ASA vers ASA A900</block>
 </blocks>

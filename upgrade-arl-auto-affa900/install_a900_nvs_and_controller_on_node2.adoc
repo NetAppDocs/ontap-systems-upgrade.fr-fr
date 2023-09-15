@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/install_replacement_system_modules_on_node2.html 
-keywords: install, NVRAM, node2, controller, module, modules, replacement 
+keywords: aff, fas, asa, install, NVRAM, node2, controller, module, modules, replacement 
 summary: 'Installez les modules système de remplacement sur le nœud 2 lors d"une mise à niveau ARL des modèles de contrôleurs du même châssis.' 
 ---
 = Installez les modules système de remplacement sur le nœud 2
@@ -16,15 +16,15 @@ summary: 'Installez les modules système de remplacement sur le nœud 2 lors d"u
 [role="lead"]
 Installez les modules système de remplacement que vous avez reçus pour la mise à niveau sur le node2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.
 
-* <<Installez le module de contrôleur AFF A150 ou FAS2820 sur le nœud 2>>
-* <<Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur le nœud 2>>
+* <<install_modules_a,Installez le module de contrôleur ASA A150, AFF A150 ou FAS2820 sur le nœud 2>>
+* <<install_modules_b,Installez les modules de contrôleur et NVRAM ASA A900, AFF A900 ou FAS9500 sur le node2>>
 
 
 
 
-== Installez le module de contrôleur AFF A150 ou FAS2820 sur le nœud 2
+== Installez le module de contrôleur ASA A150, AFF A150 ou FAS2820 sur le nœud 2
 
-Installez le module de contrôleur AFF A150 ou FAS2820 que vous avez reçu pour la mise à niveau sur le node2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.
+Installez le module de contrôleur ASA A150, AFF A150 ou FAS2820 que vous avez reçu pour la mise à niveau sur le node2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.
 
 .Avant de commencer
 * Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement.
@@ -60,14 +60,14 @@ NOTE: Pour éviter d'endommager les connecteurs, n'utilisez pas de force excessi
 
 
 
-== Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 sur le nœud 2
+== Installez les modules de contrôleur et NVRAM ASA A900, AFF A900 ou FAS9500 sur le node2
 
-Installez les modules NVRAM et contrôleur AFF A900 ou FAS9500 que vous avez reçus pour la mise à niveau sur le nœud 2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.
+Installez les modules de contrôleur et NVRAM du système ASA A900, AFF A900 ou FAS9500 que vous avez reçus pour la mise à niveau sur le nœud 2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.
 
 Lors de l'installation, vous devez prendre note des points suivants :
 
 * Déplacez tous les modules de remplissage vides dans les emplacements 6-1 et 6-2 de l'ancien module NVRAM vers le nouveau module NVRAM.
-* Ne déplacez PAS le périphérique coredump du module NVRAM AFF A700 vers le module NVRAM AFF A900.
+* NE déplacez PAS le périphérique coredump du module NVRAM AFF A700 vers le module NVRAM ASA A900 ou AFF A900.
 * Déplacez tous les modules de cache Flash installés dans le module NVRAM FAS9000 vers le module NVRAM FAS9500.
 
 
@@ -76,9 +76,9 @@ Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement
 
 
 
-=== Installez le module NVRAM AFF A900 ou FAS9500
+=== Installez le module NVRAM ASA A900, AFF A900 ou FAS9500
 
-Utilisez la procédure suivante pour installer le module NVRAM AFF A900 ou FAS9500 dans le logement 6 du node2.
+Utilisez la procédure suivante pour installer le module NVRAM ASA A900, AFF A900 ou FAS9500 dans le logement 6 du nœud 2.
 
 .Étapes
 . Alignez le module NVRAM sur les bords de l'ouverture du châssis dans le logement 6.
@@ -87,9 +87,9 @@ Utilisez la procédure suivante pour installer le module NVRAM AFF A900 ou FAS95
 
 
 
-=== Installez le module de contrôleur AFF A900 ou FAS9500 sur le nœud 2
+=== Installez le module de contrôleur ASA A900, AFF A900 ou FAS9500 dans le nœud 2
 
-Utilisez la procédure suivante pour installer le module de contrôleur AFF A900 ou FAS9500 sur le noeud 2.
+Utilisez la procédure suivante pour installer le module de contrôleur ASA A900, AFF A900 ou FAS9500 dans le node2.
 
 .Étapes
 . Alignez l'extrémité du module de contrôleur avec la baie B du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.
