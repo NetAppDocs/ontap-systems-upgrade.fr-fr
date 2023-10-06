@@ -13,6 +13,8 @@ sidebar:
     url: "/index.html"
   - section: upgrade
   - section: upgrade-arl
+  - title: Mentions légales
+    url: "/legal-notices.html"
 homepage:
   tiles:
   - title: Commencez
