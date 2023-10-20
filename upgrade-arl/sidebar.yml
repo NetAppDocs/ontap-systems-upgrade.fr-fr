@@ -1,6 +1,6 @@
 ---
 section: upgrade-arl
-title: Utiliser le transfert d'agrégats pour mettre à niveau le matériel du contrôleur
+title: Mise à niveau via le transfert d'agrégats
 entries:
 - title: Présentation
   url: "/upgrade-arl/index.html"

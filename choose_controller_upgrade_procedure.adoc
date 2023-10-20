@@ -1,0 +1,70 @@
+---
+permalink: choose_controller_upgrade_procedure.html 
+sidebar: sidebar 
+keywords:  
+summary: 'De manière générale, la mise à niveau du matériel du contrôleur dépend des modèles de plateforme des nœuds d"origine. Vous effectuez une mise à niveau en déplaçant des agrégats ou des volumes de stockage (procédure sans interruption) ou en déplaçant du stockage (procédure entraînant des perturbations).' 
+---
+= Choisissez la procédure de mise à niveau matérielle de votre contrôleur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+De manière générale, la mise à niveau du matériel du contrôleur dépend des modèles de plateforme des nœuds d'origine. Vous effectuez une mise à niveau en déplaçant des agrégats ou des volumes (les deux procédures sans interruption de l'activité) ou en déplaçant le stockage (procédure disruptive). Si différentes versions de ONTAP sont exécutées sur les nœuds d'origine et les nouveaux nœuds, vous devrez peut-être effectuer une mise à niveau logicielle avant de démarrer la mise à niveau matérielle.
+
+[role="tabbed-block"]
+====
+.Systèmes avec disques internes
+--
+Choisissez une procédure de mise à niveau pour un système doté de disques internes, qui sont répertoriés ci-dessous :
+
+* FAS2620, FAS2650, FAS2720 ET FAS2750
+* AFF A150, AFF A200, AFF A220, AFF A250, AFF A700s, et AFF A800
+* AFF C190, AFF C250 et AFF C800
+* ASA A150, ASA A250, ASA A800 et ASA AFF A220
+
+
+Si votre système n'est pas répertorié, consultez le https://hwu.netapp.com["NetApp Hardware Universe"^] pour vérifier s'il dispose de disques internes.
+
+image:workflow_internal_drives.png["Processus de décision pour choisir une procédure de mise à niveau"]
+
+--
+.Systèmes avec disques externes uniquement
+--
+Choisissez une procédure de mise à niveau pour un système avec uniquement des disques externes, qui sont répertoriés ci-dessous :
+
+* FAS8200, FAS8300, FAS8700, FAS9000 ET FAS9500
+* AFF A300, AFF A320, AFF A400, AFF A700 et AFF A900
+* AFF C400
+* ASA A400, ASA A900 et ASA AFF A700
+
+
+Si votre système n'est pas répertorié, consultez le https://hwu.netapp.com["NetApp Hardware Universe"^] pour vérifier s'il n'a que des lecteurs externes.
+
+image:workflow_external_drives.png["Processus de décision pour choisir une procédure de mise à niveau"]
+
+--
+====
+Découvrez les procédures de mise à niveau du matériel du contrôleur :
+
+* link:upgrade-arl/index.html["Mise à niveau via le transfert d'agrégats"]
++
+La relocalisation des agrégats consiste en une procédure de remplacement. Vous n'avez pas besoin d'étendre ou de réduire le cluster à l'aide de nouveaux nœuds, ce qui est avantageux pour les clusters à 2 nœuds sans commutateur. Le déplacement des données via la migration des agrégats est plus rapide que la copie des données entre les agrégats lors du déplacement des volumes.
+
+* link:upgrade/upgrade-decide-to-use-this-guide.html["Mise à niveau par déplacement de volumes"]
+* link:upgrade/upgrade-decide-to-use-this-guide.html["Mettre à niveau en déplaçant le stockage"]
+
+
+[NOTE]
+====
+*Remarque 1* : la version ONTAP exécutée sur les noeuds d'origine doit être prise en charge par les nouveaux noeuds. Si nécessaire, link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Mettez à niveau la version ONTAP"^] sur les nœuds d'origine jusqu'à la version maximale prise en charge. La différence de version entre les nœuds d'origine et les nouveaux nœuds ne peut pas être supérieure à quatre. Par exemple, ONTAP 9.8 et 9.12.1 sont pris en charge, mais ONTAP 9.8 et 9.13.1 ne sont pas pris en charge. https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["En savoir plus sur les clusters ONTAP à versions mixtes"^].
+
+*Remarque 2* : une mise à niveau sans interruption nécessite un nouveau système avec son propre espace de stockage et ses propres tiroirs pour stocker les données du système d'origine.
+
+*Remarque 3* : lors de la mise à niveau en déplaçant des volumes, vous joignez les nouveaux nœuds, déplacez les volumes et les LIF vers les nouveaux nœuds, puis annulez la jonction des nœuds que vous souhaitez supprimer du cluster. Si vous mettez à niveau un cluster à 2 nœuds sans commutateur, vous le convertissez en cluster à connexion commutée à l'aide d'une paire de commutateurs de cluster avant d'ajouter de nouveaux nœuds.
+
+====
+Si vous mettez à niveau une configuration MetroCluster, reportez-vous à la section https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Mettez à niveau, actualisez ou développez la configuration MetroCluster"^].
+
+Si vous remplacez un composant individuel, reportez-vous au https://docs.netapp.com/us-en/ontap-systems/index.html["Documentation du système AFF et FAS"^] Et recherchez le dépliant sur les unités remplaçables sur site pour ce composant.

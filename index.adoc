@@ -4,7 +4,7 @@ sidebar: sidebar
 permalink: index.html 
 lead: This site provides the upgrade procedures for AFF and FAS storage systems. Select the appropriate upgrade procedure for your storage system. 
 keywords: aggregate, relocation, moving, manual, upgrade, relocate 
-summary: 'Utiliser le transfert d"agrégats pour mettre à niveau le matériel du contrôleur' 
+summary: Mettez à niveau le matériel des contrôleurs en déplaçant des agrégats, des volumes ou en déplaçant le stockage 
 ---
 = Documentation de mise à niveau des systèmes AFF et FAS
 :hardbreaks:

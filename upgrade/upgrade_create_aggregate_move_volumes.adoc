@@ -13,11 +13,6 @@ summary: 'Vous créez au moins un agrégat sur chacun des nouveaux nœuds afin d
 [role="lead"]
 Vous créez au moins un agrégat sur chacun des nouveaux nœuds afin de stocker les volumes que vous voulez déplacer des nœuds d'origine. Vous devez identifier un agrégat pour chaque volume et les déplacer individuellement.
 
-[NOTE]
-====
-Si votre configuration de stockage inclut des volumes SAN, suivez les étapes de la section https://docs.netapp.com/us-en/ontap-metrocluster/transition/task_move_linux_iscsi_hosts_from_mcc_fc_to_mcc_ip_nodes.html["Déplacez les hôtes iSCSI Linux des nœuds FC MetroCluster vers les nœuds IP MetroCluster"^] pour déplacer ces volumes vers les nouveaux nœuds.
-
-====
 .Avant de commencer
 Les relations de miroir de protection des données doivent avoir été initialisées avant de déplacer un volume.
 

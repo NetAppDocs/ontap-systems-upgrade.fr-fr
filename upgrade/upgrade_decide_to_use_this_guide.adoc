@@ -11,7 +11,7 @@ summary: 'Ce contenu explique comment mettre à niveau le matériel du contrôle
 
 
 [role="lead"]
-Ce contenu explique comment mettre à niveau le matériel du contrôleur d'un système AFF ou d'un système FAS dans un cluster en déplaçant le stockage ou les volumes.
+Ce contenu explique comment mettre à niveau le matériel du contrôleur d'un système AFF, FAS ou ASA dans un cluster en déplaçant le stockage ou les volumes.
 
 Suivez cette procédure pour mettre à niveau le matériel du contrôleur dans les situations suivantes :
 
@@ -19,7 +19,10 @@ Suivez cette procédure pour mettre à niveau le matériel du contrôleur dans l
 NOTE: Les procédures de mise à niveau matérielle ont été simplifiées dans ONTAP 9.8 grâce à l'introduction de la fonction de positionnement automatique des ports.
 
 * Vos nœuds d'origine et nouveaux sont compatibles et pris en charge.
-* Vous mettez à niveau une paire de nœuds exécutant ONTAP 9.0 ou version ultérieure vers une nouvelle paire de nœuds exécutant la même version.
+* Les nœuds d'origine et nouveaux exécutent ONTAP 9.0 ou version ultérieure. NetApp recommande, si possible, que la même version de ONTAP s'exécute sur les nœuds d'origine et les nouveaux nœuds.
++
+Si la mise à niveau de votre contrôleur inclut des versions ONTAP mixtes, reportez-vous à la section https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["Clusters ONTAP à version mixte"^] pour en savoir plus.
+
 * Vous réutilisez les adresses IP, les masques de réseau et les passerelles des nœuds d'origine sur les nouveaux nœuds.
 * Vous prévoyez de mettre à niveau le matériel des contrôleurs en déplaçant le stockage ou les volumes,
 * Vous êtes prêt à effectuer une procédure perturbateur si vous mettez à niveau en déplaçant le stockage.
@@ -29,27 +32,11 @@ La mise à niveau en déplaçant des volumes s'effectue sans interruption.
 * Vous prévoyez de convertir un nœud d'un modèle pris en charge en tiroir disque, puis de le connecter aux nouveaux nœuds.
 
 
-Si vous mettez à niveau une configuration MetroCluster à deux nœuds, vous devez suivre la procédure du https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Mise à niveau et extension de MetroCluster®"^] le contenu.
+Si vous mettez à niveau une configuration MetroCluster, reportez-vous à la section https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Mettez à niveau, actualisez ou développez la configuration MetroCluster"^].
 
-Ce contenu ne décrit pas l'utilisation du transfert d'agrégats (ARL) pour mettre à niveau le matériel du contrôleur, comme décrit dans le link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl/index.html["Mise à niveau matérielle du contrôleur ARL"^] le contenu.
+.Informations associées
+* xref:upgrade-considerations.adoc[Considérations relatives à la mise à niveau du matériel du contrôleur]
+* xref:choose_controller_upgrade_procedure.adoc[Choisissez des méthodes de mise à niveau du matériel du contrôleur]
+* https://docs.netapp.com/us-en/ontap-metrocluster/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["Où trouver les procédures pour les tâches de maintenance MetroCluster"^]
+* https://hwu.netapp.com["NetApp Hardware Universe"^]
 
-Si vous remplacez un composant individuel, reportez-vous à la brochure FRU (unité remplaçable sur site) correspondant à ce composant.
-
-[NOTE]
-====
-Afin de mettre à niveau le matériel du contrôleur en déplaçant le stockage, les nœuds d'origine sont appelés nœuds 1 et nœuds 2, et les nouveaux nœuds sont appelés nœuds 3 et nœuds 4. Au cours de la procédure décrite, le noeud 1 est remplacé par le noeud 3 et le noeud 2 est remplacé par le noeud 4.
-
-image::../upgrade/media/original_to_new_nodes.png[du premier au nouveau nœud]
-
-====
-Les termes node1, node2, node3 et node4 servent uniquement à faire la distinction entre les nœuds d'origine et les nouveaux nœuds. Lorsque vous suivez la procédure, vous devez remplacer les véritables noms de vos nœuds d'origine et de vos nouveaux nœuds. Toutefois, en réalité, les noms des nœuds ne changent pas : le nœud 3 porte le nom node1 et le nœud 4 porte le nom node2 une fois le contrôleur mis à niveau.
-
-*Informations connexes*
-
-xref:upgrade-considerations.adoc[Considérations relatives à la mise à niveau du matériel du contrôleur]
-
-xref:upgrade-methods.adoc[Choisissez des méthodes de mise à niveau du matériel du contrôleur]
-
-https://docs.netapp.com/us-en/ontap-metrocluster/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["Où trouver les procédures pour les tâches de maintenance MetroCluster"^]
-
-https://hwu.netapp.com["NetApp Hardware Universe"^]

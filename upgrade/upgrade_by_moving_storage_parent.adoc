@@ -15,6 +15,15 @@ Si vous mettez à niveau le matériel du contrôleur en déplaçant le stockage,
 
 image::../upgrade/media/workflow_for_upgrading_by_moving_storage.png[Flux de production de mise à niveau du matériel du contrôleur en déplaçant le stockage]
 
+[NOTE]
+====
+Afin de mettre à niveau le matériel du contrôleur en déplaçant le stockage, les nœuds d'origine sont appelés nœuds 1 et nœuds 2, et les nouveaux nœuds sont appelés nœuds 3 et nœuds 4. Au cours de la procédure décrite, le noeud 1 est remplacé par le noeud 3 et le noeud 2 est remplacé par le noeud 4.
+
+image::../upgrade/media/original_to_new_nodes.png[du premier au nouveau nœud]
+
+Les termes node1, node2, node3 et node4 servent uniquement à faire la distinction entre les nœuds d'origine et les nouveaux nœuds. Lorsque vous suivez la procédure, vous devez les remplacer par les noms réels de vos nœuds d'origine et des nouveaux nœuds. Toutefois, en réalité, les noms des nœuds ne changent pas : le nœud 3 porte le nom node1 et le nœud 4 porte le nom node2 une fois le contrôleur mis à niveau.
+
+====
 .Étapes
 . xref:upgrade-prepare-when-moving-storage.adoc[Préparation à la mise à niveau lors du déplacement du stockage]
 . xref:upgrade-shutdown-remove-original-nodes.adoc[Arrêtez les nœuds d'origine]
@@ -26,4 +35,8 @@ image::../upgrade/media/workflow_for_upgrading_by_moving_storage.png[Flux de pro
 . xref:upgrade-attach-shelves-reassign-disks.adoc[Ajout de tiroirs de stockage et réaffectation de la propriété des disques]
 . xref:upgrade-restore-root-volume-config.adoc[Restaurez la configuration du volume racine]
 . xref:upgrade-complete.adoc[Terminez la mise à niveau]
+
+
+.Informations associées
+* xref:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.adoc[Mise à niveau de AFF A250 vers AFF A400 en convertissant en tiroir disque] (procédure sans interruption).
 

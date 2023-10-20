@@ -22,13 +22,13 @@ Ces étapes sont effectuées l'une après l'autre sur les noeuds 3 et 4. La séq
 * Vous n'êtes tenu d'enlever la propriété des disques et tiroirs livrés avec les nouveaux contrôleurs.
 * Vous n'êtes pas tenu de retirer la propriété des disques si vous mettez à niveau le matériel en remplaçant un ancien contrôleur par un nouveau contrôleur sur une plate-forme de disque interne tout en conservant le châssis et les disques de l'ancien contrôleur.
 +
-Par exemple, si vous mettez à niveau votre système de A200 vers A220 en remplaçant uniquement l'ancien module de contrôleur A200 par le nouveau module de contrôleur A220 tout en conservant le châssis et les disques de l'ancien système A200 en place, Vous ne devez pas supprimer la propriété des disques du nouveau module de contrôleur A220 comme indiqué dans cette section _Suppression de la propriété des disques connectés aux nouveaux nœuds_.
+Par exemple, si vous mettez à niveau votre système d'un système AFF A200 vers un système AFF A220, en remplaçant uniquement l'ancien module de contrôleur AFF A200 par le nouveau module de contrôleur AFF A220 tout en conservant le châssis et les disques de l'ancien système AFF A200, vous ne devez pas retirer la propriété des disques du nouveau module de contrôleur AFF A220 comme indiqué dans cette section _Suppression de la propriété des disques connectés aux nouveaux nœuds_.
 
 +
 Contactez le support technique NetApp si vous avez des questions sur le retrait de la propriété du disque lors de la mise à niveau du contrôleur.
 
 +
-Voici la liste des systèmes de stockage interne : FAS2520, FAS2552, FAS2554, FAS2620, FAS2650 ou FAS2650 FAS2720, FAS2750, AFF A200, AFF A220, AFF A700S, AFF A800, AFF A250.
+Voici la liste des systèmes dotés d'un système de stockage interne : FAS2620, FAS2650, FAS2720, FAS2750, AFF A200, AFF A220, AFF A700s, AFF A800, AFF A250
 
 +
 Si votre système n'est pas répertorié ci-dessus, reportez-vous à la section https://hwu.netapp.com["NetApp Hardware Universe"^] pour vérifier s'il dispose de disques internes.
