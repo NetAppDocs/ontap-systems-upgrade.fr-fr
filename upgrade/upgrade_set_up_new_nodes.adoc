@@ -16,6 +16,8 @@ Lors de la mise à niveau en déplaçant le stockage, vous mettez les nœuds 3 e
 .Avant de commencer
 Si la version de ONTAP exécutée sur les nouveaux nœuds est différente de celle des nœuds d'origine, vous devez avoir téléchargé la version correcte `<ontap_version>_image.tgz` Fichier du site de support NetApp vers un répertoire accessible via le Web (voir _préparer la mise à niveau lors du déplacement du stockage_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_5["STEP5"]). Vous avez besoin de la `<ontap_version>_image.tgz` fichier pour effectuer un démarrage sur le réseau de votre système.
 
+Vous pouvez également utiliser l'option de démarrage USB pour effectuer un démarrage réseau. Consultez l'article de la base de connaissances link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Utilisation de la commande boot_Recovery LOADER pour l'installation de ONTAP pour la configuration initiale d'un système"^].
+
 .Étapes
 . Mettez le nœud 3 sous tension, puis appuyez immédiatement sur Ctrl-C sur le terminal de la console pour accéder à l'invite DU CHARGEUR.
 +

@@ -39,8 +39,7 @@ homepage:
   - title: Mise à niveau en déplaçant les agrégats sur les systèmes exécutant ONTAP
       9.7 et versions antérieures
     links:
-    - title: Utiliser les commandes de remplacement du contrôleur système (la plupart
-        des systèmes)
+    - title: Utilisez les commandes « system Controller replace »
       url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto/
     - title: Utiliser des commandes manuelles
       url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual/

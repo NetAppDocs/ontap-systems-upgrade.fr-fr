@@ -17,7 +17,7 @@ Si vous n'avez pas besoin de déplacer des volumes SAN iSCSI lors de la mise à 
 
 .Description de la tâche
 * Les interfaces IPv4 sont créées lors de la configuration des nouvelles connexions iSCSI.
-* Les commandes hôtes et les exemples sont spécifiques aux systèmes d'exploitation LINUX.
+* Les commandes hôtes et les exemples sont spécifiques aux systèmes d'exploitation Linux.
 
 
 
