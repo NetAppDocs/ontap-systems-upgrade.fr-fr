@@ -19,6 +19,9 @@ Après avoir vérifié la configuration réseau sur le nœud 4 et avant de trans
 .Description de la tâche
 Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Vous devez vérifier que les LIF sont en bon état et situées sur les ports appropriés une fois que vous avez mis le nœud 4 en ligne.
 
+
+NOTE: Si vous modifiez la vitesse de port des cartes d'interface réseau Ethernet T6 ou des ports de carte mère, vous pouvez constater que des paquets mal formés sont reçus après la conversion de vitesse. Voir https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["Code de bogue en ligne de NetApp Bugs 1570339"^] et l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["Erreurs CRC sur les ports T6 après la conversion de 40 GbE à 100 GbE"^] pour obtenir des conseils.
+
 .Étapes
 . Reprendre l'opération de relocalisation :
 +

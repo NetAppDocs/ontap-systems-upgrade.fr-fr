@@ -39,10 +39,20 @@ La sortie du `health` ce champ doit être de `true`.
 +
 `cluster show`
 
-. Chaque LIF de cluster doit écouter sur le port 7700. Vérifiez que les LIFs de cluster écoutent sur le port 7700 :
+. Selon la version de ONTAP exécutée sur la paire haute disponibilité à mettre à niveau, effectuez l'une des actions suivantes :
 +
-`::> network connections listening show -vserver Cluster`
+[cols="30,70"]
+|===
+| Si votre version ONTAP est... | Alors... 
 
+
+| 9.8 à 9.11.1 | Vérifiez que les LIFs de cluster écoutent sur le port 7700 :
+
+`::> network connections listening show -vserver Cluster` 
+
+
+| 9.12.1 ou ultérieure | Ignorez cette étape et passez à <<verify_node4_step5,Étape 5>>. 
+|===
 +
 Le port 7700 en écoute sur les ports de cluster est le résultat attendu, comme illustré dans l'exemple suivant pour un cluster à deux nœuds :
 
@@ -60,14 +70,14 @@ Cluster          NodeB_clus1:7700               TCP/ctlopcp
 Cluster          NodeB_clus2:7700               TCP/ctlopcp
 4 entries were displayed.
 ----
-. Si nécessaire, pour chaque LIF de cluster qui ne écoute pas sur le port 7700, mettre le statut administratif de la LIF sur `down` puis `up`:
+. Pour chaque LIF de cluster qui ne écoute pas sur le port 7700, régler le statut administratif de la LIF sur `down` puis `up`:
 +
 `::> net int modify -vserver Cluster -lif _cluster-lif_ -status-admin down; net int modify -vserver Cluster -lif _cluster-lif_ -status-admin up`
 
 +
 Répétez l'étape 3 pour vérifier que la LIF de cluster écoute désormais sur le port 7700.
 
-. Passer en mode privilège avancé :
+. [[verify_node4_step5]]passer en mode de privilège avancé :
 +
 `set advanced`
 
@@ -133,6 +143,9 @@ Une fois que vous avez confirmé que le nœud4 est quorum et peut communiquer av
 
 .Description de la tâche
 Pour plus d'informations sur la création et la recrércréation de VLAN, de groupes d'interfaces et de domaines de diffusion, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Network Management_.
+
+
+NOTE: Si vous modifiez la vitesse de port des ports de cluster e0a et e1a sur les systèmes AFF A800 ou AFF C800, vous pouvez observer que des paquets mal formés sont reçus après la conversion de vitesse. Voir https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["Code de bogue en ligne de NetApp Bugs 1570339"^] et l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["Erreurs CRC sur les ports T6 après la conversion de 40 GbE à 100 GbE"^] pour obtenir des conseils.
 
 .Étapes
 . Lister tous les ports physiques qui se trouvent sur le nœud mis à niveau 2 (appelé node4) :

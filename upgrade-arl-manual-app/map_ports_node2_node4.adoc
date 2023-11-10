@@ -84,10 +84,20 @@ Lorsque toutes les LIFs du cluster sont migrées et que la communication du clus
 +
 `cluster show -node node2 -fields health`
 
-.. Chaque LIF de cluster doit écouter sur le port 7700. Vérifiez que les LIFs de cluster écoutent sur le port 7700 :
+.. Selon la version de ONTAP exécutée sur la paire haute disponibilité à mettre à niveau, effectuez l'une des actions suivantes :
 +
-`::> network connections listening show -vserver Cluster`
+[cols="30,70"]
+|===
+| Si votre version ONTAP est... | Alors... 
 
+
+| 9.8 à 9.11.1 | Vérifiez que les LIFs de cluster écoutent sur le port 7700 :
+
+`::> network connections listening show -vserver Cluster` 
+
+
+| 9.12.1 ou ultérieure | Ignorez cette étape et passez à <<man_map_2_Step3,Étape 3>>. 
+|===
 +
 Le port 7700 en écoute sur les ports de cluster est le résultat attendu, comme illustré dans l'exemple suivant pour un cluster à deux nœuds :
 
@@ -105,7 +115,7 @@ Cluster          NodeB_clus1:7700               TCP/ctlopcp
 Cluster          NodeB_clus2:7700               TCP/ctlopcp
 4 entries were displayed.
 ----
-.. Si nécessaire, pour chaque LIF de cluster qui ne écoute pas sur le port 7700, mettre le statut administratif de la LIF sur `down` puis `up`:
+.. Pour chaque LIF de cluster qui ne écoute pas sur le port 7700, régler le statut administratif de la LIF sur `down` puis `up`:
 +
 `::> net int modify -vserver Cluster -lif _cluster-lif_ -status-admin down; net int modify -vserver Cluster -lif _cluster-lif_ -status-admin up`
 
