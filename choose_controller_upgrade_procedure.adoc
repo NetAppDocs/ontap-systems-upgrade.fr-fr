@@ -58,7 +58,7 @@ La relocalisation des agrégats consiste en une procédure de remplacement. Vous
 
 [NOTE]
 ====
-*Remarque 1* : la version ONTAP exécutée sur les noeuds d'origine doit être prise en charge par les nouveaux noeuds. Si nécessaire, link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Mettez à niveau la version ONTAP"^] sur les nœuds d'origine jusqu'à la version maximale prise en charge. La différence de version entre les nœuds d'origine et les nouveaux nœuds ne peut pas être supérieure à quatre. Par exemple, ONTAP 9.8 et 9.12.1 sont pris en charge, mais ONTAP 9.8 et 9.13.1 ne sont pas pris en charge. https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["En savoir plus sur les clusters ONTAP à versions mixtes"^].
+*Remarque 1* : la version ONTAP exécutée sur les noeuds d'origine doit être prise en charge par les nouveaux noeuds. Si nécessaire, link:https://docs.netapp.com/us-en/ontap/upgrade/prepare.html["Mettez à niveau la version ONTAP"^] sur les nœuds d'origine jusqu'à la version maximale prise en charge. La différence de version entre les nœuds d'origine et les nouveaux nœuds ne peut pas être supérieure à quatre. Par exemple, ONTAP 9.8 et 9.12.1 sont pris en charge, mais ONTAP 9.8 et 9.13.1 ne sont pas pris en charge. https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["En savoir plus sur les clusters ONTAP à versions mixtes"^].
 
 *Remarque 2* : une mise à niveau sans interruption nécessite un nouveau système avec son propre espace de stockage et ses propres tiroirs pour stocker les données du système d'origine.
 

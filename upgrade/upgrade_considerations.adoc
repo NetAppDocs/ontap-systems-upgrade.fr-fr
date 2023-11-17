@@ -36,7 +36,7 @@ Les contrôleurs d'une paire haute disponibilité doivent être de deux modèles
 
 | Existe-t-il des versions ONTAP différentes qui s'exécutent sur les nœuds d'origine et les nouveaux nœuds ?  a| 
 . https://hwu.netapp.com["Vérifiez les versions ONTAP et les niveaux de patch pris en charge par les nœuds d'origine et les nouveaux nœuds"^].
-. NetApp recommande, si possible, que la même version de ONTAP s'exécute sur les nœuds d'origine et les nouveaux nœuds. Si cela n'est pas possible, link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Mettez à niveau la version ONTAP"^] Sur les nœuds d'origine à la version maximale prise en charge de sorte que la différence de version entre les nœuds d'origine et les nouveaux nœuds N'est PAS supérieure à quatre. Par exemple, ONTAP 9.8 et 9.12.1 sont pris en charge, mais ONTAP 9.8 et 9.13.1 ne sont pas pris en charge.
+. NetApp recommande, si possible, que la même version de ONTAP s'exécute sur les nœuds d'origine et les nouveaux nœuds. Si cela n'est pas possible, link:https://docs.netapp.com/us-en/ontap/upgrade/prepare.html["Mettez à niveau la version ONTAP"^] Sur les nœuds d'origine à la version maximale prise en charge de sorte que la différence de version entre les nœuds d'origine et les nouveaux nœuds N'est PAS supérieure à quatre. Par exemple, ONTAP 9.8 et 9.12.1 sont pris en charge, mais ONTAP 9.8 et 9.13.1 ne sont pas pris en charge.
 +
 https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["En savoir plus sur les clusters ONTAP à versions mixtes"^].
 
