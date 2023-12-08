@@ -8,7 +8,7 @@ summary: 'Vous pouvez mettre à niveau le matériel du contrôleur exécutant ON
 :allow-uri-read: 
 
 
-[role="lead lead"]
+[role="lead"]
 Cette procédure décrit la procédure de mise à niveau du matériel du contrôleur à l'aide du transfert d'agrégats (ARL) pour les configurations système suivantes :
 
 [cols="40,20,40"]

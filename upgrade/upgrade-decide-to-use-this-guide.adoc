@@ -35,7 +35,7 @@ La mise à niveau en déplaçant des volumes s'effectue sans interruption.
 Si vous mettez à niveau une configuration MetroCluster, reportez-vous à la section https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Mettez à niveau, actualisez ou développez la configuration MetroCluster"^].
 
 .Informations associées
-* xref:upgrade-considerations.adoc[Considérations relatives à la mise à niveau du matériel du contrôleur]
+* link:upgrade-considerations.html["Considérations relatives à la mise à niveau du matériel du contrôleur"]
 * link:../choose_controller_upgrade_procedure.html["Choisissez des méthodes de mise à niveau du matériel du contrôleur"]
 * https://docs.netapp.com/us-en/ontap-metrocluster/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["Où trouver les procédures pour les tâches de maintenance MetroCluster"^]
 * https://hwu.netapp.com["NetApp Hardware Universe"^]

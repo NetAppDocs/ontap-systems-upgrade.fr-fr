@@ -45,7 +45,7 @@ FAS2720 | Module contrôleur FAS2820 ^1^
 ^2^ lors du remplacement du contrôleur et des modules NVRAM, vous déplacez uniquement les connexions de console et de gestion.
 
 .Étapes
-. Si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
+. [[A900_boot_node1]]si des lecteurs NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
 +
 
 NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] déterminer le type de disques à autocryptage utilisés.

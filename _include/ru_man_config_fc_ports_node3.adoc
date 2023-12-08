@@ -144,7 +144,7 @@ NOTE: Les ports FC doivent être programmés comme initiateurs.
 
 | Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
 ** Si le nœud3 possède une carte ou des ports intégrés, rendez-vous à <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>.
-** Si le nœud3 ne possède pas de carte ni de ports intégrés, ignorez-le <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>, Puis revenez à _Install and boot node3_ et reprenez à link:install_boot_node3.html#step7["Étape 7"].
+** Si le nœud3 ne possède pas de carte ni de ports intégrés, ignorez-le <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>, Puis revenez à _Install and boot node3_ et reprenez à link:install_boot_node3.html#man_install3_step7["Étape 7"].
 
 
 |===

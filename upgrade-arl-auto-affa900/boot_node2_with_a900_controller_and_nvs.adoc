@@ -89,7 +89,7 @@ Ces invites peuvent être enfouies dans les messages de la console. Si vous ne s
 Si `[localhost:disk.encryptNoSupport:ALERT]: Detected FIPS-certified encrypting drive` et, ou, `[localhost:diskown.errorDuringIO:error]: error 3 (disk failed) on disk` des erreurs se produisent, effectuez les opérations suivantes :
 
 .. Arrêtez le nœud à l'invite DU CHARGEUR.
-.. Vérifiez et réinitialisez les bootargs de cryptage de stockage mentionnés dans <<A900_boot_node2,Étape 1>>.
+.. Vérifiez et réinitialisez les bootargs de cryptage de stockage mentionnés dans <<boot_node2_step1,Étape 1>>.
 .. À l'invite du chargeur, démarrez :
 +
 `boot_ontap`

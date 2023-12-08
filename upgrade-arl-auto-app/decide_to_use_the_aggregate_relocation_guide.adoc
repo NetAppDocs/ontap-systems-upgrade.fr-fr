@@ -65,7 +65,7 @@ NOTE: Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), N
 
 NOTE: Si la combinaison de modèle de mise à niveau du contrôleur ne se trouve pas dans le tableau ci-dessus, contactez l'assistance technique.
 
-^1^pour les étapes supplémentaires nécessaires aux systèmes AFF A800, passez à l'étape qui référence A800 dans la section link:set_fc_or_uta_uta2_config_on_node3.html#step23["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3, étape 23"], ou link:set_fc_or_uta_uta2_config_node4.html#step23["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4, étape 23"].
+^1^pour les étapes supplémentaires nécessaires aux systèmes AFF A800, passez à l'étape qui référence A800 dans la section link:set_fc_or_uta_uta2_config_on_node3.html#auto_check3_step23["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3, étape 23"], ou link:set_fc_or_uta_uta2_config_node4.html#auto_check_4_step23["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4, étape 23"].
 
 ^2 ^si vous effectuez une mise à niveau d'un système AFF A300 vers un système AFF A400 ou FAS8200 vers un système FAS8300 dans une configuration de cluster sans commutateur à deux nœuds, vous devez choisir les ports de cluster temporaires pour la mise à niveau du contrôleur. Les systèmes AFF A400 et FAS8300 se présentent dans deux configurations sous la forme d'un bundle Ethernet où les ports de carte mezzanine sont de type Ethernet et sous la forme d'un bundle FC où les ports mezzanine sont de type FC.
 

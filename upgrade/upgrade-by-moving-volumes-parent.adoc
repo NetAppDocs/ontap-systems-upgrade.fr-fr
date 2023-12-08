@@ -1,0 +1,46 @@
+---
+permalink: upgrade/upgrade-by-moving-volumes-parent.html 
+sidebar: sidebar 
+keywords: upgrade by moving volumes 
+summary: 'Si vous effectuez une mise à niveau en déplaçant des volumes, vous préparez les nœuds d"origine et joignez les nouveaux nœuds au cluster. Vous déplacez des volumes vers les nouveaux nœuds, configurez des LIF, puis déconnectez les nœuds d"origine du cluster. La mise à niveau en déplaçant des volumes s"effectue sans interruption.' 
+---
+= Flux de travail
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous mettez à niveau le matériel du contrôleur en déplaçant des volumes, vous préparez les nœuds d'origine et joignez les nouveaux nœuds au cluster. Vous déplacez des volumes vers les nouveaux nœuds, configurez des LIF, puis déconnectez les nœuds d'origine du cluster. La mise à niveau en déplaçant des volumes s'effectue sans interruption.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"]link:upgrade-prepare-when-moving-volumes.html["Préparation à la mise à niveau lors du déplacement de volumes"]
+[role="quick-margin-para"]
+Vous effectuez quelques étapes de préparation avant de mettre à niveau le matériel du contrôleur en déplaçant des volumes.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"]link:upgrade-install-and-join-new-nodes-move-vols.html["Installez les nouveaux nœuds et joignez-les au cluster"]
+[role="quick-margin-para"]
+Vous installez les nouveaux nœuds et les joignez au cluster afin de pouvoir déplacer les volumes des nœuds d'origine.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"]link:upgrade_move_linux_iscsi_hosts_to_new_nodes.html["Déplacez les hôtes iSCSI Linux vers les nouveaux nœuds"]
+[role="quick-margin-para"]
+Avant de déplacer des volumes SAN iSCSI vers de nouveaux nœuds, vous créez de nouvelles connexions iSCSI et relancez la recherche des chemins iSCSI vers les nouveaux nœuds.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"]link:upgrade-create-aggregate-move-volumes.html["Création d'un agrégat et déplacement des volumes vers les nouveaux nœuds"]
+[role="quick-margin-para"]
+Vous créez au moins un agrégat sur chacun des nouveaux nœuds pour stocker les volumes que vous souhaitez déplacer depuis les nœuds d'origine. Vous devez identifier un agrégat pour chaque volume et déplacer chaque volume individuellement
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinq"]link:upgrade-move-lifs-to-new-nodes.html["Déplacez les LIF de données non-SAN et les LIF de gestion du cluster vers les nouveaux nœuds"]
+[role="quick-margin-para"]
+Après avoir déplacé les volumes des nœuds d'origine, vous migrez les LIF de données non SAN et les LIF de cluster-management des nœuds d'origine vers les nouveaux nœuds.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Six"]link:upgrade_move_delete_recreate_san_lifs.html["Déplacer, supprimer ou créer DES LIF SAN"]
+[role="quick-margin-para"]
+Selon le contenu de votre cluster et l'environnement de votre cluster, vous déplacez, supprimez ou créez des LIF SAN, ou recréez des LIF SAN supprimées.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sept"]link:upgrade-unjoin-original-nodes-move-volumes.html["Dissocier les nœuds d'origine du cluster"]
+[role="quick-margin-para"]
+Une fois les volumes déplacés vers les nouveaux nœuds, déjoignez les nœuds d'origine du cluster. Lorsque vous annulez l'assemblage d'un nœud, la configuration du nœud est effacée et tous les disques sont initialisés.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-8.png["Huit"]link:upgrade-complete-move-volumes.html["Terminez la mise à niveau"]
+[role="quick-margin-para"]
+Pour terminer la procédure de mise à niveau en déplaçant des volumes, vous devez configurer le processeur de service, installer de nouvelles licences et configurer AutoSupport. Vous devrez peut-être également configurer Storage ou Volume Encryption et configurer les ports FC ou NCA.

@@ -48,7 +48,7 @@ Le nœud 2 ne prendra pas le relais, mais il transmet toujours les données à p
 . Afficher le nœud 1.
 . Poursuivez la procédure de mise à niveau de la paire de nœuds.
 +
-Vous verrez peut-être des modifications dans la sortie du `storage failover show` commande, mais c'est typique et n'affecte pas la procédure. Voir la section Dépannage link:issues_multiple_stages_of_procedure.html#Unexpected-storage-failover-show-command-output["Sortie inattendue de la commande Storage Failover show"].
+Vous verrez peut-être des modifications dans la sortie du `storage failover show` commande, mais c'est typique et n'affecte pas la procédure. Voir la section Dépannage link:issues_multiple_stages_of_procedure.html#storage-failover-command["Sortie inattendue de la commande Storage Failover show"].
 
 
 
@@ -193,7 +193,7 @@ Une panne se produit au niveau du reste des agrégats jusqu'au démarrage du nœ
 
 .Étapes
 . Afficher le nœud 3.
-. Transférez les agrégats restants qui appartenaient au nœud 2 en répétant link:relocate_node2_non_root_aggr_node3_node4.html#Step1["Étape 1"] à link:relocate_node2_non_root_aggr_node3_node4.html#step3["Étape 3"] Dans la section _transférer les agrégats non racines du nœud 2 du nœud 3 vers le nœud 4_.
+. Transférez les agrégats restants qui appartenaient au nœud 2 en répétant link:relocate_node2_non_root_aggr_node3_node4.html#man_relocate_3_4_Step1["Étape 1"] à link:relocate_node2_non_root_aggr_node3_node4.html#step3["Étape 3"] Dans la section _transférer les agrégats non racines du nœud 2 du nœud 3 vers le nœud 4_.
 . Poursuivez la procédure de mise à niveau de la paire de nœuds.
 
 

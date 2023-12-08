@@ -337,7 +337,7 @@ NOTE: Si vous avez des disques partagés, des agrégats hybrides ou les deux sur
 `_node2_sysid_ -d _node4_sysid_` 
 |===
 +
-Pour le `<node2_sysid>` valeur, utilisez les informations capturées dans link:record_node2_information.html#man_node2_info_step10["Étape 10"] De la section _Record node2 information_. Pour `_node4_sysid_`, utilisez les informations capturées dans <<man_install4_step23,Étape 23>>.
+Pour le `<node2_sysid>` valeur, utilisez les informations capturées dans link:record_node2_information.html#man_record_2_step10["Étape 10"] De la section _Record node2 information_. Pour `_node4_sysid_`, utilisez les informations capturées dans <<man_install4_step23,Étape 23>>.
 
 +
 

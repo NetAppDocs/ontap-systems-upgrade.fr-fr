@@ -14,7 +14,7 @@ summary: 'Pour permettre aux nœuds 3 et Node4 de communiquer entre eux dans le 
 Pour permettre aux nœuds 3 et Node4 de communiquer entre eux dans le cluster et avec le réseau après la mise à niveau, vous devez confirmer que les ports physiques sont correctement configurés avec les paramètres requis pour l'utilisation prévue, tels que le cluster, les données, etc.
 
 .Avant de commencer
-Ces étapes s'appliquent aux systèmes exécutant ONTAP 9.7 ou version antérieure. Si vous exécutez ONTAP 9.8 ou une version ultérieure, vous devez suivre la procédure de la section xref:upgrade-map-network-ports-ontap-9-8.adoc[Mappe les ports réseau avec ONTAP 9.8 ou version ultérieure].
+Ces étapes s'appliquent aux systèmes exécutant ONTAP 9.7 ou version antérieure. Si vous exécutez ONTAP 9.8 ou une version ultérieure, vous devez suivre la procédure de la section link:upgrade-map-network-ports-ontap-9-8.html["Mappe les ports réseau avec ONTAP 9.8 ou version ultérieure"].
 
 .Description de la tâche
 Vous devez effectuer ces étapes sur les noeuds 3 et 4.
@@ -23,7 +23,7 @@ Vous devez effectuer ces étapes sur les noeuds 3 et 4.
 NOTE: Les exemples de commandes suivants font référence au nœud 1, car à ce stade de la procédure, les nœuds de remplacement « node3 » et « node4 » sont nommés « node1 » et « node2 ».
 
 .Étapes
-. Si votre système exécute ONTAP 9.8 ou une version ultérieure, *STOP*. Vous devez utiliser la procédure dans xref:upgrade-map-network-ports-ontap-9-8.adoc[Mappe les ports réseau avec ONTAP 9.8 ou version ultérieure].
+. Si votre système exécute ONTAP 9.8 ou une version ultérieure, *STOP*. Vous devez utiliser la procédure dans link:upgrade-map-network-ports-ontap-9-8.html["Mappe les ports réseau avec ONTAP 9.8 ou version ultérieure"].
 . Recherchez les informations de configuration des ports et LIF pour les nœuds 1 et 2 que vous avez enregistrées dans _prepare for Upgrade lors du déplacement du stockage_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_3["Étape 3"].
 . Localisez les informations sur les ports, les domaines de diffusion et les IPspaces que vous avez enregistrées dans _prepare for Upgrade lors du déplacement du stockage_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_3["Étape 3"].
 +
@@ -138,4 +138,4 @@ La commande suivante définit la politique de basculement sur broadcast-domain-l
 
 
 .Une fois que vous avez terminé
-Le mappage des ports physiques est terminé. Pour terminer la mise à niveau, rendez-vous sur xref:upgrade-final-steps-ontap-9-7-or-earlier-move-storage.adoc[Exécutez les étapes finales de mise à niveau sous ONTAP 9.7 ou version antérieure].
+Le mappage des ports physiques est terminé. Pour terminer la mise à niveau, rendez-vous sur link:upgrade-final-steps-ontap-9-7-or-earlier-move-storage.html["Exécutez les étapes finales de mise à niveau sous ONTAP 9.7 ou version antérieure"].

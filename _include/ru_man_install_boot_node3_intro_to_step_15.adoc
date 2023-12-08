@@ -11,9 +11,9 @@ Toutefois, vous n'avez pas besoin de netboot sur les nœuds 3 si les versions de
 
 [IMPORTANT]
 ====
-Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<man_install3_step1,Étape 1>> à <<man_install3_step5,Étape 5>>, laissez cette section à <<man_install3_step6,Étape 6>> et suivez les instructions de la section link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] si nécessaire, la saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <<man_install3_step7,Étape 7>>.
+Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<man_install3_step1,Étape 1>> à <<man_install3_step5,Étape 5>>, laissez cette section à <<man_install3_step6,Étape 6>> et suivez les instructions de la section link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] si nécessaire, la saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <<man_install3_step7,Étape 7>>.
 
-Toutefois, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière, puis passer à link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"], saisie de commandes à l'invite du cluster.
+Toutefois, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière, puis passer à link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"], saisie de commandes à l'invite du cluster.
 
 ====
 .Étapes
@@ -88,7 +88,7 @@ NOTE: *Attention*: Ne pas neutraliser le délai; si la batterie n'est pas charg�
 
 
 | Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage  a| 
-.. Accédez à link:set_fc_uta_uta2_config_node3.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 3"] et complétez les sous-sections link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"], en fonction de votre système.
+.. Accédez à link:set_fc_uta_uta2_config_node3.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 3"] et complétez les sous-sections link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"], en fonction de votre système.
 .. Revenez à cette section et suivez les étapes restantes, en commençant par <<man_install3_step7,Étape 7>>.
 
 

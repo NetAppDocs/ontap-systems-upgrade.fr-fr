@@ -11,18 +11,35 @@ summary: 'Effectuez une mise à niveau sans interruption vers les systèmes NetA
 
 
 [role="lead"]
-Vous pouvez effectuer une mise à niveau sans interruption depuis un système NetApp AFF A250 vers un système AFF A400 en convertissant chaque nœud AFF A250 en tiroir de disque NS224, puis en vous connectant aux nœuds de remplacement AFF A400.
+Vous pouvez effectuer une mise à niveau sans interruption depuis un système NetApp AFF A250 vers un système NetApp AFF A400 en convertissant chaque nœud AFF A250 en tiroir de disque NS224, puis en vous connectant aux nœuds de remplacement du système AFF A400.
 
+.Description de la tâche
 Dans cette procédure, les contrôleurs de paires haute disponibilité AFF A250 sont appelés node1 et node2, et les contrôleurs de paire haute disponibilité AFF A400 de remplacement sont appelés node3 et node4.
 
-image::../upgrade/media/ndu_upgrade_entry_level_systems.PNG[Workflow de mise à niveau de AFF A250 vers AFF A400 en passant au tiroir disque]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"]link:upgrade_migrate_lifs_aggregates_node2_to_node1.html["Migration des LIF et des agrégats de données du nœud 2 vers le nœud 1"]
+[role="quick-margin-para"]
+Avant de convertir le nœud AFF A250 2 en tiroir disque, vous migrez les interfaces logiques (LIF) et les agrégats de données du nœud 2 vers le nœud 1.
 
-.Étapes.
-. xref:upgrade_migrate_lifs_aggregates_node2_to_node1.adoc[Migration des LIF et des agrégats de données du nœud 2 vers le nœud 1]
-. xref:upgrade_convert_node2_drive_shelf_connect_node4.adoc[Convertissez le nœud 2 en tiroir disque et connectez-vous au nœud 4]
-. xref:upgrade_reassign_drives_node2_to_node4.adoc[Réaffectez des lecteurs du nœud 2 au nœud 4]
-. xref:upgrade_migrate_aggregates_epsilon_lifs_node1_node4.adoc[Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le nœud 4]
-. xref:upgrade_convert_node1_drive_shelf_connect_node3.html[Convertissez le nœud 1 en tiroir disque et connectez-vous au nœud 3]
-. xref:upgrade_reassign_drives_node1_to_node3.adoc[Réaffectez des lecteurs du nœud 1 au nœud 3]
-. xref:upgrade_migrate_lIFs_aggregates_node4_node3.adoc[Migration des LIF et des agrégats de données du nœud 4 vers le nœud 3]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"]link:upgrade_convert_node2_drive_shelf_connect_node4.html["Convertissez le nœud 2 en tiroir disque et connectez-vous au nœud 4"]
+[role="quick-margin-para"]
+Vous convertissez le nœud AFF A250 2 en tiroir disque NS224, puis vous connectez au nœud AFF A400 4 avant de réaffecter les disques du nœud 2 au nœud 4.
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"]link:upgrade_reassign_drives_node2_to_node4.html["Réaffectez des lecteurs du nœud 2 au nœud 4"]
+[role="quick-margin-para"]
+Après avoir converti le nœud AFF A250 2 en tiroir disque NS224 et connecté au nœud AFF A400 4, vous réaffectez les disques qui appartenaient auparavant au nœud 2 au nœud 4
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"]link:upgrade_migrate_aggregates_epsilon_lifs_node1_to_node4.html["Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le nœud 4"]
+[role="quick-margin-para"]
+Avant de convertir le nœud AFF A250 1 en tiroir disque, vous migrez les agrégats de données, epsilon et les LIF du nœud 1 vers AFF A400 NODE4.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinq"]link:upgrade_convert_node1_drive_shelf_connect_node3.html["Convertissez le nœud 1 en tiroir disque et connectez-vous au nœud 3"]
+[role="quick-margin-para"]
+Convertissez le nœud 1 AFF A250 en tiroir disque NS224, puis connectez-vous au nœud 3 AFF A400 avant de réaffecter les disques du nœud 1 au nœud 3.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Six"]link:upgrade_reassign_drives_node1_to_node3.html["Réaffectez des lecteurs du nœud 1 au nœud 3"]
+[role="quick-margin-para"]
+Après avoir converti le nœud 1 de AFF A250 en tiroir de disque NS224 et connecté au nœud 3 de AFF A400, vous réaffectez les disques qui appartenaient auparavant au nœud 1 au nœud 3.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sept"]link:upgrade_migrate_lIFs_aggregates_node4_node3.html["Migration des LIF et des agrégats de données du nœud 4 vers le nœud 3"]
+[role="quick-margin-para"]
+Pour terminer la mise à niveau, vous connectez le nœud 3 au nœud 4, puis vous migrez les LIF de données et les agrégats de données du nœud 4 vers le nœud 3.

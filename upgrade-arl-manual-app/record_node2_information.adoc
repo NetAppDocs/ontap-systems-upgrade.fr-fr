@@ -41,7 +41,7 @@ node2
 ----
 +
 
-NOTE: Il se peut que votre système ne dispose pas de LIF intercluster. Vous n'aurez qu'une LIF de gestion du cluster sur un seul nœud d'une paire de nœuds. Une LIF de gestion de cluster a été affichée dans les résultats de l'exemple de link:record_node1_information.html#step["Étape 1"] Dans _Record node1 port information_.
+NOTE: Il se peut que votre système ne dispose pas de LIF intercluster. Vous n'aurez qu'une LIF de gestion du cluster sur un seul nœud d'une paire de nœuds. Une LIF de cluster management s'affiche dans l'exemple de résultat de link:record_node1_information.html#step1["Étape 1"] Dans _Record node1 port information_.
 
 . Capturez les informations de la sortie à utiliser dans la section link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"].
 +

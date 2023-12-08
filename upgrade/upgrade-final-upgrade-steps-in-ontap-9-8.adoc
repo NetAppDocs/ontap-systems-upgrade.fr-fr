@@ -14,10 +14,10 @@ summary: 'Pour terminer la procédure de mise à niveau en déplaçant le stocka
 Pour terminer la procédure de mise à niveau en déplaçant le stockage, vous devez supprimer les ports et LIF inutilisés des nouveaux nœuds, réactiver le basculement du stockage ou la haute disponibilité, configurer le processeur de service, installer de nouvelles licences et configurer AutoSupport. Vous devrez également configurer le chiffrement du volume ou du stockage et les ports FC ou CNA.
 
 .Avant de commencer
-Ces étapes s'appliquent aux systèmes exécutant ONTAP 9.8 ou version ultérieure. Si vous exécutez ONTAP 9.7 ou une version antérieure, vous devez suivre la procédure de la section xref:upgrade-final-steps-ontap-9-7-or-earlier-move-storage.adoc[Exécution des étapes finales de mise à niveau sous ONTAP 9.7 ou version antérieure].
+Ces étapes s'appliquent aux systèmes exécutant ONTAP 9.8 ou version ultérieure. Si vous exécutez ONTAP 9.7 ou une version antérieure, vous devez suivre la procédure de la section link:upgrade-final-steps-ontap-9-7-or-earlier-move-storage.html["Exécution des étapes finales de mise à niveau sous ONTAP 9.7 ou version antérieure"].
 
 .Étapes
-. Si votre système exécute ONTAP 9.7 ou une version antérieure, *STOP*. Vous devez utiliser la procédure dans xref:upgrade-final-steps-ontap-9-7-or-earlier-move-storage.adoc[Exécution des étapes finales de mise à niveau sous ONTAP 9.7 ou version antérieure].
+. Si votre système exécute ONTAP 9.7 ou une version antérieure, *STOP*. Vous devez utiliser la procédure dans link:upgrade-final-steps-ontap-9-7-or-earlier-move-storage.html["Exécution des étapes finales de mise à niveau sous ONTAP 9.7 ou version antérieure"].
 . Dans l'invite du système de stockage, affiche des informations sur les LIFs :
 +
 `network interface show`

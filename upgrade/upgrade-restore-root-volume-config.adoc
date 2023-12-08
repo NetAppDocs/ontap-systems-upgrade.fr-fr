@@ -14,7 +14,7 @@ summary: Vous devez restaurer les informations de configuration du volume racine
 Vous devez restaurer les informations de configuration du volume racine vers les périphériques de démarrage.
 
 
-NOTE: Si vous effectuez une mise à niveau sans déplacement du contrôleur vers un système qui utilise des ports « e0a » et « e0b » comme ports d'interconnexion haute disponibilité (HA), par exemple un système FAS8300, un système AFF A400 ou FAS8700, vérifiez que vous avez xref:upgrade-prepare-when-moving-storage.html#assign_lifs[Réaffectation de toutes les LIF de gestion ou intercluster] configuré sur les ports e0a et e0b sur le système d'origine avant de démarrer la procédure de mise à niveau.
+NOTE: Si vous effectuez une mise à niveau sans déplacement du contrôleur vers un système qui utilise des ports « e0a » et « e0b » comme ports d'interconnexion haute disponibilité (HA), par exemple un système FAS8300, un système AFF A400 ou FAS8700, vérifiez que vous avez link:upgrade-prepare-when-moving-storage.html#assign_lifs["Réaffectation de toutes les LIF de gestion ou intercluster"] configuré sur les ports e0a et e0b sur le système d'origine avant de démarrer la procédure de mise à niveau.
 
 .Description de la tâche
 Vous devez effectuer ces étapes sur les nœuds 3 et 4, en effectuant chaque étape sur un nœud, puis sur l'autre avant de passer à l'étape suivante.

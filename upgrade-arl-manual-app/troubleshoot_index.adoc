@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-manual-app/troubleshoot_index.html 
-keywrods: troubleshoot, failure, aggregate, relocate, lifs 
+keywords: troubleshoot, failure, aggregate, relocate, lifs 
 summary: 'Diagnostiquez les défaillances qui peuvent se produire lors d"une mise à niveau manuelle du transfert d"agrégats qui exécutent ONTAP 9.8 ou une version ultérieure.' 
 ---
 = Résoudre les problèmes

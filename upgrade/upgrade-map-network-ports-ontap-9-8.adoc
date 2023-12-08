@@ -14,7 +14,7 @@ summary: 'Pour permettre aux nœuds 3 et Node4 de communiquer entre eux dans le 
 Pour permettre aux nœuds 3 et Node4 de communiquer entre eux dans le cluster et avec le réseau après la mise à niveau, vous devez confirmer que les ports physiques sont correctement configurés avec les paramètres requis pour l'utilisation prévue, tels que le cluster, les données, etc.
 
 .Avant de commencer
-Ces étapes s'appliquent aux systèmes exécutant ONTAP 9.8 ou version ultérieure. Si vous exécutez ONTAP 9.7 ou une version antérieure, vous devez suivre la procédure de la section xref:upgrade-map-network-ports-ontap-9-7-or-earlier.adoc[Mappez les ports réseau avec ONTAP 9.7 ou version antérieure].
+Ces étapes s'appliquent aux systèmes exécutant ONTAP 9.8 ou version ultérieure. Si vous exécutez ONTAP 9.7 ou une version antérieure, vous devez suivre la procédure de la section link:upgrade-map-network-ports-ontap-9-7-or-earlier.html["Mappez les ports réseau avec ONTAP 9.7 ou version antérieure"].
 
 .Description de la tâche
 Vous devez effectuer ces étapes sur les noeuds 3 et 4.
@@ -23,7 +23,7 @@ Vous devez effectuer ces étapes sur les noeuds 3 et 4.
 NOTE: Les exemples de commandes suivants font référence au nœud 1, car à ce stade de la procédure, les nœuds de remplacement « node3 » et « node4 » sont nommés « node1 » et « node2 ».
 
 .Étapes
-. Si votre système exécute ONTAP 9.7 ou une version antérieure, *STOP*. Vous devez utiliser la procédure dans xref:upgrade-map-network-ports-ontap-9-7-or-earlier.adoc[Mappez les ports réseau avec ONTAP 9.7 ou version antérieure].
+. Si votre système exécute ONTAP 9.7 ou une version antérieure, *STOP*. Vous devez utiliser la procédure dans link:upgrade-map-network-ports-ontap-9-7-or-earlier.html["Mappez les ports réseau avec ONTAP 9.7 ou version antérieure"].
 . Recherchez les informations de configuration des ports et LIF pour les nœuds 1 et 2 que vous avez enregistrées dans _prepare for Upgrade lors du déplacement du stockage_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_3["Étape 3"].
 . Localisez les informations sur les ports, les domaines de diffusion et les IPspaces que vous avez enregistrées dans _prepare for Upgrade lors du déplacement du stockage_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_3["Étape 3"].
 +
@@ -73,7 +73,7 @@ Lorsque toutes les LIFs du cluster sont migrées et que la communication du clus
 `::> network connections listening show -vserver Cluster` 
 
 
-| 9.12.1 ou ultérieure | Ignorez cette étape et passez à <<map_9.8_5,Étape 5>>. 
+| 9.12.1 ou ultérieure | Ignorez cette étape et passez à <<map_98_5,Étape 5>>. 
 |===
 +
 Le port 7700 en écoute sur les ports de cluster est le résultat attendu, comme illustré dans l'exemple suivant pour un cluster à deux nœuds :
@@ -101,7 +101,7 @@ Répétez la sous-étape (g) pour vérifier que la LIF de cluster écoute désor
 
 
 
-. [[map_9.8_5]]Modifier les adhésions à un domaine de diffusion de ports physiques hébergeant des LIFs de données. Vous pouvez effectuer cette opération manuellement, comme indiqué dans la link:upgrade-map-network-ports-ontap-9-7-or-earlier.html#map_9.7_7["Mapper les ports réseau à l'aide de ONTAP 9.7 ou version antérieure, étape 7"]. L'approche recommandée consiste à utiliser la procédure d'acquisition et de réparation améliorée de la capacité d'amélioration du réseau introduite dans ONTAP 9.8, comme indiqué à l'étape 5, sous-étapes (a) à (g).
+. [[map_98_5]]modifiez les adhésions de broadcast domain des ports physiques hébergeant les LIFs de données. Vous pouvez effectuer cette opération manuellement, comme indiqué dans la link:upgrade-map-network-ports-ontap-9-7-or-earlier.html#map_97_7["Mapper les ports réseau à l'aide de ONTAP 9.7 ou version antérieure, étape 7"]. NetApp recommande d'utiliser la procédure améliorée d'acquisition et de réparation de l'accessibilité du réseau introduite dans ONTAP 9.8, comme indiqué à l'étape 5 suivante, sous-étapes (a) à (g).
 +
 .. Lister l'état de la capacité d'accessibilité de tous les ports :
 +
@@ -218,4 +218,4 @@ NOTE: Pour les LIF iSCSI, la modification du port de home port nécessite la mis
 
 
 
-Le mappage des ports physiques est terminé. Pour terminer la mise à niveau, rendez-vous sur xref:upgrade-final-upgrade-steps-in-ontap-9-8.adoc[Effectuez les dernières étapes de mise à niveau dans ONTAP 9.8 ou version ultérieure].
+Le mappage des ports physiques est terminé. Pour terminer la mise à niveau, rendez-vous sur link:upgrade-final-upgrade-steps-in-ontap-9-8.html["Effectuez les dernières étapes de mise à niveau dans ONTAP 9.8 ou version ultérieure"].

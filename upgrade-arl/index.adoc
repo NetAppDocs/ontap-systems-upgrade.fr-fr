@@ -16,7 +16,7 @@ summary: 'Utiliser le transfert d"agrégats pour mettre à niveau le matériel d
 [role="lead"]
 Ce contenu explique comment mettre à niveau le matériel du contrôleur sans interruption grâce au transfert d'agrégats (ARL).
 
-Pour connaître les autres méthodes de mise à niveau du matériel de votre contrôleur, reportez-vous à la section xref:other_references.adoc[Références] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+Pour connaître les autres méthodes de mise à niveau du matériel de votre contrôleur, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
 
 Vous pouvez mettre à niveau le matériel du contrôleur sur une paire de nœuds exécutant ONTAP sans interrompre l'activité en migrant les agrégats non-racines depuis les nœuds d'origine vers les nouveaux nœuds du même cluster. Les données hébergées sur les nœuds mis à niveau sont accessibles au cours de la mise à niveau.
 

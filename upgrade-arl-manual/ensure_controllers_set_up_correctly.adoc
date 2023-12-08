@@ -75,7 +75,7 @@ Si le nœud 3 ou le nœud 4 possède des LIF de données détenues en privé par
 `volume show -node _node3_ -state offline`
 `volume show -node _node4_ -state offline`
 
-. Si des volumes sont hors ligne, comparez-les avec la liste des volumes hors ligne que vous avez capturés link:prepare_nodes_for_upgrade.html#step19d["Étape 19 (d)"] Dans _préparer les nœuds pour la mise à niveau_ et mettre en ligne l'un des volumes hors ligne, si nécessaire, en entrant la commande suivante, une fois pour chaque volume :
+. Si des volumes sont hors ligne, comparez-les avec la liste des volumes hors ligne que vous avez capturés  link:prepare_nodes_for_upgrade.html#man_prepare_nodes_step19["Étape 19 (d)"] Dans _préparer les nœuds pour la mise à niveau_ et mettre en ligne l'un des volumes hors ligne, si nécessaire, en entrant la commande suivante, une fois pour chaque volume :
 +
 `volume online -vserver _vserver_name_ -volume _volume_name_`
 
@@ -86,7 +86,7 @@ Si le nœud 3 ou le nœud 4 possède des LIF de données détenues en privé par
 +
 Le paramètre License-code accepte une liste de 28 clés de caractères alphabétiques majuscules. Vous pouvez ajouter une licence à la fois ou plusieurs licences à la fois, chaque clé de licence séparée par une virgule.
 
-. [[unset_maxwait_Manual]]si des lecteurs auto-cryptés sont utilisés dans la configuration et que vous avez défini le `kmip.init.maxwait` variable à `off` (par exemple, dans link:install_boot_node3.html#step16["Étape 16"] De _Install and boot node3_), vous devez annuler la variable :
+. [[unset_maxwait_Manual]]si des lecteurs auto-cryptés sont utilisés dans la configuration et que vous avez défini le `kmip.init.maxwait` variable à `off` (par exemple, dans link:install_boot_node3.html#man_install3_step16["Étape 16"] De _Install and boot node3_), vous devez annuler la variable :
 +
 `set diag; systemshell -node _node_name_ -command sudo kenv -u -p kmip.init.maxwait`
 
@@ -129,7 +129,7 @@ Entrez `y` pour supprimer tous les paquets.
 `system license show`
 
 +
-Vous pouvez comparer la sortie avec la sortie que vous avez capturée dans link:prepare_nodes_for_upgrade.html#step30["Étape 30"] De _préparer les nœuds pour la mise à niveau_.
+Vous pouvez comparer la sortie avec la sortie que vous avez capturée dans link:prepare_nodes_for_upgrade.html#man_prepare_nodes_step30["Étape 30"] De _préparer les nœuds pour la mise à niveau_.
 
 . Configurez les SP en exécutant la commande suivante sur les deux nœuds :
 +

@@ -23,7 +23,7 @@ Vous devrez peut-être compléter cette section <<Configurez les ports FC sur le
 NOTE: Les documents marketing NetApp peuvent utiliser le terme UTA2 pour faire référence aux adaptateurs et ports CNA (Converged Network adapter). Cependant, l'interface de ligne de commandes utilise le terme CNA.
 
 * Si le nœud 3 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2 et que vous mettez à niveau le système avec des disques de stockage, vous pouvez ignorer la link:verify_node3_installation.html["Vérifiez l'installation du noeud 3"] section.
-* Cependant, si vous disposez d'un système V-Series ou d'un système doté du logiciel de virtualisation FlexArray avec des baies de stockage et que le nœud 3 ne dispose pas de ports FC intégrés, de ports UTA/UTA intégrés ou d'une carte UTA/UTA2, retournez à la section _installation et démarrage sur le nœud 3_, puis reprenez la section link:install_boot_node3.html#step23["Étape 23"].
+* Cependant, si vous disposez d'un système V-Series ou d'un système doté du logiciel de virtualisation FlexArray avec des baies de stockage et que le nœud 3 ne dispose pas de ports FC intégrés, de ports UTA/UTA intégrés ou d'une carte UTA/UTA2, retournez à la section _installation et démarrage sur le nœud 3_, puis reprenez la section link:install_boot_node3.html#auto_install3_step23["Étape 23"].
 
 
 .Choix
@@ -123,7 +123,7 @@ NOTE: Les ports FC doivent être programmés comme initiateurs.
 
 | Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
 ** Si le nœud 3 dispose d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2, consultez la section <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>.
-** Si le nœud 3 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, ignorez la section <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>> Et revenez à la section _Install and boot node3_ et reprenez à link:install_boot_node3.html#step23["Étape 23"].
+** Si le nœud 3 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, ignorez la section <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>> Et revenez à la section _Install and boot node3_ et reprenez à link:install_boot_node3.html#auto_install3_step23["Étape 23"].
 
 
 |===
@@ -308,7 +308,7 @@ Adapter  Mode       Type        Mode     Type        Status
 | Possède des disques de stockage | Accédez à link:verify_node3_installation.html["Vérifiez l'installation du noeud 3"]. 
 
 
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Retournez à la section _Install and boot node3_, puis reprenez à link:install_boot_node3.html#step23["Étape 23"]. 
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Retournez à la section _Install and boot node3_, puis reprenez à link:install_boot_node3.html#auto_install3_step23["Étape 23"]. 
 |===
 . [[auto_check3_step13]]Quitter le mode maintenance :
 +

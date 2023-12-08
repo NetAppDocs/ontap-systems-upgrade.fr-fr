@@ -317,7 +317,7 @@ Saisissez la phrase de passe et les informations de sauvegarde que vous avez enr
 `boot_ontap menu`
 
 +
-Si vous ne disposez pas de configuration FC ou UTA/UTA2, exécutez l'application link:set_fc_or_uta_uta2_config_node4.html#auto_check_node4_step15["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4, étape 15"] afin que le nœud4 puisse reconnaître les disques du nœud2.
+Si vous ne disposez pas de configuration FC ou UTA/UTA2, exécutez l'application link:set_fc_or_uta_uta2_config_node4.html#auto_check_4_step15["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4, étape 15"] pour que le nœud 4 puisse reconnaître les disques du nœud 2.
 
 . [[step29]]]pour une configuration MetroCluster, les systèmes V-Series et les systèmes où le logiciel de virtualisation FlexArray est connecté aux baies de stockage, vous devez définir et configurer les ports FC, UTA/UTA2 sur le nœud 3 pour détecter les disques connectés au nœud. Pour terminer cette tâche, passez à la section link:set_fc_or_uta_uta2_config_on_node3.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 3"].
 

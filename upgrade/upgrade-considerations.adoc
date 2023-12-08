@@ -109,7 +109,7 @@ Le transfert du stockage interne est une tâche facultative du flux de travail p
 
 == Situations où vous pourriez avoir besoin d'étapes supplémentaires
 
-* xref:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.adoc[Vous passez d'un système AFF A250 à un système AFF A400] (procédure sans interruption).
+* link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Vous passez d'un système AFF A250 à un système AFF A400"] (procédure sans interruption).
 * Si le nouveau système possède moins de slots que le système d'origine ou s'il comporte moins ou des types de ports différents, vous devrez peut-être ajouter un adaptateur au nouveau système. Voir la https://hwu.netapp.com["NetApp Hardware Universe"^].
 * Si les nœuds d'origine ou les nouveaux nœuds utilisent le logiciel de virtualisation FlexArray, consultez l'article de la base de connaissances https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/V_Series/What_are_the_specific_steps_involved_in_FlexArray_for_NetApp_controller_upgrades%2F%2Freplacements%3F["Quelles sont les étapes spécifiques de FlexArray pour la mise à niveau et le remplacement des contrôleurs NetApp"^].
 * Si votre cluster possède des hôtes SAN, vous devrez peut-être suivre les étapes nécessaires pour résoudre les problèmes liés aux modifications du numéro de série des LUN. Consultez l'article de la base de connaissances https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FlexPod_with_Infrastructure_Automation/resolve_issues_during_storage_controller_motherboard_replacement_and_head_upgrades_with_iSCSI_and_FCP["Comment résoudre les problèmes lors du remplacement de la carte mère du contrôleur de stockage et des mises à niveau des têtes avec iSCSI et FCP"^].
@@ -118,6 +118,6 @@ Le transfert du stockage interne est une tâche facultative du flux de travail p
 
 .Informations associées
 * link:../choose_controller_upgrade_procedure.html["Choisissez des méthodes de mise à niveau du matériel du contrôleur"]
-* xref:upgrade-by-moving-storage-parent.adoc[Mettez à niveau le matériel du contrôleur en déplaçant le stockage]
-* xref:upgrade-by-moving-volumes-parent.adoc[Mise à niveau du matériel des contrôleurs en déplaçant les volumes]
+* link:upgrade-by-moving-storage-parent.html["Mettez à niveau le matériel du contrôleur en déplaçant le stockage"]
+* link:upgrade-by-moving-volumes-parent.html["Mise à niveau du matériel des contrôleurs en déplaçant les volumes"]
 

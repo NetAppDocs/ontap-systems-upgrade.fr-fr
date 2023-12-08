@@ -23,7 +23,7 @@ Vous devrez peut-être le faire <<Configurez les ports FC sur le nœud 3>>, ou <
 NOTE: Les documents marketing NetApp peuvent utiliser le terme « UTA2 » pour faire référence aux adaptateurs et ports CNA. Cependant, l'interface de ligne de commandes utilise le terme « CNA ».
 
 * Si le nœud 3 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2 et que vous mettez à niveau le système avec des disques de stockage, vous pouvez ignorer la link:map_ports_node1_node3.html["Mapper les ports du node1 vers le node3"].
-* Cependant, si vous disposez d'un système V-Series ou d'un système doté du logiciel de virtualisation FlexArray avec des baies de stockage, et que le nœud 3 ne dispose pas de ports FC intégrés, de ports UTA/UTA intégrés ou d'une carte UTA/UTA2, retournez à l'installation et au démarrage sur le nœud 3_, puis reprenez le contrôle link:install_boot_node3.html#step22["Étape 22"].
+* Cependant, si vous disposez d'un système V-Series ou d'un système doté du logiciel de virtualisation FlexArray avec des baies de stockage, et que le nœud 3 ne dispose pas de ports FC intégrés, de ports UTA/UTA intégrés ou d'une carte UTA/UTA2, retournez à l'installation et au démarrage sur le nœud 3_, puis reprenez le contrôle link:install_boot_node3.html#man_install3_step22["Étape 22"].
 
 
 .Choix :
@@ -173,7 +173,7 @@ NOTE: Les ports FC doivent être programmés comme initiateurs.
 
 | Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
 ** Si le nœud3 possède une carte ou des ports intégrés, rendez-vous à <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>.
-** Si le nœud3 ne possède pas de carte ni de ports intégrés, ignorez-le <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>, Puis revenez à _Install and boot node3_ et reprenez à link:install_boot_node3.html#step7["Étape 7"].
+** Si le nœud3 ne possède pas de carte ni de ports intégrés, ignorez-le <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>, Puis revenez à _Install and boot node3_ et reprenez à link:install_boot_node3.html#man_install3_step7["Étape 7"].
 
 
 |===
@@ -432,6 +432,6 @@ Adapter  Mode     Type       Mode     Type       Status
 | Possède des disques de stockage | Accédez à link:map_ports_node1_node3.html["Mapper les ports du node1 vers le node3"]. 
 
 
-| Est un système V-Series ou est doté du logiciel de virtualisation FlexArray et est connecté aux baies de stockage | Retournez à _Install and boot node3_ et reprenez à link:install_boot_node3.html#step7["Étape 7"]. 
+| Est un système V-Series ou est doté du logiciel de virtualisation FlexArray et est connecté aux baies de stockage | Retournez à _Install and boot node3_ et reprenez à link:install_boot_node3.html#man_install3_step7["Étape 7"]. 
 |===
 

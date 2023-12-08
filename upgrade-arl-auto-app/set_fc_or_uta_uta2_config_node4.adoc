@@ -121,7 +121,7 @@ NOTE: Les ports FC doivent être programmés comme initiateurs.
 
 | Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
 ** Accédez à <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>> Si le nœud 4 est doté d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
-** Ignorez la section _Check et configurez les ports UTA/UTA2 sur le nœud 4_ si le nœud 4 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, puis revenez à la section _Install and Boot node4_, puis reprenez le contrôle link:install_boot_node4.html#step23["Étape 23"].
+** Ignorez la section _Check et configurez les ports UTA/UTA2 sur le nœud 4_ si le nœud 4 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, puis revenez à la section _Install and Boot node4_, puis reprenez le contrôle link:install_boot_node4.html#auto_install4_step23["Étape 23"].
 
 
 |===
@@ -291,7 +291,7 @@ f-a   2b       fc             target       cna           -             online
 | Possède des disques de stockage | Accédez à link:verify_node4_installation.html["Vérifiez l'installation du node4"]. 
 
 
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Retournez à la section _Install and boot node4_, puis reprenez à link:install_boot_node4.html#step23["Étape 23"]. 
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Retournez à la section _Install and boot node4_, puis reprenez à link:install_boot_node4.html#auto_install4_step23["Étape 23"]. 
 |===
 . [[auto_check_4_step13]]Quitter le mode Maintenance :
 +

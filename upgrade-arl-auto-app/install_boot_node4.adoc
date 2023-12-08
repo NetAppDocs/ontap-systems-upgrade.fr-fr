@@ -281,7 +281,7 @@ L'installation d'un nouveau module de contrôleur modifie les valeurs WWPN assoc
 . Si votre configuration utilise un zoning basé sur des commutateurs, ajustez le zoning en fonction des nouvelles valeurs WWPN.
 
 
-. Si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
+. [[auto_install4_step27]]si des lecteurs NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
 +
 
 NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] déterminer le type de disques à autocryptage utilisés.
@@ -316,7 +316,7 @@ Saisissez la phrase de passe et les informations de sauvegarde que vous avez enr
 `boot_ontap menu`
 
 +
-Si vous ne disposez pas de configuration FC ou UTA/UTA2, exécutez l'application link:set_fc_or_uta_uta2_config_node4.html#auto_check_node4_step15["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4, étape 15"] afin que le nœud4 puisse reconnaître les disques du nœud2.
+Si vous ne disposez pas de configuration FC ou UTA/UTA2, exécutez l'application link:set_fc_or_uta_uta2_config_node4.html#auto_check_4_step15["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4, étape 15"] pour que le nœud 4 puisse reconnaître les disques du nœud 2.
 
 . [[step29]]pour la configuration MetroCluster, les systèmes V-Series et les systèmes avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez définir et configurer les ports FC ou UTA/UTA2 sur le nœud 4 pour détecter les disques connectés au nœud. Pour terminer cette tâche, passez à la section link:set_fc_or_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UT2 sur le nœud 4"].
 

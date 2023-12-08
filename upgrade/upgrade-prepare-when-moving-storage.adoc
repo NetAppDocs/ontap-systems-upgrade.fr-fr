@@ -169,4 +169,4 @@ NOTE: Il n'est pas nécessaire d'extraire le contenu du `<ontap_version>_image.t
 |===
 
 
-Vous allez utiliser les informations du répertoire pour xref:upgrade-set-up-new-nodes.adoc[configurez les nouveaux nœuds].
+Vous allez utiliser les informations du répertoire pour link:upgrade-set-up-new-nodes.html["configurez les nouveaux nœuds"].

@@ -219,6 +219,6 @@ f-a    2b      fc      target    cna      -          online
 | Possède des disques de stockage | Accédez à link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"]. 
 
 
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Retournez à la section _Install and boot node4_, puis reprenez la section à l'adresse link:install_boot_node4.html#Step9["Étape 9"]. 
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Retournez à la section _Install and boot node4_, puis reprenez la section à l'adresse link:install_boot_node4.html#man_install4_Step9["Étape 9"]. 
 |===
 
