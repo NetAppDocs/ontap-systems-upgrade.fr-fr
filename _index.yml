@@ -1,8 +1,8 @@
 ---
 indexpage:
   lead: Ce site présente les procédures de mise à niveau des systèmes de stockage
-    AFF et FAS. Sélectionnez la procédure de mise à niveau appropriée pour votre système
-    de stockage.
+    AFF, FAS et ASA. Sélectionnez la procédure de mise à niveau appropriée pour votre
+    système de stockage.
   tiles:
   - title: Commencez
     links:
@@ -40,7 +40,7 @@ indexpage:
       url: https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html
   - title: Ressources supplémentaires
     links:
-    - title: Documentation sur les systèmes ONTAP
+    - title: Documentation des systèmes matériels ONTAP
       url: https://docs.netapp.com/us-en/ontap-systems/index.html
     - title: Documentation sur les commutateurs ONTAP
       url: https://docs.netapp.com/us-en/ontap-systems-switches/index.html

@@ -1969,7 +1969,6 @@
   <block id="74553544aa9c0c94d16a5a5ed85d6720" category="list-text">Vérifiez qu'il n'y a pas d'alerte de santé :</block>
   <block id="838f9a3aa0c54c620c1dab5cccc98ca5" category="paragraph"><block ref="79c86ac639c7742d6046026cf6726bce" prefix="" category="inline-code"></block></block>
   <block id="8fb4b518ce39a0704f920c9d4f2f7b77" category="summary">Utiliser le transfert d'agrégats pour mettre à niveau le matériel du contrôleur</block>
-  <block id="6af6b76d592516d40ca101051c678be3" category="doc">Documentation de mise à niveau des systèmes AFF et FAS</block>
   <block id="0bc12c090040b2c995d1f511a738331b" category="summary">Vous pouvez mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou une version ultérieure en utilisant<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> commandes, répositionnant la propriété d'agrégats non racines.</block>
   <block id="b9e53a247da3982cb706e33287d2a8fd" category="cell">À l'aide de<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> commandes</block>
   <block id="041dd7a51404fc5dc5a87c2a0bc90b15" category="cell">9.8 ou ultérieure</block>
@@ -3849,7 +3848,6 @@
   <block id="7d94daad2b6e9d77a6320a64c21fbc4a" category="sidebar">Mettre à niveau les systèmes avec une configuration MetroCluster</block>
   <block id="c6bb96cc8b84319277f00b15adc71d75" category="sidebar">Sélectionnez la procédure de mise à niveau pour votre configuration MetroCluster</block>
   <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">Ressources supplémentaires</block>
-  <block id="aaf23d643347b5921ba9716fa4c13f83" category="sidebar">Documentation sur les systèmes ONTAP</block>
   <block id="743b2bde29eae11996923323c6b89672" category="sidebar">Documentation sur les commutateurs ONTAP</block>
   <block id="dd032435fa83549d8bf3928550409a3e" category="sidebar">Documentation du logiciel ONTAP</block>
   <block id="519131237f79eadb2dc6a1e003a087bc" category="sidebar">NetApp Active IQ Config Advisor</block>
@@ -4750,8 +4748,6 @@ Avec ONTAP 9.8, le<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" " categ
   <block id="8b9b2634fd898f04166a765851aba8f2" category="list-text"><block ref="8b9b2634fd898f04166a765851aba8f2" category="inline-link-macro-rx"></block></block>
   <block id="441e5e19c045de8820e45a5b22e45056" category="paragraph">*Remarque 2* : une mise à niveau sans interruption nécessite un nouveau système avec son propre espace de stockage et ses propres tiroirs pour stocker les données du système d'origine.</block>
   <block id="272d55e2adea123757d8811eaaaebd88" category="paragraph">*Remarque 3* : lors de la mise à niveau en déplaçant des volumes, vous joignez les nouveaux nœuds, déplacez les volumes et les LIF vers les nouveaux nœuds, puis annulez la jonction des nœuds que vous souhaitez supprimer du cluster. Si vous mettez à niveau un cluster à 2 nœuds sans commutateur, vous le convertissez en cluster à connexion commutée à l'aide d'une paire de commutateurs de cluster avant d'ajouter de nouveaux nœuds.</block>
-  <block id="16319414c65274d365d86327a61ef5dc" category="inline-link">Documentation du système AFF et FAS</block>
-  <block id="c2238e72fe75968b1d2d41e7beba323b" category="paragraph">Si vous remplacez un composant individuel, reportez-vous au<block ref="9e966fb68ec771eec4870f18e1909b4f" category="inline-link-rx"></block> Et recherchez le dépliant sur les unités remplaçables sur site pour ce composant.</block>
   <block id="c024cf342a69d8b35b142333f2608aa5" category="sidebar">Effectuez une mise à niveau en déplaçant les agrégats sur des systèmes exécutant ONTAP 9.8 et versions ultérieures</block>
   <block id="5d3c4b59db4a991b7c6450c61662dc60" category="sidebar">Mise à niveau en déplaçant les agrégats sur les systèmes exécutant ONTAP 9.7 et versions antérieures</block>
   <block id="d58d42ec84ab0189beb36da55893f387" category="sidebar">Effectuez des mises à niveau en déplaçant du stockage ou des volumes</block>
@@ -4900,5 +4896,15 @@ Avec ONTAP 9.8, le<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" " categ
   <block id="ac5c825456c3417b5a4af98c4f3e915f" category="paragraph">^1^pour les étapes supplémentaires nécessaires aux systèmes AFF A800, passez à l'étape qui référence A800 dans la section <block ref="d7767766539bb5c2349ec33972e353b3" category="inline-link-macro-rx"></block>, ou <block ref="1ac9d612a445bb1be7d33490e7f7168c" category="inline-link-macro-rx"></block>.</block>
   <block id="e517f479718742d7735088b63cb4b0a6" category="list-text">[[step5]]effectuez l'une des actions suivantes :</block>
   <block id="1f6c36e4c21adc6fcbbeb1628f0ce398" category="paragraph">Pour connaître les autres méthodes de mise à niveau du matériel de votre contrôleur, reportez-vous à la section <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block> Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.</block>
-  <block id="a8337c93c769b636588431825fedbc33" category="sidebar">Ce site présente les procédures de mise à niveau des systèmes de stockage AFF et FAS. Sélectionnez la procédure de mise à niveau appropriée pour votre système de stockage.</block>
+  <block id="ce334042acf5cdb00aa6b0cacc91188d" category="list-text">Si nécessaire, recréez les comptes utilisateur non par défaut que vous aviez pour le contrôleur BMC (Baseboard Management Controller) sur l'ancien système :</block>
+  <block id="7cd124c3569d4b8de1ffd3a55e5a0f72" category="list-text">Modifiez ou réinitialisez le mot de passe du compte d'utilisateur BMC admin.</block>
+  <block id="f9c20a87fa881cd6931b55ff9caab40b" category="paragraph">Le mot de passe du compte d'utilisateur BMC admin est vide (pas de mot de passe) ou identique au mot de passe du compte d'utilisateur administrateur système.</block>
+  <block id="98295c6ad28170a1a290ca42442cdb79" category="list-text">Recréez les comptes d'utilisateur BMC non par défaut à l'aide de<block ref="5d6b067bb8a979d6b47c787077dfae6f" prefix=" " category="inline-code"></block> commande avec<block ref="3676d55f84497cbeadfc614c1b1b62fc" prefix=" " category="inline-code"></block> réglez sur « service-processor », comme illustré dans l'exemple suivant :</block>
+  <block id="715d318a746fe248ce78ec5e2626f09e" category="paragraph"><block ref="95c8ee682558c9e9a0683d5d70ee2be7" prefix="" category="inline-code"></block></block>
+  <block id="b6025c8f8309b4b8106567e8e60f52ac" category="admonition">Des privilèges d'administrateur sont requis pour créer un compte d'utilisateur dans le contrôleur BMC.</block>
+  <block id="a64a5798382cc068c2d777ff826bccb5" category="doc">Documentation sur la mise à niveau du matériel ONTAP</block>
+  <block id="646d7d5f93b4a6d7bbbc65acf5ac1077" category="inline-link">Documentation des systèmes matériels ONTAP</block>
+  <block id="c2bb4d5f8818bc80f7aa15d94d57c6e3" category="paragraph">Si vous remplacez un composant individuel, reportez-vous au<block ref="e18a2433f1085adba8dc86307fee18d1" category="inline-link-rx"></block> Et recherchez le dépliant sur les unités remplaçables sur site pour ce composant.</block>
+  <block id="dec452d8e293e5516524ae8a86713211" category="sidebar">Ce site présente les procédures de mise à niveau des systèmes de stockage AFF, FAS et ASA. Sélectionnez la procédure de mise à niveau appropriée pour votre système de stockage.</block>
+  <block id="ec6e72d1c4bb7dccdc62b6caf35c95f7" category="sidebar">Documentation des systèmes matériels ONTAP</block>
 </blocks>

@@ -67,4 +67,4 @@ La relocalisation des agrégats consiste en une procédure de remplacement. Vous
 ====
 Si vous mettez à niveau une configuration MetroCluster, reportez-vous à la section https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Mettez à niveau, actualisez ou développez la configuration MetroCluster"^].
 
-Si vous remplacez un composant individuel, reportez-vous au https://docs.netapp.com/us-en/ontap-systems/index.html["Documentation du système AFF et FAS"^] Et recherchez le dépliant sur les unités remplaçables sur site pour ce composant.
+Si vous remplacez un composant individuel, reportez-vous au https://docs.netapp.com/us-en/ontap-systems/index.html["Documentation des systèmes matériels ONTAP"^] Et recherchez le dépliant sur les unités remplaçables sur site pour ce composant.

@@ -100,6 +100,22 @@ https://library.netapp.com/ecm/ecm_download_file/ECMP1140536["Migration vers un 
 +
 https://library.netapp.com/ecm/ecm_download_file/ECMP1140535["Migration vers un cluster à deux nœuds avec commutateurs de cluster NetApp CN1610"^]
 
+. Si nécessaire, recréez les comptes utilisateur non par défaut que vous aviez pour le contrôleur BMC (Baseboard Management Controller) sur l'ancien système :
++
+.. Modifiez ou réinitialisez le mot de passe du compte d'utilisateur BMC admin.
++
+Le mot de passe du compte d'utilisateur BMC admin est vide (pas de mot de passe) ou identique au mot de passe du compte d'utilisateur administrateur système.
+
+.. Recréez les comptes d'utilisateur BMC non par défaut à l'aide de `security login create` commande avec `application` réglez sur « service-processor », comme illustré dans l'exemple suivant :
++
+`security login create -user-or-group-name bmcuser -application service-processor -authentication-method password -role admin`
+
++
+
+NOTE: Des privilèges d'administrateur sont requis pour créer un compte d'utilisateur dans le contrôleur BMC.
+
+
+
 . Selon les besoins, désaffectez les systèmes d'origine via le site de support NetApp pour informer NetApp que les systèmes ne sont plus opérationnels et peuvent être supprimés des bases de données de support :
 +
 .. Connectez-vous au https://mysupport.netapp.com/site/global/dashboard["Support NetApp"^] le site.
