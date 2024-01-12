@@ -218,4 +218,5 @@ NOTE: Pour les LIF iSCSI, la modification du port de home port nécessite la mis
 
 
 
+.Une fois que vous avez terminé
 Le mappage des ports physiques est terminé. Pour terminer la mise à niveau, rendez-vous sur link:upgrade-final-upgrade-steps-in-ontap-9-8.html["Effectuez les dernières étapes de mise à niveau dans ONTAP 9.8 ou version ultérieure"].

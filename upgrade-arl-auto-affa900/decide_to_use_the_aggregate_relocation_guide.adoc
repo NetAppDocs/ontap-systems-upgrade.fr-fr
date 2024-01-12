@@ -16,7 +16,7 @@ summary: Décidez si vous souhaitez utiliser la procédure ARL qui met à niveau
 [role="lead"]
 Ce contenu explique comment mettre à niveau les contrôleurs de stockage d'une paire haute disponibilité tout en conservant toutes les données et les disques existants. Il s'agit d'une procédure complexe qui ne doit être utilisée que par des administrateurs expérimentés.
 
-Utiliser cette procédure dans les cas suivants :
+Vous pouvez utiliser cette procédure dans les circonstances suivantes :
 
 * Vous effectuez l'une des mises à niveau suivantes du contrôleur :
 +
@@ -53,7 +53,7 @@ Utiliser cette procédure dans les cas suivants :
 * Vous avez de l'expérience dans l'administration de ONTAP et vous êtes à l'aise avec les risques de travailler en mode de privilèges de diagnostic.
 
 
-Ne pas utiliser *PAS* cette procédure dans les circonstances suivantes :
+Vous ne pouvez pas utiliser cette procédure dans les circonstances suivantes :
 
 * Vous utilisez le logiciel de virtualisation FlexArray sur les systèmes AFF A700 ou FAS9000.
 * Vous utilisez un commutateur partagé pour l'interconnexion de cluster et le stockage Ethernet.

@@ -17,7 +17,12 @@ Vous devez réattribuer les disques qui appartenaient aux nœuds 1 et 2 respecti
 Effectuez les étapes de cette section sur les noeuds 3 et 4, puis effectuez chaque étape sur le noeud 3, puis sur le noeud 4 avant de passer à l'étape suivante.
 
 .Étapes
-. Connectez les câbles du tiroir de stockage du nœud 1/node2 au nœud 3/node4. Vérification de l'alimentation électrique et de la connectivité physique des tiroirs
+. Connectez les câbles des tiroirs de stockage des tiroirs précédemment connectés au nœud 1/nœud 2 au nœud 3/nœud 4.
++
+
+CAUTION: Vous ne devez pas connecter de nouveaux tiroirs au nœud 3/nœud 4 pendant cette procédure de mise à niveau. Vous pouvez connecter de nouveaux tiroirs au système sans interruption une fois la mise à niveau du contrôleur terminée.
+
+. Vérification de l'alimentation électrique et de la connectivité physique des tiroirs
 . Dans l'invite DU CHARGEUR du nœud 3, démarrez en mode maintenance :
 +
 `boot_ontap maint`
