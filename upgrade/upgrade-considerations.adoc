@@ -60,7 +60,8 @@ NOTE: Si vous mettez à niveau un cluster à huit nœuds qui diffuse des protoco
 
 
 | Suis-je en train de déplacer le stockage interne ou de convertir le système en tiroir disque ?  a| 
-. https://hwu.netapp.com/["Vérifiez que la taille de l'agrégat racine et le nombre de disques pris en charge par le nouveau système sont égaux ou supérieurs à ceux pris en charge par le système d'origine"^].
+. https://hwu.netapp.com/["Vérifiez que la taille actuelle de l'agrégat racine et le nombre de disques dans l'agrégat racine respectent ou dépassent les spécifications du nouveau système"^].
+. https://hwu.netapp.com/["Vérifiez que le nombre de disques de stockage pris en charge par le nouveau système est égal ou supérieur à celui pris en charge par le système d'origine"^].
 . link:upgrade-by-moving-storage-parent.html["Mettre à niveau en déplaçant le stockage"] (une procédure de perturbation).
 
 
