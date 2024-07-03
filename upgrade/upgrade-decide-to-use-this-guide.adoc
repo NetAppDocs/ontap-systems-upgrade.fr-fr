@@ -15,9 +15,13 @@ Ce contenu explique comment mettre à niveau le matériel du contrôleur d'un sy
 
 Suivez cette procédure pour mettre à niveau le matériel du contrôleur dans les situations suivantes :
 
+[NOTE]
+====
+Lorsque vous effectuez une mise à niveau vers un système AFF A70, AFF A90 ou AFF A1K introduit dans ONTAP 9.15.1, ONTAP convertit l'efficacité du stockage de tous les volumes à provisionnement fin existants, y compris ceux qui n'utilisent pas l'efficacité du stockage, et applique les nouvelles fonctionnalités d'efficacité du stockage qui utilisent la fonctionnalité de déchargement matériel. Il s'agit d'un processus automatique en arrière-plan, sans impact visible sur les performances du système. https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["En savoir plus >>"^]
 
-NOTE: Les procédures de mise à niveau matérielle ont été simplifiées dans ONTAP 9.8 grâce à l'introduction de la fonction de positionnement automatique des ports.
+Les procédures de mise à niveau matérielle ont été simplifiées dans ONTAP 9.8 grâce à l'introduction de la fonction de positionnement automatique des ports.
 
+====
 * Vos nœuds d'origine et nouveaux sont compatibles et pris en charge.
 * Les nœuds d'origine et nouveaux exécutent ONTAP 9.0 ou version ultérieure. NetApp recommande, si possible, que la même version de ONTAP s'exécute sur les nœuds d'origine et les nouveaux nœuds.
 +

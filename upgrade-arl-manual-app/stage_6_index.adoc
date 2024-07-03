@@ -4,7 +4,7 @@ permalink: upgrade-arl-manual-app/stage_6_index.html
 keywords: stage 6, complete, upgrade, set up, setup, controller, storage encryption, netapp encryption, decommission, resume snapmirror 
 summary: 'Étape 6 : processus de mise à niveau manuelle d"ARL sur les contrôleurs exécutant ONTAP 9.8 ou une version ultérieure' 
 ---
-= Présentation
+= Présentation de la phase 6
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

@@ -16,7 +16,7 @@ summary: 'Lorsque vous utilisez l"ARL pour mettre à niveau les modèles de cont
 [role="lead"]
 Après avoir remplacé les modules système correspondants, vous devez netboot node1. Le terme netboot signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Lors de la préparation de netboot, vous ajoutez une copie de l'image de démarrage de ONTAP 9 sur un serveur Web auquel le système peut accéder.
 
-Il n'est pas possible de vérifier la version de ONTAP installée sur le support de démarrage du module de contrôleur de remplacement sauf s'il est installé dans un châssis et sous tension. La version ONTAP du support d'amorçage du système de remplacement doit être identique à la version ONTAP exécutée sur l'ancien système que vous mettez à niveau et les images d'amorçage principale et de sauvegarde doivent correspondre. Pour vérifier la version ONTAP minimale prise en charge pour votre mise à niveau, reportez-vous à la section link:index.html["Présentation"].
+Il n'est pas possible de vérifier la version de ONTAP installée sur le support de démarrage du module de contrôleur de remplacement sauf s'il est installé dans un châssis et sous tension. La version ONTAP du support d'amorçage du système de remplacement doit être identique à la version ONTAP exécutée sur l'ancien système que vous mettez à niveau et les images d'amorçage principale et de sauvegarde sur le support d'amorçage doivent correspondre. Pour vérifier la version minimale de ONTAP prise en charge pour votre mise à niveau, reportez-vous à la section link:index.html["Présentation"].
 
 Vous pouvez configurer les images en effectuant un démarrage suivi de l' `wipeconfig` commande dans le menu de démarrage. Si le module de contrôleur était auparavant utilisé dans un autre cluster, le `wipeconfig` commande efface toute configuration résiduelle sur le support d'amorçage.
 
@@ -72,7 +72,7 @@ NOTE: D'autres paramètres peuvent être nécessaires pour votre interface. Entr
 
 NOTE: N'interrompez pas l'amorçage.
 
-. Attendre que le nœud 1 s'exécute sur le module de contrôleur ASA A900, AFF A900 ou FAS9500 pour démarrer et afficher les options du menu de démarrage comme illustré ci-dessous :
+. Attendez que le nœud 1 exécuté sur le module de contrôleur de remplacement démarre et affichez les options du menu de démarrage comme indiqué ci-dessous :
 +
 [listing]
 ----

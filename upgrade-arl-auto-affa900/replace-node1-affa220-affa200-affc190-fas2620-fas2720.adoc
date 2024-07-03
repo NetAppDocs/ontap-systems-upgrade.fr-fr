@@ -1,0 +1,76 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/replace-node1-affa220-affa200-affc190-fas2620-fas2720.html 
+keywords: aff, asa, fas, replace, node1, system, modules 
+summary: 'Remplacez le nœud 1 des modules système AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720 lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleur du même châssis.' 
+---
+= Remplacez le module de contrôleur AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+À ce stade, le nœud 1 est en panne et toutes les données sont servies par le nœud 2. Les nœuds 1 et 2 se trouvant dans le même châssis et alimentés par le même ensemble d'alimentations, NE mettez PAS le châssis hors tension. Veillez à ne retirer que le module de contrôleur du nœud 1. En général, le nœud 1 est le contrôleur A, situé sur le côté gauche du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système. L'étiquette du contrôleur se trouve sur le châssis, directement au-dessus du module de contrôleur.
+
+.Avant de commencer
+Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement.
+
+
+
+== Retirez le module de contrôleur AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720
+
+Pour accéder aux composants à l'intérieur du contrôleur, retirez le module de contrôleur du système, puis retirez le capot du module de contrôleur.
+
+.Étapes
+. Desserrez le crochet et la bride de boucle qui relient les câbles au périphérique de gestion des câbles, puis débranchez les câbles système et les SFP (si nécessaire) du module de contrôleur, en maintenant une trace de l'emplacement où les câbles ont été connectés.
++
+Laissez les câbles dans le périphérique de gestion des câbles de sorte que lorsque vous réinstallez le périphérique de gestion des câbles, les câbles sont organisés.
+
+. Retirez et mettez de côté les dispositifs de gestion des câbles des côtés gauche et droit du module de contrôleur.
++
+image::../media/drw_25xx_cable_management_arm.png[Retrait du ARM de gestion des câbles]
+
+. Appuyez sur le loquet de la poignée de came jusqu'à ce qu'il se libère, ouvrez complètement la poignée de came pour libérer le module de contrôleur du fond de panier central, puis, à l'aide de deux mains, retirez le module de contrôleur du châssis.
++
+image::../media/drw_2240_x_opening_cam_latch.png[Ouverture de la poignée de came]
+
+. Retournez le module de contrôleur et placez-le sur une surface plane et stable.
+
+
+
+
+== Installez le module de contrôleur ASA A150, AFF A150 ou FAS2820
+
+Installez, câblez et connectez le module de contrôleur ASA A150, AFF A150 ou FAS2820 au niveau du nœud 1.
+
+.Étapes
+. Alignez l'extrémité du module de contrôleur avec l'ouverture du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.
++
+
+NOTE: N'insérez pas complètement le module de contrôleur dans le châssis avant d'en avoir été invité dans la procédure.
+
+. Reliez les ports de gestion et de console au module de contrôleur node1.
++
+
+NOTE: Comme le châssis est déjà sous tension, le nœud 1 démarre l'initialisation du BIOS, puis l'AUTOBOOT dès qu'il est complètement installé. Pour interrompre le démarrage du nœud 1, il est recommandé de connecter les câbles de console série et de gestion au module de contrôleur node1 avant d'insérer complètement le module de contrôleur dans le slot.
+
+. Avec la poignée de came en position ouverte, poussez fermement le module de contrôleur jusqu'à ce qu'il rencontre le fond de panier central et qu'il soit bien en place. Le loquet de verrouillage s'élève lorsque le module de contrôleur est bien en place. Fermer la poignée de came en position verrouillée.
++
+
+NOTE: Pour éviter d'endommager les connecteurs, n'utilisez pas de force excessive lorsque vous faites glisser le module de contrôleur dans le châssis.
+
+. Connectez la console série dès que le module est assis et soyez prêt à interrompre AUTOBOOT du nœud 1.
+. Après l'interruption DE L'AUTOBOOT, le nœud 1 s'arrête à l'invite DU CHARGEUR. Si vous n'interrompez pas LE démarrage AUTOMATIQUE à temps et que le démarrage du nœud 1 commence, attendez l'invite et appuyez sur Ctrl-C pour accéder au menu de démarrage. Une fois que le nœud s'arrête au menu de démarrage, utilisez l'option `8` pour redémarrer le nœud et interrompre le DÉMARRAGE AUTOMATIQUE pendant le redémarrage.
+. À l'invite DU CHARGEUR> du nœud 1, définissez les variables d'environnement par défaut :
++
+`set-defaults`
+
+. Enregistrez les paramètres des variables d'environnement par défaut :
++
+`saveenv`
+
+

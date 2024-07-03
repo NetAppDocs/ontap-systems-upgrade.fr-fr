@@ -14,10 +14,14 @@ summary: 'Vérifiez l"installation du nœud 1 avec les modules de remplacement l
 
 
 [role="lead"]
-Vous devez vérifier l'installation du nœud 1 avec les modules système de remplacement. Comme il n'y a pas de modification des ports physiques, vous n'avez pas besoin de mapper les ports physiques de l'ancien nœud 1 vers le nœud de remplacement 1.
+Après avoir initialisé le nœud 1 avec le module de contrôleur de remplacement, vérifiez qu'il est correctement installé.
+
+Pour les mises à niveau de AFF A800 uniquement, vous mappez les ports physiques du nœud 1 existant vers le nœud de remplacement 1, car les ports physiques changent entre le contrôleur AFF A800 et le contrôleur AFF A90 ou AFF A70.
+
+Pour toutes les autres mises à niveau, il n'y a pas de modification des ports physiques, vous n'êtes donc pas tenu de mapper les ports physiques de l'ancien nœud 1 au nœud de remplacement 1.
 
 .Description de la tâche
-Après avoir initialisé le nœud 1 avec le module de contrôleur de remplacement, vérifiez qu'il est correctement installé. Vous devez patienter jusqu'à ce que le nœud 1 rejoint le quorum, puis reprendre l'opération de remplacement du contrôleur.
+Vous devez patienter jusqu'à ce que le nœud 1 rejoint le quorum, puis reprendre l'opération de remplacement du contrôleur.
 
 À ce stade de la procédure, l'opération de mise à niveau du contrôleur doit avoir été interrompue au moment où le nœud1 tente de rejoindre automatiquement le quorum.
 
@@ -33,6 +37,14 @@ La sortie du `health` ce champ doit être de `true`.
 +
 `cluster show`
 
++
+[NOTE]
+====
+Si le nœud 1 n'a pas rejoint le quorum après le démarrage, attendez cinq minutes et vérifiez à nouveau. Selon la connexion au cluster, l'analyse de l'accessibilité des ports peut prendre un certain temps pour terminer et déplacer les LIF vers leurs ports de base respectifs.
+
+Si le nœud 1 n'est toujours pas au quorum après cinq minutes, vous pouvez modifier le port de cluster du nouveau nœud en le plaçant dans « Cluster ipspace » à l'aide de la commande de privilège de diagnostic `network port modify <port_name> -ipspace Cluster`.
+
+====
 . Passer en mode privilège avancé :
 +
 `set advanced`
@@ -116,16 +128,14 @@ Node1
           a0a-822  Default:822                          ok
           a0a-823  Default:823                          ok
           e0M      Default:Mgmt                         ok
-          e11a     -                                    no-reachability
-          e11b     -                                    no-reachability
-          e11c     -                                    no-reachability
-          e11d     -                                    no-reachability
+          e1a      Cluster:Cluster                      ok
+          e1b      -                                    no-reachability
+          e2a      -                                    no-reachability
+          e2b      -                                    no-reachability
           e3a      -                                    no-reachability
           e3b      -                                    no-reachability
-          e4a      Cluster:Cluster                      ok
-          e4e      Cluster:Cluster                      ok
-          e5a      -                                    no-reachability
-          e7a      -                                    no-reachability
+          e7a      Cluster:Cluster                      ok
+          e7b      -                                    no-reachability
           e9a      Default:Default                      ok
           e9a-822  Default:822                          ok
           e9a-823  Default:823                          ok
@@ -134,10 +144,10 @@ Node1
           e9b-823  Default:823                          ok
           e9c      Default:Default                      ok
           e9d      Default:Default                      ok
-22 entries were displayed.
+20 entries were displayed.
 ----
 +
-Dans l'exemple précédent, le nœud 1 a démarré après le remplacement du contrôleur. Certains ports n'ont pas de capacité d'accès car il n'y a pas de connectivité physique. Vous devez réparer tous les ports dont le statut d'accessibilité est différent de `ok`.
+Dans les exemples précédents, le nœud 1 a démarré après le remplacement du contrôleur. Les ports qui affichent « pas d'accessibilité » n'ont pas de connectivité physique. Vous devez réparer tous les ports dont l'état d'accessibilité est autre que `ok`.
 
 +
 
@@ -160,12 +170,12 @@ La sortie doit s'afficher comme dans l'exemple suivant :
 +
 [listing]
 ----
-Cluster ::> reachability repair -node node1 -port e11b
+Cluster ::> reachability repair -node node1 -port e1b
 ----
 +
 [listing]
 ----
-Warning: Repairing port "node1:e11b" may cause it to move into a different broadcast domain, which can cause LIFs to be re-homed away from the port. Are you sure you want to continue? {y|n}:
+Warning: Repairing port "node1:e1b" may cause it to move into a different broadcast domain, which can cause LIFs to be re-homed away from the port. Are you sure you want to continue? {y|n}:
 ----
 +
 Un message d'avertissement, tel qu'illustré dans l'exemple précédent, est attendu pour les ports dont l'état d'accessibilité peut être différent de l'état d'accessibilité du domaine de diffusion où il se trouve actuellement. Vérifiez la connectivité du port et la réponse `y` ou `n` selon les besoins.

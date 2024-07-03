@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/install-asaa900-affa900-fas9500-on-node2.html 
+keywords: aff, fas, asa, install, NVRAM, node2, controller, module, modules, replacement 
+summary: 'Installez les modules système de remplacement sur le nœud 2 lors d"une mise à niveau ARL des modèles de contrôleurs du même châssis.' 
+---
+= Installez les modules de contrôleur et NVRAM ASA A900, AFF A900 ou FAS9500 sur le node2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Installez les modules de contrôleur et NVRAM du système ASA A900, AFF A900 ou FAS9500 que vous avez reçus pour la mise à niveau sur le nœud 2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.
+
+Lors de l'installation, vous devez prendre note des points suivants :
+
+* Déplacez tous les modules de remplissage vides dans les emplacements 6-1 et 6-2 de l'ancien module NVRAM vers le nouveau module NVRAM.
+* NE déplacez PAS le périphérique coredump du module NVRAM AFF A700 vers le module NVRAM ASA A900 ou AFF A900.
+* Déplacez tous les modules de cache Flash installés dans le module NVRAM FAS9000 vers le module NVRAM FAS9500.
+
+
+.Avant de commencer
+Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement.
+
+
+
+== Installez le module NVRAM ASA A900, AFF A900 ou FAS9500
+
+Installez le module NVRAM ASA A900, AFF A900 ou FAS9500 dans le slot 6 du node2.
+
+.Étapes
+. Alignez le module NVRAM sur les bords de l'ouverture du châssis dans le logement 6.
+. Faites glisser doucement le module NVRAM dans le slot jusqu'à ce que le loquet de came d'E/S numéroté et numéroté commence à s'engager avec la broche de came d'E/S, puis poussez le loquet de came d'E/S jusqu'à ce que le module NVRAM soit en place.
+
+
+
+
+== Installez le module de contrôleur ASA A900, AFF A900 ou FAS9500 dans le nœud 2
+
+Installez, câblez et connectez le module de contrôleur ASA A900, AFF A900 ou FAS9500 au nœud 2.
+
+.Étapes
+. Alignez l'extrémité du module de contrôleur avec la baie B du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.
++
+
+TIP: L'étiquette de la baie se trouve sur le châssis, directement au-dessus du module de contrôleur.
+
++
+
+NOTE: N'insérez pas complètement le module de contrôleur dans le châssis tant que vous n'y êtes pas invité.
+
+. Reliez les ports de gestion et de console au module de contrôleur node2.
++
+
+NOTE: Comme le châssis est déjà sous tension, le nœud 2 commence à démarrer dès qu'il est entièrement installé. Pour éviter le démarrage du nœud 2, il est recommandé de connecter les câbles de console et de gestion au module de contrôleur node2 avant d'insérer complètement le module de contrôleur dans le slot.
+
+. Poussez fermement le module de contrôleur dans le châssis jusqu'à ce qu'il rencontre le fond de panier central et qu'il soit bien en place.
++
+Le loquet de verrouillage s'élève lorsque le module de contrôleur est bien en place.
+
++
+
+WARNING: Pour éviter d'endommager les connecteurs, n'utilisez pas de force excessive lorsque vous faites glisser le module de contrôleur dans le châssis.
+
+. Connectez la console série dès que le module est assis et soyez prêt à interrompre AUTOBOOT du nœud 1.
+. Après l'interruption DE L'AUTOBOOT, le nœud 2 s'arrête à l'invite DU CHARGEUR. Si vous n'interrompez pas LE démarrage AUTOMATIQUE à temps et que le démarrage du nœud 2 commence, attendez l'invite et appuyez sur Ctrl-C pour accéder au menu de démarrage. Une fois que le nœud s'arrête au menu de démarrage, utilisez l'option `8` pour redémarrer le nœud et interrompre le DÉMARRAGE AUTOMATIQUE pendant le redémarrage.
+. À l'invite LOADER> du nœud 2, définissez les variables d'environnement par défaut :
++
+`set-defaults`
+
+. Enregistrez les paramètres des variables d'environnement par défaut :
++
+`saveenv`
+
+

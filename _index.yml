@@ -1,5 +1,9 @@
 ---
 indexpage:
+  title: Documentation sur la mise à niveau du matériel ONTAP
+  summary: Mettez à niveau le matériel des contrôleurs en déplaçant des agrégats,
+    des volumes ou en déplaçant le stockage.
+  keywords: aggregate, relocation, moving, manual, upgrade, relocate
   lead: Ce site présente les procédures de mise à niveau des systèmes de stockage
     AFF, FAS et ASA. Sélectionnez la procédure de mise à niveau appropriée pour votre
     système de stockage.
@@ -13,21 +17,24 @@ indexpage:
   - title: Effectuez une mise à niveau en déplaçant les agrégats sur des systèmes
       exécutant ONTAP 9.8 et versions ultérieures
     links:
+    - title: Utilisez les commandes « System Controller replace » pour mettre à niveau
+        le matériel du contrôleur introduit dans ONTAP 9.15.1
+      url: "/upgrade-arl-auto-app-9151/index.html"
     - title: Utilisez les commandes « system Controller replace » pour mettre à niveau
         les modèles de contrôleurs d'un même châssis
-      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/
+      url: "/upgrade-arl-auto-affa900/index.html"
     - title: Utiliser les commandes « system Controller replace » (la plupart des
         systèmes)
-      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/
+      url: "/upgrade-arl-auto-app/index.html"
     - title: Utiliser des commandes manuelles
-      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual-app/
+      url: "/upgrade-arl-manual-app/index.html"
   - title: Mise à niveau en déplaçant les agrégats sur les systèmes exécutant ONTAP
       9.7 et versions antérieures
     links:
     - title: Utilisez les commandes « system Controller replace »
-      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto/
+      url: "/upgrade-arl-auto/index.html"
     - title: Utiliser des commandes manuelles
-      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual/
+      url: "/upgrade-arl-manual/index.html"
   - title: Effectuez des mises à niveau en déplaçant du stockage ou des volumes
     links:
     - title: Mettre à niveau le matériel du contrôleur
@@ -42,7 +49,7 @@ indexpage:
     links:
     - title: Documentation des systèmes matériels ONTAP
       url: https://docs.netapp.com/us-en/ontap-systems/index.html
-    - title: Documentation sur les commutateurs ONTAP
+    - title: Documentation des commutateurs pour les systèmes matériels ONTAP
       url: https://docs.netapp.com/us-en/ontap-systems-switches/index.html
     - title: Documentation du logiciel ONTAP
       url: https://docs.netapp.com/us-en/ontap/index.html

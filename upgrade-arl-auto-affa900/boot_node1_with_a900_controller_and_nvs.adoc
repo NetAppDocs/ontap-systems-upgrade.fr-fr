@@ -18,7 +18,10 @@ Le nœud 1 avec les modules de remplacement est maintenant prêt à démarrer. C
 
 [cols="35,65"]
 |===
-| Ancien contrôleur du nœud 1 | Remplacement des modules système du nœud 1 
+| Contrôleur de nœud 1 existant | Remplacement des modules système du nœud 1 
+
+
+| AFF A800 | AFF A90 ou AFF A70 ^1^ 
 
 
 | AFF A220 configuré en tant que ASA | Module contrôleur AFF A150 ^1^ 
@@ -42,9 +45,40 @@ FAS2720 | Module contrôleur FAS2820 ^1^
 | FAS9000 | Contrôleur FAS9500 et modules NVRAM ^2^ 
 |===
 ^1^ lors du remplacement des modules de contrôleur, vous déplacez toutes les connexions de l'ancien vers le module de contrôleur de remplacement.
+
 ^2^ lors du remplacement du contrôleur et des modules NVRAM, vous déplacez uniquement les connexions de console et de gestion.
 
 .Étapes
+. (Mise à niveau de AFF A800 uniquement) à l'invite du CHARGEUR, entrer en mode maintenance :
++
+`boot_ontap maint`
+
++
+.. Répondez à `yes` l'invite de confirmation.
+.. Afficher l'état des interfaces 100 GbE :
++
+`storage port show`.
+
++
+Tous les ports 100 GbE connectés à des tiroirs NS224 ou à des switchs de stockage doivent présenter un rapport comme `storage` des ports, comme illustré ci-dessous.
+
++
+[listing]
+----
+*> storage port show
+Port Type Mode    Speed(Gb/s) State    Status  VLAN ID
+---- ---- ------- ----------- -------- ------- -------
+e8a  ENET storage 100 Gb/s    enabled  online  30
+e8b  ENET storage 100 Gb/s    enabled  online  30
+e11a ENET storage 100 Gb/s    enabled  online  30
+e11b ENET storage 100 Gb/s    enabled  online  30
+----
+.. Quitter le mode maintenance :
++
+`halt`
+
+
+
 . [[A900_boot_node1]]si des lecteurs NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
 +
 
@@ -92,8 +126,8 @@ Ces invites peuvent être enfouies dans les messages de la console. Si vous ne s
 Si `[localhost:disk.encryptNoSupport:ALERT]: Detected FIPS-certified encrypting drive` et, ou, `[localhost:diskown.errorDuringIO:error]: error 3 (disk failed) on disk` des erreurs se produisent, effectuez les opérations suivantes :
 
 .. Arrêtez le nœud à l'invite DU CHARGEUR.
-.. Vérifiez et réinitialisez les bootargs de cryptage de stockage mentionnés dans <<A900_boot_node1,Étape 1>>.
-.. À l'invite du chargeur, démarrez :
+.. Vérifiez et réinitialisez les bootargs de cryptage de stockage mentionnés dans <<A900_boot_node1,Étape 2>>.
+.. À l'invite DU CHARGEUR, démarrez :
 +
 `boot_ontap`
 

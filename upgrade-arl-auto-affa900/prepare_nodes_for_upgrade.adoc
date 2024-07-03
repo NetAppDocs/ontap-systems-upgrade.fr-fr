@@ -30,6 +30,9 @@ Vérifiez que vous disposez d'une version du micrologiciel du processeur de serv
 | Ancien contrôleur | SP ou BMC | Version minimale du micrologiciel 
 
 
+| AFF A800 | BMC | 10.9 
+
+
 | AVEC AFF A220 | BMC | 11.9P1 
 
 
@@ -52,18 +55,20 @@ Vérifiez que vous disposez d'une version du micrologiciel du processeur de serv
 `system controller replace start -nodes _node_names_`
 
 +
-Les valeurs de sortie sont similaires à celles suivantes :
+Vous verrez un résultat similaire à l'exemple suivant. Le résultat de cette commande affiche la version de ONTAP exécutée sur le cluster :
 
 +
 ....
 Warning:
-1. Current ONTAP version is 9.x
+1. Current ONTAP version is 9.15.1
 
 2. Verify that NVMEM or NVRAM batteries of the new nodes are charged, and charge them if they are not. You need to physically check the new nodes to see if the NVMEM or NVRAM  batteries are charged. You can check the battery status either by connecting to a serial console or using SSH, logging into the Service Processor (SP) or Baseboard Management Controller (BMC) for your system, and use the system sensors to see if the battery has a sufficient charge.
 
 Attention: Do not try to clear the NVRAM contents. If there is a need to clear the contents of NVRAM, contact NetApp technical support.
 
 3. If a controller was previously part of a different cluster, run wipeconfig before using it as the replacement controller.
+
+4. Note: This is not a MetroCluster configuration. Controller replacement supports only ARL based procedures.
 
 Do you want to continue? {y|n}: y
 ....
@@ -126,7 +131,7 @@ Pendant la phase de contrôles préalables, le système exécute la liste suivan
 . Une fois l'opération de remplacement du contrôleur démarrée et les contrôles préalables terminés, l'opération s'interrompt et vous permet de collecter les informations de sortie dont vous aurez peut-être besoin ultérieurement dans le processus de mise à niveau du contrôleur.
 . Exécuter le jeu de commandes ci-dessous comme indiqué par la procédure de remplacement du contrôleur sur la console du système.
 +
-Depuis le port série connecté à chaque nœud, exécutez et enregistrez les valeurs de sortie des commandes suivantes individuellement :
+Lancer les commandes du port série connecté à chaque nœud, exécuter et sauvegarder les valeurs de sortie des commandes individuellement :
 
 +
 ** `vserver services name-service dns show`
@@ -137,6 +142,11 @@ Depuis le port série connecté à chaque nœud, exécutez et enregistrez les va
 ** `network port ifgrp show -node _local_`
 ** `system node show -instance -node _local_`
 ** `run -node _local_ sysconfig`
+** `run -node local sysconfig -ac`
+** `run -node local aggr status -r`
+** `vol show -fields type`
+** `run local aggr options _data_aggregate_name_`
+** `vol show -fields type , space-guarantee`
 ** `storage aggregate show -node _local_`
 ** `volume show -node _local_`
 ** `storage array config show -switch _switch_name_`
@@ -146,11 +156,11 @@ Depuis le port série connecté à chaque nœud, exécutez et enregistrez les va
 ** `security key-manager external show`
 ** `security key-manager external show-status`
 ** `network port reachability show -detail -node _local_`
-
-
 +
 
 NOTE: Si vous utilisez NetApp Volume Encryption (NVE) ou NetApp Aggregate Encryption (NAE) avec le gestionnaire de clés intégré, conservez la phrase de passe du gestionnaire de clés prête à effectuer la resynchronisation du gestionnaire de clés plus tard dans la procédure.
+
+
 
 . Si votre système utilise des lecteurs auto-cryptés, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] Pour déterminer le type de disques à autocryptage utilisés sur la paire haute disponibilité que vous mettez à niveau. Le logiciel ONTAP prend en charge deux types de disques avec autocryptage :
 +

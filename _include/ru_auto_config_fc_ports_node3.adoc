@@ -71,7 +71,7 @@ NOTE: Les ports FC doivent être programmés comme initiateurs.
 +
 `halt`
 
-. Démarrage du système à partir de l'invite du chargeur :
+. Démarrez le système à partir de l'invite du CHARGEUR :
 +
 `boot_ontap menu`
 

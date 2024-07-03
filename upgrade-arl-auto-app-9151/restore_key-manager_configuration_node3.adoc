@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app-9151/restore_key-manager_configuration_node3.html 
+keywords: restoring, key-manager, configuration, node3, nve, arl, encryption, netapp, volume 
+summary: 'Si nécessaire, restaurez la configuration du gestionnaire de clés sur le node3 lors de la mise à niveau de contrôleurs exécutant ONTAP 9.15.1 ou une version ultérieure à l"aide de `system controller replace` commandes.' 
+---
+= Restaurez la configuration du gestionnaire de clés sur le noeud 3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si vous utilisez NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE) pour le chiffrement des volumes sur le système que vous mettez à niveau, la configuration de chiffrement doit être synchronisée avec les nouveaux nœuds. Si vous ne synchronisez pas le gestionnaire de clés, lorsque vous transférez les agrégats du nœud 1 du nœud 2 vers le nœud 3 à l'aide du transfert d'agrégats (ARL), des défaillances peuvent se produire, car le nœud 3 ne dispose pas des clés de cryptage requises pour mettre en ligne les volumes et les agrégats chiffrés.
+
+.Description de la tâche
+Synchronisez la configuration de cryptage avec les nouveaux nœuds en effectuant les étapes suivantes :
+
+.Étapes
+. Exécutez la commande suivante depuis le nœud 3 :
++
+`security key-manager onboard sync`
+
+. Vérifier que la clé SVM-KEK est restaurée sur « true » sur le nœud3 avant de transférer les agrégats de données :
++
+[listing]
+----
+::> security key-manager key query -node node3 -fields restored -key-type SVM-KEK
+----
++
+.Exemple
+[listing]
+----
+::> security key-manager key query -node node3 -fields restored -key-type SVM-KEK
+
+node     vserver   key-server   key-id                                  restored
+-------- --------- -----------  --------------------------------------- --------
+node3    svm1      ""           00000000000000000200000000000a008a81976 true
+                                2190178f9350e071fbb90f00000000000000000
+----
+

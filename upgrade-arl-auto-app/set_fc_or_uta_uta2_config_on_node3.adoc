@@ -100,7 +100,7 @@ NOTE: Les ports FC doivent être programmés comme initiateurs.
 +
 `halt`
 
-. Démarrage du système à partir de l'invite du chargeur :
+. Démarrez le système à partir de l'invite du CHARGEUR :
 +
 `boot_ontap menu`
 
@@ -317,7 +317,7 @@ Adapter  Mode       Type        Mode     Type        Status
 . [[step14]]démarrez le nœud dans le menu d'amorçage en exécutant `boot_ontap menu`. Si vous migrez vers une A800, rendez-vous sur <<auto_check3_step23,Étape 23>>.
 
 
-. [[auto9597_check_node3_step15]]sur le noeud 3, allez au menu de démarrage et sélectionnez l'option masquée à l'aide du 22/7 `boot_after_controller_replacement`. À l'invite, entrez node1 pour réaffecter les disques du nœud1 au nœud3, comme dans l'exemple suivant.
+. Sur le node3, accédez au menu de démarrage et, à l'aide de 22/7, sélectionnez l'option cachée `boot_after_controller_replacement`. À l'invite, entrez node1 pour réaffecter les disques du nœud1 au nœud3, comme dans l'exemple suivant.
 +
 .Développez l'exemple de sortie de la console
 [%collapsible]
@@ -423,8 +423,8 @@ Login:
 NOTE: Dans l'exemple de sortie de la console ci-dessus, ONTAP vous invite à entrer le nom du nœud partenaire si le système utilise des disques du partitionnement de disque avancé.
 
 . Si le système passe en boucle de redémarrage avec le message `no disks found`, Il indique que le système a réinitialisé les ports FC ou UTA/UTA2 dans le mode cible et ne parvient donc pas à voir les disques. Pour résoudre ce problème, continuez avec <<auto_check3_step17,Étape 17>> à <<auto_check3_step22,Étape 22>>, ou allez à la section link:verify_node3_installation.html["Vérifiez l'installation du noeud 3"].
-. [[auto_check3_step17]]appuyez sur `Ctrl-C` dans le cas de l'autoboot, cette variable permet d'arrêter le nœud sur le `LOADER>` à l'invite.
-. [[step18]]à l'invite du chargeur, entrer en mode maintenance :
+. [[auto_check3_step17]]appuyez sur Ctrl-C pendant l'AUTOBOOT pour arrêter le nœud à l'invite du CHARGEUR>.
+. [[step18]]à l'invite du CHARGEUR, entrer en mode maintenance :
 +
 `boot_ontap maint`
 
@@ -454,7 +454,7 @@ Si vous effectuez une mise à niveau à partir d'un système prenant en charge d
 Si vous mettez à niveau à partir d'un système prenant en charge des disques externes vers un système prenant en charge des disques internes et externes, par exemple un système AFF A800, rendez-vous sur <<auto_check3_step23,Étape 23>>.
 
 ====
-. [[auto_check3_step22]]à l'invite du chargeur, démarrez :
+. [[auto_check3_step22]]à l'invite du CHARGEUR, démarrez :
 +
 `boot_ontap menu`
 
@@ -462,11 +462,17 @@ Si vous mettez à niveau à partir d'un système prenant en charge des disques e
 Maintenant, au démarrage, le nœud peut détecter tous les disques qui lui étaient précédemment affectés et peut démarrer comme prévu.
 
 +
-Lorsque les nœuds de cluster que vous remplacez utilisent le chiffrement de volume root, le logiciel ONTAP ne peut pas lire les informations de volume des disques. Restaurer les clés du volume root:
+Lorsque les nœuds de cluster que vous remplacez utilisent le chiffrement de volume racine, ONTAP ne peut pas lire les informations de volume à partir des disques. Restaurer les clés du volume root.
+
++
+
+NOTE: Cela s'applique uniquement lorsque le volume racine utilise le chiffrement de volume NetApp.
 
 +
 .. Revenir au menu de démarrage spécial :
++
 `LOADER> boot_ontap menu`
+
 +
 [listing]
 ----

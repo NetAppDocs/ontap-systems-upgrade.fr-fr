@@ -52,5 +52,5 @@ Rebooting to finish wipeconfig request.
 +
 Le système lance le `wipeconfig` procédure et redémarrage. Une fois la procédure terminée, le système revient au menu de démarrage.
 
-. Dans le menu de démarrage, entrez 8 pour redémarrer le nœud, et appuyez sur *Ctrl-C* pendant l'AUTOBOOT pour arrêter le nœud sur l'invite DU CHARGEUR.
+. Dans le menu de démarrage, entrez 8 pour redémarrer le nœud, et appuyez sur Ctrl-C pendant l'AUTOBOOT pour arrêter le nœud à l'invite du CHARGEUR.
 

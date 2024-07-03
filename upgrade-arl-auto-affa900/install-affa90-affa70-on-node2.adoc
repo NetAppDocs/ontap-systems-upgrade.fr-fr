@@ -1,0 +1,48 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/install-affa90-affa70-on-node2.html 
+keywords: aff, fas, asa, install, NVRAM, node2, controller, module, modules, replacement 
+summary: 'Installez les modules système de remplacement sur le nœud 2 lors d"une mise à niveau ARL des modèles de contrôleurs du même châssis.' 
+---
+= Installez le module AFF A90 ou AFF A70 sur le nœud 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Installez le module de contrôleur AFF A90 ou AFF A70 que vous avez reçu pour la mise à niveau sur le node2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.
+
+.Étapes
+. Alignez l'extrémité du module de contrôleur avec l'ouverture du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.
++
+
+NOTE: N'insérez pas complètement le module de contrôleur dans le châssis avant d'en avoir été invité dans la procédure.
+
++
+image::../media/drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG[Installer un AFF A90 ou un AFF A70]
+
+. Reliez les ports de gestion et de console au module de contrôleur node1.
++
+
+NOTE: Comme le châssis est déjà sous tension, le nœud 1 démarre l'initialisation du BIOS, puis l'AUTOBOOT dès qu'il est complètement installé. Pour interrompre le démarrage du nœud 1, il est recommandé de connecter les câbles de console série et de gestion au module de contrôleur node1 avant d'insérer complètement le module de contrôleur dans le slot.
+
+. Avec la poignée de came en position ouverte, poussez fermement le module de contrôleur jusqu'à ce qu'il rencontre le fond de panier central et qu'il soit bien en place. Le loquet de verrouillage s'élève lorsque le module de contrôleur est bien en place. Fermer la poignée de came en position verrouillée.
++
+
+NOTE: Pour éviter d'endommager les connecteurs, n'utilisez pas de force excessive lorsque vous faites glisser le module de contrôleur dans le châssis.
+
+. Connectez la console série dès que le module est assis et soyez prêt à interrompre AUTOBOOT du nœud 1.
+. Après l'interruption DE L'AUTOBOOT, le nœud 1 s'arrête à l'invite DU CHARGEUR. Si vous n'interrompez pas LE démarrage AUTOMATIQUE à temps et que le démarrage du nœud 1 commence, attendez l'invite et appuyez sur Ctrl-C pour accéder au menu de démarrage. Une fois que le nœud s'arrête au menu de démarrage, utilisez l'option `8` pour redémarrer le nœud et interrompre le DÉMARRAGE AUTOMATIQUE pendant le redémarrage.
+. À l'invite DU CHARGEUR> du nœud 1, définissez les variables d'environnement par défaut :
++
+`set-defaults`
+
+. Enregistrez les paramètres des variables d'environnement par défaut :
++
+`saveenv`
+
+

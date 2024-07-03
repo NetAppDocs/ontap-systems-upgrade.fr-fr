@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app-9151/prepare_for_netboot.html 
+keywords: preparing, netboot, ndac, ontap 
+summary: 'Préparation au démarrage sur le nœud 3 et le nœud 4 lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+---
+= Préparation à la mise sur le réseau
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si vous installez physiquement les nœuds 3 et 4e dans la procédure, vous devrez peut-être netboot. Le terme « netboot » signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Lors de la préparation de netboot, vous placez une copie de l'image de démarrage ONTAP 9 sur un serveur Web auquel le système peut accéder.
+
+Vous pouvez également utiliser l'option de démarrage USB pour effectuer un démarrage réseau. Consultez l'article de la base de connaissances link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Utilisation de la commande boot_Recovery LOADER pour l'installation de ONTAP pour la configuration initiale d'un système"^].
+
+.Avant de commencer
+* Vérifiez que vous pouvez accéder à un serveur HTTP avec le système.
+* Reportez-vous à la section link:other_references.html["Références"] Un lien vers le site de support _NetApp_ et télécharger les fichiers système nécessaires pour votre plateforme et la version correcte de ONTAP.
+
+
+.Description de la tâche
+Vous devez netboot les nouveaux contrôleurs si la même version de ONTAP 9 est installée sur les contrôleurs d'origine. Après avoir installé chaque nouveau contrôleur, vous démarrez le système à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système.
+
+.Étapes
+. Accédez au site de support NetApp pour télécharger les fichiers utilisés pour effectuer sur le réseau du système.
+. Téléchargez le logiciel ONTAP approprié depuis la section de téléchargement des logiciels du site de support NetApp et stockez le `<ontap_version>_image.tgz` fichier dans un répertoire accessible sur le web.
+. Accédez au répertoire accessible sur le Web et vérifiez que les fichiers dont vous avez besoin sont disponibles.
++
+Votre liste de répertoires doit contenir le fichier suivant :
+`<ontap_version>_image.tgz`
+
++
+
+NOTE: Il n'est pas nécessaire d'extraire le contenu du `<ontap_version>_image.tgz` fichier.
+
++
+Vous utiliserez les informations dans les répertoires de link:install_boot_node3.html["Étape 3"].
+
+

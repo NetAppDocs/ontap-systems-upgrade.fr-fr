@@ -18,7 +18,10 @@ Le nœud 2 avec les modules de remplacement est maintenant prêt à démarrer. L
 
 [cols="35,65"]
 |===
-| Ancien contrôleur de nœud 2 | Remplacement des modules système du nœud 2 
+| Contrôleur de nœud 2 existant | Remplacement des modules système du nœud 2 
+
+
+| AFF A800 | AFF A90 ou AFF A70 
 
 
 | AFF A220 configuré en tant que ASA | Module de contrôleur A150 ASA 
@@ -90,7 +93,7 @@ Si `[localhost:disk.encryptNoSupport:ALERT]: Detected FIPS-certified encrypting 
 
 .. Arrêtez le nœud à l'invite DU CHARGEUR.
 .. Vérifiez et réinitialisez les bootargs de cryptage de stockage mentionnés dans <<boot_node2_step1,Étape 1>>.
-.. À l'invite du chargeur, démarrez :
+.. À l'invite DU CHARGEUR, démarrez :
 +
 `boot_ontap`
 

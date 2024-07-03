@@ -1,0 +1,117 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app-9151/move_non_root_aggr_and_nas_data_lifs_node2_from_node3_to_node4.html 
+keywords: move, non-root, aggregates, nas, lif, node2, node3, node4 
+summary: 'Vérifiez que les LIF de données NAS du nœud 2 qui se trouvent sur le nœud 3 sont déplacées du nœud 3 au nœud 4 lors de la mise à niveau de contrôleurs exécutant ONTAP 9.15.1 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+---
+= Déplacement des agrégats non racines et des LIF de données NAS qui appartiennent au nœud 2 du nœud 3 vers le nœud 4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Après avoir vérifié la configuration réseau sur le nœud 4 et avant de transférer les agrégats du nœud 3 vers le nœud 4, vous devez vérifier que les LIF de données NAS appartenant au nœud 2 actuellement transférées du nœud 3 vers le nœud 4 sont bien transférées. Vous devez également vérifier que des LIFs SAN existent sur le nœud4.
+
+.Description de la tâche
+Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Vous devez vérifier que les LIF sont en bon état et situées sur les ports appropriés une fois que vous avez mis le nœud 4 en ligne.
+
+.Étapes
+. Les LIFs iSCSI trouvent automatiquement les ports home corrects à l'aide de l'analyse d'accessibilité. Les LIF FC et SAN NVMe/FC ne se déplacent pas automatiquement. Ils continuent d'afficher le port de base sur lequel ils se trouvaient avant la mise à niveau.
++
+Vérifier les LIFs SAN sur le node4 :
+
++
+.. Modifier toute LIF SAN iSCSI signalant un état de fonctionnement « arrêté » aux nouveaux ports de données :
++
+`network interface modify -vserver <vserver> -lif <iscsi_san_lif> admin down`
+
++
+`network interface modify -vserver <vserver> -lif <iscsi_san_lif> port <new_port> node <node>`
+
++
+`network interface modify -vserver <vserver> -lif <iscsi_san_lif>`
+
+.. Modifier toutes les LIFs FC et SAN NVMe/FC qui home sur le nouveau contrôleur et indiquent un statut opérationnel « down » aux ports FCP sur le nouveau contrôleur :
++
+`network interface modify -vserver <vserver> -lif <fc_san_lif> admin down`
+
++
+`network interface modify -vserver <vserver> -lif <fc_san_lif> port <new_port> node <node>`
+
++
+`network interface modify -vserver <vserver> -lif <fc_san_lif>`
+
+
+
+. Reprendre l'opération de relocalisation :
++
+`system controller replace resume`
+
++
+Le système effectue les tâches suivantes :
+
++
+** Vérification du quorum du cluster
+** Vérification de l'ID système
+** Vérification de la version d'image
+** Vérification de la plate-forme cible
+** Vérification de l'accessibilité du réseau
+
+
++
+L'opération s'interrompt à cette étape de la vérification de la capacité d'accessibilité du réseau.
+
+. Reprendre l'opération de relocalisation :
++
+`system controller replace resume`
+
++
+Le système effectue les vérifications suivantes :
+
++
+** Vérification de l'état du cluster
+** Vérification de l'état de la LIF de cluster
+
+
++
+Après ces vérifications, le système relocalise les agrégats non racines et les LIF de données NAS qui appartiennent au nœud 2 vers le nouveau contrôleur, node4. L'opération de remplacement du contrôleur s'interrompt une fois le transfert de ressources terminé.
+
+. Vérifier le statut du transfert d'agrégats et du déplacement des LIF de données NAS :
++
+`system controller replace show-details`
+
++
+Si la procédure de remplacement du contrôleur est suspendue, vérifiez et corrigez l'erreur, le cas échéant, puis faites-la `resume` pour poursuivre l'opération.
+
+. Si nécessaire, restaurez et restaurez les LIF déplacées. Lister les LIFs déplacées :
++
+`cluster controller-replacement network displaced-interface show`
+
++
+Si des LIF sont déplacées, restaurez le nœud de rattachement vers le nœud4 :
+
++
+`cluster controller-replacement network displaced-interface restore-home-node`
+
+. Reprenez l'opération pour demander au système d'effectuer les vérifications post-requises :
++
+`system controller replace resume`
+
++
+Le système effectue les vérifications suivantes :
+
++
+** Vérification du quorum du cluster
+** Vérification de l'état du cluster
+** Vérification de la reconstruction d'agrégats
+** Vérification de l'état de l'agrégat
+** Vérification de l'état du disque
+** Vérification de l'état de la LIF de cluster
+** Vérification du volume
+
+
+

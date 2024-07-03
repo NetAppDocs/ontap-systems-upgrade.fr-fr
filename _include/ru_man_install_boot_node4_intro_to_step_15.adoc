@@ -68,7 +68,7 @@ NOTE: Il n'est pas nécessaire de déplacer la carte d'interconnexion/carte FC_V
 
 | Châssis séparé du nœud3 | Accédez à <<man_install4_Step6,Étape 6>>. 
 |===
-. [[man_install4_Step6]]mettez le noeud 4 sous tension, puis interrompez le démarrage en appuyant sur `Ctrl-C` pour accéder à l'invite de l'environnement de démarrage.
+. [[man_install4_Step6]]mettez le node4 sous tension, puis interrompez le démarrage en appuyant sur Ctrl-C pour accéder à l'invite de l'environnement de démarrage.
 +
 
 NOTE: Lorsque vous démarrez le nœud 4, le message suivant peut s'afficher :
@@ -133,7 +133,7 @@ L'installation d'un nouveau module de contrôleur modifie les valeurs WWPN assoc
 +
 Le système affiche toutes les LUN de baie visibles pour chacun des ports de l'initiateur FC. Si les LUN de la matrice ne sont pas visibles, vous ne pouvez pas réaffecter de disques du node2 au node4 ultérieurement dans cette section.
 
-. Appuyez sur `Ctrl-C` Pour afficher le menu de démarrage et sélectionner Maintenance mode.
+. Appuyez sur Ctrl-C pour afficher le menu de démarrage et sélectionnez mode Maintenance.
 . [[man_install4_Step15]]à l'invite du mode Maintenance, entrez la commande suivante :
 +
 `halt`

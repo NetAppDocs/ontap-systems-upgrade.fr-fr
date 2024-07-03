@@ -4,7 +4,7 @@ permalink: upgrade-arl-manual/stage_5_index.html
 keywords: stage 5, install, boot, node3, node4, relocate, aggregates 
 summary: 'Étape 5 : processus de mise à niveau manuelle d"ARL sur les contrôleurs exécutant ONTAP 9.7 ou une version antérieure.' 
 ---
-= Présentation
+= Présentation de la phase 5
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

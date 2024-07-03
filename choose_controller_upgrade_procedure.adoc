@@ -21,6 +21,10 @@ Choisissez une procédure de mise à niveau pour un système doté de disques in
 
 * FAS2620, FAS2650, FAS2720 ET FAS2750
 * AFF A150, AFF A200, AFF A220, AFF A250, AFF A700s, et AFF A800
++
+
+NOTE: Vous pouvez également mettre à niveau un système AFF A800 vers un système AFF A70 ou AFF A90 à l'aide du déplacement d'agrégats. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app-9151/index.html["En savoir plus >>"].
+
 * AFF C190, AFF C250 et AFF C800
 * ASA A150, ASA A250, ASA A800 et ASA AFF A220
 
@@ -50,10 +54,9 @@ Découvrez les procédures de mise à niveau du matériel du contrôleur :
 
 * link:upgrade-arl/index.html["Mise à niveau via le transfert d'agrégats"]
 +
-La relocalisation des agrégats consiste en une procédure de remplacement. Vous n'avez pas besoin d'étendre ou de réduire le cluster à l'aide de nouveaux nœuds, ce qui est avantageux pour les clusters à 2 nœuds sans commutateur. Le déplacement des données via la migration des agrégats est plus rapide que la copie des données entre les agrégats lors du déplacement des volumes.
+La relocalisation des agrégats consiste en une procédure de remplacement. Vous n'avez pas besoin d'étendre ou de réduire le cluster avec les nouveaux nœuds, ce qui est avantageux pour les clusters à 2 nœuds sans commutateur. Le déplacement des données via la migration des agrégats est plus rapide que la copie des données entre les agrégats lors du déplacement des volumes.
 
-* link:upgrade/upgrade-decide-to-use-this-guide.html["Mise à niveau par déplacement de volumes"]
-* link:upgrade/upgrade-decide-to-use-this-guide.html["Mettre à niveau en déplaçant le stockage"]
+* link:upgrade/upgrade-decide-to-use-this-guide.html["Mise à niveau par déplacement des volumes ou du stockage"]
 
 
 [NOTE]

@@ -97,7 +97,7 @@ Si vous disposez d'une configuration MetroCluster, utilisez les commandes suivan
 `halt`
 
 +
-Interrompez l'AUTOBOOT en appuyant sur Ctrl-C dans l'invite de l'environnement de démarrage.
+Interrompez l'AUTOBOOT en appuyant sur Ctrl-C à l'invite de l'environnement de démarrage.
 
 . [[auto_install4_step15]]sur le noeud 3, vérifiez la date, l'heure et le fuseau horaire du système :
 +

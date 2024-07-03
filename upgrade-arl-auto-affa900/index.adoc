@@ -14,14 +14,17 @@ summary: 'Vous pouvez mettre à niveau le matériel du contrôleur en convertiss
 
 
 [role="lead"]
-Cette procédure décrit la mise à niveau sans interruption du matériel du contrôleur sur une paire haute disponibilité à l'aide du transfert d'agrégats (ARL) dans les configurations système suivantes. La procédure convertit l'ancien système en système de remplacement, en conservant l'ancien châssis et les anciens disques du système.
+Vous pouvez mettre à niveau le matériel du contrôleur sans interruption sur une paire haute disponibilité en utilisant le transfert d'agrégats (ARL) et en convertissant le système existant en un système de remplacement, tout en conservant le châssis et les disques du système existant.
 
 
-WARNING: Cette procédure s'applique strictement aux configurations de mise à niveau suivantes. Ne *PAS* utilisez cette procédure pour effectuer une mise à niveau entre toutes les autres combinaisons de systèmes.
+WARNING: Cette procédure s'applique strictement aux configurations de mise à niveau suivantes. Ne *pas* utilisez cette procédure pour effectuer une mise à niveau entre toutes les autres combinaisons de systèmes.
 
 [cols="20,20,40"]
 |===
-| Ancien système | Système de remplacement | Versions de ONTAP prises en charge 
+| Système existant | Système de remplacement | Versions de ONTAP prises en charge 
+
+
+| AFF A800 ^1^ | AFF A90 ou AFF A70 | 9.15.1 
 
 
 | AFF A220 configuré en tant que baie 100 % SAN (ASA) | ASA A150 | 9.13.1P1 et versions ultérieures 
@@ -31,10 +34,7 @@ WARNING: Cette procédure s'applique strictement aux configurations de mise à n
 
 
 | Solution AFF A200 | AFF A150  a| 
-9.10.1P15, 9.11.1P11 et versions ultérieures
-
-
-NOTE: AFF A200 ne prend pas en charge les versions ONTAP ultérieures à la version 9.11.1.
+9.10.1P15, 9.11.1P11 et ultérieur ^2^
 
 
 
@@ -42,10 +42,7 @@ NOTE: AFF A200 ne prend pas en charge les versions ONTAP ultérieures à la vers
 
 
 | FAS2620 | FAS2820  a| 
-9.11.1P7 (FAS2620)
-
-
-NOTE: Le FAS2620 ne prend pas en charge les versions ONTAP ultérieures à la version 9.11.1.
+9.11.1P7 (FAS2620) ^2^
 
 9.13.1 et versions ultérieures (FAS2820)
 
@@ -62,6 +59,10 @@ NOTE: Le FAS2620 ne prend pas en charge les versions ONTAP ultérieures à la ve
 
 | FAS9000 | FAS9500 | 9.10.1P10, 9.11.1P6 et versions ultérieures 
 |===
+^1^ lorsque vous effectuez une mise à niveau vers un système introduit dans ONTAP 9.15.1, ONTAP convertit l'efficacité du stockage de tous les volumes à provisionnement fin existants, y compris ceux qui n'utilisent pas l'efficacité du stockage, et applique les nouvelles fonctionnalités d'efficacité du stockage qui utilisent la fonctionnalité de déchargement matériel. Il s'agit d'un processus automatique en arrière-plan, sans impact visible sur les performances du système. https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["En savoir plus >>"^]
+
+^2^ les systèmes AFF A200 et FAS2620 ne prennent pas en charge les versions ONTAP ultérieures à la version 9.11.1.
+
 [NOTE]
 ====
 NetApp recommande, si possible, que vous ayez la même version de ONTAP sur l'ancien et sur le système de remplacement.
@@ -74,28 +75,36 @@ Au cours de la procédure, vous migrez les agrégats non racines entre les ancie
 .Description de la tâche
 Au cours de cette procédure de mise à niveau du contrôleur, vous effectuez l'une des mises à niveau suivantes :
 
-* Remplacez le module de contrôleur de chaque nœud de l'ancien contrôleur par le nouveau. Cela s'applique aux mises à niveau de systèmes AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720.
-* Remplacez le contrôleur et les modules NVRAM de chaque nœud de l'ancien contrôleur par les nouveaux modules. Cela s'applique aux mises à niveau des systèmes AFF A700 ou FAS9000.
+[cols="30,70"]
+|===
+| Sur l'existant... | Effectuez les opérations suivantes... 
 
 
+| AFF A800 | Remplacez les deux contrôleurs AFF A800, la mémoire NVRAM et tous les modules d'E/S par les nouveaux contrôleurs et modules d'E/S. 
 
-NOTE: Il n'est donc pas nécessaire de déplacer, déconnecter ou reconnecter les cartes d'E/S, les câbles de données, les tiroirs disques et les disques.
 
-Cette procédure utilise une méthode de transfert d'agrégats (ARL), qui tire parti de la configuration haute disponibilité pour déplacer la propriété des agrégats non-racines d'un nœud vers un autre si ceux-ci partagent le stockage au sein d'un même cluster.
+| AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720 | Remplacez le module de contrôleur de chaque nœud de l'ancien contrôleur par le nouveau. ^1^ 
+
+
+| AFF A700 OU FAS9000 | Remplacez le contrôleur et les modules NVRAM de chaque nœud de l'ancien contrôleur par les nouveaux modules. ^1^ 
+|===
+^1^ vous n’avez pas besoin de déplacer, déconnecter ou reconnecter les cartes E/S, les câbles de données, les tiroirs disques et les disques.
+
+Cette procédure utilise une méthode appelée transfert d'agrégats (ARL). L'ARL tire parti de la configuration haute disponibilité et des communications d'interconnexion de cluster, ce qui vous permet de déplacer les droits de propriété des agrégats non racines d'un nœud à un autre s'ils partagent le stockage au sein du même cluster.
 
 Pendant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, délocalisant ainsi la propriété des agrégats non racines. Vous migrez plusieurs fois des agrégats entre nœuds et nœuds pour confirmer qu'au moins un nœud transmet des données depuis les agrégats tout au long de la procédure de mise à niveau. Vous migrez également les LIF de données entre les nœuds du cluster lorsque vous continuez.
 
 
-NOTE: Les termes *node1* et *node2* sont utilisés uniquement comme référence aux noms de noeud dans ce document. Lorsque vous suivez la procédure, vous devez remplacer les véritables noms de vos nœuds.
+NOTE: Les termes *node1* et *node2* sont utilisés uniquement comme référence aux noms de noeud dans ce document. Lorsque vous suivez la procédure, vous devez remplacer les noms réels de vos nœuds.
 
 .Informations importantes
 * Cette procédure est complexe et suppose que vous avez des compétences avancées en administration de ONTAP. Vous devriez également lire et comprendre le link:guidelines_for_upgrading_controllers_with_arl.html["Instructions de mise à niveau des contrôleurs"] et le link:overview_of_the_arl_upgrade.html["Présentation de la mise à niveau ARL"] avant de commencer la mise à niveau.
 * Cette procédure suppose que le matériel de remplacement du contrôleur est nouveau et qu'il n'a pas été utilisé dans un autre système. Étapes requises pour préparer les contrôleurs utilisés avec le `wipeconfig` la commande n'est pas incluse dans cette procédure. Vous devez contacter le support technique si le matériel de remplacement de contrôleur était précédemment utilisé dans un autre cluster ONTAP ou en tant que système à un seul nœud autonome.
 * Vous pouvez suivre cette procédure pour mettre à niveau le matériel du contrôleur dans des clusters de plus de deux nœuds. Cependant, il est nécessaire d'effectuer séparément la procédure pour chaque paire haute disponibilité du cluster.
 * Si vous disposez d'un commutateur qui n'est pas pris en charge par la version ONTAP et le système de remplacement vers lequel vous effectuez la mise à niveau, reportez-vous à la section link:other_references.html["Références"] Pour accéder au _Hardware Universe_.
-* Cette procédure s'applique uniquement aux systèmes AFF A200, AFF A220, AFF C190, FAS2620, FAS2720, FAS2720 et Systèmes AFF A700 et FAS9000. Pour tous les autres modèles de contrôleurs qui doivent être mis à niveau vers un système AFF A150, FAS2820, AFF A900 ou FAS9500, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers les commandes _Use « system Controller replace » pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ et _Using Aggregate relocation to upgrade manuellement le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ content.
+* Cette procédure s'applique uniquement aux systèmes AFF A800, AFF A200, AFF A220, AFF C190, FAS2620 FAS2720, AFF A700 et FAS9000. Pour tous les autres modèles de contrôleurs qui doivent être mis à niveau vers AFF A90, AFF A70, AFF A150, FAS2820, AFF A900, ou système FAS9500, reportez-vous à la section link:other_references.html["Références"] pour établir un lien vers les commandes _Use « system Controller replace » pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ et la _Using Aggregate relocation to manually upgrade Controller hardware running ONTAP 9.8 or version ultérieure_ content.
 * Les systèmes ASA A900, AFF A900 et FAS9500 prennent uniquement en charge une alimentation haut de gamme (200 V à 240 V). Si votre système AFF A700 ou FAS9000 fonctionne avec une alimentation à faible consommation électrique (100 V à 120 V), vous devez convertir l'alimentation d'entrée AFF A700 ou FAS9000 avant d'utiliser cette procédure.
-* Si vous effectuez une mise à niveau à partir d'un système AFF A200, AFF A220, AFF C190, FAS2620, FAS2720, AFF A700 ou un système FAS9000 lorsque les temps d'indisponibilité sont fréquents, vous pouvez mettre à niveau le matériel des contrôleurs en déplaçant vos systèmes de stockage ou en contactant le support technique. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+* Si vous effectuez une mise à niveau à partir d'un système AFF A800, AFF A200, AFF A220, AFF C190, FAS2620, les systèmes FAS2720, AFF A700 ou FAS9000 qui ont des temps d'indisponibilité vous permettent de mettre à niveau le matériel des contrôleurs en déplaçant votre stockage ou en contactant le support technique. Reportez-vous link:other_references.html["Références"] au lien vers _mise à niveau en déplaçant des volumes ou du stockage_.
 
 
 

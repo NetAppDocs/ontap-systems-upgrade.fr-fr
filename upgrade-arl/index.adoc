@@ -4,7 +4,7 @@ permalink: upgrade-arl/index.html
 keywords: aggregate, relocation, moving, manual, upgrade, relocate, hardware 
 summary: 'Utiliser le transfert d"agrégats pour mettre à niveau le matériel du contrôleur' 
 ---
-= Présentation
+= Choisissez votre procédure de mise à niveau ARL
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -31,9 +31,10 @@ Si vous effectuez une mise à niveau à l'aide des commandes système, reportez-
 | Si vous exécutez cette version de ONTAP… | Pour mettre à niveau avec les commandes système, utilisez… 
 
 
-| 9.10.1 ou ultérieure | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Utilisez les commandes « system Controller replace » pour mettre à niveau les modèles de contrôleurs d'un même châssis"^]
+| 9.15.1 ou ultérieure | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app-9151/index.html["Utilisez les commandes « System Controller replace » pour mettre à niveau le matériel du contrôleur introduit dans ONTAP 9.15.1"] 
 
-Vous pouvez utiliser cette procédure pour mettre à niveau un contrôleur AFF configuré en tant que baie 100 % SAN (ASA) vers un contrôleur ASA pour certains modèles et versions logicielles ONTAP. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["En savoir plus >>"]. 
+
+| 9.10.1 ou ultérieure | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Utilisez les commandes « system Controller replace » pour mettre à niveau les modèles de contrôleurs d'un même châssis"] Vous pouvez utiliser cette procédure pour mettre à niveau un contrôleur AFF configuré en tant que baie 100 % SAN (ASA) vers un contrôleur ASA pour certains modèles et versions logicielles ONTAP. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["En savoir plus >>"]. 
 
 
 | 9.8 ou ultérieure | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/index.html["Utilisez les commandes « system contrôleur replace » pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou une version ultérieure"] 

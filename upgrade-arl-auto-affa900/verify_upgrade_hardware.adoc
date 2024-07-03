@@ -14,11 +14,14 @@ summary: Avant de commencer la mise à niveau, vérifiez que vous disposez du ma
 
 
 [role="lead"]
-Avant de commencer la mise à niveau, vérifiez que vous disposez du matériel approprié pour votre mise à niveau. En fonction de votre mise à niveau, vous devez disposer de deux modules de contrôleur ou de deux modules de contrôleur et de deux modules NVRAM pour chaque paire haute disponibilité mise à niveau. Si certaines pièces sont manquantes, contactez le support technique ou votre ingénieur commercial NetApp pour obtenir de l'aide.
+Avant de commencer la mise à niveau, vérifiez que vous disposez du matériel approprié pour votre mise à niveau. En fonction de votre mise à niveau, pour chaque paire haute disponibilité mise à niveau, vous devez disposer de deux modules de contrôleur ou de deux modules de contrôleur et de deux modules NVRAM pour le système de remplacement. Si certaines pièces sont manquantes, contactez le support technique ou votre ingénieur commercial NetApp pour obtenir de l'aide.
 
 [cols="50,50"]
 |===
-| Si vous mettez à niveau ... | Vous devez avoir ... 
+| Si vous mettez à niveau ... | Le système de remplacement doit avoir ... 
+
+
+| AFF A800 | Deux modules de contrôleur, deux NVRAMS et de nouveaux modules d'E/S. 
 
 
 | AFF A220 configuré en tant que ASA vers ASA A150 | Deux modules de contrôleur 

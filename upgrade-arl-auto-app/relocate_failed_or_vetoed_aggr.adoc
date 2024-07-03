@@ -27,8 +27,7 @@ L'opération de relocalisation a été interrompue en raison de l'erreur.
 
 . Entrez-le lorsque vous y êtes invité `y`.
 . Vous pouvez forcer le déplacement en utilisant l'une des méthodes suivantes :
-
-
++
 [cols="35,65"]
 |===
 | Option | Description 
@@ -41,3 +40,4 @@ L'opération de relocalisation a été interrompue en raison de l'erreur.
 | Remplacement des vérifications de destination | Utiliser la commande suivante :
 `storage aggregate relocation start -node node1 -destination node2 -aggregate-list _aggr_list_ -ndo-controller-upgrade true -override-vetoes true -override-destination-checks true` 
 |===
+

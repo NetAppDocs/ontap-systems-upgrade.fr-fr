@@ -16,4 +16,6 @@ summary: 'Vous devez disposer de certains outils et de la documentation nécessa
 [role="lead"]
 Vous devez disposer d'une bride de mise à la terre pour effectuer la mise à niveau et vous devez vous référer à d'autres documents pendant le processus de mise à niveau.
 
+Pour une mise à niveau du système AFF A800 vers un système AFF A90 ou AFF A70, vérifiez que les câbles 100 GbE ont une longueur minimale d'un mètre.
+
 Reportez-vous à la section link:other_references.html["Références"] pour accéder à la liste des documents de référence et des sites de référence requis pour cette mise à niveau.

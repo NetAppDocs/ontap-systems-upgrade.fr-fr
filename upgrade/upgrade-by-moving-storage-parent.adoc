@@ -11,7 +11,13 @@ summary: 'Si vous effectuez une mise à niveau en déplaçant le stockage, vous 
 
 
 [role="lead"]
-Si vous mettez à niveau le matériel du contrôleur en déplaçant le stockage, vous préparez les nœuds d'origine et configurez les nouveaux nœuds. Certains modèles de plateforme prennent en charge le transfert du stockage interne vers les nouveaux nœuds. Vous réaffectez les disques et restaurez la configuration du volume racine aux nouveaux nœuds et configurez les ports réseau. La mise à niveau via le déplacement du stockage est une procédure perturbatrice.
+La mise à niveau du matériel du contrôleur en déplaçant le stockage est une procédure disruptive. Avant de commencer la mise à niveau, consultez les scénarios généraux de mise à niveau et les considérations de mise à niveau :
+
+* link:upgrade-decide-to-use-this-guide.html["Décidez de mettre à niveau en déplaçant des volumes ou du stockage"]
+* link:upgrade-considerations.html["Considérations relatives à la mise à niveau du matériel du contrôleur"]
+
+
+Pour mettre à niveau en déplaçant le stockage, vous préparez les nœuds d'origine et configurez les nouveaux nœuds. Certains modèles de plateforme prennent en charge le transfert du stockage interne vers les nouveaux nœuds. Vous réaffectez les disques et restaurez la configuration du volume racine aux nouveaux nœuds et configurez les ports réseau.
 
 [NOTE]
 ====

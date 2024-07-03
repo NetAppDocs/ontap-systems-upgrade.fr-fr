@@ -47,7 +47,37 @@ L'opération s'interrompt à cette étape de la vérification de la capacité d'
 +
 Vérifiez que tous les ports connectés, y compris le groupe d'interfaces et les ports VLAN, affichent leur état comme `OK`.
 
-. Reprendre l'opération de relocalisation :
+. Pour une mise à niveau de AFF A800 vers AFF A70 ou AFF A90, vous devez réaffecter les LIF SAN FCP. Pour toutes les autres mises à niveau du système, passez à <<resume_relocation_step4,Étape 4>>:
++
+.. Réaffectez les LIF SAN FCP utilisées pour l'accès aux données FCP ou FC-NVMe aux ports de base appropriés :
++
+`network interface show -vserver <vserver_hosting_fcp_lifs>`
+
+.. Pour les LIF avec le nœud actuel comme nœud mis à niveau 1 et le port actuel signale « status oper » comme « - » (car le port existait sur le nœud AFF A800 mais n'existe pas sur le nœud AFF A90), modifiez le port actuel avant de pouvoir le mettre en ligne.
++
+Vérifier que la connectivité physique est établie sur le port FC target où le LIF FC doit être déplacé :
+
++
+... Définir le statut de la LIF sur « down » :
++
+`network interface modify -vserver <vserver_name> -lif <lif_name>  -status-admin down`
+
+... Modifier le home port de la LIF :
++
+`network interface modify -vserver <vserver_name> -lif <lif_name> - home-node <node1> -home-port <FC_target_port>`
+
+... Régler le statut de la LIF sur « UP » :
++
+`network interface modify -vserver <vserver> -lif <lif_name>  -status-admin up`
+
+
+
+
+
++
+Répétez les sous-étapes a et b pour chaque LIF FC SAN qui est home sur le node1.
+
+. [[resume_relocation_step4]]reprendre l'opération de déplacement :
 +
 `system controller replace resume`
 

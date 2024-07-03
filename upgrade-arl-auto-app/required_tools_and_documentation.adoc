@@ -16,7 +16,7 @@ summary: 'Vous devez disposer d"outils et de documentation pour mettre à niveau
 [role="lead"]
 Vous devez disposer d'outils spécifiques pour installer le nouveau matériel et vous devez référencer d'autres documents pendant le processus de mise à niveau.
 
-Vous avez besoin des outils suivants pour effectuer la note haute :
+Vous avez besoin des outils suivants pour effectuer la mise à niveau :
 
 * Sangle de mise à la terre
 * Tournevis cruciforme n° 2

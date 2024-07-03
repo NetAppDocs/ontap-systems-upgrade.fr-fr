@@ -17,7 +17,7 @@ summary: 'Vous pouvez configurer les ports FC intégrés des nœuds node4, les p
 Si le système Node4 est doté de ports FC intégrés, de ports UTA/UTA2 (ou d'une carte UTA/UTA2), vous devez configurer les paramètres avant de suivre la procédure.
 
 .Description de la tâche
-Vous devrez peut-être compléter la <<Configurez les ports FC sur le nœud 4>> la section <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>, ou les deux sections.
+Vous devrez peut-être remplir la <<Configurez les ports FC sur le nœud 4>> section ou <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>> , ou les deux sections.
 
 
 NOTE: Si le nœud 4 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2 et effectuez une mise à niveau du système avec des disques de stockage, vous pouvez ignorer la section link:verify_node4_installation.html["Vérifiez l'installation du node4"]. Cependant, si vous disposez d'un système V-Series ou d'un logiciel de virtualisation FlexArray et que vous êtes connecté aux baies de stockage, et que le nœud 4 n'intègre pas de ports FC, de ports UTA/UTA2 intégrés ou de carte UTA/UTA2, vous devez revenir à la section _installation et démarrage sur le nœud 4_, puis reprendre le processus à l'adresse link:install_boot_node4.html#step22["Étape 22"]. Assurez-vous que le noeud 4 dispose d'un espace de rack suffisant. Si le noeud 4 se trouve dans un châssis distinct du noeud 2, vous pouvez placer le noeud 4 au même emplacement que le noeud 3. Si les nœuds 2 et 4 se trouvent dans le même châssis, le nœud 4 se trouve déjà dans son emplacement de rack approprié.
@@ -98,7 +98,7 @@ NOTE: Les ports FC doivent être programmés comme initiateurs.
 +
 `halt`
 
-. Démarrage du système à partir de l'invite du chargeur :
+. Démarrez le système à partir de l'invite du CHARGEUR :
 +
 `boot_ontap menu`
 
@@ -432,8 +432,8 @@ Login:
 NOTE: Dans l'exemple de sortie de la console ci-dessus, ONTAP vous invite à entrer le nom du nœud partenaire si le système utilise des disques du partitionnement de disque avancé.
 
 . Si le système passe en boucle de redémarrage avec le message `no disks found`, Il indique que le système a réinitialisé les ports FC ou UTA/UTA2 dans le mode cible et ne parvient donc pas à voir les disques. Pour résoudre ce problème, passez à la <<auto_check_4_step17,Étape 17>> à <<auto_check_4_step22,Étape 22>> ou allez à la section link:verify_node4_installation.html["Vérifiez l'installation du node4"].
-. [[auto_check_4_step17]]appuyez sur `Ctrl-C` dans le cas de l'autoboot, cette variable permet d'arrêter le nœud sur le `LOADER>` à l'invite.
-. À l'invite du chargeur, passez en mode maintenance :
+. [[auto_check_4_step17]]appuyez sur Ctrl-C pendant l'AUTOBOOT pour arrêter le nœud à l'invite du CHARGEUR>.
+. À l'invite du CHARGEUR, entrer en mode maintenance :
 +
 `boot_ontap maint`
 
@@ -463,7 +463,7 @@ Si vous effectuez une mise à niveau à partir d'un système prenant en charge d
 Si vous effectuez une mise à niveau à partir d'un système qui utilise des disques externes vers un système prenant en charge des disques internes et externes, par exemple un système AFF A800, rendez-vous sur <<auto_check_4_step23,Étape 23>>.
 
 ====
-. [[auto_check_4_step22]]à l'invite du chargeur, démarrez :
+. [[auto_check_4_step22]]à l'invite du CHARGEUR, démarrez :
 +
 `boot_ontap menu`
 
@@ -471,11 +471,17 @@ Si vous effectuez une mise à niveau à partir d'un système qui utilise des dis
 Maintenant, au démarrage, le nœud peut détecter tous les disques qui lui étaient précédemment affectés et peut démarrer comme prévu.
 
 +
-Lorsque les nœuds de cluster que vous remplacez utilisent le chiffrement de volume root, le logiciel ONTAP ne peut pas lire les informations de volume des disques. Restaurer les clés du volume root:
+Lorsque les nœuds de cluster que vous remplacez utilisent le chiffrement de volume racine, ONTAP ne peut pas lire les informations de volume à partir des disques. Restaurer les clés du volume root.
+
++
+
+NOTE: Cela s'applique uniquement lorsque le volume racine utilise le chiffrement de volume NetApp.
 
 +
 .. Revenir au menu de démarrage spécial :
++
 `LOADER> boot_ontap menu`
+
 +
 [listing]
 ----
@@ -509,8 +515,6 @@ NOTE: Vous devez avoir obtenu la phrase de passe et les données de sauvegarde d
 +
 
 NOTE: Il se peut que vous rencontriez une erreur à ce stade. Si une erreur se produit, répétez les sous-étapes de la section <<auto_check_4_step22,Étape 22>> jusqu'à ce que le système démarre normalement.
-
-
 
 
 

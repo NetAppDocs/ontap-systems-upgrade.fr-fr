@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app-9151/guidelines_for_upgrading_controllers_with_arl.html 
+keywords: guidelines, upgrading, controllers, ARL 
+summary: 'Déterminez si vous pouvez mettre à niveau des contrôleurs exécutant ONTAP 9.15.1 ou une version ultérieure à l"aide de `system controller replace` commandes.' 
+---
+= Instructions de mise à niveau des contrôleurs avec l'ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Pour savoir si vous pouvez utiliser le transfert d'agrégats pour mettre à niveau une paire de contrôleurs exécutant ONTAP 9.15.1 ou version ultérieure, cela dépend de la plateforme et de la configuration des contrôleurs d'origine et de remplacement.
+
+
+
+== Mises à niveau prises en charge pour l'ARL
+
+Avant de mettre à niveau une paire de nœuds à l'aide de cette procédure ARL, vérifiez les conditions suivantes pour vous assurer que votre configuration est prise en charge :
+
+* Vérifiez que le transfert d'agrégats peut être effectué sur les contrôleurs d'origine et de remplacement.
+* Vérifiez la taille de tous les agrégats définis et le nombre de disques pris en charge par le système d'origine. Vous comparez ensuite la taille et le nombre de disques pris en charge par l'agrégat à la taille et au nombre de disques pris en charge par le nouveau système. Reportez-vous à la section link:other_references.html["Références"] pour obtenir un lien vers le _Hardware Universe_ où ces informations sont disponibles. La taille de l'agrégat et le nombre de disques pris en charge par le nouveau système doivent être égaux ou supérieurs à la taille et au nombre de disques pris en charge par le système d'origine.
+* Validez dans les règles de mélange du cluster si les nouveaux nœuds peuvent devenir partie intégrante du cluster avec les nœuds existants lorsque le contrôleur d'origine est remplacé. Pour plus d'informations sur les règles de mélange de clusters, reportez-vous à la section link:other_references.html["Références"] pour accéder au lien vers le _Hardware Universe_.
+* Migrez et réHome les LIF du cluster sur deux ports de cluster par nœud si vous disposez d'un système, tel qu'un AFF 700, avec la configuration suivante :
+* Plus de deux ports de cluster par nœud
+* Une carte d'interconnexion de cluster en slot4 en mode écorché pour créer les ports e4a, e4b, e4c et e4d et les ports e4e, e4f, e4g et e4h
++
+
+NOTE: Une mise à niveau de contrôleur avec plus de deux ports de cluster par nœud peut entraîner l'absence de LIF de cluster sur le nouveau contrôleur après la mise à niveau.
+
++
+Pour plus d'informations, consultez l'article de la base de connaissances link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_delete_unwanted_or_unnecessary_cluster_LIFs["Comment supprimer des LIF de cluster inutiles ou indésirables"^].
+
+
+
+La mise à niveau du contrôleur avec l'ARL est prise en charge sur les systèmes configurés avec les volumes SnapLock Enterprise et SnapLock Compliance.
+
+
+
+== Clusters à 2 nœuds sans commutateur
+
+Si vous mettez à niveau des nœuds dans un cluster sans commutateur à 2 nœuds, vous pouvez quitter le cluster sans commutateur tout en effectuant la mise à niveau. Il n'est pas nécessaire de les convertir en cluster commuté.
+
+
+
+== Mises à niveau non prises en charge pour l'ARL
+
+Vous ne pouvez pas mettre à niveau des contrôleurs de remplacement qui ne prennent pas en charge les tiroirs disques connectés aux contrôleurs d'origine.
+
+Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Hardware Universe_ pour des informations sur la prise en charge des disques.
+
+Si vous souhaitez mettre à niveau des contrôleurs d'entrée de gamme avec des lecteurs internes, reportez-vous à la section link:other_references.html["Références"] pour accéder à _mise à niveau en déplaçant des volumes ou du stockage_ et passez à la procédure _mise à niveau d'une paire de nœuds exécutant clustered Data ONTAP en déplaçant des volumes_.
+
+
+
+== Résoudre les problèmes
+
+En cas de problème lors de la mise à niveau des contrôleurs, reportez-vous à la section link:troubleshoot_index.html["Résoudre les problèmes"] pour plus d'informations et pour obtenir des solutions.
+
+Si vous ne trouvez pas de solution au problème que vous rencontrez, contactez le support technique.

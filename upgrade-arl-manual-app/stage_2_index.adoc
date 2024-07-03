@@ -4,7 +4,7 @@ permalink: upgrade-arl-manual-app/stage_2_index.html
 keywords: relocate, retire, node1, steps, stage 2 
 summary: 'Étape 2 : processus de mise à niveau manuelle d"ARL sur les contrôleurs exécutant ONTAP 9.8 ou une version ultérieure' 
 ---
-= Présentation
+= Présentation de la phase 2
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

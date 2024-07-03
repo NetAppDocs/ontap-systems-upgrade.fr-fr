@@ -1,0 +1,62 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app-9151/decide_to_use_the_aggregate_relocation_guide.html 
+keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability 
+summary: 'Vous pouvez choisir d"utiliser le transfert d"agrégats pour mettre à niveau les contrôleurs exécutant ONTAP 9.15.1 ou une version ultérieure à l"aide de `system controller replace` commandes.' 
+---
+= Décider d'utiliser la procédure de transfert d'agrégats
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cette procédure explique comment mettre à niveau les contrôleurs de stockage d'une paire haute disponibilité avec de nouveaux contrôleurs tout en conservant les données et les disques existants. Il s'agit d'une procédure complexe qui ne doit être utilisée que par des administrateurs expérimentés.
+
+Vous pouvez utiliser cette procédure dans les circonstances suivantes :
+
+* Vous exécutez ONTAP 9.15.1 ou une version ultérieure.
+* Vous ne souhaitez pas ajouter de nouveaux contrôleurs au cluster en tant que nouvelle paire haute disponibilité et migrer les données à l'aide de la procédure de déplacement de volumes.
+* Vous avez de l'expérience dans l'administration de ONTAP et vous êtes à l'aise avec les risques de travailler en mode de privilèges de diagnostic.
+
+
+
+NOTE: Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE).
+
+Vous ne pouvez pas utiliser cette procédure dans les circonstances suivantes :
+
+* Vous mettez à niveau un système AFF A800 vers un système AFF A70 ou AFF A90. Pour effectuer cette mise à niveau de AFF A800, reportez-vous à la section pour accéder au lien vers _utiliser les commandes « remplacement du contrôleur système » pour link:other_references.html["Références"] mettre à niveau les modèles de contrôleurs dans le même châssis_.
+* Vous mettez à niveau un système de stockage V-Series ou un système de stockage de virtualisation FlexArray à l'aide d'une baie externe pour le stockage interne. Pour savoir comment mettre à niveau un système V-Series ou FlexArray, contactez le support technique.
+* Vous mettez à niveau une configuration MetroCluster FC ou IP. Pour mettre à niveau une configuration MetroCluster, reportez-vous à la section link:other_references.html["Références"] pour accéder à la _documentation de mise à niveau et d'extension MetroCluster_.
+
+
+[[sys_commands_9151_supported_Systems]]le tableau suivant présente la matrice de modèle prise en charge pour la mise à niveau du contrôleur.
+
+|===
+| Contrôleur existant | Remplacement du contrôleur 
+
+
+| AFF A300 | AFF A70, AFF A90 et AFF A1K 
+
+
+| AFF A400 | AFF A70, AFF A90 et AFF A1K 
+
+
+| AFF A700 | AFF A70, AFF A90 et AFF A1K 
+
+
+| AFF A900 | AFF A90 et AFF A1K 
+|===
+[NOTE]
+====
+Les systèmes AFF A70 et AFF A90 sont intégrés avec des disques intégrés. Les deux contrôleurs et disques se trouvent dans un seul châssis. Vous ne pouvez pas mettre à niveau un système existant si les nouveaux contrôleurs disposent de disques internes.
+
+Si la combinaison de modèle de mise à niveau du contrôleur ne se trouve pas dans le tableau ci-dessus, contactez l'assistance technique.
+
+====
+Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+
+Reportez-vous à la section link:other_references.html["Références"] Lien vers le Centre de documentation _ONTAP 9_ où vous pouvez accéder à la documentation produit ONTAP 9.

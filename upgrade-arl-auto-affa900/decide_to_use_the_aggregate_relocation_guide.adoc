@@ -25,6 +25,9 @@ Vous pouvez utiliser cette procédure dans les circonstances suivantes :
 | Ancien contrôleur | Remplacement du contrôleur 
 
 
+| AFF A800 | AFF A70 et AFF A90 
+
+
 | AFF A220 configuré en tant que ASA | ASA A150 
 
 
@@ -44,6 +47,7 @@ Vous pouvez utiliser cette procédure dans les circonstances suivantes :
 |===
 * Vous avez vérifié auprès de votre ingénieur commercial NetApp que vous avez reçu le matériel nécessaire à la mise à niveau de votre contrôleur :
 +
+** Deux contrôleurs AFF A90 ou deux contrôleurs AFF A70 et tous les modules d'E/S requis pour la mise à niveau. Longueur requise de câbles 100 GbE.
 ** Contrôleur ASA A150, AFF A150 ou FAS2820
 ** Contrôleurs ASA A900, AFF A900 ou FAS9500 et modules NVRAM ainsi que les pièces requises pour la mise à niveau
 
@@ -55,11 +59,11 @@ Vous pouvez utiliser cette procédure dans les circonstances suivantes :
 
 Vous ne pouvez pas utiliser cette procédure dans les circonstances suivantes :
 
-* Vous utilisez le logiciel de virtualisation FlexArray sur les systèmes AFF A700 ou FAS9000.
+* Le logiciel de virtualisation FlexArray est utilisé sur les systèmes AFF A800, AFF A700 ou FAS9000.
 * Vous utilisez un commutateur partagé pour l'interconnexion de cluster et le stockage Ethernet.
 
 
-Pour la mise à niveau des configurations Fabric MetroCluster ou MetroCluster IP sur les systèmes AFF A700 ou FAS9000, reportez-vous à la section link:other_references.html["Références"] Pour accéder au contenu _MetroCluster Upgrade and expansion_.
+Pour la mise à niveau des configurations MetroCluster IP sur les systèmes AFF A800, AFF A700 ou FAS9000, reportez-vous au link:other_references.html["Références"] lien vers le contenu _mise à niveau et extension_MetroCluster.
 
 
 NOTE: Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE).

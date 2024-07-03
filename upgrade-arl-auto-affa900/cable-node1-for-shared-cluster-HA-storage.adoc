@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/cable-node1-for-shared-cluster-HA-storage.html 
+keywords:  
+summary:  
+---
+= Nœud de câblage 1 pour cluster partagé, haute disponibilité et stockage (mise à niveau de AFF A800 uniquement)
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Toutes les connexions de cluster, de haute disponibilité, de stockage et de données précédemment connectées au nœud AFF A800 doivent désormais être connectées au nœud AFF A90 ou AFF A70 nouvellement installé.
+
+Le tableau suivant présente l'utilisation des ports de switch pour les configurations en cluster à 2 nœuds sans commutateur.
+
+|===
+| Port | Nœud AFF A800 | Nœud AFF A90 | Nœud AFF A70 
+
+
+| Cluster | e0a | e1a | e1a 
+
+
+| Cluster | e1a | E7a (utilisez e1b s'il n'y a pas d'e7a) | e1b 
+
+
+| HAUTE DISPONIBILITÉ | e0b | Ne pas connecter | Ne pas connecter 
+
+
+| HAUTE DISPONIBILITÉ | e1b | Ne pas connecter | Ne pas connecter 
+
+
+| Ports de stockage SAS (si présents et utilisés) | Tout port disponible | Tout port disponible | Tout port disponible 
+
+
+| Ports de stockage Ethernet pour tiroirs NS224 | Tout port disponible | Reportez-vous à la section mappage de la connectivité du stockage Ethernet | Reportez-vous à la section mappage de la connectivité du stockage Ethernet 
+|===
+Dans le cas d'un cluster relié par commutateur, les ports de cluster identiques des nœuds AFF A90 ou AFF A70 doivent se trouver sur le même commutateur. Par exemple, une fois la mise à niveau terminée, e1a sur le nœud 1 et e1a sur le nœud 2 doivent être connectés à un commutateur de cluster. De même, le second port de cluster des deux nœuds doit être connecté au second commutateur de cluster. La connexion croisée de ports cluster-haute disponibilité partagés, où e1a du nœud 1 est connecté au commutateur a et e1a du nœud 2 est connecté au commutateur B, empêche les défaillances de communication haute disponibilité.

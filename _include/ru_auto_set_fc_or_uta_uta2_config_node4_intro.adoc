@@ -5,4 +5,4 @@
 Si le système Node4 est doté de ports FC intégrés, de ports UTA/UTA2 (ou d'une carte UTA/UTA2), vous devez configurer les paramètres avant de suivre la procédure.
 
 .Description de la tâche
-Vous devrez peut-être compléter la <<Configurez les ports FC sur le nœud 4>> la section <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>, ou les deux sections.
+Vous devrez peut-être remplir la <<Configurez les ports FC sur le nœud 4>> section ou <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>> , ou les deux sections.

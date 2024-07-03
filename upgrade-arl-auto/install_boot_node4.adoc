@@ -52,7 +52,7 @@ NOTE: Il n'est pas nécessaire de déplacer la carte d'interconnexion/carte FC-V
 
 
 
-. Mettez le nœud 4 sous tension, puis interrompez le processus de démarrage en appuyant sur `Ctrl-C` sur le terminal de la console pour accéder à l'invite de l'environnement d'initialisation.
+. Mettez le nœud 4 sous tension, puis interrompez le processus de démarrage en appuyant sur Ctrl-C au niveau du terminal de la console pour accéder à l'invite de l'environnement de démarrage.
 +
 
 NOTE: Lors du démarrage du nœud 4, le message d'avertissement suivant peut s'afficher :
@@ -201,7 +201,7 @@ Si vous disposez d'une configuration MetroCluster, utilisez les commandes suivan
 `halt`
 
 +
-Interrompez l'AUTOBOOT en appuyant sur Ctrl-C dans l'invite de l'environnement de démarrage.
+Interrompez l'AUTOBOOT en appuyant sur Ctrl-C à l'invite de l'environnement de démarrage.
 
 . [[auto_install4_step15]]sur le noeud 3, vérifiez la date, l'heure et le fuseau horaire du système :
 +

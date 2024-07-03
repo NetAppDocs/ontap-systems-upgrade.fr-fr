@@ -1,11 +1,4 @@
 ---
 section: upgrade-arl
-title: Mise à niveau via le transfert d'agrégats
-entries:
-- title: Présentation
-  url: "/upgrade-arl/index.html"
-- section: upgrade-arl-auto-affa900
-- section: upgrade-arl-auto-app
-- section: upgrade-arl-manual-app
-- section: upgrade-arl-auto
-- section: upgrade-arl-manual
+title: Choisissez votre procédure de mise à niveau ARL
+url: "/upgrade-arl/index.html"
