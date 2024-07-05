@@ -23,7 +23,7 @@ Choisissez une procédure de mise à niveau pour un système doté de disques in
 * AFF A150, AFF A200, AFF A220, AFF A250, AFF A700s, et AFF A800
 +
 
-NOTE: Vous pouvez également mettre à niveau un système AFF A800 vers un système AFF A70 ou AFF A90 à l'aide du déplacement d'agrégats. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app-9151/index.html["En savoir plus >>"].
+NOTE: Vous pouvez également mettre à niveau un système AFF A800 vers un système AFF A70 ou AFF A90 à l'aide du déplacement d'agrégats. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["En savoir plus >>"].
 
 * AFF C190, AFF C250 et AFF C800
 * ASA A150, ASA A250, ASA A800 et ASA AFF A220
