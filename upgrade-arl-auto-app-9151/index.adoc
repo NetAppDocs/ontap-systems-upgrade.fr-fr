@@ -37,17 +37,24 @@ Les termes « node1 », « node2 », « node3 » et « node4 » servent uniqueme
 * Cette procédure est complexe et suppose que vous avez des compétences avancées en administration de ONTAP. Vous devez également lire et comprendre le link:guidelines_for_upgrading_controllers_with_arl.html["Instructions de mise à niveau des contrôleurs avec l'ARL"] et le link:overview_of_the_arl_upgrade.html["Présentation de la mise à niveau ARL"] avant de commencer la mise à niveau.
 * Cette procédure suppose que le matériel de remplacement du contrôleur est nouveau et qu'il n'a pas été utilisé. Les étapes requises pour préparer les contrôleurs utilisés avec la `wipeconfig` commande ne sont pas incluses dans cette procédure. Vous devez contacter le support technique si vous avez déjà utilisé le matériel de remplacement du contrôleur.
 * Vous pouvez suivre cette procédure pour mettre à niveau le matériel du contrôleur dans des clusters de plus de deux nœuds. Toutefois, vous devez effectuer la procédure séparément pour chaque paire haute disponibilité du cluster.
-* Lorsque vous effectuez une mise à niveau vers un système AFF A70, AFF A90 ou AFF A1K introduit dans ONTAP 9.15.1, ONTAP convertit l'efficacité du stockage de tous les volumes à provisionnement fin existants, y compris ceux qui n'utilisent pas l'efficacité du stockage, et applique les nouvelles fonctionnalités d'efficacité du stockage qui utilisent la fonctionnalité de déchargement matériel. Il s'agit d'un processus automatique en arrière-plan, sans impact visible sur les performances du système. https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["En savoir plus >>"^]
-* Les systèmes AFF A70, AFF A90 et AFF A1K partagent des ports réseau de 100 GbE pour les connexions en cluster et haute disponibilité. Ces systèmes peuvent prendre en charge des connexions de cluster 10 GbE ou 25 GbE avec les anciens switchs de cluster. Cependant, NetApp recommande de mettre à jour les vitesses de cluster 100 GbE lorsque les switchs 10 GbE et 25 GbE ne sont plus nécessaires. Pour plus d'informations, consultez les articles suivants de la base de connaissances :
+* Lorsque vous effectuez une mise à niveau vers un système introduit dans ONTAP 9.15.1, ONTAP convertit l'efficacité du stockage des volumes existants et applique les nouvelles fonctionnalités d'efficacité du stockage qui utilisent la fonctionnalité de déchargement matériel. Il s'agit d'un processus automatique en arrière-plan, sans impact visible sur les performances du système.
++
+** Dans le cas d'un système AFF A70, AFF A90 ou AFF A1K, ONTAP convertit l'efficacité du stockage de tous les volumes à provisionnement fin existants, y compris ceux qui n'utilisent pas l'efficacité du stockage.
+** Pour les systèmes FAS70 et FAS90, ONTAP ne convertit que l'efficacité du stockage des volumes existants à provisionnement fin pour lesquels l'efficacité du stockage était déjà activée avant la mise à niveau.
+
+
++
+link:https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["En savoir plus sur l'efficacité du stockage"^].
+
+* Les systèmes AFF A70, AFF A90, AFF A1K, FAS70 et FAS90 partagent des ports réseau de 100 GbE pour les connexions au cluster et haute disponibilité. Ces systèmes peuvent prendre en charge des connexions de cluster 10 GbE ou 25 GbE avec les anciens switchs de cluster. Cependant, NetApp recommande de mettre à jour les vitesses de cluster 100 GbE lorsque les switchs 10 GbE et 25 GbE ne sont plus nécessaires. Pour plus d'informations, consultez les articles suivants de la base de connaissances :
 +
 --
-** link:https://kb.netapp.com/?title=on-prem%2Fontap%2FOHW%2FOHW-KBs%2FHow_to_configure_10G_or_25G_cluster_ports_on_a_new_cluster_setup_on_AFF_A1K%252C_AFF_A90_or_AFF_A70["Configuration des ports de cluster 10G ou 25G sur une nouvelle configuration de cluster sur AFF A1K, AFF A90 ou AFF A70"^]
-** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_convert_an_existing_cluster_from_10G_or_25G_cluster_ports_to_40G_or_100G_cluster_ports_on_an_AFF_A1K_AFF_A90_or_AFF_A70["Comment convertir un cluster existant de ports de cluster 10G ou 25G en ports de cluster 40G ou 100G sur un AFF A1K, AFF A90 ou AFF A70"^]
+** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_configure_10G_or_25G_cluster_ports_on_a_new_cluster_setup_on_AFF_ASA_A1K_A90_A70_FAS90_FAS70["Comment configurer les ports de cluster 10G ou 25G sur une nouvelle configuration de cluster sur AFF/ASA A1K, A90, A70, FAS90, FAS70"^]
+** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_convert_an_existing_cluster_from_10G_or_25G_cluster_ports_to_40G_or_100G_cluster_ports_on_an_AFF_ASA_A1K_A90_A70_FAS90_FAS70["Comment convertir un cluster existant de ports de type 10 ou 25 Gbit/s en ports de cluster 40 Gbit/s ou 100 Gbit/s sur un système AFF/ASA A1K, A90, A70, FAS90, FAS70"^]
 
 
 --
 +
 Si vous ne pouvez pas relier les ports e0a ou e0b du nœud existant aux ports de cluster du nouveau nœud, reportez-vous à la section link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/JiraNgage/CONTAP-166978["Bugs NetApp ID de bug en ligne CONTAP-166978"^].
 
-* Lorsque vous effectuez une mise à niveau vers un système AFF A70, AFF A90 ou AFF A1K, ONTAP convertit l'efficacité du stockage de tous les volumes à provisionnement fin existants, y compris ceux qui n'utilisent pas l'efficacité du stockage, et applique les nouvelles fonctionnalités d'efficacité du stockage qui utilisent la fonctionnalité de déchargement matériel. Il s'agit d'un processus automatique en arrière-plan, sans impact visible sur les performances du système. https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["En savoir plus >>"^]
 

@@ -17,9 +17,17 @@ Suivez cette procédure pour mettre à niveau le matériel du contrôleur dans l
 
 [NOTE]
 ====
-Lorsque vous effectuez une mise à niveau vers un système AFF A70, AFF A90 ou AFF A1K introduit dans ONTAP 9.15.1, ONTAP convertit l'efficacité du stockage de tous les volumes à provisionnement fin existants, y compris ceux qui n'utilisent pas l'efficacité du stockage, et applique les nouvelles fonctionnalités d'efficacité du stockage qui utilisent la fonctionnalité de déchargement matériel. Il s'agit d'un processus automatique en arrière-plan, sans impact visible sur les performances du système. https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["En savoir plus >>"^]
+* Lorsque vous effectuez une mise à niveau vers un système introduit dans ONTAP 9.15.1, ONTAP convertit l'efficacité du stockage des volumes existants et applique les nouvelles fonctionnalités d'efficacité du stockage qui utilisent la fonctionnalité de déchargement matériel. Il s'agit d'un processus automatique en arrière-plan, sans impact visible sur les performances du système.
++
+** Dans le cas d'un système AFF A70, AFF A90 ou AFF A1K, ONTAP convertit l'efficacité du stockage de tous les volumes à provisionnement fin existants, y compris ceux qui n'utilisent pas l'efficacité du stockage.
+** Pour les systèmes FAS70 et FAS90, ONTAP ne convertit que l'efficacité du stockage des volumes existants à provisionnement fin pour lesquels l'efficacité du stockage était déjà activée avant la mise à niveau.
++
+link:https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["En savoir plus sur l'efficacité du stockage"^].
 
-Les procédures de mise à niveau matérielle ont été simplifiées dans ONTAP 9.8 grâce à l'introduction de la fonction de positionnement automatique des ports.
+
+
+* Les procédures de mise à niveau matérielle ont été simplifiées dans ONTAP 9.8 grâce à l'introduction de la fonction de positionnement automatique des ports.
+
 
 ====
 * Vos nœuds d'origine et nouveaux sont compatibles et pris en charge.
