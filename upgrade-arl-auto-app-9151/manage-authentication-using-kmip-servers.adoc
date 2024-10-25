@@ -10,7 +10,7 @@ summary: 'Configurez et gérez Storage Encryption, gérez les clés d"authentifi
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

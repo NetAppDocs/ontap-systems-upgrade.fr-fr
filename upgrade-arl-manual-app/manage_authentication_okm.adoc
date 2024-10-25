@@ -10,7 +10,7 @@ summary: 'Utilisez le gestionnaire de clés intégré pour gérer les clés d"au
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

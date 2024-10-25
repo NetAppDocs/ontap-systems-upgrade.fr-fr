@@ -10,7 +10,7 @@ summary: 'Vérifiez l"état de santé de la configuration MetroCluster et le bon
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: 'Étape 6 : séquence de processus pour la mise à niveau d"ARL à l"ai
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

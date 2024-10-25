@@ -10,7 +10,7 @@ summary: 'Déplacez les agrégats non racines et les LIF de données NAS du nœu
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

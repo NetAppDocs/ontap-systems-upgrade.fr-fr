@@ -10,7 +10,7 @@ summary: 'Processus de la phase 2 pour une mise à niveau d"ARL à l"aide de `sy
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

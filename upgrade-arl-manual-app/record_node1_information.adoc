@@ -10,7 +10,7 @@ summary: 'Enregistrez des informations sur le réseau de cluster node1, la gesti
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

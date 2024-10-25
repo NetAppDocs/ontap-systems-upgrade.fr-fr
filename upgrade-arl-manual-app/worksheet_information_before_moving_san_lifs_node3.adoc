@@ -10,7 +10,7 @@ summary: 'Enregistrez les informations de configuration LIF de données NAS du n
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

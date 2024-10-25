@@ -4,53 +4,177 @@ permalink: upgrade-arl/index.html
 keywords: aggregate, relocation, moving, manual, upgrade, relocate, hardware 
 summary: 'Utiliser le transfert d"agrégats pour mettre à niveau le matériel du contrôleur' 
 ---
-= Choisissez votre procédure de mise à niveau ARL
+= Commencez ici : choisissez votre procédure de mise à niveau ARL
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
-Ce contenu explique comment mettre à niveau le matériel du contrôleur sans interruption grâce au transfert d'agrégats (ARL).
+Le transfert d'agrégats (ARL) permet de mettre à niveau le matériel du contrôleur sans interruption. Pour connaître les autres méthodes de mise à niveau du matériel de votre contrôleur, reportez-vous à link:../upgrade/upgrade-decide-to-use-this-guide.html["Mise à niveau par déplacement des volumes ou du stockage"]la section .
 
-Pour connaître les autres méthodes de mise à niveau du matériel de votre contrôleur, reportez-vous à la section link:../upgrade/upgrade-decide-to-use-this-guide.html["Mise à niveau par déplacement des volumes ou du stockage"].
+Grâce à l'ARL, vous pouvez mettre à niveau le matériel du contrôleur sans interruption sur une paire de nœuds exécutant ONTAP en migrant les agrégats non racines des nœuds d'origine vers les nouveaux nœuds du même cluster. Les données hébergées sur les nœuds mis à niveau sont accessibles au cours de la mise à niveau.
 
-Vous pouvez mettre à niveau le matériel du contrôleur sur une paire de nœuds exécutant ONTAP sans interrompre l'activité en migrant les agrégats non-racines depuis les nœuds d'origine vers les nouveaux nœuds du même cluster. Les données hébergées sur les nœuds mis à niveau sont accessibles au cours de la mise à niveau.
+L'ARL tire parti de la configuration haute disponibilité afin de vous permettre de déplacer les agrégats non racines d'un nœud à un autre s'ils partagent le même cluster de stockage.
 
-Le transfert d'agrégats non racines permet d'exploiter la configuration haute disponibilité du système et de déplacer des agrégats sans racine d'un nœud vers un autre s'ils partagent du stockage au sein d'un même cluster.
+Il existe plusieurs méthodes ARL pour mettre à niveau le matériel du contrôleur. Pour sélectionner la procédure appropriée, consultez les informations suivantes sur les systèmes et les versions ONTAP prises en charge pour chaque option de mise à niveau ARL.
 
-Il existe deux méthodes ARL pour mettre à niveau le matériel de votre contrôleur, à l'aide de commandes système ou d'une mise à niveau manuelle. Avant de commencer, vous devez vérifier que vous avez sélectionné le contenu correct pour la mise à niveau matérielle de votre contrôleur.
 
-Si vous effectuez une mise à niveau à l'aide des commandes système, reportez-vous au tableau suivant :
 
-[cols="30,70"]
+== Utilisez les commandes « System Controller replace » avec ONTAP 9.15.1 ou une version ultérieure
+
+Si votre scénario de mise à niveau est répertorié dans la matrice de systèmes pris en charge suivante, passez à link:../upgrade-arl-auto-app-9151/index.html["Utilisez les commandes « System Controller replace » pour mettre à niveau le matériel du contrôleur introduit dans ONTAP 9.15.1"] pour lancer la procédure de mise à niveau.
+
+.Afficher les systèmes pris en charge
+[%collapsible]
+====
 |===
-| Si vous exécutez cette version de ONTAP… | Pour mettre à niveau avec les commandes système, utilisez… 
+| Contrôleur existant | Remplacement du contrôleur | Pris en charge à partir de ONTAP... 
 
 
-| 9.15.1 ou ultérieure | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app-9151/index.html["Utilisez les commandes « System Controller replace » pour mettre à niveau le matériel du contrôleur introduit dans ONTAP 9.15.1"] 
+| FAS8200, FAS8300, FAS8700, FAS9000 | FAS70, FAS90 | 9.15.1P3 
 
 
-| 9.10.1 ou ultérieure | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Utilisez les commandes « system Controller replace » pour mettre à niveau les modèles de contrôleurs d'un même châssis"] Vous pouvez utiliser cette procédure pour mettre à niveau un contrôleur AFF configuré en tant que baie 100 % SAN (ASA) vers un contrôleur ASA pour certains modèles et versions logicielles ONTAP. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["En savoir plus >>"]. 
+| FAS9500 | FAS90 | 9.15.1P3 
 
 
-| 9.8 ou ultérieure | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/index.html["Utilisez les commandes « system contrôleur replace » pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou une version ultérieure"] 
+| AFF A300, AFF A400, AFF A700 | AFF A70, AFF A90, AFF A1K | 9.15.1 
 
 
-| 9.5 à 9.7 | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto/index.html["Utilisez les commandes « system contrôleur replace » pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.5 vers ONTAP 9.7"] 
+| AFF A900 | AFF A90, AFF A1K | 9.15.1 
 |===
-Si vous effectuez une mise à niveau manuelle, reportez-vous au tableau suivant :
+====
 
-[cols="30,70"]
+
+== Mettez à niveau les modèles de contrôleurs dans le même châssis
+
+Si votre scénario de mise à niveau est répertorié dans la matrice de systèmes pris en charge suivante, passez à link:../upgrade-arl-auto-affa900/index.html["Utilisez les commandes « system Controller replace » pour mettre à niveau les modèles de contrôleurs d'un même châssis"] pour lancer la procédure de mise à niveau.
+
+.Afficher les systèmes pris en charge
+[%collapsible]
+====
+[cols="20,20,40"]
 |===
-| Si vous exécutez cette version de ONTAP… | Pour mettre à niveau manuellement, utilisez… 
+| Ancien système | Système de remplacement | Versions de ONTAP prises en charge 
 
 
-| 9.8 ou ultérieure | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual-app/index.html["Mettez manuellement à niveau le matériel du contrôleur sous ONTAP 9.8 ou une version ultérieure"] 
+| AFF A800 | AFF A70 ou AFF A90 | 9.15.1 et versions ultérieures 
 
 
-| 9.0 à 9.7 | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual/index.html["Mettez à niveau manuellement le matériel du contrôleur en exécutant ONTAP 9.7 ou une version antérieure"] 
+| AFF A220 configuré en tant que baie 100 % SAN (ASA) | ASA A150 | 9.13.1P1 et versions ultérieures 
+
+
+| AVEC AFF A220 | AFF A150 | 9.10.1P15, 9.11.1P11, 9.12.1P5 et versions ultérieures 
+
+
+| Solution AFF A200 | AFF A150  a| 
+9.10.1P15, 9.11.1P11 et versions ultérieures
+
+*Remarque* : AFF A200 ne prend pas en charge les versions ONTAP ultérieures à 9.11.1.
+
+
+
+| Baie AFF C190 | AFF A150 | 9.10.1P15, 9.11.1P11, 9.12.1P5 et versions ultérieures 
+
+
+| FAS2620 | FAS2820  a| 
+9.11.1P7 (FAS2620)
+
+*Remarque* : FAS2620 ne prend pas en charge les versions ONTAP ultérieures à 9.11.1.
+
+9.13.1 et versions ultérieures (FAS2820)
+
+
+
+| FAS2720 | FAS2820 | 9.13.1 et versions ultérieures 
+
+
+| AFF A700 configuré en tant que ASA | ASA A900 | 9.13.1P1 et versions ultérieures 
+
+
+| AFF A700 | AFF A900 | 9.10.1P10, 9.11.1P6 et versions ultérieures 
+
+
+| FAS9000 | FAS9500 | 9.10.1P10, 9.11.1P6 et versions ultérieures 
 |===
+====
+
+
+== Utiliser les commandes « remplacer le contrôleur système » avec ONTAP 9.8 ou version ultérieure
+
+Si votre scénario de mise à niveau est répertorié dans la matrice de systèmes pris en charge suivante, passez à link:../upgrade-arl-auto-app/index.html["Utilisez les commandes « system contrôleur replace » pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou une version ultérieure"] pour lancer la procédure de mise à niveau.
+
+.Afficher les systèmes pris en charge
+[%collapsible]
+====
+|===
+| Ancien contrôleur | Remplacement du contrôleur 
+
+
+| FAS8020, FAS8040, FAS8060, FAS8080 | FAS8200, FAS8300, FAS8700, FAS9000 
+
+
+| FAS8060, FAS8080 | FAS9500 
+
+
+| AFF8020, AFF8040, AFF8060, AFF8080 | AFF A300, AFF A400, AFF A700, AFF A800 
+
+
+| AFF8060, AFF8080 | AFF A900 
+
+
+| FAS8200 | FAS8300, FAS8700, FAS9000, FAS9500 
+
+
+| FAS8300, FAS8700, FAS9000 | FAS9500 
+
+
+| AFF A300 | AFF A400, AFF A700, AFF A800, AFF A900 
+
+
+| AFF A320 | AFF A400 
+
+
+| AFF A400, AFF A700 | AFF A900 
+|===
+====
+
+
+== Utiliser les commandes « remplacer le contrôleur système » avec ONTAP 9.5 à 9.7
+
+Si votre scénario de mise à niveau est répertorié dans la matrice de systèmes pris en charge suivante, passez à link:../upgrade-arl-auto/index.html["Utilisez les commandes « system contrôleur replace » pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.5 vers 9.7"] pour lancer la procédure de mise à niveau.
+
+.Afficher les systèmes pris en charge
+[%collapsible]
+====
+[cols="50,50"]
+|===
+| Ancien contrôleur | Remplacement du contrôleur 
+
+
+| FAS8020, FAS8040, FAS8060, FAS8080 | FAS8200, FAS8300, FAS8700, FAS9000 
+
+
+| AFF8020, AFF8040, AFF8060, AFF8080 | AFF A300, AFF A400, AFF A700, AFF A800 
+
+
+| FAS8200 | FAS8700, FAS9000, FAS8300 
+
+
+| AFF A300 | AFF A700, AFF A800, AFF A400 
+|===
+====
+
+
+== Utilisez les commandes ARL manuelles
+
+Si votre scénario de mise à niveau n'est pas pris en charge à l'aide de « commandes système », vous pouvez effectuer une mise à niveau ARL à l'aide de commandes manuelles.
+
+Choisissez la procédure pour votre version ONTAP pour démarrer la mise à niveau :
+
+* link:../upgrade-arl-manual-app/index.html["Mettez manuellement à niveau le matériel du contrôleur sous ONTAP 9.8 ou une version ultérieure"]
+* link:../upgrade-arl-manual/index.html["Mettez à niveau manuellement le matériel du contrôleur en exécutant ONTAP 9.7 ou une version antérieure"]
+

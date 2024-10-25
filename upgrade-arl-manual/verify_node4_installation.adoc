@@ -10,7 +10,7 @@ summary: 'Vérifiez l"installation du nœud 4 et la communication avec le nœud 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

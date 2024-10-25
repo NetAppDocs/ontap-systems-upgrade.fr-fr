@@ -10,7 +10,7 @@ summary: 'Déplacez les LIF de données NAS du nœud 2 vers le nœud 3 lors d"un
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

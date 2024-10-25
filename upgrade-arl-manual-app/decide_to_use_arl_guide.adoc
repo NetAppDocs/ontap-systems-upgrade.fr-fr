@@ -10,7 +10,7 @@ summary: 'Utilisez la procédure manuelle d"ARL pour mettre à niveau les contr�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

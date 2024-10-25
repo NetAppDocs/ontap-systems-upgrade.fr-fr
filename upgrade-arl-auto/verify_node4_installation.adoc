@@ -10,7 +10,7 @@ summary: 'Vérifiez que le nœud4 rejoint le quorum, recréez les VLAN du nœud 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

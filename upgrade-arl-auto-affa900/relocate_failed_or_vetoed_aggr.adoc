@@ -10,7 +10,7 @@ summary: 'Transfert d"agrégats en panne ou avec véto. Lors de l"utilisation d"
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: 'Résolution des défaillances liées au transfert d"agrégats lors de 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

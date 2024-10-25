@@ -10,7 +10,7 @@ summary: 'Dépanner les défaillances de transfert d"agrégats qui peuvent se pr
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

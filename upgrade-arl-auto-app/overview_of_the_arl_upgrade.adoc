@@ -10,7 +10,7 @@ summary: 'Description de la procédure à suivre pour mettre à niveau les contr
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

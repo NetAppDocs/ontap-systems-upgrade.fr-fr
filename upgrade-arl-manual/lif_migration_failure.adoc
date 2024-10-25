@@ -10,7 +10,7 @@ summary: 'Les LIF ne sont pas en ligne après la migration aux niveaux 2, 3 ou 5
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

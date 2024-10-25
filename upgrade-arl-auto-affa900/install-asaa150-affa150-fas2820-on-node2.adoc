@@ -10,7 +10,7 @@ summary: 'Installez les modules système de remplacement sur le nœud 2 lors d"u
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

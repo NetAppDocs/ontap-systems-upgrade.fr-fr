@@ -10,7 +10,7 @@ summary: 'Comprendre le fonctionnement de la procédure ARL qui permet de mettre
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

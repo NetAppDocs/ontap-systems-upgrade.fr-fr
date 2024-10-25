@@ -10,7 +10,7 @@ summary: 'Installez et amorcez Node3 et installez le logiciel ONTAP lors de la m
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: 'Configurez et gérez le cryptage du stockage, gérez les clés d"authe
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

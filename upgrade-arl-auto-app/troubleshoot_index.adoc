@@ -10,7 +10,7 @@ summary: 'Diagnostiquez les défaillances qui peuvent se produire lors de la mis
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: 'Vous pouvez mettre à niveau le matériel du contrôleur en convertiss
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

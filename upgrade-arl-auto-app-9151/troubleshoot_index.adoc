@@ -10,7 +10,7 @@ summary: 'Résolvez les pannes qui peuvent se produire lors de la mise à niveau
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: 'Préparation au démarrage sur le nœud node3 et sur le nœud 4 lors d
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

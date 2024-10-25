@@ -10,7 +10,7 @@ summary: Utilisez la procédure ARL partiellement automatisée pour mettre à ni
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

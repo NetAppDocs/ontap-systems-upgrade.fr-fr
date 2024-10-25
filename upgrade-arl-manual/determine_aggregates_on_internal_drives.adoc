@@ -10,7 +10,7 @@ summary: 'Vérifiez que les disques internes ne contiennent pas de racine ni d"a
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

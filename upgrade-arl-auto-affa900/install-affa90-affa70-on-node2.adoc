@@ -10,7 +10,7 @@ summary: 'Installez les modules système de remplacement sur le nœud 2 lors d"u
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -23,7 +23,7 @@ Installez le module de contrôleur AFF A90 ou AFF A70 que vous avez reçu pour l
 NOTE: N'insérez pas complètement le module de contrôleur dans le châssis avant d'en avoir été invité dans la procédure.
 
 +
-image::../media/drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG[Installer un AFF A90 ou un AFF A70]
+image:drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG["Installer un AFF A90 ou un AFF A70"]
 
 . Reliez les ports de gestion et de console au module de contrôleur node1.
 +

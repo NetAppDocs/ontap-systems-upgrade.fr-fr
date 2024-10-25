@@ -10,7 +10,7 @@ summary: 'Vérifiez que les ports physiques du nœud 2 sont correctement mappée
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

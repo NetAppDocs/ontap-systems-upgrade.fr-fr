@@ -10,7 +10,7 @@ summary: 'Désactivez la paire HA avec le nœud 2 et arrêtez le nœud 1 lors de
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

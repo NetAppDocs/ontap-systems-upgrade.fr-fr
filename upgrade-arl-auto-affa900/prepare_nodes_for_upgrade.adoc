@@ -10,7 +10,7 @@ summary: 'Préparez les nœuds et exécutez une série de précontrôles lorsque
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

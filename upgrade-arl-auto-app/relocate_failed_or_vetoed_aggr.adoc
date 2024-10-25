@@ -10,7 +10,7 @@ summary: 'Transférez manuellement les agrégats défaillants ou vetotés lors d
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

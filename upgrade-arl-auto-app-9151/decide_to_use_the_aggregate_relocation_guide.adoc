@@ -10,7 +10,7 @@ summary: 'Vous pouvez choisir d"utiliser le transfert d"agrégats pour mettre à
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

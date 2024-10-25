@@ -10,7 +10,7 @@ summary: 'Activez la paire haute disponibilité, vérifiez l"accès au stockage 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

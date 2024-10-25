@@ -10,7 +10,7 @@ summary: 'Collecter certaines informations lors d"une mise à niveau manuelle du
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

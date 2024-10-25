@@ -10,7 +10,7 @@ summary: 'Déterminez l"infrastructure de câblage des nouveaux modules de contr
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

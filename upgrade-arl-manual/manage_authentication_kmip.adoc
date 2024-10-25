@@ -10,7 +10,7 @@ summary: 'Utilisez les serveurs KMIP pour gérer les clés d"authentification lo
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

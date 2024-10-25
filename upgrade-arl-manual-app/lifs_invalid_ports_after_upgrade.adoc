@@ -10,7 +10,7 @@ summary: 'Resynchroniser les LIF qui se trouvent sur des ports non valides dans 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

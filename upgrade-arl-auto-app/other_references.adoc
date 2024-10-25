@@ -10,7 +10,7 @@ summary: 'Contenu de référence et sites Web requis pour prendre en charge la m
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

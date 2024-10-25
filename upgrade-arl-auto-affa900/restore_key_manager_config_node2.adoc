@@ -10,7 +10,7 @@ summary: 'Si nécessaire, restaurez la configuration du gestionnaire de clés su
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

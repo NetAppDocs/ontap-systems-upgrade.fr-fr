@@ -10,7 +10,7 @@ summary: 'Remplacez les modules système AFF A800 NODE1 lorsque vous utilisez l"
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -26,7 +26,7 @@ Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement
 .Étapes
 . À l'avant du châssis, enfoncez fermement chaque disque jusqu'à ce que vous sentiez un arrêt positif. Cela permet de s'assurer que les disques sont fermement installés contre le fond de panier central du châssis.
 +
-image::../media/drw_a800_drive_seated_IEOPS-960.png[Appuyez sur le lecteur pour le mettre fermement en place contre le fond de panier central du châssis]
+image:drw_a800_drive_seated_IEOPS-960.png["Appuyez sur le lecteur pour le mettre fermement en place contre le fond de panier central du châssis"]
 
 . Aller à l'arrière du châssis.
 
@@ -50,7 +50,7 @@ Laissez les câbles dans le périphérique de gestion des câbles de sorte que l
 Le module de contrôleur se déplace légèrement hors du châssis.
 
 +
-image::../media/a800_cable_management.png[Retrait du ARM de gestion des câbles]
+image:a800_cable_management.png["Retrait du ARM de gestion des câbles"]
 
 +
 [cols="20,80"]
@@ -58,12 +58,12 @@ image::../media/a800_cable_management.png[Retrait du ARM de gestion des câbles]
 
 
  a| 
-image::../media/black_circle_one.png[Numéro un]
+image:black_circle_one.png["Numéro un"]
 | Loquet de verrouillage 
 
 
  a| 
-image::../media/black_circle_two.png[Numéro deux]
+image:black_circle_two.png["Numéro deux"]
 | Goupille de blocage 
 |===
 
@@ -81,7 +81,7 @@ Installez, câblez et connectez le module de contrôleur AFF A90 ou AFF A70 au n
 NOTE: N'insérez pas complètement le module de contrôleur dans le châssis avant d'en avoir été invité dans la procédure.
 
 +
-image::../media/drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG[Installer un AFF A90 ou un AFF A70]
+image:drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG["Installer un AFF A90 ou un AFF A70"]
 
 . Reliez les ports de gestion et de console au module de contrôleur node1.
 +

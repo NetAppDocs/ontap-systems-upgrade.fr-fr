@@ -10,7 +10,7 @@ summary: 'Résolvez les pannes liées à la relocalisation des agrégats qui peu
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

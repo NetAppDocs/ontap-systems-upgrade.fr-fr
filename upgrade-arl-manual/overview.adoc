@@ -10,7 +10,7 @@ summary: 'Découvrez comment la procédure manuelle de mise à niveau d"ARL sur 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

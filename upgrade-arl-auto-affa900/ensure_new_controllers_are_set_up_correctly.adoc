@@ -10,7 +10,7 @@ summary: 'Vérifiez que la paire haute disponibilité est activée, vérifiez l"
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

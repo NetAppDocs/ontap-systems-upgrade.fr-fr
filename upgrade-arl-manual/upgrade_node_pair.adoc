@@ -10,7 +10,7 @@ summary: 'Préparer le nœud d"origine pour la mise à niveau en effectuant des 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

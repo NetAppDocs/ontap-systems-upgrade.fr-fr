@@ -10,7 +10,7 @@ summary: 'Reprenez les transferts et les relations SnapMirror lors de la mise à
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

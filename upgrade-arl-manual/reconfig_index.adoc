@@ -10,7 +10,7 @@ summary: 'Pour ONTAP 9.1 ou version ultérieure, reconfigurez la disposition des
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

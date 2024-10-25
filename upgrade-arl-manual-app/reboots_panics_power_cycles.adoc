@@ -10,7 +10,7 @@ summary: 'Le système peut tomber en panne (un redémarrage, une panique ou une 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

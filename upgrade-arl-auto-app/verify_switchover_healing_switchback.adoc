@@ -10,7 +10,7 @@ summary: 'Vérifiez les opérations de basculement, de rétablissement et de ré
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

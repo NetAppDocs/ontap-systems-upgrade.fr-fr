@@ -10,7 +10,7 @@ summary: 'Activation de la paire haute disponibilité, vérification de l"accès
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

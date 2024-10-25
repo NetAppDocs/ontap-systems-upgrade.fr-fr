@@ -10,7 +10,7 @@ summary: 'Si nécessaire, configurez le cryptage du stockage, installez les cert
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

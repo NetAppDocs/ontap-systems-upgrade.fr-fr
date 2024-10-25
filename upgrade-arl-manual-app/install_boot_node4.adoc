@@ -10,7 +10,7 @@ summary: 'Installez et démarrez le nœud 4, puis installez le logiciel ONTAP lo
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

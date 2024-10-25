@@ -10,7 +10,7 @@ summary: 'Découvrez le fonctionnement de la procédure manuelle de mise à nive
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

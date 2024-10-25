@@ -10,7 +10,7 @@ summary: 'Comprendre le fonctionnement de la procédure de mise à niveau des co
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: 'Préparation au démarrage sur le nœud 3 et le nœud 4 lors de la mis
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

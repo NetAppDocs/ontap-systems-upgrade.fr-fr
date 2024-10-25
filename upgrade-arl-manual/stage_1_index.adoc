@@ -10,7 +10,7 @@ summary: 'Étape 1 : processus de mise à niveau manuelle d"agrégats ARL sur le
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

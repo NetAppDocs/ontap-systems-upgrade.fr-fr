@@ -122,7 +122,7 @@ WARNING: Lorsque les ports e0a et e0b sont utilisés en tant que ports d'interco
 Dans l'exemple suivant, les LIF de gestion et intercluster sur les ports réseau « e0a » et « e0b » sont réaffectés aux ports réseau « e1a » et « e1b ». Vos nœuds peuvent utiliser différents ports réseau car ils varient selon le système.
 
 +
-image::../upgrade/media/reassign_lifs.PNG[Réaffectation des LIFs sur les ports réseau du système de remplacement]
+image:reassign_lifs.PNG["Réaffectation des LIFs sur les ports réseau du système de remplacement"]
 
 
 

@@ -10,7 +10,7 @@ summary: 'Comprenez si vous pouvez mettre à niveau les contrôleurs exécutant 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

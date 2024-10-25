@@ -10,7 +10,7 @@ summary: 'Transférez les agrégats non racines du nœud 2 vers le nœud 1 lorsq
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

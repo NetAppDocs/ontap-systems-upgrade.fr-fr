@@ -10,7 +10,7 @@ summary: 'Il vous permet de gérer les clés d"authentification lors d"une mise 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

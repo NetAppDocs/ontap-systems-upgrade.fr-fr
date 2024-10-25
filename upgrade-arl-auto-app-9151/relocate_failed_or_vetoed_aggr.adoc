@@ -10,7 +10,7 @@ summary: 'Transférez manuellement les agrégats en échec ou avec mise à nivea
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

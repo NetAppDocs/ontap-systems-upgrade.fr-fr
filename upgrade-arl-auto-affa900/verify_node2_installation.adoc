@@ -10,7 +10,7 @@ summary: 'Vérifiez l"installation du nœud 2 avec des modules de remplacement l
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

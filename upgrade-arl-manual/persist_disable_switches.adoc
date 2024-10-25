@@ -10,7 +10,7 @@ summary: 'Désactivez les commutateurs Brocade et Cisco dans la structure et mod
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

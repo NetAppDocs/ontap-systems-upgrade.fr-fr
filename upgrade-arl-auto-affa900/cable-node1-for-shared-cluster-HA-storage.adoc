@@ -10,7 +10,7 @@ summary: Connectez le cluster, la haute disponibilité, le stockage et les conne
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

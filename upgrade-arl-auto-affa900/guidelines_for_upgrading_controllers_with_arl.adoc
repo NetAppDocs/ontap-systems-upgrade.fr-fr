@@ -10,7 +10,7 @@ summary: 'Déterminez si vous pouvez utiliser l"ARL, en conservant l"ancien châ
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

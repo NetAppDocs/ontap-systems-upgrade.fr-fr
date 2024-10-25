@@ -10,7 +10,7 @@ summary: 'Étape 1 : séquence de processus pour une mise à niveau d"ARL à l"a
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

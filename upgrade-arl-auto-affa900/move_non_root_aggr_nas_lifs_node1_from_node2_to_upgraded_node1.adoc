@@ -10,7 +10,7 @@ summary: 'Vérifiez que les LIF de données NAS du nœud 1 sur le nœud 2 sont d
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

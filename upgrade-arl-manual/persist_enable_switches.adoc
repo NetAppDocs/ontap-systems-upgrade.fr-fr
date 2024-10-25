@@ -10,7 +10,7 @@ summary: 'Activez de manière persistante les commutateurs Brocade et Cisco dans
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

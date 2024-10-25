@@ -10,7 +10,7 @@ summary: 'Vous pouvez configurer les ports FC intégrés des nœuds 3, les ports
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

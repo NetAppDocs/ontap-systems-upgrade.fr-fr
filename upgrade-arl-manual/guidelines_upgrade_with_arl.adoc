@@ -10,7 +10,7 @@ summary: 'Comprenez si vous pouvez utiliser la procédure manuelle d"ARL pour de
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

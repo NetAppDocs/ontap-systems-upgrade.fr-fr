@@ -10,7 +10,7 @@ summary: 'Vous devez disposer d"outils et de documentation pour mettre à niveau
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

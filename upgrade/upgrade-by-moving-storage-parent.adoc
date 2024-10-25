@@ -23,7 +23,7 @@ Pour mettre à niveau en déplaçant le stockage, vous préparez les nœuds d'or
 ====
 Afin de mettre à niveau le matériel du contrôleur en déplaçant le stockage, les nœuds d'origine sont appelés nœuds 1 et nœuds 2, et les nouveaux nœuds sont appelés nœuds 3 et nœuds 4. Au cours de la procédure décrite, le noeud 1 est remplacé par le noeud 3 et le noeud 2 est remplacé par le noeud 4.
 
-image::../upgrade/media/original_to_new_nodes.png[Remplacement du nœud 3 et du nœud 4 par le nœud 1 et le nœud 2]
+image:original_to_new_nodes.png["Remplacement du nœud 1 et du nœud 2 par le nœud 3 et le nœud 4"]
 
 Les termes node1, node2, node3 et node4 servent uniquement à faire la distinction entre les nœuds d'origine et les nouveaux nœuds. Lorsque vous suivez la procédure, vous devez les remplacer par les noms réels de vos nœuds d'origine et des nouveaux nœuds. Toutefois, en réalité, les noms des nœuds ne changent pas : le nœud 3 porte le nom node1 et le nœud 4 porte le nom node2 une fois le contrôleur mis à niveau.
 

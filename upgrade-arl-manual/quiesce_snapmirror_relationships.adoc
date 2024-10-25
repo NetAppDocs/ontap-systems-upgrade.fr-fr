@@ -10,7 +10,7 @@ summary: 'Avant de démarrer le système, arrêter toutes les relations SnapMirr
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

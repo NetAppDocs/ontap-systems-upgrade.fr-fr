@@ -10,7 +10,7 @@ summary: Décidez si vous souhaitez utiliser la procédure ARL qui met à niveau
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

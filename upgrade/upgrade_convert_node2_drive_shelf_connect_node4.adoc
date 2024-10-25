@@ -19,7 +19,7 @@ Convertissez le nœud 2 AFF A250 en tiroir disque NS224, puis connectez-vous au 
 . Insérez le module de tiroir NVMe (NSM) dans la baie du node2.
 . Connectez le NSM au nœud 4 en connectant le port e0c 100 GbE du nœud 4 au port e0a de NSM B.
 +
-image::../upgrade/media/a400_with_ns224_shelf.PNG[AFF A400 avec un tiroir NS224]
+image:a400_with_ns224_shelf.PNG["AFF A400 avec un tiroir NS224"]
 
 . Connectez le câblage 25 GbE des ports e0c et e0d du nœud 2 à tous les ports intégrés 25 GbE (e0e, e0f, e0g ou e0h) du nœud 4 pour créer des connexions temporaires au cluster.
 +

@@ -10,7 +10,7 @@ summary: 'Envoyez un message AutoSupport pour le nœud 2 et transférez les agr�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

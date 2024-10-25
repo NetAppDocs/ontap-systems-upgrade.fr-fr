@@ -10,7 +10,7 @@ summary: 'Lorsque vous utilisez l"ARL pour mettre à niveau les modèles de cont
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

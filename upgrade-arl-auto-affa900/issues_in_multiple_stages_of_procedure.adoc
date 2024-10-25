@@ -10,7 +10,7 @@ summary: 'Informations sur les problèmes susceptibles de se produire lors de l"
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: 'Informez le support technique de NetApp que la maintenance est en cour
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

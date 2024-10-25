@@ -10,7 +10,7 @@ summary: 'Vous pouvez préparer manuellement le nœud d"origine pour la mise à 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

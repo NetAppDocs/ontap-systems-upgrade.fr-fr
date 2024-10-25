@@ -10,7 +10,7 @@ summary: 'Étape 4 : processus de mise à niveau manuelle d"ARL sur les contrôl
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

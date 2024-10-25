@@ -10,7 +10,7 @@ summary: 'Configurez les ports FC intégrés des nœuds 3, les ports UTA/UTA2 ou
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

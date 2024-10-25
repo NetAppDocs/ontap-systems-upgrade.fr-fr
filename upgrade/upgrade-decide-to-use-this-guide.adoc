@@ -20,7 +20,7 @@ Suivez cette procédure pour mettre à niveau le matériel du contrôleur dans l
 * Lorsque vous effectuez une mise à niveau vers un système introduit dans ONTAP 9.15.1, ONTAP convertit l'efficacité du stockage des volumes existants et applique les nouvelles fonctionnalités d'efficacité du stockage qui utilisent la fonctionnalité de déchargement matériel. Il s'agit d'un processus automatique en arrière-plan, sans impact visible sur les performances du système.
 +
 ** Dans le cas d'un système AFF A70, AFF A90 ou AFF A1K, ONTAP convertit l'efficacité du stockage de tous les volumes à provisionnement fin existants, y compris ceux qui n'utilisent pas l'efficacité du stockage.
-** Pour les systèmes FAS70 et FAS90, ONTAP ne convertit que l'efficacité du stockage des volumes existants à provisionnement fin pour lesquels l'efficacité du stockage était déjà activée avant la mise à niveau.
+** Pour les systèmes FAS70 et FAS90, ONTAP ne convertit que l'efficacité du stockage des volumes existants à provisionnement fin pour lesquels l'efficacité du stockage est activée avant la mise à niveau.
 +
 link:https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["En savoir plus sur l'efficacité du stockage"^].
 

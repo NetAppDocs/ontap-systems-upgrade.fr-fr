@@ -10,7 +10,7 @@ summary: 'Désactivez la paire haute disponibilité avec le nœud 2 et arrêtez 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

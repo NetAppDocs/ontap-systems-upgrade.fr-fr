@@ -10,7 +10,7 @@ summary: 'Informations sur les problèmes susceptibles de se produire lors d"une
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

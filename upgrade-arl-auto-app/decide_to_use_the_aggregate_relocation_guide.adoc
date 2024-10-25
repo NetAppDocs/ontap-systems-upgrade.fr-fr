@@ -10,7 +10,7 @@ summary: 'Vous pouvez décider de mettre à niveau les contrôleurs exécutant O
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

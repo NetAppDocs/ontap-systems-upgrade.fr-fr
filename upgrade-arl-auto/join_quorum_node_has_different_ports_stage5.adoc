@@ -10,7 +10,7 @@ summary: 'Au cours de la phase 5, vérifiez que le nouveau nœud rejoint le quor
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

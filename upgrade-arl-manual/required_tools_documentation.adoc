@@ -10,7 +10,7 @@ summary: 'Vous devez disposer de certains outils et de la documentation nécessa
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

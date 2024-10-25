@@ -10,49 +10,22 @@ indexpage:
   tiles:
   - title: Commencez
     links:
-    - title: Notes de version de ONTAP
-      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
     - title: Choisissez la procédure de mise à niveau matérielle de votre contrôleur
       url: "/choose_controller_upgrade_procedure.html"
-  - title: Effectuez une mise à niveau en déplaçant les agrégats sur des systèmes
-      exécutant ONTAP 9.8 et versions ultérieures
-    links:
-    - title: Utilisez les commandes « System Controller replace » pour mettre à niveau
-        le matériel du contrôleur introduit dans ONTAP 9.15.1
-      url: "/upgrade-arl-auto-app-9151/index.html"
-    - title: Utilisez les commandes « system Controller replace » pour mettre à niveau
-        les modèles de contrôleurs d'un même châssis
-      url: "/upgrade-arl-auto-affa900/index.html"
-    - title: Utiliser les commandes « system Controller replace » (la plupart des
-        systèmes)
-      url: "/upgrade-arl-auto-app/index.html"
-    - title: Utiliser des commandes manuelles
-      url: "/upgrade-arl-manual-app/index.html"
-  - title: Mise à niveau en déplaçant les agrégats sur les systèmes exécutant ONTAP
-      9.7 et versions antérieures
-    links:
-    - title: Utilisez les commandes « system Controller replace »
-      url: "/upgrade-arl-auto/index.html"
-    - title: Utiliser des commandes manuelles
-      url: "/upgrade-arl-manual/index.html"
-  - title: Effectuez des mises à niveau en déplaçant du stockage ou des volumes
-    links:
-    - title: Mettre à niveau le matériel du contrôleur
-      url: "/upgrade/upgrade-decide-to-use-this-guide.html"
-    - title: Mise à niveau de AFF A250 vers AFF A400 en convertissant en tiroir disque
-      url: "/upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html"
-  - title: Mettre à niveau les systèmes avec une configuration MetroCluster
-    links:
-    - title: Sélectionnez la procédure de mise à niveau pour votre configuration MetroCluster
+    - title: Notes de version de ONTAP
+      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
+    - title: Mettre à niveau les systèmes avec une configuration MetroCluster
       url: https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html
-  - title: Ressources supplémentaires
+  - title: En savoir plus sur les systèmes et les logiciels ONTAP
     links:
     - title: Documentation des systèmes matériels ONTAP
       url: https://docs.netapp.com/us-en/ontap-systems/index.html
-    - title: Documentation des commutateurs pour les systèmes matériels ONTAP
+    - title: Documentation sur les commutateurs ONTAP
       url: https://docs.netapp.com/us-en/ontap-systems-switches/index.html
     - title: Documentation du logiciel ONTAP
       url: https://docs.netapp.com/us-en/ontap/index.html
+  - title: Ressources supplémentaires
+    links:
     - title: NetApp Hardware Universe
       url: https://hwu.netapp.com/
     - title: NetApp Active IQ Config Advisor

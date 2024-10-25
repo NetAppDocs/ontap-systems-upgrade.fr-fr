@@ -10,7 +10,7 @@ summary: Après avoir remplacé les modules système du nœud 2 correspondants l
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Avant de commencer la mise à niveau, vérifiez que vous disposez du ma
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

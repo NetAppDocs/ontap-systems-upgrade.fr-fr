@@ -10,7 +10,7 @@ summary: 'Vous pouvez configurer des ports FC intégrés node4, des ports UTA/UT
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

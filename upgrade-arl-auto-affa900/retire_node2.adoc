@@ -10,7 +10,7 @@ summary: 'Arrêtez le nœud 2 et retirez-le du rack ou du châssis lorsque vous 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

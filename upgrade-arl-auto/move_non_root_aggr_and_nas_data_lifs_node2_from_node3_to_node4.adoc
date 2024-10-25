@@ -10,7 +10,7 @@ summary: 'Lors de la mise à niveau des contrôleurs exécutant ONTAP 9.5 vers 9
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
