@@ -5194,7 +5194,6 @@ Avec ONTAP 9.8, le<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" " categ
   <block id="f43de3716b79c8e43965aeacd1411a48" category="cell">AFF A300, AFF A400, AFF A700</block>
   <block id="5fa70989a3e04b27c407da750f3d94fe" category="cell">AFF A70, AFF A90, AFF A1K</block>
   <block id="ccf78fb30997636f483e58875cad308b" category="cell">AFF A90, AFF A1K</block>
-  <block id="fd63300d56f60b7a5ff6928593e24ff3" category="paragraph">Les modèles AFF A70 et AFF A90 sont des systèmes intégrés dotés de deux disques intégrés et de deux contrôleurs dans un seul châssis.</block>
   <block id="e0acd4a9bc97511cc024bf1c07dc8536" category="list-text">Si vous effectuez une mise à niveau vers un AFF A70 ou un AFF A90 avec des disques internes, vous devez retirer la propriété de ces disques avant de procéder à une mise à niveau. Une fois la mise à niveau terminée, vous pouvez attribuer les disques internes aux nœuds AFF A70 ou AFF A90 et les utiliser pour créer des agrégats de données. La migration des agrégats racine ou de données vers des disques internes n'est pas obligatoire.</block>
   <block id="9f63491a94b75b12a4f685455f82295c" category="list-text">Si vous effectuez une mise à niveau vers un AFF A70 ou un AFF A90 sans disques internes, vous n'avez pas besoin d'affecter de disques internes après avoir terminé la mise à niveau.</block>
   <block id="1c6b77da3506137a2164e23d95b49133" category="list-text">Les systèmes AFF A70, AFF A90, AFF A1K, FAS70 et FAS90 partagent des ports réseau de 100 GbE pour les connexions au cluster et haute disponibilité. Ces systèmes peuvent prendre en charge des connexions de cluster 10 GbE ou 25 GbE avec les anciens switchs de cluster. Cependant, NetApp recommande de mettre à jour les vitesses de cluster 100 GbE lorsque les switchs 10 GbE et 25 GbE ne sont plus nécessaires. Pour plus d'informations, consultez les articles suivants de la base de connaissances :</block>
@@ -5250,4 +5249,5 @@ Avec ONTAP 9.8, le<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" " categ
   <block id="a8146cc42b0ac83dacd0c674c2e19baa" category="paragraph"><block ref="a8146cc42b0ac83dacd0c674c2e19baa" category="inline-image-macro-rx" type="image"></block></block>
   <block id="fd4a2232b0a4fad7f2f7a5207ee94001" category="sidebar">En savoir plus sur les systèmes et les logiciels ONTAP</block>
   <block id="743b2bde29eae11996923323c6b89672" category="sidebar">Documentation sur les commutateurs ONTAP</block>
+  <block id="91c8d030b7d32b838af9bb14f227c952" category="paragraph">Les modèles AFF A70 et AFF A90 sont des systèmes intégrés dotés de deux contrôleurs dans une configuration haute disponibilité et de disques intégrés dans un seul châssis.</block>
 </blocks>
