@@ -33,7 +33,7 @@ Les références suivantes vous aident à effectuer les connexions de câble app
 +
 ** _Instructions d'installation et de configuration_ ou _exigences d'installation et de référence de virtualisation FlexArray_ pour la plate-forme node3
 ** Procédure appropriée de tiroir disque
-** La documentation _High Availability Management_
+** La documentation _HA pair Management_
 
 
 +

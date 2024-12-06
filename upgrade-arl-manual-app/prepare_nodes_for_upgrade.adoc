@@ -19,7 +19,7 @@ Avant de remplacer les nœuds d'origine, vous devez confirmer qu'ils sont dans u
 .Étapes
 . Vérifiez que chaque nœud d'origine dispose de ressources suffisantes pour prendre en charge de manière adéquate la charge de travail des deux nœuds en mode basculement.
 +
-Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _High Availability Management_ et suivez la section _Best Practices for HA binômes. Aucun des nœuds d'origine ne doit fonctionner à plus de 50 % d'utilisation. Si un nœud fonctionne à moins de 50 %, il peut gérer les charges des deux nœuds lors de la mise à niveau du contrôleur.
+Reportez-vous link:other_references.html["Références"]au lien vers _HA pair Management_ et suivez la section _meilleures pratiques pour les paires HA_. Aucun des nœuds d'origine ne doit fonctionner à plus de 50 % d'utilisation. Si un nœud fonctionne à moins de 50 %, il peut gérer les charges des deux nœuds lors de la mise à niveau du contrôleur.
 
 . Pour créer une base de performances pour les nœuds d'origine, procédez comme suit :
 +
@@ -162,7 +162,7 @@ node1          node2          true     Connected to node2, Partial giveback
 node2          node1          true     Connected to node1
 ....
 +
-Si l'un des nœuds est en cours de rétablissement partiel, utilisez le `storage failover giveback` pour effectuer le retour, puis utilisez la commande `storage failover show-giveback` commande afin de s'assurer qu'aucun agrégat n'a toujours besoin d'être redonné. Pour obtenir des informations détaillées sur les commandes, reportez-vous à link:other_references.html["Références"] Pour établir un lien vers _High Availability Management_.
+Si l'un des nœuds est en mode de rétablissement partiel, utilisez la `storage failover giveback` commande pour effectuer le rétablissement, puis utilisez `storage failover show-giveback` la commande pour vérifier qu'aucun agrégat ne doit encore être remis. Pour plus d'informations sur les commandes, reportez-vous à la section link:other_references.html["Références"]lien vers _HA pair Management_.
 
 . [[man_prepare_nodes_step9]]Confirmez que ni le nœud1 ni le nœud2 ne possède les agrégats pour lesquels il s'agit du propriétaire actuel (mais pas le propriétaire du domicile) :
 +
@@ -251,7 +251,7 @@ node1    None                None
 node2    None                None
 ....
 +
-Si des disques sont manquants, reportez-vous à la section link:other_references.html["Références"] Pour lier la gestion des _disques et des agrégats à la CLI_, _gestion du stockage logique avec CLI_ et _High Availability management_ afin de configurer le stockage pour la paire HA.
+Si des disques sont manquants, reportez-vous à la section link:other_references.html["Références"] pour établir un lien vers la gestion des disques et des agrégats avec l'interface de ligne de commande_, _gestion logique du stockage avec l'interface de ligne de commande_ et _gestion des paires HA_ pour configurer le stockage de la paire HA.
 
 . Confirmer que les nœuds 1 et 2 sont en bonne santé et admissibles à participer au groupe :
 +

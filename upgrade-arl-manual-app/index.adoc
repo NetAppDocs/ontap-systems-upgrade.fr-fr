@@ -25,6 +25,26 @@ Cette procédure décrit la procédure de mise à niveau du matériel du contrô
 * Du système FAS au système FAS
 * Du système FAS à un système doté du logiciel de virtualisation FlexArray ou d'un système V-Series
 * Du système AFF au système AFF
++
+Vous pouvez uniquement mettre à niveau vers un système de remplacement de la même série :
+
++
+** Du système AFF A-Series au système AFF A-Series
+** Du système AFF C-Series au système AFF C-Series
+
+
+* Du système ASA au système ASA
++
+La mise à niveau de ASA vers un système de remplacement ASA r2 n'est pas prise en charge. Pour plus d'informations sur la migration des données de ASA vers ASA r2, reportez-vous à link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Activez l'accès aux données depuis des hôtes SAN vers votre système de stockage ASA r2"^]la section .
+
++
+Vous pouvez uniquement mettre à niveau vers un système de remplacement de la même série :
+
++
+** Du système ASA A-Series au système ASA A-Series
+** Du système ASA C-Series au système ASA C-Series
+
+
 * Système avec le logiciel de virtualisation FlexArray ou un système V-Series vers un système FAS, à condition que le système doté du logiciel de virtualisation FlexArray ou d'un système V-Series ne dispose pas de LUN de baie.
 * Système V-Series à un système avec le logiciel de virtualisation FlexArray ou un système V-Series
 

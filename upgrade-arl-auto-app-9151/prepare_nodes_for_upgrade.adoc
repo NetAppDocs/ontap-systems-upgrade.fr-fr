@@ -77,7 +77,7 @@ Le système exécute les contrôles préalables suivants ; notez le résultat de
 | Vérification de l'état de l'agrégat | Si les nœuds remplacés incluent des agrégats dont ils ne sont pas le propriétaire du site, la tâche échoue. Les nœuds ne doivent pas posséder d'agrégats non locaux. 
 
 
-| Vérification de l'état du disque | Si l'un des nœuds remplacés contient des disques manquants ou en panne, la tâche échoue. Si des disques sont manquants, reportez-vous à la section link:other_references.html["Références"] Pour lier la gestion des _disques et des agrégats à la CLI_, _gestion du stockage logique avec CLI_ et _High Availability management_ afin de configurer le stockage pour la paire HA. 
+| Vérification de l'état du disque | Si l'un des nœuds remplacés contient des disques manquants ou en panne, la tâche échoue. Si des disques sont manquants, reportez-vous à la section link:other_references.html["Références"] pour établir un lien vers la gestion des disques et des agrégats avec l'interface de ligne de commande_, _gestion logique du stockage avec l'interface de ligne de commande_ et _gestion des paires HA_ pour configurer le stockage de la paire HA. 
 
 
 | Vérification de l'état de la LIF de données | Vérifie si l'un des nœuds remplacés dispose de LIF de données non locales. Les nœuds ne doivent pas contenir de LIFs de données pour lesquelles ils ne sont pas le propriétaire. Si l'un des nœuds contient des LIFs de données non locales, la tâche échoue. 

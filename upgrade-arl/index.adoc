@@ -81,7 +81,7 @@ Si votre scénario de mise à niveau est répertorié dans la matrice de systèm
 
 
 | FAS2620 | FAS2820  a| 
-9.11.1P7 (FAS2620)
+9.11.1P7 ou versions ultérieures de correctifs (FAS2620)
 
 *Remarque* : FAS2620 ne prend pas en charge les versions ONTAP ultérieures à 9.11.1.
 

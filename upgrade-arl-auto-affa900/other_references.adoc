@@ -46,7 +46,7 @@ Le contenu spécifique à cette mise à niveau est répertorié dans le tableau 
 | link:https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["Exigences d'installation et référence de la virtualisation FlexArray"^] | Contient des instructions de câblage et d'autres informations relatives aux systèmes de virtualisation FlexArray. 
 
 
-| link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["Gestion de la haute disponibilité"^] | Décrit l'installation et la gestion de configurations en cluster haute disponibilité, y compris le basculement du stockage et le basculement/rétablissement. 
+| link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["Gestion des paires HAUTE DISPONIBILITÉ"^] | Décrit l'installation et la gestion de configurations en cluster haute disponibilité, y compris le basculement du stockage et le basculement/rétablissement. 
 
 
 | link:https://docs.netapp.com/us-en/ontap/volumes/index.html["Gestion du stockage logique avec l'interface de ligne de commandes"^] | Décrit la manière de gérer efficacement vos ressources de stockage logiques à l'aide de volumes, de volumes FlexClone, de fichiers et de LUN, Volumes FlexCache, déduplication, compression, qtrees et quotas. 

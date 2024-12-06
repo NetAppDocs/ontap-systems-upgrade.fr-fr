@@ -52,7 +52,7 @@ Les références suivantes vous aident à effectuer les connexions de câble app
 +
 ** _Instructions d'installation et de configuration_ ou _exigences et références d'installation de la virtualisation FlexArray_ pour la plate-forme node4
 ** Procédure appropriée de tiroir disque
-** La documentation _High Availability Management_
+** La documentation _HA pair Management_
 +
 Reliez les connexions suivantes :
 

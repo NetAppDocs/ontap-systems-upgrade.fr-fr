@@ -27,6 +27,10 @@ NOTE: Vous pouvez également mettre à niveau un système AFF A800 vers un syst�
 
 * AFF C190, AFF C250 et AFF C800
 * ASA A150, ASA A250, ASA A800 et ASA AFF A220
++
+
+NOTE: La mise à niveau de ASA vers un système de remplacement ASA r2 n'est pas prise en charge. Pour plus d'informations sur la migration des données de ASA vers ASA r2, reportez-vous à link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Activez l'accès aux données depuis des hôtes SAN vers votre système de stockage ASA r2"^]la section .
+
 
 
 Si votre système n'est pas répertorié, consultez le https://hwu.netapp.com["NetApp Hardware Universe"^] pour vérifier s'il dispose de disques internes.
@@ -42,6 +46,10 @@ Choisissez une procédure de mise à niveau pour un système avec uniquement des
 * AFF A300, AFF A320, AFF A400, AFF A700 et AFF A900
 * AFF C400
 * ASA A400, ASA A900 et ASA AFF A700
++
+
+NOTE: La mise à niveau de ASA vers un système de remplacement ASA r2 n'est pas prise en charge. Pour plus d'informations sur la migration des données de ASA vers ASA r2, reportez-vous à link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Activez l'accès aux données depuis des hôtes SAN vers votre système de stockage ASA r2"^]la section .
+
 
 
 Si votre système n'est pas répertorié, consultez le https://hwu.netapp.com["NetApp Hardware Universe"^] pour vérifier s'il n'a que des lecteurs externes.

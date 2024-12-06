@@ -26,10 +26,10 @@ NOTE: Si vous effectuez une mise à niveau vers un système contenant les deux n
 
 . [[auto_install3_step3]]Cable node3, déplaçant les connexions du node1 vers le node3.
 +
-Reliez les connexions suivantes à l'aide des instructions _installation and Setup_ ou des instructions _FlexArray Virtualization installation conditions requises et Reference_ pour la plateforme node3, du document du tiroir disque approprié et de _High Availability Management_.
+Reliez les connexions suivantes à l'aide des instructions _installation et configuration_ ou _FlexArray Virtualization installation Requirements and Reference_ pour la plate-forme NODE3, du document de tiroir disque approprié et de la _gestion des paires HA_.
 
 +
-Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers les spécifications d'installation de la virtualisation et les références_ et _gestion de la haute disponibilité_ de FlexArray.
+Reportez-vous link:other_references.html["Références"]au lien vers les _exigences et références relatives à l'installation de la virtualisation FlexArray_ et _gestion des paires HA_.
 
 +
 ** Console (port de gestion à distance)
