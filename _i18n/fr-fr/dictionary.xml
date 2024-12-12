@@ -2929,7 +2929,6 @@
   <block id="51108f40a613018fdc6b3ad89f42122e" category="list-text">Cette procédure suppose que le matériel de remplacement du contrôleur est nouveau et qu'il n'a pas été utilisé dans un autre système. Étapes requises pour préparer les contrôleurs utilisés avec le<block ref="b433b76417b4f08166eb90cef3aa2a31" prefix=" " category="inline-code"></block> la commande n'est pas incluse dans cette procédure. Vous devez contacter le support technique si le matériel de remplacement de contrôleur était précédemment utilisé dans un autre cluster ONTAP ou en tant que système à un seul nœud autonome.</block>
   <block id="eb51502469d00e14522e17bfff4124ad" category="list-text">Vous ne souhaitez pas ajouter de nouveaux contrôleurs et migrer les données en utilisant les déplacements de volumes pour une nouvelle paire haute disponibilité vers le cluster.</block>
   <block id="a3bad37bbfc8cbb39ebdfc42ccfa6bec" category="list-text">Vous avez de l'expérience dans l'administration de ONTAP et vous êtes à l'aise avec les risques de travailler en mode de privilèges de diagnostic.</block>
-  <block id="d94e9d7914bbd98510d8cb9e0a6d08b1" category="list-text">Vous utilisez un commutateur partagé pour l'interconnexion de cluster et le stockage Ethernet.</block>
   <block id="2ed045fa4ee3544c7e5a632a26d55b9f" category="paragraph">Depuis ONTAP 9.10.1, vous pouvez utiliser des serveurs KMIP (Key Management Interoperability Protocol) pour gérer les clés d'authentification.</block>
   <block id="5077f34346404c6e6b1972588ad2c047" category="list-text">Lancer le processus de remplacement du contrôleur en entrant la commande suivante en mode de privilège avancé sur la ligne de commande ONTAP :</block>
   <block id="8a4f2711fdfcfeea79b7fe0124a6d453" category="list-text">Sélectionnez<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block>. Vous verrez le résultat suivant :</block>
@@ -5258,4 +5257,5 @@ Avec ONTAP 9.8, le<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" " categ
   <block id="04a7d3ed17290dfa8c947b7265180931" category="list-text">Du système ASA au système ASA</block>
   <block id="6cc3f2b4a05b456b1f754eaf8cb03200" category="list-text">Du système ASA A-Series au système ASA A-Series</block>
   <block id="af2a1a7e91ed894338bb4bd32c3e13d0" category="list-text">Du système ASA C-Series au système ASA C-Series</block>
+  <block id="bd78dcbf9a0f6c9dff2586a02d89b664" category="list-text">Vos systèmes exécutent ONTAP 9.15.1 ou une version ultérieure et ils utilisent des commutateurs Ethernet pour se connecter au stockage connecté Ethernet.</block>
 </blocks>
