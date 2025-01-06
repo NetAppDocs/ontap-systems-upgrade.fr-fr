@@ -27,11 +27,13 @@ Lors de la phase 6, vous vérifiez que les nouveaux nœuds sont correctement con
 
 [NOTE]
 ====
-Les systèmes AFF A70, AFF A90, AFF A1K, FAS70 et FAS90 partagent des ports réseau de 100 GbE pour les connexions au cluster et haute disponibilité. Ces systèmes peuvent prendre en charge des connexions de cluster 10 GbE ou 25 GbE avec les anciens switchs de cluster. Cependant, NetApp recommande de mettre à jour les vitesses de cluster 100 GbE lorsque les switchs 10 GbE et 25 GbE ne sont plus nécessaires. Pour plus d'informations, consultez les articles suivants de la base de connaissances :
+Les systèmes AFF A20, AFF A50, AFF A70, AFF A90, AFF A1K, FAS70 et FAS90 partagent des ports réseau de 100 GbE pour les connexions en cluster et haute disponibilité. Ces systèmes peuvent prendre en charge des connexions de cluster 10 GbE ou 25 GbE avec les anciens switchs de cluster. Cependant, NetApp recommande de mettre à jour les vitesses de cluster 100 GbE lorsque les switchs 10 GbE et 25 GbE ne sont plus nécessaires. Pour plus d'informations, consultez les articles suivants de la base de connaissances :
 
 * link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_configure_10G_or_25G_cluster_ports_on_a_new_cluster_setup_on_AFF_ASA_A1K_A90_A70_FAS90_FAS70["Comment configurer les ports de cluster 10G ou 25G sur une nouvelle configuration de cluster sur AFF/ASA A1K, A90, A70, FAS90, FAS70"^]
 * link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_convert_an_existing_cluster_from_10G_or_25G_cluster_ports_to_40G_or_100G_cluster_ports_on_an_AFF_ASA_A1K_A90_A70_FAS90_FAS70["Comment convertir un cluster existant de ports de type 10 ou 25 Gbit/s en ports de cluster 40 Gbit/s ou 100 Gbit/s sur un système AFF/ASA A1K, A90, A70, FAS90, FAS70"^]
 
+
+Le système AFF A20 partage des ports réseau 10 GbE et 25 GbE pour les connexions en cluster et haute disponibilité. Il s'agit des seules connexions de cluster de ports réseau prises en charge par un système AFF A20.
 
 Si vous ne pouvez pas relier les ports e0a ou e0b du nœud existant aux ports de cluster du nouveau nœud, reportez-vous à la section link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/JiraNgage/CONTAP-166978["Bugs NetApp ID de bug en ligne CONTAP-166978"^].
 

@@ -29,7 +29,7 @@ TIP: La baie B se trouve sur le châssis, en bas.
 
 +
 
-WARNING: N'insérez pas complètement le module de contrôleur dans le châssis tant que vous n'y êtes pas invité.
+WARNING: N'insérez pas complètement le module de contrôleur dans le châssis tant que vous n'y êtes pas invité plus tard dans la procédure.
 
 . Reliez les ports de gestion et de console au module de contrôleur node2.
 +
@@ -42,7 +42,7 @@ Le loquet de verrouillage s'élève lorsque le module de contrôleur est bien en
 
 +
 
-NOTE: Pour éviter d'endommager les connecteurs, n'utilisez pas de force excessive lorsque vous faites glisser le module de contrôleur dans le châssis.
+NOTE: Pour éviter d'endommager les connecteurs, ne forcez pas trop lorsque vous faites glisser le module de contrôleur dans le châssis.
 
 . Connectez la console série dès que le module est assis et soyez prêt à interrompre AUTOBOOT du nœud 1.
 . Après l'interruption DE L'AUTOBOOT, le nœud 2 s'arrête à l'invite DU CHARGEUR. Si vous n'interrompez pas LE démarrage AUTOMATIQUE à temps et que le démarrage du nœud 2 commence, attendez l'invite et appuyez sur Ctrl-C pour accéder au menu de démarrage. Une fois que le nœud s'arrête au menu de démarrage, utilisez l'option `8` pour redémarrer le nœud et interrompre le DÉMARRAGE AUTOMATIQUE pendant le redémarrage.

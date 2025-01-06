@@ -35,7 +35,7 @@ Vous pouvez uniquement mettre à niveau vers un système de remplacement de la m
 
 * Du système ASA au système ASA
 +
-La mise à niveau de ASA vers un système de remplacement ASA r2 n'est pas prise en charge. Pour plus d'informations sur la migration des données de ASA vers ASA r2, reportez-vous à link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Activez l'accès aux données depuis des hôtes SAN vers votre système de stockage ASA r2"^]la section .
+Les mises à niveau ASA vers un système de remplacement ASA r2 ne sont pas prises en charge. Pour plus d'informations sur la migration des données de ASA vers ASA r2, reportez-vous à link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Activez l'accès aux données depuis des hôtes SAN vers votre système de stockage ASA r2"^]la section .
 
 +
 Vous pouvez uniquement mettre à niveau vers un système de remplacement de la même série :

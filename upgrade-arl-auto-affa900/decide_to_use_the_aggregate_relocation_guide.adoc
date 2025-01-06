@@ -16,40 +16,19 @@ summary: Décidez si vous souhaitez utiliser la procédure ARL qui met à niveau
 [role="lead"]
 Ce contenu explique comment mettre à niveau les contrôleurs de stockage d'une paire haute disponibilité tout en conservant toutes les données et les disques existants. Il s'agit d'une procédure complexe qui ne doit être utilisée que par des administrateurs expérimentés.
 
+
+
+== Pris en charge pour les mises à niveau ARL
+
 Vous pouvez utiliser cette procédure dans les circonstances suivantes :
 
-* Vous effectuez l'une des mises à niveau suivantes du contrôleur :
+* La mise à niveau du contrôleur est répertoriée dans le link:index.html#supported-systems,["matrice des systèmes pris en charge"].
+* Vous avez vérifié auprès de votre ingénieur commercial NetApp que vous avez reçu le matériel nécessaire à la mise à niveau du contrôleur :
 +
-[cols="50,50"]
-|===
-| Ancien contrôleur | Remplacement du contrôleur 
-
-
-| AFF A800 | AFF A70 et AFF A90 
-
-
-| AFF A220 configuré en tant que ASA | ASA A150 
-
-
-| AFF A220, AFF A200 ou AFF C190 | AFF A150 
-
-
-| FAS2620 ou FAS2720 | FAS2820 
-
-
-| AFF A700 configuré en tant que ASA | ASA A900 
-
-
-| AFF A700 | AFF A900 
-
-
-| FAS9000 | FAS9500 
-|===
-* Vous avez vérifié auprès de votre ingénieur commercial NetApp que vous avez reçu le matériel nécessaire à la mise à niveau de votre contrôleur :
-+
-** Deux contrôleurs AFF A90 ou deux contrôleurs AFF A70 et tous les modules d'E/S requis pour la mise à niveau. Longueur requise de câbles 100 GbE.
+** Deux contrôleurs AFF A90, AFF A70 ou AFF C80 et tous les modules d'E/S. Longueur requise de câbles 100 GbE.
+** Deux contrôleurs et modules d'E/S AFF A50, AFF A30, AFF C30 ou AFF C60. Les câbles requis.
 ** Contrôleur ASA A150, AFF A150 ou FAS2820
-** Contrôleurs ASA A900, AFF A900 ou FAS9500 et modules NVRAM ainsi que les pièces requises pour la mise à niveau
+** Contrôleur ASA A900, AFF A900 ou FAS9500 et modules NVRAM et leurs pièces
 
 
 * Vous exécutez la version minimale de ONTAP pour votre mise à niveau. Pour plus d'informations, voir link:index.html["Présentation"].
@@ -58,12 +37,18 @@ Vous pouvez utiliser cette procédure dans les circonstances suivantes :
 * Vos systèmes exécutent ONTAP 9.15.1 ou une version ultérieure et ils utilisent des commutateurs Ethernet pour se connecter au stockage connecté Ethernet.
 
 
+
+
+== Non pris en charge pour les mises à niveau ARL
+
 Vous ne pouvez pas utiliser cette procédure dans les circonstances suivantes :
 
-* Le logiciel de virtualisation FlexArray est utilisé sur les systèmes AFF A800, AFF A700 ou FAS9000.
+* Vous utilisez le logiciel de virtualisation FlexArray sur le système existant en cours de mise à niveau.
+* Vous mettez à niveau une configuration IP MetroCluster.
++
+Pour mettre à niveau une configuration IP MetroCluster, reportez-vous  à la section link:other_references.html["Références"] pour accéder au contenu _MetroCluster Upgrade and expansion_.
 
 
-Pour la mise à niveau des configurations MetroCluster IP sur les systèmes AFF A800, AFF A700 ou FAS9000, reportez-vous au link:other_references.html["Références"] lien vers le contenu _mise à niveau et extension_MetroCluster.
 
 
 NOTE: Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE).

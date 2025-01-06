@@ -1,7 +1,7 @@
 ---
 section: upgrade-arl-auto-app-9151
 title: Utilisez les commandes « System Controller replace » pour mettre à niveau le
-  matériel du contrôleur introduit dans ONTAP 9.15.1
+  matériel du contrôleur introduit dans ONTAP 9.15.1 et versions ultérieures
 entries:
 - title: Présentation
   url: "/upgrade-arl-auto-app-9151/index.html"

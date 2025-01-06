@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-affa900/cable-node1-for-shared-cluster-HA-storage.ht
 keywords: cluster, ha, aff, a800, shared, storage, data, management 
 summary: Connectez le cluster, la haute disponibilité, le stockage et les connexions de données précédemment connectés au nœud AFF A800 1 au nœud AFF A90 ou AFF A70 nouvellement installé 
 ---
-= Nœud de câblage 1 pour cluster partagé, haute disponibilité et stockage (mise à niveau de AFF A800 uniquement)
+= Câblage du nœud 1 pour la haute disponibilité et le stockage en cluster partagé
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,25 +14,41 @@ summary: Connectez le cluster, la haute disponibilité, le stockage et les conne
 
 
 [role="lead"]
-Connectez le cluster, les connexions haute disponibilité, de stockage, de données et de gestion précédemment connectées au nœud AFF A800 1 au nœud AFF A90 ou AFF A70 nouvellement installé.
+Si vous effectuez l'une des mises à niveau suivantes, vous devez connecter le cluster, les connexions haute disponibilité, de stockage, de données et de gestion précédemment connectées au nœud 1 du système existant au nœud 1 nouvellement installé sur le système de remplacement.
 
+[cols="35,65"]
+|===
+| Système existant | Système de remplacement 
+
+
+| AFF A250 | AFF A30, AFF A50 
+
+
+| AFF C250 | AFF C30, AFF C60 
+
+
+| AFF A800 | AFF A70, AFF A90 
+
+
+| AFF C800 | C80 
+|===
 
 
 == Connectez les ports e0M et BMC
 
-La baie AFF A800 dispose d'un port de gestion (e0M) et d'un port BMC. Sur les modèles AFF A90 et AFF A70, les ports e0M et BMC sont combinés et accessibles via le port « clé ». Vous devez vous assurer que les ports e0M et BMC sont connectés au même commutateur et sous-réseau sur le AFF A800 avant de vous connecter au AFF A90 ou au AFF A70.
+Si le système existant dispose d'un port de gestion (e0M) et d'un port BMC. Sur le système de remplacement, les ports e0M et BMC sont combinés et accessibles par le biais du port de clé anglaise. Vous devez vous assurer que les ports e0M et BMC sont connectés au même commutateur et au même sous-réseau sur le système existant avant de vous connecter au système de remplacement.
 
 [cols="35,65"]
 |===
 | Si... | Alors... 
 
 
-| Les adresses IP e0M et BMC se trouvent sur le même sous-réseau IP | Connectez le port e0M ou le port BMC du système AFF A800 au port « clé » du système AFF A90 ou AFF A70. 
+| Les adresses IP e0M et BMC se trouvent sur le même sous-réseau IP | Connectez le port e0M ou BMC du système existant au port de « clé » du système de remplacement. 
 
 
 | Les adresses IP e0M et BMC se trouvent sur des sous-réseaux différents  a| 
 . Fusionnez les adresses IP e0M et BMC dans un sous-réseau IP.
-. Connectez le port e0M ou le port BMC du système AFF A800 au port « clé » du système AFF A90 ou AFF A70.
+. Connectez le port e0M ou BMC du système existant au port de « clé » du système de remplacement.
 
 
 |===
@@ -40,10 +56,10 @@ La baie AFF A800 dispose d'un port de gestion (e0M) et d'un port BMC. Sur les mo
 
 == Connexion à un cluster à 2 nœuds sans commutateur
 
-Le tableau suivant présente l'utilisation des ports de switch pour les configurations en cluster à 2 nœuds sans commutateur.
+Les tableaux suivants présentent l'utilisation des ports de commutateur pour les configurations en cluster sans commutateur à 2 nœuds.
 
 |===
-| Port | Nœud AFF A800 | Nœud AFF A90 | Nœud AFF A70 
+| Port | AFF A800, AFF C800 | AFF A90 | AFF A70, AFF C80 
 
 
 | Cluster | e0a | e1a | e1a 
@@ -63,12 +79,27 @@ Le tableau suivant présente l'utilisation des ports de switch pour les configur
 
 | Ports de stockage Ethernet pour tiroirs NS224 | Tout port disponible | Reportez-vous à la section mappage de la connectivité du stockage Ethernet | Reportez-vous à la section mappage de la connectivité du stockage Ethernet 
 |===
+|===
+| Port | AFF A250, AFF C250 | AFF A30, AFF C30, AFF C60 | AFF A50 
+
+
+| Cluster et haute disponibilité | e0c | e4a | e4a 
+
+
+| Cluster et haute disponibilité | e0d | e2a (utiliser e4b s'il n'y a pas d'e2a) | e2a (utiliser e4b s'il n'y a pas d'e2a) 
+
+
+| Ports de stockage Ethernet | Tout port disponible | e3a, e3b | e3a, e3b 
+
+
+| Ports de stockage SAS | Tout port disponible | 3a, 3b | 3a, 3b 
+|===
 
 
 == Se connecter à un cluster relié par un commutateur
 
-Pour un cluster connecté par commutateur, vérifiez que vous répondez aux exigences suivantes :
+Dans le cas d'un cluster relié par commutateur, vérifiez que vous répondez aux exigences suivantes pour les nœuds AFF A30, AFF A50, AFF A70, AFF A90, AFF C30, AFF C60 ou AFF C80 (de remplacement) :
 
-* Les ports de cluster identiques des nœuds AFF A90 ou AFF A70 se trouvent sur le même commutateur. Par exemple, une fois la mise à niveau terminée, e1a sur le nœud 1 et e1a sur le nœud 2 doivent être connectés à un commutateur de cluster. De même, le second port de cluster des deux nœuds doit être connecté au second commutateur de cluster. La connexion croisée de ports cluster-haute disponibilité partagés, où e1a du nœud 1 est connecté au commutateur a et e1a du nœud 2 est connecté au commutateur B, entraîne des échecs de communication haute disponibilité.
-* Les nœuds AFF A90 et AFF A70 utilisent des ports Ethernet cluster-HA partagés. Vérifiez que les switchs de cluster sont installés avec un fichier de configuration de référence (RCF) qui prend en charge les ports cluster-HA partagés.
+* Les ports de cluster identiques sur le nœud de remplacement sont sur le même commutateur. Par exemple, une fois la mise à niveau terminée, e1a sur le nœud 1 et e1a sur le nœud 2 doivent être connectés à un commutateur de cluster. De même, le second port de cluster des deux nœuds doit être connecté au second commutateur de cluster. La connexion croisée de ports cluster-haute disponibilité partagés, où e1a du nœud 1 est connecté au commutateur a et e1a du nœud 2 est connecté au commutateur B, entraîne des échecs de communication haute disponibilité.
+* Le nœud de remplacement utilise des ports Ethernet haute disponibilité et partagés entre les clusters. Vérifiez que les switchs de cluster sont installés avec un fichier de configuration de référence (RCF) qui prend en charge les ports cluster-HA partagés.
 

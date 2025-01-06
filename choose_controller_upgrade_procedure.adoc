@@ -23,13 +23,17 @@ Choisissez une procédure de mise à niveau pour un système doté de disques in
 * AFF A150, AFF A200, AFF A220, AFF A250, AFF A700s, et AFF A800
 +
 
-NOTE: Vous pouvez également mettre à niveau un système AFF A800 vers un système AFF A70 ou AFF A90 à l'aide du déplacement d'agrégats. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["En savoir plus >>"].
+NOTE: Vous pouvez également mettre à niveau un système AFF A800 vers un système AFF A70 ou AFF A90 à l'aide du déplacement d'agrégats. link:upgrade-arl-auto-affa900/index.html["En savoir plus >>"].
 
 * AFF C190, AFF C250 et AFF C800
++
+
+NOTE: Vous pouvez également mettre à niveau une AFF A250 et une AFF C250 en utilisant la relocalisation des agrégats. link:upgrade-arl-auto-affa900/index.html["En savoir plus >>"].
+
 * ASA A150, ASA A250, ASA A800 et ASA AFF A220
 +
 
-NOTE: La mise à niveau de ASA vers un système de remplacement ASA r2 n'est pas prise en charge. Pour plus d'informations sur la migration des données de ASA vers ASA r2, reportez-vous à link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Activez l'accès aux données depuis des hôtes SAN vers votre système de stockage ASA r2"^]la section .
+NOTE: Les mises à niveau ASA vers un système de remplacement ASA r2 ne sont pas prises en charge. Pour plus d'informations sur la migration des données d'un système ASA vers un système ASA r2, reportez-vous à la section link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Activez l'accès aux données depuis des hôtes SAN vers votre système de stockage ASA r2"^].
 
 
 
@@ -48,7 +52,7 @@ Choisissez une procédure de mise à niveau pour un système avec uniquement des
 * ASA A400, ASA A900 et ASA AFF A700
 +
 
-NOTE: La mise à niveau de ASA vers un système de remplacement ASA r2 n'est pas prise en charge. Pour plus d'informations sur la migration des données de ASA vers ASA r2, reportez-vous à link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Activez l'accès aux données depuis des hôtes SAN vers votre système de stockage ASA r2"^]la section .
+NOTE: Les mises à niveau ASA vers un système de remplacement ASA r2 ne sont pas prises en charge. Pour plus d'informations sur la migration des données de ASA vers ASA r2, reportez-vous à link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Activez l'accès aux données depuis des hôtes SAN vers votre système de stockage ASA r2"^]la section .
 
 
 

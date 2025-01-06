@@ -26,13 +26,22 @@ Il existe plusieurs méthodes ARL pour mettre à niveau le matériel du contrôl
 
 == Utilisez les commandes « System Controller replace » avec ONTAP 9.15.1 ou une version ultérieure
 
-Si votre scénario de mise à niveau est répertorié dans la matrice de systèmes pris en charge suivante, passez à link:../upgrade-arl-auto-app-9151/index.html["Utilisez les commandes « System Controller replace » pour mettre à niveau le matériel du contrôleur introduit dans ONTAP 9.15.1"] pour lancer la procédure de mise à niveau.
+Si votre scénario de mise à niveau est répertorié dans la matrice de systèmes pris en charge suivante, passez à link:../upgrade-arl-auto-app-9151/index.html["Utilisez les commandes « System Controller replace » pour mettre à niveau le matériel du contrôleur introduit dans ONTAP 9.15.1 et versions ultérieures"] pour lancer la procédure de mise à niveau.
 
 .Afficher les systèmes pris en charge
 [%collapsible]
 ====
 |===
 | Contrôleur existant | Remplacement du contrôleur | Pris en charge à partir de ONTAP... 
+
+
+| AFF A400 | AFF A50 | 9.16.1 
+
+
+| AFF A300 | AFF A50 | 9.16.1 
+
+
+| AFF A220, AFF A150 | AFF A20 | 9.16.1 
 
 
 | FAS8200, FAS8300, FAS8700, FAS9000 | FAS70, FAS90 | 9.15.1P3 
@@ -59,6 +68,15 @@ Si votre scénario de mise à niveau est répertorié dans la matrice de systèm
 [cols="20,20,40"]
 |===
 | Ancien système | Système de remplacement | Versions de ONTAP prises en charge 
+
+
+| AFF C250 | AFF C30, AFF C60 | 9.16.1 et versions ultérieures 
+
+
+| AFF A250 | AFF A50, AFF A30 | 9.16.1 et versions ultérieures 
+
+
+| AFF C800 | AFF C80 | 9.16.1 et versions ultérieures 
 
 
 | AFF A800 | AFF A70 ou AFF A90 | 9.15.1 et versions ultérieures 

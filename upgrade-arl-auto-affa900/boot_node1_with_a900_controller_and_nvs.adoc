@@ -14,46 +14,22 @@ summary: 'Démarrez le nœud 1 avec les modules de contrôleur de remplacement l
 
 
 [role="lead"]
-Le nœud 1 avec les modules de remplacement est maintenant prêt à démarrer. Cette section fournit les étapes requises pour démarrer node1 avec les modules de remplacement pour les configurations de mise à niveau suivantes :
+Le nœud 1 avec les modules de remplacement est maintenant prêt à démarrer. Les modules de remplacement pris en charge sont répertoriés dans le link:index.html#supported-systems,["matrice des systèmes pris en charge"].
 
-[cols="35,65"]
-|===
-| Contrôleur de nœud 1 existant | Remplacement des modules système du nœud 1 
+[NOTE]
+====
+Lors du remplacement des modules de contrôleur, déplacez toutes les connexions de l'ancien vers le module de contrôleur de remplacement.
 
+Lors du remplacement du contrôleur et des modules NVRAM, déplacez uniquement les connexions de console et de gestion.
 
-| AFF A800 | AFF A90 ou AFF A70 ^1^ 
-
-
-| AFF A220 configuré en tant que ASA | Module contrôleur AFF A150 ^1^ 
-
-
-| AVEC AFF A220
-Solution AFF A200
-Baie AFF C190 | Module contrôleur AFF A150 ^1^ 
-
-
-| FAS2620
-FAS2720 | Module contrôleur FAS2820 ^1^ 
-
-
-| AFF A700 configuré en tant que ASA | Contrôleur ASA A900 et modules NVRAM ^2^ 
-
-
-| AFF A700 | Contrôleur AFF A900 et modules NVRAM ^2^ 
-
-
-| FAS9000 | Contrôleur FAS9500 et modules NVRAM ^2^ 
-|===
-^1^ lors du remplacement des modules de contrôleur, vous déplacez toutes les connexions de l'ancien vers le module de contrôleur de remplacement.
-
-^2^ lors du remplacement du contrôleur et des modules NVRAM, vous déplacez uniquement les connexions de console et de gestion.
-
+====
 .Étapes
-. (Mise à niveau de AFF A800 uniquement) à l'invite du CHARGEUR, entrer en mode maintenance :
+. (Mise à niveau AFF A250, AFF C250, AFF A800 ou AFF C800 uniquement) à l'invite Loader, passez en mode maintenance :
 +
 `boot_ontap maint`
 
 +
+..  `y`Permet d'accéder à l'invite de confirmation de la plate-forme mixte.
 .. Répondez à `yes` l'invite de confirmation.
 .. Afficher l'état des interfaces 100 GbE :
 +

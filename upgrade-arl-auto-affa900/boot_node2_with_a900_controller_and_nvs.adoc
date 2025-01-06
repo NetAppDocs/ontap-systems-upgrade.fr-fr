@@ -14,36 +14,11 @@ summary: 'Démarrez le nœud 2 avec les modules de contrôleur de remplacement l
 
 
 [role="lead"]
-Le nœud 2 avec les modules de remplacement est maintenant prêt à démarrer. La mise à niveau par permutation des modules système implique de déplacer uniquement la console et les connexions de gestion. Cette section fournit les étapes requises pour démarrer node2 avec les modules de remplacement pour les configurations de mise à niveau suivantes :
-
-[cols="35,65"]
-|===
-| Contrôleur de nœud 2 existant | Remplacement des modules système du nœud 2 
+Le nœud 2 avec les modules de remplacement est maintenant prêt à démarrer. Les modules de remplacement pris en charge sont répertoriés dans le link:index.html#supported-systems,["matrice des systèmes pris en charge"].
 
 
-| AFF A800 | AFF A90 ou AFF A70 
+NOTE: Vous ne déplacez les connexions de console et de gestion que lorsque vous effectuez une mise à niveau en remplaçant les modules système.
 
-
-| AFF A220 configuré en tant que ASA | Module de contrôleur A150 ASA 
-
-
-| AVEC AFF A220
-Solution AFF A200
-Baie AFF C190 | Module de contrôleur A150 AFF 
-
-
-| FAS2620
-FAS2720 | Module de contrôleur FAS2820 
-
-
-| AFF A700 configuré en tant que ASA | Contrôleur ASA A900 et modules NVRAM 
-
-
-| AFF A700 | Contrôleur AFF A900 et modules NVRAM 
-
-
-| FAS9000 | Contrôleur FAS9500 et modules NVRAM 
-|===
 .Étapes
 . [[boot_node2_step1]]si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
 +

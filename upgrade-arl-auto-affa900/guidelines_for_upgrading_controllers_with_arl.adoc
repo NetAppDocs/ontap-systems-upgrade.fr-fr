@@ -22,7 +22,7 @@ Pour savoir si vous pouvez utiliser le transfert d'agrégats (ARL), le conservat
 
 Des mises à niveau du contrôleur sont prises en charge pour certaines configurations système. Pour afficher la liste des systèmes pris en charge et des versions minimales de ONTAP, reportez-vous à la section link:index.html["Présentation"].
 
-Si vous avez reçu un nouveau système AFF A150, FAS2820, AFF A900 ou FAS9500 en tant que système complet, incluant un nouveau châssis, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _utilisez les commandes "System Controller replace" pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ content.
+Si vous avez reçu un nouveau système AFF A30, AFF A50, AFF A70, AFF A90, AFF A150, AFF A900, AFF C30, AFF C60, AFF C80, FAS2820 ou FAS9500, y compris un nouveau châssis, reportez-vous à la section link:other_references.html["Références"] pour accéder aux commandes _utiliser le remplacement du contrôleur système pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ content.
 
 La mise à niveau du contrôleur avec l'ARL est prise en charge sur les systèmes configurés avec les volumes SnapLock Enterprise et SnapLock Compliance.
 

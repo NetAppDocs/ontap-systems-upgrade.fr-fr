@@ -14,7 +14,10 @@ summary: 'Si vous utilisez l"ARL pour mettre à niveau les modèles de contrôle
 
 
 [role="lead"]
-À ce stade, le nœud 1 est en panne et toutes les données sont servies par le nœud 2. Les nœuds 1 et 2 se trouvant dans le même châssis et alimentés par le même ensemble d'alimentations, NE mettez PAS le châssis hors tension. Vous devez faire attention de ne retirer que le module de contrôleur node1 et le module NVRAM node1. En général, le nœud 1 est le contrôleur A, situé sur le côté gauche du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système. L'étiquette du contrôleur se trouve sur le châssis, directement au-dessus du module de contrôleur.
+À ce stade, le nœud 1 est en panne et toutes les données sont servies par le nœud 2. Vous devez faire attention de ne retirer que le module de contrôleur node1 et le module NVRAM node1. En général, le nœud 1 est le contrôleur A, situé sur le côté gauche du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système. L'étiquette du contrôleur se trouve sur le châssis, directement au-dessus du module de contrôleur.
+
+
+CAUTION: Ne mettez pas le châssis hors tension, car les nœuds 1 et 2 se trouvent dans le même châssis et sont alimentés par les mêmes alimentations.
 
 .Avant de commencer
 Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement.
@@ -155,7 +158,7 @@ Utilisez la procédure suivante pour installer le module de contrôleur ASA A900
 . Alignez l'extrémité du module de contrôleur avec l'ouverture A du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.
 +
 
-NOTE: N'insérez pas complètement le module de contrôleur dans le châssis avant d'en avoir été invité dans la procédure.
+NOTE: N'insérez pas complètement le module de contrôleur dans le châssis avant d'y être invité plus tard dans la procédure.
 
 . Reliez les ports de gestion et de console au module de contrôleur node1.
 +
@@ -168,7 +171,7 @@ Le loquet de verrouillage s'élève lorsque le module de contrôleur est bien en
 
 +
 
-WARNING: Pour éviter d'endommager les connecteurs, n'utilisez pas de force excessive lorsque vous faites glisser le module de contrôleur dans le châssis.
+WARNING: Pour éviter d'endommager les connecteurs, ne forcez pas trop lorsque vous faites glisser le module de contrôleur dans le châssis.
 
 +
 image:drw_9500_remove_PCM.png["Installez le module de contrôleur"]

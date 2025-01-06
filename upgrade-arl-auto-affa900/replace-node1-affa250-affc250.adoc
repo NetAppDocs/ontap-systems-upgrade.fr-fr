@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: upgrade-arl-auto-affa900/replace-node1-affa800.html 
+permalink: upgrade-arl-auto-affa900/replace-node1-affa250-affc250.html 
 keywords: aff, asa, fas, replace, node1, system, modules 
-summary: 'Remplacez les modules système AFF A800 ou AFF C800 node1 lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
+summary: 'Remplacez les modules système AFF A250 ou AFF C250 node1 lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
 ---
-= Remplacez les modules de contrôleur AFF A800 ou AFF C800
+= Remplacez les modules de contrôleur AFF A250 ou AFF C250
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -19,30 +19,45 @@ summary: 'Remplacez les modules système AFF A800 ou AFF C800 node1 lorsque vous
 
 CAUTION: Ne mettez pas le châssis hors tension, car les nœuds 1 et 2 se trouvent dans le même châssis et sont alimentés par les mêmes alimentations.
 
+
+
+== Retirez le module de contrôleur AFF A250 ou AFF C250
+
+Pour retirer le module de contrôleur node1, vous devez d'abord retirer le périphérique de gestion des câbles, déverrouiller les loquets de verrouillage, puis retirer le module de contrôleur du châssis.
+
 .Avant de commencer
 Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement.
 
-
-
-== Préparez le retrait du module de contrôleur AFF A800 ou AFF C800
-
 .Étapes
-. À l'avant du châssis, enfoncez fermement chaque disque jusqu'à ce que vous sentiez un arrêt positif. Cela permet de s'assurer que les disques sont fermement installés contre le fond de panier central du châssis.
+. Insérez votre index dans le mécanisme de verrouillage de chaque côté du module de contrôleur, appuyez sur le levier avec votre pouce et tirez doucement le contrôleur à quelques pouces du châssis.
 +
-image:drw_a800_drive_seated_IEOPS-960.png["Appuyez sur le lecteur pour le mettre fermement en place contre le fond de panier central du châssis"]
 
+NOTE: Si vous avez des difficultés à retirer le module de contrôleur, placez vos doigts à travers les trous des doigts de l'intérieur (en croisant vos bras).
+
++
+image:drw_a250_pcm_remove_install.png["Appuyez sur le lecteur pour le mettre fermement en place contre le fond de panier central du châssis"]
+
++
+[cols="20,80"]
+|===
+
+
+ a| 
+image:black_circle_one.png["Numéro un"]
+| Levier 
+
+
+ a| 
+image:black_circle_two.png["Numéro deux"]
+| Mécanisme de verrouillage 
+|===
 . Aller à l'arrière du châssis.
+. Débranchez l'alimentation du module de contrôleur du nœud 1 de la source.
+. Dégagez les dispositifs de retenue du câble d'alimentation, puis débranchez les câbles des blocs d'alimentation du nœud 1.
++
 
+CAUTION: Les connexions d'alimentation pour le nœud 1 et le nœud 2 se trouvent l'une au-dessus de l'autre. Veillez à ne débrancher que les câbles du nœud 1. Le débranchement des câbles du nœud 1 et du nœud 2 peut entraîner une panne d'alimentation des deux nœuds de la paire haute disponibilité.
 
-
-
-== Retirez le module de contrôleur AFF A800 ou AFF C800
-
-Retirez le périphérique de gestion des câbles du module existant et retirez légèrement le contrôleur du châssis.
-
-.Étapes
-. Débranchez les alimentations du module de contrôleur du nœud 1 de la source.
-. Libérez les dispositifs de retenue du câble d'alimentation, puis débranchez les câbles des blocs d'alimentation.
 . Desserrez le crochet et la bride de boucle reliant les câbles au dispositif de gestion des câbles, puis débranchez les câbles du système et les modules SFP et QSFP (si nécessaire) du module de contrôleur, en gardant une trace de l'emplacement de connexion des câbles.
 +
 Laissez les câbles dans le périphérique de gestion des câbles de sorte que lorsque vous réinstallez le périphérique de gestion des câbles, les câbles sont organisés.
@@ -52,39 +67,23 @@ Laissez les câbles dans le périphérique de gestion des câbles de sorte que l
 +
 Le module de contrôleur se déplace légèrement hors du châssis.
 
+. À l'aide des deux mains, saisissez les côtés du module de contrôleur et tirez-le doucement hors du châssis et posez-le sur une surface plane et stable.
 +
-image:a800_cable_management.png["Retrait du ARM de gestion des câbles"]
-
-+
-[cols="20,80"]
-|===
-
-
- a| 
-image:black_circle_one.png["Numéro un"]
-| Loquet de verrouillage 
-
-
- a| 
-image:black_circle_two.png["Numéro deux"]
-| Goupille de blocage 
-|===
+Assurez-vous de soutenir le poids du module de contrôleur lorsque vous le faites glisser hors du châssis.
 
 
 
 
-== Installez le module de contrôleur AFF A90, AFF A70 ou AFF C80
 
-Installez, câblez et connectez le module de contrôleur AFF A90, AFF A70 ou AFF C80 dans le nœud 1.
+== Installez le module de contrôleur AFF A30, AFF A50, AFF C30 ou AFF C60
+
+Installez, câblez et connectez le module de remplacement dans le nœud 1.
 
 .Étapes
 . Alignez l'extrémité du module de contrôleur avec l'ouverture du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.
 +
 
 NOTE: N'insérez pas complètement le module de contrôleur dans le châssis avant d'y être invité plus tard dans la procédure.
-
-+
-image:drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG["Installer un AFF A90 ou un AFF A70"]
 
 . Reliez les ports de gestion et de console au module de contrôleur node1.
 +

@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: upgrade-arl-auto-affa900/install-affa90-affa70-on-node2.html 
+permalink: upgrade-arl-auto-affa900/install-aff-a30-a50-c30-c50-node2.html 
 keywords: aff, fas, asa, install, NVRAM, node2, controller, module, modules, replacement 
 summary: 'Installez les modules système de remplacement sur le nœud 2 lors d"une mise à niveau ARL des modèles de contrôleurs du même châssis.' 
 ---
-= Installez le module AFF A90 ou AFF A70 sur le nœud 2
+= Installez le module AFF A30, AFF A50, AFF C30 ou AFF C60 sur le nœud 2
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,16 +14,13 @@ summary: 'Installez les modules système de remplacement sur le nœud 2 lors d"u
 
 
 [role="lead"]
-Installez le module de contrôleur AFF A90 ou AFF A70 que vous avez reçu pour la mise à niveau sur le node2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.
+Installez le module de contrôleur de remplacement que vous avez reçu pour la mise à niveau sur le node2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.
 
 .Étapes
-. Alignez l'extrémité du module de contrôleur avec l'ouverture du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.
+. Positionnez le système de stockage sur les rails au milieu de l'armoire ou du rack de télécommunications, puis soutenez le système de stockage par le bas et faites-le glisser pour le mettre en place.
 +
 
 NOTE: N'insérez pas complètement le module de contrôleur dans le châssis avant d'y être invité plus tard dans la procédure.
-
-+
-image:drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG["Installer un AFF A90 ou un AFF A70"]
 
 . Reliez les ports de gestion et de console au module de contrôleur node1.
 +

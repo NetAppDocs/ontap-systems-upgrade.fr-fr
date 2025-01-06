@@ -72,6 +72,23 @@ NOTE: D'autres paramètres peuvent être nécessaires pour votre interface. Entr
 
 NOTE: N'interrompez pas l'amorçage.
 
+. (Mises à niveau AFF A250 et AFF C250 uniquement) lorsque le nœud 1 du module de contrôleur de remplacement est en cours de démarrage, l'avertissement suivant s'affiche :
++
+[listing]
+----
+*****************************************************
+* WARNING: Partner is not of the same family/model. *
+* Mixing is only allowed when upgrading the system. *
+* The system will shut down in 24 hours.            *
+*****************************************************
+Do you want to continue (y/n):
+----
++
+Réponse `y`.
+
++
+Cet avertissement s'affiche car la configuration inclut le nœud 2 pour le contrôleur existant. Il s'affiche pour chaque démarrage du système jusqu'à ce que vous mettiez à niveau node2. Il s'agit du comportement attendu.
+
 . Attendez que le nœud 1 exécuté sur le module de contrôleur de remplacement démarre et affichez les options du menu de démarrage comme indiqué ci-dessous :
 +
 [listing]
