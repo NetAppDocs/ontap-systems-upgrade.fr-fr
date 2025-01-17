@@ -16,9 +16,7 @@ summary: 'Vérifiez l"installation du nœud 1 avec les modules de remplacement l
 [role="lead"]
 Après avoir initialisé le nœud 1 avec le module de contrôleur de remplacement, vérifiez qu'il est correctement installé.
 
-Pour les mises à niveau de AFF A250, AFF C250, AFF A800 ou AFF C800 uniquement, vous mappez les ports physiques du nœud 1 existant vers le nœud de remplacement 1, car les ports physiques changent entre les contrôleurs existants et de remplacement.
-
-Pour toutes les autres mises à niveau, vous n'avez pas besoin de mapper les ports physiques du nœud 1 existant au nœud 1 de remplacement.
+Pour les mises à niveau de AFF A250, AFF C250, AFF A800 ou AFF C800 uniquement, vous mappez les ports physiques du nœud 1 existant vers le nœud de remplacement 1, car les ports physiques changent entre les contrôleurs existants et de remplacement. Les ports physiques ne changent pas pour les autres systèmes pris en charge par cette procédure de mise à niveau.
 
 .Description de la tâche
 Vous devez patienter jusqu'à ce que le nœud 1 rejoint le quorum, puis reprendre l'opération de remplacement du contrôleur.

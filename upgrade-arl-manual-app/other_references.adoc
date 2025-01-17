@@ -106,6 +106,9 @@ Le contenu spécifique à cette mise à niveau est répertorié dans le tableau 
 | link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Mettez à niveau ONTAP"^] | Contient les instructions de téléchargement et de mise à niveau de ONTAP. 
 
 
+| link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app-9151/index.html["Utilisez les commandes « System Controller replace » pour mettre à niveau le matériel du contrôleur introduit dans ONTAP 9.15.1 et versions ultérieures"^] | Décrit les procédures de transfert d'agrégats requises pour mettre à niveau les contrôleurs de ONTAP 9.15.1 et versions ultérieures sans interruption à l'aide de commandes « remplacement du contrôleur système ». 
+
+
 | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Utilisez les commandes « system Controller replace » pour mettre à niveau les modèles de contrôleurs d'un même châssis"^] | Décrit les procédures de transfert d'agrégats requises pour mettre à niveau un système sans interruption, en conservant les anciens châssis et disques du système. 
 
 

@@ -21,7 +21,7 @@ Le transfert d'agrégats tire parti de la configuration haute disponibilité et 
 Le tableau suivant présente la matrice des systèmes pris en charge pour la mise à niveau du contrôleur.
 
 
-CAUTION: Cette procédure s'applique strictement aux configurations de mise à niveau suivantes. N'utilisez pas cette procédure pour effectuer une mise à niveau entre d'autres combinaisons de systèmes. Pour tous les autres modèles de contrôleurs, reportez-vous à  la section link:other_references.html["Références"] pour accéder aux commandes _Use « system Controller replace » (utiliser le remplacement du contrôleur système) pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ et à la _utilisation du déplacement d'agrégat pour mettre à niveau manuellement le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ content.
+CAUTION: Cette procédure s'applique strictement aux configurations de mise à niveau suivantes. N'utilisez pas cette procédure pour effectuer une mise à niveau entre d'autres combinaisons de systèmes. Pour tous les autres modèles de contrôleurs, reportez-vous à  la section link:other_references.html["Références"]lien vers _utilisation des commandes de remplacement du contrôleur système pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ et _utilisation du déplacement d'agrégat pour mettre à niveau manuellement le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_.
 
 [cols="20,20,40"]
 |===
@@ -37,7 +37,7 @@ CAUTION: Cette procédure s'applique strictement aux configurations de mise à n
 | AFF C800 ^1^ | AFF C80 | 9.16.1 
 
 
-| AFF A800 ^1^ | AFF A90 ou AFF A70 | 9.15.1 
+| AFF A800 ^1^ | AFF A90 ou AFF A70 | 9.15.1 et versions ultérieures 
 
 
 | AFF A220 configuré en tant que baie 100 % SAN (ASA) | ASA A150 | 9.13.1P1 et versions ultérieures 
@@ -101,10 +101,8 @@ Le matériel du contrôleur que vous remplacez dépend du type de modèle de sys
 | AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720 | Remplacez le module de contrôleur de chaque nœud de l'ancien contrôleur par le nouveau. 
 
 
-| AFF A700 OU FAS9000 | Remplacez le contrôleur et les modules NVRAM de chaque nœud de l'ancien contrôleur par les nouveaux modules. ^1^ 
+| AFF A700 OU FAS9000 | Remplacez le contrôleur et les modules NVRAM de chaque nœud de l'ancien contrôleur par les nouveaux modules. *Remarque* : vous n'avez pas besoin de déplacer, déconnecter ou reconnecter les cartes E/S, les câbles de données, les tiroirs disques et les disques. 
 |===
-^1^ vous n’avez pas besoin de déplacer, déconnecter ou reconnecter les cartes E/S, les câbles de données, les tiroirs disques et les disques.
-
 
 NOTE: Les termes *node1* et *node2* sont utilisés uniquement comme référence aux noms de noeud dans ce document. Lorsque vous suivez la procédure, vous devez remplacer les noms réels de vos nœuds.
 
@@ -116,8 +114,8 @@ NOTE: Les termes *node1* et *node2* sont utilisés uniquement comme référence 
 * Les systèmes AFF A30, AFF A50, AFF A70, AFF A90, AFF A1K, AFF C30, AFF C60, AFF C80, FAS70 et FAS90 partagent des ports réseau 100 GbE pour les connexions au cluster et haute disponibilité. Ces systèmes peuvent prendre en charge des connexions de cluster 10 GbE ou 25 GbE avec les anciens switchs de cluster. Cependant, NetApp recommande de mettre à jour les vitesses de cluster 100 GbE lorsque les switchs 10 GbE et 25 GbE ne sont plus nécessaires. Pour plus d'informations, consultez les articles suivants de la base de connaissances :
 +
 --
-** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_configure_10G_or_25G_cluster_ports_on_a_new_cluster_setup_on_AFF_ASA_A1K_A90_A70_FAS90_FAS70["Comment configurer les ports de cluster 10G ou 25G sur une nouvelle configuration de cluster sur AFF/ASA A1K, A90, A70, FAS90, FAS70"^]
-** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_convert_an_existing_cluster_from_10G_or_25G_cluster_ports_to_40G_or_100G_cluster_ports_on_an_AFF_ASA_A1K_A90_A70_FAS90_FAS70["Comment convertir un cluster existant de ports de type 10 ou 25 Gbit/s en ports de cluster 40 Gbit/s ou 100 Gbit/s sur un système AFF/ASA A1K, A90, A70, FAS90, FAS70"^]
+** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_configure_10G_or_25G_cluster_ports_on_a_new_cluster_setup["Comment configurer les ports de cluster 10G ou 25G dans une nouvelle configuration de cluster"^]
+** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_convert_existing_10G_or_25G_cluster_ports_to_40G_or_100G_cluster_ports["Comment convertir les ports de cluster 10G ou 25G existants en ports de cluster 40G ou 100G"^]
 
 
 --

@@ -17,7 +17,7 @@ summary: 'Si vous utilisez l"ARL pour mettre à niveau les modèles de contrôle
 À ce stade, le nœud 1 est en panne et toutes les données sont servies par le nœud 2. Vous devez faire attention de ne retirer que le module de contrôleur node1 et le module NVRAM node1. En général, le nœud 1 est le contrôleur A, situé sur le côté gauche du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système. L'étiquette du contrôleur se trouve sur le châssis, directement au-dessus du module de contrôleur.
 
 
-CAUTION: Ne mettez pas le châssis hors tension, car les nœuds 1 et 2 se trouvent dans le même châssis et sont alimentés par les mêmes alimentations.
+CAUTION: Ne mettez pas le châssis hors tension, car les nœuds 1 et 2 se trouvent dans le même châssis et sont connectés aux mêmes blocs d'alimentation.
 
 .Avant de commencer
 Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement.

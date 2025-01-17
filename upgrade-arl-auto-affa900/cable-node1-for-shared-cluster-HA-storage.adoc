@@ -36,7 +36,7 @@ Si vous effectuez l'une des mises à niveau suivantes, vous devez connecter le c
 
 == Connectez les ports e0M et BMC
 
-Si le système existant dispose d'un port de gestion (e0M) et d'un port BMC. Sur le système de remplacement, les ports e0M et BMC sont combinés et accessibles par le biais du port de clé anglaise. Vous devez vous assurer que les ports e0M et BMC sont connectés au même commutateur et au même sous-réseau sur le système existant avant de vous connecter au système de remplacement.
+Si le système existant dispose d'un port de gestion (e0M) et d'un port BMC, les ports e0M et BMC sont combinés et accessibles via le port « clé » du système de remplacement. Vous devez vous assurer que les ports e0M et BMC sont connectés au même commutateur et au même sous-réseau sur le système existant avant de vous connecter au système de remplacement.
 
 [cols="35,65"]
 |===

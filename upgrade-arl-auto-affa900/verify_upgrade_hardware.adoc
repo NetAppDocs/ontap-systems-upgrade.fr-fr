@@ -35,14 +35,14 @@ Avant de commencer la mise à niveau, vérifiez que vous disposez des modules ap
  a| 
 Deux modules de contrôleur
 
-Si vous convertissez le système existant en tiroir de stockage et que vous pouvez le connecter à un autre système, le système de remplacement doit également disposer de deux modules d'E/S.
+Si vous convertissez un système en tiroir de stockage et que vous pouvez le connecter à un autre système, le système de remplacement doit également disposer de deux modules d'E/S.
 
 
 
  a| 
 * AFF A700 configuré en tant que ASA
-* DE AFF A700 À AFF A900
-* FAS9000 vers FAS9500
+* AFF A700
+* FAS9000
 
 | Deux contrôleurs et deux modules NVRAM 
 |===

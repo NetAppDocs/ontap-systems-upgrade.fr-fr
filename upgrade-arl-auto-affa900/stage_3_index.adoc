@@ -21,5 +21,5 @@ Au cours de la phase 3, vous connectez les connexions cluster-HA et de stockage 
 . link:boot_node1_with_a900_controller_and_nvs.html["Démarrez le nœud 1 avec les modules système de remplacement"]
 . link:verify_node1_installation.html["Vérifiez l'installation du noeud 1"]
 . link:restore_key_manager_config_upgraded_node1.html["Restaurez la configuration du gestionnaire de clés sur le noeud mis à niveau 1"]
-. link:move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html["Déplacement des agrégats non racines et des LIF de données NAS qui appartiennent au nœud 1 du nœud 2 vers le nœud mis à niveau 1"]
+. link:move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html["Déplacez les agrégats non racines du nœud 1 et les LIF de données NAS du nœud 2 vers le nœud mis à niveau 1"]
 

@@ -25,17 +25,19 @@ Vous pouvez utiliser cette procédure dans les circonstances suivantes :
 * La mise à niveau du contrôleur est répertoriée dans le link:index.html#supported-systems,["matrice des systèmes pris en charge"].
 * Vous avez vérifié auprès de votre ingénieur commercial NetApp que vous avez reçu le matériel nécessaire à la mise à niveau du contrôleur :
 +
-** Deux contrôleurs AFF A90, AFF A70 ou AFF C80 et tous les modules d'E/S. Longueur requise de câbles 100 GbE.
-** Deux contrôleurs et modules d'E/S AFF A50, AFF A30, AFF C30 ou AFF C60. Les câbles requis.
+** Deux contrôleurs AFF A90, AFF A70 ou AFF C80 et tous les modules d'E/S. Longueurs de câbles de 100 GbE requises.
+** Deux contrôleurs et modules d'E/S AFF A50, AFF A30, AFF C30 ou AFF C60 et les câbles requis
 ** Contrôleur ASA A150, AFF A150 ou FAS2820
-** Contrôleur ASA A900, AFF A900 ou FAS9500 et modules NVRAM et leurs pièces
+** Contrôleur ASA A900, AFF A900 ou FAS9500 et modules et pièces NVRAM
 
 
 * Vous exécutez la version minimale de ONTAP pour votre mise à niveau. Pour plus d'informations, voir link:index.html["Présentation"].
-* Vous ne souhaitez pas ajouter de nouveaux contrôleurs et migrer les données en utilisant les déplacements de volumes pour une nouvelle paire haute disponibilité vers le cluster.
-* Vous avez de l'expérience dans l'administration de ONTAP et vous êtes à l'aise avec les risques de travailler en mode de privilèges de diagnostic.
+* Vous êtes expérimenté dans l'administration de ONTAP et vous êtes à l'aise avec les risques de travailler en mode de privilège de diagnostic.
 * Vos systèmes exécutent ONTAP 9.15.1 ou une version ultérieure et ils utilisent des commutateurs Ethernet pour se connecter au stockage connecté Ethernet.
 
+
+
+NOTE: Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE).
 
 
 
@@ -43,15 +45,13 @@ Vous pouvez utiliser cette procédure dans les circonstances suivantes :
 
 Vous ne pouvez pas utiliser cette procédure dans les circonstances suivantes :
 
+* Vous souhaitez ajouter les nouveaux contrôleurs au cluster en tant que nouvelle paire haute disponibilité et migrer les données à l'aide des déplacements de volumes.
 * Vous utilisez le logiciel de virtualisation FlexArray sur le système existant en cours de mise à niveau.
 * Vous mettez à niveau une configuration IP MetroCluster.
 +
 Pour mettre à niveau une configuration IP MetroCluster, reportez-vous  à la section link:other_references.html["Références"] pour accéder au contenu _MetroCluster Upgrade and expansion_.
 
 
-
-
-NOTE: Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE).
 
 Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
 
