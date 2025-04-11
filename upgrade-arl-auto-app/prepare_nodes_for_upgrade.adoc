@@ -28,7 +28,7 @@ Le processus de remplacement du contrôleur commence par une série de contrôle
 +
 `system controller replace start -nodes _node_names_ -nso false`
 
-** Le `system controller replace start` la commande ne peut être exécutée qu'au niveau de privilège avancé :
+** Vous ne pouvez exécuter la commande qu' `system controller replace start`au niveau de privilège avancé :
 +
 `set -privilege advanced`
 

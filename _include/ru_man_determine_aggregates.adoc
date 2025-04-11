@@ -81,7 +81,7 @@ Dans l'exemple de l'étape précédente, « aggr2 » utilise des disques interne
 
 . Entrez la commande suivante sur les deux contrôleurs :
 +
-`aggr status -y`
+`aggr status -v`
 
 +
 Le système affiche des informations sur les volumes de l'agrégat, comme indiqué dans la sortie partielle dans l'exemple suivant :

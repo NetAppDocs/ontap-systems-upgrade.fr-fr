@@ -23,7 +23,7 @@ Le processus de remplacement du contrôleur commence par une série de contrôle
 
 +
 
-NOTE: Cette commande ne peut être exécutée qu'au niveau de privilège avancé :
+NOTE: Vous ne pouvez exécuter cette commande qu'au niveau de privilège avancé :
 `set -privilege advanced`
 
 +

@@ -142,7 +142,7 @@ Pour le nœud 3, `partner-sysid` doit être celui du node2.
 | Si votre système... | Description 
 
 
-| Possède des disques et aucun stockage interne | Accédez à <<auto_install3_step23,Étape 23>> 
+| Possède des disques et aucun stockage interne | Accédez à <<auto_install3_step27,Étape 27>> 
 
 
 | Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage  a| 

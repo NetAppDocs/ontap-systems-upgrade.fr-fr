@@ -56,6 +56,8 @@ entries:
     url: "/upgrade-arl-auto-app/install_boot_node3.html"
   - title: Définissez la configuration FC ou UTA/UTA2 sur le nœud 3
     url: "/upgrade-arl-auto-app/set_fc_or_uta_uta2_config_on_node3.html"
+  - title: Réaffectez les disques du nœud 1 au nœud 3
+    url: "/upgrade-arl-auto-app/reassign-node1-disks-to-node3.html"
   - title: Vérifiez l'installation du noeud 3
     url: "/upgrade-arl-auto-app/verify_node3_installation.html"
   - title: Restaurez la configuration du gestionnaire de clés sur le noeud 3
@@ -84,6 +86,8 @@ entries:
     url: "/upgrade-arl-auto-app/install_boot_node4.html"
   - title: Définissez la configuration FC ou UTA/UTA2 sur le nœud 4
     url: "/upgrade-arl-auto-app/set_fc_or_uta_uta2_config_node4.html"
+  - title: Réaffectez les disques du nœud 2 au nœud 4
+    url: "/upgrade-arl-auto-app/reassign-node2-disks-to-node4.html"
   - title: Vérifiez l'installation du node4
     url: "/upgrade-arl-auto-app/verify_node4_installation.html"
   - title: Restaurez la configuration du gestionnaire de clés sur le nœud 4

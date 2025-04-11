@@ -19,14 +19,15 @@ Si le système Node4 est doté de ports FC intégrés, de ports UTA/UTA2 (ou d'u
 .Description de la tâche
 Vous devrez peut-être remplir la <<Configurez les ports FC sur le nœud 4>> section ou <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>> , ou les deux sections.
 
+[NOTE]
+====
+Si le nœud 4 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2 et que vous mettez à niveau un système avec des disques de stockage, vous pouvez passer à link:reassign-node2-disks-to-node4.html["Réaffectez les disques du nœud 2 au nœud 4"].
 
-NOTE: Si le nœud 4 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2 et effectuez une mise à niveau du système avec des disques de stockage, vous pouvez ignorer la section link:verify_node4_installation.html["Vérifiez l'installation du node4"]. Cependant, si vous disposez d'un système V-Series ou d'un logiciel de virtualisation FlexArray et que vous êtes connecté aux baies de stockage, et que le nœud 4 n'intègre pas de ports FC, de ports UTA/UTA2 intégrés ou de carte UTA/UTA2, vous devez revenir à la section _installation et démarrage sur le nœud 4_, puis reprendre le processus à l'adresse link:install_boot_node4.html#step22["Étape 22"]. Assurez-vous que le noeud 4 dispose d'un espace de rack suffisant. Si le noeud 4 se trouve dans un châssis distinct du noeud 2, vous pouvez placer le noeud 4 au même emplacement que le noeud 3. Si les nœuds 2 et 4 se trouvent dans le même châssis, le nœud 4 se trouve déjà dans son emplacement de rack approprié.
+Cependant, si vous disposez d'un système V-Series ou si vous disposez d'un logiciel de virtualisation FlexArray et que le nœud 4 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez revenir à _Install and boot Node4_ et reprendre la procédure à link:install_boot_node4.html#step22["Étape 22"]l' .
 
-.Choix
-* <<Configurez les ports FC sur le nœud 4>>
-* <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>
+Assurez-vous que le noeud 4 dispose d'un espace de rack suffisant. Si le noeud 4 se trouve dans un châssis distinct du noeud 2, vous pouvez placer le noeud 4 au même emplacement que le noeud 3. Si les nœuds 2 et 4 se trouvent dans le même châssis, le nœud 4 se trouve déjà dans son emplacement de rack approprié.
 
-
+====
 
 
 == Configurez les ports FC sur le nœud 4
@@ -114,14 +115,14 @@ NOTE: Les ports FC doivent être programmés comme initiateurs.
 
 
 | Possède des disques de stockage  a| 
-** Ignorez cette section et accédez à link:verify_node4_installation.html["Vérifiez l'installation du node4"] Si le nœud Node4 ne est pas doté d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
+** Ignorez cette section et passez à link:reassign-node2-disks-to-node4.html["Réaffectez les disques du nœud 2 au nœud 4"] si le nœud 4 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
 
 
 
 
 | Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
 ** Accédez à <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>> Si le nœud 4 est doté d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
-** Ignorez la section _Check et configurez les ports UTA/UTA2 sur le nœud 4_ si le nœud 4 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, puis revenez à la section _Install and Boot node4_, puis reprenez le contrôle link:install_boot_node4.html#auto_install4_step23["Étape 23"].
+** Ignorez _Vérifiez et configurez les ports UTA/UTA2 sur le node4_ si le nœud 4 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, retournez à _Install et boot node4_, puis reprenez la procédure à link:install_boot_node4.html#auto_install4_step23["Étape 23"].
 
 
 |===
@@ -288,10 +289,10 @@ f-a   2b       fc             target       cna           -             online
 | Si le système... | Puis… 
 
 
-| Possède des disques de stockage | Accédez à link:verify_node4_installation.html["Vérifiez l'installation du node4"]. 
+| Possède des disques de stockage | Allez à link:reassign-node2-disks-to-node4.html["Réaffectez les disques du nœud 2 au nœud 4"]. 
 
 
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Retournez à la section _Install and boot node4_, puis reprenez à link:install_boot_node4.html#auto_install4_step23["Étape 23"]. 
+| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Retournez à _Install et boot node4_, puis reprenez à link:install_boot_node4.html#auto_install4_step23["Étape 23"]. 
 |===
 . [[auto_check_4_step13]]Quitter le mode Maintenance :
 +
@@ -302,278 +303,6 @@ f-a   2b       fc             target       cna           -             online
 `boot_ontap menu`.
 
 +
-Si vous migrez vers une A800, rendez-vous sur <<auto_check_4_step23,Étape 23>>
+Si vous effectuez une mise à niveau vers un système A800, rendez-vous sur link:reassign-node2-disks-to-node4.html#reassign-node2-node4-app-step9["Réaffectez les disques du nœud 2 au nœud 4, étape 9"].
 
-. [[auto_check_4_step15]]]sur le node4, allez au menu de démarrage et sélectionnez l'option masquée à l'aide de 22/7 `boot_after_controller_replacement`. À l'invite, entrez node2 pour réaffecter les disques du nœud2 au nœud4, comme dans l'exemple suivant.
-+
-.Développez l'exemple de sortie de la console
-[%collapsible]
-====
-[listing]
-----
-LOADER-A> boot_ontap menu
-.
-.
-<output truncated>
-.
-All rights reserved.
-*******************************
-*                             *
-* Press Ctrl-C for Boot Menu. *
-*                             *
-*******************************
-.
-<output truncated>
-.
-Please choose one of the following:
-(1)  Normal Boot.
-(2)  Boot without /etc/rc.
-(3)  Change password.
-(4)  Clean configuration and initialize all disks.
-(5)  Maintenance mode boot.
-(6)  Update flash from backup config.
-(7)  Install new software first.
-(8)  Reboot node.
-(9)  Configure Advanced Drive Partitioning.
-(10) Set Onboard Key Manager recovery secrets.
-(11) Configure node for external key management.
-Selection (1-11)? 22/7
-(22/7)                          Print this secret List
-(25/6)                          Force boot with multiple filesystem disks missing.
-(25/7)                          Boot w/ disk labels forced to clean.
-(29/7)                          Bypass media errors.
-(44/4a)                         Zero disks if needed and create new flexible root volume.
-(44/7)                          Assign all disks, Initialize all disks as SPARE, write DDR labels
-.
-.
-<output truncated>
-.
-.
-(wipeconfig)                        Clean all configuration on boot device
-(boot_after_controller_replacement) Boot after controller upgrade
-(boot_after_mcc_transition)         Boot after MCC transition
-(9a)                                Unpartition all disks and remove their ownership information.
-(9b)                                Clean configuration and initialize node with partitioned disks.
-(9c)                                Clean configuration and initialize node with whole disks.
-(9d)                                Reboot the node.
-(9e)                                Return to main boot menu.
-The boot device has changed. System configuration information could be lost. Use option (6) to
-restore the system configuration, or option (4) to initialize all disks and setup a new system.
-Normal Boot is prohibited.
-Please choose one of the following:
-(1)  Normal Boot.
-(2)  Boot without /etc/rc.
-(3)  Change password.
-(4)  Clean configuration and initialize all disks.
-(5)  Maintenance mode boot.
-(6)  Update flash from backup config.
-(7)  Install new software first.
-(8)  Reboot node.
-(9)  Configure Advanced Drive Partitioning.
-(10) Set Onboard Key Manager recovery secrets.
-(11) Configure node for external key management.
-Selection (1-11)? boot_after_controller_replacement
-This will replace all flash-based configuration with the last backup to disks. Are you sure
-you want to continue?: yes
-.
-.
-<output truncated>
-.
-.
-Controller Replacement: Provide name of the node you would like to replace:
-<nodename of the node being replaced>
-Changing sysid of node node2 disks.
-Fetched sanown old_owner_sysid = 536940063 and calculated old sys id = 536940063
-Partner sysid = 4294967295, owner sysid = 536940063
-.
-.
-<output truncated>
-.
-.
-varfs_backup_restore: restore using /mroot/etc/varfs.tgz
-varfs_backup_restore: attempting to restore /var/kmip to the boot device
-varfs_backup_restore: failed to restore /var/kmip to the boot device
-varfs_backup_restore: attempting to restore env file to the boot device
-varfs_backup_restore: successfully restored env file to the boot device wrote
-    key file "/tmp/rndc.key"
-varfs_backup_restore: timeout waiting for login
-varfs_backup_restore: Rebooting to load the new varfs
-Terminated
-<node reboots>
-System rebooting...
-.
-.
-Restoring env file from boot media...
-copy_env_file:scenario = head upgrade
-Successfully restored env file from boot media...
-Rebooting to load the restored env file...
-.
-System rebooting...
-.
-.
-.
-<output truncated>
-.
-.
-.
-.
-WARNING: System ID mismatch. This usually occurs when replacing a
-boot device or NVRAM cards!
-Override system ID? {y|n} y
-.
-.
-.
-.
-Login:
-----
-====
-+
-
-NOTE: Dans l'exemple de sortie de la console ci-dessus, ONTAP vous invite à entrer le nom du nœud partenaire si le système utilise des disques du partitionnement de disque avancé.
-
-. Si le système passe en boucle de redémarrage avec le message `no disks found`, Il indique que le système a réinitialisé les ports FC ou UTA/UTA2 dans le mode cible et ne parvient donc pas à voir les disques. Pour résoudre ce problème, passez à la <<auto_check_4_step17,Étape 17>> à <<auto_check_4_step22,Étape 22>> ou allez à la section link:verify_node4_installation.html["Vérifiez l'installation du node4"].
-. [[auto_check_4_step17]]appuyez sur Ctrl-C pendant l'AUTOBOOT pour arrêter le nœud à l'invite du CHARGEUR>.
-. À l'invite du CHARGEUR, entrer en mode maintenance :
-+
-`boot_ontap maint`
-
-. En mode maintenance, afficher tous les ports initiateurs précédemment définis qui sont maintenant en mode cible :
-+
-`ucadmin show`
-
-+
-Modifier les ports en mode initiateur :
-
-+
-`ucadmin modify -m fc -t initiator -f _adapter name_`
-
-. Vérifiez que les ports ont été modifiés en mode initiateur :
-+
-`ucadmin show`
-
-. Quitter le mode maintenance :
-+
-`halt`
-
-+
-[NOTE]
-====
-Si vous effectuez une mise à niveau à partir d'un système prenant en charge des disques externes vers un système qui prend également en charge des disques externes, accédez à <<auto_check_4_step22,Étape 22>>.
-
-Si vous effectuez une mise à niveau à partir d'un système qui utilise des disques externes vers un système prenant en charge des disques internes et externes, par exemple un système AFF A800, rendez-vous sur <<auto_check_4_step23,Étape 23>>.
-
-====
-. [[auto_check_4_step22]]à l'invite du CHARGEUR, démarrez :
-+
-`boot_ontap menu`
-
-+
-Maintenant, au démarrage, le nœud peut détecter tous les disques qui lui étaient précédemment affectés et peut démarrer comme prévu.
-
-+
-Lorsque les nœuds de cluster que vous remplacez utilisent le chiffrement de volume racine, ONTAP ne peut pas lire les informations de volume à partir des disques. Restaurer les clés du volume root.
-
-+
-
-NOTE: Cela s'applique uniquement lorsque le volume racine utilise le chiffrement de volume NetApp.
-
-+
-.. Revenir au menu de démarrage spécial :
-+
-`LOADER> boot_ontap menu`
-
-+
-[listing]
-----
-Please choose one of the following:
-(1) Normal Boot.
-(2) Boot without /etc/rc.
-(3) Change password.
-(4) Clean configuration and initialize all disks.
-(5) Maintenance mode boot.
-(6) Update flash from backup config.
-(7) Install new software first.
-(8) Reboot node.
-(9) Configure Advanced Drive Partitioning.
-(10) Set Onboard Key Manager recovery secrets.
-(11) Configure node for external key management.
-
-Selection (1-11)? 10
-----
-.. Sélectionnez *(10) définir les secrets de récupération du gestionnaire de clés intégré*
-.. Entrez `y` à l'invite suivante :
-+
-`This option must be used only in disaster recovery procedures. Are you sure? (y or n): y`
-
-.. À l'invite, entrez la phrase de passe du gestionnaire de clés.
-.. Entrez les données de sauvegarde lorsque vous y êtes invité.
-+
-
-NOTE: Vous devez avoir obtenu la phrase de passe et les données de sauvegarde dans le link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] section de cette procédure.
-
-.. Une fois que le système a de nouveau démarré dans le menu de démarrage spécial, exécutez l'option *(1) démarrage normal*
-+
-
-NOTE: Il se peut que vous rencontriez une erreur à ce stade. Si une erreur se produit, répétez les sous-étapes de la section <<auto_check_4_step22,Étape 22>> jusqu'à ce que le système démarre normalement.
-
-
-
-. [[auto_check_4_step23]]] si vous effectuez une mise à niveau d'un système avec des disques externes vers un système qui prend en charge des disques internes et externes (systèmes AFF A800, par exemple), définissez l'agrégat node2 comme agrégat racine afin de vous assurer que les quatre initialisation à partir de l'agrégat racine du noeud 2. Pour définir l'agrégat root, aller au menu de boot et faire une sélection `5` pour passer en mode maintenance.
-+
-
-WARNING: *Vous devez exécuter les sous-étapes suivantes dans l'ordre exact indiqué ; le non-respect de cette consigne peut entraîner une panne ou même une perte de données.*
-
-+
-La procédure suivante définit le nœud 4 pour démarrer à partir de l'agrégat racine du nœud 2 :
-
-+
-.. Passer en mode maintenance :
-+
-`boot_ontap maint`
-
-.. Vérifier les informations RAID, plex et checksum du noeud 2 :
-+
-`aggr status -r`
-
-.. Vérifier le statut de l'agrégat du nœud 2 :
-+
-`aggr status`
-
-.. Si nécessaire, mettre l'agrégat du nœud 2 en ligne :
-+
-`aggr_online root_aggr_from___node2__`
-
-.. Empêcher le démarrage du nœud 4 à partir de son agrégat racine d'origine :
-+
-`aggr offline _root_aggr_on_node4_`
-
-.. Définir l'agrégat racine du nœud 2 en tant que nouvel agrégat racine pour le nœud 4 :
-+
-`aggr options aggr_from___node2__ root`
-
-.. Vérifier que l'agrégat racine du nœud 4 est hors ligne et que l'agrégat racine des disques transférées depuis le nœud 2 est en ligne et défini à la racine :
-+
-`aggr status`
-
-+
-
-NOTE: Si vous ne procédez pas à la sous-étape précédente, le nœud 4 risque de démarrer à partir de l'agrégat racine interne, ou le système peut supposer qu'une nouvelle configuration de cluster existe ou vous inviter à en identifier une.
-
-+
-Voici un exemple de sortie de la commande :
-
-
-
-+
-....
----------------------------------------------------------------------
-Aggr State                       Status               Options
-aggr 0_nst_fas8080_15 online     raid_dp, aggr        root, nosnap=on
-                                 fast zeroed
-                                 64-bit
-aggr0 offline                    raid_dp, aggr        diskroot
-                                 fast zeroed`
-                                 64-bit
----------------------------------------------------------------------
-....
 

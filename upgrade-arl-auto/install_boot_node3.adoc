@@ -255,7 +255,7 @@ Pour le nœud 3, `partner-sysid` doit être celui du node2.
 | Si votre système... | Description 
 
 
-| Possède des disques et aucun stockage interne | Accédez à <<auto_install3_step23,Étape 23>> 
+| Possède des disques et aucun stockage interne | Accédez à <<auto_install3_step27,Étape 27>> 
 
 
 | Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage  a| 
@@ -282,6 +282,7 @@ L'installation d'un nouveau module de contrôleur modifie les valeurs WWPN assoc
 . [[step26]]si votre configuration utilise un zoning basé sur des commutateurs, ajustez le zoning pour refléter les nouvelles valeurs WWPN.
 
 
+[[auto_install3_step27]]
 . Si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
 +
 
@@ -314,7 +315,7 @@ Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur 
 `boot_ontap menu`
 
 +
-Si vous ne disposez pas de configuration FC ou UTA/UTA2, effectuez les opérations suivantes link:set_fc_or_uta_uta2_config_node4.html#auto_check_4_step15["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4, étape 15"] afin que le nœud4 puisse reconnaître les disques du nœud2.
+Si vous ne disposez pas de configuration FC ou UTA/UTA2, effectuez les opérations link:reassign-node1-disks-to-node3.html#reassign-node1-node3-step1["Réaffectez les disques du nœud 1 au nœud 3, étape 1"] afin que le nœud 3 puisse reconnaître les disques du nœud 1.
 
-. [[auto9597_istall3_step29]]]pour une configuration MetroCluster, les systèmes V-Series et les systèmes avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, allez à l'adresse link:set_fc_or_uta_uta2_config_on_node3.html#auto9597_check_node3_step15["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3, étape 15"].
+. [[auto9597_istall3_step29]]pour une configuration MetroCluster, des systèmes V-Series et des systèmes avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, rendez-vous sur link:reassign-node1-disks-to-node3.html#reassign-node1-node3-step1["Réaffectez les disques du nœud 1 au nœud 3, étape 1"].
 

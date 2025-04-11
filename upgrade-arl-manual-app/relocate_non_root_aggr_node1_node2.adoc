@@ -88,7 +88,7 @@ L'exemple suivant montre que les agrégats non-root du noeud 2 sont en ligne :
 +
 [listing]
 ----
-cluster::> storage aggregate show -node node2 state online -root false
+cluster::> storage aggregate show -node node2 -state online -root false
 Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
 --------- -------- --------- ----- ------- ------ ---------------- ------------
 aggr_1

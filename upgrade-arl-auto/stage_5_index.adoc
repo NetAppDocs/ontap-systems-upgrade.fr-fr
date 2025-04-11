@@ -14,11 +14,12 @@ summary: 'Étape 5 : séquence de processus pour la mise à niveau d"ARL à l"ai
 
 
 [role="lead"]
-Lors de l'étape 5, vous installez et démarrez le nœud4, mappez les ports cluster et node-management du node2 au node4, puis vérifiez l'installation du node4. Si nécessaire, définissez la configuration FC ou UTA/UTA2 sur le nœud 4 et vérifiez que le quorum du nœud 4 est atteint. Vous pouvez également transférer les LIF de données NAS du nœud 2 et les agrégats non racine du nœud 3 vers le nœud 4, puis vérifier que les LIF SAN existent sur le nœud 4.
+Au cours de l'étape 5, vous installez et amorcez le nœud 4, mappez les ports de gestion de cluster et de nœud du nœud 2 au nœud 4, réaffectez les disques du nœud 2 au nœud 4 et vérifiez l'installation du nœud 4. Si nécessaire, définissez la configuration FC ou UTA/UTA2 sur le nœud 4 et vérifiez que le quorum du nœud 4 est atteint. Vous pouvez également transférer les LIF de données NAS du nœud 2 et les agrégats non racine du nœud 3 vers le nœud 4, puis vérifier que les LIF SAN existent sur le nœud 4.
 
 .Étapes
 . link:install_boot_node4.html["Installez et démarrez Node4"]
 . link:set_fc_or_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"]
+. link:reassign-node2-disks-to-node4.html["Réaffectez les disques du nœud 2 au nœud 4"]
 . link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"]
 . link:join_quorum_node_has_different_ports_stage5.html["Joignez le quorum lorsqu'un nœud dispose d'un ensemble différent de ports réseau"]
 . link:verify_node4_installation.html["Vérifiez l'installation du node4"]

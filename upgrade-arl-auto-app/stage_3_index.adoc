@@ -14,11 +14,12 @@ summary: 'Étape 3 : séquence de processus pour la mise à niveau d"ARL à l"ai
 
 
 [role="lead"]
-Lors de la phase 3, vous installez et démarrez le nœud 3, vérifiez que le cluster et les ports de gestion des nœuds du nœud 1 sont connectés sur le nœud 3 et vérifiez l'installation du nœud 3. Si vous utilisez NetApp Volume Encryption (NVE), vous restaurez la configuration du gestionnaire de clés. Si nécessaire, définissez la configuration FC ou UTA/UTA2 sur le nœud 3. Vous pouvez également transférer les LIF de données NAS du nœud 1 et les agrégats non racine du nœud 2 vers le nœud 3, puis vérifier que les LIF SAN existent sur le nœud 3.
+Au cours de l'étape 3, vous installez et amorcez le nœud 3, vérifiez que les ports de cluster et de gestion des nœuds du nœud 1 sont en ligne sur le nœud 3, réaffectez les disques du nœud 1 au nœud 3 et vérifiez l'installation du nœud 3. Si vous utilisez NetApp Volume Encryption (NVE), vous restaurez la configuration du gestionnaire de clés. Si nécessaire, définissez la configuration FC ou UTA/UTA2 sur le nœud 3. Vous pouvez également transférer les LIF de données NAS du nœud 1 et les agrégats non racine du nœud 2 vers le nœud 3, puis vérifier que les LIF SAN existent sur le nœud 3.
 
 .Étapes
 . link:install_boot_node3.html["Installez et démarrez le nœud 3"]
 . link:set_fc_or_uta_uta2_config_on_node3.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 3"]
+. link:reassign-node1-disks-to-node3.html["Réaffectez les disques du nœud 1 au nœud 3"]
 . link:verify_node3_installation.html["Vérifiez l'installation du noeud 3"]
 . link:restore_key-manager_configuration_node3.html["Restaurez la configuration du gestionnaire de clés sur le noeud 3"]
 . link:move_non-root_aggr_and_nas_data_lifs_node1_from_node2_to_node3.html["Déplacement des agrégats non racines et des LIF de données NAS qui appartiennent au nœud 1 du nœud 2 vers le nœud 3"]

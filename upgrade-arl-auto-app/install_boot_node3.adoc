@@ -89,7 +89,7 @@ NOTE: Reportez-vous à la section link:prepare_for_netboot.html["Préparation à
 . [[step6]]configurez la connexion netboot en choisissant l'une des actions suivantes.
 +
 
-NOTE: Vous devez utiliser le port de gestion et l'IP comme connexion netboot. N'utilisez pas d'IP de la LIF de données et ne subit aucune panne pendant l'exécution de la mise à niveau.
+NOTE: Vous devez utiliser le port de gestion et l'IP comme connexion netboot. N'utilisez pas d'adresse IP de LIF de données. Dans le cas contraire, une panne de données pourrait se produire pendant la mise à niveau.
 
 +
 [cols="30,70"]
@@ -255,7 +255,7 @@ Pour le nœud 3, `partner-sysid` doit être celui du node2.
 | Si votre système... | Description 
 
 
-| Possède des disques et aucun stockage interne | Accédez à <<auto_install3_step23,Étape 23>> 
+| Possède des disques et aucun stockage interne | Accédez à <<auto_install3_step27,Étape 27>> 
 
 
 | Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage  a| 
@@ -282,6 +282,7 @@ L'installation d'un nouveau module de contrôleur modifie les valeurs WWPN assoc
 . [[step26]]si votre configuration utilise un zoning basé sur des commutateurs, ajustez le zoning pour refléter les nouvelles valeurs WWPN.
 
 
+[[auto_install3_step27]]
 . Si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
 +
 
@@ -317,7 +318,7 @@ Saisissez la phrase de passe et les informations de sauvegarde que vous avez enr
 `boot_ontap menu`
 
 +
-Si vous ne disposez pas de configuration FC ou UTA/UTA2, exécutez l'application link:set_fc_or_uta_uta2_config_node4.html#auto_check_4_step15["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4, étape 15"] pour que le nœud 4 puisse reconnaître les disques du nœud 2.
+Si vous ne disposez pas de configuration FC ou UTA/UTA2, effectuez les opérations link:reassign-node2-disks-to-node4.html#reassign-node1-node3-app-step1["Réaffectez les disques du nœud 1 au nœud 3, étape 1"] pour que le nœud 3 puisse reconnaître les disques du nœud 1.
 
 . [[step29]]]pour une configuration MetroCluster, les systèmes V-Series et les systèmes où le logiciel de virtualisation FlexArray est connecté aux baies de stockage, vous devez définir et configurer les ports FC, UTA/UTA2 sur le nœud 3 pour détecter les disques connectés au nœud. Pour terminer cette tâche, passez à la section link:set_fc_or_uta_uta2_config_on_node3.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 3"].
 

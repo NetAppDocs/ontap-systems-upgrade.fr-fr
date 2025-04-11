@@ -1,0 +1,222 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/reassign-node2-disks-to-node4.html 
+keywords: fc configuration, uta configuration, UTA2 configuration, configure FC ports, UTA/UTA2 card, node4, target, adapter, ports 
+summary: 'Vous pouvez configurer les ports FC intégrés des nœuds node4, les ports UTA/UTA2 ou la carte UTA/UTA2 lors de la mise à niveau des contrôleurs exécutant ONTAP 9.5 vers 9.7 à l"aide de `system controller replace` commandes.' 
+---
+= Réaffectez les disques du nœud 2 au nœud 4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez réaffecter les disques appartenant au nœud 2 au nœud 4 avant de vérifier l'installation du nœud 4.
+
+.Description de la tâche
+Vous effectuez les étapes de cette section sur le node4.
+
+.Étapes
+. [[reassigner-node2-node4-step1]]allez au menu d'amorçage et, à l'aide de 22/7, sélectionnez l'option cachée `boot_after_controller_replacement` . À l'invite, entrez node2 pour réaffecter les disques du nœud2 au nœud4, comme dans l'exemple suivant.
++
+.Développez l'exemple de sortie de la console
+[%collapsible]
+====
+[listing]
+----
+LOADER-A> boot_ontap menu ...
+*******************************
+*                             *
+* Press Ctrl-C for Boot Menu. *
+*                             *
+*******************************
+.
+.
+Please choose one of the following:
+
+(1) Normal Boot.
+(2) Boot without /etc/rc.
+(3) Change password.
+(4) Clean configuration and initialize all disks.
+(5) Maintenance mode boot.
+(6) Update flash from backup config.
+(7) Install new software first.
+(8) Reboot node.
+(9) Configure Advanced Drive Partitioning.
+Selection (1-9)? 22/7
+.
+.
+(boot_after_controller_replacement) Boot after controller upgrade
+(9a)                                Unpartition all disks and remove their ownership information.
+(9b)                                Clean configuration and initialize node with partitioned disks.
+(9c)                                Clean configuration and initialize node with whole disks.
+(9d)                                Reboot the node.
+(9e)                                Return to main boot menu.
+
+Please choose one of the following:
+
+(1) Normal Boot.
+(2) Boot without /etc/rc.
+(3) Change password.
+(4) Clean configuration and initialize all disks.
+(5) Maintenance mode boot.
+(6) Update flash from backup config.
+(7) Install new software first.
+(8) Reboot node.
+(9) Configure Advanced Drive Partitioning.
+Selection (1-9)? boot_after_controller_replacement
+.
+This will replace all flash-based configuration with the last backup to disks. Are you sure you want to continue?: yes
+.
+.
+Controller Replacement: Provide name of the node you would like to replace: <name of the node being replaced>
+.
+.
+Changing sysid of node <node being replaced> disks.
+Fetched sanown old_owner_sysid = 536953334 and calculated old sys id = 536953334
+Partner sysid = 4294967295, owner sysid = 536953334
+.
+.
+.
+Terminated
+<node reboots>
+.
+.
+System rebooting...
+.
+Restoring env file from boot media...
+copy_env_file:scenario = head upgrade
+Successfully restored env file from boot media...
+.
+.
+System rebooting...
+.
+.
+.
+WARNING: System ID mismatch. This usually occurs when replacing a boot device or NVRAM cards!
+Override system ID? {y|n} y
+Login: ...
+----
+====
+. Si le système passe en boucle de redémarrage avec le message `no disks found`, c'est parce qu'il a réinitialisé les ports en mode cible et qu'il n'est donc pas en mesure de voir les disques. Passez  à la <<auto_check_4_step8,Étape 8>>section <<auto_check_4_step3,Étape 3>>pour résoudre ce problème.
+. [[auto_check_4_step3]]appuyez sur Ctrl-C pendant l'AUTOBOOT pour arrêter le nœud à l'invite du CHARGEUR>.
+. À l'invite du CHARGEUR, entrer en mode maintenance :
++
+`boot_ontap maint`
+
+. En mode maintenance, afficher tous les ports initiateurs précédemment définis qui sont maintenant en mode cible :
++
+`ucadmin show`
+
++
+Modifier les ports en mode initiateur :
+
++
+`ucadmin modify -m fc -t initiator -f _adapter name_`
+
+. Vérifiez que les ports ont été modifiés en mode initiateur :
++
+`ucadmin show`
+
+. Quitter le mode maintenance :
++
+`halt`
+
++
+[NOTE]
+====
+Si vous effectuez une mise à niveau à partir d'un système qui prend en charge des disques externes vers un système qui prend également en charge <<auto_check_4_step8,Étape 8>>des disques externes, passez à l' .
+
+Si vous effectuez une mise à niveau à partir d'un système utilisant des disques externes vers un système prenant en charge les disques internes et externes, par exemple, un système AFF A800, passez à <<auto_check_4_step9,Étape 9>>l' .
+
+====
+. [[auto_check_4_step8]]à l'invite du CHARGEUR, démarrez :
++
+`boot_ontap menu`
+
++
+Maintenant, au démarrage, le nœud peut détecter tous les disques qui lui étaient précédemment affectés et peut démarrer comme prévu.
+
++
+Lorsque les nœuds de cluster que vous remplacez utilisent le chiffrement de volume racine, ONTAP ne peut pas lire les informations de volume à partir des disques. Restaurer les clés du volume root:
+
++
+.. Revenir au menu de démarrage spécial :
++
+`LOADER> boot_ontap menu`
+
++
+[listing]
+----
+Please choose one of the following:
+(1) Normal Boot.
+(2) Boot without /etc/rc.
+(3) Change password.
+(4) Clean configuration and initialize all disks.
+(5) Maintenance mode boot.
+(6) Update flash from backup config.
+(7) Install new software first.
+(8) Reboot node.
+(9) Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+
+Selection (1-11)? 10
+----
+.. Sélectionnez *(10) définir les secrets de récupération du gestionnaire de clés intégré*
+.. Entrez `y` à l'invite suivante :
++
+`This option must be used only in disaster recovery procedures. Are you sure? (y or n): y`
+
+.. À l'invite, entrez la phrase de passe du gestionnaire de clés.
+.. Entrez les données de sauvegarde lorsque vous y êtes invité.
++
+
+NOTE: Vous devez avoir obtenu la phrase de passe et les données de sauvegarde dans le link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] section de cette procédure.
+
+.. Une fois que le système a de nouveau démarré dans le menu de démarrage spécial, exécutez l'option *(1) démarrage normal*
++
+
+NOTE: Il se peut que vous rencontriez une erreur à ce stade. Si une erreur se produit, répétez les sous-étapes de la section <<auto_check_4_step22,Étape 22>> jusqu'à ce que le système démarre normalement.
+
+
+
+. [[auto_check_4_step9]]si vous effectuez une mise à niveau d'un système à disques externes vers un système qui prend en charge des disques internes et externes (systèmes AFF A800, par exemple), définissez l'agrégat node2 en tant qu'agrégat racine pour confirmer que le nœud4 démarre à partir de l'agrégat racine du nœud2. Pour définir l'agrégat racine, accédez au menu de boot et sélectionnez option `5` pour passer en mode de maintenance.
++
+
+WARNING: *Vous devez exécuter les sous-étapes suivantes dans l'ordre exact indiqué ; le non-respect de cette consigne peut entraîner une panne ou même une perte de données.*
+
++
+La procédure suivante définit le nœud 4 pour démarrer à partir de l'agrégat racine du nœud 2 :
+
++
+.. Passer en mode maintenance :
++
+`boot_ontap maint`
+
+.. Vérifier les informations RAID, plex et checksum du noeud 2 :
++
+`aggr status -r`
+
+.. Vérifier le statut de l'agrégat du nœud 2 :
++
+`aggr status`
+
+.. Si nécessaire, mettre l'agrégat du nœud 2 en ligne :
++
+`aggr_online root_aggr_from___node2__`
+
+.. Empêcher le démarrage du nœud 4 à partir de son agrégat racine d'origine :
++
+`aggr offline _root_aggr_on_node4_`
+
+.. Définir l'agrégat racine du nœud 2 en tant que nouvel agrégat racine pour le nœud 4 :
++
+`aggr options aggr_from___node2__ root`
+
+
+
+

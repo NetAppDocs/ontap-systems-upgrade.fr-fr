@@ -2,10 +2,37 @@
 :allow-uri-read: 
 
 
-Avant de remplacer le nœud 2 par le nœud 4, vous devez envoyer un message AutoSupport pour le nœud 2, puis transférer les agrégats non racines qui appartiennent au nœud 2 vers le nœud 3.
+Avant de pouvoir remplacer le nœud 2 par le nœud 4, vous devez envoyer un message AutoSupport pour le nœud 2, puis déplacer les agrégats non-racine qui appartiennent au nœud 2 vers le nœud 3.
 
+[[sysconfig-a-command]]
 .Étapes
-. [[step1]] Envoyer un message AutoSupport à NetApp pour le nœud 2 :
+. Vérifiez que l'ID système du partenaire est correctement défini sur le nœud 2 et le nœud 3 :
++
+** `system node run -node _node2_ -command sysconfig -a`
+** `system node run -node _node3_ -command sysconfig -a`
++
+Un résultat similaire à l'exemple suivant s'affiche :
+
++
+[listing, subs="+quotes"]
+----
+NetApp Release 9.16.1: Mon Feb 10 07:55:45 EST 2025
+System ID: _system-ID_; *partner ID: _partner-system-ID_*
+System Serial Number: _system-serial-number_
+System Rev: A0
+System Storage Configuration: Mixed-Path HA
+----
++
+Si l'ID de partenaire est incorrect pour le nœud 2 ou le nœud 3 :
+
++
+... Redémarrez le nœud ayant une valeur incorrecte.
+... Exécutez à nouveau les commandes dans <<sysconfig-a-command,Étape 1>>et confirmez que l'« ID partenaire » a changé à la valeur correcte.
+
+
+
+
+. Envoyer un message AutoSupport à NetApp pour node2 :
 +
 `system node autosupport invoke -node _node2_ -type all -message "Upgrading _node2_ from _platform_old_ to _platform_new_"`
 
@@ -16,7 +43,7 @@ Avant de remplacer le nœud 2 par le nœud 4, vous devez envoyer un message Auto
 +
 Les champs « dernier objet envoyé : » et « dernière envoi : » contiennent le titre du message du dernier message envoyé et l'heure à laquelle le message a été envoyé.
 
-. [[step3]]transférer les agrégats non racines :
+. Transfert des agrégats non racine :
 +
 .. Définissez le niveau de privilège sur avancé :
 +
@@ -36,7 +63,7 @@ NOTE: La commande ne localise que des agrégats non-racines.
 
 .. Entrez-le lorsque vous y êtes invité `y`.
 +
-La réinstallation a lieu en arrière-plan. Le transfert d'un agrégat peut prendre quelques secondes ou quelques minutes, Cette durée inclut à la fois les parties en cas d'interruption du client et les parties en cas d'interruption de service. La commande ne permet pas de transférer des agrégats hors ligne ou restreints.
+La réinstallation a lieu en arrière-plan. Le transfert d'un agrégat peut prendre quelques secondes ou quelques minutes, Cette durée inclut à la fois les parties en cas d'interruption du client et les parties en cas d'interruption de service. La commande ne déplace pas d'agrégats hors ligne ou restreints.
 
 .. Retour au niveau de privilège admin :
 +
@@ -49,7 +76,7 @@ La réinstallation a lieu en arrière-plan. Le transfert d'un agrégat peut pren
 `storage aggregate relocation show -node _node2_`
 
 +
-La sortie affiche « Done » pour un agrégat après son déplacement.
+Le résultat affiche « Done » pour un agrégat après son transfert.
 
 +
 
@@ -62,7 +89,7 @@ NOTE: Vous devez patienter jusqu'à ce que tous les agrégats qui appartiennent 
 | En cas de déménagement de... | Alors... 
 
 
-| Tous les agrégats ont réussi | Accédez à <<man_relocate_2_3_step6,Étape 6>>. 
+| Tous les agrégats ont réussi | Allez à <<man_relocate_2_3_step7,Étape 7>>. 
 
 
 | Tout agrégat a échoué ou a été vetoté  a| 
@@ -108,7 +135,7 @@ Si nécessaire, vous pouvez forcer la relocalisation en utilisant l'une des mét
 Pour plus d'informations sur les commandes de transfert d'agrégats de stockage, rendez-vous sur link:other_references.html["Références"] Pour établir un lien vers la gestion des _disques et des agrégats à l'aide de la CLI_ et des commandes _ONTAP 9 : manuel page Reference_.
 
 |===
-. [[man_replace_2_3_step6]]vérifier que tous les agrégats non racines sont en ligne sur le nœud 3 :
+. [[man_relocaliser_2_3_step7]]Vérifiez que tous les agrégats non-root sont en ligne sur le node3 :
 +
 `storage aggregate show -node _node3_ -state offline -root false`
 
