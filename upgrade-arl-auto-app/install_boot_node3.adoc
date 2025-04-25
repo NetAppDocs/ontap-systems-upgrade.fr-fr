@@ -313,12 +313,12 @@ Saisissez la phrase de passe et les informations de sauvegarde que vous avez enr
 
 
 
-. Nœud de démarrage dans le menu de démarrage :
+. Démarrez le nœud dans le menu de démarrage :
 +
 `boot_ontap menu`
 
 +
-Si vous ne disposez pas de configuration FC ou UTA/UTA2, effectuez les opérations link:reassign-node2-disks-to-node4.html#reassign-node1-node3-app-step1["Réaffectez les disques du nœud 1 au nœud 3, étape 1"] pour que le nœud 3 puisse reconnaître les disques du nœud 1.
+Si vous ne disposez pas de configuration FC ou UTA/UTA2, effectuez les opérations link:reassign-node1-disks-to-node3.html#reassign-node1-node3-app-step1["Réaffectez les disques du nœud 1 au nœud 3, étape 1"] pour que le nœud 3 puisse reconnaître les disques du nœud 1.
 
 . [[step29]]]pour une configuration MetroCluster, les systèmes V-Series et les systèmes où le logiciel de virtualisation FlexArray est connecté aux baies de stockage, vous devez définir et configurer les ports FC, UTA/UTA2 sur le nœud 3 pour détecter les disques connectés au nœud. Pour terminer cette tâche, passez à la section link:set_fc_or_uta_uta2_config_on_node3.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 3"].
 

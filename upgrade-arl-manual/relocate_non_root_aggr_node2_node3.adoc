@@ -16,41 +16,76 @@ summary: 'Envoyez un message AutoSupport pour le nœud 2 et transférez les agr�
 [role="lead"]
 Avant de pouvoir remplacer le nœud 2 par le nœud 4, vous devez envoyer un message AutoSupport pour le nœud 2, puis déplacer les agrégats non-racine qui appartiennent au nœud 2 vers le nœud 3.
 
-[[sysconfig-a-command]]
+
+CAUTION: Au cours de cette procédure, ne déplacez pas les agrégats du nœud 3 vers le nœud 2. Les agrégats sont alors mis hors ligne et les agrégats déplacés sont affectés par une panne de données.
+
+[[verify-partner-sys-id]]
 .Étapes
-. Vérifiez que l'ID système du partenaire est correctement défini sur le nœud 2 et le nœud 3 :
+. Vérifiez que l'ID du système partenaire est correctement défini sur le nœud 3 :
 +
-** `system node run -node _node2_ -command sysconfig -a`
-** `system node run -node _node3_ -command sysconfig -a`
+.. Saisissez le niveau de privilège avancé :
++
+`set -privilege advanced`
+
+.. Afficher l'ID du système partenaire sur le nœud 3 :
++
+`ha interconnect config show -node <node3-node1>`
+
 +
 Un résultat similaire à l'exemple suivant s'affiche :
 
 +
-[listing, subs="+quotes"]
+.Montrer l'exemple
+[%collapsible]
+====
+[listing]
 ----
-NetApp Release 9.16.1: Mon Feb 10 07:55:45 EST 2025
-System ID: _system-ID_; *partner ID: _partner-system-ID_*
-System Serial Number: _system-serial-number_
-System Rev: A0
-System Storage Configuration: Mixed-Path HA
+cluster::*> ha interconnect config show -node <node>
+  (system ha interconnect config show)
+
+                       Node: node3-node1
+          Interconnect Type: RoCE
+            Local System ID: <node3-system-id>
+          Partner System ID: <node2-system-id>
+       Connection Initiator: local
+                  Interface: external
+
+Port   IP Address
+----   -----------------
+e4a-17   0.0.0.0
+e4b-18   0.0.0.0
 ----
+====
+
+
+. Si l'ID du système partenaire est incorrect pour le nœud 3 :
 +
-Si l'ID de partenaire est incorrect pour le nœud 2 ou le nœud 3 :
-
+.. Nœud d'arrêt 3 :
 +
-... Redémarrez le nœud ayant une valeur incorrecte.
-... Exécutez à nouveau les commandes dans <<sysconfig-a-command,Étape 1>>et confirmez que l'« ID partenaire » a changé à la valeur correcte.
+`halt`
 
+.. À l'invite Loader, définissez la valeur « Partner-sysid » correcte.
++
+Le node3 "Partner-sysid" est l'ID système du node2, que vous pouvez trouver dans la `ha interconnect config show` sortie dans <<verify-partner-sys-id,Étape 1>>.
 
+.. Enregistrer les paramètres :
++
+`saveenv`
+
+.. À l'invite Loader, démarrez node3 dans le menu de démarrage :
++
+`boot_ontap menu`
+
+.. Connectez-vous au nœud 3.
 
 
 . Envoyer un message AutoSupport à NetApp pour node2 :
 +
-`system node autosupport invoke -node _node2_ -type all -message "Upgrading _node2_ from _platform_old_ to _platform_new_"`
+`system node autosupport invoke -node <node2> -type all -message "Upgrading <node2> from <platform_old> to <platform_new>"`
 
 . Vérifiez que le message AutoSupport a été envoyé :
 +
-`system node autosupport show -node _node2_ -instance`
+`system node autosupport show -node <node2> -instance`
 
 +
 Les champs « dernier objet envoyé : » et « dernière envoi : » contiennent le titre du message du dernier message envoyé et l'heure à laquelle le message a été envoyé.
@@ -63,11 +98,11 @@ Les champs « dernier objet envoyé : » et « dernière envoi : » contiennent 
 
 .. Lister les agrégats qui sont détenus par le nœud2 :
 +
-`storage aggregate show -owner-name _node2_`
+`storage aggregate show -owner-name <node2>`
 
 .. Démarrer le transfert d'agrégats :
 +
-`storage aggregate relocation start -node _node2_ -destination _node3_ -aggregate-list * -ndo-controller-upgrade true`
+`storage aggregate relocation start -node <node2> -destination <node3> -aggregate-list * -ndo-controller-upgrade true`
 
 +
 
@@ -85,7 +120,7 @@ La réinstallation a lieu en arrière-plan. Le transfert d'un agrégat peut pren
 
 . Vérifiez l'état de la réinstallation du noeud 2 :
 +
-`storage aggregate relocation show -node _node2_`
+`storage aggregate relocation show -node <node2>`
 
 +
 Le résultat affiche « Done » pour un agrégat après son transfert.
@@ -101,7 +136,7 @@ NOTE: Vous devez patienter jusqu'à ce que tous les agrégats qui appartiennent 
 | En cas de déménagement de... | Alors... 
 
 
-| Tous les agrégats ont réussi | Allez à <<man_relocate_2_3_step7,Étape 7>>. 
+| Tous les agrégats ont réussi | Allez à <<man_relocate_2_3_step8,Étape 8>>. 
 
 
 | Tout agrégat a échoué ou a été vetoté  a| 
@@ -123,7 +158,7 @@ NOTE: Le `event log show` la commande répertorie les erreurs qui se sont produi
 
 .. Transfert d'agrégats défaillants ou vetotés :
 +
-`storage aggregate relocation start -node _node2_ -destination _node3_ -aggregate-list * -ndo-controllerupgrade true`
+`storage aggregate relocation start -node <node2> -destination <node3> -aggregate-list * -ndo-controllerupgrade true`
 
 .. Entrez-le lorsque vous y êtes invité `y`.
 .. Retour au niveau de privilège admin :
@@ -147,29 +182,29 @@ Si nécessaire, vous pouvez forcer la relocalisation en utilisant l'une des mét
 Pour plus d'informations sur les commandes de transfert d'agrégats de stockage, rendez-vous sur link:other_references.html["Références"] Pour établir un lien vers la gestion des _disques et des agrégats à l'aide de la CLI_ et des commandes _ONTAP 9 : manuel page Reference_.
 
 |===
-. [[man_relocaliser_2_3_step7]]Vérifiez que tous les agrégats non-root sont en ligne sur le node3 :
+. [[man_relocaliser_2_3_step8]]Vérifiez que tous les agrégats non racine sont en ligne sur le node3 :
 +
-`storage aggregate show -node _node3_ -state offline -root false`
+`storage aggregate show -node <node3> -state offline -root false`
 
 +
 Si un agrégat est mis hors ligne ou est devenu étranger, vous devez les mettre en ligne une fois pour chaque agrégat :
 
 +
-`storage aggregate online -aggregate _aggr_name_`
+`storage aggregate online -aggregate <aggregate_name>`
 
 . Vérifiez que tous les volumes sont en ligne sur le noeud 3 :
 +
-`volume show -node _node3_ -state offline`
+`volume show -node <node3> -state offline`
 
 +
 Si des volumes sont hors ligne sur le nœud 3, vous devez les mettre en ligne une fois pour chaque volume :
 
 +
-`volume online -vserver _Vserver-name_ -volume _volume-name_`
+`volume online -vserver <Vserver-name> -volume <volume-name>`
 
 . Vérifiez que le nœud 2 ne possède aucun agrégat non racine en ligne :
 +
-`storage aggregate show -owner-name _node2_ -ha-policy sfo -state online`
+`storage aggregate show -owner-name <node2> -ha-policy sfo -state online`
 
 +
 Le résultat de la commande ne doit pas afficher d'agrégats en ligne non-racine, car tous les agrégats en ligne non-racine ont déjà été déplacés vers le nœud 3.

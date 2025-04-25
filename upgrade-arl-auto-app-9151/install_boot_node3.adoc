@@ -267,7 +267,7 @@ Saisissez la phrase de passe et les informations de sauvegarde que vous avez enr
 
 
 
-. Nœud de démarrage dans le menu de démarrage :
+. Démarrez le nœud dans le menu de démarrage :
 +
 `boot_ontap menu`
 

@@ -7,7 +7,7 @@ Vous devez vous assurer que les ports physiques du nœud1 sont correctement asso
 .Avant de commencer
 Vous devez déjà disposer d'informations sur les ports sur les nouveaux nœuds à partir du _Hardware Universe_. (Allez à link:other_references.html["Références"] Pour établir un lien vers le _Hardware Universe_). Vous utilisez ces informations ultérieurement dans cette section et dans link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"].
 
-La configuration logicielle du nœud3 doit correspondre à la connectivité physique du nœud3, et la connectivité IP doit être restaurée avant de poursuivre la mise à niveau.
+La configuration logicielle du nœud 3 doit correspondre à la connectivité physique du nœud 3 et la connectivité réseau doit être restaurée avant de poursuivre la mise à niveau.
 
 .Description de la tâche
 Les paramètres de port peuvent varier en fonction du modèle des nœuds.

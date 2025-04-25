@@ -20,7 +20,7 @@ Vous devez réaffecter les disques appartenant au nœud 1 au nœud 3 avant de v�
 Vous effectuez les étapes de cette section sur le nœud 3.
 
 .Étapes
-. Accédez au menu de démarrage et, à l'aide du 22/7, sélectionnez l'option cachée `boot_after_controller_replacement` . À l'invite, entrez node1 pour réaffecter les disques du nœud1 au nœud3, comme dans l'exemple suivant.
+. [[reassigner-node1-node3-app-stepe1]]allez au menu de démarrage et, à l'aide de 22/7, sélectionnez l'option cachée `boot_after_controller_replacement` . À l'invite, entrez node1 pour réaffecter les disques du nœud1 au nœud3, comme dans l'exemple suivant.
 +
 .Développez l'exemple de sortie de la console
 [%collapsible]

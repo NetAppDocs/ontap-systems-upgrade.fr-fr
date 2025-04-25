@@ -298,11 +298,11 @@ f-a   2b       fc             target       cna           -             online
 +
 `halt`
 
-. [[step14]]nœud d'amorçage dans le menu d'amorçage :
+. [[step14]]démarrez le nœud dans le menu de démarrage :
 +
 `boot_ontap menu`.
 
 +
-Si vous effectuez une mise à niveau vers un système A800, rendez-vous sur link:reassign-node2-disks-to-node4.html#reassign-node2-node4-app-step9["Réaffectez les disques du nœud 2 au nœud 4, étape 9"].
+Si vous effectuez une mise à niveau vers un système AFF A800, rendez-vous sur link:reassign-node2-disks-to-node4.html#reassign-node2-node4-app-step9["Réaffectez les disques du nœud 2 au nœud 4, étape 9"].
 
 
