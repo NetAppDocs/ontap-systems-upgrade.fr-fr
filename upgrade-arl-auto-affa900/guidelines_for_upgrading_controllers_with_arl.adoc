@@ -36,7 +36,9 @@ Si vous mettez à niveau des nœuds dans un cluster sans commutateur à 2 nœuds
 
 == Commutateurs connectés aux clusters
 
-Si vous mettez à niveau des nœuds d'un cluster connecté à un commutateur de cluster, vous devez vérifier que la marque, le modèle, la version du firmware, le fichier RCF et la version de ONTAP exécutés sur le commutateur sont identiques à ceux exécutés sur le contrôleur de remplacement après la mise à niveau. Si nécessaire, vous devez effectuer la mise à niveau du commutateur avant de mettre à niveau les contrôleurs à l'aide de la procédure ARL décrite dans cette documentation.
+Si vous mettez à niveau des nœuds d'un cluster connecté à un commutateur de cluster, vous devez vérifier que la marque, le modèle, la version du firmware, le fichier RCF et la version de ONTAP exécutés sur le commutateur sont identiques à ceux exécutés sur le contrôleur de remplacement après la mise à niveau. Si nécessaire, vous devez effectuer la mise à niveau du commutateur avant de mettre à niveau les contrôleurs à l'aide de l'ARL.
+
+Pour plus d'informations, voir link:upgrade-arl-auto-affa900/cable-node1-for-shared-cluster-HA-storage.html#connect-switch-attached-cluster["Se connecter à un cluster relié par un commutateur"].
 
 
 
