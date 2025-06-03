@@ -79,6 +79,9 @@ Assurez-vous de soutenir le poids du module de contrôleur lorsque vous le faite
 
 Installez, câblez et connectez le module de remplacement dans le nœud 1.
 
+.Avant de commencer
+Vérifiez que vous disposez d'une carte X60132A 4 ports 10/25 GbE dans l'emplacement 1 du nœud 1. La carte X60132A est requise pour l'interconnexion des clusters sans commutateur à deux nœuds lors de la mise à niveau.
+
 .Étapes
 . Alignez l'extrémité du module de contrôleur avec l'ouverture du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.
 +

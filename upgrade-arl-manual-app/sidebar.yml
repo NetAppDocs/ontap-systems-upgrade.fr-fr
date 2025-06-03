@@ -3,9 +3,9 @@ section: upgrade-arl-manual-app
 title: Mettez manuellement à niveau le matériel du contrôleur sous ONTAP 9.8 ou une
   version ultérieure
 entries:
-- title: Présentation
+- title: En savoir plus sur cette procédure ARL
   url: "/upgrade-arl-manual-app/index.html"
-- title: Décider d'utiliser le contenu de transfert d'agrégats
+- title: Décider d'utiliser ou non cette procédure ARL
   url: "/upgrade-arl-manual-app/decide_to_use_arl_guide.html"
 - title: Workflow de mise à niveau ARL
   url: "/upgrade-arl-manual-app/arl_upgrade_workflow.html"
@@ -19,8 +19,6 @@ entries:
   pdf-filename: Étape 1. Préparation à la mise à niveau (mise à niveau manuelle dans
     ONTAP 9.8 ou version ultérieure)
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-manual-app/stage_1_index.html"
   - title: Déterminez si le contrôleur possède des agrégats sur des disques internes
     url: "/upgrade-arl-manual-app/determine_aggregates_on_internal_drives.html"
   - title: Préparer les nœuds pour une mise à niveau
@@ -35,8 +33,6 @@ entries:
   pdf-filename: Étape 2. Relocalisation et retrait du nœud 1 (mise à niveau manuelle
     dans ONTAP 9.8 ou version ultérieure)
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-manual-app/stage_2_index.html"
   - title: Transférer des agrégats non racines du nœud 1 vers le nœud 2
     url: "/upgrade-arl-manual-app/relocate_non_root_aggr_node1_node2.html"
   - title: Déplacez les LIF de données NAS qui appartiennent au nœud 1 vers le nœud
@@ -50,8 +46,6 @@ entries:
   pdf-filename: Étape 3. Installation et démarrage du nœud 3 (mise à niveau manuelle
     dans ONTAP 9.8 ou version ultérieure)
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-manual-app/stage_3_index.html"
   - title: Installez et démarrez le nœud 3
     url: "/upgrade-arl-manual-app/install_boot_node3.html"
   - title: Définissez la configuration FC ou UTA/UTA2 sur le nœud 3
@@ -73,8 +67,6 @@ entries:
   pdf-filename: Étape 4. Enregistrer les informations et retirer le nœud 2 (mise à
     niveau manuelle dans ONTAP 9.8 ou version ultérieure)
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-manual-app/stage_4_index.html"
   - title: Enregistrer les informations sur le noeud 2
     url: "/upgrade-arl-manual-app/record_node2_information.html"
   - title: Retrait du nœud 2
@@ -83,8 +75,6 @@ entries:
   pdf-filename: Étape 5. Installation et démarrage du nœud 4 (mise à niveau manuelle
     dans ONTAP 9.8 ou version ultérieure)
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-manual-app/stage_5_index.html"
   - title: Installez et démarrez Node4
     url: "/upgrade-arl-manual-app/install_boot_node4.html"
   - title: Configurez la configuration FC ou UTA/UTA2 sur le nœud 4
@@ -104,8 +94,6 @@ entries:
   pdf-filename: Étape 6. Terminer la mise à niveau (mise à niveau manuelle dans ONTAP
     9.8 ou version ultérieure)
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-manual-app/stage_6_index.html"
   - title: Gérez l'authentification à l'aide de serveurs KMIP
     url: "/upgrade-arl-manual-app/manage_authentication_kmip.html"
   - title: Vérifiez que les nouveaux contrôleurs sont correctement configurés
@@ -122,8 +110,6 @@ entries:
 - title: Résoudre les problèmes
   pdf-filename: Dépannage (mise à niveau manuelle dans ONTAP 9.8 ou version ultérieure)
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-manual-app/troubleshoot_index.html"
   - title: Défaillance du transfert d'agrégats
     url: "/upgrade-arl-manual-app/aggregate_relocation_failures.html"
   - title: Redémarre, fonctionne de façon incohérente ou fonctionne tout cycle d'alimentation

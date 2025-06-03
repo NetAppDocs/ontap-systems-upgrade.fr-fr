@@ -5,16 +5,18 @@
 Vous devez installer NODE4 dans le rack, transférer les connexions node2 vers node4 et démarrer node4. Vous devez également réaffecter toutes les unités de rechange du nœud 2, tous les disques appartenant à la racine et tous les agrégats non racines qui n'ont pas été transférés auparavant sur le nœud 3.
 
 .Description de la tâche
-Vous devez netboot Node4 si cette version de ONTAP 9 n'est pas installée sur le nœud 2. Une fois le noeud 4 installé, démarrez-le à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système en suivant les instructions de la section link:prepare_for_netboot.html["Préparation à la mise sur le réseau"]
+Vous devez démarrer le nœud 4 via le réseau si la version d'ONTAP 9 n'est pas identique à celle installée sur le nœud 2. Une fois le noeud 4 installé, démarrez-le à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers appropriés sur le support de démarrage pour les démarrages ultérieurs du système en suivant les instructions de la section link:prepare_for_netboot.html["Préparation à la mise sur le réseau"] .
 
-Cependant, vous n'êtes pas obligé de netboot node4 s'il possède la même version ou une version ultérieure de ONTAP 9 installée sur le node2.
+Cependant, vous n'êtes pas obligé de démarrer le nœud 4 en réseau s'il possède la même version ou une version ultérieure d'ONTAP 9 installée sur le nœud 2.
 
-*Information importante:*
+[IMPORTANT]
+====
+* Pour une mise à niveau du contrôleur AFF A800 ou AFF C800, vous devez vous assurer que tous les lecteurs du châssis sont fermement fixés contre le plan médian avant de retirer le nœud 2. Pour plus d'informations, voir link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Remplacez les modules de contrôleur AFF A800 ou AFF C800"].
+* Si vous mettez à niveau un système de la série V ou un système avec le logiciel de virtualisation FlexArray connecté à des baies de stockage, vous devez effectuer <<man_install4_Step1,Étape 1>> à travers <<man_install4_Step7,Étape 7>> , laissez cette section à <<man_install4_Step8,Étape 8>> et suivez les instructions dans link:set_fc_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] Si nécessaire, saisissez les commandes en mode Maintenance. Vous devez ensuite revenir à cette section et reprendre la procédure à l'adresse <<man_install4_Step9,Étape 9>> .
+* Si vous mettez à niveau un système avec des disques de stockage, vous devez compléter toute cette section, puis passer à la section link:set_fc_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] , en entrant des commandes à l'invite du cluster.
 
-* Si vous mettez à niveau un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<man_install4_Step1,Étape 1>> à <<man_install4_Step7,Étape 7>>, laissez cette section à <<man_install4_Step8,Étape 8>> et suivez les instructions de la section link:set_fc_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] Si nécessaire, saisir les commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre la procédure à <<man_install4_Step9,Étape 9>>.
-* Toutefois, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière et passer à la section link:set_fc_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"], saisie de commandes à l'invite du cluster.
 
-
+====
 .Étapes
 . [[man_install4_Step1]]entreprendre l'une des actions suivantes :
 +

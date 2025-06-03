@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ndu, nondisruptive, upgrade, AFF, FAS, systems, entry, level 
 summary: 'Effectuez une mise à niveau sans interruption vers les systèmes NetApp AFF et FAS d"entrée de gamme sans avoir à acheter de stockage ni de commutateurs de cluster supplémentaires.' 
 ---
-= Flux de travail
+= Mise à niveau de l'AFF A250 vers l'AFF A400 en le convertissant en un flux de travail d'étagère de disques
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

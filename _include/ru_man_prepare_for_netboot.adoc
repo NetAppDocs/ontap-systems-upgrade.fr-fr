@@ -41,6 +41,6 @@ Votre liste de répertoires doit contenir un dossier netboot avec un fichier du 
 | Tous les autres systèmes | Votre liste de répertoires doit contenir le fichier suivant : `<ontap_version>_image.tgz`REMARQUE : il n'est pas nécessaire d'extraire le contenu du `<ontap_version>_image.tgz` fichier. 
 |===
 +
-Vous utiliserez les informations dans les répertoires de link:stage_3_index.html["Étape 3"].
+Vous utiliserez les informations contenues dans les répertoires dans link:install_boot_node3.html["Étape 3"] .
 
 

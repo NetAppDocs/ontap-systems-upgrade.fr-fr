@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: upgrade-arl-auto-affa900/cable-node1-for-shared-cluster-HA-storage.html 
+permalink: upgrade-arl-auto-affa900/cable-node2-for-shared-cluster-HA-storage.html 
 keywords: cluster, ha, aff, a800, shared, storage, data, management 
-summary: Connectez le cluster, la haute disponibilité, le stockage et les connexions de données précédemment connectés au nœud AFF A800 1 au nœud AFF A90 ou AFF A70 nouvellement installé 
+summary: Connectez les connexions de cluster, HA, de stockage et de données qui étaient précédemment connectées au nœud AFF A8002 au nœud AFF A90 ou AFF A701 nouvellement installé 
 ---
-= Câblage du nœud 1 pour la haute disponibilité et le stockage en cluster partagé
+= Nœud de câble 2 pour cluster partagé-HA et stockage
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Connectez le cluster, la haute disponibilité, le stockage et les conne
 
 
 [role="lead"]
-Si vous effectuez l'une des mises à niveau suivantes, vous devez connecter le cluster, les connexions haute disponibilité, de stockage, de données et de gestion précédemment connectées au nœud 1 du système existant au nœud 1 nouvellement installé sur le système de remplacement.
+Si vous effectuez l'une des mises à niveau suivantes, vous devez connecter les connexions de cluster, de haute disponibilité, de stockage, de données et de gestion qui étaient précédemment connectées au nœud 2 sur le système existant au nœud 2 nouvellement installé sur le système de remplacement.
 
 [cols="35,65"]
 |===
@@ -80,7 +80,7 @@ Les tableaux suivants présentent l'utilisation des ports de commutateur pour le
 | Ports de stockage Ethernet pour tiroirs NS224 | Tout port disponible | Reportez-vous à la section mappage de la connectivité du stockage Ethernet | Reportez-vous à la section mappage de la connectivité du stockage Ethernet 
 |===
 |===
-| Port | AFF A250, AFF C250 | AFF A30, AFF C30, AFF C60 | AFF A50 
+| Type de port | AFF A250, AFF C250 | AFF A30, AFF C60 | AFF A50 
 
 
 | Cluster | e0c | e1a (Utilisez e1a pour l'interconnexion temporaire des clusters) | e1a (Utilisez e1a pour l'interconnexion temporaire des clusters) 
@@ -89,13 +89,16 @@ Les tableaux suivants présentent l'utilisation des ports de commutateur pour le
 | Cluster | e0d | e1b (Utiliser e1b pour l'interconnexion temporaire des clusters) | e1b (Utiliser e1b pour l'interconnexion temporaire des clusters) 
 
 
-| HAUTE DISPONIBILITÉ | Non requis | Les ports HA ne sont pas requis pour la mise à niveau du nœud 1 | Les ports HA ne sont pas requis pour la mise à niveau du nœud 1 
+| HAUTE DISPONIBILITÉ | Le port e0c HA est partagé avec le port du cluster | e4a sur le nœud 1 est directement connecté à e4a sur le nœud 2 à l'aide d'un câble 100 GbE | e4a sur le nœud 1 est directement connecté à e4a sur le nœud 2 à l'aide d'un câble 100 GbE 
 
 
-| Ports de stockage Ethernet | Tout port disponible | e3a, e3b | e3a, e3b 
+| HAUTE DISPONIBILITÉ | Le port e0d HA est partagé avec le port du cluster | e2a sur le nœud 1 est directement connecté à e2a sur le nœud 2 à l'aide d'un câble 100 GbE. Si e2a n'est pas présent ou ne prend pas en charge 100 GbE, connectez directement e4b sur le nœud 1 à e4b sur le nœud 2 à l'aide d'un câble 100 GbE. | e2a sur le nœud 1 directement connecté à e2a sur le nœud 2 à l'aide d'un câble 100 GbE Si e2a n'est pas présent ou ne prend pas en charge 100 GbE, connectez directement e4b sur le nœud 1 à e4b sur le nœud 2 à l'aide d'un câble 100 GbE. 
 
 
-| Ports de stockage SAS | Tout port disponible | 3a, 3b | 3a, 3b 
+| Port de stockage Ethernet | Tout port disponible | e3a, e3b | e3a, e3b 
+
+
+| Port de stockage SAS | Tout port disponible | 3a, 3b | 3a, 3b 
 |===
 
 

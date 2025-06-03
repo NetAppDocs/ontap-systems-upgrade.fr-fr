@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-affa900/index.html
 keywords: aggregate, relocation, controller, hardware, aggregates, flexarray, metrocluster, terminology, old, system, chassis, disk, disks 
 summary: 'Vous pouvez mettre à niveau le matériel du contrôleur en convertissant un ancien système en un système de remplacement, en conservant l"ancien châssis et les anciens disques du système.' 
 ---
-= Présentation
+= En savoir plus sur cette procédure de mise à niveau ARL
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,75 +14,10 @@ summary: 'Vous pouvez mettre à niveau le matériel du contrôleur en convertiss
 
 
 [role="lead"]
-Vous pouvez mettre à niveau le matériel du contrôleur sans interruption sur une paire haute disponibilité en utilisant le transfert d'agrégats (ARL) et en convertissant le système existant en un système de remplacement, tout en conservant le châssis et les disques du système existant.
+Il existe plusieurs méthodes de relocalisation agrégée (ARL) pour mettre à niveau le matériel du contrôleur. Cette procédure décrit comment mettre à niveau les contrôleurs de stockage d'une paire HA en convertissant le système existant en système de remplacement, tout en conservant le châssis et les disques existants.
 
 Le transfert d'agrégats tire parti de la configuration haute disponibilité et des communications d'interconnexion de cluster. Vous pouvez ainsi déplacer la propriété d'agrégats non racines d'un nœud vers un autre s'ils partagent le stockage au sein du même cluster.
 
-Le tableau suivant présente la matrice des systèmes pris en charge pour la mise à niveau du contrôleur.
-
-
-CAUTION: Cette procédure s'applique strictement aux configurations de mise à niveau suivantes. N'utilisez pas cette procédure pour effectuer une mise à niveau entre d'autres combinaisons de systèmes. Pour tous les autres modèles de contrôleurs, reportez-vous à  la section link:other_references.html["Références"]lien vers _utilisation des commandes de remplacement du contrôleur système pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ et _utilisation du déplacement d'agrégat pour mettre à niveau manuellement le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_.
-
-[cols="20,20,40"]
-|===
-| Système existant | Système de remplacement | Versions de ONTAP prises en charge 
-
-
-| AFF C250 ^1^ | AFF C30, AFF C60 | 9.16.1 
-
-
-| AFF A250 ^1^ | AFF A30, AFF A50 | 9.16.1 
-
-
-| AFF C800 ^1^ | AFF C80 | 9.16.1 
-
-
-| AFF A800 ^1^ | AFF A90 ou AFF A70 | 9.15.1 et versions ultérieures 
-
-
-| AFF A220 configuré en tant que baie 100 % SAN (ASA) | ASA A150 | 9.13.1P1 et versions ultérieures 
-
-
-| AVEC AFF A220 | AFF A150 | 9.10.1P15, 9.11.1P11, 9.12.1P5 et versions ultérieures 
-
-
-| Solution AFF A200 | AFF A150  a| 
-9.10.1P15, 9.11.1P11 et ultérieur ^2^
-
-
-
-| Baie AFF C190 | AFF A150 | 9.10.1P15, 9.11.1P11, 9.12.1P5 et versions ultérieures 
-
-
-| FAS2620 | FAS2820  a| 
-9.11.1P7 ou versions ultérieures (FAS2620) ^2^
-
-9.13.1 et versions ultérieures (FAS2820)
-
-
-
-| FAS2720 | FAS2820 | 9.13.1 et versions ultérieures 
-
-
-| AFF A700 configuré en tant que ASA | ASA A900 | 9.13.1P1 et versions ultérieures 
-
-
-| AFF A700 | AFF A900 | 9.10.1P10, 9.11.1P6 et versions ultérieures 
-
-
-| FAS9000 | FAS9500 | 9.10.1P10, 9.11.1P6 et versions ultérieures 
-|===
-^1^ lorsque vous effectuez une mise à niveau vers un système introduit dans ONTAP 9.15.1 ou version ultérieure, ONTAP convertit l'efficacité du stockage de tous les volumes à provisionnement fin existants, y compris ceux qui n'utilisent pas l'efficacité du stockage, et applique les nouvelles fonctionnalités d'efficacité du stockage qui utilisent la fonctionnalité de déchargement matériel. Il s'agit d'un processus automatique en arrière-plan, sans impact visible sur les performances du système. https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["En savoir plus >>"^]
-
-^2^ les systèmes AFF A200 et FAS2620 ne prennent pas en charge les versions ONTAP ultérieures à la version 9.11.1.
-
-[NOTE]
-====
-NetApp recommande vivement, dans la mesure du possible, que vous ayez la même version de ONTAP sur les anciens systèmes et sur les systèmes de remplacement.
-
-Les versions ONTAP minimales figurant dans le tableau précédent sont obligatoires. Ces versions de ONTAP sont dotées de la version de firmware du processeur de service ou du contrôleur BMC (Baseboard Management Controller) requise pour prendre en charge l'utilisation de différents types de contrôleurs au sein d'un châssis pendant une mise à niveau.
-
-====
 Pendant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, délocalisant ainsi la propriété des agrégats non racines. Vous migrez les agrégats non racine entre les anciens nœuds de contrôleur. Une fois les nœuds de remplacement installés, vous migrez les agrégats non racines des anciens nœuds de contrôleur vers les nœuds de contrôleur de remplacement. Les données hébergées sur les nœuds que vous mettez à niveau sont accessibles lors de la procédure de mise à niveau. Vous migrez également les LIF de données entre les nœuds du cluster lorsque vous continuez.
 
 Le matériel du contrôleur que vous remplacez dépend du type de modèle de système existant :
@@ -106,11 +41,20 @@ Le matériel du contrôleur que vous remplacez dépend du type de modèle de sys
 
 NOTE: Les termes *node1* et *node2* sont utilisés uniquement comme référence aux noms de noeud dans ce document. Lorsque vous suivez la procédure, vous devez remplacer les noms réels de vos nœuds.
 
-.Informations importantes
-* Cette procédure est complexe et suppose que vous avez des compétences avancées en administration de ONTAP. Vous devriez également lire et comprendre le link:guidelines_for_upgrading_controllers_with_arl.html["Instructions de mise à niveau des contrôleurs"] et le link:overview_of_the_arl_upgrade.html["Présentation de la mise à niveau ARL"] avant de commencer la mise à niveau.
+
+
+== Exigences et restrictions
+
+Vous devez prendre en compte des facteurs importants avant de commencer votre procédure de mise à niveau.
+
+
+NOTE: Vous devez vérifier toutes les informations importantes suivantes avant de commencer la procédure de mise à niveau.
+
+* Cette procédure est complexe et suppose que vous avez des compétences avancées en administration de ONTAP. Vous devez également lire et comprendre le link:guidelines_for_upgrading_controllers_with_arl.html["directives pour la mise à niveau des contrôleurs"] et link:overview_of_the_arl_upgrade.html["Séquence de mise à niveau ARL"] avant de commencer la mise à niveau.
 * Cette procédure suppose que le matériel de remplacement du contrôleur est nouveau et qu'il n'a pas été utilisé dans un autre système. Étapes requises pour préparer les contrôleurs utilisés avec le `wipeconfig` la commande n'est pas incluse dans cette procédure. Vous devez contacter le support technique si le matériel de remplacement de contrôleur était précédemment utilisé dans un autre cluster ONTAP ou en tant que système à un seul nœud autonome.
 * Vous pouvez suivre cette procédure pour mettre à niveau le matériel du contrôleur dans des clusters de plus de deux nœuds. Cependant, il est nécessaire d'effectuer séparément la procédure pour chaque paire haute disponibilité du cluster.
 * Si vous disposez d'un commutateur qui n'est pas pris en charge par la version ONTAP et le système de remplacement vers lequel vous effectuez la mise à niveau, reportez-vous à la section link:other_references.html["Références"] Pour accéder au _Hardware Universe_.
+* Les systèmes AFF A250 et AFF C250 utilisent des ports 10/25 GbE embarqués pour l'interconnexion des clusters. Pour migrer des clusters sans commutateur à deux nœuds d'un système AFF A250 ou AFF C250 vers un système AFF A50, AFF A30, AFF C60 ou AFF C30, vous devez utiliser une carte X60132A 4 ports 10/25 GbE dans l'emplacement 1 des deux nœuds. Cela permet l'interconnexion des LIF de cluster vers un port temporaire de la plateforme cible.
 * Les systèmes AFF A30, AFF A50, AFF A70, AFF A90, AFF A1K, AFF C30, AFF C60, AFF C80, FAS70 et FAS90 partagent des ports réseau 100 GbE pour les connexions au cluster et haute disponibilité. Ces systèmes peuvent prendre en charge des connexions de cluster 10 GbE ou 25 GbE avec les anciens switchs de cluster. Cependant, NetApp recommande de mettre à jour les vitesses de cluster 100 GbE lorsque les switchs 10 GbE et 25 GbE ne sont plus nécessaires. Pour plus d'informations, consultez les articles suivants de la base de connaissances :
 +
 --

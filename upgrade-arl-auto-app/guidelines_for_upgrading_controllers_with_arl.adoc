@@ -57,8 +57,16 @@ Pour mettre à niveau les contrôleurs d'entrée de gamme avec des disques inter
 
 
 
-== Dépannage
+== Configuration MetroCluster FC
 
-En cas de problème lors de la mise à niveau des contrôleurs, vous pouvez vous référer au link:troubleshoot_index.html["Résoudre les problèmes"] section à la fin de la procédure pour plus d'informations et des solutions possibles.
+En configuration MetroCluster FC, vous devez remplacer les nœuds du site de reprise après incident/basculement dans les plus brefs délais. Les différences entre les modèles de contrôleur et MetroCluster ne sont pas prises en charge, car une non-concordance de modèle de contrôleur peut entraîner la mise en miroir de la reprise après incident. Utilisez `-skip-metrocluster-check true` la commande pour contourner les vérifications MetroCluster lorsque vous remplacez des nœuds sur le second site.
+
+
+
+== Résoudre les problèmes
+
+Vous pouvez être confronté à une défaillance lors de la mise à niveau de la paire de nœuds. Il est possible que le nœud tombe en panne, mais que les agrégats ne soient pas transférés ou que les LIF ne migrent pas. La cause de l'échec et sa solution dépendent du moment où l'échec s'est produit pendant la procédure de mise à niveau.
+
+Si des problèmes surviennent, reportez-vous à la link:aggregate_relocation_failures.html["Résoudre les problèmes"] Consultez la section à la fin de la procédure pour plus d'informations et les solutions possibles. Les informations sur les défaillances possibles sont répertoriées par phase de la procédure dans la section link:overview_of_the_arl_upgrade.html["Séquence de mise à niveau ARL"] .
 
 Si vous ne trouvez pas de solution au problème que vous rencontrez, contactez le support technique.

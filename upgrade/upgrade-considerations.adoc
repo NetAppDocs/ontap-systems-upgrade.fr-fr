@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: plan, upgrade, consideration, contact, technical, support, recommendation, guidance, cluster, considerations for upgrading controller hardware 
 summary: Pour planifier la mise à niveau, vous devez vous familiariser avec les considérations générales de mise à niveau. Si nécessaire, contactez le support technique pour obtenir des recommandations et des conseils spécifiques à la configuration de votre cluster. 
 ---
-= Considérations relatives à la mise à niveau du matériel du contrôleur
+= Considérations relatives à la mise à niveau du matériel du contrôleur en déplaçant des volumes ou du stockage
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -30,7 +30,7 @@ NOTE: Avant de commencer la procédure de mise à niveau du contrôleur, vous de
 | Est-ce que je combine plusieurs modèles de plateforme de contrôleur dans un cluster ?  a| 
 link:https://hwu.netapp.com["Vérifiez que vous respectez bien les règles de combinaison de plates-formes de stockage"^].
 
-Les contrôleurs d'une paire haute disponibilité doivent être de deux modèles AFF, FAS ou ASA.
+Les contrôleurs d'une paire HA doivent être deux modèles AFF, FAS ou ASA.
 
 
 
@@ -67,7 +67,7 @@ NOTE: Si vous mettez à niveau un cluster à huit nœuds qui diffuse des protoco
 
 
 
-| Est-ce que je mets à niveau une paire haute disponibilité dans un cluster avec plusieurs paires haute disponibilité ? | Déplacer epsilon sur le nœud d'une paire HA ne faisant pas l'objet d'une mise à niveau du contrôleur. Par exemple, si vous mettez à niveau NODEA/NodeB dans un cluster avec la configuration de paire haute disponibilité NODEA/NodeB et le nœud C/noadé, vous devez déplacer epsilon vers le nœud C ou le nœud noadé. 
+| Est-ce que je mets à niveau une paire HA dans un cluster avec plusieurs paires HA ? | Déplacez epsilon vers le nœud d'une paire HA ne subissant pas de mise à niveau du contrôleur. Par exemple, si vous mettez à niveau NODEA/NodeB dans un cluster avec la configuration de paire haute disponibilité NODEA/NodeB et le nœud C/noadé, vous devez déplacer epsilon vers le nœud C ou le nœud noadé. 
 
 
 | Suis-je équipé de ONTAP 9.6P11, 9.7P8 ou versions ultérieures ? | NetApp vous recommande d'activer le basculement du moniteur de connectivité, de vivacité et de disponibilité (CLAM) pour rétablir le quorum du cluster en cas de défaillance de certains nœuds. Le `kernel-service` la commande nécessite un accès au niveau de privilège avancé. Pour plus d'informations, consultez l'article de la base de connaissance NetApp https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU436["Configuration par défaut du basculement CLAM modifiée"^].

@@ -1,8 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
-
-.Informations associées
-Reportez-vous à la section link:other_references.html["Références"] Lien vers le Centre de documentation _ONTAP 9_ où vous pouvez accéder à la documentation produit ONTAP 9.

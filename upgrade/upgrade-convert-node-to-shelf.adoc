@@ -13,6 +13,12 @@ summary: 'Si votre nœud d"origine est l"un des modèles pris en charge, pendant
 [role="lead"]
 Si votre nœud d'origine est l'un des modèles pris en charge, pendant le processus de mise à niveau en déplaçant le stockage, vous pouvez convertir le nœud en tiroir disque, puis le connecter aux nouveaux nœuds du même cluster.
 
+
+NOTE: link:upgrade-move-internal-drives.html["Vous pouvez également choisir de déplacer les disques internes d’un nœud d’origine"].
+
+.Description de la tâche
+Vous ne pouvez déplacer des étagères de lecteurs qu'au sein du même cluster.
+
 .Avant de commencer
 Vous devez avoir passé en revue link:upgrade-considerations.html["Considérations relatives à la mise à niveau du matériel du contrôleur"] à propos de la conversion d'un nœud en tiroir disque. Contactez le support technique si vous avez besoin d'instructions spécifiques pour la configuration de votre entreprise.
 

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: upgrade 
 summary: 'Si vous effectuez une mise à niveau en déplaçant le stockage, vous préparez les nœuds d"origine et configurez les nouveaux nœuds. Certains modèles de plateforme prennent en charge le transfert du stockage interne vers les nouveaux nœuds. Vous réaffectez les disques et restaurez la configuration du volume racine aux nouveaux nœuds et configurez les ports réseau. La mise à niveau via le déplacement du stockage est une procédure perturbatrice.' 
 ---
-= Flux de travail
+= Mise à niveau en déplaçant le flux de travail de stockage
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -55,7 +55,7 @@ Warning: Cluster HA has not been configured. Cluster HA must be configured on a 
 ----
 +
 
-NOTE: Si vous mettez à niveau une paire haute disponibilité dans un cluster avec plusieurs paires haute disponibilité, vous devez déplacer epsilon vers le nœud d'une paire haute disponibilité qui ne fait pas l'objet d'une mise à niveau du contrôleur. Par exemple, si vous mettez à niveau NODEA/NodeB dans un cluster avec la configuration de paire haute disponibilité NODEA/NodeB et le nœud C/noadé, vous devez déplacer epsilon vers le nœud C ou le nœud noadé.
+NOTE: Si vous mettez à niveau une paire HA dans un cluster avec plusieurs paires HA, vous devez déplacer epsilon vers le nœud d'une paire HA qui ne subit pas de mise à niveau du contrôleur. Par exemple, si vous mettez à niveau NODEA/NodeB dans un cluster avec la configuration de paire haute disponibilité NODEA/NodeB et le nœud C/noadé, vous devez déplacer epsilon vers le nœud C ou le nœud noadé.
 
 . Si le nœud2 contient epsilon, marquer epsilon AS `false` sur le nœud afin qu'il puisse être transféré vers le nœud 3 :
 +

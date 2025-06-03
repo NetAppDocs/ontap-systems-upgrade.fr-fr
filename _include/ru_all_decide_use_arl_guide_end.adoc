@@ -1,0 +1,14 @@
+= Choisissez une autre procédure de mise à niveau matérielle
+:allow-uri-read: 
+
+
+
+
+== Choisissez une autre procédure de mise à niveau matérielle
+
+* link:../upgrade-arl/index.html["Passez en revue les méthodes ARL alternatives disponibles pour la mise à niveau du matériel du contrôleur"].
+* Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+
+
+.Informations associées
+Se référer à link:other_references.html["Références"] pour créer un lien vers la _Documentation ONTAP 9_.

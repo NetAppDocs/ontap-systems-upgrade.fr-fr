@@ -4,11 +4,14 @@
 
 Vous devez netboot nœud4 si cette version de ONTAP 9 n'est pas installée sur le nœud 2. Une fois le noeud 4 installé, démarrez-le à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système, en suivant les instructions de la section link:prepare_for_netboot.html["Préparation à la mise sur le réseau"].
 
-.Important :
+[IMPORTANT]
+====
+* Pour une mise à niveau du contrôleur AFF A800 ou AFF C800, vous devez vous assurer que tous les lecteurs du châssis sont fermement fixés contre le plan médian avant de retirer le nœud 2. Pour plus d'informations, voir link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Remplacez les modules de contrôleur AFF A800 ou AFF C800"].
 * Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<auto_install4_step1,Étape 1>> à <<auto_install4_step21,Étape 21>>, quittez ensuite cette section et suivez les instructions à link:set_fc_or_uta_uta2_config_node4.html#configure-fc-ports-on-node4["Configurez les ports FC sur le nœud 4"] et à link:set_fc_or_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4"], Saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <<auto_install4_step23,Étape 23>>.
-* Cependant, si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière et passer à link:set_fc_or_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"], saisie de commandes à l'invite du cluster.
+* Si vous mettez à niveau un système avec des disques de stockage, vous devez compléter toute cette section, puis passer à link:set_fc_or_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] , en entrant des commandes à l'invite du cluster.
 
 
+====
 .Étapes
 . [[auto_install4_step1]]Assurez-vous que le noeud 4 dispose d'un espace de rack suffisant.
 +

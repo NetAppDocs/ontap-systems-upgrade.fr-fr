@@ -16,7 +16,7 @@ summary: 'Lorsque vous utilisez l"ARL pour mettre à niveau les modèles de cont
 [role="lead"]
 Après avoir remplacé les modules système correspondants, vous devez netboot node1. Le terme netboot signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Lors de la préparation de netboot, vous ajoutez une copie de l'image de démarrage de ONTAP 9 sur un serveur Web auquel le système peut accéder.
 
-Il n'est pas possible de vérifier la version de ONTAP installée sur le support de démarrage du module de contrôleur de remplacement sauf s'il est installé dans un châssis et sous tension. La version ONTAP du support d'amorçage du système de remplacement doit être identique à la version ONTAP exécutée sur l'ancien système que vous mettez à niveau et les images d'amorçage principale et de sauvegarde sur le support d'amorçage doivent correspondre. Pour vérifier la version minimale de ONTAP prise en charge pour votre mise à niveau, reportez-vous à la section link:index.html["Présentation"].
+Il est impossible de vérifier la version d'ONTAP installée sur le support de démarrage du module contrôleur de remplacement, sauf si celui-ci est installé dans un châssis et sous tension. La version ONTAP du support d'amorçage du système de remplacement doit être identique à la version ONTAP exécutée sur l'ancien système que vous mettez à niveau et les images d'amorçage principale et de sauvegarde sur le support d'amorçage doivent correspondre. Pour connaître la version minimale d'ONTAP prise en charge pour votre mise à niveau, consultez le link:decide_to_use_the_aggregate_relocation_guide.html#supported-systems,["combinaisons de mise à niveau système prises en charge"] .
 
 Vous pouvez configurer les images en effectuant un démarrage suivi de l' `wipeconfig` commande dans le menu de démarrage. Si le module de contrôleur était auparavant utilisé dans un autre cluster, le `wipeconfig` commande efface toute configuration résiduelle sur le support d'amorçage.
 
@@ -149,8 +149,27 @@ Le module de contrôleur redémarre mais s'arrête au menu d'amorçage car le p�
 
 
 
-. À l'invite, exécutez le `wipeconfig` pour effacer toute configuration précédente sur le support de démarrage :
+. Effacez toute configuration précédente sur le support de démarrage.
 +
+.. À l'invite suivante, exécutez le  `wipeconfig` commande et appuyez sur la touche Entrée :
++
+[listing]
+----
+Please choose one of the following:
+
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)? wipeconfig
+----
 .. Lorsque vous voyez le message ci-dessous, répondez `yes`:
 +
 [listing]
@@ -160,6 +179,10 @@ Warning: do not run this option on a HA node that has been taken over.
 Are you sure you want to continue?:
 ----
 .. Le nœud redémarre pour terminer le `wipeconfig` puis s'arrête au menu de démarrage.
++
+
+NOTE: Attendez que le nœud s'arrête au menu de démarrage après avoir terminé l'  `wipeconfig` opération.
+
 
 
 . Sélectionnez option `5` pour passer en mode maintenance à partir du menu de démarrage. Réponse `yes` sur les invites jusqu'à ce que le nœud s'arrête en mode maintenance et à l'invite de commande `*>`.

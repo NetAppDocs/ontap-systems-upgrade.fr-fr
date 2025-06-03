@@ -2,9 +2,9 @@
 permalink: upgrade/upgrade-complete.html 
 sidebar: sidebar 
 keywords: complete, upgrade, ontap, complete the upgrade 
-summary: Effectuez la mise à niveau dans ONTAP 9.8 ou version ultérieure ou ONTAP 9.7 ou version antérieure. 
+summary: Effectuez la mise à niveau du stockage de déplacement dans ONTAP 9.8 ou version ultérieure, ou ONTAP 9.7 ou version antérieure. 
 ---
-= Présentation
+= Terminer le flux de travail de mise à niveau du stockage de déplacement
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -17,6 +17,6 @@ Vous devez utiliser la procédure pour votre version de ONTAP.
 
 image:workflow_completing_upgrade_98_or_97x.png["Terminez la mise à niveau"]
 
-* link:upgrade-complete-ontap-9-8.html["Effectuez la mise à niveau dans ONTAP 9.8 ou version ultérieure"]
-* link:upgrade-complete-ontap-9-7-or-earlier.html["Effectuez la mise à niveau dans ONTAP 9.7 ou version antérieure"]
+* link:upgrade-map-network-ports-ontap-9-8.html["Effectuez la mise à niveau dans ONTAP 9.8 ou version ultérieure"]
+* link:upgrade-map-network-ports-ontap-9-7-or-earlier.html["Effectuez la mise à niveau dans ONTAP 9.7 ou version antérieure"]
 

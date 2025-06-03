@@ -3,22 +3,20 @@ section: upgrade-arl-auto-affa900
 title: Utilisez les commandes « system Controller replace » pour mettre à niveau les
   modèles de contrôleurs d'un même châssis
 entries:
-- title: Présentation
+- title: En savoir plus sur cette procédure ARL
   url: "/upgrade-arl-auto-affa900/index.html"
-- title: Décider d'utiliser le contenu de transfert d'agrégats
+- title: Décider d'utiliser ou non cette procédure ARL
   url: "/upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html"
 - title: Outils et documentation requis
   url: "/upgrade-arl-auto-affa900/required_tools_and_documentation.html"
 - title: Instructions de mise à niveau des contrôleurs
   url: "/upgrade-arl-auto-affa900/guidelines_for_upgrading_controllers_with_arl.html"
-- title: Présentation de la mise à niveau ARL
+- title: En savoir plus sur la séquence de mise à niveau ARL
   url: "/upgrade-arl-auto-affa900/overview_of_the_arl_upgrade.html"
 - title: Étape 1. Préparation de la mise à niveau
   pdf-filename: Étape 1. Préparation à la mise à niveau (mise à niveau vers AFF A900
     ou FAS9500)
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-auto-affa900/stage_1_index.html"
   - title: Vérifiez la mise à niveau matérielle
     url: "/upgrade-arl-auto-affa900/verify_upgrade_hardware.html"
   - title: Préparer les nœuds pour une mise à niveau
@@ -27,8 +25,6 @@ entries:
     url: "/upgrade-arl-auto-affa900/manage_storage_encryption_using_okm.html"
 - title: Étape 2. Déplacer les ressources et retirer le nœud 1
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-auto-affa900/stage_2_index.html"
   - title: Transférez les agrégats non racine et les LIF de données NAS qui appartiennent
       au nœud1 vers le nœud2
     url: "/upgrade-arl-auto-affa900/relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html"
@@ -50,8 +46,6 @@ entries:
     url: "/upgrade-arl-auto-affa900/netboot_node1.html"
 - title: Étape 3. Démarrez le nœud 1 avec les modules système de remplacement
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-auto-affa900/stage_3_index.html"
   - title: Câblage du nœud 1 pour le stockage haute disponibilité partagé en cluster
     url: "/upgrade-arl-auto-affa900/cable-node1-for-shared-cluster-HA-storage.html"
   - title: Démarrez le nœud 1 avec les modules système de remplacement
@@ -66,8 +60,6 @@ entries:
     url: "/upgrade-arl-auto-affa900/move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html"
 - title: Étape 4. Déplacer les ressources et retirer le nœud 2
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-auto-affa900/stage_4_index.html"
   - title: Transférez des agrégats non racines et des LIF de données NAS du nœud 2
       vers le nœud 1
     url: "/upgrade-arl-auto-affa900/relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html"
@@ -75,8 +67,6 @@ entries:
     url: "/upgrade-arl-auto-affa900/retire_node2.html"
 - title: Étape 5. Installez les modules système de remplacement sur le nœud 2
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-auto-affa900/stage_5_index.html"
   - title: Installez les modules système de remplacement sur le nœud 2
     entries:
     - title: Installez AFF A30, AFF A50, AFF C30 ou AFF C60
@@ -91,8 +81,8 @@ entries:
     url: "/upgrade-arl-auto-affa900/netboot_node2.html"
 - title: Étape 6. Démarrez le nœud 2 avec les modules système de remplacement
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-auto-affa900/stage_6_index.html"
+  - title: Nœud de câble 2 pour stockage en cluster partagé-HA
+    url: "/upgrade-arl-auto-affa900/cable-node2-for-shared-cluster-HA-storage.html"
   - title: Démarrez le nœud 2 avec les modules système de remplacement
     url: "/upgrade-arl-auto-affa900/boot_node2_with_a900_controller_and_nvs.html"
   - title: Vérifiez l'installation du node2
@@ -104,8 +94,6 @@ entries:
     url: "/upgrade-arl-auto-affa900/move_non_root_aggr_and_nas_data_lifs_back_to_node2.html"
 - title: Étape 7. Terminez la mise à niveau
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-auto-affa900/stage_7_index.html"
   - title: Gérez l'authentification à l'aide de serveurs KMIP
     url: "/upgrade-arl-auto-affa900/manage-authentication-using-kmip-servers.html"
   - title: Vérifiez que les nouveaux contrôleurs sont correctement configurés
@@ -122,8 +110,6 @@ entries:
 - title: Résoudre les problèmes
   pdf-filename: Dépannage (mise à niveau vers AFF A900 ou FAS9500)
   entries:
-  - title: Présentation
-    url: "/upgrade-arl-auto-affa900/troubleshoot_index.html"
   - title: Défaillance du transfert d'agrégats
     url: "/upgrade-arl-auto-affa900/aggregate_relocation_failures.html"
   - title: Redémarre, fonctionne de façon incohérente ou fonctionne tout cycle d'alimentation

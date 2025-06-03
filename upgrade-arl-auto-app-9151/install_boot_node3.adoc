@@ -376,7 +376,7 @@ Login:
 
 NOTE: Dans l'exemple de sortie de la console ci-dessus, ONTAP vous invite à entrer le nom du nœud partenaire si le système utilise des disques du partitionnement de disque avancé.
 
-. Si le système passe en boucle de redémarrage avec le message `no disks found`, il indique qu'il y a eu un problème avec la réaffectation de disque. Voir link:troubleshoot_index.html["Résoudre les problèmes"] pour résoudre le problème.
+. Si le système passe en boucle de redémarrage avec le message `no disks found`, il indique qu'il y a eu un problème avec la réaffectation de disque. Voir link:aggregate_relocation_failures.html["Résoudre les problèmes"] pour résoudre le problème.
 . Appuyez sur `Ctrl-C` pendant l'AUTOBOOT pour arrêter le nœud à `LOADER>` l'invite.
 . À l'invite du CHARGEUR, entrer en mode maintenance :
 +

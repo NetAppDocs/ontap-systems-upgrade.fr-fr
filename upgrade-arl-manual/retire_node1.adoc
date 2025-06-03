@@ -90,7 +90,7 @@ L'exemple suivant montre la sortie du `storage failover show` commande lorsque l
 `network interface show -role data -curr-node _node2_ -home-node _node1_`
 
 +
-Consultez la colonne *Status Admin/Oper* pour voir si des LIF sont en panne. Si l'un des LIFs est arrêté, consulter le link:troubleshoot_index.html["Dépistage de la suie"] section.
+Consultez la colonne *Status Admin/Oper* pour voir si des LIF sont en panne. Si des LIF sont en panne, consultez le link:aggregate_relocation_failures.html["Dépistage de la suie"] section.
 
 . Effectuer l'une des actions suivantes :
 +
@@ -135,7 +135,7 @@ Si la haute disponibilité du cluster n'a pas été désactivée, répétez l'op
 ====
 Si vous avez un cluster à quatre nœuds, epsilon peut se trouver sur un nœud dans une paire haute disponibilité différente dans le cluster.
 
-Si vous mettez à niveau une paire haute disponibilité dans un cluster avec plusieurs paires haute disponibilité, vous devez déplacer epsilon vers le nœud d'une paire haute disponibilité qui ne fait pas l'objet d'une mise à niveau du contrôleur. Par exemple, si vous mettez à niveau NODEA/NodeB dans un cluster avec la configuration de paire haute disponibilité NODEA/NodeB et le nœud C/noadé, vous devez déplacer epsilon vers le nœud C ou le nœud noadé.
+Si vous mettez à niveau une paire HA dans un cluster avec plusieurs paires HA, vous devez déplacer epsilon vers le nœud d'une paire HA qui ne subit pas de mise à niveau du contrôleur. Par exemple, si vous mettez à niveau NODEA/NodeB dans un cluster avec la configuration de paire haute disponibilité NODEA/NodeB et le nœud C/noadé, vous devez déplacer epsilon vers le nœud C ou le nœud noadé.
 
 ====
 +

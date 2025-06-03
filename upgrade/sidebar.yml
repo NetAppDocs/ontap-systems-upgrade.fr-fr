@@ -2,7 +2,7 @@
 section: upgrade
 title: Mise à niveau par déplacement des volumes ou du stockage
 entries:
-- title: Présentation
+- title: Décider de mettre à niveau en déplaçant des volumes ou du stockage
   url: "/upgrade/upgrade-decide-to-use-this-guide.html"
 - title: Considérations
   url: "/upgrade/upgrade-considerations.html"
@@ -25,8 +25,6 @@ entries:
   - title: 'Facultatif : déplacez le stockage interne ou convertissez-le en tiroir
       disque'
     entries:
-    - title: Présentation
-      url: "/upgrade/upgrade-optional-move-internal-storage.html"
     - title: Déplacer les disques internes
       url: "/upgrade/upgrade-move-internal-drives.html"
     - title: Conversion d'un nœud en tiroir disque
@@ -37,20 +35,16 @@ entries:
     url: "/upgrade/upgrade-restore-root-volume-config.html"
   - title: Mise à niveau terminée
     entries:
-    - title: Présentation
+    - title: Flux de travail
       url: "/upgrade/upgrade-complete.html"
     - title: Complet dans ONTAP 9.8 ou version ultérieure
       entries:
-      - title: Présentation
-        url: "/upgrade/upgrade-complete-ontap-9-8.html"
       - title: Mappez les ports réseau à l'aide de ONTAP 9.8
         url: "/upgrade/upgrade-map-network-ports-ontap-9-8.html"
       - title: Effectuer les étapes finales de la ONTAP 9.8
         url: "/upgrade/upgrade-final-upgrade-steps-in-ontap-9-8.html"
     - title: Procédez à la configuration complète dans ONTAP 9.7 ou version antérieure
       entries:
-      - title: Présentation
-        url: "/upgrade/upgrade-complete-ontap-9-7-or-earlier.html"
       - title: Mappez les ports réseau avec ONTAP 9.7 ou version antérieure
         url: "/upgrade/upgrade-map-network-ports-ontap-9-7-or-earlier.html"
       - title: Effectuez les étapes finales de ONTAP 9.7 ou version antérieure
@@ -70,15 +64,7 @@ entries:
   - title: Déplacez les LIF de données non-SAN et les LIF de gestion du cluster
     url: "/upgrade/upgrade-move-lifs-to-new-nodes.html"
   - title: Déplacer, supprimer ou créer DES LIF SAN
-    entries:
-    - title: Présentation
-      url: "/upgrade/upgrade_move_delete_recreate_san_lifs.html"
-    - title: Considérations relatives à la migration des LIF SAN
-      url: "/upgrade/upgrade_considerations_move_san_lifs.html"
-    - title: Supprimez les LIFs SAN
-      url: "/upgrade/upgrade-delete-san-lifs.html"
-    - title: Créez de nouvelles LIF SAN ou recréez des LIF SAN supprimées
-      url: "/upgrade/upgrade_create_recreate_san_lifs.html"
+    url: "/upgrade/upgrade_move_delete_recreate_san_lifs.html"
   - title: Dissocier les nœuds d'origine
     url: "/upgrade/upgrade-unjoin-original-nodes-move-volumes.html"
   - title: Mise à niveau terminée

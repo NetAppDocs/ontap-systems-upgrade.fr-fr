@@ -31,7 +31,36 @@ Vous devez patienter jusqu'à ce que le nœud 1 rejoint le quorum, puis reprendr
 +
 La sortie du `health` ce champ doit être de `true`.
 
-. Vérifiez que le noeud 1 fait partie du même cluster que le noeud 2 et qu'il est en bon état :
+. Cette étape s'applique aux configurations de mise à niveau suivantes. Pour toutes les autres mises à niveau système, ignorez cette étape et accédez à <<verify-node1-step3,Étape 3>> :
++
+** Clusters sans commutateur à deux nœuds
+** Systèmes AFF A250 ou AFF C250 connectés à un commutateur mis à niveau vers un système AFF A50, AFF A30, AFF C30 ou AFF C60
+
+
++
+--
+Si le nœud 1 ne rejoint pas le quorum automatiquement :
+
+.. Vérifiez l'espace IP des ports e1a et e1b :
++
+`network port show`
+
+.. Si l'espace IP n'est pas « Cluster », remplacez l'espace IP par « Cluster » sur e1a et e1b :
++
+`network port modify -node <node_name> -port <port> -ipspace Cluster`
+
+.. Vérifiez que l'espace IP des ports e1a et e1b est « Cluster » :
++
+`network port show`
+
+.. Migrer les LIF du cluster node1 vers e1a et e1b :
++
+`network interface migrate -vserver Cluster -lif <cluster_lif1> -destination-node <node1_name> -destination-port <port_name>`
+
+
+
+--
+. [[verify-node1-step3]]Vérifiez que node1 et node2 font partie du même cluster et que le cluster est sain :
 +
 `cluster show`
 

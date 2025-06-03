@@ -41,7 +41,7 @@ Le tableau ci-après décrit les tâches générales que vous effectuez à chaqu
 | Étape | Étapes 
 
 
-| link:stage_1_index.html["Étape 1 : préparer la mise à niveau"]  a| 
+| link:determine_aggregates_on_internal_drives.html["Étape 1 : préparer la mise à niveau"]  a| 
 Lors de la phase 1, le cas échéant, vérifiez que les disques internes ne contiennent pas d'agrégats racines ou d'agrégats de données, préparez les nœuds pour la mise à niveau et exécutez une série de contrôles préalables. Si nécessaire, vous reclé les disques pour le chiffrement du stockage et préparation au démarrage sur le réseau des nouveaux contrôleurs.
 
 Propriété d'un agrégat à la fin de la phase 1 :
@@ -52,7 +52,7 @@ Propriété d'un agrégat à la fin de la phase 1 :
 
 
 
-| link:stage_2_index.html["Étape 2 : retrait du noeud 1"]  a| 
+| link:relocate_non_root_aggr_node1_node2.html["Étape 2 : retrait du noeud 1"]  a| 
 Lors de la phase 2, vous transférez des agrégats non-racines du nœud 1 vers le nœud 2, et déplacez les LIF de données non-SAN qui appartiennent au nœud 1 vers le nœud 2, y compris les agrégats défaillants ou vetotés. Vous enregistrez également les informations nécessaires sur le nœud1 pour une utilisation ultérieure dans la procédure et retirez le nœud1.
 
 Propriété d'un agrégat à la fin de la phase 2 :
@@ -64,7 +64,7 @@ Propriété d'un agrégat à la fin de la phase 2 :
 
 
 
-| link:stage_3_index.html["Etape 3 : installation et démarrage du node3"]  a| 
+| link:install_boot_node3.html["Etape 3 : installation et démarrage du node3"]  a| 
 Lors de la phase 3, vous installez et démarrez le nœud 3, mappez le cluster et les ports de gestion des nœuds du nœud 1 vers le nœud 3, puis déplacez les LIF de données et les LIF SAN appartenant au nœud 1 du nœud 2 vers le nœud 3. Vous transférez également tous les agrégats du nœud 2 vers le nœud 3, et déplacez les LIF de données et les LIF SAN qui appartiennent au nœud 2 vers le nœud 3.
 
 Propriété globale à la fin de la phase 3 :
@@ -76,12 +76,12 @@ Propriété globale à la fin de la phase 3 :
 
 
 
-| link:stage_4_index.html["Étape 4 : retirer le noeud 2"]  a| 
+| link:record_node2_information.html["Étape 4 : retirer le noeud 2"]  a| 
 Au cours de l'étape 4, vous enregistrez les informations nécessaires sur le noeud 2 pour une utilisation ultérieure dans la procédure, puis vous retirez le noeud 2. La propriété globale n'a aucun changement.
 
 
 
-| link:stage_5_index.html["Etape 5 : installation et démarrage du node4"]  a| 
+| link:install_boot_node4.html["Etape 5 : installation et démarrage du node4"]  a| 
 Lors de la phase 5, vous installez et démarrez le nœud 4, mappez les ports relatifs au cluster et aux nœuds de gestion du nœud 2 vers le nœud 4, puis déplacez les LIF de données et les LIF SAN appartenant au nœud 2 du nœud 3 vers le nœud 4. Vous pouvez également transférer des agrégats NODE2 du nœud 3 vers le nœud 4, puis déplacer les LIF de données et SAN détenues par le nœud 2 vers le nœud 3.
 
 Propriété globale à la fin de la phase 5 :
@@ -92,7 +92,7 @@ Propriété globale à la fin de la phase 5 :
 
 
 
-| link:stage_6_index.html["Étape 6 : terminez la mise à niveau"]  a| 
+| link:manage_authentication_kmip.html["Étape 6 : terminez la mise à niveau"]  a| 
 Lors de la phase 6, vous confirmez que les nouveaux nœuds sont correctement configurés et configurez Storage Encryption ou NetApp Volume Encryption si les nouveaux nœuds sont activés pour le chiffrement. Vous devez également retirer la désaffectation des anciens nœuds pour reprendre les opérations SnapMirror.
 
 

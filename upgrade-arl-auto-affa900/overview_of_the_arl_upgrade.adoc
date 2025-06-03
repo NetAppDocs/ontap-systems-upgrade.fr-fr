@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-affa900/overview_of_the_arl_upgrade.html
 keywords: overview, arl, upgrade, owner, controller, hardware, old, system, chassis, disk, disks 
 summary: 'Comprendre le fonctionnement de la procédure ARL qui permet de mettre à niveau les modèles de contrôleurs d"un même châssis.' 
 ---
-= Présentation de la mise à niveau ARL
+= En savoir plus sur la séquence de mise à niveau ARL
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -37,7 +37,7 @@ Le tableau ci-après décrit les tâches générales que vous effectuez à chaqu
 | Étape | Étapes 
 
 
-| link:stage_1_index.html["Étape 1 : préparer la mise à niveau"]  a| 
+| link:verify_upgrade_hardware.html["Étape 1 : préparer la mise à niveau"]  a| 
 Au cours de l'étape 1, vous vérifiez que vous disposez du matériel approprié pour votre mise à niveau, exécutez des contrôles préalables et, si nécessaire, assurez-vous que la propriété globale est correcte. Vous devez enregistrer certaines informations si vous gérez Storage Encryption à l'aide du gestionnaire de clés intégré et que vous pouvez choisir de suspendre les relations SnapMirror.
 
 Propriété d'un agrégat à la fin de la phase 1 :
@@ -48,7 +48,7 @@ Propriété d'un agrégat à la fin de la phase 1 :
 
 
 
-| link:stage_2_index.html["Étape 2 : relocaliser les ressources et retirer le nœud 1"]  a| 
+| link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Étape 2 : relocaliser les ressources et retirer le nœud 1"]  a| 
 Au cours de la phase 2, vous déplacez les agrégats non racines du nœud 1 et les LIF de données NAS du nœud 1 vers le nœud 2. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement. Si nécessaire, vous transférez des agrégats défaillants ou vetotés. Vous enregistrez les informations sur le noeud 1 pour les utiliser ultérieurement dans la procédure avant de retirer le noeud 1. Vous pouvez également préparer le nœud 1 plus tard dans la procédure.
 
 Propriété d'un agrégat à la fin de la phase 2 :
@@ -59,7 +59,7 @@ Propriété d'un agrégat à la fin de la phase 2 :
 
 
 
-| link:stage_3_index.html["Etape 3 : démarrez le nœud 1 avec les modules système de remplacement"]  a| 
+| link:cable-node1-for-shared-cluster-HA-storage.html["Etape 3 : démarrez le nœud 1 avec les modules système de remplacement"]  a| 
 Au cours de l'étape 3, vous démarrez le nœud 1 avec les modules système mis à niveau et vérifiez l'installation du nœud 1 mis à niveau. Si vous utilisez NetApp Volume Encryption (NVE), vous restaurez la configuration du gestionnaire de clés. Vous pouvez également transférer des agrégats non racines et des LIF de données NAS du nœud 2 vers le nœud mis à niveau 1, puis vérifier que des LIF SAN existent sur le nœud 1.
 
 Propriété globale à la fin de la phase 3 :
@@ -70,7 +70,7 @@ Propriété globale à la fin de la phase 3 :
 
 
 
-| link:stage_4_index.html["Étape 4 : déplacer les ressources et retirer le nœud 2"]  a| 
+| link:relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html["Étape 4 : déplacer les ressources et retirer le nœud 2"]  a| 
 Lors de la phase 4, vous transférez les agrégats non racines et les LIF de données NAS du nœud 2 vers le nœud mis à niveau 1, puis retirez le nœud 2.
 
 Propriété globale à la fin de la phase 4 :
@@ -81,7 +81,7 @@ Propriété globale à la fin de la phase 4 :
 
 
 
-| link:stage_5_index.html["Étape 5 : installez les modules de rechange du système sur le nœud 2"]  a| 
+| link:install-aff-a30-a50-c30-c50-node2.html["Étape 5 : installez les modules de rechange du système sur le nœud 2"]  a| 
 Au cours de l'étape 5, vous installez les nouveaux modules système que vous avez reçus pour le node2 mis à niveau, puis netboot node2.
 
 Propriété globale à la fin de la phase 5 :
@@ -92,12 +92,12 @@ Propriété globale à la fin de la phase 5 :
 
 
 
-| link:stage_6_index.html["Etape 6 : démarrez le nœud 2 avec les modules système de remplacement"]  a| 
+| link:boot_node2_with_a900_controller_and_nvs.html["Etape 6 : démarrez le nœud 2 avec les modules système de remplacement"]  a| 
 Au cours de l'étape 6, vous démarrez node2 avec des modules système mis à niveau et vérifiez l'installation du node2 mis à niveau. Si vous utilisez NVE, restaurez la configuration du gestionnaire de clés. Vous pouvez également transférer des agrégats non racines et des LIF de données NAS du nœud 1 vers le nœud 2 mis à niveau, puis vérifier que des LIF SAN existent sur le nœud 2.
 
 
 
-| link:stage_7_index.html["Étape 7 : terminez la mise à niveau"]  a| 
+| link:manage-authentication-using-kmip-servers.html["Étape 7 : terminez la mise à niveau"]  a| 
 Lors de la phase 7, vous vérifiez que les nouveaux nœuds sont correctement configurés et que, si les nouveaux nœuds sont activés pour le chiffrement, vous configurez et configurez Storage Encryption ou NVE. Vous devez également désaffecter les anciens nœuds et reprendre les opérations SnapMirror.
 
 |===

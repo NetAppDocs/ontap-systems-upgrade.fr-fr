@@ -1,0 +1,51 @@
+= Connectez les ports e0M et BMC
+:allow-uri-read: 
+
+
+
+
+== Connectez les ports e0M et BMC
+
+Si le système existant dispose d'un port de gestion (e0M) et d'un port BMC, les ports e0M et BMC sont combinés et accessibles via le port « clé » du système de remplacement. Vous devez vous assurer que les ports e0M et BMC sont connectés au même commutateur et au même sous-réseau sur le système existant avant de vous connecter au système de remplacement.
+
+[cols="35,65"]
+|===
+| Si... | Alors... 
+
+
+| Les adresses IP e0M et BMC se trouvent sur le même sous-réseau IP | Connectez le port e0M ou BMC du système existant au port de « clé » du système de remplacement. 
+
+
+| Les adresses IP e0M et BMC se trouvent sur des sous-réseaux différents  a| 
+. Fusionnez les adresses IP e0M et BMC dans un sous-réseau IP.
+. Connectez le port e0M ou BMC du système existant au port de « clé » du système de remplacement.
+
+
+|===
+
+
+== Connexion à un cluster à 2 nœuds sans commutateur
+
+Les tableaux suivants présentent l'utilisation des ports de commutateur pour les configurations en cluster sans commutateur à 2 nœuds.
+
+|===
+| Type de port | AFF A800, AFF C800 | AFF A90 | AFF A70, AFF C80 
+
+
+| Cluster | e0a | e1a | e1a 
+
+
+| Cluster | e1a | E7a (utilisez e1b s'il n'y a pas d'e7a) | e1b 
+
+
+| HAUTE DISPONIBILITÉ | e0b | Ne pas connecter | Ne pas connecter 
+
+
+| HAUTE DISPONIBILITÉ | e1b | Ne pas connecter | Ne pas connecter 
+
+
+| Ports de stockage SAS (si présents et utilisés) | Tout port disponible | Tout port disponible | Tout port disponible 
+
+
+| Ports de stockage Ethernet pour tiroirs NS224 | Tout port disponible | Reportez-vous à la section mappage de la connectivité du stockage Ethernet | Reportez-vous à la section mappage de la connectivité du stockage Ethernet 
+|===

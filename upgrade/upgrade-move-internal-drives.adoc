@@ -13,6 +13,9 @@ summary: 'Si votre nœud d"origine est l"un des modèles pris en charge, pendant
 [role="lead"]
 Si votre nœud d'origine est l'un des modèles pris en charge, pendant la mise à niveau en déplaçant le stockage, vous pouvez déplacer les disques SATA, SSD ou SAS internes du nœud vers un tiroir disque connecté au nouveau nœud du même cluster.
 
+
+NOTE: link:upgrade-convert-node-to-shelf.html["Vous pouvez également choisir de convertir le système en étagère de disques et de le connecter aux nouveaux nœuds."].
+
 .Avant de commencer
 * Vous devez avoir passé en revue link:upgrade-considerations.html["Considérations relatives à la mise à niveau du matériel du contrôleur"] à propos du déplacement des disques internes.
 +
@@ -22,6 +25,9 @@ Contactez le support technique si vous avez besoin d'instructions spécifiques p
 * Un tiroir disque compatible doit déjà être connecté au nouveau nœud.
 * Le tiroir disque doit disposer de suffisamment de baies disponibles pour prendre en charge les supports de disques SATA, SSD ou SAS à partir du nœud d'origine.
 
+
+.Description de la tâche
+Vous ne pouvez déplacer des lecteurs qu'au sein du même cluster.
 
 .Étapes
 . Retirez délicatement le cadre de l'avant du système.

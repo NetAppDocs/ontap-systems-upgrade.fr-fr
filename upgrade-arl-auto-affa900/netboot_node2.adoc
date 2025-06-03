@@ -16,7 +16,7 @@ summary: Après avoir remplacé les modules système du nœud 2 correspondants l
 [role="lead"]
 Après avoir remplacé les modules système node2 correspondants, vous devrez peut-être les initialiser en réseau. Le terme netboot signifie que vous démarrez à partir d'une image ONTAP stockée sur un serveur distant. Lors de la préparation de netboot, vous placez une copie de l'image de démarrage ONTAP 9 sur un serveur Web auquel le système peut accéder.
 
-Il n'est pas possible de vérifier la version de ONTAP installée sur le support de démarrage du module de contrôleur de remplacement sauf s'il est installé dans un châssis et sous tension. La version ONTAP du support d'amorçage du système de remplacement doit être identique à la version ONTAP exécutée sur l'ancien système que vous mettez à niveau et les images d'amorçage principale et de sauvegarde doivent correspondre. Vous pouvez configurer les images en effectuant un démarrage suivi de l' `wipeconfig` commande dans le menu de démarrage. Si le module de contrôleur était auparavant utilisé dans un autre cluster, le `wipeconfig` commande efface toute configuration résiduelle sur le support d'amorçage.
+Il est impossible de vérifier la version d'ONTAP installée sur le support de démarrage du module contrôleur de remplacement, sauf si celui-ci est installé dans un châssis et sous tension. La version ONTAP du support d'amorçage du système de remplacement doit être identique à la version ONTAP exécutée sur l'ancien système que vous mettez à niveau et les images d'amorçage principale et de sauvegarde doivent correspondre. Vous pouvez configurer les images en effectuant un démarrage réseau suivi de la commande  `wipeconfig` depuis le menu de démarrage. Si le module contrôleur a déjà été utilisé dans un autre cluster,  `wipeconfig` la commande efface toute configuration résiduelle sur le support de démarrage.
 
 Vous pouvez également utiliser l'option de démarrage USB pour effectuer le démarrage sur le réseau. Consultez l'article de la base de connaissances link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Utilisation de la commande boot_Recovery LOADER pour l'installation de ONTAP pour la configuration initiale d'un système"^].
 
@@ -130,8 +130,27 @@ Le module de contrôleur redémarre mais s'arrête au menu d'amorçage car le p�
 
 
 
-. À l'invite, exécutez le `wipeconfig` commande pour effacer toute configuration précédente sur le support de démarrage.
+. Effacez toute configuration précédente sur le support de démarrage.
 +
+.. À l'invite suivante, exécutez le  `wipeconfig` commande et appuyez sur la touche Entrée :
++
+[listing]
+----
+Please choose one of the following:
+
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)? wipeconfig
+----
 .. Lorsque vous voyez le message ci-dessous, répondez `yes`:
 +
 [listing]
@@ -141,6 +160,10 @@ Warning: do not run this option on a HA node that has been taken over.
 Are you sure you want to continue?:
 ----
 .. Le nœud redémarre pour terminer le `wipeconfig` puis s'arrête au menu de démarrage.
++
+
+NOTE: Attendez que le nœud s'arrête au menu de démarrage après avoir terminé l'  `wipeconfig` opération.
+
 
 
 . Sélectionnez le mode maintenance `5` dans le menu de démarrage et entrez `y` lorsque vous êtes invité à poursuivre le démarrage.

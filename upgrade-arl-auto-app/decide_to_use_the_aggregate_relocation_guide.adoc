@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-app/decide_to_use_the_aggregate_relocation_guide.htm
 keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability 
 summary: 'Vous pouvez décider de mettre à niveau les contrôleurs exécutant ONTAP 9.8 ou version ultérieure à l"aide du transfert d"agrégats `system controller replace` commandes.' 
 ---
-= Décider d'utiliser la procédure de transfert d'agrégats
+= Décider d'utiliser ou non cette procédure de relocalisation globale
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,9 +14,9 @@ summary: 'Vous pouvez décider de mettre à niveau les contrôleurs exécutant O
 
 
 [role="lead"]
-Ce contenu explique comment mettre à niveau les contrôleurs de stockage d'une paire haute disponibilité avec de nouveaux contrôleurs tout en conservant les données et les disques existants. Il s'agit d'une procédure complexe qui ne doit être utilisée que par des administrateurs expérimentés.
+Il existe plusieurs méthodes de relocalisation d'agrégats (ARL) pour mettre à niveau le matériel du contrôleur. Cette procédure décrit comment mettre à niveau le matériel du contrôleur à l'aide de la relocalisation d'agrégats (ARL) avec les commandes de remplacement du contrôleur système sur les systèmes exécutant ONTAP 9.8 ou version ultérieure. Cette procédure complexe est réservée aux administrateurs ONTAP expérimentés.
 
-Vous pouvez utiliser ce contenu dans les circonstances suivantes :
+Pour vous aider à décider si cette procédure ARL est adaptée à la mise à niveau du matériel de votre contrôleur, vous devez examiner toutes les circonstances suivantes pour les mises à niveau prises en charge :
 
 * Vous utilisez ONTAP 9.8 ou une version ultérieure.
 * Vous ne souhaitez pas ajouter de nouveaux contrôleurs comme nouvelle paire haute disponibilité au cluster et migrer les données à l'aide des déplacements de volumes.
@@ -27,10 +27,21 @@ Pour mettre à niveau les configurations IP de MetroCluster, reportez-vous au li
 
 
 
+[NOTE]
+====
+* . Cette procédure ARL inclut les étapes qui garantissent que les disques internes restent sécurisés dans le châssis lorsque vous retirez et installez les contrôleurs pendant la procédure de mise à niveau
++
+link:../upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["Découvrez les combinaisons de mise à niveau système prises en charge à l'aide d'ARL, en conservant le châssis et les disques système existants"].
 
-NOTE: Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE).
+* Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE).
 
-[[sys_commands_98_supported_Systems]]le tableau suivant montre la matrice de modèles prise en charge pour la mise à niveau du contrôleur.
+
+====
+
+
+== Combinaisons de mise à niveau du système prises en charge
+
+Le tableau suivant présente la matrice des systèmes pris en charge pour effectuer une mise à niveau du contrôleur à l'aide de cette procédure ARL.
 
 |===
 | Ancien contrôleur | Remplacement du contrôleur 
@@ -110,7 +121,13 @@ Pour les combinaisons de mise à niveau indiquées dans le tableau précédent :
 
 
 ====
-Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+
+
+== Choisissez une autre procédure de mise à niveau matérielle
+
+* link:../upgrade-arl/index.html["Passez en revue les méthodes ARL alternatives disponibles pour la mise à niveau du matériel du contrôleur"].
+* Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+
 
 .Informations associées
-Reportez-vous à la section link:other_references.html["Références"] Lien vers le Centre de documentation _ONTAP 9_ où vous pouvez accéder à la documentation produit ONTAP 9.
+Se référer à link:other_references.html["Références"] pour créer un lien vers la _Documentation ONTAP 9_.

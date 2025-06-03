@@ -2,9 +2,16 @@
 :allow-uri-read: 
 
 
+[NOTE]
+====
+* . Cette procédure ARL inclut les étapes qui garantissent que les disques internes restent sécurisés dans le châssis lorsque vous retirez et installez les contrôleurs pendant la procédure de mise à niveau
++
+link:../upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["Découvrez les combinaisons de mise à niveau système prises en charge à l'aide d'ARL, en conservant le châssis et les disques système existants"].
 
-NOTE: Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE).
+* Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE).
 
+
+====
 Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
 
 Reportez-vous à la section link:other_references.html["Références"] Lien vers le Centre de documentation _ONTAP 9_ où vous pouvez accéder à la documentation produit ONTAP 9.

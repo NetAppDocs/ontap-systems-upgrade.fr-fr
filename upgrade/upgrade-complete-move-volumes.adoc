@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: complete, procedure, upgrading, upgrade, move, moving, volume, configure, service, processor, sp, license, autosupport, storage, encryption, fc, nca, port, complete the upgrade 
 summary: 'Pour terminer la procédure de mise à niveau par le déplacement de volumes, vous devez configurer le processeur de service \(SP\), installer de nouvelles licences et configurer AutoSupport. Vous devrez peut-être également configurer Storage ou Volume Encryption et configurer les ports FC ou NCA.' 
 ---
-= Terminez la mise à niveau
+= Terminer la mise à niveau des volumes de déplacement
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -38,7 +38,7 @@ Choisissez l'une des procédures suivantes selon que vous utilisez la gestion in
 ** « Restauration des clés de cryptage externes »
 
 
-. Si les nouveaux nœuds disposent de ports FC (intégrés ou sur adaptateurs FC), de ports CNA intégrés ou d'une carte CNA, configurez les ports FC ou CNA, entrez la commande suivante de l'invite du système de stockage :
+. Si les nouveaux nœuds disposent de ports FC (intégrés ou sur des adaptateurs FC), de ports CNA intégrés ou d'une carte CNA, configurez les ports FC ou CNA en entrant la commande suivante à partir de l'invite du système de stockage :
 +
 `system node hardware unified-connect modify -node node-name -adapter adapter-name -mode {fc|cna} -type {target|initiator}`
 

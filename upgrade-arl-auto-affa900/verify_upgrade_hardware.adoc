@@ -21,7 +21,11 @@ Avant de commencer la mise à niveau, vérifiez que vous disposez des modules ap
 | Si vous mettez à niveau à partir de ... | Le système de remplacement doit avoir ... 
 
 
-| AFF A250, AFF C250 | Deux modules de contrôleur et de nouveaux modules d'E/S. 
+| AFF A250, AFF C250  a| 
+* Deux modules de contrôleur et de nouveaux modules d'E/S.
+* Une carte X60132A, 4 ports 10/25GbE pour les configurations de mise à niveau sans commutateur à deux nœuds
+
+
 
 
 | AFF A800, AFF C800 | Deux modules de contrôleur, deux NVRAMS et de nouveaux modules d'E/S. 

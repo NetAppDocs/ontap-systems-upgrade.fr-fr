@@ -20,7 +20,7 @@ Pour savoir si vous pouvez utiliser le transfert d'agrégats (ARL), le conservat
 
 == Mises à niveau prises en charge pour l'ARL
 
-Des mises à niveau du contrôleur sont prises en charge pour certaines configurations système. Pour afficher la liste des systèmes pris en charge et des versions minimales de ONTAP, reportez-vous à la section link:index.html["Présentation"].
+Des mises à niveau du contrôleur sont prises en charge pour certaines configurations système. Se référer à la link:decide_to_use_the_aggregate_relocation_guide.html#supported-systems["combinaisons de mise à niveau système prises en charge"] pour une liste des systèmes pris en charge et de la version minimale d'ONTAP.
 
 Si vous avez reçu un nouveau AFF A30, AFF A50, AFF A70, AFF A90, AFF A150, AFF A900, AFF C30, AFF C60, AFF C80, FAS2820 ou FAS9500 comme système complet, y compris un nouveau châssis, reportez-vous à  la section link:other_references.html["Références"] pour _utiliser les commandes de remplacement du contrôleur système pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_.
 
@@ -44,6 +44,8 @@ Pour plus d'informations, voir link:cable-node1-for-shared-cluster-HA-storage.ht
 
 == Résoudre les problèmes
 
-En cas de problème lors de la mise à niveau des contrôleurs, reportez-vous à la link:troubleshoot_index.html["Résoudre les problèmes"] section à la fin de la procédure pour plus d'informations et des solutions possibles.
+Vous pouvez être confronté à une défaillance lors de la mise à niveau de la paire de nœuds. Il est possible que le nœud tombe en panne, mais que les agrégats ne soient pas transférés ou que les LIF ne migrent pas. La cause de l'échec et sa solution dépendent du moment où l'échec s'est produit pendant la procédure de mise à niveau.
 
-Si vous ne trouvez pas de solution au problème que vous rencontrez, contactez le support technique.
+Si des problèmes surviennent, reportez-vous à la link:aggregate_relocation_failures.html["Résoudre les problèmes"] Consultez la section à la fin de la procédure pour plus d'informations et les solutions possibles. Les informations sur les défaillances possibles sont répertoriées par phase de la procédure dans la section link:overview_of_the_arl_upgrade.html["Séquence de mise à niveau ARL"] .
+
+Si vous ne trouvez pas de solution au problème rencontré, contactez le support technique.

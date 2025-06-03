@@ -1,0 +1,47 @@
+= Se connecter à un cluster relié par un commutateur
+:allow-uri-read: 
+
+
+
+
+== Se connecter à un cluster relié par un commutateur
+
+Dans le cas d'un cluster relié par commutateur, vérifiez que vous répondez aux exigences suivantes pour les nœuds AFF A30, AFF A50, AFF A70, AFF A90, AFF C30, AFF C60 ou AFF C80 (de remplacement) :
+
+* Les ports de cluster identiques sur le nœud de remplacement sont sur le même commutateur. Par exemple, une fois la mise à niveau terminée, e1a sur le nœud 1 et e1a sur le nœud 2 doivent être connectés à un commutateur de cluster. De même, le second port de cluster des deux nœuds doit être connecté au second commutateur de cluster. La connexion croisée de ports cluster-haute disponibilité partagés, où e1a du nœud 1 est connecté au commutateur a et e1a du nœud 2 est connecté au commutateur B, entraîne des échecs de communication haute disponibilité.
+* Le nœud de remplacement utilise des ports Ethernet haute disponibilité et partagés entre les clusters.
+* Vérifiez que les switchs de cluster sont installés avec un fichier de configuration de référence (RCF) qui prend en charge les ports cluster-HA partagés :
++
+.. Supprimer la configuration existante sur le commutateur :
++
+[cols="30,70"]
+|===
+| Si votre modèle de commutateur est... | Aller à... 
+
+
+| Commutateurs Cisco Nexus | Article de la base de connaissances link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["Comment effacer la configuration d'un commutateur d'interconnexion Cisco tout en conservant la connectivité à distance"^] 
+
+
+| Broadcom BES-53248 | Article de la base de connaissances link:https://kb.netapp.com/on-prem/Switches/Broadcom-KBs/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["Comment effacer la configuration d'un commutateur d'interconnexion Broadcom tout en conservant la connectivité à distance"^] 
+|===
+.. Configurer et vérifier la configuration du commutateur :
++
+[cols="30,70"]
+|===
+| Si votre modèle de commutateur est... | Aller à... 
+
+
+| Cisco Nexus 9336C-FX2 | link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-9336c-fx2/upgrade-rcf-software-9336c-cluster.html["Mettez à niveau votre fichier de configuration de référence (RCF)"^] 
+
+
+| Broadcom BES-53248 | link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-bes-53248/upgrade-rcf.html["Mise à niveau du fichier RCF (Reference Configuration File)"^] 
+
+
+| NVIDIA SN2100 | link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html["Installez ou mettez à niveau le script RCF (Reference Configuration File)"^] 
+|===
+
+
+
+
+
+NOTE: Si le commutateur de cluster prend uniquement en charge les vitesses 10/25 GbE, vous devez utiliser une carte X60130A à 4 ports 10/25 GbE dans l'emplacement 1 ou l'emplacement 2 sur le système de remplacement pour l'interconnexion du cluster.

@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-app-9151/index.html
 keywords: aggregate, relocation, controller, hardware, aggregates, flexarray, metrocluster, terminology 
 summary: 'Vous pouvez mettre à niveau le matériel du contrôleur exécutant ONTAP 9.15.1 ou une version ultérieure à l"aide de `system controller replace` commandes et déplacer la propriété d"agrégats non racines.' 
 ---
-= Présentation
+= En savoir plus sur cette procédure de mise à niveau ARL
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,15 +14,8 @@ summary: 'Vous pouvez mettre à niveau le matériel du contrôleur exécutant ON
 
 
 [role="lead"]
-Cette procédure décrit la procédure de mise à niveau du matériel du contrôleur à l'aide du transfert d'agrégats (ARL) pour les configurations système suivantes :
+Il existe plusieurs méthodes de relocalisation d'agrégats (ARL) pour mettre à niveau le matériel du contrôleur. Cette procédure ARL décrit comment mettre à niveau une paire de contrôleurs HA dans les systèmes de stockage AFF et FAS introduits dans ONTAP 9.15.1 ou version ultérieure avec de nouveaux contrôleurs, tout en conservant les données et les disques existants.
 
-[cols="40,20,40"]
-|===
-| Méthode | Version ONTAP | Systèmes pris en charge 
-
-
-| À l'aide de `system controller replace` commandes | 9.15.1 ou ultérieure | link:decide_to_use_the_aggregate_relocation_guide.html#sys_commands_9151_supported_systems["Lien vers la matrice des systèmes pris en charge"] 
-|===
 
 NOTE: Vous ne pouvez pas utiliser cette procédure pour mettre à niveau une configuration MetroCluster FC ou IP. Pour mettre à niveau une configuration MetroCluster, reportez-vous à la section link:other_references.html["Références"] pour accéder à la _documentation de mise à niveau et d'extension MetroCluster_.
 
@@ -34,7 +27,7 @@ Dans ces informations, les nœuds d'origine sont appelés « nœud1 » et « nœ
 Les termes « node1 », « node2 », « node3 » et « node4 » servent uniquement à la distinction entre les nœuds d'origine et les nouveaux. Lorsque vous suivez la procédure, vous devez remplacer les véritables noms de vos nœuds d'origine et de vos nouveaux nœuds. Toutefois, en réalité, les noms des nœuds ne changent pas : le nœud 3 porte le nom node1 et le nœud 4 porte le nom node2 une fois le contrôleur mis à niveau.
 
 .Information importante :
-* Cette procédure est complexe et suppose que vous avez des compétences avancées en administration de ONTAP. Vous devez également lire et comprendre le link:guidelines_for_upgrading_controllers_with_arl.html["Instructions de mise à niveau des contrôleurs avec l'ARL"] et le link:overview_of_the_arl_upgrade.html["Présentation de la mise à niveau ARL"] avant de commencer la mise à niveau.
+* Cette procédure est complexe et suppose que vous avez des compétences avancées en administration de ONTAP. Vous devez également lire et comprendre le link:guidelines_for_upgrading_controllers_with_arl.html["directives pour la mise à niveau des contrôleurs avec ARL"] et le link:overview_of_the_arl_upgrade.html["Séquence de mise à niveau ARL"] avant de commencer la mise à niveau.
 * Cette procédure suppose que le matériel de remplacement du contrôleur est nouveau et qu'il n'a pas été utilisé. Les étapes requises pour préparer les contrôleurs utilisés avec la `wipeconfig` commande ne sont pas incluses dans cette procédure. Vous devez contacter le support technique si vous avez déjà utilisé le matériel de remplacement du contrôleur.
 * Vous pouvez suivre cette procédure pour mettre à niveau le matériel du contrôleur dans des clusters de plus de deux nœuds. Toutefois, vous devez effectuer la procédure séparément pour chaque paire haute disponibilité du cluster.
 * Lorsque vous effectuez une mise à niveau vers un système introduit dans ONTAP 9.15.1 ou version ultérieure, ONTAP convertit l'efficacité du stockage des volumes existants et applique les nouvelles fonctionnalités d'efficacité du stockage qui utilisent la fonctionnalité de déchargement matériel. Il s'agit d'un processus automatique en arrière-plan, sans impact visible sur les performances du système.

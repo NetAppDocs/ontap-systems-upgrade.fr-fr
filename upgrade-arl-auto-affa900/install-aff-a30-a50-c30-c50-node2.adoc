@@ -14,7 +14,7 @@ summary: 'Installez les modules système de remplacement sur le nœud 2 lors d"u
 
 
 [role="lead"]
-Installez le module de contrôleur de remplacement que vous avez reçu pour la mise à niveau sur le node2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.
+Installez le module de contrôleur de remplacement que vous avez reçu pour la mise à niveau sur le node2. Le nœud 2 est le contrôleur B situé dans la moitié inférieure du châssis lorsque l'on regarde les contrôleurs depuis l'arrière du système.
 
 .Étapes
 . Positionnez le système de stockage sur les rails au milieu de l'armoire ou du rack de télécommunications, puis soutenez le système de stockage par le bas et faites-le glisser pour le mettre en place.
@@ -42,4 +42,5 @@ NOTE: Pour éviter d'endommager les connecteurs, ne forcez pas trop lorsque vous
 +
 `saveenv`
 
+. Pour les configurations sans commutateur à deux nœuds, vérifiez que vous disposez d'une carte X60132A 4 ports 10/25 GbE dans l'emplacement 1 du nœud 2. La carte X60132A est requise pour l'interconnexion du cluster lors de la mise à niveau.
 

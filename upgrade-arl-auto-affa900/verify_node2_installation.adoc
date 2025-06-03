@@ -29,7 +29,36 @@ Après avoir initialisé le nœud 1 avec le module système de remplacement, vé
 +
 La sortie du `health` ce champ doit être de `true`.
 
-. Vérifiez que le noeud 2 fait partie du même cluster que le noeud 1 et qu'il est en bon état :
+. Cette étape s'applique aux configurations de mise à niveau suivantes. Pour toutes les autres mises à niveau système, ignorez cette étape et accédez à <<verify-node2-step3,Étape 3>> :
++
+** Clusters sans commutateur à deux nœuds
+** Systèmes AFF A250 ou AFF C250 connectés au commutateur mis à niveau vers un système AFF A50, AFF A30, AFF C30 ou AFF C60.
+
+
++
+--
+Si node2 ne rejoint pas le quorum automatiquement :
+
+.. Vérifiez l'espace IP des ports e1a et e1b :
++
+`network port show`
+
+.. Si l'espace IP n'est pas « Cluster », remplacez l'espace IP par « Cluster » sur e1a et e1b :
++
+`network port modify -node <node_name> -port <port> -ipspace Cluster`
+
+.. Vérifiez que l'espace IP des ports e1a et e1b est « Cluster » :
++
+`network port show`
+
+.. Migrer les LIF du cluster node2 vers e1a et e1b :
++
+`network interface migrate -vserver Cluster -lif <cluster_lif1> -destination-node <node2_name> -destination-port <port_name`
+
+
+
+--
+. [[verify-node2-step3]]Vérifiez que node2 et node1 font partie du même cluster et que le cluster est sain :
 +
 `cluster show`
 
@@ -37,7 +66,46 @@ La sortie du `health` ce champ doit être de `true`.
 +
 `set advanced`
 
-. Vérifier l'état de l'opération de remplacement du contrôleur et vérifier qu'elle est en pause et dans le même état qu'avant l'arrêt du nœud 2 pour effectuer les tâches physiques liées à l'installation de nouveaux contrôleurs et au déplacement des câbles :
+. Cette étape s'applique uniquement aux mises à niveau d'une configuration sans commutateur à deux nœuds d'un AFF A250 ou AFF C250 vers un AFF A50, AFF A30, AFF C60 ou AFF C30. Pour toutes les autres mises à niveau système, ignorez cette étape et accédez à <<verify-node2-step6,Étape 6>> :
++
+Vérifiez que les ports e4a, e2a, e1a, e1b ou les ports e4a, e4b, e1a, e1b sont les ports de cluster dans le domaine de diffusion « Cluster ».
+
++
+Les systèmes AFF A50, AFF A30, AFF C30 et AFF C60 partagent les ports cluster et HA. Vous pouvez migrer en toute sécurité tous les LIF de cluster vers e4a, e4b ou e4a, e2a sur les nœuds 1 et 2 :
+
++
+.. Répertoriez les ports d'origine et les ports actuels de tous les LIF de cluster :
++
+`network interface show -role Cluster -fields home-port,curr-port`
+
+.. [[migrate-cluster-lif-step-4b]]Sur les nœuds 1 et 2, migrez les LIF du cluster qui utilisent e1a comme port d'accueil vers e4a :
++
+`network interface migrate -vserver Cluster -lif <cluster_lif1> -destination-node <node> -destination-port e4a`
+
+.. Sur les nœuds 1 et 2, modifiez les LIF de cluster migrés <<migrate-cluster-lif-step-4b,sous-étape b>> pour utiliser e4a comme port d'attache :
++
+`network  interface modify -vserver Cluster -lif <cluster_lif> -home-port e4a`
+
+.. Vérifiez que le cluster est en quorum :
++
+`cluster show`
+
+.. Répéter <<migrate-cluster-lif-step-4b,sous-étape b et sous-étape c>> pour migrer et modifier le deuxième cluster LIF sur chaque nœud vers e2a ou e4b :
++
+Si e2a est présent et qu'il s'agit d'un port réseau 100 GbE, il s'agit du deuxième port de cluster par défaut. Si e2a n'est pas un port réseau 100 GbE, ONTAP utilise e4b comme deuxième port de cluster et port HA.
+
+.. Supprimer e1a et e1b du domaine de diffusion « Cluster » :
++
+`broadcast-domain remove-ports -broadcast-domain Cluster -ipspace Cluster -ports <node_name>:e1a`
+
+.. Vérifiez que seuls les ports de cluster e4a, e2a ou e4a, e4b se trouvent dans le domaine de diffusion « Cluster »
++
+`broadcast domain show`
+
+.. Supprimez les connexions par câble entre les nœuds e1a node1 et e1a node2, ainsi qu'entre les nœuds e1b node1 et e1b node2 pour garantir que seules des connexions cluster-HA valides sont utilisées et qu'il n'y a pas de connectivité redondante.
+
+
+. [[verify-node2-step6]]Vérifiez l'état de l'opération de remplacement du contrôleur et vérifiez qu'il est en pause et dans le même état qu'avant l'arrêt du nœud 2 pour effectuer les tâches physiques d'installation de nouveaux contrôleurs et de déplacement des câbles :
 +
 `system controller replace show`
 

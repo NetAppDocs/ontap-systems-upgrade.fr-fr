@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto/index.html
 keywords: aggregate, relocation, controller, hardware, aggregates, flexarray, metrocluster, terminology 
 summary: 'Vous pouvez mettre à niveau le matériel du contrôleur exécutant ONTAP 9.5 vers 9.7 à l"aide de `system controller replace` commandes, répositionnant la propriété d"agrégats non racines.' 
 ---
-= Présentation
+= En savoir plus sur cette procédure de mise à niveau ARL
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,15 +14,8 @@ summary: 'Vous pouvez mettre à niveau le matériel du contrôleur exécutant ON
 
 
 [role="lead"]
-Cette procédure décrit la procédure de mise à niveau du matériel du contrôleur à l'aide du transfert d'agrégats (ARL) pour les configurations système suivantes :
+Il existe plusieurs méthodes de relocalisation d'agrégats (ARL) pour mettre à niveau le matériel du contrôleur. Cette procédure décrit comment mettre à niveau le matériel du contrôleur à l'aide de l'ARL avec les commandes de remplacement du contrôleur système sur les systèmes exécutant ONTAP 9.7, 9.6 ou 9.5.
 
-[cols="40,20,40"]
-|===
-| Méthode | Version ONTAP | Systèmes pris en charge 
-
-
-| À l'aide de `system controller replace` commandes | 9.5 à 9.7 | link:decide_to_use_the_aggregate_relocation_guide.html#sys_commands_95_97_supported_systems["Lien vers la matrice des systèmes pris en charge"] 
-|===
 Pendant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, délocalisant ainsi la propriété des agrégats non racines. Vous migrez plusieurs fois des agrégats entre nœuds et nœuds pour confirmer qu'au moins un nœud transmet des données depuis les agrégats tout au long de la procédure de mise à niveau. Vous migrez également les interfaces de données logiques (LIF) et vous affectez les ports réseau sur le nouveau contrôleur aux groupes d'interface.
 
 .Terminologie utilisée dans ces informations
@@ -33,7 +26,7 @@ Les termes « node1 », « node2 », « node3 » et « node4 » servent uniqueme
 Dans cette information, le terme « systèmes avec logiciel de virtualisation FlexArray » fait référence aux systèmes qui appartiennent à ces nouvelles plateformes. Le terme « système V-Series » fait référence aux différents systèmes matériels pouvant être connectés aux baies de stockage.
 
 .Information importante :
-* Cette procédure est complexe et suppose que vous avez des compétences avancées en administration de ONTAP. Vous devez également lire et comprendre link:guidelines_for_upgrading_controllers_with_arl.html["Instructions de mise à niveau des contrôleurs avec l'ARL"] et le link:overview_of_the_arl_upgrade.html["Présentation de la mise à niveau ARL"] avant de commencer la mise à niveau.
+* Cette procédure est complexe et suppose que vous avez des compétences avancées en administration de ONTAP. Vous devez également lire et comprendre le link:guidelines_for_upgrading_controllers_with_arl.html["directives pour la mise à niveau des contrôleurs avec ARL"] et le link:overview_of_the_arl_upgrade.html["Séquence de mise à niveau ARL"] avant de commencer la mise à niveau.
 * Cette procédure suppose que le matériel de remplacement du contrôleur est nouveau et qu'il n'a pas été utilisé. Étapes requises pour préparer les contrôleurs utilisés avec le `wipeconfig` la commande n'est pas incluse dans cette procédure. Vous devez contacter le support technique si le matériel de remplacement du contrôleur était précédemment utilisé, en particulier si les contrôleurs exécutaient Data ONTAP sous 7-mode.
 * Vous pouvez suivre cette procédure pour mettre à niveau le matériel du contrôleur dans des clusters de plus de deux nœuds. Cependant, il est nécessaire d'effectuer séparément la procédure pour chaque paire haute disponibilité du cluster.
 * Cette procédure s'applique aux systèmes FAS, aux systèmes V-Series, aux systèmes AFF et aux systèmes équipés du logiciel de virtualisation FlexArray. Les systèmes FAS commercialisés après ONTAP 9.5 peuvent se connecter aux baies de stockage si la licence requise est installée. Les systèmes V-Series existants sont pris en charge par ONTAP 9.5. Pour plus d'informations sur la baie de stockage et les modèles V-Series, reportez-vous à link:other_references.html["Références"] Pour établir un lien vers _Hardware Universe_ et accéder à la matrice de prise en charge V-Series.
