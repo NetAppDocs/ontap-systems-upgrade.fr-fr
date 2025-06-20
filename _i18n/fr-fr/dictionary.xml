@@ -14,7 +14,6 @@
   <block id="b5c6fde8816eb583a49b6c0314b82928" category="list-text">Définissez le niveau de privilège sur avancé :</block>
   <block id="5fd1bcc8472b38442961eb87ca3f844a" category="paragraph"><block ref="0581d0d071ad835f74bf419081ce5d75" prefix="" category="inline-code"></block></block>
   <block id="33cfec7231d81810ac482a09c5b69c00" category="list-text">Lister les agrégats qui sont détenus par le nœud2 :</block>
-  <block id="9fb768ad6510fe46b2016783cac8eadb" category="paragraph"><block ref="c08c30e4082dbfc350c98d8e8dbf2fe0" prefix="" category="inline-code"></block></block>
   <block id="e5d22039d8dff591d18701d62fb4083d" category="list-text">Démarrer le transfert d'agrégats :</block>
   <block id="cba3015195e189328dd15ef19c0cdcff" category="admonition">La commande ne localise que des agrégats non-racines.</block>
   <block id="4f6da995dc4a823a0d6529c9d724b695" category="list-text">Entrez-le lorsque vous y êtes invité<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block>.</block>
@@ -44,7 +43,6 @@
   <block id="ecc3f3e0b2ef3c70a30fe8be1af81d75" category="paragraph">Si un agrégat est mis hors ligne ou est devenu étranger, vous devez les mettre en ligne une fois pour chaque agrégat :</block>
   <block id="7a4b65a92ad0461916e64e86d4469810" category="paragraph"><block ref="782f23052d9b99c107b9fc383ca6a390" prefix="" category="inline-code"></block></block>
   <block id="1dc7145853b865022c2423c0562bf7ed" category="list-text">Vérifiez que tous les volumes sont en ligne sur le noeud 3 :</block>
-  <block id="9768bc676d49dbda7bf856a2930c4b52" category="paragraph"><block ref="e3a438e4ea5a16cab1f093e0d1ef458f" prefix="" category="inline-code"></block></block>
   <block id="8526a5587200c78144bc2d1fabd13d3a" category="paragraph">Si des volumes sont hors ligne sur le nœud 3, vous devez les mettre en ligne une fois pour chaque volume :</block>
   <block id="232cf0d45bdcae298c19689d1bf05bea" category="paragraph">Le résultat de la commande ne doit pas afficher d'agrégats en ligne non-racine, car tous les agrégats en ligne non-racine ont déjà été déplacés vers le nœud 3.</block>
   <block id="a971a57f0ab6432a971f405b5096ea03" category="summary">Vérifiez les opérations de basculement, de rétablissement et de rétablissement lors d'une mise à niveau manuelle du transfert d'agrégats sur des contrôleurs exécutant ONTAP 9.7 ou une version antérieure.</block>
@@ -330,7 +328,6 @@
   <block id="72a91a015e8c747a5a63794308310840" category="cell">Adresse IP des SP</block>
   <block id="c685ef92ee54cacdd0c225fa2bb12fbe" category="cell">Etape 6 : _Confirmez que les nouveaux contrôleurs sont correctement configurés_</block>
   <block id="e3d8433cfe5569460492707086339074" category="cell">Clés de licence</block>
-  <block id="bb2a59fbd20fec79ac114c7a9f22ead2" category="cell">Adresse IP du serveur de gestion externe des clés</block>
   <block id="234cfc2e3636ba2a3e5d47da84d5bd32" category="cell">Étape 1 : _Rekey disks for Storage Encryption_</block>
   <block id="a6bab46fa807f06174c4873c5331a9b2" category="cell">Étape 6 : _configurer le cryptage du stockage sur les nouveaux nœuds_</block>
   <block id="09c90f884edd2efc00874f9fc863daeb" category="cell">Nom et chemin d'accès au répertoire accessible via le Web dans lequel vous téléchargez des fichiers sur netboot les nœuds</block>
@@ -1421,7 +1418,6 @@
   <block id="679aeab1d22d4d8240be92e911cb16a4" category="doc">Vérifiez que les nouveaux contrôleurs sont correctement configurés</block>
   <block id="90b3509f7da0bd37fd6636cace1d2404" category="paragraph">Pour confirmer la configuration correcte, vous devez activer la paire HA. Vous devez également vérifier que les nœuds 3 et Node4 ne sont pas en mesure d'accéder aux systèmes de stockage des autres et que les LIF de données ne sont pas membres du cluster. Vous devez également confirmer que le nœud 3 est propriétaire des agrégats du nœud 1 et que le nœud 4 est propriétaire des agrégats du nœud 2, et que les volumes des deux nœuds sont en ligne.</block>
   <block id="9049f1bbc92896381d7b5ffdc386e3b2" category="list-text">Activer le basculement du stockage en entrant la commande suivante sur l'un des nœuds :</block>
-  <block id="7ad7509ea03580dbba4ac42f8a0e9061" category="paragraph"><block ref="b898635d799dd6a81c6b745b154e6961" prefix="" category="inline-code"></block></block>
   <block id="9d070d121ee26abdb5d314d6fff4c15c" category="list-text">Vérifiez que le basculement du stockage est activé :</block>
   <block id="715940e961cf53af2ba53d695b5bdb37" category="paragraph">L'exemple suivant montre la sortie de la commande lorsque le basculement du stockage est activé :</block>
   <block id="44b65ecdfbcd9fda48c21d17aae6347e" category="cell">Si le cluster est un..</block>
@@ -1435,23 +1431,17 @@
   <block id="6485b14c0e329aebda0c4dcd7d09dbd0" category="paragraph"><block ref="16fdd92def5a71313d6535c74ef67b81" prefix="" category="inline-code"></block></block>
   <block id="2a6d96821a4ce6866da866e48a1ece2a" category="paragraph">Si le nœud 3 ou le nœud 4 possède des LIF de données détenues en privé par d'autres nœuds du cluster, utilisez l'option<block ref="d1e4afa40f7e9718bdad64b4f5db9abb" prefix=" " category="inline-code"></block> Commande qui permet de rétablir les LIF de données propriétaires.</block>
   <block id="f67d0a54b752ca4f669625b9f2eba648" category="list-text">Vérifiez que le nœud 3 possède les agrégats du nœud 1 et que le nœud 4 est propriétaire des agrégats du nœud 2 :</block>
-  <block id="f95d062b8f3dd313f851677720fd47c0" category="paragraph"><block ref="2e0f160afbc7b4f9eb65f066ae05be09" prefix="" category="inline-code"></block><block ref="c036fbb1757e7375750eb9108a1ef69a" prefix=" " category="inline-code"></block></block>
   <block id="862da4c0b3b19ba62c050373943cd909" category="list-text">Déterminez si des volumes sont hors ligne :</block>
-  <block id="68c05b65b923848aa186ea69ee9487d7" category="paragraph"><block ref="e3a438e4ea5a16cab1f093e0d1ef458f" prefix="" category="inline-code"></block><block ref="ef010c4877b307761f92dfee774f7025" prefix=" " category="inline-code"></block></block>
   <block id="183048ad5f29710efbac355627777865" category="inline-link-macro">Étape 19 (d)</block>
-  <block id="113d7e75ab71ebd9bcdd1155228482fc" category="paragraph"><block ref="c0158aac7761d0859a618e28877616c4" prefix="" category="inline-code"></block></block>
   <block id="5d41e09cfbf05ac79dc026cd1e32857c" category="list-text">Installez les nouvelles licences pour les nouveaux nœuds en entrant la commande suivante pour chaque nœud :</block>
-  <block id="d5538e0d48b9561003d2506ab100c330" category="paragraph"><block ref="18a5bd82f1a3af65ac694296ca5e36f9" prefix="" category="inline-code"></block></block>
   <block id="65d93c0f2eae68c69877f67ce3781996" category="paragraph">Le paramètre License-code accepte une liste de 28 clés de caractères alphabétiques majuscules. Vous pouvez ajouter une licence à la fois ou plusieurs licences à la fois, chaque clé de licence séparée par une virgule.</block>
   <block id="1f6c8829a415beddc4ce10181f20094a" category="inline-link-macro">Étape 16</block>
   <block id="c13dda3e4975b286bfb62f3d9aa8cfa5" category="list-text">Pour supprimer toutes les anciennes licences des nœuds d'origine, entrez l'une des commandes suivantes :</block>
-  <block id="f8bb98c031da24e788f5f02332ac5bb8" category="paragraph"><block ref="2599180db5e07a38b13f33bacd678ed0" prefix="" category="inline-code"></block><block ref="5f8d40fbb728439b62ece506540b12e9" prefix=" " category="inline-code"></block></block>
   <block id="f1645d1878d86f7024812da747846642" category="list-text">Pour supprimer toutes les licences expirées, entrez :</block>
   <block id="df1e7bcee84d26ba3ee0e0f129bf90c0" category="paragraph"><block ref="6ecc7d4a6049e214abb4813df2a0fb97" prefix="" category="inline-code"></block></block>
   <block id="fd6db757e3a6fb12f04139c8f48aab93" category="list-text">Pour supprimer toutes les licences inutilisées, entrez :</block>
   <block id="32be9f537283877b6e62fd279a4f5513" category="paragraph"><block ref="e56b897971c1862f9a06367a997d01fb" prefix="" category="inline-code"></block></block>
   <block id="0fae8f5a8ab68238375deb31e474111d" category="list-text">Pour supprimer une licence spécifique d'un cluster, entrez les commandes suivantes sur les nœuds :</block>
-  <block id="e4c31b5f2905d746c57c1b1f1e038eac" category="paragraph"><block ref="1be8f02cdba9bf5598de6a762fffb848" prefix="" category="inline-code"></block><block ref="ba201afcea187bc27dccd739c1239ccc" prefix=" " category="inline-code"></block></block>
   <block id="9a940b51cdd2b2d508cffc6eecff9e32" category="paragraph">Les valeurs de sortie suivantes sont affichées :</block>
   <block id="0b0ab53ca7ce0880a8c5c074d260f0ab" category="paragraph">Entrez<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block> pour supprimer tous les paquets.</block>
   <block id="4883a9a9fced202f6b61720c6c0446a2" category="list-text">Vérifiez que les licences sont correctement installées en entrant la commande suivante et en examinant le résultat obtenu :</block>
@@ -2065,7 +2055,6 @@
   <block id="f1e1b94ce2ba7179506b74127da77af2" category="paragraph"><block ref="63d16b8fc2c8a4a0516d9f30bda63167" prefix="" category="inline-code"></block></block>
   <block id="af443ed1e514e063894af87e3e0e83a6" category="list-text">Lorsque l'opération est toujours en pause, vérifiez que tous les agrégats non racines sont en ligne pour leur état sur le nœud 2 :</block>
   <block id="f999b6b276f2c64e10bfb3630f92f94c" category="list-text">Vérifier que tous les volumes sont en ligne sur le nœud 2 à l'aide de la commande suivante sur le nœud 2 et en examinant la sortie correspondante :</block>
-  <block id="592033840c276a690ab8f96c3c733525" category="paragraph">Le<block ref="09548cfd61d58408d5f9cae24ffcb217" prefix=" " category="inline-code"></block> pour utiliser cette commande avec cette commande, figure dans la sortie du précédent<block ref="0c5606ed319753bb2d86a485f23c8f6d" prefix=" " category="inline-code"></block> commande.</block>
   <block id="fa39e98dea804607ace91ae82c9543d7" category="list-text">[[step5]]si l'une des LIFs est inactive, définissez le statut administratif des LIFs sur<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> En utilisant la commande suivante, une fois pour chaque LIF :</block>
   <block id="717690eebe56c458e0ffa4bc5f0d6525" category="paragraph"><block ref="5c3eea1ace74fe37ea01ad6c14faca89" prefix="" category="inline-code"></block></block>
   <block id="5e668aadf3c84d39f49c47f9c74523b2" category="summary">Informations sur les problèmes susceptibles de se produire lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou version ultérieure en utilisant<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> commandes.</block>
@@ -2287,12 +2276,10 @@
   <block id="b3fb9233a2435df292df205ef05e46db" category="paragraph">Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau.</block>
   <block id="0569dcac35411678d2e9cbd8034fea69" category="admonition">Le propriétaire home des agrégats et des LIF n'est pas modifié ; seul le propriétaire actuel est modifié.</block>
   <block id="03c6c2c179dec70c786bc644e02b16df" category="list-text">Vérifier que tous les agrégats non racines sont en ligne et leur état sur le nœud 3 :</block>
-  <block id="b552b2e6a2a24270da2f85599d5289a0" category="paragraph"><block ref="b6ac94bf4a2cff0d2edd415ae82af346" prefix="" category="inline-code"></block></block>
   <block id="6702bf0268c295c6d30a4dc2db82d427" category="paragraph">Si les agrégats ont été mis hors ligne ou devenaient étrangers sur le nœud3, mettez-les en ligne en utilisant la commande suivante sur le nœud3, une fois pour chaque agrégat :</block>
   <block id="809bea68dee4e68249aea4396bafacd3" category="list-text">Vérifiez que tous les volumes sont en ligne sur le nœud 3 à l'aide de la commande suivante sur le nœud 3 et en examinant la sortie :</block>
   <block id="b830851aa263bbc0b84c68604beef993" category="paragraph">Si un volume est hors ligne sur le nœud 3, mettez-le en ligne à l'aide de la commande suivante sur le nœud 3, une fois pour chaque volume :</block>
   <block id="b8520ff69f6b8ffe5e588c1f7ce8e9be" category="list-text">Vérifier que les LIFs ont été déplacées vers les ports appropriés et sont à l'état de<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>. Si l'un des LIFs est arrêté, définissez le statut administratif des LIFs sur<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> En saisissant la commande suivante, une fois pour chaque LIF :</block>
-  <block id="5ae519d56c0326f582652e283c3ea809" category="paragraph"><block ref="bb38227bc42eeb48dc64d95c860db409" prefix="" category="inline-code"></block></block>
   <block id="e2172c82191a506ba37c37e48f854d2a" category="list-text">Si les ports qui hébergent actuellement des LIFs de données n'existeront pas sur le nouveau matériel, les supprimer du broadcast domain :</block>
   <block id="99988efb9efcf982f67af1157e609379" category="list-text">[[Step5]]vérifier qu'aucune LIF de données ne reste sur le nœud 2 en saisissant la commande suivante et en examinant la sortie :</block>
   <block id="11f09c937d4460ab0e473a33da9b1ab8" category="paragraph"><block ref="9fc6a8d48604ea2c908eabf6718d63a0" prefix="" category="inline-code"></block></block>
@@ -2394,20 +2381,14 @@
   <block id="ed63866964a059112ba504e1f09aa077" category="list-text">Vérifiez que les nœuds 3 et NODE4 ne possèdent pas de LIF de données détenues par d'autres nœuds du cluster à l'aide de la commande suivante et en examinant la sortie.</block>
   <block id="dc85e26538718b459bdf2a353367f497" category="paragraph">Si les LIF de données des nœuds 3 ou 4 ne sont pas propriétaires de LIF de données détenues par d'autres nœuds du cluster, restaurez-les au propriétaire de leur domicile :</block>
   <block id="98ab56275ed98fed50530abdb3a97ee7" category="paragraph"><block ref="d1e4afa40f7e9718bdad64b4f5db9abb" prefix="" category="inline-code"></block></block>
-  <block id="0d12a6e9cec4647b5d9b5253b4073e2b" category="paragraph"><block ref="2e0f160afbc7b4f9eb65f066ae05be09" prefix="" category="inline-code"></block></block>
-  <block id="0e71c4af1c9d433ba1aca904b40b449e" category="paragraph"><block ref="c036fbb1757e7375750eb9108a1ef69a" prefix="" category="inline-code"></block></block>
   <block id="b2ec89d698c3bc26ab79d7bad283a953" category="list-text">Si des volumes sont hors ligne, comparez-les avec la liste des volumes hors ligne que vous avez capturés dans la section <block ref="cd8ad1809865824065fe011b80800cd6" category="inline-link-macro-rx"></block>, et de mettre en ligne l'un des volumes hors ligne, si nécessaire, à l'aide de la commande suivante, une fois pour chaque volume :</block>
   <block id="8b2ba35c1767c4b484add2236c0ffa6c" category="list-text">Installez les nouvelles licences pour les nouveaux nœuds à l'aide de la commande suivante pour chaque nœud :</block>
-  <block id="6041278c5d25ed9c37ecc9a4ba73306b" category="paragraph"><block ref="4084c061074fa6fd9b5bf2d140424605" prefix="" category="inline-code"></block></block>
   <block id="539b1b58f1be38076506f35eb15e4340" category="paragraph">Le paramètre License-code accepte une liste de 28 clés de caractères alphabétiques majuscules. Vous pouvez ajouter une licence à la fois ou ajouter plusieurs licences à la fois, en séparant chaque clé de licence par une virgule.</block>
   <block id="8fb49e1f692fe82fa4072e7f3b3adc5d" category="list-text">Supprimez toutes les anciennes licences des nœuds d'origine à l'aide de l'une des commandes suivantes :</block>
   <block id="3ce96f90e07aec61f73d0c41634c6aa1" category="paragraph"><block ref="2599180db5e07a38b13f33bacd678ed0" prefix="" category="inline-code"></block></block>
-  <block id="ee58b8665fc7b6cbed254e1253d5deb9" category="paragraph"><block ref="5f8d40fbb728439b62ece506540b12e9" prefix="" category="inline-code"></block></block>
   <block id="b71fdf79c90ac84b34d2470620eeaa18" category="list-text">Supprimer toutes les licences expirées :</block>
   <block id="b162df50db538c8339d7ad30f407e32f" category="list-text">Supprimer toutes les licences inutilisées :</block>
   <block id="9501cf64d3b2dae298a8bc24331bd5f4" category="list-text">Supprimez une licence spécifique d'un cluster à l'aide des commandes suivantes sur les nœuds :</block>
-  <block id="bcacb0089032ec901277a70c73c0ec1b" category="paragraph"><block ref="1be8f02cdba9bf5598de6a762fffb848" prefix="" category="inline-code"></block></block>
-  <block id="4a472f5ad7101a303b004c96117957a1" category="paragraph"><block ref="ba201afcea187bc27dccd739c1239ccc" prefix="" category="inline-code"></block></block>
   <block id="bfacc8eef0b077fb7822880dd6814cc1" category="list-text">Vérifiez que les licences sont correctement installées à l'aide de la commande suivante et en examinant le résultat :</block>
   <block id="20d8c464d7ec22352c6b329b84051301" category="paragraph">Vous pouvez comparer la sortie avec la sortie capturée dans la section <block ref="cd8ad1809865824065fe011b80800cd6" category="inline-link-macro-rx"></block>.</block>
   <block id="9dabc4c6addd92ab1be1dd1cd49038f7" category="inline-link-macro">Installez et démarrez node4, étape 27</block>
@@ -2533,7 +2514,6 @@
   <block id="5ec824db325209d322c6c40d3388ca3f" category="list-text">Modifier un home port d'une LIF :<block ref="d4e37e6b2137daa08a46c3f427b8291d" prefix=" " category="inline-code"></block> Ajuster les domaines de broadcast intercluster et migrer les LIFs intercluster si nécessaire. Les LIF de données restent inchangées.</block>
   <block id="d2b3e4b0ae30abdd31414891613ecac2" category="list-text">Restauration de l'authentification pour le gestionnaire de clés externe :</block>
   <block id="eed577fe70cdcd6a422d81d49e0f94ca" category="paragraph">Cette commande nécessite la phrase secrète Onboard Key Manager (OKM).</block>
-  <block id="f52de228b93a6f965c1879aa97b007d6" category="paragraph">Vérifiez si des volumes ont été mis hors ligne, car les clés d'authentification n'étaient pas disponibles ou les serveurs de gestion de clés externes n'ont pas pu être atteints. Remettre ces volumes en ligne à l'aide du<block ref="fcc46ad208d53e4021ecddc4ee333dc3" prefix=" " category="inline-code"></block> commande.</block>
   <block id="1351d313beb812092d972c23cec0b57c" category="summary">Faites savoir à NetApp que l'ancien système n'est plus opérationnel après la mise à niveau des contrôleurs exécutant ONTAP 9.5 vers 9.7 en utilisant<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> commandes.</block>
   <block id="00c13e2880f6565acea9eb7b236ffe2a" category="summary">Vérifiez que les ports physiques du nœud 2 sont correctement redirigés vers le nœud 4 lors de la mise à niveau des contrôleurs exécutant ONTAP 9.5 vers 9.7 à l'aide de<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> commandes.</block>
   <block id="964ab85547edd708f3257e13df3d6e86" category="paragraph">Vous devez vérifier que les ports physiques du nœud2 sont correctement associés aux ports physiques du nœud4, ce qui permettra au nœud4 de communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.</block>
@@ -2927,8 +2907,6 @@
   <block id="0fe6701c2bd4920c5d453b5ee906eed1" category="list-text">Vérifiez que ni le nœud 1 ni le nœud 2 ne possède des LIFs de données détenues en privé par d'autres nœuds du cluster à l'aide de la commande suivante et en examinant la sortie :</block>
   <block id="6a4e3b384743506a60b9d8b065cd9569" category="paragraph">Si le nœud 1 ou le nœud 2 ne possède ni LIF de données détenues par d'autres nœuds du cluster, restaurez les LIF de données au propriétaire du nœud :</block>
   <block id="539dfd2d954ae3879b62b16e5593152b" category="list-text">Vérifiez que les agrégats appartiennent à leurs nœuds de rattachement respectifs.</block>
-  <block id="c2acdfddae4bd8e19301f3c9da97795f" category="paragraph"><block ref="1ed8c6113a55c562cd993e5ff15a5bd5" prefix="" category="inline-code"></block></block>
-  <block id="782650bc65c7f77fc89c4076c7b6450d" category="paragraph"><block ref="324c5af6f18284f9492a99bc1b6d033c" prefix="" category="inline-code"></block></block>
   <block id="8f3c31fbc98a55b30d3c8c6b6ba60ad1" category="list-text">Vérifiez que les licences sont correctement installées à l'aide de la commande suivante et en examinant le résultat :</block>
   <block id="6e7e19ae8357eafafb5df9d5e403d692" category="paragraph">Vous pouvez comparer la sortie avec celle que vous avez capturée dans le <block ref="cd8ad1809865824065fe011b80800cd6" category="inline-link-macro-rx"></block> section.</block>
   <block id="83384f48b367d39b20d627f5230807a9" category="list-text">Configurez les SP à l'aide de la commande suivante sur les deux nœuds :</block>
@@ -2961,11 +2939,6 @@
   <block id="844ad6e55c95a4328e37b5e065b5ff4a" category="paragraph"><block ref="30d261248bcb99132d9386622293364b" prefix="" category="inline-code"></block></block>
   <block id="e31a23cd4ecc24fce8358862c8b9bae7" category="list-text">Depuis chaque nouveau nœud, envoyez un message AutoSupport post-mise à niveau au support technique :</block>
   <block id="d01decedde31fd5fc9aee34a816e3a84" category="paragraph"><block ref="6ee9e615e9449987b2b09472dc1b4d86" prefix="" category="inline-code"></block></block>
-  <block id="579f7a458ea3f243e9743154fab94bfb" category="inline-link">Gestion du chiffrement via l'interface de ligne de commandes</block>
-  <block id="6aee45ea83745bd29b2b86870d2afe83" category="list-text">Restaurez la fonctionnalité de cryptage de stockage ou de volume en suivant la procédure appropriée dans<block ref="713156fa56254a04d458a101e174aa50" category="inline-link-rx"></block> le contenu.</block>
-  <block id="e68c8836280fba147b04a2b14b196600" category="paragraph">Choisissez l'une des procédures suivantes selon que vous utilisez la gestion intégrée ou externe des clés :</block>
-  <block id="0ba3cc03b09a456d5100379e45dfaaba" category="list-text">« Restauration des clés de cryptage intégrées »</block>
-  <block id="a96d0d7d353c649cc2f1612f3100f861" category="list-text">« Restauration des clés de cryptage externes »</block>
   <block id="7334dc04c7292582343d824254e622ce" category="paragraph"><block ref="14786d25360b0dd4ae80425c9d5ef6bd" prefix="" category="inline-code"></block></block>
   <block id="b50a05f2d30350b2ea8e112696c796d0" category="paragraph">Vous ne pouvez modifier la configuration CNA que lorsque les adaptateurs CNA sont hors ligne.</block>
   <block id="55c24359193cebab5cdb49b7cf7d04b5" category="list-text">Le cas échéant, configurez un cluster sans commutateur sur les nouveaux nœuds.</block>
@@ -3248,7 +3221,6 @@
   <block id="0bde8f7cae6f7006cf8059b9d923c0a4" category="inline-xref-macro">Exécution des étapes finales de mise à niveau sous ONTAP 9.7 ou version antérieure</block>
   <block id="602dfb74c3c65622a6e81f6da6da5716" category="paragraph">Réactiver la haute disponibilité :<block ref="acc3b99f812f210de5147296e269009d" prefix=" " category="inline-code"></block></block>
   <block id="68e75079cb8b3e7a53d47ecb9c69a59e" category="paragraph">Réactivation du basculement du stockage :<block ref="d1cccee3a49795b9594a03c793e6456b" prefix=" " category="inline-code"></block></block>
-  <block id="fb466db54f62bed3a97d8ba7d3ed2c8e" category="list-text">Restaurez la fonctionnalité de cryptage de stockage ou de volume en suivant la procédure appropriée dans<block ref="9dcdd70dc160b50ece72ebdfa01ae45b" category="inline-link-rx"></block> le contenu.</block>
   <block id="9cd94a0a224271a5cd21acb271cdd506" category="summary">Vous créez au moins un agrégat sur chacun des nouveaux nœuds afin de stocker les volumes que vous voulez déplacer des nœuds d'origine. Vous devez identifier un agrégat pour chaque volume et les déplacer individuellement.</block>
   <block id="b256175cc88e3f891053e44ca8855b5d" category="paragraph">Les relations de miroir de protection des données doivent avoir été initialisées avant de déplacer un volume.</block>
   <block id="05a828bdf3e9eb5eb73dbd8f32fc87ba" category="inline-link">Rechercher la procédure de protection des données requise</block>
@@ -3783,7 +3755,6 @@
   <block id="93cbc4495a566db3a58548f326fa221c" category="paragraph">Avant de démarrer le système par netboot, vous devez vérifier que toutes les relations SnapMirror sont suspendues. Lorsqu'une relation SnapMirror est mise en veille, elle reste suspension sur l'ensemble des redémarrages et basculements.</block>
   <block id="1cf6b38ccce07c615f777e8d49040349" category="inline-link">Restauration de la configuration du serveur de gestionnaire de clés externe à partir du menu de démarrage ONTAP</block>
   <block id="a9021e1b94f8e36032c1a900148d17bf" category="paragraph">Pour plus d'informations, consultez l'article de la base de connaissances<block ref="d55f681383ef8cdbd5ac64000ea6e309" category="inline-link-rx"></block>.</block>
-  <block id="3e735cdc84f6fab485c4ddb66b026489" category="paragraph">Vérifiez si des volumes ont été mis hors ligne, car les clés d'authentification ne sont pas disponibles ou si les serveurs de gestion des clés externes n'ont pas pu être atteints. Remettre ces volumes en ligne à l'aide du<block ref="fcc46ad208d53e4021ecddc4ee333dc3" prefix=" " category="inline-code"></block> commande.</block>
   <block id="595e785894184e8832420129093393c7" category="summary">Utilisez le gestionnaire de clés intégré pour gérer les clés d'authentification lors d'une mise à niveau manuelle d'ARL sur les contrôleurs exécutant ONTAP 9.8 ou une version ultérieure.</block>
   <block id="7de07b30845475194f5305d135dd504b" category="paragraph">Vous pouvez utiliser le gestionnaire de clés intégré (OKM) pour gérer les clés d'authentification. Si vous avez configuré le gestionnaire de clés intégré OKM, vous devez enregistrer la phrase de passe et les éléments de sauvegarde avant de commencer la mise à niveau.</block>
   <block id="b57235dcd9249f0e9bf6001eecd99ce5" category="list-text">Notez la phrase de passe à l'échelle du cluster.</block>
@@ -3791,7 +3762,6 @@
   <block id="8cada82213a4eb50c1f0cba46389bd44" category="list-text">Sauvegardez les informations du gestionnaire de clés en exécutant<block ref="32ba7af89b7557f6e3e6d80a922080ce" prefix=" " category="inline-code"></block> commande.</block>
   <block id="219d5a10054a3daaa60cc6dc3881a506" category="paragraph">Si les nœuds 1 et 2 se trouvent dans un châssis distinct, vous pouvez placer le nœud 3 au même emplacement de rack que le nœud 1. Cependant, si le nœud 1 se trouvait dans le même châssis avec le nœud 2, vous devez placer le nœud 3 dans son propre espace rack, de préférence à proximité de l'emplacement du nœud 1.</block>
   <block id="7abb4d22dfb96ceb2a52ebfc5cef2026" category="admonition">Il n'est pas nécessaire de déplacer la carte d'interconnexion ou la connexion du câble d'interconnexion de cluster du nœud 1 vers le nœud 3, car la plupart des modèles de plateforme possèdent un modèle de carte d'interconnexion unique. Pour la configuration MetroCluster, vous devez déplacer les connexions de câble FC-VI du nœud 1 vers le nœud 3. Si le nouvel hôte ne dispose pas de carte FC-VI, il vous faudra peut-être déplacer la carte FC-VI.</block>
-  <block id="215bdc272bd2e7402000e545b699610b" category="list-text">[[man_install3_step16]]si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.</block>
   <block id="28fabaf13c83a39f567169d484c2bdb7" category="admonition">Si ce n'est déjà fait, consultez l'article de la base de connaissances<block ref="99bc6507ac71bae6bc6755b2bf68f73a" category="inline-link-rx"></block> déterminer le type de disques à autocryptage utilisés.</block>
   <block id="c31ef72d8e3bd3a09ff6ce8b371d8d63" category="list-text">Réglez<block ref="e0224203ce4fa326049e3e770300ce8f" prefix=" " category="inline-code"></block> à<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> ou<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block>:</block>
   <block id="f0b1dfc1f82eec89fa61235553e2e4d0" category="cell">Disques NSE conformes aux exigences de chiffrement automatique FIPS 140-2 de niveau 2</block>
@@ -3913,7 +3883,6 @@
   <block id="eedfdc7d9365a1f9e29964c35c82e348" category="paragraph"><block ref="8cf81755f02bee986a80060b929f2335" prefix="" category="inline-code"></block></block>
   <block id="c8e281db9c8a31e8da74e7ff6bc12115" category="summary">Il vous permet de gérer les clés d'authentification lors d'une mise à niveau manuelle d'ARL sur les contrôleurs exécutant ONTAP 9.7 ou une version antérieure.</block>
   <block id="20c4be209ec6c65b4221fa6f09f2df42" category="inline-link-macro">Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré</block>
-  <block id="73d106cd4da3fdbd0b8a8317db146c37" category="list-text">[[boot_node2_step1]]si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.</block>
   <block id="04f24e11b658105f38ef40a82c24839e" category="paragraph">*Remarque :* AutoSupport est activé par défaut lorsque vous configurez votre système de stockage pour la première fois. Bien que vous puissiez désactiver AutoSupport à tout moment, vous devez le laisser activé. L'activation d'AutoSupport peut considérablement aider à identifier les problèmes et les solutions qui pourraient survenir sur votre système de stockage.</block>
   <block id="cb6bc72e3e387b19e4fbc2f28ecc2940" category="list-text">Réglez<block ref="e0224203ce4fa326049e3e770300ce8f" prefix=" " category="inline-code"></block> à<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> ou<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block>.</block>
   <block id="e147253c0010bdd5968cb9b4b9ddf7dc" category="cell">Gestionnaire de clés externe</block>
@@ -4321,11 +4290,9 @@ Avec ONTAP 9.8, le<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" " categ
   <block id="5dac5a25730948f28ff49739852d7be9" category="list-text">NetApp recommande, si possible, que la même version de ONTAP s'exécute sur les nœuds d'origine et les nouveaux nœuds. Si cela n'est pas possible, <block ref="9fa2b66114da266713b82d418ec229cf" category="inline-link-macro-rx"></block> Sur les nœuds d'origine à la version maximale prise en charge de sorte que la différence de version entre les nœuds d'origine et les nouveaux nœuds N'est PAS supérieure à quatre. Par exemple, ONTAP 9.8 et 9.12.1 sont pris en charge, mais ONTAP 9.8 et 9.13.1 ne sont pas pris en charge.</block>
   <block id="d9bec0f0ae398cfc3abbf7091d735c22" category="paragraph">*Remarque 1* : la version ONTAP exécutée sur les noeuds d'origine doit être prise en charge par les nouveaux noeuds. Si nécessaire, <block ref="9fa2b66114da266713b82d418ec229cf" category="inline-link-macro-rx"></block> sur les nœuds d'origine jusqu'à la version maximale prise en charge. La différence de version entre les nœuds d'origine et les nouveaux nœuds ne peut pas être supérieure à quatre. Par exemple, ONTAP 9.8 et 9.12.1 sont pris en charge, mais ONTAP 9.8 et 9.13.1 ne sont pas pris en charge.<block ref="ce537934e178c1610dae82a1b82553bf" category="inline-link-rx"></block>.</block>
   <block id="ebf27722a719cbdcb3983568ea50ef42" category="cell">Retournez à _Install and boot node3_ et reprenez la section à <block ref="e2938de9a840861d594c77a1743d45f5" category="inline-link-macro-rx"></block>.</block>
-  <block id="06497c4478fee55f8a0ff3319fb722a8" category="list-text">[[auto_install4_step27]]si des lecteurs NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.</block>
   <block id="1e4625a567102c02db411f8ac4403956" category="list-text">[[unset_maxwait_system_commands]]si des lecteurs auto-cryptés sont utilisés dans la configuration et que vous avez défini le<block ref="fd93f52ab7757855a2e3e5cbb717ab40" prefix=" " category="inline-code"></block> variable à<block ref="3262d48df5d75e3452f0f16b313b7808" prefix=" " category="inline-code"></block> (par exemple, dans <block ref="e646557bd849df21a23243b7031e90bc" category="inline-link-macro-rx"></block>), vous devez annuler la variable :</block>
   <block id="b0da566a6b16767a9a4f6a9815cc8a8c" category="image-alt">Retrait du ARM de gestion des câbles</block>
   <block id="df4c49d6d7d92d1a3dd7d374cec6fe02" category="image-alt">Ouverture de la poignée de came</block>
-  <block id="ab8dc73b82108799ac3b6894e5efe57e" category="list-text">[[A900_boot_node1]]si des lecteurs NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.</block>
   <block id="401ec6649ed8fe314eef631a190858b3" category="list-text">Vérifiez et réinitialisez les bootargs de cryptage de stockage mentionnés dans <block ref="d1353daad078803f11ba1627582281b9" category="inline-xref-macro-rx"></block>.</block>
   <block id="e807a193ac5d601655295b7da3f1b093" category="paragraph">Cependant, si vous disposez d'un système V-Series ou d'un logiciel de virtualisation FlexArray et que vous êtes connecté aux baies de stockage, et que le nœud 4 n'est pas équipé de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez revenir à la section _Install and Boot node4_, puis reprendre le processus à l'adresse <block ref="dc87380ee6757ad7d02cae49ae9cdab7" category="inline-link-macro-rx"></block>. Assurez-vous que le noeud 4 dispose d'un espace de rack suffisant. Si le noeud 4 se trouve dans un châssis distinct du noeud 2, vous pouvez placer le noeud 4 au même emplacement que le noeud 3. Si les nœuds 2 et 4 se trouvent dans le même châssis, le nœud 4 se trouve déjà dans son emplacement de rack approprié.</block>
   <block id="1e46f02c6c16752b68ae9ed5650557a7" category="list-text">Ignorez la section _Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4_ si le nœud 4 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, puis revenez à la section _Install and Boot node4_, puis reprenez la section à l'adresse <block ref="dc87380ee6757ad7d02cae49ae9cdab7" category="inline-link-macro-rx"></block>.</block>
@@ -5297,4 +5264,30 @@ Avec ONTAP 9.8, le<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" " categ
   <block id="8f7d8cd660c3a1288b48778ea72e58a5" category="sidebar">Décider d'utiliser ou non cette procédure ARL</block>
   <block id="8f921903953b3b6717329ab7de1391c1" category="sidebar">Nœud de câble 2 pour stockage en cluster partagé-HA</block>
   <block id="76751896989d28875a4eeddf2995da8d" category="sidebar">Préparez-vous à reconfigurer la disposition du commutateur</block>
+  <block id="9c328071e0321bfbe1d164cac2c22ebd" category="paragraph"><block ref="e6b811afaa94951aac008a53e383ff23" prefix="" category="inline-code"></block></block>
+  <block id="b3b5d42abc670ac795f4b90cfc221655" category="paragraph"><block ref="cb38fc2887221a0ca6581f1d73b29ec5" prefix="" category="inline-code"></block></block>
+  <block id="028c6aaad70991eeba5c4bb66ea88329" category="paragraph">Le <block ref="d6d2e75e827fff3babc66bc7cd4d2c4b" prefix=" " category="inline-code"></block> à utiliser avec cette commande se trouve dans la sortie de la commande précédente <block ref="0c5606ed319753bb2d86a485f23c8f6d" prefix=" " category="inline-code"></block> commande.</block>
+  <block id="7edece7677f8bef06093b6be08879c67" category="paragraph"><block ref="b79a4da2e325c3015ed2f7afe206a96b" prefix="" category="inline-code"></block></block>
+  <block id="a29df3ccd4c80ed70466ab7e616060db" category="paragraph"><block ref="c1415a35d798d0e1bc89dfc239e96300" prefix="" category="inline-code"></block> &lt; Le <block ref="d6d2e75e827fff3babc66bc7cd4d2c4b" prefix=" " category="inline-code"></block> à utiliser avec cette commande se trouve dans la sortie de la commande précédente <block ref="0c5606ed319753bb2d86a485f23c8f6d" prefix=" " category="inline-code"></block> commande.</block>
+  <block id="316bb78c78d8c5d743c44432528cc2c4" category="paragraph"><block ref="4221e144bb878e9d4c97a49eaf2eb814" prefix="" category="inline-code"></block></block>
+  <block id="4d090b6b4178c6d326829a98b05a4cd7" category="paragraph"><block ref="534a01a4ca515955efe8376e84615e84" prefix="" category="inline-code"></block></block>
+  <block id="b7836a7a1972d5f8803e2f44bd3cb658" category="paragraph"><block ref="49166cc15e848fc049881c3de5e1d1f8" prefix="" category="inline-code"></block><block ref="6d203e2c19155492a108b65377909131" prefix=" " category="inline-code"></block></block>
+  <block id="4655a1857691d25ac0c12a710dad5454" category="paragraph"><block ref="365695b1d723adf070447422d9e8d907" prefix="" category="inline-code"></block><block ref="5db9f9801ff1015f8f0ec287f1a37e08" prefix=" " category="inline-code"></block></block>
+  <block id="8502756d136a7fbd63f0576ce096751b" category="paragraph"><block ref="e0dd455af4d681c74ccfc9dc72ac81da" prefix="" category="inline-code"></block></block>
+  <block id="a0cc12382dcdc36e42046d83b6c7e109" category="paragraph"><block ref="2599180db5e07a38b13f33bacd678ed0" prefix="" category="inline-code"></block><block ref="cad104e67eebc6460f05ee5386343340" prefix=" " category="inline-code"></block></block>
+  <block id="29d22afc321b012279dd6e65d63787dd" category="paragraph"><block ref="c1691ae4960273f7d983ed570ccc250a" prefix="" category="inline-code"></block><block ref="66730ced80aced888a1e584b32aac885" prefix=" " category="inline-code"></block></block>
+  <block id="dce88c7c89a608000baa31d7f41aafe5" category="cell">Adresse IP du serveur de gestion des clés externes</block>
+  <block id="f861760a9e4b91d9c15f4ed6899c8a67" category="list-text">Restaurez la fonctionnalité de stockage ou de chiffrement de volume en utilisant l'une des procédures suivantes, selon que vous utilisez la gestion des clés intégrée ou externe :</block>
+  <block id="7b5b637cc082477a9dd4c129c225152e" category="inline-link-macro">Restaurez les clés de chiffrement intégrées de gestion des clés</block>
+  <block id="43a39f2ab9e3339214d6fda05936d597" category="list-text"><block ref="43a39f2ab9e3339214d6fda05936d597" category="inline-link-macro-rx"></block></block>
+  <block id="1ee623098df2f7856a034824be882999" category="inline-link-macro">Restaurez les clés de chiffrement externes pour la gestion des clés</block>
+  <block id="116698f9b98f4e456ff27e95e38fccf3" category="list-text"><block ref="116698f9b98f4e456ff27e95e38fccf3" category="inline-link-macro-rx"></block></block>
+  <block id="18b86b85ac7e74bdaf460ba1e2f65f0e" category="list-text">[[auto_install4_step27]]Si vous avez installé des lecteurs NetApp Storage Encryption (NSE), procédez comme suit :</block>
+  <block id="bdac4e49f25f09fd22688c1a0aaf704a" category="paragraph">Vérifiez si des volumes ont été mis hors ligne, car les clés d'authentification n'étaient pas disponibles ou les serveurs de gestion de clés externes n'ont pas pu être atteints. Remettez ces volumes en ligne en utilisant le <block ref="fcc46ad208d53e4021ecddc4ee333dc3" prefix=" " category="inline-code"></block> commande.</block>
+  <block id="0095109d5b66e24afe910457a637e763" category="list-text">[[A900_boot_node1]]Si vous avez installé des lecteurs NetApp Storage Encryption (NSE), procédez comme suit :</block>
+  <block id="c79e58170822a59a6dd931336ca868ed" category="list-text">[[boot_node2_step1]]Si vous avez installé des lecteurs NetApp Storage Encryption (NSE), procédez comme suit :</block>
+  <block id="78afe52f3d782a64e711de589b4df3d3" category="paragraph"><block ref="346db28706192c9274da330f004e695a" prefix="" category="inline-code"></block></block>
+  <block id="ee003f27b169d76d97322f42ff3b1684" category="paragraph"><block ref="fa9973ef8cb7c81f6e65cb1c4e0c12f2" prefix="" category="inline-code"></block></block>
+  <block id="4dfbd3112f049daa92b3b9620a0a23b4" category="list-text">Si vous avez installé des lecteurs NetApp Storage Encryption (NSE), procédez comme suit :</block>
+  <block id="780d3ce82c06a7096f3d7b6381f35cf4" category="list-text">[[man_install3_step16]]Si vous avez installé des lecteurs NetApp Storage Encryption (NSE), procédez comme suit :</block>
 </blocks>

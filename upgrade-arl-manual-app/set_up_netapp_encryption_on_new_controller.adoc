@@ -67,4 +67,4 @@ Pour plus d'informations, consultez l'article de la base de connaissances https:
 
 
 .Une fois que vous avez terminé
-Vérifiez si des volumes ont été mis hors ligne, car les clés d'authentification ne sont pas disponibles ou si les serveurs de gestion des clés externes n'ont pas pu être atteints. Remettre ces volumes en ligne à l'aide du `volume online` commande.
+Vérifiez si des volumes ont été mis hors ligne, car les clés d'authentification n'étaient pas disponibles ou les serveurs de gestion de clés externes n'ont pas pu être atteints. Remettez ces volumes en ligne en utilisant le  `volume online` commande.

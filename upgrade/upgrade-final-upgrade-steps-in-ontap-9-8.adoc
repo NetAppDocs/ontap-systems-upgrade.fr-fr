@@ -74,13 +74,10 @@ Réactivation du basculement du stockage : `storage failover modify -node node_n
 +
 `system node autosupport invoke -node node_name -type all -message "MAINT=END node_name successfully upgraded from platform_old to platform_new"`
 
-. Restaurez la fonctionnalité de cryptage de stockage ou de volume en suivant la procédure appropriée dans https://docs.netapp.com/us-en/ontap/encryption-at-rest/index.html["Gestion du chiffrement via l'interface de ligne de commandes"^] le contenu.
+. Restaurez la fonctionnalité de stockage ou de chiffrement de volume en utilisant l'une des procédures suivantes, selon que vous utilisez la gestion des clés intégrée ou externe :
 +
-Choisissez l'une des procédures suivantes selon que vous utilisez la gestion intégrée ou externe des clés :
-
-+
-** « Restauration des clés de cryptage intégrées »
-** « Restauration des clés de cryptage externes »
+** link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/restore-onboard-key-management-encryption-keys-task.html["Restaurez les clés de chiffrement intégrées de gestion des clés"^]
+** link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/restore-external-encryption-keys-93-later-task.html["Restaurez les clés de chiffrement externes pour la gestion des clés"^]
 
 
 . Si les nouveaux nœuds disposent de ports FC (intégrés ou sur adaptateurs FC), de ports CNA intégrés ou d'une carte CNA, configurez les ports FC ou CNA en entrant la commande suivante à l'invite du système de stockage :

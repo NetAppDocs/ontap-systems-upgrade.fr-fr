@@ -55,7 +55,7 @@ e11b ENET storage 100 Gb/s    enabled  online  30
 
 
 
-. [[A900_boot_node1]]si des lecteurs NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
+. [[A900_boot_node1]]Si vous avez installé des lecteurs NetApp Storage Encryption (NSE), procédez comme suit :
 +
 
 NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] déterminer le type de disques à autocryptage utilisés.

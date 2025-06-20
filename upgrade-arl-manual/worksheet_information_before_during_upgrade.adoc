@@ -46,7 +46,7 @@ Vous pouvez utiliser le formulaire suivant pour enregistrer les informations à 
 | Clés de licence | Étape 1 : _préparer les nœuds pour la mise à niveau_ | Etape 6 : _Confirmez que les nouveaux contrôleurs sont correctement configurés_ |  
 
 
-| Adresse IP du serveur de gestion externe des clés | Étape 1 : _Rekey disks for Storage Encryption_ | Étape 6 : _configurer le cryptage du stockage sur les nouveaux nœuds_ |  
+| Adresse IP du serveur de gestion des clés externes | Étape 1 : _Rekey disks for Storage Encryption_ | Étape 6 : _configurer le cryptage du stockage sur les nouveaux nœuds_ |  
 
 
 | Nom et chemin d'accès au répertoire accessible via le Web dans lequel vous téléchargez des fichiers sur netboot les nœuds | Étape 1 : _préparation à netboot_ | Étape 3 : _installer et démarrer node3_ étape 5 : _installer et démarrer node4_ |  

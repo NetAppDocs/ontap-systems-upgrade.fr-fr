@@ -54,25 +54,25 @@ Si les LIF de données des nœuds 3 ou 4 ne sont pas propriétaires de LIF de do
 
 . Vérifiez que le nœud 3 possède les agrégats du nœud 1 et que le nœud 4 est propriétaire des agrégats du nœud 2 :
 +
-`storage aggregate show -owner-name _node3_`
+`storage aggregate show -owner-name <node3>`
 
 +
-`storage aggregate show -owner-name _node4_`
+`storage aggregate show -owner-name <node4>`
 
 . Déterminez si des volumes sont hors ligne :
 +
-`volume show -node _node3_ -state offline`
+`volume show -node <node3> -state offline`
 
 +
-`volume show -node _node4_ -state offline`
+`volume show -node <node4> -state offline`
 
 . Si des volumes sont hors ligne, comparez-les avec la liste des volumes hors ligne que vous avez capturés dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"], et de mettre en ligne l'un des volumes hors ligne, si nécessaire, à l'aide de la commande suivante, une fois pour chaque volume :
 +
-`volume online -vserver _vserver_name_ -volume _volume_name_`
+`volume online -vserver <vserver_name> -volume <volume_name>`
 
 . Installez les nouvelles licences pour les nouveaux nœuds à l'aide de la commande suivante pour chaque nœud :
 +
-`system license add -license-code _license_code,license_code,license_code…_`
+`system license add -license-code <license_code,license_code,license_code…>`
 
 +
 Le paramètre License-code accepte une liste de 28 clés de caractères alphabétiques majuscules. Vous pouvez ajouter une licence à la fois ou ajouter plusieurs licences à la fois, en séparant chaque clé de licence par une virgule.
@@ -82,7 +82,7 @@ Le paramètre License-code accepte une liste de 28 clés de caractères alphabé
 `system license clean-up -unused -expired`
 
 +
-`system license delete -serial-number _node_serial_number_ -package _licensable_package_`
+`system license delete -serial-number <node_serial_number> -package <licensable_package>`
 
 +
 --
@@ -96,10 +96,10 @@ Le paramètre License-code accepte une liste de 28 clés de caractères alphabé
 
 ** Supprimez une licence spécifique d'un cluster à l'aide des commandes suivantes sur les nœuds :
 +
-`system license delete -serial-number _node1_serial_number_ -package *`
+`system license delete -serial-number <node1_serial_number> -package *`
 
 +
-`system license delete -serial-number _node2_serial_number_ -package *`
+`system license delete -serial-number <node2_serial_number> -package *`
 
 
 

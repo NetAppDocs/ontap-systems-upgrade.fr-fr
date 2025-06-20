@@ -159,7 +159,7 @@ Le système s'arrête à l'invite de l'environnement d'amorçage.
 +
 `set-defaults`
 
-. Si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
+. Si vous avez installé des lecteurs NetApp Storage Encryption (NSE), procédez comme suit :
 +
 
 NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] déterminer le type de disques à autocryptage utilisés.

@@ -42,7 +42,7 @@ L'opération s'interrompt pour vous permettre de vérifier si tous les agrégats
 
 . Lorsque l'opération est toujours en pause, vérifiez que tous les agrégats non racines sont en ligne pour leur état sur le nœud 2 :
 +
-`storage aggregate show -node _node2_ -state online -root false`
+`storage aggregate show -node <node2> -state online -root false`
 
 +
 L'exemple suivant montre que les agrégats non-root du noeud 2 sont en ligne :
@@ -62,20 +62,20 @@ aggr_2     825.0GB  825.0GB    0%     online     1  node2  raid_dp,normal
 Si les agrégats ont été mis hors ligne ou sont devenus étrangers sur le nœud 2, les mettre en ligne en utilisant la commande suivante sur le nœud 2, une fois pour chaque agrégat :
 
 +
-`storage aggregate online -aggregate _aggr_name_`
+`storage aggregate online -aggregate <aggregate_name>`
 
 . Vérifier que tous les volumes sont en ligne sur le nœud 2 à l'aide de la commande suivante sur le nœud 2 et en examinant la sortie correspondante :
 +
-`volume show -node _node2_ -state offline`
+`volume show -node <node2> -state offline`
 
 +
 Si un volume est hors ligne sur le nœud 2, mettez-le en ligne à l'aide de la commande suivante sur le nœud 2, une fois pour chaque volume :
 
 +
-`volume online -vserver _vserver_name_ -volume _volume_name_`
+`volume online -vserver <vserver_name> -volume <volume_name>`
 
 +
-Le `_vserver_name_` pour utiliser cette commande avec cette commande, figure dans la sortie du précédent `volume show` commande.
+Le  `vserver_name` à utiliser avec cette commande se trouve dans la sortie de la commande précédente  `volume show` commande.
 
 
 

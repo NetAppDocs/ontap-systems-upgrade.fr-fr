@@ -20,7 +20,7 @@ Le nœud 2 avec les modules de remplacement est maintenant prêt à démarrer. L
 NOTE: Vous ne déplacez les connexions de console et de gestion que lorsque vous effectuez une mise à niveau en remplaçant les modules système.
 
 .Étapes
-. [[boot_node2_step1]]si des disques NetApp Storage Encryption (NSE) sont installés, effectuez les opérations suivantes.
+. [[boot_node2_step1]]Si vous avez installé des lecteurs NetApp Storage Encryption (NSE), procédez comme suit :
 +
 
 NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] déterminer le type de disques à autocryptage utilisés.
