@@ -93,7 +93,7 @@ Propriété globale à la fin de la phase 5 :
 
 
 | link:boot_node2_with_a900_controller_and_nvs.html["Etape 6 : démarrez le nœud 2 avec les modules système de remplacement"]  a| 
-Au cours de l'étape 6, vous démarrez node2 avec des modules système mis à niveau et vérifiez l'installation du node2 mis à niveau. Si vous utilisez NVE, restaurez la configuration du gestionnaire de clés. Vous pouvez également transférer des agrégats non racines et des LIF de données NAS du nœud 1 vers le nœud 2 mis à niveau, puis vérifier que des LIF SAN existent sur le nœud 2.
+Au cours de l’étape 6, vous démarrez node2 avec des modules système mis à niveau et vérifiez l’installation de node2 mis à niveau.  Si vous utilisez NVE, vous restaurez la configuration du gestionnaire de clés.  Si vous mettez à niveau une configuration avec des clusters connectés à un commutateur, vous devez valider la configuration du commutateur pour les nouveaux contrôleurs.  Vous déplacez également les agrégats non racine du nœud 1 et les LIF de données NAS du nœud 1 vers le nœud 2 mis à niveau et vérifiez que les LIF SAN existent sur le nœud 2.
 
 
 

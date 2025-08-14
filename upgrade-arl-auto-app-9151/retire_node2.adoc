@@ -14,7 +14,7 @@ summary: 'Arrêtez le nœud 2 et supprimez-le du rack ou du châssis lors de la 
 
 
 [role="lead"]
-Pour retirer le nœud 2, vous devez d'abord arrêter correctement le nœud 2 et le retirer du rack ou du châssis.
+Pour retirer le nœud 2, arrêtez-le correctement, puis retirez-le du rack ou du châssis.
 
 .Étapes
 . Reprendre l'opération :
@@ -27,4 +27,4 @@ Le nœud s'arrête automatiquement.
 
 
 .Une fois que vous avez terminé
-Vous pouvez désaffecter le nœud2 une fois la mise à niveau terminée. Voir link:decommission_old_system.html["Désaffectation de l'ancien système"].
+Après avoir retiré le nœud 2, vérifiez qu'il est éteint et non connecté au réseau.  Laissez l’ancien matériel du nœud 2 dans cet état jusqu’à ce que vous ayez terminé la mise à niveau des nœuds 1 et 2.  Vous pouvez ensuite mettre hors service le nœud 2 pendantlink:manage-authentication-using-kmip-servers.html["Étape 6. Terminez la mise à niveau"] .

@@ -14,7 +14,7 @@ summary: 'Désactivez la paire haute disponibilité avec le nœud 2 et arrêtez 
 
 
 [role="lead"]
-Pour retirer le nœud 1, vous reprenez l'opération automatisée pour désactiver la paire HA avec le nœud 2 et arrêter le nœud 1 correctement. Plus tard dans la procédure, vous supprimez le nœud 1 du rack ou du châssis.
+Pour retirer le nœud 1, reprenez l'opération automatisée pour désactiver la paire HA avec le nœud 2 et arrêtez correctement le nœud 1.  Plus tard dans la procédure, vous retirez le nœud 1 du rack ou du châssis.
 
 .Étapes
 . Reprendre l'opération :
@@ -28,4 +28,4 @@ Pour retirer le nœud 1, vous reprenez l'opération automatisée pour désactive
 
 
 .Une fois que vous avez terminé
-Vous pouvez désaffecter le nœud1 une fois la mise à niveau terminée. Voir link:decommission_old_system.html["Désaffectation de l'ancien système"].
+Après avoir retiré le nœud 1, vérifiez qu'il est hors tension et non connecté au réseau.  Laissez l’ancien matériel du nœud 1 dans cet état jusqu’à ce que vous ayez terminé la mise à niveau du nœud 1 et du nœud 2.  Vous pouvez ensuite mettre hors service le nœud 1 pendantlink:manage-authentication-using-kmip-servers.html["Étape 6. Terminez la mise à niveau"] .

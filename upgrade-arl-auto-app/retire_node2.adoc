@@ -14,7 +14,7 @@ summary: 'Lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou ver
 
 
 [role="lead"]
-Pour retirer le nœud 2, vous devez d'abord arrêter correctement le nœud 2 et le retirer du rack ou du châssis.
+Pour retirer le nœud 2, arrêtez-le correctement, puis retirez-le du rack ou du châssis.
 
 .Étapes
 . Reprendre l'opération :
