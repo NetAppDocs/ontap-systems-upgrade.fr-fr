@@ -31,7 +31,7 @@ Retirez le périphérique de gestion des câbles du module existant et retirez l
 .Étapes
 . Préparez le retrait du module de contrôleur :
 +
-.. À l'avant du châssis, enfoncez fermement chaque disque jusqu'à ce que vous sentiez un arrêt positif. Cela permet de s'assurer que les disques sont fermement installés contre le fond de panier central du châssis.
+.. À l'avant du châssis, utilisez vos pouces pour pousser fermement chaque lecteur dans les baies de disque supérieure et inférieure jusqu'à ce que vous sentiez une butée positive.  Cela garantit que les disques sont fermement fixés contre le plan médian du châssis.
 +
 image:drw_a800_drive_seated_IEOPS-960.png["Appuyez sur le lecteur pour le mettre fermement en place contre le fond de panier central du châssis"]
 
@@ -87,6 +87,14 @@ image:drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG["Installer un AFF A90 ou un A
 +
 
 NOTE: Comme le châssis est déjà sous tension, le nœud 1 démarre l'initialisation du BIOS, suivie d'UNE initialisation AUTOMATIQUE dès que vous insérez le nouveau module de contrôleur. Pour éviter ce DÉMARRAGE AUTOMATIQUE, NetApp recommande de connecter les câbles série et console avant d'insérer le module de contrôleur.
+
+. À l'avant du châssis, utilisez vos pouces pour pousser fermement chaque lecteur dans les baies de disque supérieure et inférieure jusqu'à ce que vous sentiez une butée positive.  Cela garantit que les disques sont fermement fixés contre le plan médian du châssis.
++
+image:drw_a800_drive_seated_IEOPS-960.png["Appuyez sur le lecteur pour le mettre fermement en place contre le fond de panier central du châssis"]
+
++
+.. Aller à l'arrière du châssis.
+
 
 . Avec la poignée de came en position ouverte, poussez fermement le module de contrôleur jusqu'à ce qu'il rencontre le fond de panier central et qu'il soit bien en place. Le loquet de verrouillage s'élève lorsque le module de contrôleur est bien en place. Fermer la poignée de came en position verrouillée.
 +
