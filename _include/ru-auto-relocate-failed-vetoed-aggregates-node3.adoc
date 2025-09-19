@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Si des agrégats ne parviennent pas à se déplacer ou sont rejetés, vous devez les déplacer manuellement vers le nœud 2 ou, si nécessaire, ignorer les vetos ou les vérifications de destination.
+Si des agrégats ne parviennent pas à se déplacer ou sont bloqués, vous devez les déplacer manuellement vers le nœud 3 ou, si nécessaire, ignorer les vetos ou les vérifications de destination.
 
 .Description de la tâche
 Le système interrompt l'opération de relocalisation en raison de l'erreur.
@@ -11,7 +11,7 @@ Le système interrompt l'opération de relocalisation en raison de l'erreur.
 . Vérifiez les journaux du système de gestion des événements (EMS) pour déterminer pourquoi l'agrégat n'a pas pu transférer ou a été vetoté.
 . Transfert d'agrégats défaillants ou vetotés :
 +
-`storage aggregate relocation start -node <node1> -destination <node2> -aggregate-list <aggregate_name> -ndo-controller-upgrade true`
+`storage aggregate relocation start -node <node2> -destination <node3> -aggregate-list <aggregate_name> -ndo-controller-upgrade true`
 
 . Entrez-le lorsque vous y êtes invité `y`.
 . Vous pouvez forcer le déplacement en utilisant l'une des méthodes suivantes :
@@ -22,10 +22,10 @@ Le système interrompt l'opération de relocalisation en raison de l'erreur.
 
 
 | Annulation des contrôles de veto | Utilisez la commande suivante :
-`storage aggregate relocation start -node node1 -destination node2 -aggregate-list <aggregate_list> -ndo-controller-upgrade true -override-vetoes true` 
+`storage aggregate relocation start -node node2 -destination node3 -aggregate-list <aggregate_list> -ndo-controller-upgrade true -override-vetoes true` 
 
 
 | Remplacement des vérifications de destination | Utilisez la commande suivante :
-`storage aggregate relocation start -node node1 -destination node2 -aggregate-list <aggregate_list> -ndo-controller-upgrade true -override-vetoes true -override-destination-checks true` 
+`storage aggregate relocation start -node node2 -destination node3 -aggregate-list <aggregate_list> -ndo-controller-upgrade true -override-vetoes true -override-destination-checks true` 
 |===
 

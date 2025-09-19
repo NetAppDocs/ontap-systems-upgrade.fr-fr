@@ -1,7 +1,19 @@
-= 
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/relocate-failed-or-vetoed-aggr-node2.html 
+keywords: relocate, failed, vetoed, aggregates, relocation, operation 
+summary: 'Déplacez les agrégats défaillants ou refusés vers le nœud 2 lors de l"utilisation d"ARL pour mettre à niveau les modèles de contrôleur dans le même châssis.' 
+---
+= Déplacer les agrégats défaillants ou refusés vers le nœud 2
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
+[role="lead"]
 Si des agrégats ne parviennent pas à se déplacer ou sont rejetés, vous devez les déplacer manuellement vers le nœud 2 ou, si nécessaire, ignorer les vetos ou les vérifications de destination.
 
 .Description de la tâche

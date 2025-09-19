@@ -37,7 +37,7 @@ entries:
       au nœud1 vers le nœud2
     url: "/upgrade-arl-auto-app/relocate_non_root_aggr_nas_data_lifs_node1_node2.html"
   - title: Le transfert d'agrégats a échoué ou a été veto
-    url: "/upgrade-arl-auto-app/relocate_failed_or_vetoed_aggr.html"
+    url: "/upgrade-arl-auto-app/relocate-failed-or-vetoed-aggr-node2.html"
   - title: Retirer le nœud 1
     url: "/upgrade-arl-auto-app/retire_node1.html"
   - title: Préparation à la mise sur le réseau
@@ -66,6 +66,8 @@ entries:
   - title: Transférez des agrégats non racines et des LIF de données NAS du nœud 2
       vers le nœud 3
     url: "/upgrade-arl-auto-app/relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html"
+  - title: Le transfert d'agrégats a échoué ou a été veto
+    url: "/upgrade-arl-auto-app/relocate-failed-or-vetoed-aggr-node3.html"
   - title: Retrait du nœud 2
     url: "/upgrade-arl-auto-app/retire_node2.html"
 - title: Étape 5. Installez et démarrez Node4

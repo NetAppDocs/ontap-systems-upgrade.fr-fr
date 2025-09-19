@@ -54,7 +54,10 @@ Saisissez la phrase de passe et les informations de sauvegarde que vous avez enr
 +
 `boot_ontap menu`
 
-. Réaffectez les anciens disques du nœud 2 au nœud de remplacement 2 en entrant « 22/7 » et en sélectionnant l'option cachée `boot_after_controller_replacement` lorsque le nœud s'arrête au menu de démarrage.
+. Lorsque le nœud s'arrête au menu de démarrage, réaffectez les anciens disques node2 au node2 de remplacement en exécutant la commande suivante sur node2 :
++
+`boot_after_controller_replacement`
+
 +
 Après un bref délai, vous êtes invité à saisir le nom du nœud en cours de remplacement. S'il existe des disques partagés (également appelés partitionnement de disque avancé ou des disques partitionnés), vous êtes invité à saisir le nom de nœud du partenaire haute disponibilité.
 
@@ -161,6 +164,7 @@ This will replace all flash-based configuration with the last backup to disks. A
 .
 .
 Controller Replacement: Provide name of the node you would like to replace:<nodename of the node being replaced>
+Controller Replacement: Provide High Availability partner of node1: <nodename of the partner of the node being replaced>
 Changing sysid of node node1 disks.
 Fetched sanown old_owner_sysid = 536940063 and calculated old sys id = 536940063
 Partner sysid = 4294967295, owner sysid = 536940063

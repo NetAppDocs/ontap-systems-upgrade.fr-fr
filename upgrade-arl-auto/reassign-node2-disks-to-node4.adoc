@@ -16,11 +16,17 @@ summary: 'Vous pouvez configurer les ports FC intégrés des nœuds node4, les p
 [role="lead"]
 Vous devez réaffecter les disques appartenant au nœud 2 au nœud 4 avant de vérifier l'installation du nœud 4.
 
-.Description de la tâche
-Vous effectuez les étapes de cette section sur le node4.
-
 .Étapes
-. [[reassigner-node2-node4-step1]]allez au menu d'amorçage et, à l'aide de 22/7, sélectionnez l'option cachée `boot_after_controller_replacement` . À l'invite, entrez node2 pour réaffecter les disques du nœud2 au nœud4, comme dans l'exemple suivant.
+. [[reassign-node2-node4-step1]]Vérifiez que le nœud 2 s'est arrêté au menu de démarrage et réaffectez les disques du nœud 2 au nœud 4 :
++
+`boot_after_controller_replacement`
+
++
+Après un bref délai, vous êtes invité à saisir le nom du nœud en cours de remplacement. S'il existe des disques partagés (également appelés partitionnement de disque avancé ou des disques partitionnés), vous êtes invité à saisir le nom de nœud du partenaire haute disponibilité.
+
++
+Ces invites peuvent être enfouies dans les messages de la console. Si vous ne saisissez pas de nom de nœud ou si vous saisissez un nom incorrect, vous êtes invité à saisir de nouveau le nom.
+
 +
 .Développez l'exemple de sortie de la console
 [%collapsible]
@@ -73,8 +79,7 @@ This will replace all flash-based configuration with the last backup to disks. A
 .
 .
 Controller Replacement: Provide name of the node you would like to replace: <name of the node being replaced>
-.
-.
+Controller Replacement: Provide High Availability partner of node1: <nodename of the partner of the node being replaced>
 Changing sysid of node <node being replaced> disks.
 Fetched sanown old_owner_sysid = 536953334 and calculated old sys id = 536953334
 Partner sysid = 4294967295, owner sysid = 536953334
@@ -101,7 +106,7 @@ Override system ID? {y|n} y
 Login: ...
 ----
 ====
-. Si le système passe en boucle de redémarrage avec le message `no disks found`, c'est parce qu'il a réinitialisé les ports en mode cible et qu'il n'est donc pas en mesure de voir les disques. Passez  à la <<auto_check_4_step8,Étape 8>>section <<auto_check_4_step3,Étape 3>>pour résoudre ce problème.
+. Si le système entre dans une boucle de redémarrage avec le message `no disks found` , c'est parce qu'il a réinitialisé les ports au mode cible et qu'il est donc incapable de voir aucun disque.  Effectuer<<auto_check_4_step3,Étape 3>> à travers<<auto_check_4_step8,Étape 8>> sur node4 pour résoudre ce problème.
 . [[auto_check_4_step3]]appuyez sur Ctrl-C pendant l'AUTOBOOT pour arrêter le nœud à l'invite du CHARGEUR>.
 . À l'invite du CHARGEUR, entrer en mode maintenance :
 +
@@ -184,7 +189,7 @@ NOTE: Il se peut que vous rencontriez une erreur à ce stade. Si une erreur se p
 
 
 
-. [[auto_check_4_step9]]si vous effectuez une mise à niveau d'un système à disques externes vers un système qui prend en charge des disques internes et externes (systèmes AFF A800, par exemple), définissez l'agrégat node2 en tant qu'agrégat racine pour confirmer que le nœud4 démarre à partir de l'agrégat racine du nœud2. Pour définir l'agrégat racine, accédez au menu de boot et sélectionnez option `5` pour passer en mode de maintenance.
+. [[auto_check_4_step9]]Si vous effectuez une mise à niveau d'un système avec des disques externes vers un système prenant en charge les disques internes et externes (systèmes AFF A800 , par exemple), définissez l'agrégat node2 comme agrégat racine pour confirmer que node4 démarre à partir de l'agrégat racine de node2.  Pour définir l'agrégat racine, accédez au menu de démarrage sur node4 et sélectionnez l'option `5` pour entrer en mode maintenance.
 +
 
 WARNING: *Vous devez exécuter les sous-étapes suivantes dans l'ordre exact indiqué ; le non-respect de cette consigne peut entraîner une panne ou même une perte de données.*

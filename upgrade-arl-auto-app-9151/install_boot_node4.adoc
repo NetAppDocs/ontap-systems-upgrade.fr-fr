@@ -274,9 +274,18 @@ Saisissez la phrase de passe et les informations de sauvegarde que vous avez enr
 
 . Démarrez le nœud dans le menu de démarrage :
 +
-`boot_ontap menu`.
+`boot_ontap menu`
 
-. [[auto_check_4_step11]]sur le node4, allez dans le menu de démarrage et, à l'aide de 22/7, sélectionnez l'option cachée `boot_after_controller_replacement`. À l'invite, entrez node2 pour réaffecter les disques du nœud2 au nœud4, comme dans l'exemple suivant.
+. [[auto_check_4_step11]]Lorsque le nœud 4 s'arrête au menu de démarrage, réaffectez les disques du nœud 2 au nœud 4 en exécutant la commande suivante sur le nœud 4 :
++
+`boot_after_controller_replacement`
+
++
+Après un bref délai, vous êtes invité à saisir le nom du nœud en cours de remplacement. S'il existe des disques partagés (également appelés partitionnement de disque avancé ou des disques partitionnés), vous êtes invité à saisir le nom de nœud du partenaire haute disponibilité.
+
++
+Ces invites peuvent être enfouies dans les messages de la console. Si vous ne saisissez pas de nom de nœud ou si vous saisissez un nom incorrect, vous êtes invité à saisir de nouveau le nom.
+
 +
 .Développez l'exemple de sortie de la console
 [%collapsible]
@@ -354,6 +363,7 @@ you want to continue?: yes
 .
 Controller Replacement: Provide name of the node you would like to replace:
 <nodename of the node being replaced>
+Controller Replacement: Provide High Availability partner of node1: <nodename of the partner of the node being replaced>
 Changing sysid of node node2 disks.
 Fetched sanown old_owner_sysid = 536940063 and calculated old sys id = 536940063
 Partner sysid = 4294967295, owner sysid = 536940063

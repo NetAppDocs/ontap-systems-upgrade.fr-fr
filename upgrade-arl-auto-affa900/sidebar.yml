@@ -29,7 +29,7 @@ entries:
       au nœud1 vers le nœud2
     url: "/upgrade-arl-auto-affa900/relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html"
   - title: Le transfert d'agrégats a échoué ou a été veto
-    url: "/upgrade-arl-auto-affa900/relocate_failed_or_vetoed_aggr.html"
+    url: "/upgrade-arl-auto-affa900/relocate-failed-or-vetoed-aggr-node2.html"
   - title: Retirer le nœud 1
     url: "/upgrade-arl-auto-affa900/retire_node1.html"
   - title: Remplacez les modules système du nœud 1
@@ -63,6 +63,8 @@ entries:
   - title: Transférez des agrégats non racines et des LIF de données NAS du nœud 2
       vers le nœud 1
     url: "/upgrade-arl-auto-affa900/relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html"
+  - title: Le transfert d'agrégats a échoué ou a été veto
+    url: "/upgrade-arl-auto-affa900/relocate-failed-or-vetoed-aggr-node1.html"
   - title: Retrait du nœud 2
     url: "/upgrade-arl-auto-affa900/retire_node2.html"
 - title: Étape 5. Installez les modules système de remplacement sur le nœud 2

@@ -17,7 +17,7 @@ summary: 'Transfert manuel des agrégats défectueux ou vetotés lors de la mise
 Si un agrégat ne peut pas transférer ou être vetoté, vous devez transférer manuellement les agrégats ou remplacer les vetos ou les vérifications de destination, si nécessaire.
 
 .Description de la tâche
-L'opération de relocalisation a été interrompue en raison de l'erreur.
+Le système interrompt l'opération de relocalisation en raison de l'erreur.
 
 .Étapes
 . Vérifiez les logs EMS pour déterminer pourquoi l'agrégat n'a pas pu être déplacé ou a été vetoté.

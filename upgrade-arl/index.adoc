@@ -194,8 +194,53 @@ Si votre scénario de mise à niveau est répertorié dans la matrice de systèm
 
 Si votre scénario de mise à niveau n'est pas pris en charge à l'aide de « commandes système », vous pouvez effectuer une mise à niveau ARL à l'aide de commandes manuelles.
 
-Choisissez la procédure pour votre version ONTAP pour démarrer la mise à niveau :
+.Afficher les systèmes pris en charge
+[%collapsible]
+====
+[role="tabbed-block"]
+=====
+.ONTAP 9.8 ou version ultérieure
+--
+Les mises à niveau manuelles ARL sont prises en charge pour les systèmes suivants exécutant ONTAP 9.8 et versions ultérieures :
 
-* link:../upgrade-arl-manual-app/index.html["Mettez manuellement à niveau le matériel du contrôleur sous ONTAP 9.8 ou une version ultérieure"]
-* link:../upgrade-arl-manual/index.html["Mettez à niveau manuellement le matériel du contrôleur en exécutant ONTAP 9.7 ou une version antérieure"]
+* Du système FAS au système FAS
+* Du système AFF au système AFF
++
+Vous pouvez uniquement mettre à niveau vers un système de remplacement de la même série :
 
++
+** Du système AFF A-Series au système AFF A-Series
+** Du système AFF C-Series au système AFF C-Series
+
+
+* Du système ASA au système ASA
++
+
+NOTE: Les mises à niveau ASA vers un système de remplacement ASA r2 ne sont pas prises en charge. Pour plus d'informations sur la migration des données de ASA vers ASA r2, reportez-vous à link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Activez l'accès aux données depuis des hôtes SAN vers votre système de stockage ASA r2"^]la section .
+
++
+Vous pouvez uniquement mettre à niveau vers un système de remplacement de la même série :
+
++
+** Du système ASA A-Series au système ASA A-Series
+** Du système ASA C-Series au système ASA C-Series
+
+
+
+
+link:../upgrade-arl-manual-app/index.html["Mettez manuellement à niveau le matériel du contrôleur sous ONTAP 9.8 ou une version ultérieure"]
+
+--
+.ONTAP 9.7 ou version antérieure
+--
+Les mises à niveau manuelles ARL sont prises en charge pour les systèmes suivants exécutant ONTAP 9.7 et versions antérieures :
+
+* Du système FAS au système FAS
+* Du système AFF au système AFF
+
+
+link:../upgrade-arl-manual/index.html["Mettez à niveau manuellement le matériel du contrôleur en exécutant ONTAP 9.7 ou une version antérieure"]
+
+--
+=====
+====
