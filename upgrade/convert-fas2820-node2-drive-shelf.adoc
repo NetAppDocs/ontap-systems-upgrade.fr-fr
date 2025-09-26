@@ -1,0 +1,29 @@
+---
+permalink: upgrade/convert-fas2820-node2-drive-shelf.html 
+sidebar: sidebar 
+keywords: fas8280, ndu, nondisruptive, upgrade, node2, node4, reassign, drives 
+summary: 'Convertissez le nœud 2 (FAS2820) en une étagère de lecteur DS212C, puis connectez-vous au nœud 4.' 
+---
+= Convertissez le nœud FAS2820 node2 en étagère de lecteur et connectez-le au nœud 4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Convertissez le FAS2820 node2 en une étagère de lecteur DS212C.  Connectez-vous au nœud 4 avant de réaffecter les lecteurs du nœud 2 au nœud 4.  Node1 et node2 sont les contrôleurs à l'intérieur de l'étagère DS212C.
+
+.Étapes
+. Déconnectez tous les câbles réseau du nœud 2.
+. Retirez le nœud 2 du châssis FAS2820 .
+. Insérez le module IOM12 ou IOM12B dans la baie du node2.
+. Connectez le port SCSI série (SAS) du node4 à un port disponible sur le module IOM12 ou IOM12B.  Voir lelink:https://hwu.netapp.com["Hardware Universe"^] pour vérifier les ports SAS de votre système.
+. Créez des connexions de cluster temporaires en connectant les ports e0a et e0b du nœud 1 à deux ports 25 GbE sur le nœud 4.
++
+
+NOTE: Si node4 prend uniquement en charge les connexions de cluster 10 GbE, vous devez disposer d'un câblage 10 GbE pour créer des connexions de cluster temporaires.
+
+
+
+.Et la suite ?
+link:reassign-fas2820-node2-drives.html["Réaffectez des lecteurs du nœud 2 au nœud 4"]

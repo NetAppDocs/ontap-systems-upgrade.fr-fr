@@ -1,0 +1,87 @@
+---
+permalink: upgrade/reassign-fas2820-node2-drives.html 
+sidebar: sidebar 
+keywords: fas2820, ndu, nondisruptive, upgrade, node2, node4, reassign, drives 
+summary: Après avoir converti le nœud FAS2820 node2 en étagère de lecteurs DS212C et connecté au nœud 4, vous réaffectez les lecteurs qui appartenaient auparavant au nœud 2 au nœud 4. 
+---
+= Réaffecter les lecteurs du nœud 2 du FAS2820 au nœud 4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Réaffectez les lecteurs qui appartenaient auparavant au nœud 2 de FAS2820 au nœud 4.
+
+.Avant de commencer
+Vérifiez que le nœud 3 et le nœud 4 sont en veille à l'invite DU CHARGEUR.
+
+.Description de la tâche
+Effectuez les étapes suivantes sur node4.
+
+.Étapes
+. À l'invite DU CHARGEUR, démarrez le nœud 4 en mode maintenance :
++
+[source, cli]
+----
+boot_ontap maint
+----
++
+L'invite du mode de maintenance s'affiche.
+
+. Afficher tous les disques connectés :
++
+[source, cli]
+----
+disk show -v
+----
+. Notez la valeur de l'ID système local ; il s'agit de l'ID système du nœud 4. Notez également les ID système du nœud 1 et du nœud 2 dans la colonne "PROPRIÉTAIRE".
+. Réaffecter tous les lecteurs du nœud 2 au nœud 4.
++
+[role="tabbed-block"]
+====
+.Si vous utilisez des disques entiers
+--
+Exécutez la commande suivante :
+
+[source, cli]
+----
+disk reassign -s <node2_system_ID> -d <node4_system_ID>
+----
+--
+.Si vous utilisez des disques partitionnés
+--
+Exécutez la commande suivante :
+
+[source, cli]
+----
+disk reassign -s <node2_system_ID> -d <node4_system_ID> -p <node1_system_ID>
+----
+--
+====
+. Vérifiez que tous les disques réaffectés sont visibles pour le nouvel ID système :
++
+[source, cli]
+----
+disk show -s <node4_System_ID>
+----
++
+
+CAUTION: Si les lecteurs ne sont pas visibles, *arrêtez* et contactez le support technique pour obtenir de l'aide.
+
+. Vérifier que l'agrégat racine du node2 est signalé dans le résultat et que l'agrégat est en ligne :
++
+[source, cli]
+----
+aggr status
+----
+. Quitter le mode maintenance :
++
+[source, cli]
+----
+halt
+----
+
+
+.Et la suite ?
+link:migrate-fas2820-aggregates-epsilon-lifs.html["Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le nœud 4"]

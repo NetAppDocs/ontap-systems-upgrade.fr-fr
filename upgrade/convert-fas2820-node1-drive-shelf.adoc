@@ -1,0 +1,29 @@
+---
+permalink: upgrade/convert-fas2820-node1-drive-shelf.html 
+sidebar: sidebar 
+keywords: fas2820, ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
+summary: Convertissez le nœud 1 FAS2820 en une étagère de lecteur DS212C, puis connectez-vous au nœud 3 avant de réaffecter les lecteurs du nœud 1 au nœud 3. 
+---
+= Convertissez le nœud 1 FAS2820 en étagère de lecteur et connectez-le au nœud 3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Convertissez le FAS2820 node1 en une étagère de lecteur DS212C.  Connectez-vous au nœud 3 avant de réaffecter les lecteurs du nœud 1 au nœud 3.
+
+.Étapes
+. Déconnectez tous les câbles réseau du nœud 1.
+. Retirez le nœud 1 du châssis FAS2820 .
+. Insérez le module IOM12 ou IOM12B dans la baie du nœud 1.
+. Connectez le port SAS du nœud 3 à un port disponible sur le module IOM12 ou IOM12B.  Voir lelink:https://hwu.netapp.com["Hardware Universe"^] pour vérifier les ports SAS de votre système.  Voir lelink:https://hwu.netapp.com["Hardware Universe"^] pour vérifier les ports SAS de votre système.
+. Créez des connexions de cluster temporaires en connectant les ports de cluster node4 à n’importe quel port de cluster sur node3.
++
+
+NOTE: Si le nœud 3 prend uniquement en charge les connexions de cluster 10 GbE, vous devez disposer d'un câblage 10 GbE pour créer des connexions de cluster temporaires.
+
+
+
+.Et la suite ?
+link:reassign-fas2820-node1-drives.html["Réaffectez des lecteurs du nœud 1 au nœud 3"]

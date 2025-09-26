@@ -1,0 +1,78 @@
+---
+permalink: upgrade/reassign-fas2820-node1-drives.html 
+sidebar: sidebar 
+keywords: fas2820, ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
+summary: Après avoir converti le nœud FAS2820 node1 en lecteur DS212C et connecté au nœud3, vous réaffectez les lecteurs qui appartenaient auparavant au nœud1 au nœud3. 
+---
+= Réaffecter les lecteurs du nœud 1 du FAS2820 au nœud 3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Réaffectez les lecteurs qui étaient précédemment attribués au nœud 1 de FAS2820 au nœud 3.
+
+.Description de la tâche
+Effectuez les étapes suivantes sur node3.
+
+.Étapes
+. À l'invite DU CHARGEUR, démarrez le nœud 3 en mode maintenance :
++
+[source, cli]
+----
+boot_ontap maint
+----
++
+L'invite du mode de maintenance s'affiche.
+
+. Afficher tous les disques connectés :
++
+[source, cli]
+----
+disk show -v
+----
+. Enregistrez la valeur de l’ID du système local ; il s’agit de l’ID système du nœud 3.  Enregistrez également les ID système de node1 et node4 dans la colonne « PROPRIÉTAIRE ».
+. Réaffectez tous les disques du nœud 1 au nœud 3 :
++
+[role="tabbed-block"]
+====
+.Si vous utilisez des disques entiers
+--
+Exécutez la commande suivante :
+
+[source, cli]
+----
+disk reassign -s <node1_system_ID> -d <node3_system_ID>
+----
+--
+.Si vous utilisez des disques partitionnés
+--
+Exécutez la commande suivante :
+
+[source, cli]
+----
+disk reassign -s <node1_system_ID> -d <node3_system_ID> -p <node4_system_ID>
+----
+--
+====
+. Vérifiez que tous les disques réaffectés sont visibles pour le nouvel ID système :
++
+[source, cli]
+----
+disk show -s <node3_system_ID>
+----
++
+
+CAUTION: Si les lecteurs ne sont pas visibles, *arrêtez* et contactez le support technique pour obtenir de l'aide.
+
+. Quitter le mode Maintenance :
++
+[source, cli]
+----
+halt
+----
+
+
+.Et la suite ?
+link:migrate-fas2820-node4-lIfs-aggregates.html["Migration des LIF et des agrégats de données du nœud 4 vers le nœud 3"]

@@ -48,6 +48,8 @@ La mise à niveau en déplaçant des volumes s'effectue sans interruption.
 Si vous mettez à niveau une configuration MetroCluster, reportez-vous à la section https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Mettez à niveau, actualisez ou développez la configuration MetroCluster"^].
 
 .Informations associées
+* link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Convertissez AFF A250 en lecteur de plateau et effectuez une mise à niveau vers AFF A400"](procédure non perturbatrice)
+* link:convert-fas2820-to-drive-shelf.html["Mise à niveau du FAS2820 en le convertissant en étagère de lecteur"](procédure non perturbatrice)
 * link:upgrade-considerations.html["Considérations relatives à la mise à niveau du matériel du contrôleur"]
 * link:../choose_controller_upgrade_procedure.html["Choisissez des méthodes de mise à niveau du matériel du contrôleur"]
 * https://docs.netapp.com/us-en/ontap-metrocluster/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["Où trouver les procédures pour les tâches de maintenance MetroCluster"^]

@@ -1,0 +1,147 @@
+---
+permalink: upgrade/migrate-fas2820-node2-lifs-aggregates.html 
+sidebar: sidebar 
+keywords: fas2820, ndu, nondisruptive, upgrade, node1, node2, migrate, aggregates, lifs 
+summary: 'Migrez les interfaces logiques (LIF) et les agrégats de données du nœud 2 FAS2820 vers le nœud 1 avant de convertir le nœud 2 en étagère de lecteur.' 
+---
+= Migrer les LIF et les agrégats de données du nœud 2 FAS2820 vers le nœud 1
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Migrez les interfaces logiques (LIF) et les agrégats de données du nœud 2 FAS2820 vers le nœud 1 avant de convertir le nœud 2 en étagère de lecteur.
+
+.Avant de commencer
+Vérifiez que vous répondez aux exigences suivantes :
+
+* Les contrôleurs FAS2820 et de remplacement ont la même version de version et de correctif ONTAP , lorsque cela est possible.  Reportez-vous à la https://hwu.netapp.com["NetApp Hardware Universe"^] pour les versions ONTAP prises en charge.
+
+
+[NOTE]
+====
+* Vous devez démarrer en réseau et installer la version ONTAP sur node3 et node4 pour correspondre à la version ONTAP sur les systèmes FAS2820 .  Node3 et node4 sont les contrôleurs de remplacement.
+* L'image de démarrage principale et de sauvegarde des contrôleurs node3 et node4 doit avoir la même version ONTAP .
+* Vous devez effacer toute configuration de cluster résiduelle sur les nœuds 3 et 4 en effectuant une `wipeconfig` depuis le menu de démarrage.
+
+
+====
+* Les deux contrôleurs de remplacement sont en veille à l'invite LOADER.
+* Tout le câblage nécessaire est disponible.
+
+
+.Description de la tâche
+Les étapes suivantes sont effectuées sur le nœud 1 FAS2820 .
+
+.Étapes
+. Accéder au niveau de privilège avancé :
++
+[source, cli]
+----
+set -privilege advanced
+----
+. Désactiver le rétablissement automatique du basculement du stockage :
++
+[source, cli]
+----
+storage failover modify -node node1 -auto-giveback false
+----
+. Désactiver la restauration automatique des LIFs sur les deux nœuds de la paire HA :
++
+[source, cli]
+----
+network interface modify -lif * -auto-revert false
+----
+. Afficher le statut de toutes les LIFs du réseau de données :
++
+[source, cli]
+----
+network interface show -role data
+----
+. Afficher le statut des LIFs cluster management :
++
+[source, cli]
+----
+network interface show -role cluster-mgmt
+----
+. Migrer toutes les LIFs de données à partir des machines virtuelles de stockage hébergées sur le node2 :
++
+[source, cli]
+----
+network interface migrate -vserver <vserver_name> -lif <lif_name> -destination-node <node1> -destination-port <port_name>
+----
++
+
+NOTE: Cette commande migre uniquement les LIFs non-SAN. Vous ne pouvez pas l'utiliser pour migrer les LIF iSCSI et FCP.
+
+. Afficher le statut de toutes les LIFs data dans le cluster :
++
+[source, cli]
+----
+network interface show -role data
+----
+. Si des LIF sont en panne, définissez leur statut administratif sur `up` en entrant la commande suivante une fois pour chaque LIF :
++
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <lif_name> -status-admin up
+----
+. Afficher l'état de tous les agrégats de données du cluster :
++
+[source, cli]
+----
+storage aggregate show
+----
+. Afficher l'éligibilité au basculement :
++
+[source, cli]
+----
+storage failover show
+----
+. Migrer les agrégats de données du nœud 2 vers le nœud 1 :
++
+[source, cli]
+----
+storage aggregate relocation start -aggregate <aggregate_name> -node <node2> -destination <node1>
+----
+. Afficher l'état de tous les agrégats de données du cluster :
++
+[source, cli]
+----
+storage aggregate show
+----
+. Afficher l'état de tous les volumes de données du cluster :
++
+[source, cli]
+----
+volume show
+----
+. Affiche le `ha` statut et propriété d'epsilon :
++
+[source, cli]
+----
+cluster show
+----
+. Désactiver le cluster ha :
++
+[source, cli]
+----
+cluster ha modify -configured false
+----
+. Affiche le `ha` statut et propriété d'epsilon :
++
+[source, cli]
+----
+cluster show
+----
+. Arrêt du nœud 2 :
++
+[source, cli]
+----
+halt -node <node2> -inhibit-takeover true -ignore-quorum-warnings true
+----
+
+
+.Et la suite ?
+link:convert-fas2820-node2-drive-shelf.html["Convertissez le nœud 2 en tiroir disque et connectez-vous au nœud 4"]
