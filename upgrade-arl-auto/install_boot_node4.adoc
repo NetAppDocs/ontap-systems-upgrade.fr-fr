@@ -24,7 +24,6 @@ Vous devez netboot nœud4 si cette version de ONTAP 9 n'est pas installée sur l
 [IMPORTANT]
 ====
 * Pour une mise à niveau du contrôleur AFF A800 ou AFF C800, vous devez vous assurer que tous les lecteurs du châssis sont fermement fixés contre le plan médian avant de retirer le nœud 2. Pour plus d'informations, voir link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Remplacez les modules de contrôleur AFF A800 ou AFF C800"].
-* Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<auto_install4_step1,Étape 1>> à <<auto_install4_step21,Étape 21>>, quittez ensuite cette section et suivez les instructions à link:set_fc_or_uta_uta2_config_node4.html#configure-fc-ports-on-node4["Configurez les ports FC sur le nœud 4"] et à link:set_fc_or_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4"], Saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <<auto_install4_step23,Étape 23>>.
 * Si vous mettez à niveau un système avec des disques de stockage, vous devez compléter toute cette section, puis passer à link:set_fc_or_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] , en entrant des commandes à l'invite du cluster.
 
 
@@ -37,10 +36,10 @@ Si le noeud 4 se trouve dans un châssis distinct du noeud 2, vous pouvez placer
 . Installez le node4 dans le rack en suivant les instructions de _instructions d'installation et de configuration_ pour le modèle de nœud.
 . Reliez le nœud 4, puis déplacez les connexions du nœud 2 vers le nœud 4.
 +
-Reliez les connexions suivantes, en suivant les instructions fournies dans les instructions _installation and Setup instructions_ ou _FlexArray Virtualization installation Requirements and Reference_ pour la plate-forme node4, le document de tiroir disque approprié et _HA pair Management_.
+Effectuez les connexions suivantes en utilisant les _Instructions d'installation et de configuration_ pour la plate-forme node4, le document d'étagère de disque approprié et la documentation de _gestion des paires HA_.
 
 +
-Reportez-vous link:other_references.html["Références"]au lien vers les _exigences et références relatives à l'installation de la virtualisation FlexArray_ et _gestion des paires HA_.
+Se référer àlink:other_references.html["Références"] pour créer un lien vers la _gestion des paires HA_.
 
 +
 ** Console (port de gestion à distance)
@@ -75,7 +74,7 @@ WARNING: The battery is unfit to retain data during a power outage. This is like
 .. Laissez la batterie se charger et le processus de démarrage s'achever.
 +
 
-WARNING: *Attention : ne pas outrepasser le délai; si la batterie n'est pas chargée, cela pourrait entraîner une perte de données.*
+WARNING: *Ne dépassez pas le délai ; ne pas laisser la batterie se charger pourrait entraîner une perte de données.*
 
 +
 
@@ -243,43 +242,9 @@ Enregistrer les paramètres :
 +
 `printenv partner-sysid`
 
-. [[step22]]effectuer l'une des actions suivantes :
-+
-[cols="30,70"]
-|===
-| Si votre système... | Alors... 
 
 
-| Possède des disques et aucun stockage interne | Allez à <<auto_install4_step27,Étape 27>>. 
-
-
-| Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage  a| 
-.. Passez à la section link:set_fc_or_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] complétez les sous-sections de cette section.
-.. Revenez à cette section et suivez les étapes restantes, en commençant par <<auto_install4_step23,Étape 23>>.
-
-
-
-IMPORTANT: Vous devez reconfigurer les ports intégrés FC, les ports intégrés CNA et les cartes CNA avant de démarrer ONTAP sur le système V-Series ou sur le système avec le logiciel de virtualisation FlexArray.
-
-|===
-
-
-. [[auto_install4_step23]]Ajoutez les ports initiateurs FC du nouveau nœud aux zones de commutation.
-+
-Si nécessaire, modifiez les ports intégrés sur l'initiateur en consultant le link:set_fc_or_uta_uta2_config_node4.html#configure-fc-ports-on-node4["Configurez les ports FC sur le nœud 4"]. Reportez-vous à la documentation relative à votre matrice de stockage et à la segmentation pour plus d'instructions sur le zonage.
-
-. Ajoutez les ports d'initiateur FC à la baie de stockage en tant que nouveaux hôtes, en mappant les LUN de la baie aux nouveaux hôtes.
-+
-Reportez-vous à la documentation relative à votre matrice de stockage et au zoning pour obtenir des instructions.
-
-. Modifier les valeurs de nom de port mondial (WWPN) dans les groupes d'hôtes ou de volumes associés aux LUN de baies de la baie de stockage.
-+
-L'installation d'un nouveau module de contrôleur modifie les valeurs WWPN associées à chaque port FC intégré.
-
-. Si votre configuration utilise un zoning basé sur des commutateurs, ajustez le zoning en fonction des nouvelles valeurs WWPN.
-
-
-. [[auto_install4_step27]]Si vous avez installé des lecteurs NetApp Storage Encryption (NSE), procédez comme suit :
+. [[auto_install4_step22]]Si vous avez installé des lecteurs NetApp Storage Encryption (NSE), procédez comme suit :
 +
 
 NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] déterminer le type de disques à autocryptage utilisés.
@@ -310,8 +275,10 @@ Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur 
 +
 `boot_ontap menu`
 
-+
-Si vous ne disposez pas de configuration FC ou UTA/UTA2, effectuez les opérations link:reassign-node2-disks-to-node4.html#reassign-node2-node4-step1["Réaffectez les disques du nœud 2 au nœud 4, étape 1"] pour que le nœud 4 puisse reconnaître les disques du nœud 2.
 
-. [[Etape 29]] pour les configurations MetroCluster, les systèmes V-Series et les systèmes avec le logiciel de virtualisation FlexArray connecté à des baies de stockage, rendez-vous sur link:reassign-node2-disks-to-node4.html#reassign-node2-node4-step1["Réaffectez les disques du nœud 2 au nœud 4, étape 1"].
+
+.Et la suite ?
+* Si vous avez un système avec une configuration FC ou UTA/UTA2,link:set_fc_or_uta_uta2_config_node4.html["définir la configuration FC ou UTA/UTA2 sur node4"] .
+* Si vous n'avez pas de configuration FC ou UTA/UTA2,link:reassign-node2-disks-to-node4.html#reassign-node2-node4-step1["réaffecter les disques du nœud 2 au nœud 4, étape 1"] afin que node4 puisse reconnaître les disques de node2.
+* Si vous avez une configuration MetroCluster ,link:reassign-node1-disks-to-node3.html#reassign-node1-node3-step1["réaffecter les disques du nœud 1 au nœud 3"] .
 

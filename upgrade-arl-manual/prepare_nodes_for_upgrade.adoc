@@ -49,7 +49,7 @@ Vous devez vérifier physiquement les nœud3 et nœud4 pour vérifier si les bat
 
 +
 
-WARNING: *Attention* n'essayez pas d'effacer le contenu de la NVRAM. Si vous devez effacer le contenu de NVRAM, contactez le support technique NetApp.
+WARNING: N'essayez pas d'effacer le contenu de la NVRAM .  S'il est nécessaire d'effacer le contenu de la NVRAM, contactez le support technique NetApp .
 
 . Vérifiez la version de ONTAP sur les nœuds 3 et 4.
 +
@@ -356,7 +356,7 @@ NOTE: Vous utiliserez les informations pour réaffecter des disques et désaffec
 
 +
 
-NOTE: Vous pouvez utiliser ces informations pour identifier des pièces ou des accessoires que vous souhaitez transférer vers node3 ou node4. Si vous ne savez pas si les nœuds sont des systèmes V-Series ou si vous disposez du logiciel de virtualisation FlexArray, vous pouvez également l'apprendre de la sortie.
+NOTE: Vous pouvez utiliser ces informations pour identifier les pièces ou accessoires que vous souhaiterez peut-être transférer vers node3 ou node4.
 
 .. Entrez la commande suivante sur les nœuds 1 et 2, puis enregistrez les agrégats en ligne sur les deux nœuds :
 +
@@ -587,32 +587,7 @@ node2   0d      fc      initiator -       -         online
 +
 Vous pouvez utiliser les informations après la mise à niveau pour définir la configuration des ports FC sur les nouveaux nœuds.
 
-. Si vous mettez à niveau un système V-Series ou un système avec le logiciel de virtualisation FlexArray, capturez les informations relatives à la topologie des nœuds d'origine en entrant la commande suivante et en enregistrant le résultat :
-+
-`storage array config show -switch`
-
-+
-Le système affiche les informations relatives à la topologie, comme le montre l'exemple suivant :
-
-+
-....
-cluster::> storage array config show -switch
-
-      LUN LUN                                  Target Side Initiator Side Initi-
-Node  Grp Cnt Array Name    Array Target Port  Switch Port Switch Port    ator
------ --- --- ------------- ------------------ ----------- -------------- ------
-node1 0   50  I_1818FAStT_1
-                            205700a0b84772da   vgbr6510a:5  vgbr6510s164:3  0d
-                            206700a0b84772da   vgbr6510a:6  vgbr6510s164:4  2b
-                            207600a0b84772da   vgbr6510b:6  vgbr6510s163:1  0c
-node2 0   50  I_1818FAStT_1
-                            205700a0b84772da   vgbr6510a:5  vgbr6510s164:1  0d
-                            206700a0b84772da   vgbr6510a:6  vgbr6510s164:2  2b
-                            207600a0b84772da   vgbr6510b:6  vgbr6510s163:3  0c
-                            208600a0b84772da   vgbr6510b:5  vgbr6510s163:4  2a
-7 entries were displayed.
-....
-. [[man_prepare_nodes_step29]]effectuez les sous-étapes suivantes :
+. [[man_prepare_nodes_step28]]Complétez les sous-étapes suivantes :
 +
 .. Entrez la commande suivante sur l'un des nœuds d'origine et enregistrez le résultat :
 +
@@ -629,7 +604,7 @@ Vous pouvez réutiliser les paramètres réseau des périphériques de gestion �
 
 
 
-. [[man_prepare_nodes_step30]]si vous souhaitez que les nouveaux nœuds disposent de la même fonctionnalité sous licence que les nœuds d'origine, entrez la commande suivante pour afficher les licences de cluster sur le système d'origine :
+. [[man_prepare_nodes_step29]]Si vous souhaitez que les nouveaux nœuds aient les mêmes fonctionnalités sous licence que les nœuds d'origine, entrez la commande suivante pour voir les licences de cluster sur le système d'origine :
 +
 `system license show -owner *`
 

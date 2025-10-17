@@ -65,7 +65,7 @@ To override this delay, press 'c' followed by 'Enter'
 .. Laissez la batterie se charger et le processus de démarrage s'achever.
 +
 
-WARNING: *Attention : ne pas outrepasser le délai; si la batterie n'est pas chargée, cela pourrait entraîner une perte de données.*
+WARNING: *Ne dépassez pas le délai ; ne pas laisser la batterie se charger pourrait entraîner une perte de données.*
 
 +
 

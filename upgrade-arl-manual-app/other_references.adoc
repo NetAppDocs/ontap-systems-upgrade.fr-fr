@@ -40,12 +40,6 @@ Le contenu spécifique à cette mise à niveau est répertorié dans le tableau 
 | link:https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Gestion des disques et de l'agrégat via l'interface de ligne de commande"^] | Décrit la gestion du stockage physique ONTAP à l'aide de l'interface de ligne de commandes. Il vous explique comment créer, développer et gérer des agrégats, comment utiliser les agrégats Flash Pool, comment gérer les disques et comment gérer les règles RAID. 
 
 
-| link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Installation et configuration de MetroCluster intégrées à la structure"^] | Décrit l'installation et la configuration des composants matériels et logiciels de MetroCluster dans une configuration Fabric. 
-
-
-| link:https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["Exigences d'installation et référence de la virtualisation FlexArray"^] | Contient des instructions de câblage et d'autres informations relatives aux systèmes de virtualisation FlexArray. 
-
-
 | link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["Gestion des paires HAUTE DISPONIBILITÉ"^] | Décrit l'installation et la gestion de configurations en cluster haute disponibilité, y compris le basculement du stockage et le basculement/rétablissement. 
 
 

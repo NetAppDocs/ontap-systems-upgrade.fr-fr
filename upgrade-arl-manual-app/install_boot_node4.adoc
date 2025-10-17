@@ -24,7 +24,6 @@ Cependant, vous n'êtes pas obligé de démarrer le nœud 4 en réseau s'il poss
 [IMPORTANT]
 ====
 * Pour une mise à niveau du contrôleur AFF A800 ou AFF C800, vous devez vous assurer que tous les lecteurs du châssis sont fermement fixés contre le plan médian avant de retirer le nœud 2. Pour plus d'informations, voir link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Remplacez les modules de contrôleur AFF A800 ou AFF C800"].
-* Si vous mettez à niveau un système de la série V ou un système avec le logiciel de virtualisation FlexArray connecté à des baies de stockage, vous devez effectuer <<man_install4_Step1,Étape 1>> à travers <<man_install4_Step7,Étape 7>> , laissez cette section à <<man_install4_Step8,Étape 8>> et suivez les instructions dans link:set_fc_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] Si nécessaire, saisissez les commandes en mode Maintenance. Vous devez ensuite revenir à cette section et reprendre la procédure à l'adresse <<man_install4_Step9,Étape 9>> .
 * Si vous mettez à niveau un système avec des disques de stockage, vous devez compléter toute cette section, puis passer à la section link:set_fc_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] , en entrant des commandes à l'invite du cluster.
 
 
@@ -52,7 +51,7 @@ Si le noeud 4 se trouve dans un châssis distinct du noeud 3, vous pouvez placer
 Les références suivantes vous aident à effectuer les connexions de câble appropriées. Accédez à link:other_references.html["Références"] pour les lier.
 
 +
-** _Instructions d'installation et de configuration_ ou _exigences et références d'installation de la virtualisation FlexArray_ pour la plate-forme node4
+** _Instructions d'installation et de configuration_ pour la plateforme node4
 ** Procédure appropriée de tiroir disque
 ** La documentation _HA pair Management_
 +
@@ -104,51 +103,11 @@ WARNING: The battery is unfit to retain data during a power
 .. Laissez la batterie se charger et le processus de démarrage se terminer.
 +
 
-WARNING: *Avertissement : ne pas annuler le délai. Si la batterie n'est pas chargée, cela pourrait entraîner une perte de données.*
+WARNING: *Ne pas outrepasser le délai.  Ne pas laisser la batterie se charger peut entraîner une perte de données.*
 
 
 
-. [[man_install4_Step8]]entreprendre l'une des actions suivantes :
-+
-[cols="35,65"]
-|===
-| Si votre système... | Alors... 
-
-
-| Possède des disques et aucun stockage interne | Passez aux étapes 9 à 14 et passez à <<man_install4_Step15,Étape 15>>. 
-
-
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
-.. Allez dans la section _définissez la configuration FC ou UTA/UTA2 sur le nœud 4_ et complétez les sections link:set_fc_uta_uta2_config_node4.html#configure-fc-ports-on-node4["Configurez les ports FC sur le nœud 4"] et link:set_fc_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4"], en fonction de votre système.
-.. Revenez à cette section et suivez les étapes restantes, en commençant par <<man_install4_Step9,Étape 9>>.
-
-
-
-IMPORTANT: Vous devez reconfigurer les ports intégrés FC, les ports intégrés UTA/UTA2 et les cartes UTA/UTA2 avant de démarrer ONTAP sur le système V-Series.
-
-|===
-. [[man_install4_Step9]]Ajouter les ports d'initiateur FC du nouveau nœud aux zones de commutation.
-+
-Reportez-vous à la documentation relative à votre matrice de stockage et au zoning pour obtenir des instructions.
-
-. Ajoutez les ports d'initiateur FC à la baie de stockage en tant que nouveaux hôtes, en mappant les LUN de la baie aux nouveaux hôtes.
-+
-Reportez-vous à la documentation relative à votre matrice de stockage et au zoning pour obtenir des instructions.
-
-. Modifier les valeurs WWPN (World Wide Port Name) dans les groupes d'hôtes ou de volumes associés aux LUN de baies de la baie de stockage.
-+
-L'installation d'un nouveau module de contrôleur modifie les valeurs WWPN associées à chaque port FC intégré.
-
-. Si votre configuration utilise un zoning basé sur des commutateurs, ajustez le zoning en fonction des nouvelles valeurs WWPN.
-. Vérifiez que les LUN de baie sont désormais visibles pour le nœud 4 en saisissant la commande suivante et en examinant la sortie correspondante :
-+
-`sysconfig -v`
-
-+
-Le système affiche toutes les LUN de baie visibles pour chacun des ports de l'initiateur FC. Si les LUN de la matrice ne sont pas visibles, vous ne pouvez pas réaffecter de disques du node2 au node4 ultérieurement dans cette section.
-
-. Appuyez sur Ctrl-C pour afficher le menu de démarrage et sélectionnez mode Maintenance.
-. [[man_install4_Step15]]à l'invite du mode Maintenance, entrez la commande suivante :
+. [[man_install4_Step8]]À l'invite du mode Maintenance, entrez la commande suivante :
 +
 `halt`
 
@@ -202,12 +161,12 @@ Saisissez la phrase de passe et les informations de sauvegarde que vous avez enr
 | Si le système que vous mettez à niveau... | Alors... 
 
 
-| Ne dispose pas de la version ONTAP correcte ou actuelle du système node4 | Accédez à <<man_install4_Step20,Étape 20>>. 
+| Ne dispose pas de la version ONTAP correcte ou actuelle du système node4 | Aller à<<man_install4_Step13,Étape 13>> . 
 
 
-| Dispose de la version correcte ou à jour de ONTAP sur le nœud 4 | Accédez à <<man_install4_Step25,Étape 25>>. 
+| Dispose de la version correcte ou à jour de ONTAP sur le nœud 4 | Aller à<<man_install4_Step18,Étape 18>> . 
 |===
-. [[man_install4_Step20]]configurez la connexion netboot en choisissant l'une des actions suivantes.
+. [[man_install4_Step13]]Configurez la connexion netboot en choisissant l’une des actions suivantes.
 +
 
 NOTE: Vous devez utiliser le port de gestion et l'adresse IP comme connexion netboot. N'utilisez pas d'adresse IP de la LIF de données et ne subit aucune panne lors de l'exécution de la mise à niveau.
@@ -298,8 +257,8 @@ Le module de contrôleur redémarre mais s'arrête au menu d'amorçage car le p�
 
 
 
-. [[man_install4_Step25]]sélectionnez le mode de maintenance `5` dans le menu de démarrage et entrez `y` lorsque vous êtes invité à poursuivre le démarrage.
-. [[man_install4_Step26]]avant de continuer, passez à l' link:set_fc_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] Pour modifier les ports FC ou UTA/UTA2 sur le nœud, Apportez les modifications recommandées dans ces sections, redémarrez le nœud et passez en mode maintenance.
+. [[man_install4_Step18]]Sélectionnez le mode de maintenance `5` depuis le menu de démarrage et entrez `y` lorsque vous êtes invité à continuer le démarrage.
+. [[man_install4_Step19]]Avant de continuer, allez àlink:set_fc_uta_uta2_config_node4.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 4"] pour apporter les modifications nécessaires aux ports FC ou UTA/UTA2 sur le nœud.  Effectuez les modifications recommandées dans ces sections, redémarrez le nœud et passez en mode Maintenance.
 . Entrez la commande suivante et vérifiez la sortie pour rechercher l'ID système du nœud 4 :
 +
 `disk show -a`
@@ -485,7 +444,7 @@ Le système s'arrête à l'invite de l'environnement d'amorçage.
 +
 `set time _hh:mm:ss_`
 
-. Vérifiez que l'ID du système partenaire est correctement défini comme indiqué dans la <<man_install4_Step26,Étape 26>> sous option.
+. Vérifiez que l'ID du système partenaire est correctement défini comme indiqué dans<<man_install4_Step19,Étape 19>> sous option.
 +
 `printenv partner-sysid`
 

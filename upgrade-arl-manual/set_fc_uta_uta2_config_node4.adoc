@@ -17,16 +17,11 @@ summary: 'Vous pouvez configurer des ports FC intégrés node4, des ports UTA/UT
 Si le système Node4 est doté de ports FC intégrés, de ports UTA/UTA2 (ou d'une carte UTA/UTA2), vous devez configurer les paramètres avant de suivre la procédure.
 
 .Description de la tâche
-Vous devrez peut-être le faire <<Configurez les ports FC sur le nœud 4>>, le <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>, ou les deux sections.
+Vous devrez peut-être compléter<<Configurez les ports FC sur le nœud 4>> ou<<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>> , ou les deux sections.
 
 Si le nœud 4 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2 et effectuez une mise à niveau du système avec des disques de stockage, vous pouvez ignorer la section link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"].
 
 Cependant, si vous disposez d'un système V-Series ou d'un logiciel de virtualisation FlexArray et que vous êtes connecté aux baies de stockage, et que le nœud 4 n'est pas équipé de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez revenir à la section _Install and Boot node4_, puis reprendre le processus à l'adresse link:install_boot_node4.html#man_install4_Step9["Étape 9"]. Assurez-vous que le noeud 4 dispose d'un espace de rack suffisant. Si le noeud 4 se trouve dans un châssis distinct du noeud 2, vous pouvez placer le noeud 4 au même emplacement que le noeud 3. Si les nœuds 2 et 4 se trouvent dans le même châssis, le nœud 4 se trouve déjà dans son emplacement de rack approprié.
-
-.Choix
-* <<Configurez les ports FC sur le nœud 4>>
-* <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>
-
 
 
 
@@ -41,90 +36,33 @@ Vous devez avoir les valeurs des paramètres du port FC du noeud 2 que vous avez
 Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'un adaptateur UTA/UTA2, vous devez les configurer dans <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>.
 
 
-IMPORTANT: Si votre système est doté de disques de stockage, vous devez saisir les commandes de cette section à l'invite du cluster. Si vous disposez d'un système V-Series ou d'un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous pouvez saisir les commandes décrites dans cette section en mode Maintenance.
+IMPORTANT: Entrez les commandes de cette section à l’invite du cluster.
 
 .Étapes
-. Effectuer l'une des actions suivantes :
+. Afficher des informations sur tous les adaptateurs réseau FC et convergés du système :
 +
-[cols="35,65"]
-|===
-| Si le système que vous mettez à niveau... | Puis… 
-
-
-| Possède des disques de stockage | Accédez à <<man_config_4_Step5,Étape 5>>. 
-
-
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Accédez à <<man_config_4_Step2,Étape 2>>. 
-|===
-. [[man_config_4_Step2]]accéder au mode de maintenance :
-+
-`boot_ontap maint`
-
-. Effectuer l'une des actions suivantes :
-+
-[cols="35,65"]
-|===
-| Si le système que vous mettez à niveau... | Puis… 
-
-
-| Possède des disques de stockage | `system node hardware unified-connect show` 
-
-
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | `ucadmin show` 
-|===
-+
-Le système affiche des informations sur la totalité des adaptateurs réseau convergés et FC sur le système.
+`system node hardware unified-connect show`
 
 . Comparez les paramètres FC des nouveaux nœuds avec les paramètres que vous avez précédemment définis à partir du nœud d'origine.
-. [[man_config_4_Step5]]effectuer l'une des actions suivantes :
+. Modifier les ports FC sur le nœud 4 si nécessaire :
 +
-[cols="35,65"]
-|===
-| Si le système que vous mettez à niveau... | Puis… 
-
-
-| Possède des disques de stockage  a| 
-Modifier les ports FC sur le nœud 4 si nécessaire :
-
 ** Pour programmer les ports cibles :
-
-
-`system node hardware unified-connect modify -type | -t target -adapter _port_name_`
++
+`system node hardware unified-connect modify -type \| -t target -adapter _port_name_`
 
 ** Pour programmer les ports initiateurs :
++
+`system node unified-connect modify type \| -t initiator -adapter _port_name_`
 
-
-`system node unified-connect modify type | -t initiator -adapter _port_name_`
-
++
 `-type` Est le type, la cible ou l'initiateur FC4.
 
 
 
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
-Modifier les ports FC sur le nœud 4 si nécessaire :
-
-`ucadmin modify -m fc -t initiator -f _adapter_port_name_`
-
-`-t` Est le type, la cible ou l'initiateur FC4.
-
-
-NOTE: Les ports FC doivent être programmés comme initiateurs.
-
-|===
-. Effectuer l'une des actions suivantes :
+. Vérifiez les nouveaux paramètres en entrant la commande suivante et en examinant la sortie :
 +
-[cols="35,65"]
-|===
-| Si le système que vous mettez à niveau... | Puis… 
+`system node unified-connect show`
 
-
-| Possède des disques de stockage | Vérifiez les nouveaux paramètres en saisissant la commande suivante et en examinant la sortie :
-`system node unified-connect show` 
-
-
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Vérifiez les nouveaux paramètres en saisissant la commande suivante et en examinant la sortie :
-`ucadmin show` 
-|===
 . Effectuer l'une des actions suivantes :
 +
 [cols="35,65"]
@@ -132,50 +70,26 @@ NOTE: Les ports FC doivent être programmés comme initiateurs.
 | Si les paramètres FC par défaut sont définis sur les nouveaux nœuds... | Puis… 
 
 
-| Identique à ceux que vous avez capturés sur les noeuds d'origine | Accédez à <<man_config_4_Step11,Étape 11>>. 
+| Identique à ceux que vous avez capturés sur les noeuds d'origine | Aller à<<man_config_4_Step9,Étape 9>> . 
 
 
-| Différent de ceux que vous avez capturés sur les nœuds d'origine | Accédez à <<man_config_4_Step8,Étape 8>>. 
+| Différent de ceux que vous avez capturés sur les nœuds d'origine | Aller à<<man_config_4_Step6,Step6>> . 
 |===
-. [[man_config_4_Step8]]Quitter le mode Maintenance :
+. [[man_config_4_Step6]]Quitter le mode Maintenance :
 +
 `halt`
 
 . Une fois la commande saisie, attendez que le système s'arrête à l'invite de l'environnement de démarrage.
-. Effectuer l'une des actions suivantes :
+. Démarrez node4 en entrant la commande suivante à l’invite de l’environnement de démarrage :
 +
-[cols="35,65"]
-|===
-| Si le système que vous mettez à niveau... | Puis… 
+`boot_ontap`
 
-
-| Est un système V-Series ou un logiciel de virtualisation FlexArray exécutant Data ONTAP 8.3.0 ou une version ultérieure | Accéder au mode maintenance en saisissant la commande suivante à l'invite de l'environnement de démarrage :
-`boot_ontap maint` 
-
-
-| N'est pas un système V-Series et ne possède pas le logiciel de virtualisation FlexArray | Démarrez node4 en entrant la commande suivante à l'invite de l'environnement de démarrage :
-`boot_ontap` 
-|===
-. [[man_config_4_Step11]]effectuer l'une des actions suivantes :
+. [[man_config_4_Step9]]Effectuez l’une des actions suivantes :
 +
-[cols="35,65"]
-|===
-| Si le système que vous mettez à niveau... | Puis… 
-
-
-| Possède des disques de stockage  a| 
 ** Accédez à <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>> Si le nœud 4 est doté d'une carte UTA/UTA2A ou de ports intégrés UTA/UTA2.
 ** Ignorez la section et accédez à link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"] Si le nœud Node4 ne est pas doté d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
 
 
-
-
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
-** Accédez à <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>> Si le nœud 4 est doté d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
-** Ignorez la section _Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4_ si le nœud 4 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, puis revenez à la section _Install and Boot node4_, puis reprenez la section à l'adresse link:install_boot_node4.html#man_install4_Step9["Étape 9"].
-
-
-|===
 
 
 
@@ -202,40 +116,14 @@ Les ports UTA/UTA2 peuvent être situés sur un adaptateur ou sur le contrôleur
 
 Toutefois, vous pouvez vérifier la configuration des ports UTA/UTA2 sur le nœud 4 et la modifier si nécessaire.
 
-*Attention* : si votre système dispose de disques de stockage, entrez les commandes de cette section à l'invite du cluster, sauf si vous êtes invité à passer en mode Maintenance. Si vous utilisez un système FC MetroCluster, un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez être en mode de maintenance pour configurer les ports UTA/UTA2.
+
+WARNING: Saisissez les commandes de cette section à l’invite du cluster, sauf si vous êtes invité à entrer en mode Maintenance.  Si vous disposez d'un système MetroCluster FC, vous devez être en mode Maintenance pour configurer les ports UTA/UTA2.
 
 .Étapes
-. Vérifiez la configuration actuelle des ports à l'aide de l'une des commandes suivantes sur le nœud4 :
+. Vérifiez comment les ports sont actuellement configurés sur node4 :
 +
-[cols="35,65"]
-|===
-| Si le système... | Puis… 
+`system node hardware unified-connect show`
 
-
-| Possède des disques de stockage | `system node hardware unified-connect show` 
-
-
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | `ucadmin show` 
-|===
-+
-Un résultat similaire à l'exemple suivant s'affiche :
-
-+
-....
-*> ucadmin show
-                Current  Current    Pending   Pending   Admin
-Node   Adapter  Mode     Type       Mode      Type      Status
-----   -------  ---      ---------  -------   --------  -------
-f-a    0e       fc       initiator  -          -        online
-f-a    0f       fc       initiator  -          -        online
-f-a    0g       cna      target     -          -        online
-f-a    0h       cna      target     -          -        online
-f-a    0e       fc       initiator  -          -        online
-f-a    0f       fc       initiator  -          -        online
-f-a    0g       cna      target     -          -        online
-f-a    0h       cna      target     -          -        online
-*>
-....
 . Si le module SFP+ actuel ne correspond pas à l'utilisation souhaitée, remplacez-le par le module SFP+ approprié.
 +
 Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ approprié.
@@ -253,39 +141,34 @@ Contactez votre ingénieur commercial NetApp pour obtenir le module SFP+ appropr
 
 | Avoir la personnalité que vous voulez | Passez aux étapes 5 à 12 et passez à <<man_check_4_Step13,Étape 13>>. 
 |===
-. [[man_check_4_Step5]]effectuer l'une des actions suivantes :
+. [[man_check_4_Step5]]Si le système dispose de disques de stockage et exécute Data ONTAP 8.3, démarrez node4 et entrez en mode maintenance :
 +
-[cols="35,65"]
-|===
-| Si le système... | Alors... 
+`boot_ontap maint`
 
+. Vérifiez les paramètres en saisissant la commande suivante et en examinant la sortie correspondante :
++
+`ucadmin show`
 
-| Possède des disques de stockage et exécute Data ONTAP 8.3 | Démarrage du nœud 4 et passage en mode maintenance :
-`boot_ontap maint` 
-
-
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Accédez à <<man_check_4_Step6,Étape 6>>. Vous devez déjà être en mode Maintenance. 
-|===
-. [[man_check_4_Step6]]effectuer l'une des actions suivantes :
+. Effectuer l'une des actions suivantes :
 +
 [cols="35,65"]
 |===
 | Si vous configurez... | Alors... 
 
 
-| Ports sur une carte UTA/UTA2A | Accédez à <<man_check_4_Step7,Étape 7>>. 
+| Ports sur une carte UTA/UTA2A | Aller à<<man_check_4_Step8,Étape 8>> . 
 
 
-| Ports UTA/UTA2 intégrés | Ignorez l'étape 7 et passez à <<man_check_4_Step8,Étape 8>>. 
+| Ports UTA/UTA2 intégrés | Sautez l'étape 8 et passez à<<man_check_4_Step9,Étape 9>> . 
 |===
-. [[man_check_4_Step7]]si l'adaptateur est en mode initiateur, et si le port UTA/UTA2 est en ligne, mettez le port UTA/UTA2 hors ligne :
+. [[man_check_4_Step8]]Si l'adaptateur est en mode initiateur et si le port UTA/UTA2 est en ligne, mettez le port UTA/UTA2 hors ligne :
 +
 `storage disable adapter _adapter_name_`
 
 +
 Les adaptateurs en mode cible sont automatiquement hors ligne en mode maintenance.
 
-. [[man_check_4_Step8]]si la configuration actuelle ne correspond pas à l'utilisation souhaitée, entrez la commande suivante pour modifier la configuration selon les besoins :
+. [[man_check_4_Step9]]Si la configuration actuelle ne correspond pas à l'utilisation souhaitée, entrez la commande suivante pour modifier la configuration selon vos besoins :
 +
 `ucadmin modify -m fc|cna -t initiator|target _adapter_name_`
 
@@ -296,52 +179,26 @@ Les adaptateurs en mode cible sont automatiquement hors ligne en mode maintenanc
 
 +
 
-NOTE: Vous devez utiliser l'initiateur FC pour les disques sur bande et les systèmes de virtualisation FlexArray. Vous devez utiliser la cible FC pour les clients SAN.
+NOTE: Vous devez utiliser l'initiateur FC pour les lecteurs de bande et la cible FC pour les clients SAN.
 
-. Vérifiez les paramètres en saisissant la commande suivante et en examinant la sortie correspondante :
-+
-`ucadmin show`
-
-. Effectuez l'une des opérations suivantes :
-+
-[cols="35,65"]
-|===
-| Si le système... | Alors... 
-
-
-| Possède des disques de stockage  a| 
-.. Saisissez la commande suivante :
+. Si le système dispose de disques de stockage, entrez la commande suivante :
 +
 `halt`
 
 +
 Le système s'arrête à l'invite de l'environnement d'amorçage.
 
++
 .. Saisissez la commande suivante :
 +
 `boot_ontap`
 
 
 
-
-
-| Est un système V-Series ou un logiciel de virtualisation FlexArray. Il est connecté aux baies de stockage et exécute Data ONTAP 8.3 | Redémarrer en mode maintenance :
-`boot_ontap maint` 
-|===
-. Vérifiez les paramètres :
+. Si le système dispose de disques de stockage, entrez la commande suivante :
 +
-[cols="35,65"]
-|===
-| Si le système... | Alors... 
+`system node hardware unified-connect show`
 
-
-| Possède des disques de stockage | Saisissez la commande suivante :
-`system node hardware unified-connect show` 
-
-
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Saisissez la commande suivante :
-`ucadmin show` 
-|===
 +
 Le résultat des exemples suivants montre que le type FC4 d'adaptateur « 1b » passe à `initiator` et que le mode des adaptateurs « 2a » et « 2b » passe à `cna`.
 
@@ -358,43 +215,9 @@ f-a    2a      fc       target    cna      -          online
 f-a    2b      fc       target    cna      -          online
 4 entries were displayed.
 ----
-+
-[listing]
-----
-*> ucadmin show
-               Current Current   Pending  Pending    Admin
-Node  Adapter  Mode    Type      Mode     Type       Status
-----  -------  ------- --------- -------  -------    -----
-f-a    1a      fc      initiator -        -          online
-f-a    1b      fc      target    -        initiator  online
-f-a    2a      fc      target    cna      -          online
-f-a    2b      fc      target    cna      -          online
-4 entries were displayed.
-*>
-----
 . Placez n'importe quel port cible en ligne en entrant l'une des commandes suivantes, une fois pour chaque port :
 +
-[cols="35,65"]
-|===
-| Si le système... | Alors... 
+`network fcp adapter modify -node _node_name_ -adapter _adapter_name_ -state up`
 
-
-| Possède des disques de stockage | `network fcp adapter modify -node _node_name_ -adapter _adapter_name_ -state up` 
-
-
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | `fcp config _adapter_name_ up` 
-|===
 . [[man_check_4_Step13]]câble du port.
-. Effectuez l'une des opérations suivantes :
-+
-[cols="35,65"]
-|===
-| Si le système... | Alors... 
-
-
-| Possède des disques de stockage | Accédez à link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"]. 
-
-
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | Retournez à la section _Install and boot node4_, puis reprenez la section à l'adresse link:install_boot_node4.html#man_install4_Step9["Étape 9"]. 
-|===
 

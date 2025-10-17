@@ -25,7 +25,7 @@ Installez le module de contrôleur ASA A150, AFF A150 ou FAS2820 que vous avez r
 . Alignez l'extrémité du module de contrôleur avec la baie B du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.
 +
 
-TIP: La baie B se trouve sur le châssis, en bas.
+TIP: La baie B est située sur le côté droit du châssis.
 
 +
 
@@ -34,7 +34,7 @@ WARNING: N'insérez pas complètement le module de contrôleur dans le châssis 
 . Reliez les ports de gestion et de console au module de contrôleur node2.
 +
 
-NOTE: Comme le châssis est déjà sous tension, le nœud 2 commence à démarrer dès qu'il est entièrement installé. Pour éviter le démarrage du nœud 2, NetApp vous recommande de connecter les câbles de console et de gestion au module de contrôleur du nœud 2 avant d'insérer complètement le module de contrôleur dans le slot.
+NOTE: Étant donné que le châssis est déjà sous tension, le nœud 2 démarre dès qu'il est complètement installé. Pour empêcher le démarrage du nœud 2, connectez la console et les câbles de gestion avant d'insérer complètement le module de contrôleur.
 
 . Poussez fermement le module de contrôleur dans le châssis jusqu'à ce qu'il rencontre le fond de panier central et qu'il soit bien en place.
 +

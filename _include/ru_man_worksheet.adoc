@@ -25,9 +25,6 @@ Vous pouvez utiliser le formulaire suivant pour enregistrer les informations à 
 | (Environnements SAN uniquement) configuration par défaut des ports FC | Étape 1 : _préparer les nœuds pour la mise à niveau_ | Lors de la configuration des ports FC sur les nouveaux nœuds |  
 
 
-| (Systèmes V-Series ou systèmes avec le logiciel de virtualisation FlexArray uniquement) topologie pour les systèmes V-Series ou les systèmes avec le logiciel de virtualisation FlexArray | Étape 1 : _préparer les nœuds pour la mise à niveau_ | Étape 3 : _installer et démarrer node3_ étape 5 : _installer et démarrer node4_ |  
-
-
 | Adresse IP des SP | Étape 1 : _préparer les nœuds pour la mise à niveau_ | Etape 6 : _Confirmez que les nouveaux contrôleurs sont correctement configurés_ |  
 
 

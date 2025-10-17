@@ -6,10 +6,7 @@
 * Vous pouvez mettre à niveau les systèmes suivants :
 +
 ** D'un système FAS à un système FAS.
-** Un système FAS vers un système avec le logiciel de virtualisation FlexArray ou un système V-Series.
 ** D'un système AFF à un système AFF.
-** Un système avec le logiciel de virtualisation FlexArray ou un système V-Series vers un système FAS, à condition que le système doté du logiciel de virtualisation FlexArray ou d'un système V-Series ne dispose pas de LUN de baie.
-** Un système V-Series à un système avec le logiciel de virtualisation FlexArray ou un système V-Series.
 
 
 

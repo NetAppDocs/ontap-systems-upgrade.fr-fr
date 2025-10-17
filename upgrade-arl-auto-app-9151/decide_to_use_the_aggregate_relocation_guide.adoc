@@ -59,7 +59,6 @@ Vous ne pouvez pas utiliser cette procédure ARL pour mettre à niveau une paire
 +
 Pour effectuer une mise à niveau d'une mise à niveau répertoriée dans le tableau ci-dessus, reportez-vous à  la section  pour créer un link:other_references.html["Références"]lien vers _utiliser les commandes « System Controller replace » pour mettre à niveau les modèles de contrôleur dans le même châssis_.
 
-* Vous mettez à niveau un système de stockage V-Series ou un système de virtualisation FlexArray à l'aide d'une baie externe pour le stockage interne. Pour savoir comment mettre à niveau un système V-Series ou FlexArray, contactez le support technique.
 * Vous mettez à niveau une configuration MetroCluster FC ou IP. Pour mettre à niveau une configuration MetroCluster, reportez-vous à la section link:other_references.html["Références"] pour accéder à la _documentation de mise à niveau et d'extension MetroCluster_.
 
 

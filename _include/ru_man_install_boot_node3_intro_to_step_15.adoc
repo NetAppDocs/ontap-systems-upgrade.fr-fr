@@ -12,7 +12,6 @@ Cependant, vous n'avez pas besoin de démarrer le nœud 3 en réseau s'il possè
 [IMPORTANT]
 ====
 * Pour une mise à niveau du contrôleur AFF A800 ou AFF C800, vous devez vous assurer que tous les lecteurs du châssis sont fermement fixés contre le plan médian avant de retirer le nœud 1. Pour plus d'informations, voir link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Remplacez les modules de contrôleur AFF A800 ou AFF C800"].
-* Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<man_install3_step1,Étape 1>> à <<man_install3_step5,Étape 5>>, laissez cette section à <<man_install3_step6,Étape 6>> et suivez les instructions de la section link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] si nécessaire, la saisie de commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <<man_install3_step7,Étape 7>>.
 * Si vous mettez à niveau un système avec des disques de stockage, vous devez compléter toute cette section, puis accéder à link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] , en entrant des commandes à l'invite du cluster.
 
 
@@ -32,7 +31,7 @@ NOTE: Si vous effectuez une mise à niveau vers un système contenant les deux n
 Les références suivantes vous aident à effectuer les connexions de câble appropriées. Accédez à link:other_references.html["Références"] pour les lier.
 
 +
-** _Instructions d'installation et de configuration_ ou _exigences d'installation et de référence de virtualisation FlexArray_ pour la plate-forme node3
+** _Instructions d'installation et de configuration_ pour la plateforme node3
 ** Procédure appropriée de tiroir disque
 ** La documentation _HA pair Management_
 
@@ -74,65 +73,25 @@ To override this delay, press 'c' followed by 'Enter'
 .. Laissez la batterie se charger et le processus de démarrage s'achever.
 +
 
-NOTE: *Attention*: Ne pas neutraliser le délai; si la batterie n'est pas chargée, cela pourrait entraîner une perte de données.
+WARNING: *Ne dépassez pas le délai ; ne pas laisser la batterie se charger pourrait entraîner une perte de données.*
 
 
 
-. [[man_install3_step6]]effectuer l'une des actions suivantes :
-+
-[cols="35,65"]
-|===
-| Si votre système... | Alors... 
-
-
-| Possède des disques et aucun stockage interne | Passez aux étapes 7 à 12 et passez à <<man_install3_step13,Étape 13>>. 
-
-
-| Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage  a| 
-.. Accédez à link:set_fc_uta_uta2_config_node3.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 3"] et complétez les sous-sections link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"], en fonction de votre système.
-.. Revenez à cette section et suivez les étapes restantes, en commençant par <<man_install3_step7,Étape 7>>.
-
-
-
-IMPORTANT: Vous devez reconfigurer les ports intégrés FC, les ports intégrés CNA et les cartes CNA avant de démarrer ONTAP sur le système V-Series ou sur le système avec le logiciel de virtualisation FlexArray.
-
-|===
-. [[man_install3_step7]]Ajoutez les ports d'initiateur FC du nouveau nœud aux zones de commutation.
-+
-Si votre système dispose d'un SAN sur bandes, vous devez segmentation pour les initiateurs. Reportez-vous à la documentation relative à votre matrice de stockage et au zoning pour obtenir des instructions.
-
-. [[man_install3_step8]]Ajoutez les ports d'initiateur FC à la matrice de stockage en tant que nouveaux hôtes, mappant les LUN de la baie aux nouveaux hôtes.
-+
-Reportez-vous à la documentation relative à votre matrice de stockage et au zoning pour obtenir des instructions.
-
-. [[man_install3_step9]]] modifiez les valeurs WWPN (World Wide Port Name) dans les groupes hôte ou de volumes associés aux LUN de tableau de la matrice de stockage.
-+
-L'installation d'un nouveau module de contrôleur modifie les valeurs WWPN associées à chaque port FC intégré.
-
-. [[man_install3_step10]]si votre configuration utilise un zoning basé sur des commutateurs, ajustez la segmentation pour refléter les nouvelles valeurs WWPN.
-. [[man_install3_step11]]Vérifiez que les LUN de tableau sont désormais visibles pour le noeud 3 :
-+
-`sysconfig -v`
-
-+
-Le système affiche toutes les LUN de baie visibles pour chacun des ports FC initiator. Si les LUN de la matrice ne sont pas visibles, vous ne pourrez pas réattribuer des disques du nœud1 au nœud3 ultérieurement dans cette section.
-
-. [[man_install3_step12]]appuyez sur Ctrl-C pour afficher le menu de démarrage et sélectionner le mode de maintenance.
-. [[man_install3_step13]]à l'invite du mode Maintenance, entrez la commande suivante :
+. À l’invite du mode Maintenance, entrez la commande suivante :
 +
 `halt`
 
 +
 Le système s'arrête à l'invite de l'environnement d'amorçage.
 
-. [[man_install3_step14]]effectuer l'une des actions suivantes :
+. Effectuer l'une des actions suivantes :
 +
 [cols="35,65"]
 |===
 | Si le système auquel vous effectuez la mise à niveau est dans... | Alors... 
 
 
-| Configuration à châssis double (avec contrôleurs dans un châssis différent) | Accédez à <<man_install3_step15,Étape 15>>. 
+| Configuration à châssis double (avec contrôleurs dans un châssis différent) | Aller à<<man_install3_step8,Étape 8>> . 
 
 
 | Configuration à châssis unique (avec contrôleurs dans le même châssis)  a| 
@@ -147,11 +106,11 @@ NOTE: Quittez le nœud4 à l'invite de l'environnement de démarrage ; vous reve
 
 .. Si le message d'avertissement s'affiche dans <<man_install3_step4,Étape 4>>, suivez les instructions de la section <<man_install3_step5,Étape 5>>
 .. Retournez le câble de la console du nœud 4 au nœud 3.
-.. Accédez à <<man_install3_step15,Étape 15>>.
+.. Aller à<<man_install3_step8,Étape 8>> .
 
 
 |===
-. [[man_install3_step15]]configurer le noeud 3 pour ONTAP :
+. [[man_install3_step8]]Configurer node3 pour ONTAP:
 +
 `set-defaults`
 

@@ -10,7 +10,7 @@
 
 WARNING: Si ce nouveau nœud a déjà été utilisé dans un autre cluster ou une paire HA, vous devez exécuter `wipeconfig` avant de continuer. Le non-respect de cette consigne peut entraîner des pannes du service ou des pertes de données. Contactez le support technique si le contrôleur de remplacement était auparavant utilisé, en particulier si les contrôleurs exécutaient ONTAP sous 7-mode.
 
-. [[man_install3_step18]]appuyez sur CTRL-C pour afficher le menu de démarrage.
+. Appuyez sur CTRL-C pour afficher le menu de démarrage.
 . [[man_install3_step19]]effectuer l'une des actions suivantes :
 +
 [cols="35,65"]
@@ -18,12 +18,12 @@ WARNING: Si ce nouveau nœud a déjà été utilisé dans un autre cluster ou un
 | Si le système que vous mettez à niveau... | Alors... 
 
 
-| _NOT_ dispose de la version ONTAP correcte ou actuelle sur le noeud 3 | Accédez à <<man_install3_step20,Étape 20>>. 
+| _NOT_ dispose de la version ONTAP correcte ou actuelle sur le noeud 3 | Aller à<<man_install3_step13,Étape 13>> . 
 
 
-| Dispose de la version correcte ou à jour de ONTAP sur le noeud 3 | Accédez à <<man_install3_step25,Étape 25>>. 
+| Dispose de la version correcte ou à jour de ONTAP sur le noeud 3 | Aller à<<man_install3_step18,Étape 18>> . 
 |===
-. [[man_install3_step20]]configurez la connexion netboot en choisissant l'une des actions suivantes.
+. [[man_install3_step13]]Configurez la connexion netboot en choisissant l’une des actions suivantes.
 +
 
 NOTE: Vous devez utiliser le port de gestion et l'IP comme connexion netboot. N'utilisez pas d'IP de la LIF de données et ne provoquer aucune interruption de service pendant l'exécution de la mise à niveau.
@@ -52,7 +52,7 @@ Configurez manuellement la connexion en entrant la commande suivante à l'invite
 NOTE: D'autres paramètres peuvent être nécessaires pour votre interface. Entrez `help ifconfig` à l'invite du micrologiciel pour plus de détails.
 
 |===
-. [[man_install3_step21]]exécutez netboot sur les nœuds 3 :
+. Exécuter le démarrage réseau sur le nœud 3 :
 +
 [cols="35,65"]
 |===
@@ -71,7 +71,7 @@ Le `<path_to_the_web-accessible_directory>` mène à l'emplacement où vous avez
 
 NOTE: N'interrompez pas l'amorçage.
 
-. [[man_install3_step22]]dans le menu d'amorçage, sélectionnez l'option *(7) installer le nouveau logiciel* en premier.
+. Dans le menu de démarrage, sélectionnez d’abord l’option *(7) Installer un nouveau logiciel*.
 +
 Cette option de menu permet de télécharger et d'installer la nouvelle image ONTAP sur le périphérique d'amorçage.
 
@@ -88,11 +88,11 @@ Cette remarque s'applique aux mises à niveau de ONTAP sans interruption et non 
 
 NOTE: Utilisez toujours netboot pour mettre à jour le nouveau nœud vers l'image souhaitée. Si vous utilisez une autre méthode pour installer l'image sur le nouveau contrôleur, il est possible que la mauvaise image soit installée. Ce problème s'applique à toutes les versions d'ONTAP. Procédure netboot combinée avec l'option `(7) Install new software` Efface le support de démarrage et place la même version de ONTAP ONTAP sur les deux partitions d'images.
 
-. [[man_install3_step23]]si vous êtes invité à poursuivre la procédure, entrez `y`, Et lorsque vous êtes invité à saisir l'URL suivante :
+. Si vous êtes invité à continuer la procédure, entrez `y` , et lorsque vous êtes invité à choisir le package, entrez l'URL suivante :
 +
 `\http://<web_server_ip>/<path_to_web-accessible_directory>/<ontap_version_image>.tgz`
 
-. [[man_install3_step24]]effectuez les sous-étapes suivantes :
+. Procédez comme suit :
 +
 .. Entrez `n` pour ignorer la récupération de sauvegarde lorsque l'invite suivante s'affiche :
 +
@@ -111,12 +111,12 @@ Le module de contrôleur redémarre mais s'arrête au menu d'amorçage car le p�
 
 
 
-. [[man_install3_step25]]sélectionnez *(5) mode de maintenance boot* en entrant `5`, puis entrez `y` lorsque vous êtes invité à poursuivre le démarrage.
+. [[man_install3_step18]]Sélectionnez *(5) Maintenance mode boot* en entrant `5` , puis entrez `y` lorsque vous êtes invité à continuer le démarrage.
 . [[man_install3_step26]]avant de continuer, allez à link:set_fc_uta_uta2_config_node3.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 3"] Pour modifier les ports FC ou UTA/UTA2 sur le nœud,
 +
 Apportez les modifications recommandées dans ces sections, redémarrez le nœud et passez en mode maintenance.
 
-. [[man_install3_step27]]recherchez l'ID système du noeud 3 :
+. Trouver l'ID système de node3 :
 +
 `disk show -a`
 
@@ -142,7 +142,7 @@ Le système affiche l'ID système du nœud et les informations sur les disques c
 
 NOTE: Le message peut s'afficher `disk show: No disks match option -a.` après avoir saisi la commande. Ce n'est pas un message d'erreur qui vous permet de poursuivre la procédure.
 
-. [[man_install3_step28]]Réassigner les unités de rechange du node1, tous les disques appartenant à la racine et tous les agrégats non-racines qui n'ont pas été déplacés vers node2 plus tôt dans link:relocate_non_root_aggr_node1_node2.html["Transférer des agrégats non racines du nœud 1 vers le nœud 2"].
+. [[man_install3_step21]]Réaffectez les disques de rechange du nœud 1, tous les disques appartenant à la racine et tous les agrégats non racine qui n'ont pas été déplacés vers le nœud 2 plus tôt danslink:relocate_non_root_aggr_node1_node2.html["Transférer des agrégats non racines du nœud 1 vers le nœud 2"] .
 +
 Entrez le formulaire approprié du `disk reassign` commande basée sur si votre système possède des disques partagés :
 
@@ -331,7 +331,7 @@ Le système s'arrête à l'invite de l'environnement d'amorçage.
 +
 `set time _hh:mm:ss_`
 
-. [[man_install3_step42]]Vérifiez que l'ID du système partenaire est correctement défini comme indiqué dans <<man_install3_step28,Étape 28>> interrupteur sous -p :
+. [[man_install3_step42]]Vérifiez que l'ID du système partenaire est correctement défini comme indiqué dans<<man_install3_step21,Étape 21>> sous le commutateur -p :
 +
 `printenv partner-sysid`
 

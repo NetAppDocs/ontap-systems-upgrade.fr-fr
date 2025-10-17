@@ -6,7 +6,7 @@
 
 == Configurez les ports FC sur le nœud 4
 
-Si le nœud 4 possède des ports FC intégrés ou sur un adaptateur FC, vous devez définir des configurations de ports sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés. Si les ports ne sont pas configurés, le service peut subir une interruption.
+Si le nœud 4 dispose de ports FC, intégrés ou sur un adaptateur FC complémentaire, vous devez définir les configurations de port sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés lors de l'expédition des systèmes.  Si vous ne configurez pas les ports comme requis, vous risquez de subir une interruption de service.
 
 .Avant de commencer
 Vous devez avoir les valeurs des paramètres du port FC du noeud 2 que vous avez enregistrées dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"].
@@ -15,61 +15,36 @@ Vous devez avoir les valeurs des paramètres du port FC du noeud 2 que vous avez
 Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'un adaptateur UTA/UTA2, vous devez les configurer dans <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>>.
 
 
-IMPORTANT: Si votre système est doté de disques de stockage, vous devez saisir les commandes de cette section à l'invite du cluster. Si vous disposez d'un système V-Series ou d'un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous pouvez saisir les commandes décrites dans cette section en mode Maintenance.
+IMPORTANT: Saisissez les commandes de cette section à l’invite du shell en mode Maintenance.
 
 .Étapes
-. Effectuer l'une des actions suivantes :
+. Afficher des informations sur tous les adaptateurs réseau FC et convergés du système :
 +
-[cols="30,70"]
-|===
-| Si le système que vous mettez à niveau... | Puis… 
-
-
-| Possède des disques de stockage | `system node hardware unified-connect show` 
-
-
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage | `ucadmin show` 
-|===
-+
-Le système affiche des informations sur la totalité des adaptateurs réseau convergés et FC sur le système.
+`system node hardware unified-connect show`
 
 . Comparez les paramètres FC sur le nœud4 avec ceux que vous avez capturés précédemment à partir du nœud1.
-. Effectuer l'une des actions suivantes :
+. Modifier les ports FC sur le nœud 4 si nécessaire :
 +
-[cols="30,70"]
-|===
-| Si le système que vous mettez à niveau... | Puis… 
-
-
-| Possède des disques de stockage  a| 
-Modifier les ports FC sur le nœud 4 si nécessaire :
-
-** Pour programmer les ports cibles :
+** Pour programmer comme ports cibles :
 +
 `ucadmin modify -m fc -t target _adapter_`
+
++
+Par exemple: `ucadmin modify -m fc -t target 2a`
 
 ** Pour programmer les ports initiateurs :
 +
 `ucadmin modify -m fc -t initiator _adapter_`
 
-
-
++
 `-t` Est le type FC4 : cible ou initiateur.
 
++
+Par exemple: `ucadmin modify -m fc -t initator 2b`
 
 
-| Est un système V-Series ou un logiciel de virtualisation FlexArray qui est connecté aux baies de stockage  a| 
-Modifier les ports FC sur le nœud 4 si nécessaire :
 
-`ucadmin modify -m fc -t initiator -f _adapter_port_name_`
-
-`-t` Est le type, la cible ou l'initiateur FC4.
-
-
-NOTE: Les ports FC doivent être programmés comme initiateurs.
-
-|===
-. Quitter le mode Maintenance :
+. Arrêter le nœud :
 +
 `halt`
 

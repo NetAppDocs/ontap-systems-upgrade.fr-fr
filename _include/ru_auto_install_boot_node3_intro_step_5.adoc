@@ -12,7 +12,6 @@ Vous avez besoin de netboot nœud3 si cette version de ONTAP 9 n'est pas install
 [IMPORTANT]
 ====
 * Pour une mise à niveau du contrôleur AFF A800 ou AFF C800, vous devez vous assurer que tous les lecteurs du châssis sont fermement fixés contre le plan médian avant de retirer le nœud 1. Pour plus d'informations, voir link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Remplacez les modules de contrôleur AFF A800 ou AFF C800"].
-* Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<auto_install3_step1,Étape 1>> à <<auto_install3_step21,Étape 21>>, quittez ensuite cette section et suivez les instructions de la section link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] Sections si nécessaire, en saisissant des commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <<auto_install3_step23,Étape 23>>.
 * Si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière, puis aller à link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] sections, saisie de commandes à l'invite du cluster.
 
 
@@ -29,10 +28,10 @@ NOTE: Si vous effectuez une mise à niveau vers un système contenant les deux n
 
 . [[auto_install3_step3]]Cable node3, déplaçant les connexions du node1 vers le node3.
 +
-Reliez les connexions suivantes à l'aide des instructions _installation et configuration_ ou _FlexArray Virtualization installation Requirements and Reference_ pour la plate-forme NODE3, du document de tiroir disque approprié et de la _gestion des paires HA_.
+Effectuez les connexions suivantes en utilisant les _Instructions d'installation et de configuration_ pour la plate-forme node3, le document d'étagère de disque approprié et la documentation de _gestion des paires HA_.
 
 +
-Reportez-vous link:other_references.html["Références"]au lien vers les _exigences et références relatives à l'installation de la virtualisation FlexArray_ et _gestion des paires HA_.
+Se référer àlink:other_references.html["Références"] pour créer un lien vers la _gestion des paires HA_.
 
 +
 ** Console (port de gestion à distance)
@@ -67,7 +66,7 @@ To override this delay, press 'c' followed by 'Enter'
 .. Laissez la batterie se charger et le processus de démarrage s'achever.
 +
 
-WARNING: *Attention : ne pas outrepasser le délai; si la batterie n'est pas chargée, cela pourrait entraîner une perte de données.*
+WARNING: *Ne dépassez pas le délai ; ne pas laisser la batterie se charger pourrait entraîner une perte de données.*
 
 +
 

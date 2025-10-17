@@ -38,7 +38,7 @@ Si la configuration est différente pour le nœud 4, une interruption du systèm
 . Vérifier que le contrôleur remplacé est configuré correctement pour la configuration MetroCluster et non en mode commutation.
 +
 
-CAUTION: *Attention:* à ce stade, la configuration de MetroCluster ne sera pas dans un état normal et vous aurez peut-être des erreurs à résoudre. Voir link:verify_health_of_metrocluster_config.html["Vérifier l'état de santé de la configuration MetroCluster"].
+CAUTION: À ce stade, la configuration de MetroCluster ne sera pas dans un état normal et vous pourriez avoir des erreurs à résoudre. Voirlink:verify_health_of_metrocluster_config.html["Vérifier l'état de santé de la configuration MetroCluster"] .
 
 
 

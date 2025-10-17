@@ -24,7 +24,6 @@ Vous avez besoin de netboot nœud3 si cette version de ONTAP 9 n'est pas install
 [IMPORTANT]
 ====
 * Pour une mise à niveau du contrôleur AFF A800 ou AFF C800, vous devez vous assurer que tous les lecteurs du châssis sont fermement fixés contre le plan médian avant de retirer le nœud 1. Pour plus d'informations, voir link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Remplacez les modules de contrôleur AFF A800 ou AFF C800"].
-* Si vous mettez à niveau un système V-Series connecté à des baies de stockage ou à un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage, vous devez le faire <<auto_install3_step1,Étape 1>> à <<auto_install3_step21,Étape 21>>, quittez ensuite cette section et suivez les instructions de la section link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] Sections si nécessaire, en saisissant des commandes en mode maintenance. Vous devez ensuite revenir à cette section et reprendre avec <<auto_install3_step23,Étape 23>>.
 * Si vous mettez à niveau un système avec des disques de stockage, vous devez remplir cette section entière, puis aller à link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] sections, saisie de commandes à l'invite du cluster.
 
 
@@ -41,10 +40,10 @@ NOTE: Si vous effectuez une mise à niveau vers un système contenant les deux n
 
 . [[auto_install3_step3]]Cable node3, déplaçant les connexions du node1 vers le node3.
 +
-Reliez les connexions suivantes à l'aide des instructions _installation et configuration_ ou _FlexArray Virtualization installation Requirements and Reference_ pour la plate-forme NODE3, du document de tiroir disque approprié et de la _gestion des paires HA_.
+Effectuez les connexions suivantes en utilisant les _Instructions d'installation et de configuration_ pour la plate-forme node3, le document d'étagère de disque approprié et la documentation de _gestion des paires HA_.
 
 +
-Reportez-vous link:other_references.html["Références"]au lien vers les _exigences et références relatives à l'installation de la virtualisation FlexArray_ et _gestion des paires HA_.
+Se référer àlink:other_references.html["Références"] pour créer un lien vers la _gestion des paires HA_.
 
 +
 ** Console (port de gestion à distance)
@@ -79,7 +78,7 @@ To override this delay, press 'c' followed by 'Enter'
 .. Laissez la batterie se charger et le processus de démarrage s'achever.
 +
 
-WARNING: *Attention : ne pas outrepasser le délai; si la batterie n'est pas chargée, cela pourrait entraîner une perte de données.*
+WARNING: *Ne dépassez pas le délai ; ne pas laisser la batterie se charger pourrait entraîner une perte de données.*
 
 +
 
@@ -251,41 +250,9 @@ Pour le nœud 3, `partner-sysid` doit être celui du node2.
 +
 `printenv partner-sysid`
 
-. [[step22]]effectuer l'une des actions suivantes :
-+
-[cols="30,70"]
-|===
-| Si votre système... | Description 
 
 
-| Possède des disques et aucun stockage interne | Accédez à <<auto_install3_step27,Étape 27>> 
-
-
-| Est un système V-Series ou un système avec le logiciel de virtualisation FlexArray connecté aux baies de stockage  a| 
-.. Passez à la section link:set_fc_or_uta_uta2_config_on_node3.html["Configuration FC ou UTA/UTA2 sur le nœud 3"] complétez les sous-sections de cette section.
-.. Revenez à cette section et suivez les étapes restantes, en commençant par <<auto_install3_step23,Étape 23>>.
-
-
-
-IMPORTANT: Vous devez reconfigurer les ports intégrés FC, les ports intégrés CNA et les cartes CNA avant de démarrer ONTAP sur le système V-Series ou sur le système avec le logiciel de virtualisation FlexArray.
-
-|===
-. [[auto_install3_step23]]Ajoutez les ports d'initiateur FC du nouveau nœud aux zones de commutation.
-+
-Si votre système dispose d'un SAN sur bandes, vous devez segmentation pour les initiateurs. Si nécessaire, modifiez les ports intégrés sur l'initiateur en consultant le link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configuration des ports FC sur le nœud3"]. Reportez-vous à la documentation relative à votre matrice de stockage et à la segmentation pour plus d'instructions sur le zonage.
-
-. [[step24]]Ajouter les ports d'initiateur FC à la baie de stockage en tant que nouveaux hôtes, en mappant les LUN de la baie aux nouveaux hôtes.
-+
-Reportez-vous à la documentation relative à votre matrice de stockage et au zoning pour obtenir des instructions.
-
-. [[step25]]Modifier les valeurs du nom de port mondial (WWPN) dans les groupes d'hôtes ou de volumes associés aux LUN de baie de stockage.
-+
-L'installation d'un nouveau module de contrôleur modifie les valeurs WWPN associées à chaque port FC intégré.
-
-. [[step26]]si votre configuration utilise un zoning basé sur des commutateurs, ajustez le zoning pour refléter les nouvelles valeurs WWPN.
-
-
-[[auto_install3_step27]]
+[[auto_install3_step22]]
 . Si vous avez installé des lecteurs NetApp Storage Encryption (NSE), procédez comme suit :
 +
 
@@ -320,8 +287,10 @@ Saisissez la phrase de passe et les informations de sauvegarde que vous avez enr
 +
 `boot_ontap menu`
 
-+
-Si vous ne disposez pas de configuration FC ou UTA/UTA2, effectuez les opérations link:reassign-node1-disks-to-node3.html#reassign-node1-node3-app-step1["Réaffectez les disques du nœud 1 au nœud 3, étape 1"] pour que le nœud 3 puisse reconnaître les disques du nœud 1.
 
-. [[step29]]]pour une configuration MetroCluster, les systèmes V-Series et les systèmes où le logiciel de virtualisation FlexArray est connecté aux baies de stockage, vous devez définir et configurer les ports FC, UTA/UTA2 sur le nœud 3 pour détecter les disques connectés au nœud. Pour terminer cette tâche, passez à la section link:set_fc_or_uta_uta2_config_on_node3.html["Définissez la configuration FC ou UTA/UTA2 sur le nœud 3"].
+
+.Et la suite ?
+* Si vous avez un système avec une configuration FC ou UTA/UTA2,link:set_fc_or_uta_uta2_config_on_node3.html["définir et configurer les ports FC ou UTA/UTA2 sur le nœud 3"] .
+* Si vous n'avez pas de configuration FC ou UTA/UTA2,link:reassign-node1-disks-to-node3.html#reassign-node1-node3-app-step1["réaffecter les disques du nœud 1 au nœud 3, étape 1"] afin que le nœud 3 puisse reconnaître les disques du nœud 1.
+* Si vous avez une configuration MetroCluster ,link:set_fc_or_uta_uta2_config_on_node3.html["définir et configurer les ports FC ou UTA/UTA2 sur le nœud 3"] pour détecter les disques attachés au nœud.
 

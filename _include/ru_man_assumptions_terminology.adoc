@@ -7,12 +7,12 @@ Ce document est rédigé avec les hypothèses suivantes :
 * Le matériel de remplacement du contrôleur est nouveau et n'a pas été utilisé.
 +
 
-WARNING: *Attention*: Parce que cette procédure suppose que le matériel de remplacement du contrôleur est nouveau et n'a pas été utilisé, les étapes requises pour préparer les contrôleurs utilisés avec le `wipeconfig` la commande n'est pas incluse dans cette procédure. Vous devez contacter le support technique si le matériel de remplacement du contrôleur était précédemment utilisé, en particulier si les contrôleurs exécutaient Data ONTAP sous 7-mode.
+WARNING: Étant donné que cette procédure suppose que le matériel du contrôleur de remplacement est neuf et n'a pas été utilisé, les étapes requises pour préparer les contrôleurs usagés avec le `wipeconfig` Les commandes ne sont pas incluses dans cette procédure.  Vous devez contacter le support technique si le matériel du contrôleur de remplacement a déjà été utilisé, en particulier si les contrôleurs exécutaient Data ONTAP en mode 7.
 
 * Vous avez lu et compris les instructions de mise à niveau de paire de nœuds.
 +
 
-WARNING: *Attention*: N'essayez pas d'effacer le contenu de la NVRAM. Si vous avez besoin d'effacer le contenu de la mémoire NVRAM, contactez le support technique NetApp.
+WARNING: N'essayez pas d'effacer le contenu de la NVRAM .  Si vous devez effacer le contenu de la NVRAM, contactez le support technique NetApp .
 
 * Vous exécutez la commande appropriée avant et après le `modify` commandes et comparaison du résultat des deux `show` commandes pour vérifier que `modify` la commande a réussi.
 * Si vous disposez d'une configuration SAN, vous disposez de LIF locales et partenaires pour chaque machine virtuelle de stockage (SVM), sur la paire haute disponibilité. Si vous ne disposez pas de LIF locales et partenaires pour chaque SVM, vous devez ajouter cette LIF de données SAN sur le nœud distant et local de cette SVM avant de commencer la mise à niveau.

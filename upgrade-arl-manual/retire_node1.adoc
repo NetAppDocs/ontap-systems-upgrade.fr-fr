@@ -199,7 +199,7 @@ La valeur de cette commande doit correspondre à l'état physique du système.
 
 +
 
-WARNING: *Attention* : si le nœud1 se trouve dans le même châssis que le nœud2, ne mettez pas le châssis hors tension à l'aide du commutateur d'alimentation ou en tirant le câble d'alimentation. Dans ce cas, le nœud 2, qui transmet les données, tomber en panne.
+WARNING: Si le nœud 1 se trouve dans le même châssis que le nœud 2, ne mettez pas le châssis hors tension en utilisant l'interrupteur d'alimentation ou en tirant sur le câble d'alimentation.  Si vous faites cela, le nœud 2, qui fournit les données, tombera en panne.
 
 . Lorsque vous êtes invité à confirmer l'arrêt du système, entrez `y`.
 +

@@ -48,7 +48,6 @@ NOTE: Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), N
 Vous ne pouvez pas utiliser cette procédure ARL dans les circonstances suivantes :
 
 * Vous souhaitez ajouter les nouveaux contrôleurs au cluster en tant que nouvelle paire haute disponibilité et migrer les données à l'aide des déplacements de volumes.
-* Vous utilisez le logiciel de virtualisation FlexArray sur le système existant en cours de mise à niveau.
 * Vous mettez à niveau une configuration IP MetroCluster.
 +
 Pour mettre à niveau une configuration IP MetroCluster, reportez-vous  à la section link:other_references.html["Références"] pour accéder au contenu _MetroCluster Upgrade and expansion_.

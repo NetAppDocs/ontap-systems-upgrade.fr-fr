@@ -37,7 +37,7 @@ Vous devez vérifier physiquement les nœud3 et nœud4 pour vérifier si les bat
 
 +
 
-WARNING: *Attention* n'essayez pas d'effacer le contenu de la NVRAM. Si vous devez effacer le contenu de NVRAM, contactez le support technique NetApp.
+WARNING: N'essayez pas d'effacer le contenu de la NVRAM .  S'il est nécessaire d'effacer le contenu de la NVRAM, contactez le support technique NetApp .
 
 . Vérifiez la version de ONTAP sur les nœuds 3 et 4.
 +

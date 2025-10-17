@@ -29,10 +29,10 @@ Si le noeud 4 se trouve dans un châssis distinct du noeud 2, vous pouvez placer
 . Installez le node4 dans le rack en suivant les instructions de _instructions d'installation et de configuration_ pour le modèle de nœud.
 . Reliez le nœud 4, puis déplacez les connexions du nœud 2 vers le nœud 4.
 +
-Reliez les connexions suivantes, en suivant les instructions fournies dans les instructions _installation and Setup instructions_ ou _FlexArray Virtualization installation Requirements and Reference_ pour la plate-forme node4, le document de tiroir disque approprié et _HA pair Management_.
+Effectuez les connexions suivantes en suivant les instructions des _Instructions d'installation et de configuration_ pour la plate-forme node4, le document d'étagère de disque approprié et la _gestion des paires HA_.
 
 +
-Reportez-vous link:other_references.html["Références"]au lien vers les _exigences et références relatives à l'installation de la virtualisation FlexArray_ et _gestion des paires HA_.
+Se référer àlink:other_references.html["Références"] pour créer un lien vers la _gestion des paires HA_.
 
 +
 ** Console (port de gestion à distance)
@@ -71,7 +71,7 @@ WARNING: The battery is unfit to retain data during a power outage. This is like
 .. Laissez la batterie se charger et le processus de démarrage s'achever.
 +
 
-WARNING: *Attention : ne pas outrepasser le délai; si la batterie n'est pas chargée, cela pourrait entraîner une perte de données.*
+WARNING: *Ne dépassez pas le délai ; ne pas laisser la batterie se charger pourrait entraîner une perte de données.*
 
 +
 
