@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/install-affa90-affa70-on-node2.html 
+keywords: aff, fas, asa, install, NVRAM, node2, controller, module, modules, replacement 
+summary: 'Installez les modules système de remplacement sur le nœud 2 lors d"une mise à niveau ARL des modèles de contrôleurs du même châssis.' 
+---
+= Installez le module AFF A90 ou AFF A70 sur le nœud 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Installez le module de contrôleur AFF A90 ou AFF A70 que vous avez reçu pour la mise à niveau sur le nœud 2.  Le nœud 2 est le contrôleur B situé sur la baie inférieure du châssis lorsque l'on regarde les contrôleurs depuis l'arrière du système.
+
+.Étapes
+. À l'avant du châssis, utilisez vos pouces pour pousser fermement chaque lecteur dans les baies de disque supérieure et inférieure jusqu'à ce que vous sentiez une butée positive.  Cela garantit que les disques sont fermement fixés contre le plan médian du châssis.
++
+image:drw_a800_drive_seated_IEOPS-960.png["Appuyez sur le lecteur pour le mettre fermement en place contre le fond de panier central du châssis"]
+
++
+.. Aller à l'arrière du châssis.
+
+
+. Alignez l'extrémité du module de contrôleur avec l'ouverture du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.
++
+
+NOTE: N'insérez pas complètement le module de contrôleur dans le châssis avant d'y être invité plus tard dans la procédure.
+
++
+image:drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG["Installer un AFF A90 ou un AFF A70"]
+
+. Reliez les ports de gestion et de console au module de contrôleur node2.
++
+
+NOTE: Étant donné que le châssis est déjà sous tension, le nœud 2 démarre l'initialisation du BIOS suivie du démarrage automatique dès qu'il est complètement installé.  Pour interrompre le démarrage du node2, avant d'insérer complètement le module de contrôleur dans l'emplacement, il est recommandé de connecter la console série et les câbles de gestion au module de contrôleur node2.
+
+. Avec la poignée de came en position ouverte, poussez fermement le module de contrôleur jusqu'à ce qu'il rencontre le fond de panier central et qu'il soit bien en place. Le loquet de verrouillage s'élève lorsque le module de contrôleur est bien en place. Fermer la poignée de came en position verrouillée.
++
+
+NOTE: Pour éviter d'endommager les connecteurs, ne forcez pas trop lorsque vous faites glisser le module de contrôleur dans le châssis.
+
+. Connectez la console série dès que le module est installé et soyez prêt à interrompre l'AUTOBOOT du node2.
+. Après l'interruption DE L'AUTOBOOT, le nœud 2 s'arrête à l'invite DU CHARGEUR. Si vous n'interrompez pas LE démarrage AUTOMATIQUE à temps et que le démarrage du nœud 2 commence, attendez l'invite et appuyez sur Ctrl-C pour accéder au menu de démarrage. Une fois que le nœud s'arrête au menu de démarrage, utilisez l'option `8` pour redémarrer le nœud et interrompre le DÉMARRAGE AUTOMATIQUE pendant le redémarrage.
+. À l'invite LOADER> du nœud 2, définissez les variables d'environnement par défaut :
++
+`set-defaults`
+
+. Enregistrez les paramètres des variables d'environnement par défaut :
++
+`saveenv`
+
+. À l'avant du châssis, utilisez vos pouces pour pousser fermement chaque lecteur dans les baies de disque supérieure et inférieure jusqu'à ce que vous sentiez une butée positive.  Cela garantit que les disques sont fermement fixés contre le plan médian du châssis.
++
+image:drw_a800_drive_seated_IEOPS-960.png["Appuyez sur le lecteur pour le mettre fermement en place contre le fond de panier central du châssis"]
+
++
+.. Aller à l'arrière du châssis.
+
+
+

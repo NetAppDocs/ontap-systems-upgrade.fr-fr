@@ -1,0 +1,92 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/aggregate-relocation-failures.html 
+keywords: aggregate, relocation, failures, arl, stage 2, stage 3, stage 5 
+summary: 'Dépannez les défaillances de transfert d"agrégats qui peuvent se produire lorsque vous utilisez ARL pour mettre à niveau les modèles de contrôleurs dans le même châssis.' 
+---
+= Défaillance du transfert d'agrégats
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le transfert d'agrégats (ARL) peut échouer à divers stades de la mise à niveau.
+
+
+
+== Vérifier l'échec du transfert d'agrégat
+
+Lors de cette procédure, l'ARL peut échouer à l'étape 2, à l'étape 3 ou à l'étape 5.
+
+.Étapes
+. Entrez la commande suivante et vérifiez le résultat :
++
+`storage aggregate relocation show`
+
++
+Le `storage aggregate relocation show` la commande vous indique les agrégats qui ont été correctement transférés et ceux qui n'ont pas été transférés, ainsi que les causes de la défaillance.
+
+. Vérifier la console à la recherche de messages EMS.
+. Effectuer l'une des actions suivantes :
++
+** Prendre l'action corrective appropriée, en fonction de la sortie du `storage aggregate relocation show` Commande et la sortie du message EMS.
+** Forcer le transfert de l'agrégat ou des agrégats à l'aide du `override-vetoes` ou le `override-destination-checks` de la `storage aggregate relocation start` commande.
+
+
++
+Pour des informations détaillées sur le `storage aggregate relocation start`, `override-vetoes`, et `override-destination-checks` options, voir link:other_references.html["Références"] Pour lier les commandes _ONTAP 9 : Manuel page Reference_.
+
+
+
+
+
+== Les agrégats situés à l'origine sur le nœud 1 sont détenus par le nœud 2 après la fin de la mise à niveau
+
+À la fin de la procédure de mise à niveau, le nœud 1 doit être le nouveau nœud de rattachement d'agrégats où disposait le nœud 1 initialement en tant que nœud de rattachement. Vous pouvez les transférer après la mise à niveau.
+
+.Description de la tâche
+Les agrégats n'ont pas pu transférer correctement les données, c'est-à-dire que le nœud 2 est leur nœud de rattachement au lieu du nœud 1 ; dans les cas suivants :
+
+* Lors de la phase 3, lorsque les agrégats sont déplacés du nœud 2 vers le nœud 1.
++
+Certains agrégats transférés possèdent le nœud 1 comme nœud de rattachement. Par exemple, un tel agrégat peut être appelé aggr_node_1. Si le transfert de aggr_node_1 échoue lors de l'étape 3 et le transfert ne peut pas être forcé, l'agrégat reste derrière sur le nœud 2.
+
+* Après l'étape 4, lorsque le nœud 2 est remplacé par les nouveaux modules système.
++
+Lorsque le nœud 2 est remplacé, aggr_node_1 sera connecté avec le nœud 1 comme nœud de base au lieu du nœud 2.
+
+
+
+Vous pouvez corriger le problème de propriété incorrecte après la phase 6, après avoir activé le basculement du stockage en procédant comme suit :
+
+.Étapes
+. Obtenir la liste des agrégats:
++
+`storage aggregate show -nodes _node2_ -is-home true`
+
++
+Pour identifier les agrégats qui n'ont pas été correctement transférés, reportez-vous à la liste des agrégats avec le propriétaire du nœud 1 que vous avez obtenu dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] et comparez-le avec la sortie de la commande ci-dessus.
+
+. Comparez la sortie de l'étape 1 avec celle que vous avez capturée pour le noeud 1 dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] et notez tous les agrégats qui n'ont pas été correctement transférés.
+. Transférez les agrégats restants sur le nœud 2 :
++
+`storage aggregate relocation start -node _node2_ -aggr _aggr_node_1_ -destination _node1_`
+
++
+N'utilisez pas le paramètre -ndo-Controller-Upgrade lors de cette relocalisation.
+
+. Vérifier que le nœud 1 est désormais le véritable propriétaire des agrégats :
++
+`storage aggregate show -aggregate _aggr1,aggr2,aggr3..._ -fields home-name`
+
++
+`_aggr1,aggr2,aggr3..._` est la liste des agrégats qui possédaient le nœud 1 comme propriétaire initial.
+
++
+Les agrégats qui ne possèdent pas le nœud 1 en tant que propriétaire du site peuvent être transférés vers le nœud 1 à l'aide de la même commande de transfert à l'étape 3.
+
+

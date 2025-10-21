@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/set-up-netapp-volum-encryption-new-module.html 
+keywords: set up, netapp volume encryption, controller, module, nve, node 
+summary: 'Si nécessaire, configurez le nouveau module de contrôleur pour NVE ou NAE lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleur dans le même châssis. »' 
+---
+= Configurez NetApp Volume Encryption ou Aggregate Encryption sur le nouveau module de contrôleur
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si le remplacement du contrôleur ou du partenaire HA (haute disponibilité) du nouveau contrôleur utilise NetApp Volume Encryption (NVE) ou NetApp Aggregate Encryption (NAE), il faut configurer le nouveau module de contrôleur pour NVE ou NAE.
+
+.Description de la tâche
+Cette procédure comprend les étapes réalisées sur le nouveau module de contrôleur. Vous devez saisir la commande sur le nœud approprié.
+
+[role="tabbed-block"]
+====
+.Gestionnaire de clés intégré
+--
+Configurez NVE ou NAE à l'aide du Gestionnaire de clés intégré.
+
+.Étapes
+. Restaurer les clés d'authentification de tous les serveurs de gestion des clés liés vers le nouveau nœud :
++
+`security key-manager onboard sync`
+
+
+
+--
+.Gestion externe des clés
+--
+Configurez NVE ou NAE à l'aide de la gestion externe des clés.
+
+.Étapes
+. Vérifier que les serveurs de gestion des clés sont toujours disponibles, leur état et leurs informations de clé d'authentification :
++
+`security key-manager key query -node node`
+
+. Ajoutez les serveurs de gestion des clés répertoriés à l'étape précédente à la liste des serveurs de gestion des clés du nouveau contrôleur :
++
+.. Ajouter le serveur de gestion des clés :
++
+`security key-manager external add-servers -key-servers _key_management_server_ip_address_`
+
+.. Répétez l'étape précédente pour chaque serveur de gestion des clés répertorié. Vous pouvez lier jusqu'à quatre serveurs de gestion des clés.
+.. Vérifiez que les serveurs de gestion des clés ont été ajoutés correctement :
++
+`security key-manager external show`
+
+
+
+. Sur le nouveau module de contrôleur, exécutez l'assistant de configuration de la gestion des clés pour configurer et installer les serveurs de gestion des clés.
++
+Vous devez installer les mêmes serveurs de gestion des clés que ceux installés sur le module de contrôleur existant.
+
++
+.. Lancez l'assistant de configuration du serveur de gestion des clés sur le nouveau nœud :
++
+`security key-manager external enable`
+
+.. Suivez les étapes de l'assistant pour configurer les serveurs de gestion des clés.
+
+
+. Restaurer les clés d'authentification de tous les serveurs de gestion des clés liés vers le nouveau nœud :
++
+`security key-manager external restore`
+
++
+Cette commande a besoin de la phrase de passe OKM
+
++
+Pour plus d'informations, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/dm/Encryption/How_to_restore_external_key_manager_server_configuration_from_the_ONTAP_boot_menu["Restauration de la configuration du serveur de gestionnaire de clés externe à partir du menu de démarrage ONTAP"^].
+
+
+
+--
+====
+.Une fois que vous avez terminé
+Vérifiez si des volumes ont été mis hors ligne car les clés d'authentification n'étaient pas disponibles ou si les serveurs EKM n'ont pas pu être atteints. Remettre ces volumes en ligne à l'aide du `volume online` commande.
+
+.Une fois que vous avez terminé
+Vérifiez si des volumes ont été mis hors ligne, car les clés d'authentification n'étaient pas disponibles ou les serveurs de gestion de clés externes n'ont pas pu être atteints. Remettez ces volumes en ligne en utilisant le  `volume online` commande.

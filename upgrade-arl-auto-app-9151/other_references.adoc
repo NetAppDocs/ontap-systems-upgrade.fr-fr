@@ -73,7 +73,7 @@ Le contenu spécifique à cette mise à niveau est répertorié dans le tableau 
 | Décrit la mise à niveau rapide du matériel du contrôleur dans un cluster en déplaçant du stockage ou des volumes. Le décrit également comment convertir un modèle pris en charge en tiroir disque. | link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Mettez à niveau ONTAP"^] 
 
 
-| Contient les instructions de téléchargement et de mise à niveau de ONTAP. | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Utilisez les commandes « system Controller replace » pour mettre à niveau les modèles de contrôleurs d'un même châssis"^] 
+| Contient les instructions de téléchargement et de mise à niveau de ONTAP. | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-in-chassis/index.html["Utilisez les commandes « system Controller replace » pour mettre à niveau les modèles de contrôleurs d'un même châssis"^] 
 
 
 | Décrit les procédures de transfert d'agrégats requises pour mettre à niveau un système sans interruption, en conservant les anciens châssis et disques du système. | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/index.html["Utilisez les commandes « system contrôleur replace » pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou une version ultérieure"^] 

@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/retire-node2.html 
+keywords: retire, node2, retiring, node 
+summary: 'Arrêtez le nœud 2 et retirez-le du rack ou du châssis lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
+---
+= Retrait du nœud 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour retirer le nœud 2, arrêtez-le correctement, puis retirez-le du rack ou du châssis.
+
+
+
+== Reprendre l'opération de remplacement du contrôleur système
+
+.Étapes
+. Reprendre l'opération :
++
+`system controller replace resume`
+
++
+Le nœud s'arrête automatiquement.
+
+
+
+
+
+== Retirez le module de contrôleur AFF A800 ou AFF C800
+
+Retirez le périphérique de gestion des câbles du module existant et retirez légèrement le contrôleur du châssis.
+
+.Avant de commencer
+Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement.
+
+.Étapes
+. Préparez le retrait du module de contrôleur :
++
+.. À l'avant du châssis, utilisez vos pouces pour pousser fermement chaque lecteur dans les baies de disque supérieure et inférieure jusqu'à ce que vous sentiez une butée positive.  Cela garantit que les disques sont fermement fixés contre le plan médian du châssis.
++
+image:drw_a800_drive_seated_IEOPS-960.png["Appuyez sur le lecteur pour le mettre fermement en place contre le fond de panier central du châssis"]
+
+.. Aller à l'arrière du châssis.
+
+
+. Débranchez les alimentations du module contrôleur node2 de la source.
+. Libérez les dispositifs de retenue du câble d'alimentation, puis débranchez les câbles des blocs d'alimentation.
+. Desserrez le crochet et la bride de boucle reliant les câbles au dispositif de gestion des câbles, puis débranchez les câbles du système et les modules SFP et QSFP (si nécessaire) du module de contrôleur, en gardant une trace de l'emplacement de connexion des câbles.
++
+Laissez les câbles dans le périphérique de gestion des câbles de sorte que lorsque vous réinstallez le périphérique de gestion des câbles, les câbles sont organisés.
+
+. Retirez le périphérique de gestion des câbles du module de contrôleur et mettez-le de côté.
+. Appuyez sur les deux loquets de verrouillage, puis faites pivoter les deux loquets vers le bas en même temps.
++
+Le module de contrôleur se déplace légèrement hors du châssis.
+
+
+
+.Une fois que vous avez terminé
+Vous pouvez désaffecter le nœud2 une fois la mise à niveau terminée. Voir link:decommission_old_system.html["Désaffectation de l'ancien système"].

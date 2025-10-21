@@ -1,0 +1,53 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/issues-in-multiple-stages-of-procedure.html 
+keywords: issues, arise, multiple, stages, procedure 
+summary: 'Informations sur les problèmes susceptibles de se produire lors de l"utilisation d"ARL pour la mise à niveau des modèles de contrôleurs d"un même châssis.' 
+---
+= Problèmes pouvant survenir à plusieurs étapes de la procédure
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Certains problèmes peuvent survenir au cours des différentes étapes de la procédure.
+
+
+
+== Sortie inattendue de la commande « Storage Failover show »
+
+Durant la procédure, si le nœud hébergeant tous les agrégats de données fonctionne de façon incohérente ou est redémarré accidentellement, vous pouvez voir la sortie inattendue de `storage failover show` commande avant et après le redémarrage, de type panic ou power cycle.
+
+.Description de la tâche
+Vous verrez peut-être des résultats inattendus de la `storage failover show` Commande aux étapes 2, 3, 4 ou 5.
+
+L'exemple suivant montre la sortie attendue de l' `storage failover show` commande s'il n'y a pas de redémarrages ou de incohérences sur le nœud qui héberge tous les agrégats de données :
+
+....
+cluster::> storage failover show
+
+                   Takeover
+Node     Partner   Possible  State Description
+-------  --------  --------- -----------------
+node1    node2     false     Unknown
+node2    node1     false     Node owns partner aggregates as part of the non-disruptive head upgrade procedure. Takeover is not possible: Storage failover is disabled.
+....
+L'exemple suivant montre la sortie du `storage failover show` commande après un redémarrage ou un incident :
+
+....
+cluster::> storage failover show
+
+                   Takeover
+Node     Partner   Possible  State Description
+-------  --------  --------- -----------------
+node1    node2     -         Unknown
+node2    node1     false     Waiting for node1, Partial giveback, Takeover is not possible: Storage failover is disabled
+....
+Bien que la sortie indique qu'un nœud a été en cours de rétablissement partiel et que le basculement du stockage est désactivé, vous pouvez ignorer ce message.
+
+.Étapes
+Aucune action n'est requise ; continuer la procédure de mise à niveau de la paire de nœuds.

@@ -1,0 +1,145 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/cable-node2-for-shared-cluster-HA-storage.html 
+keywords: cluster, ha, aff, a800, shared, storage, data, management 
+summary: Connectez les connexions de cluster, HA, de stockage et de données qui étaient précédemment connectées au nœud AFF A8002 au nœud AFF A90 ou AFF A701 nouvellement installé 
+---
+= Nœud de câble 2 pour cluster partagé-HA et stockage
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous effectuez l'une des mises à niveau suivantes, vous devez connecter les connexions de cluster, de haute disponibilité, de stockage, de données et de gestion qui étaient précédemment connectées au nœud 2 sur le système existant au nœud 2 nouvellement installé sur le système de remplacement.
+
+[cols="35,65"]
+|===
+| Système existant | Système de remplacement 
+
+
+| AFF A250 | AFF A30, AFF A50 
+
+
+| AFF C250 | AFF C30, AFF C60 
+
+
+| AFF A800 | AFF A70, AFF A90 
+
+
+| AFF C800 | AFF C80 
+|===
+
+
+== Connectez les ports e0M et BMC
+
+Si le système existant dispose d'un port de gestion (e0M) et d'un port BMC, les ports e0M et BMC sont combinés et accessibles via le port « clé » du système de remplacement. Vous devez vous assurer que les ports e0M et BMC sont connectés au même commutateur et au même sous-réseau sur le système existant avant de vous connecter au système de remplacement.
+
+[cols="35,65"]
+|===
+| Si... | Alors... 
+
+
+| Les adresses IP e0M et BMC se trouvent sur le même sous-réseau IP | Connectez le port e0M ou BMC du système existant au port de « clé » du système de remplacement. 
+
+
+| Les adresses IP e0M et BMC se trouvent sur des sous-réseaux différents  a| 
+. Fusionnez les adresses IP e0M et BMC dans un sous-réseau IP.
+. Connectez le port e0M ou BMC du système existant au port de « clé » du système de remplacement.
+
+
+|===
+
+
+== Connexion à un cluster à 2 nœuds sans commutateur
+
+Les tableaux suivants présentent l'utilisation des ports de commutateur pour les configurations en cluster sans commutateur à 2 nœuds.
+
+|===
+| Type de port | AFF A800, AFF C800 | AFF A90 | AFF A70, AFF C80 
+
+
+| Cluster | e0a | e1a | e1a 
+
+
+| Cluster | e1a | E7a (utilisez e1b s'il n'y a pas d'e7a) | e1b 
+
+
+| HAUTE DISPONIBILITÉ | e0b | Ne pas connecter | Ne pas connecter 
+
+
+| HAUTE DISPONIBILITÉ | e1b | Ne pas connecter | Ne pas connecter 
+
+
+| Ports de stockage SAS (si présents et utilisés) | Tout port disponible | Tout port disponible | Tout port disponible 
+
+
+| Ports de stockage Ethernet pour tiroirs NS224 | Tout port disponible | Reportez-vous à la section mappage de la connectivité du stockage Ethernet | Reportez-vous à la section mappage de la connectivité du stockage Ethernet 
+|===
+|===
+| Type de port | AFF A250, AFF C250 | AFF A30, AFF C60 | AFF A50 
+
+
+| Cluster | e0c | e1a (Utilisez e1a pour l'interconnexion temporaire des clusters) | e1a (Utilisez e1a pour l'interconnexion temporaire des clusters) 
+
+
+| Cluster | e0d | e1b (Utiliser e1b pour l'interconnexion temporaire des clusters) | e1b (Utiliser e1b pour l'interconnexion temporaire des clusters) 
+
+
+| HAUTE DISPONIBILITÉ | Le port e0c HA est partagé avec le port du cluster | e4a sur le nœud 1 est directement connecté à e4a sur le nœud 2 à l'aide d'un câble 100 GbE | e4a sur le nœud 1 est directement connecté à e4a sur le nœud 2 à l'aide d'un câble 100 GbE 
+
+
+| HAUTE DISPONIBILITÉ | Le port e0d HA est partagé avec le port du cluster | e2a sur le nœud 1 est directement connecté à e2a sur le nœud 2 à l'aide d'un câble 100 GbE. Si e2a n'est pas présent ou ne prend pas en charge 100 GbE, connectez directement e4b sur le nœud 1 à e4b sur le nœud 2 à l'aide d'un câble 100 GbE. | e2a sur le nœud 1 directement connecté à e2a sur le nœud 2 à l'aide d'un câble 100 GbE Si e2a n'est pas présent ou ne prend pas en charge 100 GbE, connectez directement e4b sur le nœud 1 à e4b sur le nœud 2 à l'aide d'un câble 100 GbE. 
+
+
+| Port de stockage Ethernet | Tout port disponible | e3a, e3b | e3a, e3b 
+
+
+| Port de stockage SAS | Tout port disponible | 3a, 3b | 3a, 3b 
+|===
+
+
+== Se connecter à un cluster relié par un commutateur
+
+Dans le cas d'un cluster relié par commutateur, vérifiez que vous répondez aux exigences suivantes pour les nœuds AFF A30, AFF A50, AFF A70, AFF A90, AFF C30, AFF C60 ou AFF C80 (de remplacement) :
+
+* Les ports de cluster identiques sur le nœud de remplacement sont sur le même commutateur. Par exemple, une fois la mise à niveau terminée, e1a sur le nœud 1 et e1a sur le nœud 2 doivent être connectés à un commutateur de cluster. De même, le second port de cluster des deux nœuds doit être connecté au second commutateur de cluster. La connexion croisée de ports cluster-haute disponibilité partagés, où e1a du nœud 1 est connecté au commutateur a et e1a du nœud 2 est connecté au commutateur B, entraîne des échecs de communication haute disponibilité.
+* Le nœud de remplacement utilise des ports Ethernet haute disponibilité et partagés entre les clusters.
+* Vérifiez que les switchs de cluster sont installés avec un fichier de configuration de référence (RCF) qui prend en charge les ports cluster-HA partagés :
++
+.. Supprimer la configuration existante sur le commutateur :
++
+[cols="30,70"]
+|===
+| Si votre modèle de commutateur est... | Aller à... 
+
+
+| Commutateurs Cisco Nexus | Article de la base de connaissances link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["Comment effacer la configuration d'un commutateur d'interconnexion Cisco tout en conservant la connectivité à distance"^] 
+
+
+| Broadcom BES-53248 | Article de la base de connaissances link:https://kb.netapp.com/on-prem/Switches/Broadcom-KBs/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["Comment effacer la configuration d'un commutateur d'interconnexion Broadcom tout en conservant la connectivité à distance"^] 
+|===
+.. Configurer et vérifier la configuration du commutateur :
++
+[cols="30,70"]
+|===
+| Si votre modèle de commutateur est... | Aller à... 
+
+
+| Cisco Nexus 9336C-FX2 | link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-9336c-fx2/upgrade-rcf-software-9336c-cluster.html["Mettez à niveau votre fichier de configuration de référence (RCF)"^] 
+
+
+| Broadcom BES-53248 | link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-bes-53248/upgrade-rcf.html["Mise à niveau du fichier RCF (Reference Configuration File)"^] 
+
+
+| NVIDIA SN2100 | link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html["Installez ou mettez à niveau le script RCF (Reference Configuration File)"^] 
+|===
+
+
+
+
+
+NOTE: Si le commutateur de cluster prend uniquement en charge les vitesses 10/25 GbE, vous devez utiliser une carte X60130A à 4 ports 10/25 GbE dans l'emplacement 1 ou l'emplacement 2 sur le système de remplacement pour l'interconnexion du cluster.

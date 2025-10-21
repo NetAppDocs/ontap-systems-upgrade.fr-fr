@@ -1,0 +1,55 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/verify-rcf-configuration.html 
+keywords: aggregate, relocation, cluster, switch, rcf, shared 
+summary: Vérifiez que le commutateur de cluster RCF prend en charge les ports de cluster/HA partagés pour les nouveaux contrôleurs pour les mises à niveau des clusters connectés au commutateur. 
+---
+= Vérifier la configuration RCF sur les commutateurs de cluster
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+À ce stade de la procédure de mise à niveau, tous les agrégats de données doivent se trouver sur le nœud 1.  Si vous mettez à niveau une configuration avec des clusters connectés à un commutateur, vous devez valider que le fichier de configuration de référence du commutateur de cluster (RCF) prend en charge les ports de cluster/HA partagés pour les nouveaux contrôleurs.
+
+Si vous effectuez une mise à niveau vers une configuration de cluster sans commutateur à deux nœuds, vous pouvez ignorer cette section et accéder àlink:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Déplacement des agrégats non racines et des LIF de données NAS vers le nœud 2"] .
+
+.Étapes
+. Passer en mode privilège avancé :
++
+`set advanced`
+
+. Vérifiez l'état de « IC RDMA » :
++
+`ha interconnect status show`
+
++
+Dans la sortie, la « Connexion IC RDMA » doit avoir le statut `Up` .
+
++
+[cols="50,50"]
+|===
+| Si l'état « Connexion IC RDMA » est ... | Puis… 
+
+
+| `Up` | Aller àlink:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Déplacement des agrégats non racines et des LIF de données NAS vers le nœud 2"] . 
+
+
+| `Down` | Aller à<<verify-rcf-step3,Étape 3>> . 
+|===
+. Vérifiez les ports du cluster et le commutateur RCF.
++
+Pour plus d'informations, voir link:cable-node1-for-shared-cluster-HA-storage.html#connect-switch-attached-cluster["Se connecter à un cluster relié par un commutateur"].
+
+. Vérifiez que le statut « Connexion IC RDMA » est passé à `Up` :
++
+`ha interconnect status show`
+
+
+
+.Quelle est la prochaine étape
+link:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Déplacement des agrégats non racines et des LIF de données NAS vers le nœud 2"]

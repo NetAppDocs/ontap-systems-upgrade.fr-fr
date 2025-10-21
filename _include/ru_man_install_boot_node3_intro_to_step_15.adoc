@@ -11,7 +11,7 @@ Cependant, vous n'avez pas besoin de démarrer le nœud 3 en réseau s'il possè
 
 [IMPORTANT]
 ====
-* Pour une mise à niveau du contrôleur AFF A800 ou AFF C800, vous devez vous assurer que tous les lecteurs du châssis sont fermement fixés contre le plan médian avant de retirer le nœud 1. Pour plus d'informations, voir link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Remplacez les modules de contrôleur AFF A800 ou AFF C800"].
+* Pour une mise à niveau du contrôleur AFF A800 ou AFF C800 , vous devez vous assurer que tous les lecteurs du châssis sont fermement fixés contre le plan médian avant de retirer le nœud 1. Pour plus d'informations, voir link:../upgrade-arl-auto-in-chassis/replace-node1-affa800.html["Remplacez les modules de contrôleur AFF A800 ou AFF C800"].
 * Si vous mettez à niveau un système avec des disques de stockage, vous devez compléter toute cette section, puis accéder à link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurez les ports FC sur le nœud 3"] et link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3"] , en entrant des commandes à l'invite du cluster.
 
 

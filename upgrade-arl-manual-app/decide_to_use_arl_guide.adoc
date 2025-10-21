@@ -27,9 +27,9 @@ Utilisez ce contenu dans les circonstances suivantes :
 
 [NOTE]
 ====
-* . Cette procédure ARL inclut les étapes qui garantissent que les disques internes restent sécurisés dans le châssis lorsque vous retirez et installez les contrôleurs pendant la procédure de mise à niveau
+* Si vous mettez à niveau un système en échangeant des modules de contrôleur dans le même châssis, comme AFF A800 ou AFF C800, NetApp recommande fortement d'utiliser la procédure de mise à niveau quilink:../upgrade-arl-auto-in-chassis/index.html["met à niveau les modèles de contrôleurs à l'aide d'ARL, en conservant le châssis et les disques du système existant"] .  Cette procédure ARL inclut les étapes qui garantissent que les disques internes restent sécurisés dans le châssis lorsque vous retirez et installez les contrôleurs pendant la procédure de mise à niveau.
 +
-link:../upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["Découvrez les combinaisons de mise à niveau système prises en charge à l'aide d'ARL, en conservant le châssis et les disques système existants"].
+link:../upgrade-arl-auto-in-chassis/decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["Découvrez les combinaisons de mise à niveau système prises en charge à l'aide d'ARL, en conservant le châssis et les disques système existants"].
 
 * Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE).
 

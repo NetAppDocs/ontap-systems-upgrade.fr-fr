@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/retire-node1.html 
+keywords: retiring, node1, node, retire 
+summary: 'Désactivez la paire haute disponibilité avec le nœud 2 et arrêtez le nœud 1 lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
+---
+= Retirer le nœud 1
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour désactiver le nœud 1, vous reprenez l'opération automatisée afin de désactiver la paire haute disponibilité avec le nœud 2 et d'arrêter le nœud 1 correctement.
+
+.Étapes
+. Reprendre l'opération :
++
+`system controller replace resume`
+
+. Vérifiez que le noeud 1 a été arrêté :
++
+`system controller replace show-details`
+
++
+Une fois le nœud 1 complètement arrêté, le nœud 1 doit se trouver à l'invite DU CHARGEUR>. Pour afficher l'invite DU CHARGEUR>, connectez-vous à la console série du nœud 1.
+
+

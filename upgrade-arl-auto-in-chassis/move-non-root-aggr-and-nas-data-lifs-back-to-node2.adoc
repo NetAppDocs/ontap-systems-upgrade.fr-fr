@@ -1,0 +1,97 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/move-non-root-aggr-and-nas-data-lifs-back-to-node2.html 
+keywords: moving, non-root, aggregates, nas, lif, node1, node2 
+summary: 'Vérifiez que les LIF de données NAS du nœud 2 sur le nœud 1 sont déplacées du nœud 1 vers le nœud 2 lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
+---
+= Déplacement des agrégats non racines et des LIF de données NAS vers le nœud 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Après avoir vérifié la configuration réseau sur le nœud 2 et avant de déplacer des agrégats du nœud 1 vers le nœud 2, vérifiez que les LIF de données NAS appartenant au nœud 2 qui se trouvent actuellement sur le nœud 1 sont déplacées du nœud 1 vers le nœud 2. Vous devez également vérifier que les LIFs SAN existent sur le nœud2.
+
+.Description de la tâche
+Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Une fois le nœud 2 mis en ligne, vous devez vérifier que les LIF sont saines et situées sur les ports appropriés.
+
+.Étapes
+. Reprendre l'opération de relocalisation :
++
+`system controller replace resume`
+
++
+Le système effectue les tâches suivantes :
+
++
+--
+** Vérification du quorum du cluster
+** Vérification de l'ID système
+** Vérification de la version d'image
+** Vérification de la plate-forme cible
+** Vérification de l'accessibilité du réseau
+
+
+--
++
+L'opération s'interrompt à cette étape de la vérification de la capacité d'accessibilité du réseau.
+
+. Reprendre l'opération de relocalisation :
++
+`system controller replace resume`
+
++
+Le système effectue les vérifications suivantes :
+
++
+--
+** Vérification de l'état du cluster
+** Vérification de l'état de la LIF de cluster
+
+
+--
++
+Après ces vérifications, le système replace les agrégats non racines et les LIF de données NAS sur le nœud 2, qui s'exécute désormais sur le contrôleur de remplacement.
+
++
+L'opération de remplacement du contrôleur s'interrompt une fois le transfert de ressources terminé.
+
+. Vérifier le statut du transfert d'agrégats et du déplacement des LIF de données NAS :
++
+`system controller replace show-details`
+
++
+Si la procédure de remplacement du contrôleur est suspendue, vérifiez et corrigez l'erreur, le cas échéant, puis faites-la `resume` pour poursuivre l'opération.
+
+. Si nécessaire, restaurez et restaurez les LIF déplacées. Lister les LIFs déplacées :
++
+`cluster controller-replacement network displaced-interface show`
+
++
+Si des LIF sont déplacées, restaurez le nœud de rattachement vers le nœud 2 :
+
++
+`cluster controller-replacement network displaced-interface restore-home-node`
+
+. Reprenez l'opération pour demander au système d'effectuer les vérifications post-requises :
++
+`system controller replace resume`
+
++
+Le système effectue les vérifications suivantes :
+
++
+** Vérification du quorum du cluster
+** Vérification de l'état du cluster
+** Vérification de la reconstruction d'agrégats
+** Vérification de l'état de l'agrégat
+** Vérification de l'état du disque
+** Vérification de l'état de la LIF de cluster
+** Vérification du volume
+
+
+

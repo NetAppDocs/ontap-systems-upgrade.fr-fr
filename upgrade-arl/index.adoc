@@ -63,7 +63,7 @@ Si votre scénario de mise à niveau est répertorié dans la matrice de systèm
 
 == Mettez à niveau les modèles de contrôleurs dans le même châssis
 
-Si votre scénario de mise à niveau est répertorié dans la matrice de systèmes pris en charge suivante, passez à link:../upgrade-arl-auto-affa900/index.html["Utilisez les commandes « system Controller replace » pour mettre à niveau les modèles de contrôleurs d'un même châssis"] pour lancer la procédure de mise à niveau.
+Si votre scénario de mise à niveau est répertorié dans la matrice des systèmes pris en charge suivante, accédez àlink:../upgrade-arl-auto-in-chassis/index.html["Utilisez les commandes « system Controller replace » pour mettre à niveau les modèles de contrôleurs d'un même châssis"] pour démarrer la procédure de mise à niveau.
 
 .Afficher les systèmes pris en charge
 [%collapsible]
