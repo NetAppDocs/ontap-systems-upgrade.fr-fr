@@ -117,7 +117,7 @@ Entrez `y` pour supprimer tous les paquets.
 `system license show`
 
 +
-Vous pouvez comparer la sortie avec la sortie que vous avez capturée dans link:prepare_nodes_for_upgrade.html#man_prepare_nodes_step30["Étape 30"] De _préparer les nœuds pour la mise à niveau_.
+Vous pouvez comparer le résultat avec le résultat que vous avez capturé danslink:prepare_nodes_for_upgrade.html#man_prepare_nodes_step29["Étape 29"] de _Préparer les nœuds pour la mise à niveau_.
 
 . Configurez les SP en exécutant la commande suivante sur les deux nœuds :
 +

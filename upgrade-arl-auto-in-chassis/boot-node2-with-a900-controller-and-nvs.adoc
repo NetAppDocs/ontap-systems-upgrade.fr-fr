@@ -14,7 +14,7 @@ summary: 'Démarrez le nœud 2 avec les modules de contrôleur de remplacement l
 
 
 [role="lead"]
-Le nœud 2 avec les modules de remplacement est maintenant prêt à démarrer. Les modules de remplacement pris en charge sont répertoriés dans le link:index.html#supported-systems,["matrice des systèmes pris en charge"].
+Le Node2 équipé des modules de remplacement est désormais prêt à démarrer.  Les modules de remplacement pris en charge sont répertoriés dans lelink:decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["matrice des systèmes pris en charge"] .
 
 
 NOTE: Vous ne déplacez les connexions de console et de gestion que lorsque vous effectuez une mise à niveau en remplaçant les modules système.

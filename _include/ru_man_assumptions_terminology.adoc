@@ -7,7 +7,7 @@ Ce document est rédigé avec les hypothèses suivantes :
 * Le matériel de remplacement du contrôleur est nouveau et n'a pas été utilisé.
 +
 
-WARNING: Étant donné que cette procédure suppose que le matériel du contrôleur de remplacement est neuf et n'a pas été utilisé, les étapes requises pour préparer les contrôleurs usagés avec le `wipeconfig` Les commandes ne sont pas incluses dans cette procédure.  Vous devez contacter le support technique si le matériel du contrôleur de remplacement a déjà été utilisé, en particulier si les contrôleurs exécutaient Data ONTAP en mode 7.
+WARNING: Les étapes nécessaires pour préparer les contrôleurs usagés avec le `wipeconfig` Les commandes ne sont pas incluses dans cette procédure car celle-ci suppose que le matériel de contrôleur de remplacement est neuf et n'a pas été utilisé. Vous devez contacter le support technique si le matériel du contrôleur de remplacement a déjà été utilisé, en particulier si les contrôleurs exécutaient Data ONTAP en mode 7.
 
 * Vous avez lu et compris les instructions de mise à niveau de paire de nœuds.
 +

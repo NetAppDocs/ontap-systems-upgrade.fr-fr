@@ -185,7 +185,7 @@ NOTE: Vous devez avoir obtenu la phrase de passe et les données de sauvegarde d
 .. Une fois que le système a de nouveau démarré dans le menu de démarrage spécial, exécutez l'option *(1) démarrage normal*
 +
 
-NOTE: Il se peut que vous rencontriez une erreur à ce stade. Si une erreur se produit, répétez les sous-étapes de la section <<auto_check_4_step22,Étape 22>> jusqu'à ce que le système démarre normalement.
+NOTE: Vous pourriez rencontrer une erreur à cette étape.  En cas d'erreur, répétez les sous-étapes dans<<auto_check_4_step8,Étape 8>> jusqu'à ce que le système démarre normalement.
 
 
 

@@ -9,7 +9,7 @@ CAUTION: Au cours de cette procédure, ne déplacez pas les agrégats du nœud 3
 
 [[verify-partner-sys-id]]
 .Étapes
-. Vérifiez que l'ID du système partenaire est correctement défini sur le nœud 3 :
+. Vérifiez que l'ID du système partenaire est correctement configuré sur le nœud 3 :
 +
 .. Saisissez le niveau de privilège avancé :
 +
@@ -78,7 +78,7 @@ Le node3 "Partner-sysid" est l'ID système du node2, que vous pouvez trouver dan
 +
 Les champs « dernier objet envoyé : » et « dernière envoi : » contiennent le titre du message du dernier message envoyé et l'heure à laquelle le message a été envoyé.
 
-. Transfert des agrégats non racine :
+. [[relocate-step5]]Relocaliser les agrégats non racines :
 +
 .. Définissez le niveau de privilège sur avancé :
 +

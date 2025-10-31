@@ -80,7 +80,12 @@ Par exemple: `ucadmin modify -m fc -t initator 2b`
 . Sélectionnez option `5` dans le menu de démarrage pour le mode maintenance.
 
 
-. [[step8]]Ignorez cette section et accédez àlink:reassign-node2-disks-to-node4.html["Réaffectez les disques du nœud 2 au nœud 4"] si le nœud 4 n'a pas de carte UTA/UTA2 ou de ports UTA/UTA2 intégrés.
+. [[step8]]effectuer l'une des actions suivantes :
++
+** Accédez à <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4>> Si le nœud 4 est doté d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2.
+** Si le nœud 4 ne dispose pas d'une carte UTA/UTA2 ou de ports UTA/UTA2 intégrés, ignorez _Vérifier et configurer les ports UTA/UTA2 sur le nœud 4_ et accédez àlink:reassign-node2-disks-to-node4.html["Réaffectez les disques du nœud 2 au nœud 4"] .
+
+
 
 
 

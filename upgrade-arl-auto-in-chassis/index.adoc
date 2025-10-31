@@ -72,7 +72,7 @@ Si vous ne pouvez pas lier les ports e0a ou e0b du nœud existant aux ports de c
 
 
 * Les systèmes ASA A900, AFF A900 et FAS9500 prennent uniquement en charge une alimentation haut de gamme (200 V à 240 V). Si votre système AFF A700 ou FAS9000 fonctionne avec une alimentation à faible consommation électrique (100 V à 120 V), vous devez convertir l'alimentation d'entrée AFF A700 ou FAS9000 avant d'utiliser cette procédure.
-* Si vous effectuez une mise à niveau à partir d'un système existant avec un temps d'arrêt inclus dans le <<supported-systems-in-chassis,matrice des systèmes pris en charge>>, vous pouvez mettre à niveau le matériel du contrôleur en déplaçant le stockage ou en contactant le support technique. Reportez-vous link:other_references.html["Références"] au lien vers _mise à niveau en déplaçant des volumes ou du stockage_.
+* Si vous effectuez une mise à niveau à partir d'un système existant avec interruption de service incluse dans lelink:decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["matrice des systèmes pris en charge"] Vous pouvez mettre à niveau le matériel du contrôleur en déplaçant le stockage ou en contactant le support technique.  Se référer àlink:other_references.html["Références"] pour accéder à _Mise à niveau par déplacement de volumes ou de stockage_.
 
 
 

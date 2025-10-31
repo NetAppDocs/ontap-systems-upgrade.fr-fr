@@ -34,7 +34,7 @@ Un ou plusieurs agrégats ont été transférés du nœud 1 vers le nœud 2, et 
 La propriété des agrégats transférés semble identique à celle des agrégats non racines pris en charge, car le propriétaire du site n'a pas changé. Lorsque le noeud 1 entre dans `waiting for giveback state`, node2 redonnera tous les agrégats non-root du nœud 1.
 
 .Étapes
-. Terminé link:relocate_non_root_aggr_node1_node2.html#step1["Étape 1"] Dans la section _transférer à nouveau des agrégats non-racines du nœud 1 vers le nœud 2_.
+. Completlink:relocate_non_root_aggr_node1_node2.html#relocate-step1["Étape 1"] dans la section _Relocaliser les agrégats non racines du nœud 1 vers le nœud 2_ à nouveau.
 . Poursuivez la procédure de mise à niveau de la paire de nœuds.
 
 
@@ -62,7 +62,7 @@ NODE1 a déplacé un ou la totalité de ses agrégats vers le nœud 2. LA HAUTE 
 NODE1 prendra en charge l'ensemble des agrégats du nœud 2 ainsi que l'un de ses propres agrégats qu'il avait transférés vers le nœud 2. Lorsque le noeud 2 entre dans `Waiting for Giveback` état, le nœud 1 renvoie tous les agrégats du nœud 2.
 
 .Étapes
-. Terminé link:relocate_non_root_aggr_node1_node2.html#step1["Étape 1"] Dans la section _transférer à nouveau des agrégats non-racines du nœud 1 vers le nœud 2_.
+. Completlink:relocate_non_root_aggr_node1_node2.html#relocate-step1["Étape 1"] dans la section _Relocaliser les agrégats non racines du nœud 1 vers le nœud 2_ à nouveau.
 . Poursuivez la procédure de mise à niveau de la paire de nœuds.
 
 
@@ -111,7 +111,7 @@ Pour les agrégats qui n'ont pas été transférés, une panne se produit au niv
 
 .Étapes
 . Afficher le nœud 2.
-. Transférez les agrégats restants en fin de compte link:relocate_non_root_aggr_node2_node3.html#step1["Étape 1"] à link:relocate_non_root_aggr_node2_node3.html#step3["Étape 3"] Dans la section _transférer des agrégats non-racines du noeud 2 vers celui de noeud 3_.
+. Déplacez les agrégats restants en complétantlink:relocate_non_root_aggr_node2_node3.html#verify-partner-sys-id["Étape 1"] à traverslink:relocate_non_root_aggr_node2_node3.html#relocate-step5["Étape 5"] dans la section _Relocaliser les agrégats non racines du nœud 2 vers le nœud 3_.
 . Poursuivez la procédure de mise à niveau de la paire de nœuds.
 
 
@@ -137,7 +137,7 @@ Le nœud 2 continue de servir les agrégats restants, mais les agrégats qui ont
 
 .Étapes
 . Afficher le nœud 3.
-. Terminé link:relocate_non_root_aggr_node2_node3.html#step3["Étape 3"] Une fois de plus, dans la section _transférer des agrégats non-racines du nœud 2 vers le nœud 3_.
+. Completlink:relocate_non_root_aggr_node2_node3.html#relocate-step5["Étape 5"] à nouveau dans la section _Relocaliser les agrégats non racines du nœud 2 vers le nœud 3_.
 . Poursuivez la procédure de mise à niveau de la paire de nœuds.
 
 
@@ -208,6 +208,6 @@ Une panne se produit au niveau des agrégats non racines qui ont déjà été tr
 
 .Étapes
 . Ajouter le nœud 4.
-. Transférez les agrégats restants qui appartenaient au nœud 2 en effectuant de nouveau le processus link:relocate_node2_non_root_aggr_node3_node4.html#Step1["Étape 1"] à link:relocate_node2_non_root_aggr_node3_node4.html#step3["Étape 3"] Dans _transférer les agrégats non racines du nœud 2 du nœud 3 vers le nœud 4_.
+. Déplacez les agrégats restants qui appartenaient au nœud 2 en complétant à nouveau.link:relocate_node2_non_root_aggr_node3_node4.html#man_relocate_3_4_Step1["Étape 1"] à traverslink:relocate_node2_non_root_aggr_node3_node4.html#step3["Étape 3"] dans _Relocaliser les agrégats non-racine du nœud 2 du nœud 3 vers le nœud 4_.
 . Poursuivez la procédure de mise à niveau de la paire de nœuds.
 

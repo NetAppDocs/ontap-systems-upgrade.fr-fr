@@ -13,6 +13,7 @@ summary: En utilisant la procédure manuelle de mise à niveau du ARL pour mettr
 :imagesdir: ../media/
 
 
+[role="lead"]
 Cette procédure décrit comment mettre à niveau le matériel du contrôleur à l'aide de la relocalisation manuelle des agrégats (ARL) sur les systèmes exécutant ONTAP 9.8 ou version ultérieure.
 
 Vous pouvez utiliser cette procédure ARL si vous effectuez l’une des mises à niveau suivantes :

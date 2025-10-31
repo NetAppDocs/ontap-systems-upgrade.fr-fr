@@ -123,7 +123,7 @@ Entrez `y` pour supprimer tous les paquets.
 +
 Vous pouvez comparer la sortie avec la sortie capturée dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"].
 
-. [[unset_maxwait_system_commands]]si des lecteurs auto-cryptés sont utilisés dans la configuration et que vous avez défini le `kmip.init.maxwait` variable à `off` (par exemple, dans link:install_boot_node4.html#auto_install4_step27["Installez et démarrez node4, étape 27"]), vous devez annuler la variable :
+. [[unset_maxwait_system_commands]]Si des disques à chiffrement automatique sont utilisés dans la configuration et que vous avez défini le `kmip.init.maxwait` variable à `off` (par exemple, danslink:install_boot_node4.html#auto_install4_step22["Installez et démarrez le nœud 4, étape 22"] ), vous devez supprimer la variable :
 +
 `set diag; systemshell -node _node_name_ -command sudo kenv -u -p kmip.init.maxwait`
 

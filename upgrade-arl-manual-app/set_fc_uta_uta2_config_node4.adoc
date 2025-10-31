@@ -21,8 +21,6 @@ Vous devrez peut-être compléter<<Configurez les ports FC sur le nœud 4>> ou<<
 
 Si le nœud 4 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2 (par exemple, les systèmes AFF et FAS introduits à partir d' ONTAP 9.15.1) et que vous mettez à niveau un système avec des disques de stockage, vous pouvez passer àlink:map_ports_node2_node4.html["Mappage des ports du node2 au node4"] .
 
-Cependant, si vous disposez d'un système V-Series ou d'un logiciel de virtualisation FlexArray et que vous êtes connecté aux baies de stockage, et que le nœud 4 n'est pas équipé de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez revenir à la section _Install and Boot node4_, puis reprendre le processus à l'adresse link:install_boot_node4.html#man_install4_Step9["Étape 9"]. Assurez-vous que le noeud 4 dispose d'un espace de rack suffisant. Si le noeud 4 se trouve dans un châssis distinct du noeud 2, vous pouvez placer le noeud 4 au même emplacement que le noeud 3. Si les nœuds 2 et 4 se trouvent dans le même châssis, le nœud 4 se trouve déjà dans son emplacement de rack approprié.
-
 
 
 == Configurez les ports FC sur le nœud 4

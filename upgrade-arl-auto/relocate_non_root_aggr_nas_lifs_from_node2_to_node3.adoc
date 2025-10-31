@@ -59,7 +59,10 @@ Si les agrégats ont été mis hors ligne ou devenaient étrangers sur le nœud3
 Si un volume est hors ligne sur le nœud 3, mettez-le en ligne à l'aide de la commande suivante sur le nœud 3, une fois pour chaque volume :
 
 +
-`volume online -vserver <vserver_name> -volume <volume_name>` < Le  `vserver_name` à utiliser avec cette commande se trouve dans la sortie de la commande précédente  `volume show` commande.
+`volume online -vserver <vserver_name> -volume <volume_name>`
+
++
+Le  `vserver_name` à utiliser avec cette commande se trouve dans la sortie de la commande précédente  `volume show` commande.
 
 . Vérifier que les LIFs ont été déplacées vers les ports appropriés et sont à l'état de `up`. Si l'un des LIFs est arrêté, définissez le statut administratif des LIFs sur `up` En saisissant la commande suivante, une fois pour chaque LIF :
 +

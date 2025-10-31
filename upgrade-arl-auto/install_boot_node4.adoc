@@ -280,5 +280,5 @@ Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur 
 .Et la suite ?
 * Si vous avez un système avec une configuration FC ou UTA/UTA2,link:set_fc_or_uta_uta2_config_node4.html["définir la configuration FC ou UTA/UTA2 sur node4"] .
 * Si vous n'avez pas de configuration FC ou UTA/UTA2,link:reassign-node2-disks-to-node4.html#reassign-node2-node4-step1["réaffecter les disques du nœud 2 au nœud 4, étape 1"] afin que node4 puisse reconnaître les disques de node2.
-* Si vous avez une configuration MetroCluster ,link:reassign-node1-disks-to-node3.html#reassign-node1-node3-step1["réaffecter les disques du nœud 1 au nœud 3"] .
+* Si vous avez une configuration MetroCluster ,link:set_fc_or_uta_uta2_config_node4.html["définir la configuration FC ou UTA/UTA2 sur node4"] pour détecter les disques attachés au nœud.
 

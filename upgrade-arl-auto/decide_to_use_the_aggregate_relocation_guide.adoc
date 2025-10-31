@@ -62,7 +62,7 @@ NOTE: Si la combinaison de modèle de mise à niveau du contrôleur ne se trouve
 
 ^1^la mise à niveau automatisée du ARL pour le système AFF A700 est prise en charge à partir de ONTAP 9.7P2.
 
-^2^si vous effectuez une mise à jour vers un AFF A800 ou un système prenant en charge des disques internes et externes, vous devez suivre les instructions spécifiques relatives à l'agrégat racine sur des disques NVMe internes. Voir link:set_fc_or_uta_uta2_config_on_node3.html#step14["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3, étape 14"] et link:set_fc_or_uta_uta2_config_node4.html#step14["Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4, étape 14"].
+^2^Si vous effectuez une mise à jour vers un AFF A800 ou un système prenant en charge les disques internes et externes, vous devez suivre des instructions spécifiques pour l'agrégat racine sur les disques NVMe internes.  Se référer àlink:reassign-node1-disks-to-node3.html#auto_check3_step9["Réaffectez les disques du nœud 1 au nœud 3, étape 9"] etlink:reassign-node2-disks-to-node4.html#auto_check_4_step9["Réaffectez les disques du nœud 2 au nœud 4, étape 9"] .
 
 ^3^la mise à niveau automatisée d'un AFF A300 vers un système AFF A800 est prise en charge par ONTAP 9.7P5.
 

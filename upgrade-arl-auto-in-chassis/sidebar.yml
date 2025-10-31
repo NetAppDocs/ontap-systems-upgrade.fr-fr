@@ -29,7 +29,7 @@ entries:
       au nœud1 vers le nœud2
     url: "/upgrade-arl-auto-in-chassis/relocate-non-root-aggr-and-nas-data-lifs-node1-node2.html"
   - title: Le transfert d'agrégats a échoué ou a été veto
-    url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node1.html"
+    url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node2.html"
   - title: Retirer le nœud 1
     url: "/upgrade-arl-auto-in-chassis/retire-node1.html"
   - title: Remplacez les modules système du nœud 1
@@ -64,7 +64,7 @@ entries:
       vers le nœud 1
     url: "/upgrade-arl-auto-in-chassis/relocate-non-root-aggr-nas-lifs-from-node2-to-node1.html"
   - title: Le transfert d'agrégats a échoué ou a été veto
-    url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node2.html"
+    url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node1.html"
   - title: Retrait du nœud 2
     url: "/upgrade-arl-auto-in-chassis/retire-node2.html"
 - title: Étape 5. Installez les modules système de remplacement sur le nœud 2

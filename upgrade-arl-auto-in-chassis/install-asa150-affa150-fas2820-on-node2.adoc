@@ -34,7 +34,7 @@ WARNING: N'insérez pas complètement le module de contrôleur dans le châssis 
 . Reliez les ports de gestion et de console au module de contrôleur node2.
 +
 
-NOTE: Étant donné que le châssis est déjà sous tension, le nœud 2 démarre dès qu'il est complètement installé. Pour empêcher le démarrage du nœud 2, connectez la console et les câbles de gestion avant d'insérer complètement le module de contrôleur.
+NOTE: Comme le châssis est déjà sous tension, le nœud 2 démarre dès qu'il est complètement inséré.  Pour empêcher le démarrage du nœud 2, connectez les câbles de la console et de gestion avant d'insérer complètement le module de contrôleur.
 
 . Poussez fermement le module de contrôleur dans le châssis jusqu'à ce qu'il rencontre le fond de panier central et qu'il soit bien en place.
 +

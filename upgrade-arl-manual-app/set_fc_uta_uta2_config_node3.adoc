@@ -22,9 +22,7 @@ Vous devrez peut-être compléter<<Configurez les ports FC sur le nœud 3>> ou<<
 
 NOTE: Les documents marketing NetApp peuvent utiliser le terme « UTA2 » pour faire référence aux adaptateurs et ports CNA. Cependant, l'interface de ligne de commandes utilise le terme « CNA ».
 
-* Si le nœud 3 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2 (par exemple, les systèmes AFF et FAS introduits à partir d' ONTAP 9.15.1) et que vous mettez à niveau un système avec des disques de stockage, vous pouvez passer à l'étape suivante.link:map_ports_node1_node3.html["Mapper les ports du node1 vers le node3"] .
-* Cependant, si vous disposez d'un système V-Series ou d'un système doté du logiciel de virtualisation FlexArray avec des baies de stockage, et que le nœud 3 ne dispose pas de ports FC intégrés, de ports UTA/UTA intégrés ou d'une carte UTA/UTA2, retournez à l'installation et au démarrage sur le nœud 3_, puis reprenez le contrôle link:install_boot_node3.html#man_install3_step22["Étape 22"].
-
+Si le nœud 3 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2 (par exemple, les systèmes AFF et FAS introduits à partir d' ONTAP 9.15.1) et que vous mettez à niveau un système avec des disques de stockage, vous pouvez passer à l'étape suivante.link:map_ports_node1_node3.html["Mapper les ports du node1 vers le node3"] .
 
 
 
