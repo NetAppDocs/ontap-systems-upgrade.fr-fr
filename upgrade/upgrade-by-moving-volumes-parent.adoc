@@ -17,7 +17,7 @@ La mise à niveau du matériel du contrôleur en déplaçant des volumes n'est p
 * link:upgrade-considerations.html["Considérations relatives à la mise à niveau du matériel du contrôleur"]
 
 
-Pour mettre à niveau en déplaçant des volumes, vous préparez les nœuds d'origine et joignez les nouveaux nœuds au cluster. Vous déplacez des volumes vers les nouveaux nœuds, configurez des LIF, puis déconnectez les nœuds d'origine du cluster.
+Pour effectuer une mise à niveau en déplaçant des volumes, vous préparez les nœuds d'origine et joignez les nouveaux nœuds au cluster. Vous déplacez les volumes vers les nouveaux nœuds, configurez les LIF et supprimez les nœuds d'origine du cluster.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"]link:upgrade-prepare-when-moving-volumes.html["Préparation à la mise à niveau lors du déplacement de volumes"]
 [role="quick-margin-para"]
@@ -43,9 +43,9 @@ Après avoir déplacé les volumes des nœuds d'origine, vous migrez les LIF de 
 [role="quick-margin-para"]
 Selon le contenu de votre cluster et l'environnement de votre cluster, vous déplacez, supprimez ou créez des LIF SAN, ou recréez des LIF SAN supprimées.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sept"]link:upgrade-unjoin-original-nodes-move-volumes.html["Dissocier les nœuds d'origine du cluster"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sept"]link:upgrade-remove-original-nodes.html["Supprimez les nœuds d'origine du cluster"]
 [role="quick-margin-para"]
-Une fois les volumes déplacés vers les nouveaux nœuds, déjoignez les nœuds d'origine du cluster. Lorsque vous annulez l'assemblage d'un nœud, la configuration du nœud est effacée et tous les disques sont initialisés.
+Une fois les volumes déplacés vers les nouveaux nœuds, vous supprimez les nœuds d'origine du cluster. Lorsque vous supprimez un nœud, sa configuration est effacée et tous les disques sont initialisés.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-8.png["Huit"]link:upgrade-complete-move-volumes.html["Terminez la mise à niveau"]
 [role="quick-margin-para"]

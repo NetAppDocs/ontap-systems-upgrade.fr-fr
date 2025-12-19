@@ -38,7 +38,7 @@ Mettez à niveau en utilisant l'une des méthodes suivantes :
 
 * link:upgrade/upgrade-decide-to-use-this-guide.html["Déplacer des volumes"]
 +
-Cela nécessite d'ajouter les nouveaux nœuds, de déplacer les volumes et les LIF vers les nouveaux nœuds, et de retirer du cluster les nœuds que vous souhaitez supprimer.  Si vous mettez à niveau un cluster sans commutateur à deux nœuds, convertissez-le en un cluster connecté à un commutateur à l'aide d'une paire de commutateurs de cluster avant d'ajouter de nouveaux nœuds.
+Cela nécessite d'ajouter les nouveaux nœuds, de déplacer les volumes et les LIF vers les nouveaux nœuds, et de retirer du cluster les nœuds que vous souhaitez supprimer. Si vous mettez à niveau un cluster sans commutateur à deux nœuds, convertissez-le en un cluster connecté à un commutateur à l'aide d'une paire de commutateurs de cluster avant d'ajouter de nouveaux nœuds.
 
 * link:upgrade-arl/index.html["Utiliser la relocalisation agrégée"]
 +

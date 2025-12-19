@@ -35,7 +35,7 @@ Pour plus d'informations, reportez-vous à la section https://docs.netapp.com/us
 
 == Supprimer les SAN LIF qui ne sont plus nécessaires
 
-Si le cluster se trouve dans un environnement SAN, vous devez supprimer toutes les LIFs SAN dont vous n'avez plus besoin des nœuds initiaux avant de pouvoir dissocier les nœuds d'origine du cluster.
+Si le cluster se trouve dans un environnement SAN, vous devez supprimer des nœuds d'origine toutes les LIF SAN dont vous n'avez plus besoin avant de pouvoir retirer ces nœuds du cluster.
 
 .Étapes
 . Si vous avez des initiateurs iSCSI, procédez comme suit :
@@ -92,3 +92,6 @@ js11      ps0          mixed    LIF1,                   igroup1
 == Créez de nouvelles LIF SAN ou recréez des LIF SAN supprimées
 
 Selon les exigences de l'environnement du cluster, vous pouvez décider de créer de nouvelles LIF SAN ou de recréer des LIF SAN que vous avez supprimées précédemment dans cette procédure. Vous pouvez créer ou recréer des LIF SAN à l'aide du https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_creating_network_interfaces.html["création d'interfaces réseau"^] Procédure de la documentation _Cluster Management utilisation de OnCommand® System Manager_.
+
+.Et la suite ?
+link:upgrade-remove-original-nodes.html["Supprimez les nœuds d'origine du cluster"]

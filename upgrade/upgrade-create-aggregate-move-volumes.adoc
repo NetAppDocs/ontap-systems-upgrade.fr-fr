@@ -112,3 +112,6 @@ Le fait de forcer l'opération de déplacement du volume peut interrompre l'acc�
 `volume show -vserver _svm_name_`
 
 
+
+.Et la suite ?
+link:upgrade-move-lifs-to-new-nodes.html["Déplacez les LIF de données non-SAN et les LIF de cluster-management vers les nouveaux nœuds"]

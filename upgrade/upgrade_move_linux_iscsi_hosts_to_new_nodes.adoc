@@ -493,3 +493,6 @@ sanlun lun show -p
 multipath -ll -d
 ----
 
+
+.Et la suite ?
+link:upgrade-create-aggregate-move-volumes.html["Création d'un agrégat et déplacement des volumes vers les nouveaux nœuds"]

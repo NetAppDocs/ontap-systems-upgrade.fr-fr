@@ -1,0 +1,143 @@
+---
+permalink: upgrade/upgrade-remove-original-nodes.html 
+sidebar: sidebar 
+keywords: volume, move, node, remove, original, cluster, configuration, disk, initialize, remove the original nodes from the cluster 
+summary: 'Une fois les volumes déplacés vers les nouveaux nœuds, vous supprimez les nœuds d"origine du cluster. Lorsque vous supprimez un nœud, sa configuration est effacée et tous les disques sont initialisés.' 
+---
+= Supprimez les nœuds d'origine du cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Après avoir déplacé les volumes des nœuds d'origine vers les nouveaux nœuds et déplacé ou supprimé les LIF de données, vous retirez les nœuds d'origine du cluster. Lorsque vous supprimez un nœud, sa configuration est effacée et tous les disques sont initialisés.
+
+.Étapes
+. [[disable-ha]]Désactiver la configuration de haute disponibilité (HA) sur les nœuds d'origine :
++
+`storage failover modify -node <original_node_name> -enabled false`
+
+. Accéder au niveau de privilège avancé :
++
+`set -privilege advanced`
+
+. Identifier le nœud qui possède epsilon :
++
+`cluster show`
+
++
+Dans l'exemple suivant, « node0 » contient actuellement epsilon :
+
++
+[listing]
+----
+cluster::*>
+Node                 Health  Eligibility  Epsilon
+-------------------- ------- ------------ ------------
+node0                true    true         true
+node1                true    true         false
+node2                true    true         false
+node3                true    true         false
+----
+. [[epsilon-true]]Si l'un des nœuds d'origine contient epsilon, déplacez epsilon vers un nœud que vous ne supprimez pas du cluster :
++
+.. Supprimez epsilon du nœud d'origine :
++
+`cluster modify -node <original_node_name> -epsilon false`
+
+.. Attribuer epsilon à un nœud différent :
++
+`cluster modify -node <new_node_name> -epsilon true`
+
+
+
+. Identifier le nœud maître actuel :
++
+`cluster ring show`
+
++
+Le nœud maître est le nœud qui héberge des processus tels que `mgmt`, `vldb`, `vifmgr`, `bcomd`, et `crs`.
+
+. Si le nœud que vous supprimez est le nœud maître actuel, activez l'élection d'un nœud restant dans le cluster en tant que nœud maître :
++
+.. Rendre le nœud maître actuel inéligible pour participer au cluster :
++
+`cluster modify -node <original_node_name> -eligibility false`
+
++
+Le nœud est considéré comme non fonctionnel jusqu'à ce que son éligibilité soit rétablie. Lorsque le nœud maître devient inéligible, l'un des nœuds restants est élu par le quorum du cluster comme nouveau maître.
+
++
+[NOTE]
+====
+Si vous effectuez cette étape sur le premier nœud d'une paire HA, vous devez marquer uniquement ce nœud comme inéligible. Ne modifiez pas le statut du partenaire HA.
+
+Si le nœud partenaire est sélectionné comme nouveau maître, vous devez vérifier s'il détient epsilon. Si le nœud partenaire détient epsilon, vous devez déplacer epsilon vers un autre nœud restant dans le cluster avant de le rendre inéligible. Vous procédez ainsi lorsque vous répétez ces étapes pour supprimer le nœud partenaire.
+
+====
+.. Rendre à nouveau l'ancien nœud maître éligible pour participer au cluster :
++
+`cluster modify -node <node_name> -eligibility true`
+
+
+
+. Connectez-vous à l'interface LIF de gestion de nœud distant ou à l'interface LIF de gestion de cluster sur un nœud qui reste dans le cluster et supprimez chaque nœud d'origine du cluster (niveau de privilège avancé) :
++
+Avec le nom du nœud :
+
++
+[source, cli]
+----
+cluster remove-node -node <original_node_name>
+----
++
+Avec l'adresse IP du nœud :
+
++
+[source, cli]
+----
+cluster remove-node -cluster_ip <original_node_ip>
+----
++
+Si vous disposez d'un cluster de versions mixtes et que vous supprimez le dernier nœud de version inférieure, utilisez la `-skip-last-low-version-node-check` paramètre avec ces commandes.
+
++
+Le système vous informe des éléments suivants :
+
++
+** Vous devez également supprimer le partenaire de basculement du nœud du cluster.
+** Une fois le nœud retiré et avant qu'il puisse rejoindre un cluster, vous devez utiliser l'option du menu de démarrage *(4) Nettoyer la configuration et initialiser tous les disques* ou l'option *(9) Configurer le partitionnement avancé du disque* pour effacer la configuration du nœud et initialiser tous les disques.
++
+Un message d'erreur est généré si vous devez résoudre certaines conditions avant de supprimer le nœud. Par exemple, le message peut indiquer que le nœud possède des ressources partagées que vous devez supprimer ou que le nœud se trouve dans une configuration de cluster HA ou une configuration de basculement de stockage que vous devez désactiver.
+
++
+Si le nœud est le maître du quorum, le cluster perd brièvement le quorum puis le rétablit. Cette perte de quorum est temporaire et n'affecte aucune opération de données.
+
+
+
+. Si un message d'échec indique des conditions d'erreur, corrigez-les et relancez le programme. `cluster remove-node` ou `cluster unjoin` commande.
++
+Une fois qu'un nœud est correctement retiré du cluster, il redémarre automatiquement.
+
+. Si vous réutilisez le nœud, effacez sa configuration et initialisez tous les disques :
++
+.. Pendant le processus de démarrage, appuyez sur Ctrl-C pour afficher le menu de démarrage lorsque vous y êtes invité.
+.. Sélectionnez l'option du menu de démarrage *(4) Nettoyer la configuration et initialiser tous les disques*.
+
+
+. [[return-admin]]Retour au niveau de privilège d'administrateur sur l'un des nouveaux nœuds du cluster :
++
+[source, cli]
+----
+set -privilege admin
+----
+. Répétez les étapes <<disable-ha,1>> à <<return-admin,10>> pour retirer le partenaire de basculement du cluster.
+. Si le cluster ne comporte que deux nœuds, configurez la haute disponibilité pour le cluster à deux nœuds :
++
+`cluster ha modify -configured true`
+
+
+
+.Et la suite ?
+link:upgrade-complete-move-volumes.html["Terminer la mise à niveau des volumes de déplacement"]
