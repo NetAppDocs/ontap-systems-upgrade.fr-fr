@@ -14,16 +14,20 @@ summary: 'Vérifiez que les LIF de données NAS du nœud 1 sur le nœud 2 sont d
 
 
 [role="lead"]
-Après avoir vérifié la configuration réseau sur le nœud 1 et avant de déplacer des agrégats du nœud 2 vers le nœud 1, vérifiez que les LIF de données NAS appartenant au nœud 1 qui se trouvent actuellement sur le nœud 2 sont déplacées du nœud 2 vers le nœud 1. Vous devez également vérifier que les LIFs SAN existent sur le noeud 1.
+Après avoir vérifié la configuration réseau sur le nœud 1, vous devez déplacer les LIF de données NAS appartenant au nœud 1 du nœud 2 vers le nœud 1 et confirmer que les LIF SAN existent sur le nœud 1.
 
 .Description de la tâche
-Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Une fois le nœud 1 mis en ligne, vous devez vérifier que les LIF sont saines et situées sur les ports appropriés.
+Les LIF distantes gèrent le trafic vers les LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour le bon fonctionnement du cluster ou du service pendant la mise à niveau. Les interfaces logiques SAN ne sont déplacées que lorsqu'elles doivent être mappées sur de nouveaux ports.
+
+Vous vérifiez que les LIF sont en bon état et situées sur les ports appropriés après avoir mis le nœud 1 en ligne.
 
 .Étapes
 . Reprendre l'opération de relocalisation :
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 Le système effectue les tâches suivantes :
 
@@ -38,12 +42,14 @@ Le système effectue les tâches suivantes :
 
 --
 +
-L'opération s'interrompt à cette étape de la vérification de la capacité d'accessibilité du réseau.
+Le système interrompt l'opération à ce stade de la vérification de la connectivité du réseau
 
 . Effectuez une vérification de l'accessibilité du réseau :
 +
-`network port reachability show -node node1`
-
+[source, cli]
+----
+network port reachability show -node node1
+----
 +
 Vérifiez que tous les ports connectés, y compris le groupe d'interfaces et les ports VLAN, affichent leur état comme `OK`.
 
@@ -71,8 +77,10 @@ Pour toutes les autres mises à niveau du système, passez à <<resume_relocatio
 +
 .. Réaffectez les LIF SAN FCP utilisées pour l'accès aux données FCP ou FC-NVMe aux ports de base appropriés :
 +
-`network interface show -vserver <vserver_hosting_fcp_lifs>`
-
+[source, cli]
+----
+network interface show -vserver <vserver_hosting_fcp_lifs>
+----
 .. Pour les LIF avec le nœud actuel comme nœud mis à niveau 1 et le port actuel signale « status oper » comme « - » (car le port existait sur le nœud AFF A800 mais n'existe pas sur le nœud AFF A90), modifiez le port actuel avant de pouvoir le mettre en ligne.
 +
 Vérifier que la connectivité physique est établie sur le port FC target où le LIF FC doit être déplacé :
@@ -81,16 +89,22 @@ Vérifier que la connectivité physique est établie sur le port FC target où l
 --
 ... Définir le statut de la LIF sur « down » :
 +
-`network interface modify -vserver <vserver_name> -lif <lif_name>  -status-admin down`
-
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <lif_name>  -status-admin down
+----
 ... Modifier le home port de la LIF :
 +
-`network interface modify -vserver <vserver_name> -lif <lif_name> - home-node <node1> -home-port <FC_target_port>`
-
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <lif_name> - home-node <node1> -home-port <FC_target_port>
+----
 ... Régler le statut de la LIF sur « UP » :
 +
-`network interface modify -vserver <vserver> -lif <lif_name>  -status-admin up`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <lif_name>  -status-admin up
+----
 
 
 --
@@ -101,8 +115,10 @@ Répétez les sous-étapes a et b pour chaque LIF FC SAN qui est home sur le nod
 
 . [[resume_relocation_step4]]reprendre l'opération de déplacement :
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 Le système effectue les vérifications suivantes :
 
@@ -121,25 +137,58 @@ L'opération de remplacement du contrôleur s'interrompt une fois le transfert d
 
 . Vérifier le statut du transfert d'agrégats et du déplacement des LIF de données NAS :
 +
-`system controller replace show-details`
-
+[source, cli]
+----
+system controller replace show-details
+----
 +
 Si la procédure de remplacement du contrôleur est suspendue, vérifiez et corrigez l'erreur, le cas échéant, puis faites-la `resume` pour poursuivre l'opération.
 
-. Si nécessaire, restaurez et restaurez les LIF déplacées. Lister les LIFs déplacées :
+. Si nécessaire, restaurez et rétablissez les LIF déplacées ou migrez et modifiez manuellement les LIF du nœud 1 qui n'ont pas pu être déplacées automatiquement vers le nœud 1.
 +
-`cluster controller-replacement network displaced-interface show`
-
+[role="tabbed-block"]
+====
+.Restaurez et rétablissez les LIF déplacés
+--
+.. Veuillez indiquer les LIF déplacés :
 +
-Si des LIF sont déplacées, restaurer le nœud de rattachement vers le nœud 1 :
-
+[source, cli]
+----
+cluster controller-replacement network displaced-interface show
+----
+.. Si des LIF sont déplacées, restaurer le nœud de rattachement vers le nœud 1 :
 +
-`cluster controller-replacement network displaced-interface restore-home-node`
+[source, cli]
+----
+cluster controller-replacement network displaced-interface restore-home-node -node <node1_nodename> -vserver <vserver name> -lif-name <lif_name>
+----
 
+
+--
+.Migration et modification manuelles des LIF
+--
+.. Migrer vers le nœud 1 les LIF qui n'ont pas pu être déplacés automatiquement :
++
+[source, cli]
+----
+network interface migrate -vserver <vserver name> -lif <lif_name> -destination-node <node1_nodename> -destination-port <port_on_node1>
+----
+.. Modifiez le nœud d'origine et le port d'origine pour les LIF migrées :
++
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <data_lif_name> -home-node <node1_nodename> -home-port <home_port>
+----
+
+
+--
+====
 . Reprenez l'opération pour demander au système d'effectuer les vérifications post-requises :
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 Le système effectue les vérifications suivantes :
 

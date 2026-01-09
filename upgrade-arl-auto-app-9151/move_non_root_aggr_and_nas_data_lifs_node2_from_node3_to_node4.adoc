@@ -27,30 +27,44 @@ Vérifier les LIFs SAN sur le node4 :
 +
 .. Modifier toute LIF SAN iSCSI signalant un état de fonctionnement « arrêté » aux nouveaux ports de données :
 +
-`network interface modify -vserver <vserver> -lif <iscsi_san_lif> admin down`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <iscsi_san_lif> admin down
+----
 +
-`network interface modify -vserver <vserver> -lif <iscsi_san_lif> port <new_port> node <node>`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <iscsi_san_lif> port <new_port> node <node>
+----
 +
-`network interface modify -vserver <vserver> -lif <iscsi_san_lif>`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <iscsi_san_lif>
+----
 .. Modifier toutes les LIFs FC et SAN NVMe/FC qui home sur le nouveau contrôleur et indiquent un statut opérationnel « down » aux ports FCP sur le nouveau contrôleur :
 +
-`network interface modify -vserver <vserver> -lif <fc_san_lif> admin down`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <fc_san_lif> admin down
+----
 +
-`network interface modify -vserver <vserver> -lif <fc_san_lif> port <new_port> node <node>`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <fc_san_lif> port <new_port> node <node>
+----
 +
-`network interface modify -vserver <vserver> -lif <fc_san_lif>`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <fc_san_lif>
+----
 
 
 . Reprendre l'opération de relocalisation :
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 Le système effectue les tâches suivantes :
 
@@ -67,8 +81,10 @@ L'opération s'interrompt à cette étape de la vérification de la capacité d'
 
 . Reprendre l'opération de relocalisation :
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 Le système effectue les vérifications suivantes :
 
@@ -82,25 +98,58 @@ Après ces vérifications, le système relocalise les agrégats non racines et l
 
 . Vérifier le statut du transfert d'agrégats et du déplacement des LIF de données NAS :
 +
-`system controller replace show-details`
-
+[source, cli]
+----
+system controller replace show-details
+----
 +
 Si la procédure de remplacement du contrôleur est suspendue, vérifiez et corrigez l'erreur, le cas échéant, puis faites-la `resume` pour poursuivre l'opération.
 
-. Si nécessaire, restaurez et restaurez les LIF déplacées. Lister les LIFs déplacées :
+. Si nécessaire, restaurez et rétablissez les LIF déplacées ou migrez et modifiez manuellement les LIF du nœud 2 qui n'ont pas pu être déplacées automatiquement vers le nœud 4.
 +
-`cluster controller-replacement network displaced-interface show`
-
+[role="tabbed-block"]
+====
+.Restaurez et rétablissez les LIF déplacés
+--
+.. Veuillez indiquer les LIF déplacés :
 +
-Si des LIF sont déplacées, restaurez le nœud de rattachement vers le nœud4 :
-
+[source, cli]
+----
+cluster controller-replacement network displaced-interface show
+----
+.. Si des LIF sont déplacées, restaurez le nœud de rattachement vers le nœud4 :
 +
-`cluster controller-replacement network displaced-interface restore-home-node`
+[source, cli]
+----
+cluster controller-replacement network displaced-interface restore-home-node -node <node4_nodename> -vserver <vserver name> -lif-name <lif_name>
+----
 
+
+--
+.Migration et modification manuelles des LIF
+--
+.. Migrer vers le nœud 4 les LIF qui n'ont pas pu être déplacés automatiquement :
++
+[source, cli]
+----
+network interface migrate -vserver <vserver name> -lif <lif_name> -destination-node <node4_nodename> -destination-port <port_on_node4>
+----
+.. Modifiez le nœud d'origine et le port d'origine pour les LIF migrées :
++
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <data_lif_name> -home-node <node4_nodename> -home-port <home_port>
+----
+
+
+--
+====
 . Reprenez l'opération pour demander au système d'effectuer les vérifications post-requises :
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 Le système effectue les vérifications suivantes :
 

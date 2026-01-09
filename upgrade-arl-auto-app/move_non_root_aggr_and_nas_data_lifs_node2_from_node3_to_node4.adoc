@@ -14,10 +14,12 @@ summary: 'Vérifiez que les LIF de données NAS du nœud 2 qui se trouvent sur l
 
 
 [role="lead"]
-Après avoir vérifié la configuration réseau sur le nœud 4 et avant de transférer les agrégats du nœud 3 vers le nœud 4, vous devez vérifier que les LIF de données NAS appartenant au nœud 2 actuellement transférées du nœud 3 vers le nœud 4 sont bien transférées. Vous devez également vérifier que des LIFs SAN existent sur le nœud4.
+Après avoir vérifié la configuration réseau sur le nœud 4, vous devez déplacer les LIF de données NAS appartenant au nœud 2 du nœud 3 vers le nœud 4 et confirmer que les LIF SAN existent sur le nœud 4.
 
 .Description de la tâche
-Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Vous devez vérifier que les LIF sont en bon état et situées sur les ports appropriés une fois que vous avez mis le nœud 4 en ligne.
+Les LIF distantes gèrent le trafic vers les LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour le bon fonctionnement du cluster ou du service pendant la mise à niveau. Les interfaces logiques SAN ne sont déplacées que lorsqu'elles doivent être mappées sur de nouveaux ports.
+
+Vous vérifiez que les LIF sont en bon état et situées sur les ports corrects après avoir mis le nœud 4 en ligne.
 
 
 NOTE: Si vous modifiez la vitesse de port des cartes d'interface réseau Ethernet T6 ou des ports de carte mère, vous pouvez constater que des paquets mal formés sont reçus après la conversion de vitesse. Voir https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["Code de bogue en ligne de NetApp Bugs 1570339"^] et l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["Erreurs CRC sur les ports T6 après la conversion de 40 GbE à 100 GbE"^] pour obtenir des conseils.
@@ -25,8 +27,10 @@ NOTE: Si vous modifiez la vitesse de port des cartes d'interface réseau Etherne
 .Étapes
 . Reprendre l'opération de relocalisation :
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 Le système effectue les tâches suivantes :
 
@@ -39,12 +43,14 @@ Le système effectue les tâches suivantes :
 
 
 +
-L'opération s'interrompt à cette étape de la vérification de la capacité d'accessibilité du réseau.
+Le système interrompt l'opération à ce stade de la vérification de la connectivité réseau.
 
 . Reprendre l'opération de relocalisation :
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 Le système effectue les vérifications suivantes :
 
@@ -58,25 +64,58 @@ Après ces vérifications, le système relocalise les agrégats non racines et l
 
 . Vérifier le statut du transfert d'agrégats et du déplacement des LIF de données NAS :
 +
-`system controller replace show-details`
-
+[source, cli]
+----
+system controller replace show-details
+----
 +
 Si la procédure de remplacement du contrôleur est suspendue, vérifiez et corrigez l'erreur, le cas échéant, puis faites-la `resume` pour poursuivre l'opération.
 
-. Si nécessaire, restaurez et restaurez les LIF déplacées. Lister les LIFs déplacées :
+. Si nécessaire, restaurez et rétablissez les LIF déplacées ou migrez et modifiez manuellement les LIF du nœud 2 qui n'ont pas pu être déplacées automatiquement vers le nœud 4.
 +
-`cluster controller-replacement network displaced-interface show`
-
+[role="tabbed-block"]
+====
+.Restaurez et rétablissez les LIF déplacés
+--
+.. Veuillez indiquer les LIF déplacés :
 +
-Si des LIF sont déplacées, restaurez le nœud de rattachement vers le nœud4 :
-
+[source, cli]
+----
+cluster controller-replacement network displaced-interface show
+----
+.. Si des LIF sont déplacées, restaurez le nœud de rattachement vers le nœud4 :
 +
-`cluster controller-replacement network displaced-interface restore-home-node`
+[source, cli]
+----
+cluster controller-replacement network displaced-interface restore-home-node -node <node4_nodename> -vserver <vserver name> -lif-name <lif_name>
+----
 
+
+--
+.Migration et modification manuelles des LIF
+--
+.. Migrer vers le nœud 4 les LIF qui n'ont pas pu être déplacés automatiquement :
++
+[source, cli]
+----
+network interface migrate -vserver <vserver name> -lif <lif_name> -destination-node <node4_nodename> -destination-port <port_on_node4>
+----
+.. Modifiez le nœud d'origine et le port d'origine pour les LIF migrées :
++
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <data_lif_name> -home-node <node4_nodename> -home-port <home_port>
+----
+
+
+--
+====
 . Reprenez l'opération pour demander au système d'effectuer les vérifications post-requises :
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 Le système effectue les vérifications suivantes :
 

@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Vous devez netboot nœud4 si cette version de ONTAP 9 n'est pas installée sur le nœud 2. Une fois le noeud 4 installé, démarrez-le à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système, en suivant les instructions de la section link:prepare_for_netboot.html["Préparation à la mise sur le réseau"].
+Vous devez redémarrer le nœud 4 sur le réseau si la version ONTAP sur le nœud 4 est différente de la version ONTAP sur le nœud 2. Après avoir installé node4, démarrez-le à partir de l'image ONTAP 9 stockée sur le serveur web. Vous pouvez ensuite télécharger les fichiers appropriés sur le périphérique de démarrage pour les démarrages système ultérieurs en suivant les instructions du link:prepare_for_netboot.html["Préparation à la mise sur le réseau"].
 
 [IMPORTANT]
 ====

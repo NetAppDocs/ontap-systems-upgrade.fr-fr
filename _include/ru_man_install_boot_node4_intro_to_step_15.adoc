@@ -5,9 +5,9 @@
 Vous devez installer NODE4 dans le rack, transférer les connexions node2 vers node4 et démarrer node4. Vous devez également réaffecter toutes les unités de rechange du nœud 2, tous les disques appartenant à la racine et tous les agrégats non racines qui n'ont pas été transférés auparavant sur le nœud 3.
 
 .Description de la tâche
-Vous devez démarrer le nœud 4 via le réseau si la version d'ONTAP 9 n'est pas identique à celle installée sur le nœud 2. Une fois le noeud 4 installé, démarrez-le à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers appropriés sur le support de démarrage pour les démarrages ultérieurs du système en suivant les instructions de la section link:prepare_for_netboot.html["Préparation à la mise sur le réseau"] .
+Vous devez démarrer le nœud 4 sur le réseau si la version ONTAP sur le nœud 4 est différente de la version ONTAP sur le nœud 2. Après avoir installé node4, démarrez-le à partir de l'image ONTAP 9 stockée sur le serveur web. Vous pouvez ensuite télécharger les fichiers appropriés sur le périphérique de démarrage pour les démarrages système ultérieurs en suivant les instructions du link:prepare_for_netboot.html["Préparation à la mise sur le réseau"]
 
-Cependant, vous n'êtes pas obligé de démarrer le nœud 4 en réseau s'il possède la même version ou une version ultérieure d'ONTAP 9 installée sur le nœud 2.
+Cependant, vous n'avez pas besoin de démarrer le nœud 4 sur le réseau si la version ONTAP sur le nœud 4 est identique ou ultérieure à la version ONTAP sur le nœud 2.
 
 [IMPORTANT]
 ====

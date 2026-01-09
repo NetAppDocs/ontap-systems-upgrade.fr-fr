@@ -25,8 +25,10 @@ NOTE: Si vous modifiez la vitesse de port des cartes d'interface réseau Etherne
 .Étapes
 . Reprendre l'opération de relocalisation :
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 Le système effectue les tâches suivantes :
 
@@ -43,8 +45,10 @@ L'opération s'interrompt à cette étape de la vérification de la capacité d'
 
 . Reprendre l'opération de relocalisation :
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 Le système effectue les vérifications suivantes :
 
@@ -58,25 +62,58 @@ Après ces vérifications, le système relocalise les agrégats non-racine et le
 
 . Vérifier le statut du transfert d'agrégats et du déplacement des LIF de données NAS :
 +
-`system controller replace show-details`
-
+[source, cli]
+----
+system controller replace show-details
+----
 +
 Si la procédure de remplacement du contrôleur est suspendue, vérifiez et corrigez l'erreur, le cas échéant, puis faites-la `resume` pour poursuivre l'opération.
 
-. Si nécessaire, restaurez et restaurez les LIF déplacées. Lister les LIFs déplacées :
+. Si nécessaire, restaurez et rétablissez les LIF déplacées ou migrez et modifiez manuellement les LIF du nœud 1 qui n'ont pas pu être déplacées automatiquement vers le nœud 3.
 +
-`cluster controller-replacement network displaced-interface show`
-
+[role="tabbed-block"]
+====
+.Restaurez et rétablissez les LIF déplacés
+--
+.. Veuillez indiquer les LIF déplacés :
 +
-Si des LIF sont déplacées, restaurer le nœud de rattachement vers le nœud3 :
-
+[source, cli]
+----
+cluster controller-replacement network displaced-interface show
+----
+.. Si des LIF sont déplacées, restaurer le nœud de rattachement vers le nœud3 :
 +
-`cluster controller-replacement network displaced-interface restore-home-node`
+[source, cli]
+----
+cluster controller-replacement network displaced-interface restore-home-node -node <node3_nodename> -vserver <vserver name> -lif-name <lif_name>
+----
 
+
+--
+.Migration et modification manuelles des LIF
+--
+.. Migrer vers le nœud 3 les LIF qui n'ont pas pu être déplacés automatiquement :
++
+[source, cli]
+----
+network interface migrate -vserver <vserver name> -lif <lif_name> -destination-node <node3_nodename> -destination-port <port_on_node3>
+----
+.. Modifiez le nœud d'origine et le port d'origine pour les LIF migrées :
++
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <data_lif_name> -home-node <node3_nodename> -home-port <home_port>
+----
+
+
+--
+====
 . Reprenez l'opération pour demander au système d'effectuer les vérifications post-requises :
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 Le système effectue les vérifications suivantes :
 

@@ -36,7 +36,7 @@ Si les nœuds 1 et 2 se trouvent dans un châssis distinct, vous pouvez placer l
 . [[auto_install3_step2]]installez le noeud 3 dans le rack, en suivant les instructions _installation and Setup_ de votre modèle de nœud.
 +
 
-NOTE: Si vous effectuez une mise à niveau vers un système contenant les deux nœuds du même châssis, installez le nœud 4 dans le châssis et sur le nœud 3. Si vous ne le faites pas, lorsque vous démarrez node3, le nœud se comportera comme s'il était dans une configuration à double châssis, et lorsque vous démarrez node4, l'interconnexion entre les nœuds ne sera pas établie.
+NOTE: Si vous effectuez une mise à niveau vers un système avec les deux nœuds dans le même châssis, installez le nœud 4 et le nœud 3 dans le châssis. Si vous n'installez pas les deux nœuds dans le même châssis, lorsque vous démarrez le nœud 3, il se comporte comme s'il était dans une configuration à double châssis, et lorsque vous démarrez le nœud 4, l'interconnexion entre les nœuds ne s'établit pas.
 
 . [[auto_install3_step3]]Cable node3, déplaçant les connexions du node1 vers le node3.
 +
