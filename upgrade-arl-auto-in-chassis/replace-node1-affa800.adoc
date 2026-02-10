@@ -32,11 +32,11 @@ Retirez le périphérique de gestion des câbles du module existant et retirez l
 . Préparez le retrait du module de contrôleur :
 +
 .. À l'avant du châssis, utilisez vos pouces pour pousser fermement chaque lecteur dans les baies de disque supérieure et inférieure jusqu'à ce que vous sentiez une butée positive.  Cela garantit que les disques sont fermement fixés contre le plan médian du châssis.
-+
+
+
+
+
 image:drw_a800_drive_seated_IEOPS-960.png["Appuyez sur le lecteur pour le mettre fermement en place contre le fond de panier central du châssis"]
-
-.. Aller à l'arrière du châssis.
-
 
 . Débranchez les alimentations du module de contrôleur du nœud 1 de la source.
 . Libérez les dispositifs de retenue du câble d'alimentation, puis débranchez les câbles des blocs d'alimentation.
@@ -68,11 +68,7 @@ image:black_circle_two.png["Numéro deux"]
 |===
 
 
-
-
-== Installez le module de contrôleur AFF A90, AFF A70 ou AFF C80
-
-Installez, câblez et connectez le module de contrôleur AFF A90, AFF A70 ou AFF C80 dans le nœud 1.
+Installez le module de contrôleur AFF A90, AFF A70 ou AFF C80. Installez, câblez et connectez le module de contrôleur AFF A90, AFF A70 ou AFF C80 dans le nœud1.
 
 .Étapes
 . Alignez l'extrémité du module de contrôleur avec l'ouverture du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.

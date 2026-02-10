@@ -16,16 +16,24 @@ Après avoir déplacé les volumes des nœuds d'origine vers les nouveaux nœuds
 .Étapes
 . [[disable-ha]]Désactiver la configuration de haute disponibilité (HA) sur les nœuds d'origine :
 +
-`storage failover modify -node <original_node_name> -enabled false`
+[source, cli]
+----
+storage failover modify -node <original_node_name> -enabled false
+----
 
-. Accéder au niveau de privilège avancé :
+
+. Changez le niveau de privilège en avancé :
 +
-`set -privilege advanced`
-
-. Identifier le nœud qui possède epsilon :
+[source, cli]
+----
+set -privilege advanced
+----
+. Identifiez le nœud du cluster qui possède epsilon :
 +
-`cluster show`
-
+[source, cli]
+----
+cluster show
+----
 +
 Dans l'exemple suivant, « node0 » contient actuellement epsilon :
 
@@ -40,65 +48,90 @@ node1                true    true         false
 node2                true    true         false
 node3                true    true         false
 ----
-. [[epsilon-true]]Si l'un des nœuds d'origine contient epsilon, déplacez epsilon vers un nœud que vous ne supprimez pas du cluster :
+. [[epsilon-true]]Si le nœud que vous supprimez contient epsilon :
 +
-.. Supprimez epsilon du nœud d'origine :
+.. Déplacez epsilon du nœud que vous supprimez :
 +
-`cluster modify -node <original_node_name> -epsilon false`
-
-.. Attribuer epsilon à un nœud différent :
+[source, cli]
+----
+cluster modify -node <name_of_node_to_be_removed> -epsilon false
+----
+.. Déplacez epsilon vers un nœud que vous ne supprimez pas :
 +
-`cluster modify -node <new_node_name> -epsilon true`
-
+[source, cli]
+----
+cluster modify -node <node_name> -epsilon true
+----
 
 
 . Identifier le nœud maître actuel :
 +
-`cluster ring show`
-
+[source, cli]
+----
+cluster ring show
+----
 +
 Le nœud maître est le nœud qui héberge des processus tels que `mgmt`, `vldb`, `vifmgr`, `bcomd`, et `crs`.
 
-. Si le nœud que vous supprimez est le nœud maître actuel, activez l'élection d'un nœud restant dans le cluster en tant que nœud maître :
+. Si le nœud que vous supprimez est le nœud maître actuel, activez un autre nœud du cluster pour qu'il puisse être élu comme nœud maître :
 +
 .. Rendre le nœud maître actuel inéligible pour participer au cluster :
 +
-`cluster modify -node <original_node_name> -eligibility false`
-
+[source, cli]
+----
+cluster modify -node <node_name> -eligibility false
+----
 +
-Le nœud est considéré comme non fonctionnel jusqu'à ce que son éligibilité soit rétablie. Lorsque le nœud maître devient inéligible, l'un des nœuds restants est élu par le quorum du cluster comme nouveau maître.
+Le nœud est considéré comme défaillant jusqu'à ce que son éligibilité soit rétablie. Lorsque le nœud maître devient inéligible, l'un des nœuds restants est élu par le quorum du cluster comme nouveau maître.
 
 +
 [NOTE]
 ====
-Si vous effectuez cette étape sur le premier nœud d'une paire HA, vous devez marquer uniquement ce nœud comme inéligible. Ne modifiez pas le statut du partenaire HA.
+Si vous effectuez cette étape sur le premier nœud d'une paire haute disponibilité, vous devez uniquement marquer ce nœud comme inéligible. Ne modifiez pas le statut du partenaire HA.
 
-Si le nœud partenaire est sélectionné comme nouveau maître, vous devez vérifier s'il détient epsilon. Si le nœud partenaire détient epsilon, vous devez déplacer epsilon vers un autre nœud restant dans le cluster avant de le rendre inéligible. Vous procédez ainsi lorsque vous répétez ces étapes pour supprimer le nœud partenaire.
+Si le nœud partenaire est sélectionné comme nouveau maître, vous devez vérifier s'il détient epsilon avant de le rendre inéligible. Si le nœud partenaire détient epsilon, vous devez déplacer epsilon vers un autre nœud restant dans le cluster avant de le rendre inéligible. Vous faites cela lorsque vous répétez ces étapes pour supprimer le nœud partenaire.
 
 ====
 .. Rendre à nouveau l'ancien nœud maître éligible pour participer au cluster :
 +
-`cluster modify -node <node_name> -eligibility true`
+[source, cli]
+----
+cluster modify -node <node_name> -eligibility true
+----
 
 
-
-. Connectez-vous à l'interface LIF de gestion de nœud distant ou à l'interface LIF de gestion de cluster sur un nœud qui reste dans le cluster et supprimez chaque nœud d'origine du cluster (niveau de privilège avancé) :
+. Connectez-vous à la LIF de gestion de nœud distant ou à la LIF de gestion de cluster sur un nœud que vous ne retirez pas du cluster.
+. Supprimez les nœuds du cluster :
 +
+|===
+| Pour cette version ONTAP... | Utilisez cette commande... 
+
+
+ a| 
+ONTAP 9.3
+ a| 
+[source, cli]
+----
+cluster unjoin
+----
+
+
+ a| 
+ONTAP 9.4 et versions ultérieures
+ a| 
 Avec le nom du nœud :
 
-+
 [source, cli]
 ----
-cluster remove-node -node <original_node_name>
+cluster remove-node -node <node_name>
 ----
-+
 Avec l'adresse IP du nœud :
 
-+
 [source, cli]
 ----
-cluster remove-node -cluster_ip <original_node_ip>
+cluster remove-node -cluster_ip <node_ip>
 ----
+|===
 +
 Si vous disposez d'un cluster de versions mixtes et que vous supprimez le dernier nœud de version inférieure, utilisez la `-skip-last-low-version-node-check` paramètre avec ces commandes.
 
@@ -112,13 +145,13 @@ Le système vous informe des éléments suivants :
 Un message d'erreur est généré si vous devez résoudre certaines conditions avant de supprimer le nœud. Par exemple, le message peut indiquer que le nœud possède des ressources partagées que vous devez supprimer ou que le nœud se trouve dans une configuration de cluster HA ou une configuration de basculement de stockage que vous devez désactiver.
 
 +
-Si le nœud est le maître du quorum, le cluster perd brièvement le quorum puis le rétablit. Cette perte de quorum est temporaire et n'affecte aucune opération de données.
+Si le nœud est le maître du quorum, le cluster perdra brièvement puis retrouvera le quorum. Cette perte de quorum est temporaire et n'affecte aucune opération sur les données.
 
 
 
 . Si un message d'échec indique des conditions d'erreur, corrigez-les et relancez le programme. `cluster remove-node` ou `cluster unjoin` commande.
 +
-Une fois qu'un nœud est correctement retiré du cluster, il redémarre automatiquement.
+Le nœud redémarre automatiquement après avoir été correctement retiré du cluster.
 
 . Si vous réutilisez le nœud, effacez sa configuration et initialisez tous les disques :
 +
@@ -126,17 +159,21 @@ Une fois qu'un nœud est correctement retiré du cluster, il redémarre automati
 .. Sélectionnez l'option du menu de démarrage *(4) Nettoyer la configuration et initialiser tous les disques*.
 
 
-. [[return-admin]]Retour au niveau de privilège d'administrateur sur l'un des nouveaux nœuds du cluster :
+. [[return-admin]]Retour au niveau de privilège administrateur :
 +
 [source, cli]
 ----
 set -privilege admin
 ----
+
+
 . Répétez les étapes <<disable-ha,1>> à <<return-admin,10>> pour retirer le partenaire de basculement du cluster.
 . Si le cluster ne comporte que deux nœuds, configurez la haute disponibilité pour le cluster à deux nœuds :
 +
-`cluster ha modify -configured true`
-
+[source, cli]
+----
+cluster ha modify -configured true
+----
 
 
 .Et la suite ?

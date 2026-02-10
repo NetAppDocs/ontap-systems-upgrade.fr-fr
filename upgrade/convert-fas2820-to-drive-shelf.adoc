@@ -11,35 +11,42 @@ summary: Effectuez une mise à niveau sans interruption vers un FAS2820 en conve
 
 
 [role="lead"]
-Vous pouvez effectuer une mise à niveau sans interruption d'un NetApp FAS2820 en convertissant chaque nœud en une étagère de lecteur DS212C, puis en le connectant aux nœuds de remplacement.
+Effectuez une mise à niveau sans interruption de service d’un NetApp FAS2820 en convertissant chaque nœud en baie de disques DS212C. Connectez ensuite les baies de disques aux nœuds de remplacement. Cela transfère le stockage embarqué du FAS2820 vers le système de remplacement.
+
+.Avant de commencer
+Examinez les scénarios de mise à niveau généraux et les considérations de mise à niveau pour la mise à niveau par déplacement de volumes ou de stockage :
+
+* link:upgrade-decide-to-use-this-guide.html["Décidez de mettre à niveau en déplaçant des volumes ou du stockage"]
+* link:upgrade-considerations.html["Considérations relatives à la mise à niveau du matériel du contrôleur"]
+
 
 .Description de la tâche
-Dans cette procédure, les contrôleurs de paires haute disponibilité (HA) FAS2820 sont appelés node1 et node2, et les contrôleurs de paires HA de remplacement sont appelés node3 et node4.
+Les contrôleurs de paire haute disponibilité (HA) FAS2820 sont node1 et node2 et les contrôleurs de paire haute disponibilité de remplacement sont node3 et node4.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"]xref:migrate-fas2820-node2-lifs-aggregates.adoc[Migration des LIF et des agrégats de données du nœud 2 vers le nœud 1]
 [role="quick-margin-para"]
-Avant de convertir le nœud FAS2820 node2 en étagère de lecteur, vous migrez les interfaces logiques (LIF) et les agrégats de données du nœud 2 vers le nœud 1.
+Avant de convertir le nœud FAS2820 nœud2 en un châssis de disques, migrez les interfaces logiques (LIF) et les agrégats de données du nœud2 vers le nœud1.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"]xref:convert-fas2820-node2-drive-shelf.adoc[Convertissez le nœud 2 en tiroir disque et connectez-vous au nœud 4]
 [role="quick-margin-para"]
-Vous convertissez le nœud 2 FAS8280 en étagère de lecteurs DS212C, puis vous vous connectez au nœud 4 avant de réaffecter les lecteurs du nœud 2 au nœud 4.
+Convertissez le nœud FAS2820 nœud2 en un châssis de disques DS212C, puis connectez-le au nœud4 avant de réaffecter les disques du nœud2 au nœud4.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"]xref:reassign-fas2820-node2-drives.adoc[Réaffectez des lecteurs du nœud 2 au nœud 4]
 [role="quick-margin-para"]
-Après avoir converti le nœud FAS2820 node2 en étagère de lecteurs DS212C et connecté au nœud 4, vous réaffectez les lecteurs qui appartenaient auparavant au nœud 2 au nœud 4.
+Après avoir converti le nœud FAS2820 en un châssis de disques DS212C et l'avoir connecté au nœud4, réaffectez les disques qui appartenaient auparavant au nœud2 au nœud4.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"]xref:migrate-fas2820-aggregates-epsilon-lifs.adoc[Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le nœud 4]
 [role="quick-margin-para"]
-Avant de convertir le nœud FAS2820 node1 en étagère de lecteur, vous migrez les agrégats de données, epsilon et LIF du nœud 1 vers le nœud 4.
+Avant de convertir le nœud FAS2820 node1 en un châssis de disque, migrez les agrégats de données, epsilon et les LIFs du node1 vers le node4.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinq"]xref:convert-fas2820-node1-drive-shelf.html[Convertissez le nœud 1 en tiroir disque et connectez-vous au nœud 3]
 [role="quick-margin-para"]
-Vous convertissez le nœud 1 FAS2820 en étagère de lecteurs DS212C et vous vous connectez au nœud 3 avant de réaffecter les lecteurs du nœud 1 au nœud 3.
+Convertissez le nœud FAS2820 en un châssis de disques DS212C et connectez-le au nœud3 avant de réaffecter les disques du nœud1 au nœud3.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Six"]xref:reassign-fas2820-node1-drives.adoc[Réaffectez des lecteurs du nœud 1 au nœud 3]
 [role="quick-margin-para"]
-Après avoir converti le nœud FAS2820 node1 en lecteur DS212C et connecté au nœud3, vous réaffectez les lecteurs qui appartenaient auparavant au nœud1 au nœud3.
+Après avoir converti le nœud FAS2820 en un châssis de disques DS212C et l'avoir connecté au nœud3, réaffectez les disques qui appartenaient auparavant au nœud1 au nœud3.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sept"]xref:migrate-fas2820-node4-lIfs-aggregates.adoc[Migration des LIF et des agrégats de données du nœud 4 vers le nœud 3]
 [role="quick-margin-para"]
-Pour terminer la mise à niveau, vous connectez le nœud 3 au nœud 4, puis vous migrez les LIF de données et les agrégats de données du nœud 4 vers le nœud 3.
+Pour terminer la mise à niveau, connectez node3 à node4, puis migrez les LIF de données et les agrégats de données de node4 vers node3.

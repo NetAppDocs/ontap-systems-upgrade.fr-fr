@@ -27,10 +27,10 @@ Pour sélectionner la procédure de mise à niveau appropriée, consultez toutes
 | Posez-vous la question… | Si votre réponse est oui, vous pouvez faire ceci… 
 
 
-| Est-ce que j'utilise une version logicielle différente sur les nœuds d'origine et les nouveaux nœuds ? | Mettez à niveau la version ONTAP sur les nœuds d'origine vers la version la plus récente prise en charge.  Dans la mesure du possible, les nouveaux nœuds doivent prendre en charge la version ONTAP exécutée sur les nœuds d'origine.  Si cela n'est pas possible,link:https://docs.netapp.com/us-en/ontap/upgrade/prepare.html["Mettez à niveau la version ONTAP"^] sur les nœuds d'origine jusqu'à la version la plus récente prise en charge.  La différence de version entre les nœuds d'origine et les nouveaux nœuds ne peut pas être supérieure à quatre.  Par exemple, ONTAP 9.8 et 9.12.1 sont pris en charge ; cependant, ONTAP 9.8 et 9.13.1 ne sont pas pris en charge. link:https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["En savoir plus sur les clusters ONTAP à versions mixtes"^]. 
+| Est-ce que j'utilise une version logicielle différente sur les nœuds d'origine et les nouveaux nœuds ? | Mettez à niveau la version d'ONTAP sur les nœuds d'origine vers la version la plus récente prise en charge. Dans la mesure du possible, les nouveaux nœuds doivent prendre en charge la version d'ONTAP exécutée sur les nœuds d'origine. Si cela n'est pas possible, link:https://docs.netapp.com/us-en/ontap/upgrade/prepare.html["Mettez à niveau la version ONTAP"^] sur les nœuds d'origine vers la version la plus récente prise en charge. Vous ne pouvez pas avoir une différence de version supérieure à quatre entre les nœuds d'origine et les nouveaux nœuds. Par exemple, ONTAP 9.8 et 9.12.1 sont pris en charge ; cependant, ONTAP 9.8 et 9.13.1 ne sont pas pris en charge. link:https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["En savoir plus sur les clusters ONTAP à versions mixtes"^]. 
 
 
-| Est-ce que je souhaite effectuer une mise à niveau radicale ? | link:upgrade/upgrade-decide-to-use-this-guide.html["Mettre à niveau en déplaçant le stockage"]. Cela nécessite un nouveau système doté de ses propres espaces de stockage et étagères pour conserver les données du système d'origine.  La conversion d'un châssis de contrôleur est possible pour certaines mises à niveau. 
+| Est-ce que je souhaite effectuer une mise à niveau radicale ? | link:upgrade/upgrade-decide-to-use-this-guide.html["Mettre à niveau en déplaçant le stockage"]. Cela nécessite un nouveau système doté de son propre espace de stockage et de ses propres étagères pour conserver les données du système d'origine. Il est possible de convertir une étagère de contrôleur pour certaines mises à niveau. 
 
 
 | Souhaite-je effectuer une mise à niveau sans interruption de service ?  a| 
@@ -44,11 +44,15 @@ Cela nécessite d'ajouter les nouveaux nœuds, de déplacer les volumes et les L
 +
 L'ARL est une procédure de remplacement.  Vous n'avez pas besoin d'agrandir ou de réduire votre cluster avec les nouveaux nœuds, ce qui est avantageux pour les clusters sans commutateur à deux nœuds.  Le déplacement de données par relocalisation d'agrégats est plus rapide que la copie de données entre agrégats lors du déplacement de volumes.
 
+* link:upgrade/upgrade-decide-to-use-this-guide.html["Déplacer le stockage"]
++
+Vous pouvez effectuer une mise à niveau sans interruption d'un AFF A250 vers un AFF A400 ou d'un FAS2820 vers un système de remplacement en convertissant les nœuds d'origine en baies de disques, puis en connectant les baies de disques aux nœuds de remplacement pour déplacer le stockage embarqué.
 
 
 
 
-| Ai-je un système modulaire ?  *Remarque* : Dans un système modulaire, le contrôleur ne possède aucun disque interne et tout le stockage se fait sur des étagères externes. | link:upgrade-arl/index.html["Mise à niveau via le transfert d'agrégats"]. 
+
+| Ai-je un système modulaire ? *Remarque* : Dans un système modulaire, le contrôleur ne possède pas de disques internes ; tout le stockage se trouve dans des étagères externes. | link:upgrade-arl/index.html["Mise à niveau via le transfert d'agrégats"]. 
 
 
 | Ai-je un système intégré et souhaite-je le mettre à niveau en déplaçant des volumes ?  *Remarque* : Dans un système intégré, le contrôleur possède des disques internes et le stockage est contenu dans le châssis du contrôleur et dans des étagères externes.  Les étagères externes servent à étendre le stockage et peuvent ne pas être incluses dans toutes les configurations système.  a| 
@@ -73,7 +77,7 @@ L'ARL est une procédure de remplacement.  Vous n'avez pas besoin d'agrandir ou 
 
 == Exemple : Mise à niveau du FAS9500 vers le FAS90
 
-Cet exemple présente les réponses possibles pour une mise à niveau du contrôleur FAS9500 vers FAS90.
+Cet exemple fournit des réponses possibles pour une mise à niveau du contrôleur FAS9500 vers FAS90.
 
 [cols="30,70"]
 |===
