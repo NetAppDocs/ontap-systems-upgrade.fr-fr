@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-in-chassis/install-aff-a30-a50-c30-c50-node2.html
 keywords: aff, fas, asa, install, NVRAM, node2, controller, module, modules, replacement 
 summary: 'Installez les modules système de remplacement sur le nœud 2 lors d"une mise à niveau ARL des modèles de contrôleurs du même châssis.' 
 ---
-= Installez le module AFF A30, AFF A50, AFF C30 ou AFF C60 sur le nœud 2
+= Installez le module AFF A30, AFF A50, AFF C30 ou AFF C60 dans le nœud 2
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -36,11 +36,15 @@ NOTE: Pour éviter d'endommager les connecteurs, ne forcez pas trop lorsque vous
 . Après l'interruption DE L'AUTOBOOT, le nœud 2 s'arrête à l'invite DU CHARGEUR. Si vous n'interrompez pas LE démarrage AUTOMATIQUE à temps et que le démarrage du nœud 2 commence, attendez l'invite et appuyez sur Ctrl-C pour accéder au menu de démarrage. Une fois que le nœud s'arrête au menu de démarrage, utilisez l'option `8` pour redémarrer le nœud et interrompre le DÉMARRAGE AUTOMATIQUE pendant le redémarrage.
 . À l'invite LOADER> du nœud 2, définissez les variables d'environnement par défaut :
 +
-`set-defaults`
-
+[source, cli]
+----
+set-defaults
+----
 . Enregistrez les paramètres des variables d'environnement par défaut :
 +
-`saveenv`
-
+[source, cli]
+----
+saveenv
+----
 . Pour les configurations sans commutateur à deux nœuds, vérifiez que vous disposez d'une carte X60132A 4 ports 10/25 GbE dans l'emplacement 1 du nœud 2. La carte X60132A est requise pour l'interconnexion du cluster lors de la mise à niveau.
 

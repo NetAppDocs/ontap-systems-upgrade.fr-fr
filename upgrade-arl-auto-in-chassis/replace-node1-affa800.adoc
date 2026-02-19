@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-in-chassis/replace-node1-affa800.html
 keywords: aff, asa, fas, replace, node1, system, modules 
 summary: 'Remplacez les modules système AFF A800 ou AFF C800 node1 lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
 ---
-= Remplacez les modules de contrôleur AFF A800 ou AFF C800
+= Remplacez le module contrôleur node1 AFF A800 ou AFF C800
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,9 @@ summary: 'Remplacez les modules système AFF A800 ou AFF C800 node1 lorsque vous
 
 
 [role="lead"]
-À ce stade, le nœud 1 est en panne et toutes les données sont servies par le nœud 2. Veillez à ne retirer que le module de contrôleur du nœud 1. En général, le nœud 1 est le contrôleur A, situé sur le côté gauche du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système. L'étiquette du contrôleur se trouve sur le châssis, directement au-dessus du module de contrôleur.
+Remplacez le module de contrôleur AFF A800 ou AFF C800 du node1 par un module de contrôleur AFF A90, AFF A70 ou AFF C80.
+
+À ce stade, node1 est hors service et toutes les données sont gérées par node2. Vous devez veiller à ne retirer que le module contrôleur node1. Lorsque vous regardez les contrôleurs depuis l’arrière du système, les contrôleurs sont empilés, le contrôleur A étant généralement en haut. L’étiquette du contrôleur est située sur le châssis, directement au-dessus du module contrôleur.
 
 
 CAUTION: Ne mettez pas le châssis hors tension, car les nœuds 1 et 2 se trouvent dans le même châssis et sont connectés aux mêmes blocs d'alimentation.
@@ -24,20 +26,55 @@ Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement
 
 
 
-== Retirez le module de contrôleur AFF A800 ou AFF C800
+== Étape 1 : Retirez le module de contrôleur AFF A800 ou AFF C800
 
-Retirez le périphérique de gestion des câbles du module existant et retirez légèrement le contrôleur du châssis.
+Retirez le dispositif de gestion des câbles du module node1 existant et déplacez légèrement le contrôleur hors du châssis.
 
 .Étapes
-. Préparez le retrait du module de contrôleur :
+. Assurez-vous que tous les disques du châssis sont bien en place contre le plan médian en utilisant vos pouces pour pousser chaque disque jusqu'à sentir une butée positive.
 +
-.. À l'avant du châssis, utilisez vos pouces pour pousser fermement chaque lecteur dans les baies de disque supérieure et inférieure jusqu'à ce que vous sentiez une butée positive.  Cela garantit que les disques sont fermement fixés contre le plan médian du châssis.
+.Vidéo - Confirmer l’insertion du disque
+video::2c46e4af-2c21-4f12-b065-b38b003d0ea2[panopto]
++
+image:drw_a800_drive_seated_IEOPS-960.svg["Installez les disques"]
+
+. Vérifiez les disques du contrôleur en fonction de l'état du système :
++
+.. Sur le contrôleur sain, vérifiez si un groupe RAID actif est dans un état dégradé, en panne ou les deux :
++
+[source, cli]
+----
+storage aggregate show -raidstatus !*normal*
+----
++
+*** Si la commande renvoie `There are no entries matching your query.`, continuez à <<Check-missing-drives,Accédez à la sous-étape suivante pour vérifier les disques manquants>>.
+*** Si la commande renvoie d'autres résultats, collectez les données AutoSupport des deux contrôleurs et contactez le support NetApp pour obtenir de l'aide supplémentaire.
++
+[source, cli]
+----
+system node autosupport invoke -node * -type all -message '<message_name>'
+----
+
+
+.. [[Check-missing-drives]]Vérifiez les problèmes de disques manquants pour le système de fichiers ou les disques de secours :
++
+[source, cli]
+----
+event log show -severity * -node * -message-name *disk.missing*
+----
++
+*** Si la commande renvoie `There are no entries matching your query.`, continuez à <<remove-power-cables,passer à l'étape suivante>>.
+*** Si la commande renvoie d'autres résultats, collectez les données AutoSupport des deux contrôleurs et contactez le support NetApp pour obtenir de l'aide supplémentaire.
++
+[source, cli]
+----
+system node autosupport invoke -node * -type all -message '<message_name>'
+----
 
 
 
 
-image:drw_a800_drive_seated_IEOPS-960.png["Appuyez sur le lecteur pour le mettre fermement en place contre le fond de panier central du châssis"]
-
+. [[remove-power-cables]]Retirez les fixations des câbles d'alimentation, puis débranchez les câbles des alimentations.
 . Débranchez les alimentations du module de contrôleur du nœud 1 de la source.
 . Libérez les dispositifs de retenue du câble d'alimentation, puis débranchez les câbles des blocs d'alimentation.
 . Desserrez le crochet et la bride de boucle reliant les câbles au dispositif de gestion des câbles, puis débranchez les câbles du système et les modules SFP et QSFP (si nécessaire) du module de contrôleur, en gardant une trace de l'emplacement de connexion des câbles.
@@ -68,7 +105,11 @@ image:black_circle_two.png["Numéro deux"]
 |===
 
 
-Installez le module de contrôleur AFF A90, AFF A70 ou AFF C80. Installez, câblez et connectez le module de contrôleur AFF A90, AFF A70 ou AFF C80 dans le nœud1.
+
+
+== Étape 2 : Installez le module de contrôleur AFF A90, AFF A70 ou AFF C80
+
+Installez, câblez et connectez le module de contrôleur AFF A90, AFF A70 ou AFF C80 dans le nœud1.
 
 .Étapes
 . Alignez l'extrémité du module de contrôleur avec l'ouverture du châssis, puis poussez doucement le module de contrôleur à mi-course dans le système.
@@ -82,7 +123,7 @@ image:drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG["Installer un AFF A90 ou un A
 . Reliez les ports de gestion et de console au module de contrôleur node1.
 +
 
-NOTE: Comme le châssis est déjà sous tension, le nœud 1 démarre l'initialisation du BIOS, suivie d'UNE initialisation AUTOMATIQUE dès que vous insérez le nouveau module de contrôleur. Pour éviter ce DÉMARRAGE AUTOMATIQUE, NetApp recommande de connecter les câbles série et console avant d'insérer le module de contrôleur.
+NOTE: Lorsque vous insérez le module contrôleur node1 à l'étape suivante, node1 lance immédiatement l'initialisation du BIOS, suivie d'AUTOBOOT, car le châssis est déjà sous tension. Vous évitez cet AUTOBOOT en connectant les câbles série et console avant d'insérer le module.
 
 . À l'avant du châssis, utilisez vos pouces pour pousser fermement chaque lecteur dans les baies de disque supérieure et inférieure jusqu'à ce que vous sentiez une butée positive.  Cela garantit que les disques sont fermement fixés contre le plan médian du châssis.
 +
@@ -104,10 +145,14 @@ Si vous n'interrompez pas LE démarrage AUTOMATIQUE à temps et que le démarrag
 
 . À l'invite DU CHARGEUR> du nœud 1, définissez les variables d'environnement par défaut :
 +
-`set-defaults`
-
+[source, cli]
+----
+set-defaults
+----
 . Enregistrez les paramètres des variables d'environnement par défaut :
 +
-`saveenv`
-
+[source, cli]
+----
+saveenv
+----
 

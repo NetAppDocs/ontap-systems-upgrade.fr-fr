@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-in-chassis/replace-node1-affa250-affc250.html
 keywords: aff, asa, fas, replace, node1, system, modules 
 summary: 'Remplacez les modules système AFF A250 ou AFF C250 node1 lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleurs du même châssis.' 
 ---
-= Remplacez les modules de contrôleur AFF A250 ou AFF C250
+= Remplacez le module de contrôleur AFF A250 ou AFF C250 du nœud1
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,6 +14,8 @@ summary: 'Remplacez les modules système AFF A250 ou AFF C250 node1 lorsque vous
 
 
 [role="lead"]
+Remplacez le module de contrôleur AFF A250 ou AFF C250 du node1 par un module de contrôleur AFF A30, AFF A50, AFF C30 ou AFF C60.
+
 À ce stade, le nœud 1 est en panne et toutes les données sont servies par le nœud 2. Veillez à ne retirer que le module de contrôleur du nœud 1. En général, le nœud 1 est le contrôleur A, situé sur le côté gauche du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système. L'étiquette du contrôleur se trouve sur le châssis, directement au-dessus du module de contrôleur.
 
 
@@ -21,9 +23,9 @@ CAUTION: Ne mettez pas le châssis hors tension, car les nœuds 1 et 2 se trouve
 
 
 
-== Retirez le module de contrôleur AFF A250 ou AFF C250
+== Étape 1 : Retirez le module de contrôleur AFF A250 ou AFF C250
 
-Pour retirer le module de contrôleur node1, vous devez d'abord retirer le périphérique de gestion des câbles, déverrouiller les loquets de verrouillage, puis retirer le module de contrôleur du châssis.
+Pour retirer le module contrôleur node1, retirez le dispositif de gestion des câbles et déverrouillez les loquets de verrouillage. Retirez ensuite le module contrôleur du châssis.
 
 .Avant de commencer
 Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement.
@@ -105,10 +107,14 @@ Si vous n'interrompez pas LE démarrage AUTOMATIQUE à temps et que le démarrag
 
 . À l'invite DU CHARGEUR> du nœud 1, définissez les variables d'environnement par défaut :
 +
-`set-defaults`
-
+[source, cli]
+----
+set-defaults
+----
 . Enregistrez les paramètres des variables d'environnement par défaut :
 +
-`saveenv`
-
+[source, cli]
+----
+saveenv
+----
 

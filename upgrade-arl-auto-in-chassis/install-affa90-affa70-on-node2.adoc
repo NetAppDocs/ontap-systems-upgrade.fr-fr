@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-in-chassis/install-affa90-affa70-on-node2.html 
 keywords: aff, fas, asa, install, NVRAM, node2, controller, module, modules, replacement 
-summary: 'Installez les modules système de remplacement sur le nœud 2 lors d"une mise à niveau ARL des modèles de contrôleurs du même châssis.' 
+summary: 'Installez les modules système de remplacement dans node2 lors d"une mise à niveau ARL des modèles de contrôleur dans le même châssis.' 
 ---
-= Installez le module AFF A90 ou AFF A70 sur le nœud 2
+= Installez le module AFF A90 ou AFF A70 dans le nœud 2
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 'Installez les modules système de remplacement sur le nœud 2 lors d"u
 
 
 [role="lead"]
-Installez le module de contrôleur AFF A90 ou AFF A70 que vous avez reçu pour la mise à niveau sur le nœud 2.  Le nœud 2 est le contrôleur B situé sur la baie inférieure du châssis lorsque l'on regarde les contrôleurs depuis l'arrière du système.
+Installez le module contrôleur AFF A90 ou AFF A70 que vous avez reçu pour la mise à niveau dans le nœud2. Le nœud2 est le contrôleur B situé dans la baie inférieure du châssis lorsque vous regardez les contrôleurs depuis l’arrière du système.
 
 .Étapes
 . À l'avant du châssis, utilisez vos pouces pour pousser fermement chaque lecteur dans les baies de disque supérieure et inférieure jusqu'à ce que vous sentiez une butée positive.  Cela garantit que les disques sont fermement fixés contre le plan médian du châssis.
@@ -47,12 +47,16 @@ NOTE: Pour éviter d'endommager les connecteurs, ne forcez pas trop lorsque vous
 . Après l'interruption DE L'AUTOBOOT, le nœud 2 s'arrête à l'invite DU CHARGEUR. Si vous n'interrompez pas LE démarrage AUTOMATIQUE à temps et que le démarrage du nœud 2 commence, attendez l'invite et appuyez sur Ctrl-C pour accéder au menu de démarrage. Une fois que le nœud s'arrête au menu de démarrage, utilisez l'option `8` pour redémarrer le nœud et interrompre le DÉMARRAGE AUTOMATIQUE pendant le redémarrage.
 . À l'invite LOADER> du nœud 2, définissez les variables d'environnement par défaut :
 +
-`set-defaults`
-
+[source, cli]
+----
+set-defaults
+----
 . Enregistrez les paramètres des variables d'environnement par défaut :
 +
-`saveenv`
-
+[source, cli]
+----
+saveenv
+----
 . À l'avant du châssis, utilisez vos pouces pour pousser fermement chaque lecteur dans les baies de disque supérieure et inférieure jusqu'à ce que vous sentiez une butée positive.  Cela garantit que les disques sont fermement fixés contre le plan médian du châssis.
 +
 image:drw_a800_drive_seated_IEOPS-960.png["Appuyez sur le lecteur pour le mettre fermement en place contre le fond de panier central du châssis"]

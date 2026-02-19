@@ -16,19 +16,20 @@ summary: 'Installez les modules système de remplacement sur le nœud 2 lors d"u
 [role="lead"]
 Installez les modules de contrôleur et NVRAM du système ASA A900, AFF A900 ou FAS9500 que vous avez reçus pour la mise à niveau sur le nœud 2. Le nœud 2 est le contrôleur B situé sur le côté droit du châssis, lorsque vous regardez les contrôleurs depuis l'arrière du système.
 
-Lors de l'installation, vous devez prendre note des points suivants :
-
+[NOTE]
+====
 * Déplacez tous les modules de remplissage vides dans les emplacements 6-1 et 6-2 de l'ancien module NVRAM vers le nouveau module NVRAM.
 * NE déplacez PAS le périphérique coredump du module NVRAM AFF A700 vers le module NVRAM ASA A900 ou AFF A900.
 * Déplacez tous les modules de cache Flash installés dans le module NVRAM FAS9000 vers le module NVRAM FAS9500.
 
 
+====
 .Avant de commencer
 Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement.
 
 
 
-== Installez le module NVRAM ASA A900, AFF A900 ou FAS9500
+== Étape 1 : Installez le module NVRAM ASA A900, AFF A900 ou FAS9500
 
 Installez le module NVRAM ASA A900, AFF A900 ou FAS9500 dans le slot 6 du node2.
 
@@ -39,7 +40,7 @@ Installez le module NVRAM ASA A900, AFF A900 ou FAS9500 dans le slot 6 du node2.
 
 
 
-== Installez le module de contrôleur ASA A900, AFF A900 ou FAS9500 dans le nœud 2
+== Étape 2 : Installez le module de contrôleur ASA A900, AFF A900 ou FAS9500
 
 Installez, câblez et connectez le module de contrôleur ASA A900, AFF A900 ou FAS9500 au nœud 2.
 
@@ -70,10 +71,14 @@ WARNING: Pour éviter d'endommager les connecteurs, ne forcez pas trop lorsque v
 . Après l'interruption DE L'AUTOBOOT, le nœud 2 s'arrête à l'invite DU CHARGEUR. Si vous n'interrompez pas LE démarrage AUTOMATIQUE à temps et que le démarrage du nœud 2 commence, attendez l'invite et appuyez sur Ctrl-C pour accéder au menu de démarrage. Une fois que le nœud s'arrête au menu de démarrage, utilisez l'option `8` pour redémarrer le nœud et interrompre le DÉMARRAGE AUTOMATIQUE pendant le redémarrage.
 . À l'invite LOADER> du nœud 2, définissez les variables d'environnement par défaut :
 +
-`set-defaults`
-
+[source, cli]
+----
+set-defaults
+----
 . Enregistrez les paramètres des variables d'environnement par défaut :
 +
-`saveenv`
-
+[source, cli]
+----
+saveenv
+----
 
