@@ -14,7 +14,7 @@ summary: 'Démarrez le nœud 1 avec les modules de contrôleur de remplacement l
 
 
 [role="lead"]
-Le nœud 1, équipé des modules de remplacement, est maintenant prêt à démarrer.  Les modules de remplacement pris en charge sont répertoriés dans lelink:decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["matrice des systèmes pris en charge"] .
+Le nœud 1, équipé des modules de remplacement, est désormais prêt à démarrer. Les modules de remplacement compatibles sont listés dans le link:decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["matrice des systèmes pris en charge"].
 
 [NOTE]
 ====

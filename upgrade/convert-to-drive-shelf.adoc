@@ -1,0 +1,58 @@
+---
+permalink: upgrade/convert-to-drive-shelf.html 
+sidebar: sidebar 
+keywords: fas2820, aff a150, aff a220, ndu, nondisruptive, upgrade, FAS, systems, entry, level 
+summary: Effectuez une mise à niveau sans interruption en convertissant chaque nœud en un shelf de disques et en le connectant au nœud de remplacement. 
+---
+= Découvrez comment convertir AFF A150, AFF A220 ou FAS2820 en baie de disques et déplacer le stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Effectuez une mise à niveau sans interruption d'un AFF A150, AFF A220 ou FAS2820. Commencez par convertir chaque nœud du système AFF A150, AFF A220 ou FAS2820 en baie de disques. Connectez-les ensuite aux nœuds de remplacement. Cela transfère le stockage embarqué vers le système de remplacement.
+
+.Description de la tâche
+Cette procédure prend en charge les conversions système suivantes :
+
+* Conversion d'un AFF A150 ou AFF A220 en un châssis de disques DS224C
+* Conversion d'un FAS2820 en baie de disques DS212C
+
+
+Les contrôleurs de la paire haute disponibilité (HA) sont node1 et node2 et les contrôleurs de la paire haute disponibilité (HA) de remplacement sont node3 et node4.
+
+.Avant de commencer
+Examinez les scénarios de mise à niveau généraux et les considérations de mise à niveau pour la mise à niveau par déplacement de volumes ou de stockage :
+
+* link:upgrade-decide-to-use-this-guide.html["Décidez de mettre à niveau en déplaçant des volumes ou du stockage"]
+* link:upgrade-considerations.html["Considérations relatives à la mise à niveau du matériel du contrôleur"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"]xref:migrate-node2-lifs-aggregates.adoc[Migration des LIF et des agrégats de données du nœud 2 vers le nœud 1]
+[role="quick-margin-para"]
+Avant de convertir node2 en un châssis de disques, migrez les interfaces logiques (LIF) et les agrégats de données de node2 vers node1.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"]xref:convert-node2-to-drive-shelf.adoc[Convertissez le nœud 2 en tiroir disque et connectez-vous au nœud 4]
+[role="quick-margin-para"]
+Convertissez node2 en une étagère de disques, puis connectez-le à node4 avant de réaffecter les disques de node2 à node4.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"]xref:reassign-node2-drives.adoc[Réaffectez des lecteurs du nœud 2 au nœud 4]
+[role="quick-margin-para"]
+Après avoir converti node2 en une baie de disques et l'avoir connecté à node4, réaffectez les disques qui appartenaient auparavant à node2 à node4.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"]xref:migrate-aggregates-epsilon-lifs.adoc[Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le nœud 4]
+[role="quick-margin-para"]
+Avant de convertir node1 en un châssis de disque, migrez les agrégats de données, epsilon et les LIFs de node1 vers node4.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinq"]xref:convert-node1-to-drive-shelf.adoc[Convertissez le nœud 1 en tiroir disque et connectez-vous au nœud 3]
+[role="quick-margin-para"]
+Convertissez node1 en une étagère de disques et connectez-le à node3 avant de réaffecter les disques de node1 à node3.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Six"]xref:reassign-node1-drives.adoc[Réaffectez des lecteurs du nœud 1 au nœud 3]
+[role="quick-margin-para"]
+Après avoir converti node1 en une baie de disques et l'avoir connecté à node3, réaffectez les disques qui appartenaient auparavant à node1 à node3.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sept"]xref:migrate-node4-lIfs-aggregates.adoc[Migration des LIF et des agrégats de données du nœud 4 vers le nœud 3]
+[role="quick-margin-para"]
+Pour terminer la mise à niveau, connectez node3 à node4 et migrez les LIF de données et les agrégats de données de node4 vers node3.

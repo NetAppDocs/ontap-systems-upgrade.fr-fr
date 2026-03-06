@@ -14,7 +14,7 @@ summary: 'Vous pouvez mettre à niveau le matériel du contrôleur en convertiss
 
 
 [role="lead"]
-Il existe plusieurs méthodes de relocalisation agrégée (ARL) pour mettre à niveau le matériel du contrôleur. Cette procédure décrit comment mettre à niveau les contrôleurs de stockage d'une paire HA en convertissant le système existant en système de remplacement, tout en conservant le châssis et les disques existants.
+Il existe plusieurs méthodes de relocalisation agrégée (ARL) pour la mise à niveau du matériel des contrôleurs. Cette procédure décrit comment mettre à niveau les contrôleurs de stockage d'une paire haute disponibilité en convertissant le système existant en système de remplacement, tout en conservant le châssis existant, les disques et les données stockées sur les disques.
 
 Le transfert d'agrégats tire parti de la configuration haute disponibilité et des communications d'interconnexion de cluster. Vous pouvez ainsi déplacer la propriété d'agrégats non racines d'un nœud vers un autre s'ils partagent le stockage au sein du même cluster.
 
@@ -39,18 +39,18 @@ Le matériel du contrôleur que vous remplacez dépend du type de modèle de sys
 | AFF A700 OU FAS9000 | Remplacez le contrôleur et les modules NVRAM de chaque nœud de l'ancien contrôleur par les nouveaux modules. *Remarque* : vous n'avez pas besoin de déplacer, déconnecter ou reconnecter les cartes E/S, les câbles de données, les tiroirs disques et les disques. 
 |===
 
-NOTE: Les termes *node1* et *node2* sont utilisés uniquement comme référence aux noms de noeud dans ce document. Lorsque vous suivez la procédure, vous devez remplacer les noms réels de vos nœuds.
+NOTE: Les termes *node1* et *node2* sont utilisés uniquement à titre de référence pour désigner les noms des nœuds dans ce document. Lors de l'application de la procédure, vous devez utiliser les noms réels de vos nœuds.
 
 
 
 == Exigences et restrictions
 
-Vous devez prendre en compte des facteurs importants avant de commencer votre procédure de mise à niveau.
+Vous devez prendre en compte des facteurs importants avant de commencer la mise à niveau.
 
 
-NOTE: Vous devez vérifier toutes les informations importantes suivantes avant de commencer la procédure de mise à niveau.
+NOTE: Vous devez examiner toutes les informations importantes suivantes.
 
-* Cette procédure est complexe et suppose que vous avez des compétences avancées en administration de ONTAP. Vous devez également lire et comprendre le link:guidelines_for_upgrading_controllers_with_arl.html["directives pour la mise à niveau des contrôleurs"] et link:overview_of_the_arl_upgrade.html["Séquence de mise à niveau ARL"] avant de commencer la mise à niveau.
+* Cette procédure est complexe et suppose que vous possédez des compétences avancées en administration ONTAP. Vous devez lire et comprendre la link:guidelines_for_upgrading_controllers_with_arl.html["directives pour la mise à niveau des contrôleurs"] et link:overview_of_the_arl_upgrade.html["Séquence de mise à niveau ARL"] avant de commencer la mise à niveau.
 * Cette procédure suppose que le matériel de remplacement du contrôleur est nouveau et qu'il n'a pas été utilisé dans un autre système. Étapes requises pour préparer les contrôleurs utilisés avec le `wipeconfig` la commande n'est pas incluse dans cette procédure. Vous devez contacter le support technique si le matériel de remplacement de contrôleur était précédemment utilisé dans un autre cluster ONTAP ou en tant que système à un seul nœud autonome.
 * Vous pouvez suivre cette procédure pour mettre à niveau le matériel du contrôleur dans des clusters de plus de deux nœuds. Cependant, il est nécessaire d'effectuer séparément la procédure pour chaque paire haute disponibilité du cluster.
 * Si vous disposez d'un commutateur qui n'est pas pris en charge par la version ONTAP et le système de remplacement vers lequel vous effectuez la mise à niveau, reportez-vous à la section link:other_references.html["Références"] Pour accéder au _Hardware Universe_.
@@ -72,7 +72,7 @@ Si vous ne pouvez pas lier les ports e0a ou e0b du nœud existant aux ports de c
 
 
 * Les systèmes ASA A900, AFF A900 et FAS9500 prennent uniquement en charge une alimentation haut de gamme (200 V à 240 V). Si votre système AFF A700 ou FAS9000 fonctionne avec une alimentation à faible consommation électrique (100 V à 120 V), vous devez convertir l'alimentation d'entrée AFF A700 ou FAS9000 avant d'utiliser cette procédure.
-* Si vous effectuez une mise à niveau à partir d'un système existant avec interruption de service incluse dans lelink:decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["matrice des systèmes pris en charge"] Vous pouvez mettre à niveau le matériel du contrôleur en déplaçant le stockage ou en contactant le support technique.  Se référer àlink:other_references.html["Références"] pour accéder à _Mise à niveau par déplacement de volumes ou de stockage_.
+* Si vous effectuez une mise à niveau à partir d'un système existant avec interruption incluse dans le link:decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["matrice des systèmes pris en charge"], vous pouvez mettre à niveau le matériel du contrôleur en déplaçant le stockage ou en contactant le support technique. Reportez-vous à link:other_references.html["Références"] pour accéder à _Mise à niveau par déplacement de volumes ou de stockage_.
 
 
 

@@ -144,7 +144,7 @@ image:black_circle_two.png["Numéro deux"]
 
 
 
-== Étape 4 : Installez le module de contrôleur ASA A900, AFF A900 ou FAS9500 sur le nœud1.
+== Étape 4 : Installez le module de contrôleur ASA A900, AFF A900 ou FAS9500 dans le nœud 1
 
 Installez, câblez et connectez le module de contrôleur ASA A900, AFF A900 ou FAS9500 dans le nœud1.
 

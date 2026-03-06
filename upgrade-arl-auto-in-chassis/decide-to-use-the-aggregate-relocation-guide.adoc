@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-in-chassis/decide-to-use-the-aggregate-relocation-guide.html 
 keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability 
-summary: Décidez si vous souhaitez utiliser la procédure ARL qui met à niveau les modèles de contrôleurs du même châssis. 
+summary: 'Décidez s"il convient d"utiliser la procédure ARL qui met à niveau les modèles de contrôleurs dans le même châssis, les mêmes disques et les données stockées sur les disques.' 
 ---
 = Décider d'utiliser ou non cette procédure de relocalisation globale
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Décidez si vous souhaitez utiliser la procédure ARL qui met à niveau
 
 
 [role="lead"]
-Il existe plusieurs méthodes de relocalisation agrégée (ARL) pour mettre à niveau le matériel du contrôleur. Ce contenu décrit comment mettre à niveau les contrôleurs de stockage d'une paire HA en convertissant le système existant en système de remplacement, tout en conservant le châssis et les disques existants. Cette procédure complexe est réservée aux administrateurs ONTAP expérimentés.
+Il existe plusieurs méthodes de relocalisation agrégée (ARL) pour la mise à niveau du matériel des contrôleurs. Ce contenu décrit comment mettre à niveau les contrôleurs de stockage d'une paire haute disponibilité en convertissant le système existant en système de remplacement, tout en conservant le châssis du système existant, les disques et les données stockées sur les disques. Vous ne devez utiliser cette procédure complexe que si vous êtes un administrateur ONTAP expérimenté.
 
 Pour vous aider à décider si cette procédure ARL est adaptée à la mise à niveau du matériel de votre contrôleur, vous devez examiner toutes les circonstances suivantes pour les mises à niveau prises en charge et non prises en charge.
 
@@ -58,7 +58,7 @@ Pour mettre à niveau une configuration IP MetroCluster, reportez-vous  à la se
 
 == Combinaisons de mise à niveau du système prises en charge
 
-Le tableau suivant présente la matrice des systèmes pris en charge pour effectuer une mise à niveau du contrôleur en convertissant le système existant en système de remplacement, en conservant le châssis et les disques du système existant.
+Le tableau suivant présente la matrice des systèmes pris en charge pour effectuer une mise à niveau du contrôleur en convertissant le système existant en système de remplacement, en conservant le châssis, les disques et les données stockées sur ceux-ci.
 
 
 CAUTION: Cette procédure s'applique strictement aux configurations de mise à niveau suivantes. N'utilisez pas cette procédure pour effectuer une mise à niveau entre d'autres combinaisons de systèmes. Pour tous les autres modèles de contrôleurs, reportez-vous à  la section link:other_references.html["Références"]lien vers _utilisation des commandes de remplacement du contrôleur système pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ et _utilisation du déplacement d'agrégat pour mettre à niveau manuellement le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_.

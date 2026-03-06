@@ -20,8 +20,6 @@ Après avoir déplacé les volumes des nœuds d'origine vers les nouveaux nœuds
 ----
 storage failover modify -node <original_node_name> -enabled false
 ----
-
-
 . Changez le niveau de privilège en avancé :
 +
 [source, cli]
@@ -167,7 +165,7 @@ set -privilege admin
 ----
 
 
-. Répétez les étapes <<disable-ha,1>> à <<return-admin,10>> pour retirer le partenaire de basculement du cluster.
+. Répétez les étapes <<disable-ha,2>> à <<return-admin,11>> pour supprimer le partenaire de basculement du cluster.
 . Si le cluster ne comporte que deux nœuds, configurez la haute disponibilité pour le cluster à deux nœuds :
 +
 [source, cli]

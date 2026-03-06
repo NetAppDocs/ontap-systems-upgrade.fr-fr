@@ -48,7 +48,7 @@ image:drw_2240_x_opening_cam_latch.png["Ouverture de la poignée de came"]
 
 
 
-== Installez le module de contrôleur ASA A150, AFF A150 ou FAS2820
+== Étape 2 : Installez le module de contrôleur ASA A150, AFF A150 ou FAS2820
 
 Installez, câblez et connectez le module de contrôleur ASA A150, AFF A150 ou FAS2820 au niveau du nœud 1.
 

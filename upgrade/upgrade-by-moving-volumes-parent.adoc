@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: upgrade by moving volumes 
 summary: 'Si vous effectuez une mise à niveau en déplaçant des volumes, vous préparez les nœuds d"origine et joignez les nouveaux nœuds au cluster. Vous déplacez les volumes vers les nouveaux nœuds, configurez les LIF et retirez les nœuds d"origine du cluster. La mise à niveau par déplacement de volumes est une procédure non disruptive.' 
 ---
-= Flux de travail de mise à niveau par déplacement de volumes
+= En savoir plus sur la mise à niveau en déplaçant des volumes
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

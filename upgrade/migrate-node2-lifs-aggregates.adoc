@@ -1,22 +1,22 @@
 ---
-permalink: upgrade/migrate-fas2820-node2-lifs-aggregates.html 
+permalink: upgrade/migrate-node2-lifs-aggregates.html 
 sidebar: sidebar 
-keywords: fas2820, ndu, nondisruptive, upgrade, node1, node2, migrate, aggregates, lifs 
-summary: 'Migrez les interfaces logiques (LIF) et les agrégats de données du nœud 2 FAS2820 vers le nœud 1 avant de convertir le nœud 2 en étagère de lecteur.' 
+keywords: fas2820, aff a150, aff a220, ndu, nondisruptive, upgrade, node1, node2, migrate, aggregates, lifs 
+summary: 'Migrez les interfaces logiques (LIF) et les agrégats de données sur le nœud2 vers le nœud1 avant de convertir le nœud2 en un châssis de disques.' 
 ---
-= Migrer les LIF et les agrégats de données du nœud 2 FAS2820 vers le nœud 1
+= Migration des LIF et des agrégats de données du nœud 2 vers le nœud 1
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Migrez les interfaces logiques (LIF) et les agrégats de données du nœud 2 FAS2820 vers le nœud 1 avant de convertir le nœud 2 en étagère de lecteur.
+Migrez les interfaces logiques (LIF) et les agrégats de données sur le nœud2 vers le nœud1 avant de convertir le nœud2 en un châssis de disques.
 
 .Avant de commencer
 Vérifiez que vous répondez aux exigences suivantes :
 
-* Les contrôleurs FAS2820 et de remplacement ont la même version de version et de correctif ONTAP , lorsque cela est possible.  Reportez-vous à la https://hwu.netapp.com["NetApp Hardware Universe"^] pour les versions ONTAP prises en charge.
+* Les contrôleurs d'origine et de remplacement ont la même version d'ONTAP et le même correctif, dans la mesure du possible. Consultez la  https://hwu.netapp.com["NetApp Hardware Universe"^] pour les versions d'ONTAP prises en charge.
 
 
 [NOTE]
@@ -31,10 +31,9 @@ Vérifiez que vous répondez aux exigences suivantes :
 * Tout le câblage nécessaire est disponible.
 
 
-.Description de la tâche
-Les étapes suivantes sont effectuées sur le nœud 1 FAS2820 .
-
 .Étapes
+Effectuez ces étapes sur le nœud1.
+
 . Accéder au niveau de privilège avancé :
 +
 [source, cli]
@@ -144,4 +143,4 @@ halt -node <node2> -inhibit-takeover true -ignore-quorum-warnings true
 
 
 .Et la suite ?
-link:convert-fas2820-node2-drive-shelf.html["Convertissez le nœud 2 en tiroir disque et connectez-vous au nœud 4"]
+link:convert-node2-to-drive-shelf.html["Convertissez le nœud 2 en tiroir disque et connectez-vous au nœud 4"]

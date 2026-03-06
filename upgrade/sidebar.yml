@@ -6,9 +6,9 @@ entries:
   url: "/upgrade/upgrade-decide-to-use-this-guide.html"
 - title: Considérations
   url: "/upgrade/upgrade-considerations.html"
-- title: Mettre à niveau en déplaçant le stockage
+- title: Déplacer le stockage
   entries:
-  - title: Flux de travail
+  - title: Découvrez la mise à niveau en déplaçant le stockage
     url: "/upgrade/upgrade-by-moving-storage-parent.html"
   - title: Préparation
     url: "/upgrade/upgrade-prepare-when-moving-storage.html"
@@ -49,9 +49,9 @@ entries:
         url: "/upgrade/upgrade-map-network-ports-ontap-9-7-or-earlier.html"
       - title: Effectuez les étapes finales de ONTAP 9.7 ou version antérieure
         url: "/upgrade/upgrade-final-steps-ontap-9-7-or-earlier-move-storage.html"
-- title: Mise à niveau par déplacement de volumes
+- title: Déplacer des volumes
   entries:
-  - title: Flux de travail
+  - title: En savoir plus sur la mise à niveau en déplaçant des volumes
     url: "/upgrade/upgrade-by-moving-volumes-parent.html"
   - title: Préparation
     url: "/upgrade/upgrade-prepare-when-moving-volumes.html"
@@ -69,41 +69,43 @@ entries:
     url: "/upgrade/upgrade-remove-original-nodes.html"
   - title: Mise à niveau terminée
     url: "/upgrade/upgrade-complete-move-volumes.html"
-- title: Mise à niveau de AFF A250 vers AFF A400
+- title: Convertissez en étagère de disques et déplacez le stockage
   entries:
-  - title: En savoir plus sur la mise à niveau de AFF A250 vers AFF A400
-    url: "/upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html"
-  - title: Migration des LIF et des agrégats de données du nœud 2 vers le nœud 1
-    url: "/upgrade/upgrade_migrate_lifs_aggregates_node2_to_node1.html"
-  - title: Convertissez le nœud 2 en tiroir disque et connectez-vous au nœud 4
-    url: "/upgrade/upgrade_convert_node2_drive_shelf_connect_node4.html"
-  - title: Réaffectez des lecteurs du nœud 2 au nœud 4
-    url: "/upgrade/upgrade_reassign_drives_node2_to_node4.html"
-  - title: Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le nœud
-      4
-    url: "/upgrade/upgrade_migrate_aggregates_epsilon_lifs_node1_to_node4.html"
-  - title: Convertissez le nœud 1 en tiroir disque et connectez-vous au nœud 3
-    url: "/upgrade/upgrade_convert_node1_drive_shelf_connect_node3.html"
-  - title: Réaffectez des lecteurs du nœud 1 au nœud 3
-    url: "/upgrade/upgrade_reassign_drives_node1_to_node3.html"
-  - title: Migration des LIF et des agrégats de données du nœud 4 vers le nœud 3
-    url: "/upgrade/upgrade_migrate_lIFs_aggregates_node4_node3.html"
-- title: Mise à niveau à partir de FAS2820
-  entries:
-  - title: En savoir plus sur la mise à niveau à partir du FAS2820
-    url: "/upgrade/convert-fas2820-to-drive-shelf.html"
-  - title: Migration des LIF et des agrégats de données du nœud 2 vers le nœud 1
-    url: "/upgrade/migrate-fas2820-node2-lifs-aggregates.html"
-  - title: Convertissez le nœud 2 en tiroir disque et connectez-vous au nœud 4
-    url: "/upgrade/convert-fas2820-node2-drive-shelf.html"
-  - title: Réaffectez des lecteurs du nœud 2 au nœud 4
-    url: "/upgrade/reassign-fas2820-node2-drives.html"
-  - title: Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le nœud
-      4
-    url: "/upgrade/migrate-fas2820-aggregates-epsilon-lifs.html"
-  - title: Convertissez le nœud 1 en tiroir disque et connectez-vous au nœud 3
-    url: "/upgrade/convert-fas2820-node1-drive-shelf.html"
-  - title: Réaffectez des lecteurs du nœud 1 au nœud 3
-    url: "/upgrade/reassign-fas2820-node1-drives.html"
-  - title: Migration des LIF et des agrégats de données du nœud 4 vers le nœud 3
-    url: "/upgrade/migrate-fas2820-node4-lIfs-aggregates.html"
+  - title: Mise à niveau de AFF A250 vers AFF A400
+    entries:
+    - title: En savoir plus sur la mise à niveau de AFF A250 vers AFF A400
+      url: "/upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html"
+    - title: Migration des LIF et des agrégats de données du nœud 2 vers le nœud 1
+      url: "/upgrade/upgrade_migrate_lifs_aggregates_node2_to_node1.html"
+    - title: Convertissez le nœud 2 en tiroir disque et connectez-vous au nœud 4
+      url: "/upgrade/upgrade_convert_node2_drive_shelf_connect_node4.html"
+    - title: Réaffectez des lecteurs du nœud 2 au nœud 4
+      url: "/upgrade/upgrade_reassign_drives_node2_to_node4.html"
+    - title: Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le
+        nœud 4
+      url: "/upgrade/upgrade_migrate_aggregates_epsilon_lifs_node1_to_node4.html"
+    - title: Convertissez le nœud 1 en tiroir disque et connectez-vous au nœud 3
+      url: "/upgrade/upgrade_convert_node1_drive_shelf_connect_node3.html"
+    - title: Réaffectez des lecteurs du nœud 1 au nœud 3
+      url: "/upgrade/upgrade_reassign_drives_node1_to_node3.html"
+    - title: Migration des LIF et des agrégats de données du nœud 4 vers le nœud 3
+      url: "/upgrade/upgrade_migrate_lIFs_aggregates_node4_node3.html"
+  - title: Mise à niveau AFF A150, AFF A220 ou FAS2820
+    entries:
+    - title: Découvrez comment mettre à niveau AFF A150, AFF A220 ou FAS2820
+      url: "/upgrade/convert-to-drive-shelf.html"
+    - title: Migration des LIF et des agrégats de données du nœud 2 vers le nœud 1
+      url: "/upgrade/migrate-node2-lifs-aggregates.html"
+    - title: Convertissez le nœud 2 en tiroir disque et connectez-vous au nœud 4
+      url: "/upgrade/convert-node2-to-drive-shelf.html"
+    - title: Réaffectez des lecteurs du nœud 2 au nœud 4
+      url: "/upgrade/reassign-node2-drives.html"
+    - title: Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le
+        nœud 4
+      url: "/upgrade/migrate-aggregates-epsilon-lifs.html"
+    - title: Convertissez le nœud 1 en tiroir disque et connectez-vous au nœud 3
+      url: "/upgrade/convert-node1-to-drive-shelf.html"
+    - title: Réaffectez des lecteurs du nœud 1 au nœud 3
+      url: "/upgrade/reassign-node1-drives.html"
+    - title: Migration des LIF et des agrégats de données du nœud 4 vers le nœud 3
+      url: "/upgrade/migrate-node4-lifs-aggregates.html"

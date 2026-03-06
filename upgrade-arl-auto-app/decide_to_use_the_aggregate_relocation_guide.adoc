@@ -29,9 +29,9 @@ Pour mettre à niveau les configurations IP de MetroCluster, reportez-vous au li
 
 [NOTE]
 ====
-* Si vous mettez à niveau un système en échangeant des modules de contrôleur dans le même châssis, comme AFF A800 ou AFF C800, NetApp recommande fortement d'utiliser la procédure de mise à niveau quilink:../upgrade-arl-auto-in-chassis/index.html["met à niveau les modèles de contrôleurs à l'aide d'ARL, en conservant le châssis et les disques du système existant"] .  Cette procédure ARL inclut les étapes qui garantissent que les disques internes restent sécurisés dans le châssis lorsque vous retirez et installez les contrôleurs pendant la procédure de mise à niveau.
+* Si vous mettez à niveau un système en remplaçant les modules de contrôleur dans le même châssis, comme AFF A800 ou AFF C800, NetApp recommande fortement d'utiliser la procédure de mise à niveau qui link:../upgrade-arl-auto-in-chassis/index.html["met à niveau les modèles de contrôleurs à l'aide d'ARL, en conservant le châssis, les disques et les données du système existant"]. Cette procédure ARL inclut les étapes permettant de garantir que les disques internes restent sécurisés dans le châssis lors du retrait et de l'installation des contrôleurs pendant la procédure de mise à niveau.
 +
-link:../upgrade-arl-auto-in-chassis/decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["Découvrez les combinaisons de mise à niveau système prises en charge à l'aide d'ARL, en conservant le châssis et les disques système existants"].
+link:../upgrade-arl-auto-in-chassis/decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["Découvrez les combinaisons de mise à niveau système prises en charge à l'aide d'ARL, en conservant le châssis, les disques et les données du système existant"].
 
 * Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), NetApp Volume Encryption (NVE) et NetApp Aggregate Encryption (NAE).
 
@@ -72,6 +72,9 @@ Le tableau suivant présente la matrice des systèmes pris en charge pour effect
 
 
 | AFF A400, AFF A700 | AFF A900 
+
+
+| FAS2620^4^, FAS2720^4^ | FAS2820 
 |===
 
 NOTE: Si votre combinaison de modèles de mise à niveau de contrôleurs ne figure pas dans le tableau ci-dessus, contactez le support technique.
@@ -87,7 +90,7 @@ NOTE: Si votre combinaison de modèles de mise à niveau de contrôleurs ne figu
 
 ^3^pour les mises à niveau des systèmes FAS8020, FAS8040, AFF8020 et AFF8040 vers les contrôleurs de remplacement cibles répertoriés dans le tableau ci-dessus, les contrôleurs de remplacement doivent exécuter la même version ONTAP que l'ancien contrôleur. Notez que les systèmes FAS8020, FAS8040, AFF8020 et AFF8040 ne prennent pas en charge les versions ONTAP ultérieures à ONTAP 9.8.
 
-^4^le tableau suivant indique les versions ONTAP minimum et ultérieures prises en charge pour ces combinaisons de mise à niveau de contrôleur.
+^4^Le tableau suivant présente les versions ONTAP prises en charge pour les combinaisons de mise à niveau du contrôleur.
 
 [cols="20,30,20,30"]
 |===
@@ -97,7 +100,10 @@ NOTE: Si votre combinaison de modèles de mise à niveau de contrôleurs ne figu
 | Système | Version ONTAP | Système | Version ONTAP 
 
 
-| AFF A320 | 9.9.1 ou ultérieure | AFF A400 | 9.9.1 ou ultérieure 
+| FAS2720 | 9.13.1 ou version ultérieure | FAS2820 | 9.13.1 ou version ultérieure 
+
+
+| FAS2760 | 9.11.1P7 ou antérieure | FAS2820 | 9.13.1 ou version ultérieure 
 
 
 | AFF 8060 | Correctifs 9.8P13 ou version ultérieure | AFF A900 | 9.10.1 à 9.12.1 
@@ -110,6 +116,9 @@ NOTE: Si votre combinaison de modèles de mise à niveau de contrôleurs ne figu
 
 
 | FAS8080 | Correctifs 9.8P12 ou version ultérieure | FAS9500 | 9.10.1P3 à 9.12.1 
+
+
+| AFF A320 | 9.9.1 ou ultérieure | AFF A400 | 9.9.1 ou ultérieure 
 |===
 [NOTE]
 ====

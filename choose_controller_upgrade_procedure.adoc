@@ -44,9 +44,11 @@ Cela nécessite d'ajouter les nouveaux nœuds, de déplacer les volumes et les L
 +
 L'ARL est une procédure de remplacement.  Vous n'avez pas besoin d'agrandir ou de réduire votre cluster avec les nouveaux nœuds, ce qui est avantageux pour les clusters sans commutateur à deux nœuds.  Le déplacement de données par relocalisation d'agrégats est plus rapide que la copie de données entre agrégats lors du déplacement de volumes.
 
-* link:upgrade/upgrade-decide-to-use-this-guide.html["Déplacer le stockage"]
+* Convertissez le système d'origine en baie de disques et déplacez le stockage :
 +
-Vous pouvez effectuer une mise à niveau sans interruption d'un AFF A250 vers un AFF A400 ou d'un FAS2820 vers un système de remplacement en convertissant les nœuds d'origine en baies de disques, puis en connectant les baies de disques aux nœuds de remplacement pour déplacer le stockage embarqué.
+** link:upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Convertissez AFF A250 en shelf de disques et déplacez le stockage vers AFF A400"]
+** link:upgrade/convert-to-drive-shelf.html["Convertissez AFF A150, AFF A220 ou FAS2820 en baie de disques et transférez le stockage vers un système de remplacement compatible"]
+
 
 
 
@@ -62,7 +64,7 @@ Vous pouvez effectuer une mise à niveau sans interruption d'un AFF A250 vers un
 
 
 
-| Ai-je un système intégré et souhaite-je le mettre à niveau en remplaçant uniquement le module contrôleur, en conservant le châssis et les disques existants ? | link:upgrade-arl-auto-affa900/index.html["Mise à niveau via ARL, en conservant le même châssis et les mêmes disques"]. 
+| Ai-je un système intégré et souhaite-je le mettre à niveau en remplaçant uniquement le module contrôleur, en conservant le châssis et les disques existants ? | link:upgrade-arl-auto-in-chassis/index.html["Mise à niveau via ARL, en conservant le même châssis et les mêmes disques"]. 
 
 
 | Suis-je en train de déplacer une SVM ? | Se référer àlink:https://docs.netapp.com/us-en/ontap/svm-migrate/index.html#svm-migration-workflow["Aperçu de la mobilité des données SVM"^] . 

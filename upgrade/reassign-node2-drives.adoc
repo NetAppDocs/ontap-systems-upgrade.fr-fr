@@ -1,25 +1,24 @@
 ---
-permalink: upgrade/reassign-fas2820-node2-drives.html 
+permalink: upgrade/reassign-node2-drives.html 
 sidebar: sidebar 
-keywords: fas2820, ndu, nondisruptive, upgrade, node2, node4, reassign, drives 
-summary: Après avoir converti le nœud FAS2820 node2 en étagère de lecteurs DS212C et connecté au nœud 4, vous réaffectez les lecteurs qui appartenaient auparavant au nœud 2 au nœud 4. 
+keywords: fas2820, aff a150, aff a220, ndu, nondisruptive, upgrade, node2, node4, reassign, drives 
+summary: 'Après avoir converti node2 en une baie de disques et l"avoir connecté à node4, vous réaffectez les disques qui appartenaient auparavant à node2 à node4.' 
 ---
-= Réaffecter les lecteurs du nœud 2 du FAS2820 au nœud 4
+= Réaffectez des lecteurs du nœud 2 au nœud 4
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Réaffectez les lecteurs qui appartenaient auparavant au nœud 2 de FAS2820 au nœud 4.
+Réaffectez les disques qui appartenaient auparavant à node2 à node4.
 
 .Avant de commencer
 Vérifiez que le nœud 3 et le nœud 4 sont en veille à l'invite DU CHARGEUR.
 
-.Description de la tâche
-Effectuez les étapes suivantes sur node4.
-
 .Étapes
+Effectuez ces étapes sur le nœud4.
+
 . À l'invite DU CHARGEUR, démarrez le nœud 4 en mode maintenance :
 +
 [source, cli]
@@ -84,4 +83,4 @@ halt
 
 
 .Et la suite ?
-link:migrate-fas2820-aggregates-epsilon-lifs.html["Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le nœud 4"]
+link:migrate-aggregates-epsilon-lifs.html["Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le nœud 4"]

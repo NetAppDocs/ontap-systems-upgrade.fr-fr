@@ -1,22 +1,21 @@
 ---
-permalink: upgrade/migrate-fas2820-aggregates-epsilon-lifs.html 
+permalink: upgrade/migrate-aggregates-epsilon-lifs.html 
 sidebar: sidebar 
-keywords: fas2820, ndu, nondisruptive, upgrade, node1, node4, migrate, aggregates, lifs 
+keywords: fas2820, aff a150, aff a220, ndu, nondisruptive, upgrade, node1, node4, migrate, aggregates, lifs 
 summary: 'Migrez les agrégats de données, epsilon et les interfaces logiques (LIF) du nœud 1 vers le nœud 4.' 
 ---
-= Migrer les agrégats de données, epsilon et LIF du nœud 1 vers le nœud 4 de FAS2820
+= Migrez les agrégats de données, epsilon et les LIF du nœud 1 vers le nœud 4
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Migrez les agrégats de données, epsilon et les interfaces logiques (LIF) du nœud 1 FAS2820 vers le nœud 4.
-
-.Description de la tâche
-Effectuez les étapes suivantes sur node4.
+Migrez les agrégats de données, epsilon et les interfaces logiques (LIF) du nœud 1 vers le nœud 4.
 
 .Étapes
+Effectuez ces étapes sur le nœud4.
+
 . À l'invite LOADER pour node4, définissez l'ID du système partenaire :
 +
 [source, cli]
@@ -208,4 +207,4 @@ halt -node <node1> -inhibit-takeover true -ignore-quorum-warnings true
 
 
 .Et la suite ?
-link:convert-fas2820-node1-drive-shelf.html["Convertissez le nœud 1 en tiroir disque et connectez-vous au nœud 3"]
+link:convert-node1-to-drive-shelf.html["Convertissez le nœud 1 en tiroir disque et connectez-vous au nœud 3"]

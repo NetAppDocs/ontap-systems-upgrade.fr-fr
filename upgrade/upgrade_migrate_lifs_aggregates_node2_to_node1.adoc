@@ -30,10 +30,9 @@ Vérifiez que vous répondez aux exigences suivantes :
 * Vous disposez de tous les câbles appropriés.
 
 
-.Description de la tâche
-Les étapes suivantes sont effectuées sur le nœud AFF A250 1.
-
 .Étapes
+Effectuez ces étapes sur le nœud AFF A2501.
+
 . Accéder au niveau de privilège avancé :
 +
 `set -privilege advanced`

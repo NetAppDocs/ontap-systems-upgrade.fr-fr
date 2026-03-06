@@ -16,10 +16,9 @@ Après avoir converti le nœud AFF A250 2 en tiroir disque NS224 et connecté au
 .Avant de commencer
 Vérifiez que le nœud 3 et le nœud 4 sont en veille à l'invite DU CHARGEUR.
 
-.Description de la tâche
-Vous effectuez les étapes suivantes sur le node4.
-
 .Étapes
+Effectuez ces étapes sur le nœud 4 de l'AFF A400.
+
 . À l'invite DU CHARGEUR, démarrez le nœud 4 en mode maintenance :
 +
 `boot_ontap maint`
