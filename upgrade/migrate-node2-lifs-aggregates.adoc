@@ -11,7 +11,7 @@ summary: 'Migrez les interfaces logiques (LIF) et les agrégats de données sur 
 
 
 [role="lead"]
-Migrez les interfaces logiques (LIF) et les agrégats de données sur le nœud2 vers le nœud1 avant de convertir le nœud2 en un châssis de disques.
+Migrez les interfaces logiques (LIF) et les agrégats de données sur AFF A150, AFF A220 ou FAS2820 node2 vers node1 avant de convertir node2 en un châssis de disques.
 
 .Avant de commencer
 Vérifiez que vous répondez aux exigences suivantes :

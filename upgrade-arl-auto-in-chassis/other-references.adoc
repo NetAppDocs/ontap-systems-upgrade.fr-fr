@@ -51,37 +51,7 @@ Le contenu spécifique à cette mise à niveau est répertorié dans le tableau 
 | link:https://docs.netapp.com/us-en/ontap/network-management/index.html["Gestion de réseau"^] | Décrit la configuration et la gestion des ports réseau physiques et virtuels (VLAN et groupes d'interfaces), des LIF, du routage et des services de résolution hôte dans les clusters, l'optimisation du trafic réseau par équilibrage de charge et le contrôle du cluster à l'aide du protocole SNMP. 
 
 
-| link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-cmpr-900%2Fhome.html["Commandes ONTAP 9.0 : référence des pages manuelles"^] | Décrit la syntaxe et l'utilisation des commandes ONTAP 9.0 prises en charge. 
-
-
-| link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-cmpr-910%2Fhome.html["Commandes ONTAP 9.1 : référence des pages manuelles"^] | Décrit la syntaxe et l'utilisation des commandes ONTAP 9.1 prises en charge. 
-
-
-| link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-cmpr-920%2Fhome.html["Commandes ONTAP 9.2 : référence des pages manuelles"^] | Décrit la syntaxe et l'utilisation des commandes ONTAP 9.2 prises en charge. 
-
-
-| link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-cmpr-930%2Fhome.html["Commandes ONTAP 9.3 : référence des pages manuelles"^] | Décrit la syntaxe et l'utilisation des commandes ONTAP 9.3 prises en charge. 
-
-
-| link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-cmpr-940%2Fhome.html["Commandes ONTAP 9.4 : référence des pages manuelles"^] | Décrit la syntaxe et l'utilisation des commandes ONTAP 9.4 prises en charge. 
-
-
-| link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-cmpr-950%2Fhome.html["Commandes ONTAP 9.5 : référence des pages manuelles"^] | Décrit la syntaxe et l'utilisation des commandes ONTAP 9.5 prises en charge. 
-
-
-| link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-cmpr-960%2Fhome.html["Commandes ONTAP 9.6 : référence des pages manuelles"^] | Décrit la syntaxe et l'utilisation des commandes ONTAP 9.6 prises en charge. 
-
-
-| link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-cmpr-970%2Fhome.html["Commandes ONTAP 9.7 : référence des pages manuelles"^] | Décrit la syntaxe et l'utilisation des commandes ONTAP 9.7 prises en charge. 
-
-
-| link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-cmpr-980/home.html["Commandes ONTAP 9.8 : référence des pages manuelles"^] | Décrit la syntaxe et l'utilisation des commandes ONTAP 9.8 prises en charge. 
-
-
-| link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-cmpr-991/home.html["Commandes ONTAP 9.9.1 : référence des pages manuelles"^] | Décrit la syntaxe et l'utilisation des commandes ONTAP 9.9.1 prises en charge. 
-
-
-| link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-cmpr-9101/home.html["Commandes ONTAP 9.10.1 : référence des pages manuelles"^] | Décrit la syntaxe et l'utilisation des commandes ONTAP 9.10.1 prises en charge. 
+| link:https://docs.netapp.com/us-en/ontap-cli/index.html["ONTAP 9 Référence des commandes"^] | Décrit la syntaxe et l'utilisation des commandes ONTAP prises en charge. 
 
 
 | link:https://docs.netapp.com/us-en/ontap/san-admin/index.html["Gestion SAN avec l'interface de ligne de commandes"^] | Décrit la configuration et la gestion des LUN, des igroups et des cibles à l'aide des protocoles iSCSI et FC, ainsi que des espaces de noms et des sous-systèmes utilisant le protocole NVMe/FC. 

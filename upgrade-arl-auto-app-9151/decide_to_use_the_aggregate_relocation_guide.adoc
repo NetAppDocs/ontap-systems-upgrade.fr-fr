@@ -14,7 +14,7 @@ summary: 'Vous pouvez choisir d"utiliser le transfert d"agrégats pour mettre à
 
 
 [role="lead"]
-Il existe plusieurs méthodes de relocalisation agrégée (ARL) pour la mise à niveau du matériel des contrôleurs. Cette procédure ARL décrit comment mettre à niveau une paire haute disponibilité de contrôleurs dans les systèmes de stockage AFF et FAS introduits dans ONTAP 9.15.1 ou version ultérieure avec de nouveaux contrôleurs, tout en conservant les disques existants et les données stockées. Il s'agit d'une procédure complexe qui ne devrait être utilisée que par des administrateurs ONTAP expérimentés.
+Il existe plusieurs méthodes de relocalisation agrégée (ARL) pour la mise à niveau du matériel des contrôleurs. Cette procédure ARL décrit comment mettre à niveau une paire haute disponibilité de contrôleurs dans les systèmes de stockage AFF et FAS introduits dans ONTAP 9.15.1 ou version ultérieure avec de nouveaux contrôleurs, tout en conservant les disques existants et les données stockées sur les disques. Il s'agit d'une procédure complexe qui doit être utilisée uniquement par des administrateurs ONTAP expérimentés.
 
 Pour vous aider à décider si cette procédure ARL est adaptée à la mise à niveau du matériel de votre contrôleur, vous devez examiner toutes les circonstances suivantes pour les mises à niveau prises en charge et non prises en charge.
 

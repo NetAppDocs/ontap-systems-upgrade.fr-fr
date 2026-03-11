@@ -63,7 +63,7 @@ NOTE: Attendez que tous les agrégats non-racines appartenant au nœud 1 aient �
 
 
 
-Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers la gestion des _disques et des agrégats à l'aide de CLI_ content et des commandes _ONTAP 9 : Manual page Reference_ pour plus d'informations sur les commandes de transfert des agrégats de stockage.
+Consultez link:other_references.html["Références"] pour accéder au contenu _Disk and aggregate management with the CLI_ et au _ONTAP 9 Command reference_ pour plus d'informations sur les commandes de relocalisation des agrégats de stockage.
 
 |===
 . [[man_replace_1_2_step4]] vérifier que tous les agrégats non racines sont en ligne et leur état sur le nœud 2 :

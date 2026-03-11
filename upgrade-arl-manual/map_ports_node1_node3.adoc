@@ -239,7 +239,7 @@ L'exemple suivant définit la politique de basculement sur « broadcast-domain-l
 network interface modify -vserver node3 -lif data1 failover-policy broadcast-domainwide -failover-group fg1
 ----
 +
-Accédez à link:other_references.html["Références"] Pour accéder à _Network Management_ ou aux _ONTAP 9 Commands: Manuel page Reference_ pour plus d'informations.
+Accédez à link:other_references.html["Références"] pour accéder à _Network Management_ ou au _ONTAP 9 Command reference_ pour plus d'informations.
 
 . Vérifiez les modifications sur le noeud 3 :
 +

@@ -64,7 +64,7 @@ L'ARL est une procédure de remplacement.  Vous n'avez pas besoin d'agrandir ou 
 
 
 
-| Ai-je un système intégré et souhaite-je le mettre à niveau en remplaçant uniquement le module contrôleur, en conservant le châssis et les disques existants ? | link:upgrade-arl-auto-in-chassis/index.html["Mise à niveau via ARL, en conservant le même châssis et les mêmes disques"]. 
+| Ai-je un système intégré et souhaite-je le mettre à niveau en remplaçant uniquement le module contrôleur, en conservant le châssis et les disques existants ? | link:upgrade-arl-auto-in-chassis/index.html["Mise à niveau via ARL, en conservant le même châssis, les mêmes disques et les données stockées sur les disques"]. 
 
 
 | Suis-je en train de déplacer une SVM ? | Se référer àlink:https://docs.netapp.com/us-en/ontap/svm-migrate/index.html#svm-migration-workflow["Aperçu de la mobilité des données SVM"^] . 

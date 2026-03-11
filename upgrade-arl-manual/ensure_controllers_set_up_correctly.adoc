@@ -136,7 +136,7 @@ Vous pouvez comparer le résultat avec le résultat que vous avez capturé dansl
 `system service-processor network modify -node <node_name>`
 
 +
-Accédez à link:other_references.html["Références"] Pour accéder à _System Administration Reference_ pour obtenir des informations sur les processeurs de stockage et les _ONTAP 9 Commands: Manual page Reference_ pour obtenir des informations détaillées sur le `system service- processor network modify` commande.
+Accédez à link:other_references.html["Références"] pour accéder au _System Administration Reference_ pour des informations sur les SP et au _ONTAP 9 Command reference_ pour des informations détaillées sur la commande  `system service- processor network modify`.
 
 . Pour configurer un cluster sans commutateur sur les nouveaux nœuds, rendez-vous sur link:other_references.html["Références"] Pour accéder au _Network support site_ et suivre les instructions de la section _transition vers un cluster sans commutateur à deux nœuds_.
 

@@ -218,7 +218,7 @@ La commande suivante définit la règle de basculement sur `broadcast-domain-wid
 `network interface modify -vserver node4 -lif data1 failover-policy broadcast-domain-wide -failover-group fg1`
 
 +
-Pour plus d'informations, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Network Management_ ou les commandes _ONTAP 9 : Manual page Reference_, et allez à _Configuration des paramètres de basculement sur une LIF_.
+Pour plus d'informations, reportez-vous à link:other_references.html["Références"] pour accéder à _Gestion du réseau_ ou au _ONTAP 9 Command reference_, et accédez à _Configuring failover settings on a LIF_.
 
 . Vérifiez les modifications sur le nœud 4 :
 +

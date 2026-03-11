@@ -16,7 +16,7 @@ summary: Vérifiez que le commutateur de cluster RCF prend en charge les ports d
 [role="lead"]
 À ce stade de la procédure de mise à niveau, tous les agrégats de données doivent se trouver sur le nœud 1.  Si vous mettez à niveau une configuration avec des clusters connectés à un commutateur, vous devez valider que le fichier de configuration de référence du commutateur de cluster (RCF) prend en charge les ports de cluster/HA partagés pour les nouveaux contrôleurs.
 
-Si vous effectuez une mise à niveau vers une configuration de cluster sans commutateur à deux nœuds, vous pouvez ignorer cette section et accéder àlink:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Déplacement des agrégats non racines et des LIF de données NAS vers le nœud 2"] .
+Si vous effectuez une mise à niveau vers une configuration de cluster sans commutateur à deux nœuds, vous pouvez ignorer cette section et passer à link:move-non-root-aggr-and-nas-data-lifs-back-to-node2.html["Déplacement des agrégats non racines et des LIF de données NAS vers le nœud 2"].
 
 .Étapes
 . Passer en mode privilège avancé :
@@ -36,7 +36,7 @@ Dans la sortie, la « Connexion IC RDMA » doit avoir le statut `Up` .
 | Si l'état « Connexion IC RDMA » est ... | Puis… 
 
 
-| `Up` | Aller àlink:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Déplacement des agrégats non racines et des LIF de données NAS vers le nœud 2"] . 
+| `Up` | Allez à link:move-non-root-aggr-and-nas-data-lifs-back-to-node2.html["Déplacement des agrégats non racines et des LIF de données NAS vers le nœud 2"]. 
 
 
 | `Down` | Aller à<<verify-rcf-step3,Étape 3>> . 
@@ -52,4 +52,4 @@ Pour plus d'informations, voir link:cable-node1-for-shared-cluster-HA-storage.ht
 
 
 .Quelle est la prochaine étape
-link:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Déplacement des agrégats non racines et des LIF de données NAS vers le nœud 2"]
+link:move-non-root-aggr-and-nas-data-lifs-back-to-node2.html["Déplacement des agrégats non racines et des LIF de données NAS vers le nœud 2"]

@@ -2,7 +2,7 @@
 permalink: upgrade/reassign-node1-drives.html 
 sidebar: sidebar 
 keywords: fas2820, aff a150, aff a220, ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
-summary: 'Après avoir converti node1 en une baie de disques et l"avoir connecté à node3, vous réaffectez les disques qui appartenaient auparavant à node1 à node3.' 
+summary: Après avoir converti AFF A150, AFF A220 ou FAS2820 node1 en un châssis de disques et connecté à node3, vous réaffectez les disques qui appartenaient auparavant à node1 à node3. 
 ---
 = Réaffectez des lecteurs du nœud 1 au nœud 3
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 'Après avoir converti node1 en une baie de disques et l"avoir connect�
 
 
 [role="lead"]
-Réaffectez les disques qui étaient précédemment affectés à node1 à node3.
+Réaffectez les disques qui étaient précédemment affectés à AFF A150, AFF A220 ou FAS2820 node1 à node3.
 
 .Étapes
 Effectuez ces étapes sur le nœud3.

@@ -67,7 +67,7 @@ Si le nœud 1 ou le nœud 2 ne possède ni LIF de données détenues par d'autre
 +
 `volume show -node <node2> -state offline`
 
-. Si des volumes sont hors ligne, comparez-les avec la liste des volumes hors ligne que vous avez capturés dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"], et de mettre en ligne l'un des volumes hors ligne, si nécessaire, à l'aide de la commande suivante, une fois pour chaque volume :
+. Si des volumes sont hors ligne, comparez-les avec la liste des volumes hors ligne que vous avez répertoriée dans la section link:prepare-nodes-for-upgrade.html["Préparer les nœuds pour une mise à niveau"], et remettez en ligne les volumes hors ligne nécessaires à l'aide de la commande suivante, une fois pour chaque volume :
 +
 `volume online -vserver <vserver_name> -volume <volume_name>`
 
@@ -121,9 +121,9 @@ Entrez `y` pour supprimer tous les paquets.
 `system license show`
 
 +
-Vous pouvez comparer la sortie avec celle que vous avez capturée dans le link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] section.
+Vous pouvez comparer le résultat avec celui que vous avez enregistré dans la section link:prepare-nodes-for-upgrade.html["Préparer les nœuds pour une mise à niveau"].
 
-. [[unset_maxwait]] si des lecteurs auto-cryptés sont utilisés dans la configuration et que vous avez défini le `kmip.init.maxwait` variable à `off` (Par exemple, dans _Boot node2 avec les modules système de remplacement_, link:boot_node2_with_a900_controller_and_nvs.html#boot_node2_step1["Étape 1"]), vous devez annuler la variable :
+. [[unset_maxwait]] Si des disques à chiffrement automatique sont utilisés dans la configuration et que vous avez défini la  `kmip.init.maxwait` variable à  `off` (par exemple, dans _Boot node2 with the replacement system modules_, link:boot-node2-with-a900-controller-and-nvs.html#boot_node2_step1["Étape 1"]), vous devez supprimer la variable :
 +
 `set diag; systemshell -node <node_name> -command sudo kenv -u -p kmip.init.maxwait`
 
@@ -132,10 +132,10 @@ Vous pouvez comparer la sortie avec celle que vous avez capturée dans le link:p
 `system service-processor network modify -node <node_name>`
 
 +
-Reportez-vous à la section link:other_references.html["Références"] Pour accéder à _System Administration Reference_ pour obtenir des informations sur les processeurs de stockage et les _ONTAP 9 Commands: Manual page Reference_ pour obtenir des informations détaillées sur le système `service-processor network modify` commande.
+Consultez link:other-references.html["Références"] pour accéder au _System Administration Reference_ pour des informations sur les SP et au _ONTAP 9 Command reference_ pour des informations détaillées sur la commande système  `service-processor network modify`.
 
-. Pour configurer un cluster sans commutateur sur les nouveaux nœuds, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers le site de support _NetApp_ et suivre les instructions de la section _transition vers un cluster_ sans commutateur à deux nœuds_.
+. Si vous souhaitez configurer un cluster sans commutateur sur les nouveaux nœuds, reportez-vous à link:other-references.html["Références"] le _NetApp Support Site_ et suivez les instructions de _Transitioning to a two-node switchless cluster_.
 
 
 .Une fois que vous avez terminé
-Si le cryptage du stockage est activé sur les nœuds 1 et 2, complétez la section link:set_up_storage_encryption_new_module.html["Configurez Storage Encryption sur le nouveau module de contrôleur"]. Sinon, complétez la section link:decommission_old_system.html["Désaffectation de l'ancien système"].
+Si le chiffrement du stockage est activé sur node1 et node2, complétez la section link:set-up-storage-encryption-new-module.html["Configurez Storage Encryption sur le nouveau module de contrôleur"]. Sinon, complétez la section link:decommission-old-system.html["Désaffectation de l'ancien système"].

@@ -327,7 +327,7 @@ vs0
 `network interface revert -vserver * -lif *`
 
 +
-Pour des informations détaillées sur le `network interface revert` commande, voir link:other_references.html["Références"] Pour lier les commandes _ONTAP 9 : Manuel page Reference_.
+Pour des informations détaillées sur la commande  `network interface revert`, consultez link:other_references.html["Références"] pour accéder à la _ONTAP 9 Command reference_.
 
 . Vérifier si le nœud 1 ou le nœud 2 possède des disques défectueux :
 +
@@ -600,7 +600,7 @@ Le système affiche des informations détaillées sur le processeur de service s
 .. Vérifiez que le réseau du processeur de service est configuré.
 .. Enregistrez l'adresse IP et d'autres informations sur le processeur de service.
 +
-Vous pouvez réutiliser les paramètres réseau des périphériques de gestion à distance, dans ce cas les SP, du système d'origine pour les SP sur les nouveaux nœuds. Pour plus d'informations sur le processeur de service, reportez-vous à link:other_references.html["Références"] Pour établir un lien vers les _System Administration Reference_ et les _ONTAP 9 Commands: Manual page Reference_.
+Vous pouvez réutiliser les paramètres réseau des dispositifs de gestion à distance, dans ce cas les SP, du système d'origine pour les SP des nouveaux nœuds. Pour des informations détaillées sur le SP, consultez link:other_references.html["Références"] pour accéder au _System Administration Reference_ et au _ONTAP 9 Command reference_.
 
 
 
@@ -672,7 +672,7 @@ Activez AutoSupport en suivant les instructions de la _System Administration Ref
 `system node autosupport show -node node_name -instance`
 
 +
-Pour plus d'informations sur AutoSupport, reportez-vous à link:other_references.html["Références"] Pour établir un lien vers les _System Administration Reference_ et les _ONTAP 9 Commands: Manual page Reference_.
+Pour des informations détaillées sur AutoSupport, reportez-vous à link:other_references.html["Références"] pour accéder au _System Administration Reference_ et au _ONTAP 9 Command reference_.
 
 . [[man_prepare_nodes_ste35,étape 35]] Envoyer un message AutoSupport à NetApp pour le nœud 1 en entrant la commande suivante :
 +

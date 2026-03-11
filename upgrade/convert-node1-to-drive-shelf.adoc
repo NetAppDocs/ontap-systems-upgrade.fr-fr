@@ -11,7 +11,7 @@ summary: Convertissez node1 en une étagère de disques et connectez-le à node3
 
 
 [role="lead"]
-Convertissez node1 en une étagère de disques et connectez-le à node3 avant de réaffecter les disques de node1 à node3.
+Convertissez le AFF A150, AFF A220 ou FAS2820 node1 en un châssis de disques et connectez-le à node3 avant de réaffecter les disques de node1 à node3.
 
 .Étapes
 . Déconnectez tous les câbles réseau du nœud 1.

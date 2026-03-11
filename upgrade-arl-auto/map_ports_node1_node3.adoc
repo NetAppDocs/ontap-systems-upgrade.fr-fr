@@ -215,7 +215,7 @@ La commande suivante définit la règle de basculement sur `broadcast-domain-wid
 `network interface modify -vserver node3 -lif data1 failover-policy broadcast-domainwide -failover-group fg1`
 
 +
-Reportez-vous à la section link:other_references.html["Références"] Pour accéder à _Network Management_ ou aux _ONTAP 9 Commands: Manuel page Reference_ pour plus d'informations.
+Reportez-vous à link:other_references.html["Références"] pour obtenir un lien vers _Network Management_ ou le _ONTAP 9 Command reference_ pour plus d'informations.
 
 . Vérifiez les modifications sur le noeud 3 :
 +

@@ -151,7 +151,7 @@ NOTE: Dans cette procédure, la section _Re-création de VLAN, ifgrps et broadca
 Une fois que vous avez confirmé que le nœud2 est dans le quorum et peut communiquer avec le nœud1, vérifiez que les VLAN, les groupes d'interface et les domaines de diffusion du nœud1 sont visibles sur le nœud2. Vérifiez également que tous les ports réseau du node2 sont configurés dans leurs domaines de diffusion appropriés.
 
 .Description de la tâche
-Pour plus d'informations sur la création et la recrércréation de VLAN, de groupes d'interfaces et de domaines de diffusion, reportez-vous à la section link:other_references.html["Références"] Pour créer un lien vers le contenu _Network Management_.
+Pour plus d'informations sur la création et la recréation de VLAN, de groupes d'interfaces et de domaines de diffusion, reportez-vous à link:other-references.html["Références"] pour accéder au contenu _Network Management_.
 
 .Étapes
 . Lister tous les ports physiques qui se trouvent sur le nœud mis à niveau 2 :

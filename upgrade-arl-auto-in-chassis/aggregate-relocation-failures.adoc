@@ -38,7 +38,7 @@ Le `storage aggregate relocation show` la commande vous indique les agrégats qu
 
 
 +
-Pour des informations détaillées sur le `storage aggregate relocation start`, `override-vetoes`, et `override-destination-checks` options, voir link:other_references.html["Références"] Pour lier les commandes _ONTAP 9 : Manuel page Reference_.
+Pour des informations détaillées sur les  `storage aggregate relocation start`, `override-vetoes`, et  `override-destination-checks` options, reportez-vous à link:other-references.html["Références"] pour accéder au _ONTAP 9 Command reference_.
 
 
 
@@ -69,9 +69,9 @@ Vous pouvez corriger le problème de propriété incorrecte après la phase 6, a
 `storage aggregate show -nodes _node2_ -is-home true`
 
 +
-Pour identifier les agrégats qui n'ont pas été correctement transférés, reportez-vous à la liste des agrégats avec le propriétaire du nœud 1 que vous avez obtenu dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] et comparez-le avec la sortie de la commande ci-dessus.
+Pour identifier les agrégats qui n'ont pas été correctement déplacés, reportez-vous à la liste des agrégats avec le propriétaire du node1 que vous avez obtenue dans la section link:prepare-nodes-for-upgrade.html["Préparer les nœuds pour une mise à niveau"] et comparez-la avec le résultat de la commande ci-dessus.
 
-. Comparez la sortie de l'étape 1 avec celle que vous avez capturée pour le noeud 1 dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"] et notez tous les agrégats qui n'ont pas été correctement transférés.
+. Comparez le résultat de l'étape 1 avec le résultat que vous avez capturé pour node1 dans la section link:prepare-nodes-for-upgrade.html["Préparer les nœuds pour une mise à niveau"] et notez les agrégats qui n'ont pas été correctement déplacés.
 . Transférez les agrégats restants sur le nœud 2 :
 +
 `storage aggregate relocation start -node _node2_ -aggr _aggr_node_1_ -destination _node1_`

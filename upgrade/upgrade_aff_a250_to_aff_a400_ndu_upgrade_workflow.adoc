@@ -17,7 +17,7 @@ Effectuez une mise à niveau sans interruption d'un système AFF A250 vers un sy
 Les contrôleurs de paire haute disponibilité (HA) AFF A250 sont node1 et node2 et les contrôleurs de paire haute disponibilité AFF A400 de remplacement sont node3 et node4.
 
 .Avant de commencer
-Examinez les scénarios de mise à niveau généraux et les considérations de mise à niveau pour la mise à niveau par déplacement de volumes ou de stockage :
+Examinez tous les éléments à prendre en compte lors d'une mise à niveau par déplacement de volumes ou de stockage :
 
 * link:upgrade-decide-to-use-this-guide.html["Décidez de mettre à niveau en déplaçant des volumes ou du stockage"]
 * link:upgrade-considerations.html["Considérations relatives à la mise à niveau du matériel du contrôleur"]

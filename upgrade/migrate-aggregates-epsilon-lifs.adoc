@@ -11,7 +11,7 @@ summary: 'Migrez les agrégats de données, epsilon et les interfaces logiques (
 
 
 [role="lead"]
-Migrez les agrégats de données, epsilon et les interfaces logiques (LIF) du nœud 1 vers le nœud 4.
+Migrez les agrégats de données, epsilon et les interfaces logiques (LIF) sur AFF A150, AFF A220 ou FAS2820 node1 vers node4.
 
 .Étapes
 Effectuez ces étapes sur le nœud4.

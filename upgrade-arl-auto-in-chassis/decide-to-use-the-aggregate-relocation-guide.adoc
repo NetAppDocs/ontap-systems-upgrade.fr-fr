@@ -50,7 +50,7 @@ Vous ne pouvez pas utiliser cette procédure ARL dans les circonstances suivante
 * Vous souhaitez ajouter les nouveaux contrôleurs au cluster en tant que nouvelle paire haute disponibilité et migrer les données à l'aide des déplacements de volumes.
 * Vous mettez à niveau une configuration IP MetroCluster.
 +
-Pour mettre à niveau une configuration IP MetroCluster, reportez-vous  à la section link:other_references.html["Références"] pour accéder au contenu _MetroCluster Upgrade and expansion_.
+Pour mettre à niveau une configuration IP MetroCluster, consultez link:other-references.html["Références"] pour accéder au contenu _MetroCluster Upgrade and Expansion_.
 
 
 
@@ -61,7 +61,7 @@ Pour mettre à niveau une configuration IP MetroCluster, reportez-vous  à la se
 Le tableau suivant présente la matrice des systèmes pris en charge pour effectuer une mise à niveau du contrôleur en convertissant le système existant en système de remplacement, en conservant le châssis, les disques et les données stockées sur ceux-ci.
 
 
-CAUTION: Cette procédure s'applique strictement aux configurations de mise à niveau suivantes. N'utilisez pas cette procédure pour effectuer une mise à niveau entre d'autres combinaisons de systèmes. Pour tous les autres modèles de contrôleurs, reportez-vous à  la section link:other_references.html["Références"]lien vers _utilisation des commandes de remplacement du contrôleur système pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_ et _utilisation du déplacement d'agrégat pour mettre à niveau manuellement le matériel du contrôleur exécutant ONTAP 9.8 ou version ultérieure_.
+CAUTION: Cette procédure s'applique strictement aux configurations de mise à niveau suivantes. N'utilisez pas cette procédure pour effectuer une mise à niveau entre d'autres combinaisons de systèmes. Pour tous les autres modèles de contrôleurs, consultez link:other-references.html["Références"] pour accéder à _Use "system controller replace" commands to upgrade controller hardware running ONTAP 9.8 or later_ et _Using aggregate relocation to manually upgrade controller hardware running ONTAP 9.8 or later_.
 
 [cols="20,20,40"]
 |===

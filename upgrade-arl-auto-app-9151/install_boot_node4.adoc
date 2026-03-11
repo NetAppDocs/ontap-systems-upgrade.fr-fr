@@ -268,7 +268,7 @@ NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances h
 |===
 .. Accédez au menu de démarrage spécial et sélectionnez option `(10) Set Onboard Key Manager recovery secrets`.
 +
-Saisissez la phrase de passe et les informations de sauvegarde que vous avez enregistrées lors de la procédure précédente. Voir link:manage_storage_encryption_using_okm.html["Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré"].
+Saisissez la phrase secrète et les informations de sauvegarde que vous avez enregistrées précédemment dans la procédure. Voir link:manage_storage_encryption_using_okm.html["Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré"].
 
 
 

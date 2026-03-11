@@ -179,7 +179,7 @@ Si nécessaire, vous pouvez forcer la relocalisation en utilisant l'une des mét
 
 
 
-Pour plus d'informations sur les commandes de transfert d'agrégats de stockage, rendez-vous sur link:other_references.html["Références"] Pour établir un lien vers la gestion des _disques et des agrégats à l'aide de la CLI_ et des commandes _ONTAP 9 : manuel page Reference_.
+Pour plus d'informations sur les commandes de relocalisation des agrégats de stockage, allez sur link:other_references.html["Références"] pour accéder à _Disk and aggregate management with the CLI_ et au _ONTAP 9 Command reference_.
 
 |===
 . [[man_relocaliser_2_3_step8]]Vérifiez que tous les agrégats non racine sont en ligne sur le node3 :

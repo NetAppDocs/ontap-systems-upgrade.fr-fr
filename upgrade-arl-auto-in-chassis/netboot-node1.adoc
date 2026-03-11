@@ -24,14 +24,14 @@ Vous pouvez également utiliser l'option de démarrage USB pour effectuer le dé
 
 .Avant de commencer
 * Vérifiez que vous pouvez accéder à un serveur HTTP avec le système.
-* Téléchargez les fichiers système nécessaires pour votre système et la version correcte de ONTAP depuis le site _support NetApp_. Reportez-vous à la section link:other_references.html["Références"] Lien vers le _site de support NetApp_.
+* Téléchargez les fichiers système nécessaires pour votre système et la version correcte d'ONTAP depuis le _NetApp Support Site_. Reportez-vous à link:other-references.html["Références"] pour accéder au _NetApp Support Site_.
 
 
 .Description de la tâche
 Vous devez netboot les nouveaux contrôleurs si la même version de ONTAP 9 est installée sur les contrôleurs d'origine. Après avoir installé chaque nouveau contrôleur, vous démarrez le système à partir de l'image ONTAP 9 stockée sur le serveur Web. Vous pouvez ensuite télécharger les fichiers corrects sur le périphérique de démarrage pour les démarrages suivants du système.
 
 .Étapes
-. Reportez-vous à la section link:other_references.html["Références"] Pour accéder au _site de support NetApp_ afin de télécharger les fichiers utilisés pour effectuer sur le réseau du système.
+. Reportez-vous à link:other-references.html["Références"] pour accéder au _NetApp Support Site_ afin de télécharger les fichiers utilisés pour effectuer le netboot du système.
 . [[netboot_nœud1_step2]]Télécharger le logiciel ONTAP approprié depuis la section de téléchargement du logiciel du site de support _NetApp_ et stocker le `<ontap_version>_image.tgz` fichier dans un répertoire accessible sur le web.
 . Accédez au répertoire accessible sur le Web et vérifiez que les fichiers dont vous avez besoin sont disponibles.
 . Votre liste de répertoires devrait contenir `<ontap_version>_image.tgz`.

@@ -315,7 +315,7 @@ vs0
 `network interface revert -vserver * -lif *`
 
 +
-Pour des informations détaillées sur le `network interface revert` commande, voir link:other_references.html["Références"] Pour lier les commandes _ONTAP 9 : Manuel page Reference_.
+Pour des informations détaillées sur la commande  `network interface revert`, consultez link:other_references.html["Références"] pour accéder à la _ONTAP 9 Command reference_.
 
 . Vérifier si le nœud 1 ou le nœud 2 possède des disques défectueux :
 +

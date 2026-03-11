@@ -16,14 +16,19 @@ Effectuez une mise à niveau sans interruption d'un AFF A150, AFF A220 ou FAS282
 .Description de la tâche
 Cette procédure prend en charge les conversions système suivantes :
 
-* Conversion d'un AFF A150 ou AFF A220 en un châssis de disques DS224C
-* Conversion d'un FAS2820 en baie de disques DS212C
+|===
+| Convertissez ce système... | À cette étagère de disques... 
 
 
+| AFF A150 ou AFF A220 | DS224C 
+
+
+| FAS2820 | DS212C 
+|===
 Les contrôleurs de la paire haute disponibilité (HA) sont node1 et node2 et les contrôleurs de la paire haute disponibilité (HA) de remplacement sont node3 et node4.
 
 .Avant de commencer
-Examinez les scénarios de mise à niveau généraux et les considérations de mise à niveau pour la mise à niveau par déplacement de volumes ou de stockage :
+Examinez tous les éléments à prendre en compte lors d'une mise à niveau par déplacement de volumes ou de stockage :
 
 * link:upgrade-decide-to-use-this-guide.html["Décidez de mettre à niveau en déplaçant des volumes ou du stockage"]
 * link:upgrade-considerations.html["Considérations relatives à la mise à niveau du matériel du contrôleur"]

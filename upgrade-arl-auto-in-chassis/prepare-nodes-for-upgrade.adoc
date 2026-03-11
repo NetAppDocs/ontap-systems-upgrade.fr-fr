@@ -99,7 +99,7 @@ Pendant la phase de contrôles préalables, le système exécute la liste suivan
 | Vérification du quorum du cluster | Vérifie que les nœuds remplacés se trouvent au quorum. Si les nœuds ne sont pas dans le quorum, la tâche échoue. 
 
 
-| Vérification de la version de l'image | Vérifie que les nœuds remplacés exécutent la même version de ONTAP. Si les versions des images ONTAP sont différentes, la tâche échoue. La même version de ONTAP 9.x doit être installée sur les nouveaux nœuds. Si une autre version de ONTAP est installée sur les nouveaux nœuds, vous devez netboot les nouveaux contrôleurs après les avoir installés. Pour obtenir des instructions sur la mise à niveau de ONTAP, reportez-vous à la section link:other_references.html["Références"] Pour accéder à _Upgrade ONTAP_. 
+| Vérification de la version de l'image | Vérifie que les nœuds remplacés exécutent la même version d'ONTAP. Si les versions des images ONTAP sont différentes, la tâche échoue. Les nouveaux nœuds doivent avoir la même version d'ONTAP 9.x installée que celle installée sur les nœuds d'origine. Si les nouveaux nœuds ont une version différente d'ONTAP installée, vous devez effectuer un netboot des nouveaux contrôleurs après leur installation. Pour obtenir des instructions sur la mise à niveau d'ONTAP, consultez link:other-references.html["Références"] pour accéder à _Upgrade ONTAP_. 
 
 
 | Vérification de l'état DE LA HAUTE DISPONIBILITÉ | Vérifie si les deux nœuds remplacés se trouvent dans une configuration de paires haute disponibilité. Si le basculement du stockage n'est pas activé pour les contrôleurs, la tâche échoue. 
@@ -108,7 +108,7 @@ Pendant la phase de contrôles préalables, le système exécute la liste suivan
 | Vérification de l'état de l'agrégat | Si les nœuds remplacés incluent des agrégats dont ils ne sont pas le propriétaire du site, la tâche échoue. Les nœuds ne doivent pas posséder d'agrégats non locaux. 
 
 
-| Vérification de l'état du disque | Si l'un des nœuds remplacés contient des disques manquants ou en panne, la tâche échoue. Si des disques sont manquants, reportez-vous à la section link:other_references.html["Références"] pour établir un lien vers la gestion des disques et des agrégats avec l'interface de ligne de commande_, _gestion logique du stockage avec l'interface de ligne de commande_ et _gestion des paires HA_ pour configurer le stockage de la paire HA. 
+| Vérification de l'état du disque | Si l'un des nœuds remplacés présente des disques manquants ou défaillants, la tâche échoue. En cas de disques manquants, consultez link:other-references.html["Références"] pour accéder à _Disk and aggregate management with the CLI_, _Logical storage management with the CLI_ et _HA pair management_ afin de configurer le stockage de la paire haute disponibilité. 
 
 
 | Vérification de l'état de la LIF de données | Vérifie si l'un des nœuds remplacés dispose de LIF de données non locales. Les nœuds ne doivent pas contenir de LIFs de données pour lesquelles ils ne sont pas le propriétaire. Si l'un des nœuds contient des LIFs de données non locales, la tâche échoue. 
@@ -230,6 +230,6 @@ Chaque nœud du cluster doit avoir son propre fichier de licence NetApp (NLF).
 
 Si vous ne disposez pas de NLF, les fonctions sous licence du cluster sont disponibles pour le nouveau contrôleur. Cependant, l'utilisation de fonctions sans licence sur le contrôleur peut vous mettre hors conformité avec votre contrat de licence. Vous devez donc installer le NLF pour le nouveau contrôleur une fois la mise à niveau terminée.
 
-Reportez-vous à la section link:other_references.html["Références"] Pour accéder au _site de support NetApp_ sur lequel vous pouvez obtenir votre NLF. Les fichiers NLF sont disponibles dans la section _My support_ sous _Software licenses_. Si le site ne dispose pas des NLF dont vous avez besoin, contactez votre ingénieur commercial NetApp.
+Consultez link:other-references.html["Références"] pour accéder au _NetApp Support Site_ où vous pouvez obtenir votre NLF. Les NLF sont disponibles dans la section _My Support_ sous _Software licenses_. Si le site ne propose pas les NLF dont vous avez besoin, contactez votre NetApp sales representative.
 
-Pour plus d'informations sur les licences, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.
+Pour des informations détaillées sur les licences, consultez link:other-references.html["Références"] pour accéder au _System Administration Reference_.

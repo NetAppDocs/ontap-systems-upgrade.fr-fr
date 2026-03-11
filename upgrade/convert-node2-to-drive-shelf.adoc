@@ -11,7 +11,7 @@ summary: Convertissez node2 en un support de disque et connectez-le à node4 ava
 
 
 [role="lead"]
-Convertissez node2 en baie de disques et connectez-le à node4 avant de réaffecter les disques de node2 à node4. Node1 et node2 sont les contrôleurs à l'intérieur de la baie de disques.
+Convertissez AFF A150, AFF A220 ou FAS2820 node2 en un shelf de disques et connectez-le à node4 avant de réaffecter les disques de node2 à node4. Node1 et node2 sont les contrôleurs à l'intérieur du shelf de disques.
 
 .Étapes
 . Déconnectez tous les câbles réseau du nœud 2.
