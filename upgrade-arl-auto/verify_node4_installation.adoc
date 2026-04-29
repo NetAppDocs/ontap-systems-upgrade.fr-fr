@@ -17,7 +17,7 @@ summary: 'Vérifiez que le nœud4 rejoint le quorum, recréez les VLAN du nœud 
 Une fois que vous avez installé et installé le nœud 4, vous devez vérifier qu'il est installé correctement, qu'il fait partie du cluster et qu'il peut communiquer avec le nœud 3.
 
 .Description de la tâche
-À ce stade de la procédure, l'opération aura été interrompue au fur et à mesure que le noeud 4 rejoint le quorum.
+À ce stade de la procédure, l'opération s'interrompt lorsque le nœud4 rejoint le quorum.
 
 .Étapes
 . Vérifiez que le noeud 4 a rejoint le quorum :
@@ -38,7 +38,7 @@ Si la configuration est différente pour le nœud 4, une interruption du systèm
 . Vérifier que le contrôleur remplacé est configuré correctement pour la configuration MetroCluster et non en mode commutation.
 +
 
-CAUTION: À ce stade, la configuration de MetroCluster ne sera pas dans un état normal et vous pourriez avoir des erreurs à résoudre. Voirlink:verify_health_of_metrocluster_config.html["Vérifier l'état de santé de la configuration MetroCluster"] .
+CAUTION: À ce stade, la configuration MetroCluster n'est pas dans un état normal et vous pourriez avoir des erreurs à résoudre. Voir link:verify_health_of_metrocluster_config.html["Vérifier l'état de santé de la configuration MetroCluster"].
 
 
 
@@ -74,7 +74,7 @@ Pour plus d'informations sur la création et la recrércréation de VLAN, de gro
 
 == Restaurez la configuration du gestionnaire de clés sur le nœud 4
 
-Si vous utilisez NetApp Aggregate Encryption (NAE) ou NetApp Volume Encryption (NVE) pour chiffrer des volumes sur le système que vous mettez à niveau, la configuration de chiffrement doit être synchronisée avec les nouveaux nœuds. Si vous ne restaurez pas le gestionnaire de clés, lorsque vous transférez les agrégats du nœud 2 vers le nœud 4 à l'aide du transfert d'agrégats (ARL), les volumes chiffrés sont mis hors ligne.
+Si vous utilisez le NetApp Aggregate Encryption (NAE) ou le NetApp Volume Encryption (NVE) pour chiffrer les volumes sur le système que vous mettez à niveau, la configuration de chiffrement doit être synchronisée avec les nouveaux nœuds. Si vous ne restaurez pas key-manager, lorsque vous relocalisez les agrégats du nœud2 du nœud3 vers le nœud4 à l'aide d'ARL, les volumes chiffrés sont mis hors ligne.
 
 .Étapes
 . Pour synchroniser la configuration du chiffrement pour Onboard Key Manager, exécutez la commande suivante à l'invite du cluster :

@@ -1,10 +1,10 @@
-= Corriger la propriété de l'agrégat en cas d'échec d'une vérification préalable du transfert d'agrégats
+= Étape 2 : Corriger la propriété de l'agrégat si une vérification préalable ARL échoue
 :allow-uri-read: 
 
 
 
 
-== Corriger la propriété de l'agrégat en cas d'échec d'une vérification préalable du transfert d'agrégats
+== Étape 2 : Corriger la propriété de l'agrégat si une vérification préalable ARL échoue
 
 En cas d'échec de la vérification de l'état de l'agrégat, vous devez renvoyer les agrégats qui appartiennent au nœud partenaire au nœud propriétaire du nœud de rattachement et relancer le processus de vérification préalable.
 
@@ -33,12 +33,7 @@ aggr4       node1      node1       online
 
 4 entries were displayed.
 ----
+. Redémarrez le processus de remplacement du contrôleur :
 
-
-
-
-=== Une fois que vous avez terminé
-
-Vous devez redémarrer la procédure de remplacement des contrôleurs :
 
 `system controller replace start -nodes _node_names_`

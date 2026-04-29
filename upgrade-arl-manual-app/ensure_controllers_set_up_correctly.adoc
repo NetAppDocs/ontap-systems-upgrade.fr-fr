@@ -143,3 +143,6 @@ Accédez à link:other_references.html["Références"] pour accéder au _System 
 
 .Une fois que vous avez terminé
 Si le cryptage du stockage est activé sur les nœuds 3 et 4, procédez comme suit dans link:set_up_storage_encryption_new_controller.html["Configurez Storage Encryption sur le nouveau module de contrôleur"]. Dans le cas contraire, suivez les étapes de la section link:decommission_old_system.html["Désaffectation de l'ancien système"].
+
+.Et la suite ?
+Après avoir confirmé que les nouveaux contrôleurs sont correctement configurés, link:set_up_storage_encryption_new_controller.html["Configurez le chiffrement du stockage sur le nouveau module contrôleur"].

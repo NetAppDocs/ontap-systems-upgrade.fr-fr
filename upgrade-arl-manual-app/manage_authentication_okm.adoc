@@ -37,3 +37,6 @@ Lorsque vous y êtes invité, saisissez la phrase secrète OKM à l'échelle du 
 `security key-manager onboard show-backup`
 
 
+
+.Et la suite ?
+Après avoir géré les clés d'authentification à l'aide du gestionnaire de clés intégré link:quiesce_snapmirror_relationships.html["quiescer les relations SnapMirror"].

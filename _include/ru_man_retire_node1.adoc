@@ -194,7 +194,5 @@ WARNING: Si le nœud 1 se trouve dans le même châssis que le nœud 2, ne mette
 Le nœud s'arrête à l'invite de l'environnement de démarrage.
 
 . Lorsque le nœud 1 affiche l'invite de l'environnement de démarrage, retirez-le du châssis ou du rack.
-+
-Vous pouvez désaffecter le nœud1 une fois la mise à niveau terminée. Voir link:decommission_old_system.html["Désaffectation de l'ancien système"].
-
+. Vous pouvez éventuellement mettre hors service le nœud 1 une fois la mise à niveau terminée. Voir link:decommission_old_system.html["Désaffectation de l'ancien système"].
 

@@ -110,3 +110,6 @@ NOTE: Pour les configurations MetroCluster, il se peut que vous ne puissiez pas 
 `network interface show -curr-node _node1_ -role data`
 
 
+
+.Et la suite ?
+Après avoir déplacé les LIF de données NAS appartenant à node1 vers node2, link:record_node1_information.html["enregistrer les informations du nœud 1"].

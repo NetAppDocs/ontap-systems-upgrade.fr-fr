@@ -263,7 +263,7 @@ NOTE: Si ce n'est déjà fait, consultez l'article de la base de connaissances h
 |===
 .. Accédez au menu de démarrage spécial et sélectionnez option `(10) Set Onboard Key Manager recovery secrets`.
 +
-Saisissez la phrase secrète et les informations de sauvegarde que vous avez enregistrées précédemment dans la procédure. Voir link:manage_storage_encryption_using_okm.html["Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré"].
+Saisissez la phrase secrète et les informations de sauvegarde que vous avez enregistrées précédemment dans la procédure. Reportez-vous à link:complete-preparation-for-upgrade.html#manage_storage_encryption_using_okm["Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré"].
 
 
 
@@ -384,10 +384,10 @@ Login:
 ====
 +
 
-NOTE: Dans l'exemple de sortie de la console ci-dessus, ONTAP vous invite à entrer le nom du nœud partenaire si le système utilise des disques du partitionnement de disque avancé.
+NOTE: Dans l'exemple de sortie console ci-dessus, ONTAP vous invite à saisir le nom du nœud partenaire si le système utilise des disques à partitionnement de disque avancé (ADP).
 
 . Si le système passe en boucle de redémarrage avec le message `no disks found`, il indique qu'il y a eu un problème avec la réaffectation de disque. Voir link:aggregate_relocation_failures.html["Résoudre les problèmes"] pour résoudre le problème.
-. Appuyez sur `Ctrl-C` pendant l'AUTOBOOT pour arrêter le nœud à `LOADER>` l'invite.
+. Saisissez  `Ctrl-C` pendant le démarrage automatique pour arrêter le nœud à l' `LOADER>`invite.
 . À l'invite du CHARGEUR, entrer en mode maintenance :
 +
 `boot_ontap maint`
@@ -451,3 +451,6 @@ NOTE: Il se peut que vous rencontriez une erreur à ce stade. Si une erreur se p
 
 
 
+
+.Et la suite ?
+Après avoir installé et démarré node3, link:verify_node3_installation.html["vérifiez l'installation de node3"].

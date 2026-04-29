@@ -163,7 +163,7 @@ Vous pouvez utiliser les disques SED avec des disques sans cryptage sur le même
 
 WARNING: Si ce nouveau nœud a déjà été utilisé dans un autre cluster ou une paire HA, vous devez exécuter `wipeconfig` avant de continuer. Le non-respect de cette consigne peut entraîner des pannes du service ou des pertes de données. Contactez le support technique si le contrôleur de remplacement était auparavant utilisé, en particulier si les contrôleurs exécutaient ONTAP sous 7-mode.
 
-. Appuyez sur CTRL-C pour afficher le menu de démarrage.
+. Saisissez CTRL-C pour afficher le menu de démarrage.
 . [[man_install3_step19]]effectuer l'une des actions suivantes :
 +
 [cols="35,65"]

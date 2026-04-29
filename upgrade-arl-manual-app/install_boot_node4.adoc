@@ -308,7 +308,7 @@ Pour le `<node2_sysid>` valeur, utilisez les informations capturées dans link:r
 NOTE: Le `-p` cette option n'est requise en mode maintenance que lorsque des disques partagés sont présents.
 
 +
-Le `disk reassign` la commande réaffecte uniquement les disques pour lesquels `_node2_sysid_` est le propriétaire actuel.
+La  `disk reassign`commande ne réaffecte que les disques pour lesquels  `_node2_sysid_` est le propriétaire actuel.
 
 +
 Le système affiche le message suivant :
@@ -483,3 +483,6 @@ NOTE: Il est possible que le système redémarre deux fois avant d'afficher l'av
 . Confirmez la non-concordance. Le nœud peut effectuer un redémarrage complet avant le démarrage normal.
 . Connectez-vous au nœud 4.
 
+
+.Et la suite ?
+Après l'installation et le démarrage de node4, link:set_fc_uta_uta2_config_node4.html["définir la configuration FC ou UTA/UTA2 sur node4"].

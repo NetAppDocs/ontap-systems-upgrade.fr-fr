@@ -259,3 +259,6 @@ Les résultats dans les exemples suivants montrent que le type FC4 d'adaptateur 
 
 . [[man_check_3_step14]]Câblez le port.
 
+
+.Et la suite ?
+Après avoir configuré le FC ou l'UTA/UTA2 sur le nœud 3, link:map_ports_node1_node3.html["mapper les ports du nœud 1 au nœud 3"].

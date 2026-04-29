@@ -305,7 +305,7 @@ Pour le `<node2_sysid>` valeur, utilisez les informations capturées dans link:r
 NOTE: Le `-p` cette option n'est requise en mode maintenance que lorsque des disques partagés sont présents.
 
 +
-Le `disk reassign` la commande réaffecte uniquement les disques pour lesquels `_node2_sysid_` est le propriétaire actuel.
+La  `disk reassign`commande ne réaffecte que les disques pour lesquels  `_node2_sysid_` est le propriétaire actuel.
 
 +
 Le système affiche le message suivant :

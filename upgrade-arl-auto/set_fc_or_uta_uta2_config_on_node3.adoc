@@ -17,7 +17,7 @@ summary: 'Vous pouvez configurer les ports FC intégrés des nœuds 3, les ports
 Si le système Node4 est doté de ports FC intégrés, de ports UTA/UTA2 (ou d'une carte UTA/UTA2), vous devez configurer les paramètres avant de suivre la procédure.
 
 .Description de la tâche
-Vous devrez peut-être compléter cette section <<Configurez les ports FC sur le nœud 3>>, la section <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>, ou les deux sections.
+Vous devrez peut-être remplir <<configure-fc-ports-on-node3,Configurez les ports FC sur le nœud 3>>, ou <<check-config-uta-uta2-node3,Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>, ou les deux sections.
 
 
 NOTE: Les documents marketing NetApp peuvent utiliser le terme UTA2 pour faire référence aux adaptateurs et ports CNA (Converged Network adapter). Cependant, l'interface de ligne de commandes utilise le terme CNA.
@@ -26,7 +26,7 @@ Si le nœud 3 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégré
 
 
 
-== Configurez les ports FC sur le nœud 3
+== Étape 1 : Configurer les ports FC sur le nœud 3
 
 Si le nœud 3 dispose de ports FC, intégrés ou sur un adaptateur FC complémentaire, vous devez définir les configurations de port sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés lors de l'expédition des systèmes.  Si vous ne configurez pas les ports, vous risquez de subir une interruption de service.
 
@@ -34,7 +34,7 @@ Si le nœud 3 dispose de ports FC, intégrés ou sur un adaptateur FC complémen
 Vous devez avoir les valeurs des paramètres du port FC du noeud 1 que vous avez enregistrées dans la section link:prepare_nodes_for_upgrade.html["Préparer les nœuds pour une mise à niveau"].
 
 .Description de la tâche
-Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système est équipé de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez les configurer dans <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>.
+Vous pouvez ignorer cette section si votre système ne dispose pas de configurations FC. Si votre système possède des ports UTA/UTA2 intégrés ou une carte UTA/UTA2, vous les configurez dans <<check-config-uta-uta2-node3,Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>.
 
 
 IMPORTANT: Saisissez les commandes de cette section à l’invite du shell en mode Maintenance.
@@ -80,15 +80,15 @@ Par exemple: `ucadmin modify -m fc -t initator 2b`
 
 . Effectuez l'une des opérations suivantes :
 +
-** Si le nœud 3 dispose d'une carte UTA/UTA2 ou de ports intégrés UTA/UTA2, rendez-vous sur <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>.
-** Si le nœud 3 ne dispose pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, <<Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>passez à link:reassign-node1-disks-to-node3.html["Réaffectez les disques du nœud 1 au nœud 3"]l' .
+** Si le nœud 3 possède une carte UTA/UTA2 ou des ports intégrés UTA/UTA2, rendez-vous à <<check-config-uta-uta2-node3,Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>>.
+** Si le nœud 3 ne possède pas de carte UTA/UTA2 ou de ports intégrés UTA/UTA2, ignorez <<check-config-uta-uta2-node3,Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3>> et passez à link:reassign-node1-disks-to-node3.html["Réaffectez les disques du nœud 1 au nœud 3"].
 
 
 
 
 
 
-== Vérifiez et configurez les ports UTA/UTA2 sur le nœud 3
+== Étape 2 : Vérifier et configurer les ports UTA/UTA2 sur le nœud 3
 
 Si le nœud 3 est équipé de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez vérifier la configuration des ports et éventuellement les reconfigurer, en fonction du mode d'utilisation du système mis à niveau.
 

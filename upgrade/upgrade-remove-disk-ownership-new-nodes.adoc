@@ -41,9 +41,9 @@ Si votre système n'est pas répertorié ci-dessus, reportez-vous à la section 
 +
 `boot_ontap menu`
 
-. À l'invite du menu de démarrage, entrez `9a` Puis appuyez sur entrée.
+. À l'invite du menu de démarrage, saisissez  `9a` puis sélectionnez Entrée.
 +
-L'écran suivant affiche l'invite du menu de démarrage.
+Vous obtenez le résultat suivant :
 
 +
 [listing]

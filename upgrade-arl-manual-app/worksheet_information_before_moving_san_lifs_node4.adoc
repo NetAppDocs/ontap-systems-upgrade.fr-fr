@@ -69,3 +69,5 @@ Une fois la migration vers le nœud 4 terminée, enregistrez le LIF `adapter` et
 
 |  |  |  |  |  |  
 |===
+.Et la suite ?
+Après avoir enregistré les  `adapter` et  `switch-port` informations pour chaque LIF, link:relocate_node2_non_root_aggr_node3_node4.html["déplacer les agrégats non racine du nœud2 du nœud3 vers le nœud4"].

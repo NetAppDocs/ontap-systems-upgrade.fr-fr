@@ -29,3 +29,12 @@ Pour désactiver le nœud 1, vous reprenez l'opération automatisée afin de dé
 Une fois le nœud 1 complètement arrêté, le nœud 1 doit se trouver à l'invite DU CHARGEUR>. Pour afficher l'invite DU CHARGEUR>, connectez-vous à la console série du nœud 1.
 
 
+
+.Et la suite ?
+Après la mise hors service du nœud 1, choisissez l'une des procédures de remplacement de contrôleur suivantes en fonction de votre configuration de mise à niveau :
+
+* link:replace-node1-affa250-affc250.html["Remplacez le module de contrôleur AFF A250 ou AFF C250 du nœud1"]
+* link:replace-node1-affa800.html["Remplacez le module contrôleur node1 AFF A800 ou AFF C800"]
+* link:replace-node1-affa220-affa200-affc190-fas2620-fas2720.html["Remplacez le module de contrôleur node1 AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720"]
+* link:replace-node1-aff700-fas900.html["Remplacez les modules contrôleur et NVRAM AFF A700 ou FAS9000 du nœud 1"]
+

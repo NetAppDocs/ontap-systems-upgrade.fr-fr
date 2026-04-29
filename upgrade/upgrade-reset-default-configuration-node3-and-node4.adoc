@@ -20,9 +20,9 @@ Vous devez effectuer les étapes suivantes sur les noeuds 3 et 4. Vous pouvez ef
 +
 `boot_ontap menu`
 
-. À l'invite du menu de démarrage, tapez `wipeconfig` Puis appuyez sur entrée.
+. À l'invite du menu de démarrage, tapez  `wipeconfig` puis appuyez sur Entrée.
 +
-L'écran suivant affiche l'invite du menu de démarrage
+Vous obtenez le résultat suivant :
 
 +
 [listing]
@@ -50,7 +50,7 @@ Are you sure you want to continue?: yes
 Rebooting to finish wipeconfig request.
 ----
 +
-Le système lance le `wipeconfig` procédure et redémarrage. Une fois la procédure terminée, le système revient au menu de démarrage.
+Le système lance la  `wipeconfig`procédure et redémarre. Une fois la procédure terminée, le système revient au menu de démarrage.
 
-. Dans le menu de démarrage, entrez 8 pour redémarrer le nœud, et appuyez sur Ctrl-C pendant l'AUTOBOOT pour arrêter le nœud à l'invite du CHARGEUR.
+. Dans le menu de démarrage, entrez 8 pour redémarrer le nœud, et entrez Ctrl-C pendant AUTOBOOT pour arrêter le nœud à l'invite LOADER.
 

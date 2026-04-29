@@ -21,6 +21,12 @@ Après avoir initialisé le nœud 1 avec le module système de remplacement, vé
 
 À ce stade de la procédure, l'opération s'interrompt pendant que le noeud 2 rejoint le quorum.
 
+
+
+== Étape 1 : Vérifier que le nœud 2 est dans le quorum
+
+Vérifiez que le nœud 2 est en quorum. Reprenez ensuite l'opération de remplacement du contrôleur.
+
 .Étapes
 . Vérifiez que le noeud 2 a rejoint le quorum :
 +
@@ -141,12 +147,12 @@ To complete the Network Reachability task, the ONTAP network configuration must 
 
 NOTE: Dans cette procédure, la section _Re-création de VLAN, ifgrps et broadcast domain_ a été renommée _Restore network configuration sur node2_.
 
-. Lorsque le remplacement du contrôleur est en pause, passer à <<Restaurez la configuration réseau sur le noeud 2>>.
+. Le remplacement du contrôleur étant en pause, procédez à <<restore_network_configuration_on_node2,Restaurez la configuration réseau sur le noeud 2>>.
 
 
 
 
-== Restaurez la configuration réseau sur le noeud 2
+== Étape 2 : Restaurer la configuration réseau sur le nœud 2
 
 Une fois que vous avez confirmé que le nœud2 est dans le quorum et peut communiquer avec le nœud1, vérifiez que les VLAN, les groupes d'interface et les domaines de diffusion du nœud1 sont visibles sur le nœud2. Vérifiez également que tous les ports réseau du node2 sont configurés dans leurs domaines de diffusion appropriés.
 
@@ -239,7 +245,7 @@ Vérifier que tous les ports physiques ont leur capacité d'accessibilité atten
 `network port reachability show`
 
 +
-Au fur et à mesure que la réparation de l'accessibilité est effectuée, ONTAP tente de placer les ports dans les domaines de diffusion appropriés. Toutefois, si la capacité de réachbilité d’un port ne peut être déterminée et n’appartient à aucun des domaines de diffusion existants, ONTAP créera de nouveaux domaines de diffusion pour ces ports.
+Lors de la réparation de l'accessibilité, ONTAP tente d'affecter les ports aux domaines de diffusion appropriés. Toutefois, si ONTAP ne parvient pas à déterminer l'accessibilité d'un port et que celui-ci n'appartient à aucun des domaines de diffusion existants, ONTAP crée de nouveaux domaines de diffusion pour ces ports.
 
 . Vérifiez l'accessibilité des ports :
 +
@@ -273,3 +279,6 @@ Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de
 `network interface show -fields home-port,status-admin`
 
 
+
+.Et la suite ?
+Après avoir vérifié l'installation de node2, link:restore-key-manager-config-node2.html["restaurer la configuration du gestionnaire de clés sur le nœud2"].

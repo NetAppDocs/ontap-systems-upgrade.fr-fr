@@ -58,6 +58,6 @@ Convertissez node1 en une étagère de disques et connectez-le à node3 avant de
 [role="quick-margin-para"]
 Après avoir converti node1 en une baie de disques et l'avoir connecté à node3, réaffectez les disques qui appartenaient auparavant à node1 à node3.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sept"]xref:migrate-node4-lIfs-aggregates.adoc[Migration des LIF et des agrégats de données du nœud 4 vers le nœud 3]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sept"]xref:migrate-node4-lifs-aggregates.adoc[Migration des LIF et des agrégats de données du nœud 4 vers le nœud 3]
 [role="quick-margin-para"]
 Pour terminer la mise à niveau, connectez node3 à node4 et migrez les LIF de données et les agrégats de données de node4 vers node3.

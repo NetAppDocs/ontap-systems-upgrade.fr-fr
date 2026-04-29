@@ -41,7 +41,7 @@ node2
 ----
 +
 
-NOTE: Il se peut que votre système ne dispose pas de LIF intercluster. Vous n'aurez qu'une LIF de gestion du cluster sur un seul nœud d'une paire de nœuds. Une LIF de cluster management s'affiche dans l'exemple de résultat de link:record_node1_information.html#step1["Étape 1"] Dans _Record node1 port information_.
+NOTE: Il est possible que votre système ne dispose pas d'intercluster LIFs. Vous ne possédez une cluster management LIF que sur un seul nœud d'une paire de nœuds. Une cluster management LIF est affichée dans l'exemple de sortie de link:record_node1_information.html#step1["Étape 1"] dans _Record node1 port information_.
 
 . Capturez les informations de la sortie à utiliser dans la section link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"].
 +
@@ -75,7 +75,7 @@ node2
 ----
 . Enregistrez les ports et leurs domaines de diffusion.
 +
-Les domaines de diffusion devront être mappés vers les ports du nouveau contrôleur plus tard dans la procédure.
+Les domaines de diffusion doivent être associés aux ports du nouveau contrôleur ultérieurement dans la procédure.
 
 . Déterminer les ports FC sur le nœud 2 :
 +
@@ -141,3 +141,6 @@ cluster::> system node show -instance -node node2
 ----
 . [[man_record_2_step10]]Enregistrer l'ID système NVRAM à utiliser dans la section link:install_boot_node4.html["Installez et démarrez Node4"].
 
+
+.Et la suite ?
+Après l'enregistrement des informations du nœud 2, link:retire_node2.html["retirer node2"].

@@ -50,3 +50,5 @@ Si vous convertissez un système en tiroir de stockage et que vous pouvez le con
 
 | Deux contrôleurs et deux modules NVRAM 
 |===
+.Et la suite ?
+Après avoir vérifié le matériel de mise à niveau, link:prepare-nodes-for-upgrade.html["préparer les nœuds pour la mise à niveau"].

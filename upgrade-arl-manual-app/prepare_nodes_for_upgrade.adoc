@@ -169,7 +169,7 @@ Si l'un des nœuds est en mode de rétablissement partiel, utilisez la `storage 
 `storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
 
 +
-Si ni le nœud1 ni le nœud2 ne possède des agrégats pour lesquels il s'agit du propriétaire actuel (mais pas le propriétaire du domicile), le système renvoie un message semblable à l'exemple suivant :
+Si ni le nœud 1 ni le nœud 2 ne possèdent des agrégats dont ils sont le propriétaire actuel (mais pas le port d'attache), le système renvoie un message similaire à l'exemple suivant :
 
 +
 ....
@@ -423,7 +423,7 @@ fg_6210_e0c         Default           node1:e0c, node1:e0d
 `network port vlan show -node _node_name_`
 
 +
-Les VLAN sont configurés sur des ports physiques. Si les ports physiques changent, les VLAN devront être recrétés ultérieurement dans la procédure.
+Les VLAN sont configurés sur des ports physiques. Si les ports physiques changent, alors les VLAN doivent être recréés plus tard dans la procédure.
 
 +
 Le système affiche les VLAN configurés sur le nœud, comme illustré dans l'exemple suivant :
@@ -457,7 +457,7 @@ node1   e1b-70    e1b     70      00:15:17:76:7b:69
 `network interface show -vserver _vserver_name_ -data-protocol iscsi|fcp`
 
 +
-Si ni iSCSI ni FC n'est configuré pour le SVM, la commande affiche un message similaire à l'exemple suivant :
+Si ni iSCSI ni FC ne sont configurés pour la SVM, la commande affiche un message similaire à l'exemple suivant :
 
 +
 ....
@@ -468,7 +468,7 @@ There are no entries matching your query.
 Vous pouvez vérifier que le nœud se trouve dans un environnement NAS à l'aide de `network interface show` commande avec `-data-protocol nfs|cifs` paramètres.
 
 +
-Si iSCSI ou FC est configuré pour le SVM, la commande affiche un message similaire à l'exemple suivant :
+Si iSCSI ou FC est configuré pour la SVM, la commande affiche un message similaire à l'exemple suivant :
 
 +
 ....
@@ -711,3 +711,6 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryptio
 
 --
 
+
+.Et la suite ?
+Après avoir préparé les nœuds pour la mise à niveau, link:manage_authentication_okm.html["Gérez les clés d'authentification à l'aide de l'Onboard Key Manager"].

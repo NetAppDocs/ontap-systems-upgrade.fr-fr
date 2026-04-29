@@ -36,3 +36,11 @@ Cette procédure de mise à niveau s'applique principalement aux scénarios de m
 * Pour les systèmes non MetroCluster, tels que des clusters haute disponibilité, la mise à niveau du transfert d'agrégats (ARL) est la seule procédure prise en charge.
 * Si vous mettez à niveau votre système AFF A320, vous pouvez utiliser les déplacements de volumes pour mettre à niveau le matériel de votre contrôleur et contacter le support technique. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
 
+
+.Automatisation du processus de mise à niveau des contrôleurs
+Lors d'une mise à niveau du contrôleur, le contrôleur est remplacé par un autre contrôleur exécutant une plateforme plus récente ou plus puissante. Les versions précédentes de ce contenu contenaient des instructions pour mettre à jour le contrôleur sans interruption, constituées d'étapes entièrement manuelles. Ce contenu fournit les étapes de la nouvelle procédure automatisée qui utilise des vérifications automatiques de la capacité de port réseau pour simplifier davantage l'expérience de mise à niveau du contrôleur.
+
+Le processus manuel était long et complexe, mais dans cette procédure simplifiée, vous pouvez mettre en œuvre une mise à jour du contrôleur en utilisant le transfert des agrégats, ce qui assure des mises à niveau plus efficaces et sans interruption pour les paires haute disponibilité. Il y a beaucoup moins d'étapes manuelles, en particulier concernant la validation, la collecte d'informations et les contrôles post.
+
+.Et la suite ?
+Après avoir pris connaissance de cette procédure ARLlink:decide_to_use_the_aggregate_relocation_guide.html["décider s'il convient d'utiliser cette procédure ARL"].

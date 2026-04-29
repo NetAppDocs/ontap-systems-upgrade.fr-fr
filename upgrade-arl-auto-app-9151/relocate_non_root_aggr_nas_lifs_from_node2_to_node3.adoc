@@ -77,3 +77,6 @@ Le  `vserver_name` à utiliser avec cette commande se trouve dans la sortie de l
 `network interface show -curr-node _node2_ -role data`
 
 
+
+.Et la suite ?
+Après avoir déplacé les agrégats non racines et les LIF de données NAS du nœud 2 vers le nœud 3, link:relocate-failed-or-vetoed-aggr-node3.html["Déplacer les agrégats ayant échoué ou ayant fait l'objet d'un veto vers le nœud3"].

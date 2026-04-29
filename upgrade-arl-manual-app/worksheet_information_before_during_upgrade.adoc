@@ -78,3 +78,5 @@ Vous pouvez utiliser le formulaire suivant pour enregistrer les informations à 
 
 | Certificats SSL privés et publics pour le système de stockage et certificats SSL privés pour chaque serveur de gestion des clés | Étape 6 : _configurer le cryptage du stockage sur les nouveaux nœuds_ | Plus loin dans la section |  
 |===
+.Et la suite ?
+Après avoir enregistré les informations du nœud d'origine, link:determine_aggregates_on_internal_drives.html["déterminer si le contrôleur possède des agrégats sur les disques durs internes"].

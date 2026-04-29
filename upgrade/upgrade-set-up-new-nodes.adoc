@@ -19,7 +19,7 @@ Si la version de ONTAP exécutée sur les nouveaux nœuds est différente de cel
 Vous pouvez également utiliser l'option de démarrage USB pour effectuer un démarrage réseau. Consultez l'article de la base de connaissances link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Utilisation de la commande boot_Recovery LOADER pour l'installation de ONTAP pour la configuration initiale d'un système"^].
 
 .Étapes
-. Mettez le nœud 3 sous tension, puis appuyez immédiatement sur Ctrl-C sur le terminal de la console pour accéder à l'invite DU CHARGEUR.
+. Mettez sous tension le nœud 3, puis entrez immédiatement Ctrl-C dans le terminal de la console pour accéder à l'invite LOADER.
 +
 Si les nœuds 3 et 4 se trouvent dans le même châssis, passez à l'étape 2. Sinon, passer à l'étape 3.
 
@@ -82,7 +82,7 @@ Ne tenez pas compte du message suivant : `"This procedure is not supported for N
 `/http://web_server_ip/path_to_web-accessible_directory/<ontap_version>_image.tgz`
 
 +
-Saisissez le nom d'utilisateur/mot de passe, le cas échéant, ou appuyez sur entrée pour continuer.
+Saisissez votre nom d'utilisateur et votre mot de passe, le cas échéant, ou appuyez sur Entrée pour continuer.
 
 . Entrez `n` pour ignorer la restauration de la sauvegarde lorsque vous voyez une invite similaire à la suivante :
 +

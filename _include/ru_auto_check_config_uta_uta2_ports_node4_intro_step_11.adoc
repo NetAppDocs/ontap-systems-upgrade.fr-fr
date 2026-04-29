@@ -1,10 +1,10 @@
-= Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4
+= Étape 2 : Vérifier et configurer les ports UTA/UTA2 sur le nœud 4
 :allow-uri-read: 
 
 
 
 
-== Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4
+== Étape 2 : Vérifier et configurer les ports UTA/UTA2 sur le nœud 4
 
 Si le NODE4 dispose de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2A, vous devez vérifier la configuration des ports et les configurer, en fonction de votre mode d'utilisation du système mis à niveau.
 

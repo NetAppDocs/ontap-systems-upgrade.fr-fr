@@ -23,3 +23,6 @@ Vous avez besoin des outils suivants pour effectuer la mise à niveau :
 
 
 Accédez au link:other_references.html["Références"] pour accéder à la liste des documents de référence requis pour cette mise à niveau.
+
+.Et la suite ?
+Après avoir examiné les outils et la documentation nécessaires, link:worksheet_information_before_during_upgrade.html["Enregistrez les informations du nœud d'origine pour les utiliser lors de la mise à niveau"].

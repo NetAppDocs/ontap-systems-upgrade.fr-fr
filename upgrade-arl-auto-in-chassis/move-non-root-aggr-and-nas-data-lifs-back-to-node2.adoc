@@ -134,3 +134,6 @@ Le système effectue les vérifications suivantes :
 
 
 
+
+.Et la suite ?
+Après avoir déplacé les agrégats non-racine et les LIF de données NAS vers le nœud 2, link:manage-authentication-using-kmip-servers.html["gérer l'authentification à l'aide des serveurs KMIP"].

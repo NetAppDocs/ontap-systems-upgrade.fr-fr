@@ -151,7 +151,7 @@ Le module de contrôleur redémarre mais s'arrête au menu d'amorçage car le p�
 
 . Effacez toute configuration précédente sur le support de démarrage.
 +
-.. À l'invite suivante, exécutez le  `wipeconfig` commande et appuyez sur la touche Entrée :
+.. À l'invite suivante, exécutez la  `wipeconfig` commande. Appuyez ensuite sur Entrée :
 +
 [listing]
 ----
@@ -270,3 +270,6 @@ Pour le noeud 1, le `partner-sysid` doit être celui du node2. Vous pouvez obten
 `printenv partner-sysid`
 
 
+
+.Et la suite ?
+Après le démarrage réseau du nœud 1, link:cable-node1-for-shared-cluster-HA-storage.html["Câbler le nœud 1 pour le cluster-HA partagé et le stockage"].

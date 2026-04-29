@@ -116,3 +116,6 @@ Le tableau suivant présente les combinaisons de mises à niveau de contrôleur 
 
 .Informations associées
 Se référer à link:other_references.html["Références"] pour créer un lien vers la _Documentation ONTAP 9_.
+
+.Et la suite ?
+Après avoir décidé d'utiliser cette procédure ARL, link:required_tools_and_documentation.html["Découvrez les outils et la documentation requis."].

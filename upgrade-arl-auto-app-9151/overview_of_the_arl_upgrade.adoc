@@ -97,3 +97,5 @@ Propriété globale à la fin de la phase 5 :
 Lors de la phase 6, vous vérifiez que les nouveaux nœuds sont correctement configurés et que, si les nouveaux nœuds sont activés pour le chiffrement, vous configurez et configurez Storage Encryption ou NVE. Vous devez également désaffecter les anciens nœuds et reprendre les opérations SnapMirror.
 
 |===
+.Et la suite ?
+Après avoir pris connaissance de la séquence de mise à niveau ARLlink:prepare_nodes_for_upgrade.html["préparer les nœuds pour la mise à niveau"].

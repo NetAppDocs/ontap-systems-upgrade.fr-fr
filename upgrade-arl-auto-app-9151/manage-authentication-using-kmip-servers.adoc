@@ -34,3 +34,6 @@ Vous pouvez utiliser les serveurs KMIP (Key Management Interoperability Protocol
 `security key-manager external restore -node _new_controller_name_`
 
 
+
+.Et la suite ?
+Après avoir géré l'authentification à l'aide des serveurs KMIP, link:ensure_new_controllers_are_set_up_correctly.html["vérifier que les nouveaux contrôleurs sont correctement configurés"].

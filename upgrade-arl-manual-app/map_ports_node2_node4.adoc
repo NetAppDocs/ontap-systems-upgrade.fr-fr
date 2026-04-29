@@ -14,7 +14,7 @@ summary: 'Vérifiez que les ports physiques du nœud 2 sont correctement redirig
 
 
 [role="lead"]
-Vous devez vous assurer que les ports physiques du node2 sont correctement associés aux ports physiques du node4, ce qui permet au node4 de communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
+Vous devez vous assurer que les ports physiques du nœud2 correspondent correctement aux ports physiques du nœud4. Cela permet au nœud4 de communiquer avec les autres nœuds du cluster et avec le réseau après la mise à niveau.
 
 .Avant de commencer
 Vous devez déjà disposer d'informations sur les ports sur les nouveaux nœuds. Pour accéder à ces informations, reportez-vous à la section link:other_references.html["Références"] Pour accéder au _Hardware Universe_. Vous utilisez ces informations ultérieurement dans cette section.
@@ -147,7 +147,7 @@ Warning: Repairing port "node_name:port" may cause it to move into a different b
 +
 `network port broadcast-domain show`
 
-.. Au fur et à mesure que la réparation de l'accessibilité est effectuée, ONTAP tente de placer les ports dans les domaines de diffusion appropriés. Cependant, si la réaptitude d'un port ne peut pas être déterminée et ne correspond à aucun des domaines de diffusion existants, ONTAP créera de nouveaux domaines de diffusion pour ces ports. Si nécessaire, vous pouvez supprimer les nouveaux domaines de diffusion si tous leurs ports membres deviennent des ports membres des groupes d'interfaces. Supprimer les domaines de diffusion :
+.. Lors de la réparation de l'accessibilité, ONTAP tente d'affecter les ports aux domaines de diffusion appropriés. Toutefois, si ONTAP ne parvient pas à déterminer l'accessibilité d'un port et que celui-ci ne correspond à aucun des domaines de diffusion existants, ONTAP tente de créer de nouveaux domaines de diffusion pour ces ports. Le cas échéant, vous pouvez supprimer les nouveaux domaines de diffusion créés si tous leurs ports membres deviennent des ports membres des groupes d'interfaces. Supprimer des domaines de diffusion :
 +
 `broadcast-domain delete -broadcast-domain _broadcast_domain_`
 
@@ -200,7 +200,7 @@ NOTE: En fonction de la complexité de la configuration réseau du système mis 
 
 
 
-. [[man_map_2_Step5]]depuis ONTAP 9.8, ONTAP modifie automatiquement les ports de base des LIFs si les ports sont déplacés entre les domaines de broadcast pendant la procédure de réparation de la capacité des ports réseau. Si le port de rattachement d'une LIF a été déplacé vers un autre nœud ou s'il est non attribué, cette LIF sera présentée comme une LIF déplacée. Restaurer les ports de rattachement des LIFs déplacées dont les ports de rattachement n'existent plus ou ont été déplacés sur un autre nœud.
+. [[man_map_2_Step5]]À partir d'ONTAP 9.8, ONTAP modifie automatiquement les ports d'attache des LIF si ces ports sont déplacés entre les domaines de diffusion lors de la procédure de réparation de l'accessibilité des ports réseau. Si le port d'attache d'une LIF a été déplacé vers un autre nœud ou n'est pas attribué, cette LIF est présentée comme une LIF déplacée. Restaurez les ports d'attache des LIF déplacées dont les ports d'attache n'existent plus ou ont été déplacés vers un autre nœud.
 +
 .. Afficher les LIFs dont les ports home port auraient pu être déplacés vers un autre nœud ou qui n'existent plus :
 +
@@ -244,3 +244,6 @@ NOTE: Pour les LIF iSCSI, la modification du port de home port nécessite la mis
 
 
 
+
+.Et la suite ?
+Après avoir mappé les ports du nœud 2 au nœud 4, link:move_nas_lifs_node2_from_node3_node4_verify_san_lifs_node4.html["Déplacer les LIF de données NAS appartenant au nœud2 du nœud3 vers le nœud4 et vérifier les LIF SAN sur le nœud4"].

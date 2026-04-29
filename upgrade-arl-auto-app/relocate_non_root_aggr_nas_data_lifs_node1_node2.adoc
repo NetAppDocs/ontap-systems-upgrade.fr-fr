@@ -84,3 +84,6 @@ Le  `vserver_name` à utiliser avec cette commande se trouve dans la sortie de l
 `network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _nodename_ -status-admin up`
 
 
+
+.Et la suite ?
+Après avoir déplacé les agrégats non racines et les LIF de données NAS appartenant au nœud 1 vers le nœud 2, link:relocate-failed-or-vetoed-aggr-node2.html["déplacer les agrégats ayant échoué ou refusés"].

@@ -219,3 +219,6 @@ f-a    2b      fc       target    cna      -          online
 
 . [[man_check_4_Step13]]câble du port.
 
+
+.Et la suite ?
+Après avoir configuré le FC ou l'UTA/UTA2 sur le nœud 4, link:map_ports_node2_node4.html["mapper les ports du nœud 2 au nœud 4"].

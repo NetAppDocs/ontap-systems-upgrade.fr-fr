@@ -57,3 +57,6 @@ Vous devez installer les mêmes serveurs de gestion des clés que ceux installé
 `security key-manager external restore -node _new_controller_name_`
 
 
+
+.Et la suite ?
+Après avoir configuré le chiffrement du stockage sur le nouveau module de contrôleur, link:set_up_netapp_volume_encryption_new_module.html["Configurez le chiffrement de volume ou d’agrégat NetApp sur le nouveau module contrôleur"].

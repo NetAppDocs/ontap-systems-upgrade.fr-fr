@@ -17,7 +17,7 @@ summary: 'Vérifiez que les LIF de données NAS du nœud 1 sur le nœud 2 sont d
 Après avoir vérifié la configuration réseau sur le nœud 3 et avant de transférer les agrégats du nœud 2 vers le nœud 3, vous devez vérifier que les LIF de données NAS appartenant au nœud 1 actuellement sur le nœud 2 sont transférées du nœud 2 vers le nœud 3. Vous devez également vérifier que des LIFs SAN existent sur le noeud 3.
 
 .Description de la tâche
-Les LIF distantes gèrent le trafic vers des LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour assurer l'intégrité du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont pas déplacées sauf si elles doivent être mappées sur de nouveaux ports. Vous vérifierez que les LIFs sont saines et situées sur les ports appropriés après avoir mis le nœud3 en ligne.
+Les LIF distantes gèrent le trafic vers les LUN SAN pendant la procédure de mise à niveau. Le déplacement des LIF SAN n'est pas nécessaire pour la santé du cluster ou du service pendant la mise à niveau. Les LIF SAN ne sont déplacées que si elles doivent être mappées sur de nouveaux ports. Vous vérifiez que les LIF sont saines et situées sur les ports appropriés après la mise en ligne de node3.
 
 .Étapes
 . Les LIFs iSCSI trouvent automatiquement les ports home corrects à l'aide de l'analyse d'accessibilité. Les LIF FC et SAN NVMe/FC ne se déplacent pas automatiquement. Ils continuent d'afficher le port de base sur lequel ils se trouvaient avant la mise à niveau.
@@ -164,3 +164,6 @@ Le système effectue les vérifications suivantes :
 
 
 
+
+.Et la suite ?
+Après avoir déplacé les agrégats non-racines et les LIF de données NAS appartenant au nœud1 du nœud2 vers le nœud3, link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["déplacer les agrégats non root et les LIF de données NAS du nœud2 vers le nœud3"].

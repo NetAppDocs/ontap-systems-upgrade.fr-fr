@@ -157,7 +157,7 @@ Si l'un des nœuds est en mode de rétablissement partiel, utilisez la `storage 
 `storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
 
 +
-Si ni le nœud1 ni le nœud2 ne possède des agrégats pour lesquels il s'agit du propriétaire actuel (mais pas le propriétaire du domicile), le système renvoie un message semblable à l'exemple suivant :
+Si ni le nœud 1 ni le nœud 2 ne possèdent des agrégats dont ils sont le propriétaire actuel (mais pas le port d'attache), le système renvoie un message similaire à l'exemple suivant :
 
 +
 ....

@@ -1,8 +1,12 @@
-= 
+= Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré
 :allow-uri-read: 
 
 
-Vous pouvez utiliser le gestionnaire de clés intégré (OKM) pour gérer les clés de chiffrement. Si vous avez configuré le gestionnaire de clés intégré OKM, vous devez enregistrer la phrase de passe et les éléments de sauvegarde avant de commencer la mise à niveau.
+
+
+== Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré
+
+Utilisez le Gestionnaire de clés intégré (OKM) pour gérer les clés de chiffrement. Si l'OKM est configuré, vous devez enregistrer la phrase de passe et les données de sauvegarde avant de commencer la mise à niveau.
 
 .Étapes
 . Notez la phrase de passe à l'échelle du cluster.

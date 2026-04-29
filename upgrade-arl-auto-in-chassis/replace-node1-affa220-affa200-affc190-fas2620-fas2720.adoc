@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-in-chassis/replace-node1-affa220-affa200-affc190-fas
 keywords: aff, asa, fas, replace, node1, system, modules 
 summary: 'Remplacez le nœud 1 des modules système AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720 lorsque vous utilisez l"ARL pour mettre à niveau les modèles de contrôleur du même châssis.' 
 ---
-= Remplacez le module de contrôleur AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720
+= Remplacez le module de contrôleur node1 AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -69,7 +69,7 @@ NOTE: Comme le châssis est déjà sous tension, le nœud 1 démarre l'initialis
 NOTE: Pour éviter d'endommager les connecteurs, ne forcez pas trop lorsque vous faites glisser le module de contrôleur dans le châssis.
 
 . Connectez la console série dès que le module est assis et soyez prêt à interrompre AUTOBOOT du nœud 1.
-. Après l'interruption DE L'AUTOBOOT, le nœud 1 s'arrête à l'invite DU CHARGEUR. Si vous n'interrompez pas LE démarrage AUTOMATIQUE à temps et que le démarrage du nœud 1 commence, attendez l'invite et appuyez sur Ctrl-C pour accéder au menu de démarrage. Une fois que le nœud s'arrête au menu de démarrage, utilisez l'option `8` pour redémarrer le nœud et interrompre le DÉMARRAGE AUTOMATIQUE pendant le redémarrage.
+. Après avoir interrompu AUTOBOOT, le nœud1 s'arrête à l'invite LOADER. Si vous n'interrompez pas AUTOBOOT à temps et que le nœud1 commence à démarrer, attendez l'invite et appuyez sur Ctrl-C pour accéder au menu de démarrage. Une fois le nœud arrêté sur le menu de démarrage, utilisez l'option `8` pour redémarrer le nœud et interrompre AUTOBOOT pendant le redémarrage.
 . À l'invite DU CHARGEUR> du nœud 1, définissez les variables d'environnement par défaut :
 +
 [source, cli]
@@ -83,3 +83,6 @@ set-defaults
 saveenv
 ----
 
+
+.Et la suite ?
+Après avoir installé le module de contrôleur ASA A150, AFF A150 ou FAS2820, link:netboot-node1.html["netboot node1"].

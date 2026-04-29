@@ -139,3 +139,6 @@ Consultez link:other-references.html["Références"] pour accéder au _System Ad
 
 .Une fois que vous avez terminé
 Si le chiffrement du stockage est activé sur node1 et node2, complétez la section link:set-up-storage-encryption-new-module.html["Configurez Storage Encryption sur le nouveau module de contrôleur"]. Sinon, complétez la section link:decommission-old-system.html["Désaffectation de l'ancien système"].
+
+.Et la suite ?
+Après avoir confirmé que les nouveaux contrôleurs sont correctement configurés, link:set-up-storage-encryption-new-module.html["Configurez le chiffrement du stockage sur le nouveau module contrôleur"].

@@ -16,6 +16,12 @@ summary: 'Préparez les nœuds et exécutez une série de précontrôles lorsque
 [role="lead"]
 Le processus de remplacement du contrôleur commence par une série de contrôles préalables. Vous rassemblez également des informations sur les nœuds d'origine pour les utiliser plus tard dans la procédure et, si nécessaire, déterminez le type de disques à chiffrement automatique utilisés.
 
+
+
+== Étape 1 : Préparer les nœuds
+
+Démarrez la procédure de remplacement du contrôleur et effectuez les vérifications préalables. Si nécessaire, identifiez le type de disques à chiffrement automatique utilisés.
+
 .Étapes
 . Répertoriez la version du micrologiciel du processeur de service (SP) ou du contrôleur BMC (Baseboard Management Controller) s'exécutant sur l'ancien contrôleur :
 +
@@ -55,7 +61,7 @@ Vérifiez que vous disposez d'une version du micrologiciel du processeur de serv
 `system controller replace start -nodes _node_names_`
 
 +
-Vous verrez un résultat similaire à l'exemple suivant. Le résultat de cette commande affiche la version de ONTAP exécutée sur le cluster :
+Vous obtenez un résultat similaire à l'exemple suivant. Le résultat affiche la version d'ONTAP en cours d'exécution sur votre cluster :
 
 +
 ....
@@ -72,7 +78,7 @@ Attention: Do not try to clear the NVRAM contents. If there is a need to clear t
 
 Do you want to continue? {y|n}: y
 ....
-. Sélectionnez `y`. Vous verrez le résultat suivant :
+. Sélectionnez  `y`. Vous voyez la sortie suivante :
 +
 ....
 Controller replacement operation: Prechecks in progress.
@@ -183,7 +189,7 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryptio
 
 
 
-== Corriger la propriété de l'agrégat en cas d'échec d'une vérification préalable du transfert d'agrégats
+== Étape 2 : Corriger la propriété de l'agrégat si une vérification préalable ARL échoue
 
 En cas d'échec de la vérification de l'état de l'agrégat, vous devez renvoyer les agrégats qui appartiennent au nœud partenaire au nœud propriétaire du nœud de rattachement et relancer le processus de vérification préalable.
 
@@ -212,24 +218,10 @@ aggr4       node1      node1       online
 
 4 entries were displayed.
 ----
+. Redémarrez le processus de remplacement du contrôleur :
 
-
-
-
-=== Une fois que vous avez terminé
-
-Vous devez redémarrer la procédure de remplacement des contrôleurs :
 
 `system controller replace start -nodes _node_names_`
 
-
-
-== Licence
-
-Chaque nœud du cluster doit avoir son propre fichier de licence NetApp (NLF).
-
-Si vous ne disposez pas de NLF, les fonctions sous licence du cluster sont disponibles pour le nouveau contrôleur. Cependant, l'utilisation de fonctions sans licence sur le contrôleur peut vous mettre hors conformité avec votre contrat de licence. Vous devez donc installer le NLF pour le nouveau contrôleur une fois la mise à niveau terminée.
-
-Consultez link:other-references.html["Références"] pour accéder au _NetApp Support Site_ où vous pouvez obtenir votre NLF. Les NLF sont disponibles dans la section _My Support_ sous _Software licenses_. Si le site ne propose pas les NLF dont vous avez besoin, contactez votre NetApp sales representative.
-
-Pour des informations détaillées sur les licences, consultez link:other-references.html["Références"] pour accéder au _System Administration Reference_.
+.Et la suite ?
+Après avoir préparé les nœuds, link:complete-preparation-for-upgrade.html["achever la préparation de la mise à niveau"].

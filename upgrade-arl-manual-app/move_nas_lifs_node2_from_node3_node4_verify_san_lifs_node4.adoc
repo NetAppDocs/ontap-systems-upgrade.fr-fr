@@ -314,3 +314,6 @@ NOTE: Vous devez déplacer les LIFs SAN sur un port dont la vitesse de liaison e
 `network interface modify -vserver _vserver_name_ -lif _lif_name_ -status-admin up`
 
 
+
+.Et la suite ?
+Après avoir déplacé les LIF de données NAS appartenant au nœud 2 du nœud 3 vers le nœud 4 et vérifié les LIF SAN sur le nœud 4, .

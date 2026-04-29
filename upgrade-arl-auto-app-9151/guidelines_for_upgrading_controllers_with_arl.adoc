@@ -62,3 +62,6 @@ Si vous souhaitez mettre à niveau des contrôleurs d'entrée de gamme avec des 
 En cas de problème lors de la mise à jour des manettes, consultezlink:aggregate_relocation_failures.html["Résoudre les problèmes"] pour plus d'informations et des solutions possibles.
 
 Si vous ne trouvez pas de solution au problème que vous rencontrez, contactez le support technique.
+
+.Et la suite ?
+Après avoir examiné les directives de mise à niveau des contrôleurs avec ARL,link:overview_of_the_arl_upgrade.html["Découvrez la séquence de mise à niveau ARL"].

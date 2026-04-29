@@ -14,16 +14,16 @@ summary: 'Vérifiez que les ports physiques du nœud 2 sont correctement redirig
 
 
 [role="lead"]
-Vous devez vérifier que les ports physiques du nœud2 sont correctement associés aux ports physiques du nœud4, ce qui permettra au nœud4 de communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
+Vous devez vérifier que les ports physiques du nœud 2 correspondent correctement aux ports physiques du nœud 4. Cela permet au nœud 4 de communiquer avec les autres nœuds du cluster et avec le réseau après la mise à niveau.
 
 .Description de la tâche
 Reportez-vous à la section link:other_references.html["Références"] Pour établir une liaison avec _Hardware Universe_ afin de capturer des informations sur les ports des nouveaux nœuds. Vous utiliserez ces informations plus loin dans cette section.
 
 La configuration logicielle du nœud4 doit correspondre à la connectivité physique du nœud4 et la connectivité IP doit être restaurée avant de poursuivre la mise à niveau.
 
-Les paramètres de port peuvent varier en fonction du modèle des nœuds. Vous devez rendre le port du nœud d'origine et la configuration LIF compatibles avec ce que vous prévoyez de configurer le nouveau nœud. En effet, le nouveau nœud relit la même configuration au démarrage, ce qui signifie que, lors du démarrage du nœud 4, Data ONTAP tentera d'héberger les LIF sur les mêmes ports que celui utilisé sur le nœud 2.
+Les paramètres de port peuvent varier selon le modèle des nœuds. Vous devez rendre la configuration des ports et des LIF du nœud d'origine compatible avec celle que vous prévoyez pour le nouveau nœud. Cela s'explique par le fait que le nouveau nœud rejoue la même configuration lors du démarrage, ce qui signifie que lorsque vous démarrez le nœud4, Data ONTAP tente d'héberger les LIF sur les mêmes ports que ceux utilisés sur le nœud2.
 
-Par conséquent, si les ports physiques du nœud 2 ne sont pas directement associés aux ports physiques du nœud 4, des modifications de configuration logicielle seront nécessaires pour restaurer le cluster, la gestion et la connectivité réseau après le démarrage. De plus, si les ports du cluster du nœud 2 ne sont pas directement mis en correspondance avec les ports du cluster du nœud 4, le nœud 4 peut ne pas réintégrer automatiquement le quorum lorsqu'il est redémarré tant qu'une modification de la configuration logicielle n'est pas apportée pour héberger les LIFs de cluster sur les ports physiques corrects.
+Par conséquent, si les ports physiques du nœud2 ne correspondent pas directement aux ports physiques du nœud4, des modifications de la configuration logicielle sont nécessaires pour rétablir la connectivité du cluster, de la gestion et du réseau après le démarrage. De plus, si les ports du cluster du nœud2 ne correspondent pas directement aux ports du cluster du nœud4, le nœud4 pourrait ne pas rejoindre automatiquement le quorum lors de son redémarrage tant qu'une modification de la configuration logicielle n'aura pas été effectuée pour héberger les LIF du cluster sur les ports physiques corrects.
 
 .Étapes
 . Enregistrez toutes les informations de câblage du nœud 2 pour le nœud 2, les ports, les domaines de diffusion et les IPspaces, dans le tableau :

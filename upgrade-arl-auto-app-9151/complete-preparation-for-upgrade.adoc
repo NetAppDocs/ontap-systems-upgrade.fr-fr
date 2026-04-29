@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: upgrade-arl-auto-app-9151/manage_storage_encryption_using_okm.html 
+permalink: upgrade-arl-auto-app-9151/complete-preparation-for-upgrade.html 
 keywords: ip, address, external, key, management, server, storage, encryption, upgrading, authentication 
 summary: 'Configurez et gérez Storage Encryption, gérez les clés d"authentification et mettez fin à la relation SnapMirror lors de la mise à niveau des contrôleurs exécutant ONTAP 9.15.1 ou version ultérieure à l"aide de la `system controller replace` commande.' 
 ---
-= Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré
+= Finalisez la préparation de la mise à niveau
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,22 @@ summary: 'Configurez et gérez Storage Encryption, gérez les clés d"authentifi
 
 
 [role="lead"]
-Vous pouvez utiliser le gestionnaire de clés intégré (OKM) pour gérer les clés de chiffrement. Si vous avez configuré le gestionnaire de clés intégré OKM, vous devez enregistrer la phrase de passe et les éléments de sauvegarde avant de commencer la mise à niveau.
+Découvrez les licences ONTAP et la gestion du chiffrement du stockage à l'aide du gestionnaire de clés intégré (OKM). Vous pouvez également mettre en veille les relations SnapMirror.
+
+
+
+== Découvrez les licences ONTAP
+
+Pour plus d'informations sur les licences ONTAP, reportez-vous à https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Gestion des licences"^]la section .
+
+
+NOTE: L'utilisation de fonctionnalités sans licence sur le contrôleur peut vous mettre hors conformité avec votre contrat de licence.
+
+
+
+== Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré
+
+Utilisez le Gestionnaire de clés intégré (OKM) pour gérer les clés de chiffrement. Si l'OKM est configuré, vous devez enregistrer la phrase de passe et les données de sauvegarde avant de commencer la mise à niveau.
 
 .Étapes
 . Notez la phrase de passe à l'échelle du cluster.
@@ -40,7 +55,7 @@ Lorsque vous y êtes invité, saisissez la phrase secrète OKM à l'échelle du 
 
 
 
-== Suspendre les relations SnapMirror (facultatif)
+== Facultativement, mettre en pause les relations SnapMirror
 
 Avant de poursuivre l'opération, vous devez confirmer que toutes les relations SnapMirror sont suspendues. Lorsqu'une relation SnapMirror est mise en veille, elle reste suspension sur l'ensemble des redémarrages et basculements.
 
@@ -64,3 +79,6 @@ L'annulation échoue si la relation SnapMirror n'est pas à l'état « Transferr
 `snapmirror quiesce -destination-vserver *`
 
 
+
+.Et la suite ?
+Après avoir préparé la mise à niveau, link:relocate_non_root_aggr_nas_data_lifs_node1_node2.html["déplacer les agrégats non racines et les LIF de données NAS appartenant au nœud1 vers le nœud2"].

@@ -51,5 +51,5 @@ Pour plus d'informations, voir link:cable-node1-for-shared-cluster-HA-storage.ht
 
 
 
-.Quelle est la prochaine étape
-link:move-non-root-aggr-and-nas-data-lifs-back-to-node2.html["Déplacement des agrégats non racines et des LIF de données NAS vers le nœud 2"]
+.Et la suite ?
+Après avoir vérifié la configuration RCF link:move-non-root-aggr-and-nas-data-lifs-back-to-node2.html["Déplacez les agrégats non racines et les LIF de données NAS vers le nœud2"].

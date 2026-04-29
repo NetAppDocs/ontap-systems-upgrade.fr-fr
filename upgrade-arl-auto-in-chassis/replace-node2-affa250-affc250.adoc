@@ -1,0 +1,118 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/replace-node2-affa250-affc250.html 
+keywords: aff, fas, asa, install, NVRAM, node2, controller, module, modules, replacement 
+summary: 'Remplacez le module de contrôleur node2 AFF A250 ou AFF C250 lors d"une mise à niveau ARL des modèles de contrôleur dans le même châssis.' 
+---
+= Remplacez le module contrôleur node2 AFF A250 ou AFF C250
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Remplacez le module de contrôleur AFF A250 ou AFF C250 du node2 par un module de contrôleur AFF A30, AFF A50, AFF C30 ou AFF C60.
+
+À ce stade, le nœud2 est hors service et toutes les données sont gérées par le nœud1. Veillez à ne retirer que le module contrôleur du nœud2. Généralement, le nœud2 correspond au contrôleur B, situé dans la partie inférieure du châssis lorsqu'on regarde les contrôleurs depuis l'arrière du système. L'étiquette du contrôleur se trouve sur le châssis, juste au-dessus du module contrôleur.
+
+
+CAUTION: Ne mettez pas le châssis hors tension, car les nœuds 1 et 2 se trouvent dans le même châssis et sont connectés aux mêmes blocs d'alimentation.
+
+
+
+== Étape 1 : Retirez le module de contrôleur AFF A250 ou AFF C250
+
+Pour retirer le module contrôleur node2, retirez le dispositif de gestion des câbles et déverrouillez les loquets de verrouillage. Ensuite, retirez le module contrôleur du châssis.
+
+.Avant de commencer
+Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement.
+
+.Étapes
+. Insérez votre index dans le mécanisme de verrouillage de chaque côté du module de contrôleur, appuyez sur le levier avec votre pouce et tirez doucement le contrôleur à quelques pouces du châssis.
++
+
+NOTE: Si vous avez des difficultés à retirer le module de contrôleur, placez vos doigts à travers les trous des doigts de l'intérieur (en croisant vos bras).
+
++
+image:drw_a250_pcm_remove_install.png["Appuyez sur le lecteur pour le mettre fermement en place contre le fond de panier central du châssis"]
+
++
+[cols="20,80"]
+|===
+
+
+ a| 
+image:black_circle_one.png["Numéro un"]
+| Levier 
+
+
+ a| 
+image:black_circle_two.png["Numéro deux"]
+| Mécanisme de verrouillage 
+|===
+. Aller à l'arrière du châssis.
+. Débranchez l'alimentation du module contrôleur node2 de la source.
+. Relâchez les fixations des câbles d'alimentation, puis débranchez les câbles des alimentations du nœud 2.
++
+
+CAUTION: Les connecteurs d'alimentation de node1 et node2 sont superposés. Veillez à ne débrancher que les câbles de node2. Débrancher les câbles de node1 et node2 pourrait entraîner une coupure de courant pour les deux nœuds de la paire haute disponibilité.
+
+. Desserrez le crochet et la bride de boucle reliant les câbles au dispositif de gestion des câbles, puis débranchez les câbles du système et les modules SFP et QSFP (si nécessaire) du module de contrôleur, en gardant une trace de l'emplacement de connexion des câbles.
++
+Laissez les câbles dans le périphérique de gestion des câbles de sorte que lorsque vous réinstallez le périphérique de gestion des câbles, les câbles sont organisés.
+
+. Retirez le périphérique de gestion des câbles du module de contrôleur et mettez-le de côté.
+. Appuyez sur les deux loquets de verrouillage, puis faites pivoter les deux loquets vers le bas en même temps.
++
+Le module de contrôleur se déplace légèrement hors du châssis.
+
+. À l'aide des deux mains, saisissez les côtés du module de contrôleur et tirez-le doucement hors du châssis et posez-le sur une surface plane et stable.
++
+Assurez-vous de soutenir le poids du module de contrôleur lorsque vous le faites glisser hors du châssis.
+
+
+
+
+
+== Étape 2 : Installez le module de contrôleur AFF A30, AFF A50, AFF C30 ou AFF C60
+
+Installez le module de contrôleur de remplacement que vous avez reçu pour la mise à niveau sur le nœud 2.
+
+.Étapes
+. Positionnez le système de stockage sur les rails au milieu de l'armoire ou du rack de télécommunications, puis soutenez le système de stockage par le bas et faites-le glisser pour le mettre en place.
++
+
+NOTE: N'insérez pas complètement le module de contrôleur dans le châssis avant d'y être invité plus tard dans la procédure.
+
+. Reliez les ports de gestion et de console au module de contrôleur node2.
++
+
+NOTE: Étant donné que le châssis est déjà sous tension, le nœud 2 démarre l'initialisation du BIOS suivie du démarrage automatique dès qu'il est complètement installé.  Pour interrompre le démarrage du node2, avant d'insérer complètement le module de contrôleur dans l'emplacement, il est recommandé de connecter la console série et les câbles de gestion au module de contrôleur node2.
+
+. Avec la poignée de came en position ouverte, poussez fermement le module de contrôleur jusqu'à ce qu'il rencontre le fond de panier central et qu'il soit bien en place. Le loquet de verrouillage s'élève lorsque le module de contrôleur est bien en place. Fermer la poignée de came en position verrouillée.
++
+
+NOTE: Pour éviter d'endommager les connecteurs, ne forcez pas trop lorsque vous faites glisser le module de contrôleur dans le châssis.
+
+. Connectez la console série dès que le module est installé et soyez prêt à interrompre l'AUTOBOOT du node2.
+. Après l'interruption DE L'AUTOBOOT, le nœud 2 s'arrête à l'invite DU CHARGEUR. Si vous n'interrompez pas LE démarrage AUTOMATIQUE à temps et que le démarrage du nœud 2 commence, attendez l'invite et appuyez sur Ctrl-C pour accéder au menu de démarrage. Une fois que le nœud s'arrête au menu de démarrage, utilisez l'option `8` pour redémarrer le nœud et interrompre le DÉMARRAGE AUTOMATIQUE pendant le redémarrage.
+. À l'invite LOADER> du nœud 2, définissez les variables d'environnement par défaut :
++
+[source, cli]
+----
+set-defaults
+----
+. Enregistrez les paramètres des variables d'environnement par défaut :
++
+[source, cli]
+----
+saveenv
+----
+. Pour les configurations sans commutateur à deux nœuds, vérifiez que vous disposez d'une carte X60132A 4 ports 10/25 GbE dans l'emplacement 1 du nœud 2. La carte X60132A est requise pour l'interconnexion du cluster lors de la mise à niveau.
+
+
+.Et la suite ?
+Après avoir installé le module AFF A30, AFF A50, AFF C30 ou AFF C60, link:netboot-node2.html["netboot node2"].

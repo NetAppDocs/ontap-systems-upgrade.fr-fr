@@ -81,7 +81,7 @@ Vous ne pouvez pas combiner des disques FIPS avec d'autres types de disques sur 
 ====
 .. Accédez au menu de démarrage spécial et sélectionnez option `(10) Set Onboard Key Manager recovery secrets`.
 +
-Saisissez la phrase secrète et les informations de sauvegarde que vous avez enregistrées précédemment dans la procédure. Voir link:manage-storage-encryption-using-okm.html["Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré"].
+Saisissez la phrase secrète et les informations de sauvegarde que vous avez enregistrées précédemment dans la procédure. Voir link:complete-preparation-for-upgrade.html#manage-storage-encryption-using-okm["Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré"].
 
 
 
@@ -254,3 +254,6 @@ Entre la saisie des noms de nœud à l'invite et à l'invite de connexion, le n�
 
 ====
 
+
+.Et la suite ?
+Après avoir démarré le nœud 1 avec les modules système de remplacement, link:verify-node1-installation.html["vérifiez l'installation du nœud 1"].

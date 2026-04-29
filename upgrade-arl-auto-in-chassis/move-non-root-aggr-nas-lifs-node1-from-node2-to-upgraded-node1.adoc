@@ -203,3 +203,6 @@ Le système effectue les vérifications suivantes :
 
 
 
+
+.Et la suite ?
+Après avoir déplacé les agrégats non-root du nœud 1 et les LIF de données NAS du nœud 2 vers le nœud 1 mis à niveau, link:relocate-non-root-aggr-nas-lifs-from-node2-to-node1.html["déplacer les agrégats non racines et les LIF de données NAS du nœud2 vers le nœud1"].

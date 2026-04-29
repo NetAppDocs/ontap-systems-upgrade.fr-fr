@@ -58,3 +58,6 @@ NOTE: Il n'est pas nécessaire d'extraire le contenu du `<ontap_version>_image.t
 Vous utiliserez les informations dans les répertoires de link:install_boot_node3.html["Étape 3"].
 
 
+
+.Et la suite ?
+Après la préparation du démarrage réseau, link:install_boot_node3.html["installer et démarrer le nœud 3"].

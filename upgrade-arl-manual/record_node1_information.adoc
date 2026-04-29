@@ -123,7 +123,7 @@ Le système affiche les ports physiques sur le nœud, comme illustré ci-dessous
 ----
 . Enregistrez les ports et leurs domaines de diffusion.
 +
-Les domaines de diffusion devront être mappés vers les nouveaux ports du nouveau contrôleur plus tard dans la procédure.
+Les domaines de diffusion doivent être associés aux nouveaux ports du nouveau contrôleur ultérieurement dans la procédure.
 
 . Entrez la commande suivante sur le nœud 1 :
 +

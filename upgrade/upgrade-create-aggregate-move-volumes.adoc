@@ -34,7 +34,7 @@ NOTE: Pour chaque SVM (Storage Virtual machine), NetApp recommande de déplacer 
 `vserver add-aggregates`
 
 +
-Le nouvel agrégat et l'ancien agrégat depuis lequel le volume sera déplacé doivent se trouver dans le même SVM.
+Le nouvel agrégat et l'ancien agrégat à partir duquel le volume est déplacé doivent appartenir au même SVM.
 
 . Vérifier que le nouvel agrégat est désormais attribué au même SVM que l'agrégat sur le nœud d'origine :
 +

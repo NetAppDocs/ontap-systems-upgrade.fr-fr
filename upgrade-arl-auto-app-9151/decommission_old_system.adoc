@@ -34,3 +34,6 @@ Un tableau affiche les informations sur le cluster, y compris les numéros de s�
 
 . Localisez le cluster dans le tableau et sélectionnez *Decommission This system* dans le menu déroulant Product Tool Set.
 
+
+.Et la suite ?
+Après la mise hors service de l'ancien système, link:resume_snapmirror_operations.html["reprise des opérations SnapMirror"].

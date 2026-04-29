@@ -28,3 +28,6 @@ Le nœud s'arrête automatiquement.
 
 .Une fois que vous avez terminé
 Après avoir retiré le nœud 2, vérifiez qu'il est éteint et non connecté au réseau.  Laissez l’ancien matériel du nœud 2 dans cet état jusqu’à ce que vous ayez terminé la mise à niveau des nœuds 1 et 2.  Vous pouvez ensuite mettre hors service le nœud 2 pendantlink:manage-authentication-using-kmip-servers.html["Étape 6. Terminez la mise à niveau"] .
+
+.Et la suite ?
+Après la mise hors service du nœud 2, link:install_boot_node4.html["installer et démarrer le nœud 4"].

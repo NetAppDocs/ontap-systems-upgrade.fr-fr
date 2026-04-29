@@ -60,3 +60,6 @@ NOTE: Dans ce document, les nœuds d'origine sont appelés _node1_ et _node2_, e
 
 
 
+
+.Et la suite ?
+Après avoir pris connaissance de cette procédure ARLlink:decide_to_use_arl_guide.html["décider s'il convient d'utiliser cette procédure ARL"].

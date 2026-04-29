@@ -140,3 +140,6 @@ Dans le cas d'un cluster relié par commutateur, vérifiez que vous répondez au
 
 
 NOTE: Si le commutateur de cluster prend uniquement en charge les vitesses 10/25 GbE, vous devez utiliser une carte X60130A à 4 ports 10/25 GbE dans l'emplacement 1 ou l'emplacement 2 sur le système de remplacement pour l'interconnexion du cluster.
+
+.Et la suite ?
+Après avoir câblé le nœud 1 pour le cluster partagé HA et le stockage, link:boot-node1-with-a900-controller-and-nvs.html["démarrez le nœud 1 avec les modules système de remplacement"].

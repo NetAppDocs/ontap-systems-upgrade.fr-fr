@@ -40,10 +40,10 @@ Le basculement et le rétablissement peuvent se poursuivre normalement.
 
 === NODE1 tombe en panne pendant ou juste après la phase 2 avec la haute disponibilité toujours activée
 
-Un ou plusieurs agrégats ont été transférés du nœud 1 vers le nœud 2, et la haute disponibilité est toujours activée. NODE2 prendra le relais du volume racine du nœud 1 et de tout agrégat non racine qui n'a pas été déplacé.
+Certains ou tous les agrégats ont été déplacés de node1 vers node2, et la haute disponibilité (HA) reste activée. Node2 prend en charge le volume racine de node1 ainsi que tous les agrégats non racines qui n'ont pas été déplacés.
 
 .Description de la tâche
-La propriété des agrégats transférés semble identique à celle des agrégats non racines pris en charge, car le propriétaire du site n'a pas changé. Lorsque le noeud 1 entre dans `waiting for giveback state`, node2 redonnera tous les agrégats non-root du nœud 1.
+La propriété des agrégats déplacés est identique à celle des agrégats non racines repris, car le propriétaire initial n'a pas changé. Lorsque le nœud 1 entre  `waiting for giveback state`en jeu, le nœud 2 lui restitue tous les agrégats non racines du nœud 1.
 
 .Étapes
 . Completlink:relocate_non_root_aggr_node1_node2.html#relocate-step1["Étape 1"] dans la section _Relocaliser les agrégats non racines du nœud 1 vers le nœud 2_ à nouveau.
@@ -54,7 +54,7 @@ La propriété des agrégats transférés semble identique à celle des agrégat
 
 === Le nœud 1 tombe en panne après la phase 2 lorsque la haute disponibilité est désactivée
 
-Le nœud 2 ne prendra pas le relais, mais il transmet toujours les données à partir de tous les agrégats non racines.
+Le nœud 2 ne prend pas le relais, mais il transmet toujours les données à partir de tous les agrégats non racines.
 
 .Étapes
 . Afficher le nœud 1.
@@ -71,7 +71,7 @@ Vous verrez peut-être des modifications dans la sortie du `storage failover sho
 NODE1 a déplacé un ou la totalité de ses agrégats vers le nœud 2. LA HAUTE DISPONIBILITÉ est activée.
 
 .Description de la tâche
-NODE1 prendra en charge l'ensemble des agrégats du nœud 2 ainsi que l'un de ses propres agrégats qu'il avait transférés vers le nœud 2. Lorsque le noeud 2 entre dans `Waiting for Giveback` état, le nœud 1 renvoie tous les agrégats du nœud 2.
+Le nœud 1 récupère tous les agrégats du nœud 2, ainsi que tous ses propres agrégats qu'il avait déplacés vers le nœud 2. Lorsque le nœud 2 entre dans l' `Waiting for Giveback`état, le nœud 1 lui restitue tous les agrégats du nœud 2.
 
 .Étapes
 . Completlink:relocate_non_root_aggr_node1_node2.html#relocate-step1["Étape 1"] dans la section _Relocaliser les agrégats non racines du nœud 1 vers le nœud 2_ à nouveau.
@@ -82,12 +82,12 @@ NODE1 prendra en charge l'ensemble des agrégats du nœud 2 ainsi que l'un de se
 
 === Le nœud 2 tombe en panne après la phase 2 et après la désactivation de la haute disponibilité
 
-NODE1 ne prendra pas le contrôle.
+NODE1 ne prend pas le contrôle.
 
 .Étapes
 . Afficher le nœud 2.
 +
-Une panne client se produit pour tous les agrégats lors du démarrage du nœud 2.
+Une interruption de service client se produit pour tous les agrégats pendant le démarrage du nœud 2.
 
 . Poursuivez la procédure de mise à niveau du reste de la paire de nœuds.
 
@@ -102,12 +102,12 @@ Des pannes peuvent se produire immédiatement après la phase 3, pendant laquell
 
 === Panne du nœud 2 lors de la phase 3 avec la haute disponibilité désactivée et avant de déplacer un agrégat
 
-Le nœud 3 ne prendra pas le relais suite à une panne du nœud 2 car la haute disponibilité est déjà désactivée.
+Le nœud 3 ne prend pas le relais suite à une panne du nœud 2 car la haute disponibilité est déjà désactivée.
 
 .Étapes
 . Afficher le nœud 2.
 +
-Une panne client se produit pour tous les agrégats lors du démarrage du nœud 2.
+Une interruption de service client se produit pour tous les agrégats pendant le démarrage du nœud 2.
 
 . Poursuivez la procédure de mise à niveau de la paire de nœuds.
 
@@ -116,10 +116,10 @@ Une panne client se produit pour tous les agrégats lors du démarrage du nœud 
 
 === Le nœud 2 tombe en panne lors de la phase 3 après le déplacement d'une partie ou de l'ensemble des agrégats
 
-Le nœud 2 a déplacé une partie ou la totalité de ses agrégats vers le nœud 3, qui transmet des données depuis les agrégats qui ont été déplacés. LA HAUTE DISPONIBILITÉ est désactivée.
+Le nœud 2 a déplacé tout ou partie de ses agrégats vers le nœud 3, qui fournit les données à partir des agrégats qui ont été déplacés. HA est désactivé.
 
 .Description de la tâche
-Pour les agrégats qui n'ont pas été transférés, une panne se produit au niveau du client.
+Une interruption de service est constatée chez les clients dont les agrégats n'ont pas été déplacés.
 
 .Étapes
 . Afficher le nœud 2.
@@ -142,7 +142,7 @@ Le nœud 2 ne prend pas le relais, mais il transmet toujours les données à par
 
 === Le nœud 3 tombe en panne lors de l'étape 3 lors du transfert d'agrégats
 
-En cas de panne du nœud 3 alors que le nœud 2 replace les agrégats sur le nœud 3, le nœud 2 annulera le déplacement d'agrégats restants.
+Si le nœud 3 tombe en panne pendant que le nœud 2 déplace des agrégats vers le nœud 3, le nœud 2 interrompt le déplacement de tous les agrégats restants.
 
 .Description de la tâche
 Le nœud 2 continue de servir les agrégats restants, mais les agrégats qui ont déjà été transférés vers le nœud 3 rencontrent une panne du client lors du démarrage du nœud 3.
@@ -183,7 +183,7 @@ Le nœud3 tombe en panne après l'étape 3 mais avant l'étape 5. La paire HA es
 .Étapes
 . Afficher le nœud 3.
 +
-Une panne client sera tolérée pour tous les agrégats.
+Une panne client affecte tous les agrégats.
 
 . Poursuivez la procédure de mise à niveau de la paire de nœuds.
 

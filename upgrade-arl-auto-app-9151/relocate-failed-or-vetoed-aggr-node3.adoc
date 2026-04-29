@@ -41,3 +41,6 @@ Le système interrompt l'opération de relocalisation en raison de l'erreur.
 `storage aggregate relocation start -node node2 -destination node3 -aggregate-list <aggregate_list> -ndo-controller-upgrade true -override-vetoes true -override-destination-checks true` 
 |===
 
+
+.Et la suite ?
+Après avoir déplacé les agrégats ayant échoué ou ayant été rejetés vers le nœud 3, link:retire_node2.html["retirer node2"].

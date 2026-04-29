@@ -39,8 +39,8 @@ Pour des informations détaillées sur les options  `storage aggregate relocatio
 .Description de la tâche
 Les agrégats peuvent ne pas être relocalisés correctement, le nœud 1 étant alors leur nœud de rattachement au lieu du nœud 3 dans les cas suivants :
 
-* Lors de la phase 3, lorsque les agrégats sont déplacés du nœud 2 vers le nœud 3. Certains agrégats transférés possèdent le nœud 1 comme nœud de rattachement. Par exemple, un tel agrégat peut être appelé aggr_node_1. Si le transfert de aggr_node_1 échoue lors de l'étape 3 et le transfert ne peut pas être forcé, l'agrégat sera laissé derrière sur le nœud 2.
-* Après l'étape 4, lorsque le noeud 2 est remplacé par le noeud 4. Lorsque le nœud 2 est remplacé, aggr_node_1 sera connecté avec le nœud 4 comme nœud de base au lieu du nœud 3.
+* Lors de l'étape 3, les agrégats sont déplacés du nœud2 vers le nœud3. Certains des agrégats déplacés ont le nœud1 comme port d'attache. Par exemple, un tel agrégat pourrait être appelé aggr_node_1. Si le déplacement de aggr_node_1 échoue lors de l'étape 3 et que le déplacement ne peut pas être forcé, alors l'agrégat reste sur le nœud2.
+* Après l'étape 4, lorsque le nœud2 est remplacé par le nœud4. Lorsque le nœud2 est remplacé, aggr_node_1 passe en ligne avec le nœud4 comme port d'attache au lieu du nœud3.
 
 
 Une 6 fois le basculement du stockage activé, vous pouvez résoudre le problème de propriété incorrect en procédant comme suit :

@@ -1,0 +1,87 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/complete-preparation-for-upgrade.html 
+keywords: ip, address, external, key, management, server, storage, encryption, upgrading, authentication 
+summary: 'Configurez et gérez le cryptage du stockage, gérez les clés d"authentification et mettez au repos les relations SnapMirror lors de la mise à niveau des contrôleurs exécutant ONTAP 9.8 ou une version ultérieure à l"aide de `system controller replace` commande.' 
+---
+= Finalisez la préparation de la mise à niveau
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Découvrez les licences ONTAP et la gestion du chiffrement du stockage à l'aide du gestionnaire de clés intégré (OKM). Vous pouvez également mettre en veille les relations SnapMirror.
+
+
+
+== Découvrez les licences ONTAP
+
+Certaines fonctionnalités nécessitent des licences, qui sont émises sous la forme _packages_ qui incluent une ou plusieurs fonctionnalités. Chaque nœud du cluster doit disposer de sa propre clé pour que chaque fonctionnalité soit utilisée dans le cluster.
+
+Si vous ne disposez pas de nouvelles clés de licence, les fonctionnalités actuellement sous licence dans le cluster sont disponibles pour le nouveau contrôleur. Toutefois, l'utilisation de fonctions sans licence sur le contrôleur peut vous mettre hors conformité avec votre contrat de licence. Vous devez donc installer la ou les nouvelles clés de licence pour le nouveau contrôleur une fois la mise à niveau terminée.
+
+Reportez-vous à la section link:other_references.html["Références"] Pour accéder au _site de support NetApp_ sur lequel vous pouvez obtenir de nouvelles clés de licence de 28 caractères pour ONTAP. Les clés sont disponibles dans la section _mon support_ sous _licences logicielles_. Si le site ne dispose pas de clés de licence, vous pouvez contacter votre ingénieur commercial NetApp.
+
+Pour des informations détaillées sur les licences ONTAP, consultez link:other_references.html["Références"] pour accéder au _System Administration Reference_.
+
+
+
+== Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré
+
+Utilisez le Gestionnaire de clés intégré (OKM) pour gérer les clés de chiffrement. Si l'OKM est configuré, vous devez enregistrer la phrase de passe et les données de sauvegarde avant de commencer la mise à niveau.
+
+.Étapes
+. Notez la phrase de passe à l'échelle du cluster.
++
+Il s'agit de la phrase secrète saisie lorsque le gestionnaire de clés intégré OKM a été configuré ou mis à jour via l'interface de ligne de commandes ou l'API REST.
+
+. Vérifiez la phrase de passe et le fonctionnement du key-manager :
++
+`security key-manager onboard sync`
+
++
+Lorsque vous y êtes invité, saisissez la phrase secrète OKM à l'échelle du cluster que vous avez enregistrée à l'étape précédente.
+
+. Vérifiez que cc-mode est activé en consultant le résultat de la commande suivante :
++
+`security key-manager config show`
+
+. Sauvegardez les informations du key-manager :
++
+`security key-manager onboard show-backup`
+
+
+
+
+
+== Facultativement, mettre en pause les relations SnapMirror
+
+Avant de poursuivre l'opération, vous devez confirmer que toutes les relations SnapMirror sont suspendues. Lorsqu'une relation SnapMirror est mise en veille, elle reste suspension sur l'ensemble des redémarrages et basculements.
+
+.Étapes
+. Vérifier l'état de la relation SnapMirror sur le cluster destination :
++
+`snapmirror show`
+
++
+[NOTE]
+====
+Si l'état est « transfert », vous devez annuler ces transferts :
+`snapmirror abort -destination-vserver _vserver_name_`
+
+====
++
+L'annulation échoue si la relation SnapMirror n'est pas à l'état « Transferring ».
+
+. Arrêter toutes les relations entre le cluster :
++
+`snapmirror quiesce -destination-vserver *`
+
+
+
+.Et la suite ?
+Après avoir préparé la mise à niveau, link:relocate_non_root_aggr_nas_data_lifs_node1_node2.html["déplacer les agrégats non racines et les LIF de données NAS appartenant au nœud1 vers le nœud2"].

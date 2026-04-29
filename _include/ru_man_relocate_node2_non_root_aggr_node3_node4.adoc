@@ -37,7 +37,7 @@ La réinstallation a lieu en arrière-plan. Le transfert d'un agrégat peut pren
 `storage aggregate relocation show -node _node3_`
 
 +
-La sortie s'affiche `Done` pour un agrégat après son transfert.
+Les résultats s'affichent  `Done` pour un agrégat après son déplacement.
 
 +
 

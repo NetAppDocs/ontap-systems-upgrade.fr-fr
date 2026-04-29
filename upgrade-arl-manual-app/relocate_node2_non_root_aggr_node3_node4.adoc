@@ -49,7 +49,7 @@ La réinstallation a lieu en arrière-plan. Le transfert d'un agrégat peut pren
 `storage aggregate relocation show -node _node3_`
 
 +
-La sortie s'affiche `Done` pour un agrégat après son transfert.
+Les résultats s'affichent  `Done` pour un agrégat après son déplacement.
 
 +
 
@@ -125,3 +125,6 @@ Les agrégats du nœud 2 étaient répertoriés dans le résultat de la commande
 `system node autosupport invoke -node _node4_ -type all -message "_node2_ successfully upgraded from _platform_old_ to _platform_new_"`
 
 
+
+.Et la suite ?
+Après avoir déplacé les agrégats non-root du nœud2 du nœud3 vers le nœud4, link:manage_authentication_kmip.html["gérer l'authentification à l'aide des serveurs KMIP"].

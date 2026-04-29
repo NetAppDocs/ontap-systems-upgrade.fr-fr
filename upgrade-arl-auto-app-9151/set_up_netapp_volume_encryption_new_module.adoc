@@ -83,3 +83,6 @@ Pour plus d'informations, consultez l'article de la base de connaissances https:
 ====
 .Une fois que vous avez terminé
 Vérifiez si des volumes ont été mis hors ligne car les clés d'authentification n'étaient pas disponibles ou si les serveurs EKM n'ont pas pu être atteints. Remettre ces volumes en ligne à l'aide du `volume online` commande.
+
+.Et la suite ?
+Après avoir configuré le chiffrement de volume ou d’agrégat NetApp sur le nouveau module de contrôleur, link:decommission_old_system.html["mettre hors service l'ancien système"].

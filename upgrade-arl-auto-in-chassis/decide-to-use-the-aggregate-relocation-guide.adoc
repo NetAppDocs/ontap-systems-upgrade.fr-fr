@@ -128,8 +128,11 @@ Les versions ONTAP minimales figurant dans le tableau précédent sont obligatoi
 == Choisissez une autre procédure de mise à niveau matérielle
 
 * link:../upgrade-arl/index.html["Passez en revue les méthodes ARL alternatives disponibles pour la mise à niveau du matériel du contrôleur"].
-* Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+* Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous êtes prêt à effectuer des déplacements de volumes, reportez-vous à link:other-references.html["Références"] pour accéder à _Mise à niveau par déplacement de volumes ou de stockage_.
 
 
 .Informations associées
-Se référer à link:other_references.html["Références"] pour créer un lien vers la _Documentation ONTAP 9_.
+Reportez-vous à link:other-references.html["Références"] pour accéder à la documentation _ONTAP 9_.
+
+.Et la suite ?
+Après avoir décidé d'utiliser cette procédure ARL, link:required-tools-and-documentation.html["Découvrez les outils et la documentation requis."].

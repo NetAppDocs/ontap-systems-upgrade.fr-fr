@@ -149,3 +149,6 @@ Distribution Function: ip
 
 
 
+
+.Et la suite ?
+Après avoir déplacé les LIF de données NAS appartenant à node2 vers node3, link:record_node2_information.html["enregistrer les informations du nœud 2"].

@@ -109,5 +109,9 @@ La valeur de cette commande doit correspondre à l'état physique du système.
 
 . Arrêtez le nœud 2 en entrant la commande suivante sur l'un des contrôleurs :
 `system node halt -node _node2_`
-. Une fois l'arrêt complet du nœud 2 terminé, retirez-le du châssis ou du rack. Vous pouvez désaffecter le nœud2 une fois la mise à niveau terminée. Voir link:decommission_old_system.html["Désaffectation de l'ancien système"].
+. Une fois le nœud 2 complètement arrêté, retirez-le du châssis ou du rack.
+. Vous pouvez éventuellement mettre hors service le nœud 2 une fois la mise à niveau terminée. Voir link:decommission_old_system.html["Désaffectation de l'ancien système"].
 
+
+.Et la suite ?
+Après la mise hors service du nœud 2, link:install_boot_node4.html["installer et démarrer le nœud 4"].

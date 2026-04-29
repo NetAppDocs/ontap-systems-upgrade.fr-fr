@@ -34,3 +34,6 @@ L'annulation échoue si la relation SnapMirror n'est pas dans le `Transferring` 
 `snapmirror quiesce -destination-vserver *`
 
 
+
+.Et la suite ?
+Après avoir mis en veille les relations SnapMirror, link:prepare_for_netboot.html["Préparation au démarrage réseau"].

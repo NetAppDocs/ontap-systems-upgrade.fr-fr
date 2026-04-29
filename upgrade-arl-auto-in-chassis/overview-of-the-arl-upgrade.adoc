@@ -81,7 +81,7 @@ Propriété globale à la fin de la phase 4 :
 
 
 
-| link:install-aff-a30-a50-c30-c50-node2.html["Étape 5 : installez les modules de rechange du système sur le nœud 2"]  a| 
+| link:install-aff-a30-a50-c30-c50-node2.html["Étape 5 : Installer les modules système de remplacement du nœud 2"]  a| 
 Au cours de l'étape 5, vous installez les nouveaux modules système que vous avez reçus pour le node2 mis à niveau, puis netboot node2.
 
 Propriété globale à la fin de la phase 5 :
@@ -92,7 +92,7 @@ Propriété globale à la fin de la phase 5 :
 
 
 
-| link:boot-node2-with-a900-controller-and-nvs.html["Etape 6 : démarrez le nœud 2 avec les modules système de remplacement"]  a| 
+| link:cable-node2-for-shared-cluster-HA-storage.html["Etape 6 : démarrez le nœud 2 avec les modules système de remplacement"]  a| 
 Au cours de l’étape 6, vous démarrez node2 avec des modules système mis à niveau et vérifiez l’installation de node2 mis à niveau. Si vous utilisez NVE, vous restaurez la configuration du gestionnaire de clés. Pour les mises à niveau de clusters connectés au commutateur, vous devez valider que le fichier de configuration de référence du commutateur de cluster (RCF) prend en charge les ports de cluster/HA partagés. Vous déplacez également les agrégats non racine du nœud 1 et les LIF de données NAS du nœud 1 vers le nœud 2 mis à niveau et vérifiez que les LIF SAN existent sur le nœud 2.
 
 
@@ -101,3 +101,5 @@ Au cours de l’étape 6, vous démarrez node2 avec des modules système mis à 
 Lors de la phase 7, vous vérifiez que les nouveaux nœuds sont correctement configurés et que, si les nouveaux nœuds sont activés pour le chiffrement, vous configurez et configurez Storage Encryption ou NVE. Vous devez également désaffecter les anciens nœuds et reprendre les opérations SnapMirror.
 
 |===
+.Et la suite ?
+Après avoir pris connaissance de la séquence de mise à niveau ARL, link:verify-upgrade-hardware.html["vérifier le matériel de mise à niveau"].

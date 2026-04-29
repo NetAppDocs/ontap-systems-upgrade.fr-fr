@@ -166,7 +166,7 @@ Saisissez la phrase secrète et les informations de sauvegarde que vous avez enr
 
 WARNING: Si ce nouveau nœud a déjà été utilisé dans un autre cluster ou une paire HA, vous devez exécuter `wipeconfig` avant de continuer. Le non-respect de cette consigne peut entraîner des pannes du service ou des pertes de données. Contactez le support technique si le contrôleur de remplacement était auparavant utilisé, en particulier si les contrôleurs exécutaient ONTAP sous 7-mode.
 
-. Appuyez sur CTRL-C pour afficher le menu de démarrage.
+. Saisissez CTRL-C pour afficher le menu de démarrage.
 . [[man_install3_step19]]effectuer l'une des actions suivantes :
 +
 [cols="35,65"]
@@ -534,3 +534,6 @@ Le nœud peut se redémarrer avant de démarrer normalement.
 
 . [[man_install3_step48]]Connectez-vous au node3.
 
+
+.Et la suite ?
+Après l'installation et le démarrage de node3, link:set_fc_uta_uta2_config_node3.html["définir la configuration FC ou UTA/UTA2 sur le nœud 3"].

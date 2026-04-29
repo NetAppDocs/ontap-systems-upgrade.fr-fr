@@ -29,7 +29,7 @@ Avant de remplacer le nœud 1 par le nœud 3, vous devez déplacer les agrégats
 
 .. Entrez-le lorsque vous y êtes invité `y`.
 +
-La réinstallation se fera en arrière-plan. Le transfert d'un agrégat peut prendre quelques secondes ou quelques minutes, Cette durée inclut à la fois les parties en cas d'interruption du client et les parties en cas d'interruption de service. La commande ne permet pas de transférer des agrégats hors ligne ou restreints.
+La réinstallation a lieu en arrière-plan. Le transfert d'un agrégat peut prendre quelques secondes ou quelques minutes, Cette durée inclut à la fois les parties en cas d'interruption du client et les parties en cas d'interruption de service. La commande ne permet pas de transférer des agrégats hors ligne ou restreints.
 
 .. Revenir au niveau admin en entrant la commande suivante :
 +
@@ -42,7 +42,7 @@ La réinstallation se fera en arrière-plan. Le transfert d'un agrégat peut pre
 `storage aggregate relocation show -node _node1_`
 
 +
-La sortie s'affiche `Done` pour un agrégat après son transfert.
+Les résultats s'affichent  `Done` pour un agrégat après son déplacement.
 
 +
 
@@ -137,3 +137,6 @@ Node owns partner's aggregates as part of the nondisruptive controller upgrade p
 Le résultat ne doit pas afficher d'agrégats non racines en ligne, déjà transférés vers le nœud 2.
 
 
+
+.Et la suite ?
+Après avoir déplacé les agrégats non racines du nœud1 vers le nœud2, link:move_nas_lifs_node1_node2.html["déplacer les LIF de données NAS appartenant au node1 vers le node2"].

@@ -210,3 +210,6 @@ Si des volumes sont hors ligne sur le nœud 3, vous devez les mettre en ligne un
 Le résultat de la commande ne doit pas afficher d'agrégats en ligne non-racine, car tous les agrégats en ligne non-racine ont déjà été déplacés vers le nœud 3.
 
 
+
+.Et la suite ?
+Après avoir déplacé les agrégats non racines du nœud 2 vers le nœud 3, link:move_nas_lifs_node2_node3.html["déplacer les LIF de données NAS appartenant à node2 vers node3"].

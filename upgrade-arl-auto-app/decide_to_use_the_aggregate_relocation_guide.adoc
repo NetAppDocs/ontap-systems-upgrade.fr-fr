@@ -140,3 +140,6 @@ Pour les combinaisons de mise à niveau indiquées dans le tableau précédent :
 
 .Informations associées
 Se référer à link:other_references.html["Références"] pour créer un lien vers la _Documentation ONTAP 9_.
+
+.Et la suite ?
+Après avoir décidé d'utiliser ou non cette procédure ARL, renseignez-vous sur le link:required_tools_and_documentation.html["outils et documentation requis"].

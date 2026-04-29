@@ -152,7 +152,7 @@ Login:
 ====
 +
 
-NOTE: Dans l'exemple de sortie de la console ci-dessus, ONTAP vous invite à entrer le nom du nœud partenaire si le système utilise des disques du partitionnement de disque avancé.
+NOTE: Dans l'exemple de sortie console ci-dessus, ONTAP vous invite à saisir le nom du nœud partenaire si le système utilise des disques à partitionnement de disque avancé (ADP).
 
 . Si le système entre dans une boucle de redémarrage avec le message `no disks found` , cela indique que le système a réinitialisé les ports FC ou UTA/UTA2 au mode cible et qu'il est donc incapable de voir les disques.  Sélectionnez l’une des tâches suivantes pour résoudre ce problème :
 +
@@ -305,3 +305,6 @@ aggr0 offline                    raid_dp, aggr        diskroot
 ---------------------------------------------------------------------
 ....
 
+
+.Et la suite ?
+Après avoir réaffecté les disques du nœud 2 au nœud 4, link:verify_node4_installation.html["vérifier l'installation de node4"].

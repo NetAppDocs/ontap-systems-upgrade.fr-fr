@@ -57,7 +57,7 @@ Certains agrégats transférés possèdent le nœud 1 comme nœud de rattachemen
 
 * Après l'étape 4, lorsque le nœud 2 est remplacé par les nouveaux modules système.
 +
-Lorsque le nœud 2 est remplacé, aggr_node_1 sera connecté avec le nœud 1 comme nœud de base au lieu du nœud 2.
+Lorsque node2 est remplacé, aggr_node_1 se met en ligne avec node1 comme nœud d'origine au lieu de node2.
 
 
 

@@ -131,3 +131,6 @@ Vous pouvez être confronté à une défaillance lors de la mise à niveau de la
 Si des problèmes surviennent lors de la mise à niveau des contrôleurs, reportez-vous à la link:aggregate_relocation_failures.html["Résoudre les problèmes"] section. Les informations sur les défaillances qui peuvent survenir sont répertoriées par phase de la procédure dans la link:arl_upgrade_workflow.html["Séquence de mise à niveau ARL"] .
 
 Si vous ne trouvez pas de solution au problème que vous rencontrez, contactez le support technique.
+
+.Et la suite ?
+Après avoir examiné les directives de mise à niveau des contrôleurs avec ARL, link:required_tools_documentation.html["examiner les outils et la documentation requis"].

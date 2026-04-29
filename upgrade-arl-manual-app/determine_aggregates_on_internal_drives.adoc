@@ -157,3 +157,6 @@ NOTE: Avant de continuer, vous devez déplacer les volumes vers un tiroir disque
 | Contiennent des volumes non-racines sur les disques internes et vous ne pouvez pas déplacer les volumes vers un stockage externe | Ne pas poursuivre cette procédure. Vous pouvez mettre à niveau les contrôleurs en suivant la procédure _mise à niveau du matériel de contrôleur sur une paire de nœuds exécutant clustered Data ONTAP en déplaçant des volumes_. Reportez-vous à la section link:other_references.html["Références"] Lien vers le site de support _NetApp_ où vous pouvez accéder à cette procédure. 
 |===
 
+
+.Et la suite ?
+Après avoir déterminé si le contrôleur possède des agrégats sur des disques durs internes, link:prepare_nodes_for_upgrade.html["préparer les nœuds pour la mise à niveau"].

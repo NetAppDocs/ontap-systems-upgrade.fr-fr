@@ -14,7 +14,7 @@ summary: 'Vérifiez que les ports physiques du nœud 1 sont correctement redirig
 
 
 [role="lead"]
-Vous devez vous assurer que les ports physiques du nœud1 sont correctement associés aux ports physiques du nœud3, ce qui permettra au noeud 3 de communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
+Vous devez vous assurer que les ports physiques du nœud1 correspondent correctement aux ports physiques du nœud3. Cela permet à nœud3 de communiquer avec les autres nœuds du cluster et avec le réseau après la mise à niveau.
 
 .Avant de commencer
 Vous devez déjà disposer d'informations sur les ports sur les nouveaux nœuds à partir du _Hardware Universe_. (Allez à link:other_references.html["Références"] Pour établir un lien vers le _Hardware Universe_). Vous utilisez ces informations ultérieurement dans cette section et dans link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"].
@@ -24,9 +24,9 @@ La configuration logicielle du nœud 3 doit correspondre à la connectivité phy
 .Description de la tâche
 Les paramètres de port peuvent varier en fonction du modèle des nœuds.
 
-Vous devez rendre le port du nœud d'origine et la configuration LIF compatibles avec ce que vous prévoyez de configurer le nouveau nœud. En effet, le nouveau nœud relit la même configuration au démarrage, ce qui signifie que, lorsque vous démarrez le nœud 3, ONTAP tentera d'héberger les LIF sur les mêmes ports que celui utilisé sur le nœud 1.
+Vous devez rendre la configuration des ports et des LIF du nœud d'origine compatible avec celle que vous prévoyez pour le nouveau nœud. En effet, le nouveau nœud rejoue la même configuration au démarrage, ce qui signifie qu'au démarrage de node3, ONTAP tente d'héberger les LIF sur les mêmes ports que ceux utilisés sur node1.
 
-Par conséquent, si les ports physiques du nœud 1 ne sont pas directement associés aux ports physiques du nœud 3, des modifications de configuration logicielle seront nécessaires pour restaurer le cluster, la gestion et la connectivité réseau après le démarrage. De plus, si les ports du cluster du nœud 1 ne sont pas directement mis en correspondance avec les ports du cluster du nœud 3, le nœud 3 peut ne pas réintégrer automatiquement le quorum au redémarrage, jusqu'à ce qu'une modification de configuration logicielle soit apportée pour héberger les LIFs de cluster sur les ports physiques appropriés.
+Par conséquent, si les ports physiques du nœud1 ne correspondent pas directement aux ports physiques du nœud3, des modifications de la configuration logicielle sont nécessaires pour rétablir la connectivité du cluster, de la gestion et du réseau après le démarrage. De plus, si les ports du cluster du nœud1 ne correspondent pas directement aux ports du cluster du nœud3, le nœud3 pourrait ne pas rejoindre automatiquement le quorum lors de son redémarrage tant qu'une modification de la configuration logicielle n'aura pas été effectuée pour héberger les LIF du cluster sur les ports physiques corrects.
 
 .Étapes
 . [[step1]]Enregistrez toutes les informations de câblage du nœud 1 pour le nœud 1, les ports, les domaines de diffusion et les IPspaces, dans le tableau suivant :
@@ -78,7 +78,7 @@ Par conséquent, si les ports physiques du nœud 1 ne sont pas directement assoc
 | Port intercluster |  |  |  |  |  |  
 |===
 +
-Reportez-vous à la section link:record_node1_information.html["Enregistrer les informations sur le noeud 1"] pour obtenir ces informations, procédez comme suit.
+Reportez-vous à link:record_node1_information.html["Enregistrer les informations sur le noeud 1"] pour connaître les étapes permettant d’obtenir ces informations.
 
 . [[step2]]Enregistrez toutes les informations de câblage pour le noeud 3, les ports, les domaines de diffusion et les IPspaces dans le tableau précédent en suivant la même procédure dans link:record_node1_information.html["Enregistrer les informations sur le noeud 1"].
 . [[step3]]effectuez la procédure suivante pour vérifier si la configuration est un cluster à deux nœuds sans commutateur :

@@ -14,18 +14,24 @@ summary: 'Vérifiez que les ports physiques du nœud 2 sont correctement mappés
 
 
 [role="lead"]
-Vous devez vérifier que les ports physiques du nœud2 sont correctement mis en correspondance avec les ports physiques du nœud4. Ainsi, le nœud4 pourra communiquer avec d'autres nœuds du cluster et avec le réseau après la mise à niveau.
+Vous devez vérifier que les ports physiques du nœud 2 correspondent correctement aux ports physiques du nœud 4. Cela permet au nœud 4 de communiquer avec les autres nœuds du cluster et avec le réseau après la mise à niveau.
 
 .Description de la tâche
 Reportez-vous à la section link:other_references.html["Références"] Pour établir une liaison avec _Hardware Universe_ afin de capturer des informations sur les ports des nouveaux nœuds. Vous utiliserez ces informations plus loin dans cette section.
 
-L'organisation des ports physiques peut varier en fonction du modèle des nœuds. Au démarrage du nouveau nœud, ONTAP tente de déterminer les ports qui doivent héberger les LIFs du cluster afin de se mettre automatiquement en quorum.
+La configuration physique des ports peut varier selon le modèle des nœuds. Au démarrage du nouveau nœud, ONTAP tente de déterminer quels ports doivent héberger les LIF du cluster afin d'atteindre automatiquement le quorum.
 
-Si les ports physiques du node2 ne sont pas directement mis en correspondance avec les ports physiques du node4, la section suivante <<Restaurez la configuration du réseau sur le noeud 4>> doit être utilisé pour réparer la connectivité réseau.
+Si les ports physiques du nœud 2 ne correspondent pas directement aux ports physiques du nœud 4, la section suivante <<restore_network_configuration_on_node4_9151,Restaurez la configuration du réseau sur le noeud 4>> doit être utilisée pour rétablir la connectivité réseau.
 
 Après avoir installé et démarrer node4, vous devez vérifier qu'il est correctement installé. Vous devez attendre que le noeud 4 rejoint le quorum et reprendre l'opération de transfert.
 
-À ce stade de la procédure, l'opération aura été interrompue au fur et à mesure que le noeud 4 rejoint le quorum.
+À ce stade de la procédure, l'opération s'interrompt lorsque le nœud4 rejoint le quorum.
+
+
+
+== Étape 1 : Vérifiez que le nœud 4 est en quorum
+
+Vérifiez que le nœud 4 est en quorum. Reprenez ensuite l'opération de remplacement du contrôleur.
 
 .Étapes
 . Vérifiez que le noeud 4 a rejoint le quorum :
@@ -54,7 +60,7 @@ La sortie du `health` ce champ doit être de `true`.
 +
 `system controller replace resume`
 
-. Le remplacement du contrôleur est alors mis en pause pour toute intervention incluant le message suivant :
+. Le remplacement du contrôleur est interrompu pour intervention avec le message suivant :
 +
 ....
 Cluster::*> system controller replace show
@@ -89,7 +95,7 @@ NOTE: Dans cette procédure, la section _recréation des VLAN, ifgrps et des dom
 
 
 
-== Restaurez la configuration du réseau sur le noeud 4
+== Étape 2 : Restaurer la configuration réseau sur le nœud 4
 
 Une fois que vous avez confirmé que le nœud4 est quorum et peut communiquer avec le nœud3, vérifiez que les VLAN, les groupes d'interface et les domaines de diffusion du nœud2 sont visibles sur le nœud4. Vérifiez également que tous les ports réseau node4 sont configurés dans leurs domaines de diffusion appropriés.
 
@@ -173,7 +179,7 @@ Vérifier que tous les ports physiques ont leur capacité d'accessibilité atten
 `network port reachability show`
 
 +
-Au fur et à mesure que la réparation de l'accessibilité est effectuée, ONTAP tente de placer les ports dans les domaines de diffusion appropriés. Toutefois, si la capacité de réachbilité d’un port ne peut être déterminée et n’appartient à aucun des domaines de diffusion existants, ONTAP créera de nouveaux domaines de diffusion pour ces ports.
+Lors de la réparation de l'accessibilité, ONTAP tente d'affecter les ports aux domaines de diffusion appropriés. Toutefois, si ONTAP ne parvient pas à déterminer l'accessibilité d'un port et que celui-ci n'appartient à aucun des domaines de diffusion existants, ONTAP crée de nouveaux domaines de diffusion pour ces ports.
 
 . Si la configuration des groupes d'interfaces ne correspond pas à la nouvelle disposition des ports physiques du contrôleur, modifiez-la en procédant comme suit.
 +
@@ -308,3 +314,6 @@ Lorsque tous les ports sont correctement configurés et ajoutés aux domaines de
 `network interface show -fields home-port, status-admin`
 
 
+
+.Et la suite ?
+Après avoir vérifié l'installation de node4, link:restore_key-manager_config_node4.html["restaurer la configuration du gestionnaire de clés sur le nœud4"].

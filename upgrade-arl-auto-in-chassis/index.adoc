@@ -77,6 +77,9 @@ Si vous ne pouvez pas lier les ports e0a ou e0b du nœud existant aux ports de c
 
 
 
-== Automatisation du processus de mise à niveau des contrôleurs
+== Processus de mise à niveau automatisé du contrôleur
 
 Cette procédure fournit les étapes de la procédure automatisée, qui utilise l'affectation automatique des disques et les vérifications d'accessibilité des ports réseau pour simplifier l'expérience de mise à niveau du contrôleur.
+
+.Et la suite ?
+Après avoir pris connaissance de cette procédure de mise à niveau ARL, link:decide-to-use-the-aggregate-relocation-guide.html["décider s'il convient d'utiliser cette procédure"].

@@ -34,3 +34,6 @@ Avec ONTAP 9.5 et les versions ultérieures, vous pouvez utiliser des serveurs K
 `security key-manager restore -node _new_controller_name_`
 
 
+
+.Et la suite ?
+Après avoir géré l'authentification à l'aide des serveurs KMIP, link:ensure_controllers_set_up_correctly.html["vérifier que les nouveaux contrôleurs sont correctement configurés"].

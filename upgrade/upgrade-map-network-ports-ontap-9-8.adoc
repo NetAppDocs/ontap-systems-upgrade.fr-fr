@@ -126,7 +126,7 @@ from the port. Are you sure you want to continue? {y|n}:
 +
 `network port broadcast-domain show`
 
-.. Au fur et à mesure que la réparation de l'accessibilité est effectuée, ONTAP tente de placer les ports dans les domaines de diffusion appropriés. Cependant, si la capacité d'un port ne peut pas être déterminée et ne correspond à aucun des domaines de diffusion existants, ONTAP crée de nouveaux domaines de diffusion pour ces ports. Si nécessaire, vous pouvez supprimer les nouveaux domaines de diffusion si tous leurs ports membres deviennent des ports membres des groupes d'interfaces. Supprimer les domaines de diffusion :
+.. Lors de la réparation de l'accessibilité, ONTAP tente d'affecter les ports aux domaines de diffusion appropriés. Toutefois, si ONTAP ne parvient pas à déterminer l'accessibilité d'un port et que celui-ci ne correspond à aucun des domaines de diffusion existants, ONTAP crée de nouveaux domaines de diffusion pour ces ports. Si nécessaire, vous pouvez supprimer les nouveaux domaines de diffusion créés si tous leurs ports membres deviennent des ports membres des groupes d'interfaces. Supprimer des domaines de diffusion :
 +
 `broadcast-domain delete -broadcast-domain _broadcast_domain_`
 
@@ -176,7 +176,7 @@ NOTE: En fonction de la complexité de la configuration réseau du système mis 
 
 
 
-. [[map_98_7]]depuis ONTAP 9.8, ONTAP modifie automatiquement les ports home des LIFs si les ports sont déplacés entre les broadcast domain pendant la procédure de réparation de la accessibilité des ports réseau. Si le port de rattachement d'une LIF a été déplacé dans un autre nœud ou s'il est non attribué, cette LIF sera présentée comme une LIF déplacée. Restaurer les ports de rattachement des LIFs déplacées dont les ports de rattachement n'existent plus ou ont été déplacés sur un autre nœud.
+. À partir d'ONTAP 9.8, ONTAP modifie automatiquement les ports d'attache des LIF si ces ports sont déplacés entre les domaines de diffusion lors de la procédure de réparation de l'accessibilité des ports réseau. Si le port d'attache d'une LIF a été déplacé vers un autre nœud ou n'est plus attribué, cette LIF est présentée comme une LIF déplacée. Restaurez les ports d'attache des LIF déplacées dont les ports d'attache n'existent plus ou ont été déplacés vers un autre nœud.
 +
 .. Afficher les LIFs dont les ports home port auraient pu être déplacés vers un autre nœud ou qui n'existent plus :
 +

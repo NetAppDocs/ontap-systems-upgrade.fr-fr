@@ -27,8 +27,8 @@ entries:
   entries:
   - title: Préparer les nœuds pour une mise à niveau
     url: "/upgrade-arl-auto-app/prepare_nodes_for_upgrade.html"
-  - title: Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré
-    url: "/upgrade-arl-auto-app/manage_storage_encryption_using_okm.html"
+  - title: Finalisez la préparation de la mise à niveau
+    url: "/upgrade-arl-auto-app/complete-preparation-for-upgrade.html"
 - title: Étape 2. Transférez et retirez le nœud 1
   pdf-filename: Étape 2. Relocalisation et retrait du nœud 1 (mise à niveau par «
     remplacement du contrôleur système » dans ONTAP 9.8 ou version ultérieure)

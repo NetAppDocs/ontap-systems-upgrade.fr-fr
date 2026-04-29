@@ -123,7 +123,7 @@ Le système affiche les ports physiques sur le nœud, comme illustré ci-dessous
 ----
 . Enregistrez les ports et leurs domaines de diffusion.
 +
-Les domaines de diffusion devront être mappés vers les nouveaux ports du nouveau contrôleur plus tard dans la procédure.
+Les domaines de diffusion doivent être associés aux nouveaux ports du nouveau contrôleur ultérieurement dans la procédure.
 
 . Entrez la commande suivante sur le nœud 1 :
 +
@@ -201,3 +201,6 @@ Le système affiche les informations sur le nœud 1 comme indiqué dans l'exempl
 ----
 . [[man_record_node1_step12]]Enregistrer le numéro d'ID système NVRAM à utiliser dans la section link:install_boot_node3.html["Installez et démarrez le nœud 3"].
 
+
+.Et la suite ?
+Après l'enregistrement des informations du nœud 1, link:retire_node1.html["retirer node1"].
