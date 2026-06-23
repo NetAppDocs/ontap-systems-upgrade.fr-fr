@@ -283,11 +283,10 @@ Saisissez la phrase secrète et les informations de sauvegarde que vous avez enr
 +
 `boot_ontap menu`
 
-+
+
+
 .Et la suite ?
-** Si vous avez une configuration FC ou UTA/UTA2,link:set_fc_or_uta_uta2_config_node4.html["définir et configurer les ports FC ou UTA/UTA2 sur node4"] .
-** Si vous n'avez pas de configuration FC ou UTA/UTA2,link:reassign-node2-disks-to-node4.html#reassign-node2-node4-app-step1["réaffecter les disques du nœud 2 au nœud 4, étape 1"] afin que node4 puisse reconnaître les disques de node2.
-** Si vous avez une configuration MetroCluster ,link:set_fc_or_uta_uta2_config_node4.html["définir et configurer les ports FC ou UTA/UTA2 sur node4"] pour détecter les disques attachés au nœud.
-
-
+* Si vous avez une configuration FC ou UTA/UTA2,link:set_fc_or_uta_uta2_config_node4.html["définir et configurer les ports FC ou UTA/UTA2 sur node4"] .
+* Si vous n'avez pas de configuration FC ou UTA/UTA2,link:reassign-node2-disks-to-node4.html#reassign-node2-node4-app-step1["réaffecter les disques du nœud 2 au nœud 4, étape 1"] afin que node4 puisse reconnaître les disques de node2.
+* Si vous avez une configuration MetroCluster ,link:set_fc_or_uta_uta2_config_node4.html["définir et configurer les ports FC ou UTA/UTA2 sur node4"] pour détecter les disques attachés au nœud.
 

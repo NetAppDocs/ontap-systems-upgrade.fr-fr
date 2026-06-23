@@ -76,6 +76,21 @@ Si votre scénario de mise à niveau est répertorié dans la matrice des systè
 | Ancien système | Système de remplacement | Versions de ONTAP prises en charge 
 
 
+| AFF A70 | AFF A90 | 9.18.1 et versions ultérieures 
+
+
+| AFF A30 | AFF A50 | 9.18.1 et versions ultérieures 
+
+
+| AFF A20 | AFF A30, AFF A50 | 9.18.1 et versions ultérieures 
+
+
+| AFF C30 | AFF C60 | 9.18.1 et versions ultérieures 
+
+
+| FAS70 | FAS90 | 9.18.1 et versions ultérieures 
+
+
 | AFF C250 | AFF C30, AFF C60 | 9.16.1 et versions ultérieures 
 
 

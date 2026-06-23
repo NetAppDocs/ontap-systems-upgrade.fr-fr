@@ -49,7 +49,7 @@ Vous ne pouvez pas effectuer les mises à niveau suivantes :
 +
 Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Hardware Universe_ pour des informations sur la prise en charge des disques.
 
-* Pour des contrôleurs d'entrée de gamme avec disques internes, par exemple : un FAS 2500.
+* Aux contrôleurs d'entrée de gamme avec disques internes, par exemple : un FAS2750.
 +
 Pour mettre à niveau les contrôleurs d'entrée de gamme avec des disques internes, reportez-vous à la link:other_references.html["Références"] Pour lier votre système à _mise à niveau en déplaçant des volumes ou du stockage_ et aller à la procédure _mettre à niveau une paire de nœuds exécutant clustered Data ONTAP en déplaçant des volumes_.
 
