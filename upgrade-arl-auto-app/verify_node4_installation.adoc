@@ -29,6 +29,7 @@ Après avoir installé et démarrer node4, vous devez vérifier qu'il est correc
 
 
 
+[[step-1-verify-that-node4-is-in-quorum]]
 == Étape 1 : Vérifiez que le nœud 4 est en quorum
 
 Vérifiez que le nœud 4 est en quorum. Reprenez ensuite l'opération de remplacement du contrôleur.
@@ -143,6 +144,8 @@ NOTE: Dans cette procédure, la section _recréation des VLAN, ifgrps et des dom
 
 
 
+[[step-2-restore-network-configuration-on-node4]]
+[[restore_network_configuration_on_node4]]
 == Étape 2 : Restaurer la configuration réseau sur le nœud 4
 
 Une fois que vous avez confirmé que le nœud4 est quorum et peut communiquer avec le nœud3, vérifiez que les VLAN, les groupes d'interface et les domaines de diffusion du nœud2 sont visibles sur le nœud4. Vérifiez également que tous les ports réseau node4 sont configurés dans leurs domaines de diffusion appropriés.

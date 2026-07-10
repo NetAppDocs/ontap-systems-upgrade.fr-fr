@@ -43,6 +43,7 @@ NOTE: Les termes *node1* et *node2* sont utilisés uniquement à titre de réfé
 
 
 
+[[requirements-and-limitations]]
 == Exigences et restrictions
 
 Vous devez prendre en compte des facteurs importants avant de commencer la mise à niveau.
@@ -77,6 +78,7 @@ Si vous ne pouvez pas lier les ports e0a ou e0b du nœud existant aux ports de c
 
 
 
+[[automated-controller-upgrade-process]]
 == Processus de mise à niveau automatisé du contrôleur
 
 Cette procédure fournit les étapes de la procédure automatisée, qui utilise l'affectation automatique des disques et les vérifications d'accessibilité des ports réseau pour simplifier l'expérience de mise à niveau du contrôleur.

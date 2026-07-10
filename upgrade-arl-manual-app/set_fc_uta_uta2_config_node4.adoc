@@ -23,6 +23,7 @@ Si le nœud 4 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégré
 
 
 
+[[configure-fc-ports-on-node4]]
 == Configurez les ports FC sur le nœud 4
 
 Si le nœud 4 possède des ports FC intégrés ou sur un adaptateur FC, vous devez définir des configurations de ports sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés. Si les ports ne sont pas configurés, le service peut subir une interruption.
@@ -92,6 +93,7 @@ IMPORTANT: Entrez les commandes de cette section à l’invite du cluster.
 
 
 
+[[check-and-configure-utauta2-ports-on-node4]]
 == Vérifiez et configurez les ports UTA/UTA2 sur le nœud 4
 
 Si le NODE4 dispose de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2A, vous devez vérifier la configuration des ports et les configurer, en fonction de votre mode d'utilisation du système mis à niveau.

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/retire_node1.html 
 keywords: retiring, node 
-summary: 'Désactivez la paire haute disponibilité avec le nœud 2 et arrêtez le nœud 1 lors de la mise à niveau de contrôleurs exécutant ONTAP 9.15.1 ou une version ultérieure à l"aide de `system controller replace` commandes.' 
+summary: 'Désactivez la paire haute disponibilité avec le nœud 2 et arrêtez le nœud 1 lors de la mise à niveau vers les contrôleurs introduits dans ONTAP 9.15.1 ou une version ultérieure en utilisant les commandes  `system controller replace`.' 
 ---
 = Retirer le nœud 1
 :hardbreaks:

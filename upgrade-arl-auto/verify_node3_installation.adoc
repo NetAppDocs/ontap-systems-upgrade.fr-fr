@@ -40,6 +40,7 @@ Si la configuration est différente pour le nœud 3, une interruption du systèm
 
 
 
+[[re-create-vlans-interface-groups-and-broadcast-domains-on-node3]]
 == Recréez des VLAN, des groupes d'interface et des domaines de diffusion sur le node3
 
 Une fois que vous avez confirmé que le noeud 3 est dans le quorum et que vous pouvez communiquer avec le noeud 2, vous devez recréer les VLAN, les groupes d'interface et les domaines de diffusion du noeud 1 sur le noeud 3. Vous devez également ajouter les ports node3 aux domaines de diffusion nouvellement créés.
@@ -68,6 +69,7 @@ Pour plus d'informations sur la création et la recrércréation de VLAN, de gro
 
 
 
+[[restore-key-manager-configuration-on-node3]]
 == Restaurez la configuration du gestionnaire de clés sur le noeud 3
 
 Si vous utilisez NetApp Aggregate Encryption (NAE) ou NetApp Volume Encryption (NVE) pour chiffrer les volumes sur le système que vous mettez à niveau, la configuration de chiffrement doit être synchronisée avec les nouveaux nœuds. Si vous ne restaurez pas key-manager, lorsque vous relocalisez les agrégats du nœud1 du nœud2 vers le nœud3 à l'aide d'ARL, les volumes chiffrés sont mis hors ligne.

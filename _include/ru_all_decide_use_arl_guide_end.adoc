@@ -4,6 +4,7 @@
 
 
 
+[[choose-a-different-hardware-upgrade-procedure]]
 == Choisissez une autre procédure de mise à niveau matérielle
 
 * link:../upgrade-arl/index.html["Passez en revue les méthodes ARL alternatives disponibles pour la mise à niveau du matériel du contrôleur"].

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/ensure_new_controllers_are_set_up_correctly.html 
 keywords: confirm, controllers, set up, ha, node3, node4, node2, lif, cluster, high, availability 
-summary: 'Activez la paire haute disponibilité, vérifiez l"accès au stockage du nœud 3 et du nœud 4 et confirmez la propriété de l"agrégat après la mise à niveau des contrôleurs exécutant ONTAP 9.15.1 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+summary: 'Activez la paire haute disponibilité, vérifiez l"accès au stockage des nœuds 3 et 4, et confirmez la propriété des agrégats après la mise à niveau vers des contrôleurs introduits dans ONTAP 9.15.1 ou version ultérieure en utilisant les commandes  `system controller replace`.' 
 ---
 = Vérifiez que les nouveaux contrôleurs sont correctement configurés
 :hardbreaks:

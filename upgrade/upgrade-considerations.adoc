@@ -15,6 +15,7 @@ Pour planifier la mise à niveau, vous devez vous familiariser avec les considé
 
 
 
+[[requirements-and-limitations]]
 == Exigences et restrictions
 
 Selon votre environnement, vous devez tenir compte de certains facteurs avant de commencer la mise à niveau. Commencez par consulter le tableau ci-dessous afin de connaître les exigences et les limites à prendre en compte.
@@ -79,6 +80,7 @@ NOTE: Vous pouvez mettre à niveau un système intégré en déplaçant les donn
 
 
 
+[[systems-with-internal-storage]]
 == Aux systèmes de stockage interne
 
 Les systèmes suivants ont un stockage interne :
@@ -108,6 +110,7 @@ Le transfert du stockage interne est une tâche facultative du flux de travail p
 
 
 
+[[situations-where-you-might-need-additional-steps]]
 == Situations où vous pourriez avoir besoin d'étapes supplémentaires
 
 * Si le nouveau système possède moins de slots que le système d'origine ou s'il comporte moins ou des types de ports différents, vous devrez peut-être ajouter un adaptateur au nouveau système. Voir la https://hwu.netapp.com["NetApp Hardware Universe"^].

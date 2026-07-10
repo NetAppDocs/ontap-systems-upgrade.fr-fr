@@ -4,6 +4,7 @@
 
 
 
+[[manage-storage-encryption-using-the-onboard-key-manager]]
 == Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré
 
 Utilisez le Gestionnaire de clés intégré (OKM) pour gérer les clés de chiffrement. Si l'OKM est configuré, vous devez enregistrer la phrase de passe et les données de sauvegarde avant de commencer la mise à niveau.

@@ -15,6 +15,7 @@ summary: 'Configurez et gérez le cryptage du stockage, gérez les clés d"authe
 
 
 
+[[manage-storage-encryption-using-the-onboard-key-manager]]
 == Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré
 
 Utilisez le Gestionnaire de clés intégré (OKM) pour gérer les clés de chiffrement. Si l'OKM est configuré, vous devez enregistrer la phrase de passe et les données de sauvegarde avant de commencer la mise à niveau.
@@ -43,6 +44,7 @@ Lorsque vous y êtes invité, saisissez la phrase secrète OKM à l'échelle du 
 
 
 
+[[optionally-quiesce-the-snapmirror-relationships]]
 == Facultativement, mettre en pause les relations SnapMirror
 
 Avant de poursuivre l'opération, vous devez confirmer que toutes les relations SnapMirror sont suspendues. Lorsqu'une relation SnapMirror est mise en veille, elle reste suspension sur l'ensemble des redémarrages et basculements.

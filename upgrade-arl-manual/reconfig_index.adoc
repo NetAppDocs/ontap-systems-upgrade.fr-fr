@@ -27,7 +27,7 @@ Vous devez effectuer cette tâche si votre configuration de commutateur FC exist
 Cette procédure ne génère aucune interruption et prend environ quatre heures (à l'exception du rack et de la pile) lorsque les disques sont mis à zéro.
 
 .Étapes
-. link:send_custom_asup_message_prior_reconfig_switches.html["Envoyer un message AutoSupport personnalisé avant de reconfigurer les commutateurs"]
+. link:send_custom_autosupport_message_prior_reconfig_switches.html["Envoyer un message AutoSupport personnalisé avant de reconfigurer les commutateurs"]
 . link:verify_health_mcc_config.html["Vérifier l'état de santé de la configuration MetroCluster"]
 . link:check_mcc_config_errors.html["Recherchez les erreurs de configuration MetroCluster"]
 . link:persist_disable_switches.html["Désactivez les commutateurs de manière persistante"]

@@ -4,6 +4,7 @@
 
 
 
+[[connect-the-e0m-and-bmc-ports]]
 == Connectez les ports e0M et BMC
 
 Si le système existant dispose d'un port de gestion (e0M) et d'un port BMC, les ports e0M et BMC sont combinés et accessibles via le port « clé » du système de remplacement. Vous devez vous assurer que les ports e0M et BMC sont connectés au même commutateur et au même sous-réseau sur le système existant avant de vous connecter au système de remplacement.
@@ -24,6 +25,7 @@ Si le système existant dispose d'un port de gestion (e0M) et d'un port BMC, les
 |===
 
 
+[[connect-to-a-two-node-switchless-cluster]]
 == Connexion à un cluster à 2 nœuds sans commutateur
 
 Les tableaux suivants présentent l'utilisation des ports de commutateur pour les configurations en cluster sans commutateur à 2 nœuds.

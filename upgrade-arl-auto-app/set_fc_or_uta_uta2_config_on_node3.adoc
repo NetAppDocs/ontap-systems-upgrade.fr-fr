@@ -22,10 +22,12 @@ Vous devrez peut-être remplir <<configure-fc-ports-on-node3,Configurez les port
 
 NOTE: Les documents marketing NetApp peuvent utiliser le terme UTA2 pour faire référence aux adaptateurs et ports CNA (Converged Network adapter). Cependant, l'interface de ligne de commandes utilise le terme CNA.
 
-Si le nœud 3 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2 (par exemple, les systèmes AFF et FAS introduits à partir d' ONTAP 9.15.1) et que vous mettez à niveau un système avec des disques de stockage, vous pouvez passer àlink:reassign-node1-disks-to-node3.html["Réaffectez les disques du nœud 1 au nœud 3"] .
+Si le nœud 3 ne dispose pas de ports FC intégrés, de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2 (par exemple, les systèmes AFF et FAS introduits dans ONTAP 9.15.1 ou version ultérieure), et que vous mettez à niveau un système avec des disques de stockage, vous pouvez passer à link:reassign-node1-disks-to-node3.html["Réaffectez les disques du nœud 1 au nœud 3"].
 
 
 
+[[step-1-configure-fc-ports-on-node3]]
+[[configure-fc-ports-on-node3]]
 == Étape 1 : Configurer les ports FC sur le nœud 3
 
 Si le nœud 3 dispose de ports FC, intégrés ou sur un adaptateur FC complémentaire, vous devez définir les configurations de port sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés lors de l'expédition des systèmes.  Si vous ne configurez pas les ports, vous risquez de subir une interruption de service.
@@ -94,6 +96,8 @@ Par exemple: `ucadmin modify -m fc -t initator 2b`
 
 
 
+[[step-2-check-and-configure-utauta2-ports-on-node3]]
+[[check-config-uta-uta2-node3]]
 == Étape 2 : Vérifier et configurer les ports UTA/UTA2 sur le nœud 3
 
 Si le nœud 3 est équipé de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez vérifier la configuration des ports et éventuellement les reconfigurer, en fonction du mode d'utilisation du système mis à niveau.

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/relocate-failed-or-vetoed-aggr-node3.html 
 keywords: relocating, failed, vetoed, aggregates, relocation, operation 
-summary: 'Déplacez manuellement les agrégats défaillants ou refusés vers le nœud 3 lors de la mise à niveau des contrôleurs exécutant ONTAP 9.15.1 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+summary: 'Déplacez manuellement les agrégats défaillants ou rejetés vers le nœud 3 lors de la mise à niveau vers des contrôleurs introduits dans ONTAP 9.15.1 ou une version ultérieure en utilisant les commandes  `system controller replace`.' 
 ---
 = Déplacer les agrégats défaillants ou refusés vers le nœud 3
 :hardbreaks:

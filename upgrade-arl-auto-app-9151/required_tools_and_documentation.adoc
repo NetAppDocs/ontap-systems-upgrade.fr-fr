@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/required_tools_and_documentation.html 
 keywords: required, tools, documentation, install, worksheet, ontap 
-summary: 'Vous devez disposer de certains outils et de la documentation nécessaires pour mettre à niveau les contrôleurs exécutant ONTAP 9.15.1 ou une version ultérieure à l"aide de `system controller replace` commandes.' 
+summary: 'Vous devez disposer de certains outils et de la documentation nécessaires pour mettre à niveau les contrôleurs introduits dans ONTAP 9.15.1 ou version ultérieure en utilisant les commandes  `system controller replace`.' 
 ---
 = Outils et documentation requis
 :hardbreaks:

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/overview_of_the_arl_upgrade.html 
 keywords: overview, arl, upgrade, owner, controller, hardware 
-summary: 'Comprendre le fonctionnement de la procédure de mise à niveau des contrôleurs exécutant ONTAP 9.15.1 ou une version ultérieure à l"aide de `system controller replace` commandes.' 
+summary: 'Comprenez comment fonctionne la procédure de mise à niveau des contrôleurs introduite dans ONTAP 9.15.1 ou version ultérieure en utilisant les commandes  `system controller replace`.' 
 ---
 = En savoir plus sur la séquence de mise à niveau ARL
 :hardbreaks:
@@ -18,12 +18,14 @@ Avant de mettre à niveau les nœuds à l'aide de l'ARL, il est important de con
 
 
 
+[[upgrade-the-node-pair]]
 == Mettre à niveau la paire de nœuds
 
 Pour mettre à niveau la paire de nœuds, vous devez préparer les nœuds d'origine, puis effectuer une série d'étapes sur les nœuds d'origine et nouveaux. Vous pouvez ensuite désaffecter les nœuds d'origine.
 
 
 
+[[arl-upgrade-sequence-overview]]
 == Présentation de la séquence de mise à niveau ARL
 
 Durant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, un contrôleur à la fois, en tirant parti de la configuration de paires haute disponibilité pour transférer la propriété d'agrégats non racines. Tous les agrégats non racines doivent être reloisés afin d'atteindre leur destination finale, qui est le nœud mis à niveau correct.

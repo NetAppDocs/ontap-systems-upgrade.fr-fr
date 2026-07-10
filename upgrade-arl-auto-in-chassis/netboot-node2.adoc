@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-in-chassis/netboot-node2.html 
 keywords: preparing, prepare, netboot, ontap, node2 
-summary: Après avoir remplacé les modules système du nœud 2 correspondants lorsque vous utilisez ARL pour mettre à niveau les modèles de contrôleurs du même châssis, vous devrez peut-être les démarrer en réseau. 
+summary: 'Lors de l"utilisation d"ARL pour mettre à niveau les modèles de contrôleur dans le même châssis, vous devez effectuer un netboot du nœud 2 après avoir remplacé le module système correspondant.' 
 ---
 = NetBoot node2
 :hardbreaks:

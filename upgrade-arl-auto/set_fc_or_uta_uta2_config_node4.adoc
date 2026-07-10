@@ -28,6 +28,8 @@ Assurez-vous que le noeud 4 dispose d'un espace de rack suffisant. Si le noeud 4
 ====
 
 
+[[step-1-configure-fc-ports-on-node4]]
+[[configure-fc-ports-on-node4]]
 == Étape 1 : Configurer les ports FC sur le nœud 4
 
 Si le nœud 4 dispose de ports FC, intégrés ou sur un adaptateur FC complémentaire, vous devez définir les configurations de port sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés lors de l'expédition des systèmes.  Si vous ne configurez pas les ports comme requis, vous risquez de subir une interruption de service.
@@ -90,6 +92,8 @@ Par exemple: `ucadmin modify -m fc -t initator 2b`
 
 
 
+[[step-2-check-and-configure-utauta2-ports-on-node4]]
+[[check-config-uta-uta2-node4]]
 == Étape 2 : Vérifier et configurer les ports UTA/UTA2 sur le nœud 4
 
 Si le NODE4 dispose de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2A, vous devez vérifier la configuration des ports et les configurer, en fonction de votre mode d'utilisation du système mis à niveau.

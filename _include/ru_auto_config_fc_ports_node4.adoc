@@ -4,6 +4,8 @@
 
 
 
+[[step-1-configure-fc-ports-on-node4]]
+[[configure-fc-ports-on-node4]]
 == Étape 1 : Configurer les ports FC sur le nœud 4
 
 Si le nœud 4 dispose de ports FC, intégrés ou sur un adaptateur FC complémentaire, vous devez définir les configurations de port sur le nœud avant de le mettre en service, car les ports ne sont pas préconfigurés lors de l'expédition des systèmes.  Si vous ne configurez pas les ports comme requis, vous risquez de subir une interruption de service.

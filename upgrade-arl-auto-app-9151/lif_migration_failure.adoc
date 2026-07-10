@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/lif_migration_failure.html 
 keywords: lif, migration, failure, mtu 
-summary: 'Les LIF ne sont pas en ligne après la migration à l"étape 2, 3 ou 5 lors de la mise à niveau de contrôleurs exécutant ONTAP 9.15.1 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+summary: 'Les LIF ne sont pas en ligne après la migration à l’étape 2, à l’étape 3 ou à l’étape 5 lors de la mise à niveau vers des contrôleurs introduits dans ONTAP 9.15.1 ou version ultérieure en utilisant les commandes  `system controller replace`.' 
 ---
 = Échec de la migration de LIF
 :hardbreaks:

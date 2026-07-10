@@ -26,6 +26,7 @@ Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement
 
 
 
+[[step-1-remove-the-aff-a800-or-aff-c800-controller-module]]
 == Étape 1 : Retirez le module de contrôleur AFF A800 ou AFF C800
 
 Retirez le dispositif de gestion des câbles du module node2 existant et déplacez légèrement le contrôleur hors du châssis.
@@ -107,6 +108,7 @@ image:black_circle_two.png["Numéro deux"]
 
 
 
+[[step-2-install-the-aff-a90-aff-a70-or-aff-c80-controller-module]]
 == Étape 2 : Installez le module de contrôleur AFF A90, AFF A70 ou AFF C80
 
 Installez le module contrôleur AFF A90 ou AFF A70 que vous avez reçu pour la mise à niveau dans le nœud2.

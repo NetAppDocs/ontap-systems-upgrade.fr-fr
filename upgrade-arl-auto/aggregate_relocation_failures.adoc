@@ -18,6 +18,7 @@ Le transfert d'agrégats (ARL) peut échouer à divers stades de la mise à nive
 
 
 
+[[check-for-aggregate-relocation-failure]]
 == Vérifier l'échec du transfert d'agrégat
 
 Lors de cette procédure, l'ARL peut échouer à l'étape 2, à l'étape 3 ou à l'étape 5.
@@ -44,6 +45,7 @@ Pour des informations détaillées sur les options  `storage aggregate relocatio
 
 
 
+[[aggregates-originally-on-node1-are-owned-by-node4-after-completion-of-the-upgrade]]
 == Les agrégats situés à l'origine sur le nœud 1 sont détenus par le nœud 4 après la fin de la mise à niveau
 
 À la fin de la procédure de mise à niveau, le nœud 3 doit être le nouveau nœud de rattachement des agrégats qui disposait initialement du nœud 1 comme nœud de rattachement. Vous pouvez les transférer après la mise à niveau.

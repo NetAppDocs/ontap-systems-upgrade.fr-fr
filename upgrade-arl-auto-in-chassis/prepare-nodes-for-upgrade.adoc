@@ -18,6 +18,7 @@ Le processus de remplacement du contrôleur commence par une série de contrôle
 
 
 
+[[step-1-prepare-the-nodes]]
 == Étape 1 : Préparer les nœuds
 
 Démarrez la procédure de remplacement du contrôleur et effectuez les vérifications préalables. Si nécessaire, identifiez le type de disques à chiffrement automatique utilisés.
@@ -25,8 +26,10 @@ Démarrez la procédure de remplacement du contrôleur et effectuez les vérific
 .Étapes
 . Répertoriez la version du micrologiciel du processeur de service (SP) ou du contrôleur BMC (Baseboard Management Controller) s'exécutant sur l'ancien contrôleur :
 +
-`service-processor show`
-
+[source, cli]
+----
+service-processor show
+----
 +
 Vérifiez que vous disposez d'une version du micrologiciel du processeur de service ou du contrôleur BMC prise en charge :
 
@@ -55,11 +58,15 @@ Vérifiez que vous disposez d'une version du micrologiciel du processeur de serv
 |===
 . Lancer le processus de remplacement du contrôleur en entrant la commande suivante en mode de privilège avancé sur la ligne de commande ONTAP :
 +
-`set -privilege advanced`
-
+[source, cli]
+----
+set -privilege advanced
+----
 +
-`system controller replace start -nodes _node_names_`
-
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 +
 Vous obtenez un résultat similaire à l'exemple suivant. Le résultat affiche la version d'ONTAP en cours d'exécution sur votre cluster :
 
@@ -123,7 +130,7 @@ Pendant la phase de contrôles préalables, le système exécute la liste suivan
 | État de la LIF de cluster | Vérifie si les LIFs de cluster sont active pour les deux nœuds. Si les LIFs de cluster sont arrêtées, la tâche échoue. 
 
 
-| Contrôle d'état ASUP | Si les notifications AutoSupport ne sont pas configurées, la tâche échoue. Vous devez activer AutoSupport avant de lancer la procédure de remplacement du contrôleur. 
+| AutoSupport Vérification de l'état | Si les notifications AutoSupport ne sont pas configurées, la tâche échoue. Vous devez activer AutoSupport avant de lancer la procédure de remplacement du contrôleur. 
 
 
 | Vérification de l'utilisation du processeur | Vérifie si le taux d'utilisation du CPU est supérieur à 50 % pour l'un des nœuds remplacés. Si l'utilisation du processeur est supérieure à 50 % pendant une période de temps considérable, la tâche échoue. 
@@ -140,33 +147,118 @@ Pendant la phase de contrôles préalables, le système exécute la liste suivan
 Lancer les commandes du port série connecté à chaque nœud, exécuter et sauvegarder les valeurs de sortie des commandes individuellement :
 
 +
-** `vserver services name-service dns show`
-** `network interface show -curr-node _local_ -role cluster,intercluster,node-mgmt,cluster-mgmt,data`
-** `network port show -node _local_ -type physical`
-** `service-processor show -node _local_ -instance`
-** `network fcp adapter show -node _local_`
-** `network port ifgrp show -node _local_`
-** `system node show -instance -node _local_`
-** `run -node _local_ sysconfig`
-** `run -node local sysconfig -ac`
-** `run -node local aggr status -r`
-** `vol show -fields type`
-** `run local aggr options _data_aggregate_name_`
-** `vol show -fields type , space-guarantee`
-** `storage aggregate show -node _local_`
-** `volume show -node _local_`
-** `storage array config show -switch _switch_name_`
-** `system license show -owner _local_`
-** `storage encryption disk show`
-** `security key-manager onboard show-backup`
-** `security key-manager external show`
-** `security key-manager external show-status`
-** `network port reachability show -detail -node _local_`
+[source, cli]
+----
+vserver services name-service dns show
+----
++
+[source, cli]
+----
+network interface show -curr-node <local> -role cluster,intercluster,node-mgmt,cluster-mgmt,data
+----
++
+[source, cli]
+----
+network port show -node <local> -type physical
+----
++
+[source, cli]
+----
+service-processor show -node <local> -instance
+----
++
+[source, cli]
+----
+network fcp adapter show -node <local>
+----
++
+[source, cli]
+----
+network port ifgrp show -node <local>
+----
++
+[source, cli]
+----
+system node show -instance -node <local>
+----
++
+[source, cli]
+----
+run -node <local> sysconfig
+----
++
+[source, cli]
+----
+run -node local sysconfig -ac
+----
++
+[source, cli]
+----
+run -node local aggr status -r
+----
++
+[source, cli]
+----
+vol show -fields type
+----
++
+[source, cli]
+----
+run local aggr options <data_aggregate_name>
+----
++
+[source, cli]
+----
+vol show -fields type , space-guarantee
+----
++
+[source, cli]
+----
+storage aggregate show -node <local>
+----
++
+[source, cli]
+----
+volume show -node <local>
+----
++
+[source, cli]
+----
+storage array config show -switch <switch_name>
+----
++
+[source, cli]
+----
+system license show -owner <local>
+----
++
+[source, cli]
+----
+storage encryption disk show
+----
++
+[source, cli]
+----
+security key-manager onboard show-backup
+----
++
+[source, cli]
+----
+security key-manager external show
+----
++
+[source, cli]
+----
+security key-manager external show-status
+----
++
+[source, cli]
+----
+network port reachability show -detail -node <local>
+----
 +
 
 NOTE: Si vous utilisez NetApp Volume Encryption (NVE) ou NetApp Aggregate Encryption (NAE) avec le gestionnaire de clés intégré, conservez la phrase de passe du gestionnaire de clés prête à effectuer la resynchronisation du gestionnaire de clés plus tard dans la procédure.
-
-
 
 . Si votre système utilise des lecteurs auto-cryptés, consultez l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Comment savoir si un disque est certifié FIPS"^] Pour déterminer le type de disques à autocryptage utilisés sur la paire haute disponibilité que vous mettez à niveau. Le logiciel ONTAP prend en charge deux types de disques avec autocryptage :
 +
@@ -189,6 +281,7 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryptio
 
 
 
+[[step-2-correct-aggregate-ownership-if-an-arl-precheck-fails]]
 == Étape 2 : Corriger la propriété de l'agrégat si une vérification préalable ARL échoue
 
 En cas d'échec de la vérification de l'état de l'agrégat, vous devez renvoyer les agrégats qui appartiennent au nœud partenaire au nœud propriétaire du nœud de rattachement et relancer le processus de vérification préalable.
@@ -196,12 +289,16 @@ En cas d'échec de la vérification de l'état de l'agrégat, vous devez renvoye
 .Étapes
 . Renvoyez les agrégats actuellement détenus par le nœud partenaire au nœud propriétaire de rattachement :
 +
-`storage aggregate relocation start -node _source_node_ -destination _destination-node_ -aggregate-list *`
-
+[source, cli]
+----
+storage aggregate relocation start -node <source_node> -destination <destination_node> -aggregate-list *
+----
 . Vérifiez que ni le nœud1 ni le nœud2 ne possède toujours des agrégats pour lesquels il s'agit du propriétaire actuel (mais pas le propriétaire du domicile) :
 +
-`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
-
+[source, cli]
+----
+storage aggregate show -nodes <node_name> -is-home false -fields owner-name, home-name, state
+----
 +
 L'exemple suivant montre la sortie de la commande lorsqu'un nœud est à la fois le propriétaire actuel et le propriétaire du domicile des agrégats :
 
@@ -219,9 +316,12 @@ aggr4       node1      node1       online
 4 entries were displayed.
 ----
 . Redémarrez le processus de remplacement du contrôleur :
++
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 
-
-`system controller replace start -nodes _node_names_`
 
 .Et la suite ?
 Après avoir préparé les nœuds, link:complete-preparation-for-upgrade.html["achever la préparation de la mise à niveau"].

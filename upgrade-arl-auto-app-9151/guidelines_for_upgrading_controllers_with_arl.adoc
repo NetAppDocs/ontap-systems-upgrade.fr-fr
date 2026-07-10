@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/guidelines_for_upgrading_controllers_with_arl.html 
 keywords: guidelines, upgrading, controllers, ARL 
-summary: 'Déterminez si vous pouvez mettre à niveau des contrôleurs exécutant ONTAP 9.15.1 ou une version ultérieure à l"aide de `system controller replace` commandes.' 
+summary: 'Déterminez si vous pouvez effectuer une mise à niveau vers les contrôleurs introduits dans ONTAP 9.15.1 ou une version ultérieure en utilisant  `system controller replace` des commandes.' 
 ---
 = Instructions de mise à niveau des contrôleurs avec l'ARL
 :hardbreaks:
@@ -14,10 +14,11 @@ summary: 'Déterminez si vous pouvez mettre à niveau des contrôleurs exécutan
 
 
 [role="lead"]
-Pour savoir si vous pouvez utiliser le transfert d'agrégats pour mettre à niveau une paire de contrôleurs exécutant ONTAP 9.15.1 ou version ultérieure, cela dépend de la plateforme et de la configuration des contrôleurs d'origine et de remplacement.
+Pour savoir si vous pouvez utiliser ARL pour mettre à niveau vers une paire de contrôleurs introduite dans ONTAP 9.15.1 ou une version ultérieure, cela dépend de la plateforme et de la configuration des contrôleurs d'origine et de remplacement.
 
 
 
+[[supported-upgrades-for-arl]]
 == Mises à niveau prises en charge pour l'ARL
 
 Avant de mettre à niveau une paire de nœuds à l'aide de cette procédure ARL, vérifiez les conditions suivantes pour vous assurer que votre configuration est prise en charge :
@@ -41,12 +42,14 @@ La mise à niveau du contrôleur avec l'ARL est prise en charge sur les système
 
 
 
+[[two-node-switchless-clusters]]
 == Clusters à 2 nœuds sans commutateur
 
 Si vous mettez à niveau des nœuds dans un cluster sans commutateur à 2 nœuds, vous pouvez quitter le cluster sans commutateur tout en effectuant la mise à niveau. Il n'est pas nécessaire de les convertir en cluster commuté.
 
 
 
+[[upgrades-not-supported-for-arl]]
 == Mises à niveau non prises en charge pour l'ARL
 
 Vous ne pouvez pas mettre à niveau des contrôleurs de remplacement qui ne prennent pas en charge les tiroirs disques connectés aux contrôleurs d'origine.
@@ -57,6 +60,7 @@ Si vous souhaitez mettre à niveau des contrôleurs d'entrée de gamme avec des 
 
 
 
+[[troubleshoot]]
 == Résoudre les problèmes
 
 En cas de problème lors de la mise à jour des manettes, consultezlink:aggregate_relocation_failures.html["Résoudre les problèmes"] pour plus d'informations et des solutions possibles.

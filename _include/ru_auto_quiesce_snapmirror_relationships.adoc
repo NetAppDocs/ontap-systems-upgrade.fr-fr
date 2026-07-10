@@ -4,6 +4,7 @@
 
 
 
+[[optionally-quiesce-the-snapmirror-relationships]]
 == Facultativement, mettre en pause les relations SnapMirror
 
 Avant de poursuivre l'opération, vous devez confirmer que toutes les relations SnapMirror sont suspendues. Lorsqu'une relation SnapMirror est mise en veille, elle reste suspension sur l'ensemble des redémarrages et basculements.

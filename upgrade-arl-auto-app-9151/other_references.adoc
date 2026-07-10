@@ -18,6 +18,7 @@ Lorsque vous effectuez les procédures de ce contenu, vous devrez peut-être con
 
 
 
+[[reference-content]]
 == Contenu de référence
 
 Le contenu spécifique à cette mise à niveau est répertorié dans le tableau ci-dessous.
@@ -73,6 +74,7 @@ Le contenu spécifique à cette mise à niveau est répertorié dans le tableau 
 |===
 
 
+[[reference-sites]]
 == Sites de référence
 
 Le link:https://mysupport.netapp.com["Site de support NetApp"^] Contient également de la documentation sur les cartes d'interface réseau (NIC) et d'autres matériels que vous pourriez utiliser avec votre système. Il contient également le link:https://hwu.netapp.com["Hardware Universe"^], qui fournit des informations sur le matériel pris en charge par le nouveau système.

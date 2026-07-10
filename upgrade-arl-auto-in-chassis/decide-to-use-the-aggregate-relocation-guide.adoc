@@ -20,6 +20,7 @@ Pour vous aider à décider si cette procédure ARL est adaptée à la mise à n
 
 
 
+[[supported-for-this-arl-upgrade]]
 == Prise en charge pour cette mise à niveau ARL
 
 Vous pouvez utiliser cette procédure ARL dans les circonstances suivantes :
@@ -43,6 +44,7 @@ NOTE: Cette procédure vous permet d'utiliser NetApp Storage Encryption (NSE), N
 
 
 
+[[not-supported-for-this-arl-upgrade]]
 == Non pris en charge pour cette mise à niveau ARL
 
 Vous ne pouvez pas utiliser cette procédure ARL dans les circonstances suivantes :
@@ -56,6 +58,8 @@ Pour mettre à niveau une configuration IP MetroCluster, consultez link:other-re
 
 
 
+[[supported-system-upgrade-combinations]]
+[[supported-systems]]
 == Combinaisons de mise à niveau du système prises en charge
 
 Le tableau suivant présente la matrice des systèmes pris en charge pour effectuer une mise à niveau du contrôleur en convertissant le système existant en système de remplacement, en conservant le châssis, les disques et les données stockées sur ceux-ci.
@@ -63,6 +67,7 @@ Le tableau suivant présente la matrice des systèmes pris en charge pour effect
 
 CAUTION: Cette procédure s'applique strictement aux configurations de mise à niveau suivantes. N'utilisez pas cette procédure pour effectuer une mise à niveau entre d'autres combinaisons de systèmes. Pour tous les autres modèles de contrôleurs, consultez link:other-references.html["Références"] pour accéder à _Use "system controller replace" commands to upgrade controller hardware running ONTAP 9.8 or later_ et _Using aggregate relocation to manually upgrade controller hardware running ONTAP 9.8 or later_.
 
+[[supported-systems-in-chassis]]
 [cols="20,20,40"]
 |===
 | Système existant | Système de remplacement | Versions de ONTAP prises en charge 
@@ -149,6 +154,7 @@ Les versions ONTAP minimales figurant dans le tableau précédent sont obligatoi
 
 
 
+[[choose-a-different-hardware-upgrade-procedure]]
 == Choisissez une autre procédure de mise à niveau matérielle
 
 * link:../upgrade-arl/index.html["Passez en revue les méthodes ARL alternatives disponibles pour la mise à niveau du matériel du contrôleur"].

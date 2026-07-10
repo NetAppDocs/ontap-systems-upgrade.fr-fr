@@ -18,6 +18,7 @@ Pour savoir si vous pouvez utiliser le transfert d'agrégats (ARL) pour mettre �
 
 
 
+[[supported-upgrades-for-arl]]
 == Mises à niveau prises en charge pour l'ARL
 
 Lorsque vous mettez à niveau une paire de nœuds à l'aide de cette procédure d'ARL pour ONTAP 9.5 vers ONTAP 9.7, vous devez vérifier que l'ARL peut être réalisé sur les contrôleurs d'origine et de remplacement.
@@ -38,12 +39,14 @@ La mise à niveau du contrôleur avec l'ARL est prise en charge sur les système
 
 
 
+[[two-node-switchless-clusters]]
 == Clusters à 2 nœuds sans commutateur
 
 Si vous mettez à niveau des nœuds dans un cluster sans commutateur à 2 nœuds, vous pouvez quitter le cluster sans commutateur tout en effectuant la mise à niveau. Il n'est pas nécessaire de les convertir en cluster commuté.
 
 
 
+[[upgrades-not-supported-for-arl]]
 == Mises à niveau non prises en charge pour l'ARL
 
 Vous ne pouvez pas effectuer les mises à niveau suivantes :
@@ -60,12 +63,14 @@ Pour mettre à niveau les contrôleurs d'entrée de gamme avec des disques inter
 
 
 
+[[metrocluster-fc-configuration]]
 == Configuration MetroCluster FC
 
 En configuration MetroCluster FC, vous devez remplacer les nœuds du site de reprise après incident/basculement dans les plus brefs délais. Les incompatibilités entre les modèles de contrôleur au sein d'une configuration MetroCluster ne sont pas prises en charge, car elles peuvent entraîner la mise hors ligne de la mise en miroir de reprise après sinistre. Utilisez l'option  `-skip-metrocluster-check true` commande pour contourner les vérifications MetroCluster lorsque vous remplacez des nœuds sur le deuxième site.
 
 
 
+[[troubleshoot]]
 == Résoudre les problèmes
 
 Vous pouvez être confronté à une défaillance lors de la mise à niveau de la paire de nœuds. Il est possible que le nœud tombe en panne, mais que les agrégats ne soient pas transférés ou que les LIF ne migrent pas. La cause de l'échec et sa solution dépendent du moment où l'échec s'est produit pendant la procédure de mise à niveau.

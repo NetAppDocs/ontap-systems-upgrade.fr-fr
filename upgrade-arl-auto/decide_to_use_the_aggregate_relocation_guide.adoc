@@ -37,6 +37,8 @@ link:../upgrade-arl-auto-in-chassis/decide-to-use-the-aggregate-relocation-guide
 ====
 
 
+[[supported-system-upgrade-combinations]]
+[[sys_commands_95_97_supported_systems]]
 == Combinaisons de mise à niveau du système prises en charge
 
 Les tableaux suivants présentent la matrice de modèles pris en charge pour la mise à niveau du contrôleur à l'aide de cette procédure ARL.
@@ -77,6 +79,7 @@ NOTE: Si la combinaison de modèle de mise à niveau du contrôleur ne se trouve
 
 
 
+[[choose-a-different-hardware-upgrade-procedure]]
 == Choisissez une autre procédure de mise à niveau matérielle
 
 * link:../upgrade-arl/index.html["Passez en revue les méthodes ARL alternatives disponibles pour la mise à niveau du matériel du contrôleur"].

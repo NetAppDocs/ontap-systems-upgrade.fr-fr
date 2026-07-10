@@ -18,6 +18,7 @@ Pour savoir si vous pouvez utiliser le transfert d'agrégats (ARL), le conservat
 
 
 
+[[supported-upgrades-for-arl]]
 == Mises à niveau prises en charge pour l'ARL
 
 La mise à niveau du contrôleur est prise en charge pour certaines configurations système. Consultez la link:decide-to-use-the-aggregate-relocation-guide.html#supported-systems["combinaisons de mise à niveau système prises en charge"] pour obtenir la liste des systèmes pris en charge et la version minimale d'ONTAP.
@@ -28,12 +29,14 @@ La mise à niveau du contrôleur avec l'ARL est prise en charge sur les système
 
 
 
+[[two-node-switchless-clusters]]
 == Clusters à 2 nœuds sans commutateur
 
 Si vous mettez à niveau des nœuds dans un cluster sans commutateur à 2 nœuds, vous pouvez quitter le cluster sans commutateur tout en effectuant la mise à niveau. Il n'est pas nécessaire de les convertir en cluster commuté.
 
 
 
+[[switch-attached-clusters]]
 == Commutateurs connectés aux clusters
 
 Si vous mettez à niveau des nœuds d'un cluster connecté à un commutateur de cluster, vous devez vérifier que la marque, le modèle, la version du firmware, le fichier RCF et la version de ONTAP exécutés sur le commutateur sont identiques à ceux exécutés sur le contrôleur de remplacement après la mise à niveau. Si nécessaire, vous devez effectuer la mise à niveau du commutateur avant de mettre à niveau les contrôleurs à l'aide de l'ARL.
@@ -42,6 +45,7 @@ Pour plus d'informations, voir link:cable-node1-for-shared-cluster-HA-storage.ht
 
 
 
+[[troubleshoot]]
 == Résoudre les problèmes
 
 Vous pouvez être confronté à une défaillance lors de la mise à niveau de la paire de nœuds. Il est possible que le nœud tombe en panne, mais que les agrégats ne soient pas transférés ou que les LIF ne migrent pas. La cause de l'échec et sa solution dépendent du moment où l'échec s'est produit pendant la procédure de mise à niveau.

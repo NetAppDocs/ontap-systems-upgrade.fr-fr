@@ -26,6 +26,7 @@ Si vous n'êtes pas déjà mis à la terre, mettez-vous à la terre correctement
 
 
 
+[[step-1-remove-the-aff-a220-aff-a200-aff-c190-fas2620-or-fas2720-controller-module]]
 == Étape 1 : Retirez le module de contrôleur AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720
 
 Pour accéder aux composants à l'intérieur du contrôleur node2, retirez le module de contrôleur du système, puis retirez le couvercle du module de contrôleur.
@@ -48,6 +49,7 @@ image:drw_2240_x_opening_cam_latch.png["Ouverture de la poignée de came"]
 
 
 
+[[step-2-install-the-asa-a150-aff-a150-or-fas2820-controller-module]]
 == Étape 2 : Installez le module de contrôleur ASA A150, AFF A150 ou FAS2820
 
 Installez le module de contrôleur ASA A150, AFF A150 ou FAS2820 que vous avez reçu pour la mise à niveau dans le nœud2.

@@ -20,10 +20,12 @@ La solution à ces problèmes dépend du moment où ils se produisent.
 
 
 
+[[reboots-panics-or-power-cycles-during-the-pre-check-phase]]
 == Redémarre, fonctionne de façon incohérente ou reste alimenté lors de la phase de vérification préalable
 
 
 
+[[node1-or-node2-crashes-before-the-pre-check-phase-with-ha-pair-still-enabled]]
 === Lorsqu'un nœud 1 ou un nœud 2 tombe en panne avant la phase de vérification préalable avec la paire HA toujours activée
 
 Si le nœud 1 ou le nœud 2 tombe en panne avant la phase de vérification préalable, aucun agrégat n'a encore été déplacé et la configuration de la paire haute disponibilité est toujours activée.
@@ -38,10 +40,12 @@ Le basculement et le rétablissement peuvent se poursuivre normalement.
 
 
 
+[[reboots-panics-or-power-cycles-during-first-resource-release-phase]]
 == Redémarre, fonctionne de façon incohérente ou reste alimenté lors de la première phase de lancement des ressources
 
 
 
+[[node1-crashes-during-the-first-resource-release-phase-with-ha-pair-still-enabled]]
 === Le nœud 1 tombe en panne lors de la première phase de publication des ressources avec la paire haute disponibilité toujours activée
 
 Un ou plusieurs agrégats ont été transférés du nœud 1 vers le nœud 2, et la paire haute disponibilité est toujours activée. NODE2 reprend le volume racine du nœud 1 et tout agrégat non racine qui n'a pas été déplacé.
@@ -59,6 +63,7 @@ Lorsque le noeud 1 entre dans `waiting for giveback` état, le nœud 2 renvoie �
 
 
 
+[[node1-crashes-during-the-first-resource-release-phase-while-ha-pair-is-disabled]]
 === Le nœud 1 tombe en panne lors de la première phase de publication des ressources, tandis que la paire HA est désactivée
 
 Le nœud 2 ne prend pas le relais, mais il transmet toujours les données à partir de tous les agrégats non racines.
@@ -70,6 +75,7 @@ Le nœud 2 ne prend pas le relais, mais il transmet toujours les données à par
 
 
 
+[[node2-fails-during-the-first-resource-release-phase-with-ha-pair-still-enabled]]
 === Le nœud 2 échoue lors de la première phase de publication des ressources alors que la paire HA est toujours activée
 
 NODE1 a déplacé un ou la totalité de ses agrégats vers le nœud 2. La paire HA est activée.
@@ -84,6 +90,7 @@ NODE1 reprend tous les agrégats du nœud 2 ainsi que l'un de ses propres agrég
 
 
 
+[[node2-crashes-during-the-first-resource-release-phase-and-after-ha-pair-is-disabled]]
 === Le nœud 2 tombe en panne lors de la première phase de version de ressources et après la désactivation de la paire HA
 
 NODE1 ne prend pas le contrôle.
@@ -98,10 +105,12 @@ Une panne client a lieu pour tous les agrégats lors du démarrage du nœud 2.
 
 
 
+[[reboots-panics-or-power-cycles-during-the-first-verification-phase]]
 == Redémarre, fonctionne de façon incohérente ou reste alimenté lors de la première phase de vérification
 
 
 
+[[node2-crashes-during-the-first-verification-phase-with-ha-pair-disabled]]
 === Le nœud 2 tombe en panne lors de la première phase de vérification alors que la paire haute disponibilité est désactivée
 
 Le nœud 1 ne prend pas le relais après une panne du nœud 2, car la paire HA est déjà désactivée.
@@ -116,6 +125,7 @@ Une panne client a lieu pour tous les agrégats lors du démarrage du nœud 2.
 
 
 
+[[node1-crashes-during-the-first-verification-phase-with-ha-pair-disabled]]
 === Le nœud 1 tombe en panne lors de la première phase de vérification alors que la paire haute disponibilité est désactivée
 
 Le nœud 2 ne prend pas le relais, mais il transmet toujours les données à partir de tous les agrégats non racines.
@@ -127,10 +137,12 @@ Le nœud 2 ne prend pas le relais, mais il transmet toujours les données à par
 
 
 
+[[reboots-panics-or-power-cycles-during-first-resource-regain-phase]]
 == Redémarre, fonctionne de façon incohérente ou reste alimenté pendant la première phase de récupération de ressources
 
 
 
+[[node2-crashes-during-the-first-resource-regain-phase-during-aggregate-relocation]]
 === Le nœud 2 tombe en panne lors de la première phase de récupération de ressources lors du transfert d'agrégats
 
 NODE2 a déplacé un ou la totalité de ses agrégats du nœud 1 vers le nœud 1. Le nœud 1 transmet les données depuis des agrégats qui ont été déplacés. La paire haute disponibilité est désactivée, ce qui évite tout basculement.
@@ -145,6 +157,7 @@ Pour les agrégats qui n'ont pas été transférés, une panne se produit au niv
 
 
 
+[[node1-crashes-during-the-first-resource-regain-phase-during-aggregate-relocation]]
 === Le nœud 1 tombe en panne lors de la première phase de récupération de ressources lors du transfert d'agrégats
 
 Si le nœud 1 tombe en panne alors que le nœud 2 replace les agrégats sur le nœud 1, la tâche se poursuit après le démarrage du nœud 1.
@@ -159,10 +172,12 @@ Le nœud 2 continue de servir les agrégats restants, mais les agrégats déjà 
 
 
 
+[[reboots-panics-or-power-cycles-during-post-check-phase]]
 == Redémarre, fonctionne de façon incohérente ou reste alimenté lors de la phase de post-vérification
 
 
 
+[[node1-or-node2-crashes-during-the-post-check-phase]]
 === Le nœud1 ou le nœud2 tombe en panne lors de la phase de post-vérification
 
 La paire haute disponibilité est désactivée, ce qui évite tout basculement. Une panne client est constatée pour les agrégats appartenant au nœud qui a été redémarré.
@@ -174,10 +189,12 @@ La paire haute disponibilité est désactivée, ce qui évite tout basculement. 
 
 
 
+[[reboots-panics-or-power-cycles-during-second-resource-release-phase]]
 == Redémarre, fonctionne de façon incohérente ou reste alimenté pendant la seconde phase de lancement des ressources
 
 
 
+[[node1-crashes-during-the-second-resource-release-phase]]
 === Le nœud1 tombe en panne lors de la deuxième phase de publication des ressources
 
 Si le nœud 1 tombe en panne lors du déplacement des agrégats sur le nœud 2, la tâche se poursuit après le démarrage du nœud 1.
@@ -192,6 +209,7 @@ Le nœud 2 continue de servir les agrégats restants, mais les agrégats qui ont
 
 
 
+[[node2-crashes-during-the-second-resource-release-phase]]
 === Le nœud2 tombe en panne lors de la deuxième phase de publication des ressources
 
 Si le nœud 2 tombe en panne lors du transfert de l'agrégat, le nœud 2 n'est pas pris en charge.
@@ -206,10 +224,12 @@ NODE1 continue de servir les agrégats qui ont été transférés, mais les agr�
 
 
 
+[[reboots-panics-or-power-cycles-during-the-second-verification-phase]]
 == Redémarre, fonctionne de façon incohérente ou reste alimenté pendant la deuxième phase de vérification
 
 
 
+[[node1-crashes-during-the-second-verification-phase]]
 === Le nœud 1 tombe en panne lors de la deuxième phase de vérification
 
 Si le nœud 1 tombe en panne pendant cette phase, le basculement n'a pas lieu, car la paire haute disponibilité est déjà désactivée.
@@ -224,6 +244,7 @@ Une panne client est survenue pour tous les agrégats jusqu'au redémarrage du n
 
 
 
+[[node2-crashes-during-the-second-verification-phase]]
 === Le nœud2 tombe en panne lors de la deuxième phase de vérification
 
 En cas de panne du nœud 2 lors de cette phase, le basculement n'a pas lieu. Le nœud 1 transmet les données depuis les agrégats.

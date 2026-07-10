@@ -4,6 +4,7 @@
 
 
 
+[[learn-about-ontap-licensing]]
 == Découvrez les licences ONTAP
 
 Certaines fonctionnalités nécessitent des licences, qui sont émises sous la forme _packages_ qui incluent une ou plusieurs fonctionnalités. Chaque nœud du cluster doit disposer de sa propre clé pour que chaque fonctionnalité soit utilisée dans le cluster.

@@ -6,12 +6,14 @@ Avant de mettre à niveau les nœuds à l'aide de l'ARL, il est important de con
 
 
 
+[[upgrade-the-node-pair]]
 == Mettre à niveau la paire de nœuds
 
 Pour mettre à niveau la paire de nœuds, vous devez préparer les nœuds d'origine, puis effectuer une série d'étapes sur les nœuds d'origine et nouveaux. Vous pouvez ensuite désaffecter les nœuds d'origine.
 
 
 
+[[arl-upgrade-sequence-overview]]
 == Présentation de la séquence de mise à niveau ARL
 
 Durant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, un contrôleur à la fois, en tirant parti de la configuration de paires haute disponibilité pour transférer la propriété d'agrégats non racines. Tous les agrégats non racines doivent être reloisés afin d'atteindre leur destination finale, qui est le nœud mis à niveau correct.

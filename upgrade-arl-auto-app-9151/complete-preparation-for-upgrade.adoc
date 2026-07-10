@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/complete-preparation-for-upgrade.html 
 keywords: ip, address, external, key, management, server, storage, encryption, upgrading, authentication 
-summary: 'Configurez et gérez Storage Encryption, gérez les clés d"authentification et mettez fin à la relation SnapMirror lors de la mise à niveau des contrôleurs exécutant ONTAP 9.15.1 ou version ultérieure à l"aide de la `system controller replace` commande.' 
+summary: 'Configurez et gérez le chiffrement du stockage, gérez les clés d"authentification et mettez au repos les relations SnapMirror lors de la mise à niveau vers les contrôleurs introduits dans ONTAP 9.15.1 ou ultérieur à l"aide de la commande  `system controller replace`.' 
 ---
 = Finalisez la préparation de la mise à niveau
 :hardbreaks:
@@ -18,6 +18,7 @@ Découvrez les licences ONTAP et la gestion du chiffrement du stockage à l'aide
 
 
 
+[[learn-about-ontap-licensing]]
 == Découvrez les licences ONTAP
 
 Pour plus d'informations sur les licences ONTAP, reportez-vous à https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Gestion des licences"^]la section .
@@ -27,6 +28,8 @@ NOTE: L'utilisation de fonctionnalités sans licence sur le contrôleur peut vou
 
 
 
+[[manage-storage-encryption-using-the-onboard-key-manager]]
+[[manage_storage_encryption_using_okm]]
 == Gérez le chiffrement du stockage à l'aide du gestionnaire de clés intégré
 
 Utilisez le Gestionnaire de clés intégré (OKM) pour gérer les clés de chiffrement. Si l'OKM est configuré, vous devez enregistrer la phrase de passe et les données de sauvegarde avant de commencer la mise à niveau.
@@ -55,6 +58,7 @@ Lorsque vous y êtes invité, saisissez la phrase secrète OKM à l'échelle du 
 
 
 
+[[optionally-quiesce-the-snapmirror-relationships]]
 == Facultativement, mettre en pause les relations SnapMirror
 
 Avant de poursuivre l'opération, vous devez confirmer que toutes les relations SnapMirror sont suspendues. Lorsqu'une relation SnapMirror est mise en veille, elle reste suspension sur l'ensemble des redémarrages et basculements.

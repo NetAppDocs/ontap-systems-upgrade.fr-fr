@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/prepare_nodes_for_upgrade.html 
 keywords: preparing, nodes, upgrade 
-summary: 'Préparez les nœuds et exécutez une série de contrôles préalables lors de la mise à niveau de contrôleurs exécutant ONTAP 9.15.1 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+summary: 'Préparez les nœuds et exécutez une série de vérifications préalables lors de la mise à niveau vers des contrôleurs introduits dans ONTAP 9.15.1 ou une version ultérieure en utilisant les commandes  `system controller replace`.' 
 ---
 = Préparer les nœuds pour une mise à niveau
 :hardbreaks:
@@ -18,19 +18,28 @@ Le processus de remplacement du contrôleur commence par une série de vérifica
 
 
 
-== Étape 1 : Préparer les nœuds
+[[step-1-prepare-node1-and-node2]]
+== Étape 1 : Préparez le nœud1 et le nœud2
 
-Démarrez la procédure de remplacement du contrôleur et effectuez les vérifications préalables. Si nécessaire, identifiez le type de disques à chiffrement automatique utilisés.
+Démarrez la procédure de remplacement du contrôleur et effectuez des vérifications préalables sur node1 et node2. Si nécessaire, déterminez le type de disques à chiffrement automatique utilisés.
 
 .Étapes
 . Lancer le processus de remplacement du contrôleur en entrant la commande suivante dans la ligne de commande ONTAP :
 +
-`system controller replace start -nodes <node_names>`
-
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 +
+[NOTE]
+====
+Vous ne pouvez exécuter la commande qu' `system controller replace start`au niveau de privilège avancé :
 
-NOTE: Vous ne pouvez exécuter la commande system Controller replace start qu'au niveau de privilège avancé : `set -privilege advanced`
-
+[source, cli]
+----
+set -privilege advanced
+----
+====
 +
 Vous obtenez un résultat similaire à l'exemple suivant. Le résultat affiche la version d'ONTAP en cours d'exécution sur votre cluster :
 
@@ -92,7 +101,7 @@ Le système exécute les contrôles préalables suivants ; notez le résultat de
 | État de la LIF de cluster | Vérifie si les LIFs de cluster sont active pour les deux nœuds. Si les LIFs de cluster sont arrêtées, la tâche échoue. 
 
 
-| Contrôle d'état ASUP | Si les notifications ASUP ne sont pas configurées, la tâche échoue. Vous devez activer ASUP avant de commencer la procédure de remplacement du contrôleur. 
+| AutoSupport Vérification de l'état | Si les notifications AutoSupport ne sont pas configurées, la tâche échoue. Vous devez activer AutoSupport avant de lancer la procédure de remplacement du contrôleur. 
 
 
 | Vérification de l'utilisation du processeur | Vérifie si le taux d'utilisation du CPU est supérieur à 50 % pour l'un des nœuds remplacés. Si l'utilisation du processeur est supérieure à 50 % pendant une période de temps considérable, la tâche échoue. 
@@ -123,25 +132,90 @@ Pour plus d'informations, consultez l'article de la base de connaissances link:h
 Depuis le port série connecté à chaque nœud, exécutez et enregistrez les valeurs de sortie des commandes suivantes individuellement :
 
 +
-** `vserver services name-service dns show`
-** `network interface show -curr-node <local> -role <cluster,intercluster,node-mgmt,cluster-mgmt,data>`
-** `network port show -node <local> -type physical`
-** `service-processor show -node <local> -instance`
-** `network fcp adapter show -node <local>`
-** `network port ifgrp show -node <local>`
-** `system node show -instance -node <local>`
-** `run -node <local> sysconfig`
-** `storage aggregate show -r`
-** `storage aggregate show -node <local>`
-** `volume show -node <local>`
-** `system license show -owner <local>`
-** `storage encryption disk show`
-** `security key-manager onboard show-backup`
-** `security key-manager external show`
-** `security key-manager external show-status`
-** `network port reachability show -detail -node <local>`
-
-
+[source, cli]
+----
+vserver services name-service dns show
+----
++
+[source, cli]
+----
+network interface show -curr-node <local> -role cluster,intercluster,node-mgmt,cluster-mgmt,data
+----
++
+[source, cli]
+----
+network port show -node <local> -type physical
+----
++
+[source, cli]
+----
+service-processor show -node <local> -instance
+----
++
+[source, cli]
+----
+network fcp adapter show -node <local>
+----
++
+[source, cli]
+----
+network port ifgrp show -node <local>
+----
++
+[source, cli]
+----
+system node show -instance -node <local>
+----
++
+[source, cli]
+----
+run -node <local> sysconfig
+----
++
+[source, cli]
+----
+storage aggregate show -r
+----
++
+[source, cli]
+----
+storage aggregate show -node <local>
+----
++
+[source, cli]
+----
+volume show -node <local>
+----
++
+[source, cli]
+----
+system license show -owner <local>
+----
++
+[source, cli]
+----
+storage encryption disk show
+----
++
+[source, cli]
+----
+security key-manager onboard show-backup
+----
++
+[source, cli]
+----
+security key-manager external show
+----
++
+[source, cli]
+----
+security key-manager external show-status
+----
++
+[source, cli]
+----
+network port reachability show -detail -node <local>
+----
 +
 
 NOTE: Si vous utilisez NetApp Volume Encryption (NVE) ou NetApp Aggregate Encryption (NAE) avec le gestionnaire de clés intégré (OKM), conservez la phrase de passe du gestionnaire de clés prête pour effectuer la resynchronisation du gestionnaire de clés plus tard dans la procédure.
@@ -160,6 +234,7 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryptio
 
 
 
+[[step-2-correct-aggregate-ownership-if-an-arl-precheck-fails]]
 == Étape 2 : Corriger la propriété de l'agrégat si une vérification préalable ARL échoue
 
 En cas d'échec de la vérification de l'état de l'agrégat, vous devez renvoyer les agrégats qui appartiennent au nœud partenaire au nœud propriétaire du nœud de rattachement et relancer le processus de vérification préalable.
@@ -167,12 +242,16 @@ En cas d'échec de la vérification de l'état de l'agrégat, vous devez renvoye
 .Étapes
 . Renvoyez les agrégats actuellement détenus par le nœud partenaire au nœud propriétaire de rattachement :
 +
-`storage aggregate relocation start -node _source_node_ -destination _destination-node_ -aggregate-list *`
-
+[source, cli]
+----
+storage aggregate relocation start -node <source_node> -destination <destination_node> -aggregate-list *
+----
 . Vérifiez que ni le nœud1 ni le nœud2 ne possède toujours des agrégats pour lesquels il s'agit du propriétaire actuel (mais pas le propriétaire du domicile) :
 +
-`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
-
+[source, cli]
+----
+storage aggregate show -nodes <node_name> -is-home false -fields owner-name, home-name, state
+----
 +
 L'exemple suivant montre la sortie de la commande lorsqu'un nœud est à la fois le propriétaire actuel et le propriétaire du domicile des agrégats :
 
@@ -190,9 +269,61 @@ aggr4       node1      node1       online
 4 entries were displayed.
 ----
 . Redémarrez le processus de remplacement du contrôleur :
++
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 
 
-`system controller replace start -nodes _node_names_`
+
+
+[[step-3-prepare-node3-and-node4]]
+== Étape 3 : Préparez les nœuds 3 et 4
+
+Vérifiez si la build sur node3 et node4 est une image NODAR (sans chiffrement des données au repos). Si la build est une image NODAR, vous devez installer une image DARE (chiffrement des données au repos).
+
+.Description de la tâche
+Effectuez les étapes suivantes sur node3 et node4.
+
+.Étapes
+. Démarrez le nœud dans le menu de démarrage :
++
+[source, cli]
+----
+LOADER> boot_ontap menu
+----
+. Entrez dans systemshell :
++
+[source, cli]
+----
+systemshell
+----
+. [[check-build]]Vérifiez si la version est une image NODAR :
++
+[source, cli]
+----
+cat /BUILD
+----
++
+Dans la sortie de la commande, vérifiez si  `build-type` est une image NODAR, par exemple,  `DEBUG SIM NODAR`.
+
++
+
+NOTE: Si  `build-type` n'est pas une image NODAR, la version est une image DARE.
+
+. Si la version est une image NODAR, installez une image DARE.
++
+.. Quittez l'interface système et le menu de démarrage :
++
+[source, cli]
+----
+halt
+----
+.. Installez une image DARE. Pour plus d'informations, consultez l'article de la base de connaissances link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/Netbooting_a_FAS_and_AFF_Controller_in_ONTAP_9["Démarrage réseau d’un contrôleur FAS et AFF dans ONTAP 9"^].
+
+
+
 
 .Et la suite ?
 Après avoir préparé les nœuds, link:complete-preparation-for-upgrade.html["achever la préparation de la mise à niveau"].

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/install_boot_node3.html 
 keywords: installing, booting, node3, ontap 
-summary: 'Installez et amorcez Node3 et installez le logiciel ONTAP lors de la mise à niveau de contrôleurs exécutant ONTAP 9.15.1 ou version ultérieure à l"aide de `system controller replace` commandes.' 
+summary: 'Installez et démarrez le nœud 3 et installez le logiciel ONTAP lors de la mise à niveau vers des contrôleurs introduits dans ONTAP 9.15.1 ou version ultérieure en utilisant les commandes  `system controller replace`.' 
 ---
 = Installez et démarrez le nœud 3
 :hardbreaks:

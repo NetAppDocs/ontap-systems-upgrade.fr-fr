@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: upgrade-arl/index.html 
 keywords: aggregate, relocation, moving, manual, upgrade, relocate, hardware 
-summary: 'Utiliser le transfert d"agrégats pour mettre à niveau le matériel du contrôleur' 
+summary: 'Découvrez comment utiliser la relocalisation d"agrégats pour mettre à niveau le matériel des contrôleurs AFF, ASA ou FAS.' 
 ---
-= Commencez ici : choisissez votre procédure de mise à niveau ARL
+= Commencez ici : choisissez une procédure de mise à niveau ARL pour le matériel de contrôleur AFF, ASA ou FAS
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 'Utiliser le transfert d"agrégats pour mettre à niveau le matériel d
 
 
 [role="lead"]
-Le transfert d'agrégats (ARL) permet de mettre à niveau le matériel du contrôleur sans interruption. Pour connaître les autres méthodes de mise à niveau du matériel de votre contrôleur, reportez-vous à link:../upgrade/upgrade-decide-to-use-this-guide.html["Mise à niveau par déplacement des volumes ou du stockage"]la section .
+Vous pouvez mettre à niveau le matériel des contrôleurs AFF, ASA ou FAS sans interruption de service grâce à la relocalisation d’agrégats (ARL). Pour connaître les autres méthodes de mise à niveau de votre matériel de contrôleur, consultez link:../upgrade/upgrade-decide-to-use-this-guide.html["Mise à niveau par déplacement des volumes ou du stockage"].
 
 Grâce à l'ARL, vous pouvez mettre à niveau le matériel du contrôleur sans interruption sur une paire de nœuds exécutant ONTAP en migrant les agrégats non racines des nœuds d'origine vers les nouveaux nœuds du même cluster. Les données hébergées sur les nœuds mis à niveau sont accessibles au cours de la mise à niveau.
 
@@ -24,9 +24,10 @@ Il existe plusieurs méthodes ARL pour mettre à niveau le matériel du contrôl
 
 
 
-== Utilisez les commandes « System Controller replace » avec ONTAP 9.15.1 ou une version ultérieure
+[[upgrade-to-systems-introduced-in-ontap-9-15-1-or-later]]
+== Mettez à niveau vers des systèmes introduits dans ONTAP 9.15.1 ou une version ultérieure
 
-Si votre scénario de mise à niveau est répertorié dans la matrice de systèmes pris en charge suivante, passez à link:../upgrade-arl-auto-app-9151/index.html["Utilisez les commandes « System Controller replace » pour mettre à niveau le matériel du contrôleur introduit dans ONTAP 9.15.1 et versions ultérieures"] pour lancer la procédure de mise à niveau.
+Si votre scénario de mise à niveau figure dans la matrice des systèmes pris en charge ci-dessous, accédez à link:../upgrade-arl-auto-app-9151/index.html["Utilisez les commandes « system controller replace » pour mettre à niveau le matériel du contrôleur introduit dans ONTAP 9.15.1 ou une version ultérieure"] pour commencer la procédure de mise à niveau.
 
 .Afficher les systèmes pris en charge
 [%collapsible]
@@ -64,6 +65,7 @@ Si votre scénario de mise à niveau est répertorié dans la matrice de systèm
 ====
 
 
+[[upgrade-controller-models-in-the-same-chassis]]
 == Mettez à niveau les modèles de contrôleurs dans le même châssis
 
 Si votre scénario de mise à niveau est répertorié dans la matrice des systèmes pris en charge suivante, accédez àlink:../upgrade-arl-auto-in-chassis/index.html["Utilisez les commandes « system Controller replace » pour mettre à niveau les modèles de contrôleurs d'un même châssis"] pour démarrer la procédure de mise à niveau.
@@ -142,6 +144,7 @@ Si votre scénario de mise à niveau est répertorié dans la matrice des systè
 ====
 
 
+[[use-system-controller-replace-commands-with-ontap-9-8-or-later]]
 == Utiliser les commandes « remplacer le contrôleur système » avec ONTAP 9.8 ou version ultérieure
 
 Si votre scénario de mise à niveau est répertorié dans la matrice de systèmes pris en charge suivante, passez à link:../upgrade-arl-auto-app/index.html["Utilisez les commandes « system contrôleur replace » pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.8 ou une version ultérieure"] pour lancer la procédure de mise à niveau.
@@ -182,6 +185,7 @@ Si votre scénario de mise à niveau est répertorié dans la matrice de systèm
 ====
 
 
+[[use-system-controller-replace-commands-with-ontap-9-5-to-9-7]]
 == Utiliser les commandes « remplacer le contrôleur système » avec ONTAP 9.5 à 9.7
 
 Si votre scénario de mise à niveau est répertorié dans la matrice de systèmes pris en charge suivante, passez à link:../upgrade-arl-auto/index.html["Utilisez les commandes « system contrôleur replace » pour mettre à niveau le matériel du contrôleur exécutant ONTAP 9.5 vers 9.7"] pour lancer la procédure de mise à niveau.
@@ -208,6 +212,7 @@ Si votre scénario de mise à niveau est répertorié dans la matrice de systèm
 ====
 
 
+[[use-manual-arl-commands]]
 == Utilisez les commandes ARL manuelles
 
 Si votre scénario de mise à niveau n'est pas pris en charge à l'aide de « commandes système », vous pouvez effectuer une mise à niveau ARL à l'aide de commandes manuelles.

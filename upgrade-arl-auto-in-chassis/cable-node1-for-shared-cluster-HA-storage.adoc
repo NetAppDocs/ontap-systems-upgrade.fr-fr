@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-in-chassis/cable-node1-for-shared-cluster-HA-storage.html 
 keywords: cluster, ha, aff, a800, shared, storage, data, management 
-summary: Connectez le cluster, la haute disponibilité, le stockage et les connexions de données précédemment connectés au nœud AFF A800 1 au nœud AFF A90 ou AFF A70 nouvellement installé 
+summary: Connectez les connexions du cluster, de la paire haute disponibilité, du stockage et des données qui étaient précédemment connectées au nœud1 AFF A800 au nœud1 AFF A90 ou AFF A70 nouvellement installé. 
 ---
 = Câblage du nœud 1 pour la haute disponibilité et le stockage en cluster partagé
 :hardbreaks:
@@ -34,6 +34,7 @@ Si vous effectuez l'une des mises à niveau suivantes, vous devez connecter le c
 |===
 
 
+[[connect-the-e0m-and-bmc-ports]]
 == Connectez les ports e0M et BMC
 
 Si le système existant dispose d'un port de gestion (e0M) et d'un port BMC, les ports e0M et BMC sont combinés et accessibles via le port « clé » du système de remplacement. Vous devez vous assurer que les ports e0M et BMC sont connectés au même commutateur et au même sous-réseau sur le système existant avant de vous connecter au système de remplacement.
@@ -54,6 +55,7 @@ Si le système existant dispose d'un port de gestion (e0M) et d'un port BMC, les
 |===
 
 
+[[connect-to-a-two-node-switchless-cluster]]
 == Connexion à un cluster à 2 nœuds sans commutateur
 
 Les tableaux suivants présentent l'utilisation des ports de commutateur pour les configurations en cluster sans commutateur à 2 nœuds.
@@ -99,6 +101,8 @@ Les tableaux suivants présentent l'utilisation des ports de commutateur pour le
 |===
 
 
+[[connect-to-a-switch-attached-cluster]]
+[[connect-switch-attached-cluster]]
 == Se connecter à un cluster relié par un commutateur
 
 Dans le cas d'un cluster relié par commutateur, vérifiez que vous répondez aux exigences suivantes pour les nœuds AFF A30, AFF A50, AFF A70, AFF A90, AFF C30, AFF C60 ou AFF C80 (de remplacement) :

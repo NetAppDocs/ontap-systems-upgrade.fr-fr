@@ -6,6 +6,8 @@ Certains problèmes peuvent survenir au cours des différentes étapes de la pro
 
 
 
+[[unexpected-storage-failover-show-command-output]]
+[[storage-failover-command]]
 == Sortie inattendue de la commande « Storage Failover show »
 
 Durant la procédure, si le nœud hébergeant tous les agrégats de données fonctionne de façon incohérente ou est redémarré accidentellement, vous pouvez voir la sortie inattendue de `storage failover show` commande avant et après le redémarrage, de type panic ou power cycle.

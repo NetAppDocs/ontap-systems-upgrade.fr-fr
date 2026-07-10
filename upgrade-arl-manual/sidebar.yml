@@ -21,7 +21,7 @@ entries:
   - title: Préparez-vous à reconfigurer la disposition du commutateur
     url: "/upgrade-arl-manual/reconfig_index.html"
   - title: Envoyer un message AutoSupport personnalisé avant de reconfigurer les commutateurs
-    url: "/upgrade-arl-manual/send_custom_asup_message_prior_reconfig_switches.html"
+    url: "/upgrade-arl-manual/send_custom_autosupport_message_prior_reconfig_switches.html"
   - title: Vérifier l'état de santé de la configuration MetroCluster
     url: "/upgrade-arl-manual/verify_health_mcc_config.html"
   - title: Recherchez les erreurs de configuration MetroCluster

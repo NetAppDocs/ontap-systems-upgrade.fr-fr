@@ -4,6 +4,8 @@
 
 
 
+[[step-2-check-and-configure-utauta2-ports-on-node3]]
+[[check-config-uta-uta2-node3]]
 == Étape 2 : Vérifier et configurer les ports UTA/UTA2 sur le nœud 3
 
 Si le nœud 3 est équipé de ports UTA/UTA2 intégrés ou d'une carte UTA/UTA2, vous devez vérifier la configuration des ports et éventuellement les reconfigurer, en fonction du mode d'utilisation du système mis à niveau.

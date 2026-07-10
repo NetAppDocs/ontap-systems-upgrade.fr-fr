@@ -18,6 +18,7 @@ Pour savoir si vous pouvez utiliser le transfert d'agrégats (ARL) pour mettre �
 
 
 
+[[supported-upgrades-for-arl]]
 == Mises à niveau prises en charge pour l'ARL
 
 Vous pouvez mettre à niveau une paire de nœuds à l'aide de l'ARL dans les cas suivants :
@@ -48,6 +49,7 @@ Si vous possédez un système doté de plus de deux ports de cluster par nœud, 
 
 
 
+[[upgrades-not-supported-for-arl]]
 == Mises à niveau non prises en charge pour l'ARL
 
 Vous ne pouvez pas effectuer les mises à niveau suivantes :
@@ -69,6 +71,7 @@ NOTE: Pour mettre à niveau ONTAP sur les nœuds d'un cluster, reportez-vous à 
 
 
 
+[[assumptions-and-terminology]]
 == Hypothèses et terminologie
 
 Ce document est rédigé avec les hypothèses suivantes :
@@ -98,6 +101,7 @@ LOADER>
 ----
 
 
+[[licensing-in-ontap-9-8-or-later]]
 == Licence dans ONTAP 9.8 ou version ultérieure
 
 Certaines fonctionnalités nécessitent des licences, qui sont émises sous la forme _packages_ qui incluent une ou plusieurs fonctionnalités. Chaque nœud du cluster doit disposer de sa propre clé pour que chaque fonctionnalité soit utilisée dans le cluster.
@@ -110,6 +114,7 @@ Pour plus d'informations sur les licences, rendez-vous sur link:other_references
 
 
 
+[[storage-encryption]]
 == Chiffrement du stockage
 
 Les nœuds d'origine ou les nouveaux nœuds peuvent être activés pour Storage Encryption. Dans ce cas, vous devez effectuer d'autres étapes de cette procédure pour vérifier que Storage Encryption est correctement configuré.
@@ -118,12 +123,14 @@ Si vous souhaitez utiliser le chiffrement du stockage, tous les disques associé
 
 
 
+[[two-node-switchless-clusters]]
 == Clusters à 2 nœuds sans commutateur
 
 Si vous mettez à niveau des nœuds dans un cluster sans commutateur à 2 nœuds, vous pouvez quitter le cluster sans commutateur tout en effectuant la mise à niveau. Il n'est pas nécessaire de les convertir en cluster commuté
 
 
 
+[[troubleshoot]]
 == Résoudre les problèmes
 
 Vous pouvez être confronté à une défaillance lors de la mise à niveau de la paire de nœuds. Il est possible que le nœud tombe en panne, mais que les agrégats ne soient pas transférés ou que les LIF ne migrent pas. La cause de l'échec et sa solution dépendent du moment où l'échec s'est produit pendant la procédure de mise à niveau.

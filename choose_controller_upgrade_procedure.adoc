@@ -4,20 +4,21 @@ sidebar: sidebar
 keywords:  
 summary: 'De manière générale, la mise à niveau du matériel du contrôleur dépend des modèles de plateforme des nœuds d"origine. Vous effectuez une mise à niveau en déplaçant des agrégats ou des volumes de stockage (procédure sans interruption) ou en déplaçant du stockage (procédure entraînant des perturbations).' 
 ---
-= Choisissez la procédure de mise à niveau matérielle de votre contrôleur
+= Choisissez une procédure de mise à niveau pour le matériel du contrôleur AFF, ASA ou FAS
 :allow-uri-read: 
 :icons: font
 :imagesdir: ./media/
 
 
 [role="lead"]
-De manière générale, la mise à niveau du matériel du contrôleur dépend des modèles de plateforme des nœuds d'origine. Vous effectuez une mise à niveau en déplaçant des agrégats ou des volumes (les deux procédures sans interruption de l'activité) ou en déplaçant le stockage (procédure disruptive). Si différentes versions de ONTAP sont exécutées sur les nœuds d'origine et les nouveaux nœuds, vous devrez peut-être effectuer une mise à niveau logicielle avant de démarrer la mise à niveau matérielle.
+En général, la façon dont vous mettez à niveau le matériel des contrôleurs NetApp AFF, ASA ou FAS dépend des modèles de plateforme des nœuds d'origine. Vous effectuez la mise à niveau soit en déplaçant des agrégats ou des volumes (deux procédures non interrompantes), soit en déplaçant le stockage (procédure interrompante). Si vous avez différentes versions d'ONTAP exécutées sur les nœuds d'origine et les nouveaux nœuds, il peut être nécessaire d'effectuer une mise à niveau logicielle avant de commencer la mise à niveau matérielle.
 
 
 NOTE: Les mises à niveau ASA vers un système de remplacement ASA r2 ne sont pas prises en charge. Pour plus d'informations sur la migration des données d'un système ASA vers un système ASA r2, reportez-vous à la section link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Activez l'accès aux données depuis des hôtes SAN vers votre système de stockage ASA r2"^].
 
 
 
+[[which-upgrade-procedure-should-i-use]]
 == Quelle procédure de mise à niveau dois-je utiliser ?
 
 Pour sélectionner la procédure de mise à niveau appropriée, consultez toutes les questions répertoriées dans le tableau ci-dessous.
@@ -77,6 +78,7 @@ L'ARL est une procédure de remplacement.  Vous n'avez pas besoin d'agrandir ou 
 |===
 
 
+[[example-fas9500-to-fas90-upgrade]]
 == Exemple : Mise à niveau du FAS9500 vers le FAS90
 
 Cet exemple fournit des réponses possibles pour une mise à niveau du contrôleur FAS9500 vers FAS90.

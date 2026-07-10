@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/set_up_netapp_volume_encryption_new_module.html 
 keywords: set up, netapp volume encryption, controller, module, nve, node 
-summary: 'Si nécessaire, configurez le nouveau module de contrôleur pour NVE ou NAE lors de la mise à niveau des contrôleurs exécutant ONTAP 9.15.1 ou version ultérieure à l"aide des `system controller replace` commandes.' 
+summary: 'Si nécessaire, configurez le nouveau module de contrôleur pour NVE ou NAE lors de la mise à niveau vers les contrôleurs introduits dans ONTAP 9.15.1 ou une version ultérieure en utilisant les commandes  `system controller replace`.' 
 ---
 = Configurez NetApp Volume Encryption ou Aggregate Encryption sur le nouveau module de contrôleur
 :hardbreaks:

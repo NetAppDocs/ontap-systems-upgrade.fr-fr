@@ -23,6 +23,7 @@ CAUTION: Ne mettez pas le châssis hors tension, car les nœuds 1 et 2 se trouve
 
 
 
+[[step-1-remove-the-aff-a250-or-aff-c250-controller-module]]
 == Étape 1 : Retirez le module de contrôleur AFF A250 ou AFF C250
 
 Pour retirer le module contrôleur node2, retirez le dispositif de gestion des câbles et déverrouillez les loquets de verrouillage. Ensuite, retirez le module contrôleur du châssis.
@@ -77,6 +78,7 @@ Assurez-vous de soutenir le poids du module de contrôleur lorsque vous le faite
 
 
 
+[[step-2-install-the-aff-a30-aff-a50-aff-c30-or-aff-c60-controller-module]]
 == Étape 2 : Installez le module de contrôleur AFF A30, AFF A50, AFF C30 ou AFF C60
 
 Installez le module de contrôleur de remplacement que vous avez reçu pour la mise à niveau sur le nœud 2.

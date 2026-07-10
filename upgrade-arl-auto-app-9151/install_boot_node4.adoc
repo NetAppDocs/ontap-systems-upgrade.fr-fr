@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/install_boot_node4.html 
 keywords: install, boot, node4, install ONTAP 
-summary: 'Installez et démarrez node4 et installez le logiciel ONTAP lors de la mise à niveau de contrôleurs exécutant ONTAP 9.15.1 ou une version ultérieure à l"aide de `system controller replace` commandes.' 
+summary: 'Installez et démarrez le nœud 4 et installez le logiciel ONTAP lors de la mise à niveau vers des contrôleurs introduits dans ONTAP 9.15.1 ou version ultérieure en utilisant les commandes  `system controller replace`.' 
 ---
 = Installez et démarrez Node4
 :hardbreaks:
