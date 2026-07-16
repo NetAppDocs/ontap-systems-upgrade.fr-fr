@@ -52,6 +52,8 @@ entries:
     url: "/upgrade-arl-manual-app/set_fc_uta_uta2_config_node3.html"
   - title: Mapper les ports du node1 vers le node3
     url: "/upgrade-arl-manual-app/map_ports_node1_node3.html"
+  - title: Restaurez la configuration du gestionnaire de clés sur le nœud 3
+    url: "/upgrade-arl-manual-app/restore_key-manager_configuration_node3.html"
   - title: Déplacez les LIF de données NAS qui appartiennent au nœud 1, du nœud 2
       au nœud 3, et vérifiez les LIF SAN sur le nœud 3
     url: "/upgrade-arl-manual-app/move_nas_lifs_node1_from_node2_node3_verify_san_lifs_node3.html"
@@ -81,6 +83,8 @@ entries:
     url: "/upgrade-arl-manual-app/set_fc_uta_uta2_config_node4.html"
   - title: Mappage des ports du node2 au node4
     url: "/upgrade-arl-manual-app/map_ports_node2_node4.html"
+  - title: Restaurez la configuration du gestionnaire de clés sur le nœud 4
+    url: "/upgrade-arl-manual-app/restore_key-manager_config_node4.html"
   - title: Déplacez les LIF de données NAS qui appartiennent au nœud 2 du nœud 3 vers
       le nœud 4, puis vérifiez les LIF SAN sur le nœud 4
     url: "/upgrade-arl-manual-app/move_nas_lifs_node2_from_node3_node4_verify_san_lifs_node4.html"

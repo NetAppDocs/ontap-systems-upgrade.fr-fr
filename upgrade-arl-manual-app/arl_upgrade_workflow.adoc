@@ -21,14 +21,14 @@ Avant de mettre à niveau les nœuds à l'aide de l'ARL, vous devez comprendre s
 [[upgrade-the-node-pair]]
 == Mettre à niveau la paire de nœuds
 
-Pour mettre à niveau la paire de nœuds, vous devez préparer les nœuds d'origine, puis effectuer une série d'étapes sur les nœuds d'origine et nouveaux. Vous pouvez ensuite désaffecter les nœuds d'origine.
+Pour mettre à niveau la paire de nœuds, vous préparez les nœuds d'origine et suivez les étapes de mise à niveau sur les deux nœuds d'origine et nouveaux. Ensuite, vous mettez hors service les nœuds d'origine.
 
 
 
 [[arl-upgrade-sequence-overview]]
 == Présentation de la séquence de mise à niveau ARL
 
-Durant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, un contrôleur à la fois, en tirant parti de la configuration de paires haute disponibilité pour transférer la propriété d'agrégats non racines. Tous les agrégats non racines doivent être reloisés afin d'atteindre leur destination finale, qui est le nœud mis à niveau correct.
+Vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, un contrôleur à la fois, en tirant parti de la configuration de la paire haute disponibilité pour transférer la propriété des agrégats non racine. Vous devez transférer tous les agrégats non racine deux fois pour atteindre le nœud correctement mis à niveau.
 
 Chaque agrégat possède un propriétaire d'origine et un propriétaire actuel. Le propriétaire de la maison est le propriétaire réel de l'agrégat, et le propriétaire actuel est le propriétaire temporaire.
 
@@ -36,7 +36,7 @@ L'illustration suivante montre les étapes de la procédure. Les flèches gris c
 
 image:arl_upgrade_manual_image1.PNG["Illustration des étapes de la procédure ARL"]
 
-Le tableau ci-après décrit les tâches générales que vous effectuez à chaque étape ainsi que l'état de propriété de l'agrégat à la fin de cette étape. Les étapes détaillées sont fournies ultérieurement dans la procédure :
+Le tableau suivant décrit les tâches principales de chaque étape et l'état de la propriété agrégée à la fin de l'étape. Les étapes détaillées sont fournies plus loin dans la procédure :
 
 [cols="35,65"]
 |===
@@ -44,7 +44,7 @@ Le tableau ci-après décrit les tâches générales que vous effectuez à chaqu
 
 
 | link:determine_aggregates_on_internal_drives.html["Étape 1 : préparer la mise à niveau"]  a| 
-Lors de la phase 1, le cas échéant, vérifiez que les disques internes ne contiennent pas d'agrégats racines ou d'agrégats de données, préparez les nœuds pour la mise à niveau et exécutez une série de contrôles préalables. Si nécessaire, vous reclé les disques pour le chiffrement du stockage et préparation au démarrage sur le réseau des nouveaux contrôleurs.
+Lors de la première étape, si nécessaire, vous vérifiez que les disques internes ne contiennent pas d’agrégats racine ni d’agrégats de données, vous préparez les nœuds pour la mise à niveau et vous exécutez les vérifications préalables. Si nécessaire, vous réinitialisez les clés de chiffrement des disques pour Storage Encryption et vous préparez le démarrage réseau (netboot) des nouveaux contrôleurs.
 
 Propriété d'un agrégat à la fin de la phase 1 :
 
@@ -67,7 +67,7 @@ Propriété d'un agrégat à la fin de la phase 2 :
 
 
 | link:install_boot_node3.html["Etape 3 : installation et démarrage du node3"]  a| 
-Lors de la phase 3, vous installez et démarrez le nœud 3, mappez le cluster et les ports de gestion des nœuds du nœud 1 vers le nœud 3, puis déplacez les LIF de données et les LIF SAN appartenant au nœud 1 du nœud 2 vers le nœud 3. Vous transférez également tous les agrégats du nœud 2 vers le nœud 3, et déplacez les LIF de données et les LIF SAN qui appartiennent au nœud 2 vers le nœud 3.
+Lors de l'étape 3, vous installez et démarrez le nœud 3, puis vous mappez les ports de gestion du cluster et des nœuds du nœud 1 vers le nœud 3. Si vous utilisez NetApp Volume Encryption (NVE), vous restaurez la configuration du gestionnaire de clés. Ensuite, vous déplacez les LIF de données et les LIF SAN appartenant au nœud 1 du nœud 2 vers le nœud 3, vous relocalisez tous les agrégats du nœud 2 vers le nœud 3, et vous déplacez les LIF de données et les LIF SAN appartenant au nœud 2 vers le nœud 3.
 
 Propriété globale à la fin de la phase 3 :
 
@@ -84,7 +84,7 @@ Au cours de l'étape 4, vous enregistrez les informations nécessaires sur le no
 
 
 | link:install_boot_node4.html["Etape 5 : installation et démarrage du node4"]  a| 
-Lors de la phase 5, vous installez et démarrez le nœud 4, mappez les ports relatifs au cluster et aux nœuds de gestion du nœud 2 vers le nœud 4, puis déplacez les LIF de données et les LIF SAN appartenant au nœud 2 du nœud 3 vers le nœud 4. Vous pouvez également transférer des agrégats NODE2 du nœud 3 vers le nœud 4, puis déplacer les LIF de données et SAN détenues par le nœud 2 vers le nœud 3.
+Lors de l’étape 5, vous installez et démarrez le nœud 4 et mappez les ports de gestion du cluster et du nœud du nœud 2 vers le nœud 4. Si vous utilisez NetApp Volume Encryption (NVE), vous restaurez la configuration du gestionnaire de clés. Ensuite, vous déplacez les LIF de données et les LIF SAN appartenant au nœud 2 du nœud 3 vers le nœud 4, vous relocalisez les agrégats du nœud 2 du nœud 3 vers le nœud 4, et vous déplacez les LIF de données et les LIF SAN appartenant au nœud 2 vers le nœud 3.
 
 Propriété globale à la fin de la phase 5 :
 
@@ -95,7 +95,7 @@ Propriété globale à la fin de la phase 5 :
 
 
 | link:manage_authentication_kmip.html["Étape 6 : terminez la mise à niveau"]  a| 
-Lors de la phase 6, vous confirmez que les nouveaux nœuds sont correctement configurés et configurez Storage Encryption ou NetApp Volume Encryption si les nouveaux nœuds sont activés pour le chiffrement. Vous devez également retirer la désaffectation des anciens nœuds pour reprendre les opérations SnapMirror.
+Lors de la phase 6, vous confirmez que les nouveaux nœuds sont correctement configurés et configurez Storage Encryption ou NetApp Volume Encryption si les nouveaux nœuds sont activés pour le chiffrement. Vous devez également désaffecter les anciens nœuds et reprendre les opérations SnapMirror.
 
 
 NOTE: Les mises à jour de reprise après sinistre des machines virtuelles de stockage (SVM) ne sont pas interrompues conformément aux calendriers prévus.
