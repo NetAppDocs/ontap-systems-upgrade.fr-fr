@@ -55,8 +55,8 @@ NOTE: Dans ce document, les nœuds d'origine sont appelés _node1_ et _node2_, e
 
 * En plus des configurations non MetroCluster, cette procédure s'applique aux configurations Fabric MetroCluster à quatre et huit nœuds qui exécutent ONTAP 9.8 et versions ultérieures.
 +
-** Pour les configurations MetroCluster exécutant ONTAP 9.7 ou version antérieure, rendez-vous sur link:other_references.html["Références"] Pour établir un lien vers _en utilisant le transfert d'agrégats pour mettre à niveau manuellement le matériel du contrôleur exécutant ONTAP 9.7 ou une version antérieure_.
-** Pour les configurations MetroCluster IP et les options de mise à niveau supplémentaires pour les configurations Fabric MetroCluster, rendez-vous sur link:other_references.html["Références"] Pour accéder au contenu _MetroCluster Upgrade and expansion_.
+** Pour les configurations MetroCluster exécutant ONTAP 9.7 et versions antérieures, accédez à link:other-references.html["Références"] pour accéder à _Utilisation de la relocalisation d’agrégat pour mettre à niveau manuellement le matériel du contrôleur exécutant ONTAP 9.7 ou une version antérieure_.
+** Pour les configurations IP MetroCluster et les options de mise à niveau supplémentaires pour les configurations Fabric MetroCluster, rendez-vous sur link:other-references.html["Références"] pour accéder au contenu _MetroCluster Upgrade and Expansion_.
 
 
 

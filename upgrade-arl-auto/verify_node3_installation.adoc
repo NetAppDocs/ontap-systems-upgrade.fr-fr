@@ -46,7 +46,7 @@ Si la configuration est différente pour le nœud 3, une interruption du systèm
 Une fois que vous avez confirmé que le noeud 3 est dans le quorum et que vous pouvez communiquer avec le noeud 2, vous devez recréer les VLAN, les groupes d'interface et les domaines de diffusion du noeud 1 sur le noeud 3. Vous devez également ajouter les ports node3 aux domaines de diffusion nouvellement créés.
 
 .Description de la tâche
-Pour plus d'informations sur la création et la recrércréation de VLAN, de groupes d'interfaces et de domaines de diffusion, accédez à link:other_references.html["Références"] Et lien vers _Network Management_.
+Pour plus d'informations sur la création et la recréation de VLAN, de groupes d'interfaces et de domaines de diffusion, rendez-vous sur link:other-references.html["Références"] et accédez à _Network Management_.
 
 .Étapes
 . Recréez les réseaux locaux virtuels sur le nœud 3 à l'aide des informations du nœud 1 enregistrées dans le système link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Transférez les agrégats non racine et les LIF de données NAS qui appartiennent au nœud1 vers le nœud2"] section :

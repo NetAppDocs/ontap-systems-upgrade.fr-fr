@@ -17,7 +17,7 @@ summary: 'Vous pouvez mettre à niveau le matériel du contrôleur exécutant ON
 Il existe plusieurs méthodes de relocalisation agrégée (ARL) pour la mise à niveau du matériel des contrôleurs. Cette procédure ARL décrit comment mettre à niveau une paire haute disponibilité de contrôleurs dans les systèmes de stockage AFF et FAS introduits dans ONTAP 9.15.1 ou version ultérieure avec de nouveaux contrôleurs, tout en conservant les disques existants et les données stockées sur les disques.
 
 
-NOTE: Vous ne pouvez pas utiliser cette procédure pour mettre à niveau une configuration MetroCluster FC ou IP. Pour mettre à niveau une configuration MetroCluster, reportez-vous à la section link:other_references.html["Références"] pour accéder à la _documentation de mise à niveau et d'extension MetroCluster_.
+NOTE: Cette procédure ne permet pas de mettre à niveau une configuration MetroCluster FC ou IP. Pour mettre à niveau une configuration MetroCluster, consultez link:other-references.html["Références"] la documentation _MetroCluster Upgrade and Expansion_.
 
 Pendant la procédure, vous mettez à niveau le matériel du contrôleur d'origine avec le matériel de remplacement, délocalisant ainsi la propriété des agrégats non racines. Vous migrez plusieurs fois des agrégats entre nœuds et nœuds pour confirmer qu'au moins un nœud transmet des données depuis les agrégats tout au long de la procédure de mise à niveau. Vous migrez également les interfaces de données logiques (LIF) et vous affectez les ports réseau sur le nouveau contrôleur aux groupes d'interface.
 

@@ -17,7 +17,7 @@ summary: 'Vérifiez que les ports physiques du nœud 2 sont correctement mappée
 Vous devez vérifier que les ports physiques du nœud 2 correspondent correctement aux ports physiques du nœud 4. Cela permet au nœud 4 de communiquer avec les autres nœuds du cluster et avec le réseau après la mise à niveau.
 
 .Description de la tâche
-Reportez-vous à la section link:other_references.html["Références"] Pour établir une liaison avec _Hardware Universe_ afin de capturer des informations sur les ports des nouveaux nœuds. Vous utiliserez ces informations plus loin dans cette section.
+Consultez link:other-references.html["Références"] pour accéder à _Hardware Universe_ et recueillir des informations sur les ports des nouveaux nœuds. Vous utiliserez ces informations plus loin dans cette section.
 
 La configuration physique des ports peut varier selon le modèle des nœuds. Au démarrage du nouveau nœud, ONTAP tente de déterminer quels ports doivent héberger les LIF du cluster afin d'atteindre automatiquement le quorum.
 
@@ -151,7 +151,7 @@ NOTE: Dans cette procédure, la section _recréation des VLAN, ifgrps et des dom
 Une fois que vous avez confirmé que le nœud4 est quorum et peut communiquer avec le nœud3, vérifiez que les VLAN, les groupes d'interface et les domaines de diffusion du nœud2 sont visibles sur le nœud4. Vérifiez également que tous les ports réseau node4 sont configurés dans leurs domaines de diffusion appropriés.
 
 .Description de la tâche
-Pour plus d'informations sur la création et la recrércréation de VLAN, de groupes d'interfaces et de domaines de diffusion, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Network Management_.
+Pour plus d'informations sur la création et la recréation de VLAN, de groupes d'interfaces et de domaines de diffusion, reportez-vous à link:other-references.html["Références"] pour accéder à _Network Management_.
 
 
 NOTE: Si vous modifiez la vitesse de port des ports de cluster e0a et e1a sur les systèmes AFF A800 ou AFF C800, vous pouvez observer que des paquets mal formés sont reçus après la conversion de vitesse. Voir https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["Code de bogue en ligne de NetApp Bugs 1570339"^] et l'article de la base de connaissances https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["Erreurs CRC sur les ports T6 après la conversion de 40 GbE à 100 GbE"^] pour obtenir des conseils.

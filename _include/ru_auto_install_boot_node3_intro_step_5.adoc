@@ -31,7 +31,7 @@ NOTE: Si vous effectuez une mise à niveau vers un système avec les deux nœuds
 Effectuez les connexions suivantes en utilisant les _Instructions d'installation et de configuration_ pour la plate-forme node3, le document d'étagère de disque approprié et la documentation de _gestion des paires HA_.
 
 +
-Se référer àlink:other_references.html["Références"] pour créer un lien vers la _gestion des paires HA_.
+Consultez link:other-references.html["Références"] pour accéder à la _gestion des paires HA_.
 
 +
 ** Console (port de gestion à distance)

@@ -128,7 +128,7 @@ Si la haute disponibilité du cluster n'a pas été désactivée, répétez l'op
 `cluster show`
 
 +
-Étant donné qu'il y a la possibilité d'une TIE dans un cluster qui a un nombre pair de nœuds, un nœud a un poids fractionnaire supplémentaire appelé epsilon. Reportez-vous à la section link:other_references.html["Références"] Pour accéder à _System Administration Reference_ pour plus d'informations.
+Parce qu'il existe la possibilité d'une égalité dans un cluster comportant un nombre pair de nœuds, un nœud se voit attribuer un poids de vote fractionnaire supplémentaire appelé epsilon. Reportez-vous à link:other-references.html["Références"] pour obtenir un lien vers le _System Administration Reference_ pour plus d'informations.
 
 +
 [NOTE]

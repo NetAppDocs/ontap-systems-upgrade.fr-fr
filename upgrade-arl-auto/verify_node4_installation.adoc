@@ -50,7 +50,7 @@ CAUTION: À ce stade, la configuration MetroCluster n'est pas dans un état norm
 Une fois que vous avez confirmé que le nœud4 est quorum et que vous pouvez communiquer avec le nœud3, vous devez recréer les VLAN, les groupes d'interface et les domaines de diffusion du nœud2 sur le nœud4. Vous devez également ajouter les ports node3 aux domaines de diffusion nouvellement créés.
 
 .Description de la tâche
-Pour plus d'informations sur la création et la recrércréation de VLAN, de groupes d'interfaces et de domaines de diffusion, accédez à link:other_references.html["Références"] Et lien vers _Network Management_.
+Pour plus d'informations sur la création et la recréation de VLAN, de groupes d'interfaces et de domaines de diffusion, rendez-vous sur link:other-references.html["Références"] et accédez à _Network Management_.
 
 .Étapes
 . Recréez les réseaux locaux virtuels sur le nœud 4 à l'aide des informations du nœud 2 enregistrées dans le système link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Transférez des agrégats non racines et des LIF de données NAS du nœud 2 vers le nœud 3"] section :

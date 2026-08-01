@@ -26,3 +26,6 @@ Ne reliez pas les tiroirs disques des nœuds d'origine aux nouveaux nœuds.
 Il s'agit notamment de câbles Fibre Channel et Ethernet qui ne sont pas utilisés pour connecter les tiroirs de stockage.
 
 
+
+.Et la suite ?
+Après l'installation des nouveaux nœuds, link:upgrade-set-up-new-nodes.html["configurez les nouveaux nœuds"].

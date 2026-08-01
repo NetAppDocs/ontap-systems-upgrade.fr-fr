@@ -114,4 +114,4 @@ Le fait de forcer l'opération de déplacement du volume peut interrompre l'acc�
 
 
 .Et la suite ?
-link:upgrade-move-lifs-to-new-nodes.html["Déplacez les LIF de données non-SAN et les LIF de cluster-management vers les nouveaux nœuds"]
+Après avoir créé un agrégat et déplacé les volumes vers les nouveaux nœuds, link:upgrade-move-lifs-to-new-nodes.html["Déplacez les LIF de données non-SAN et les LIF de gestion de cluster vers les nouveaux nœuds"].

@@ -17,4 +17,4 @@ summary: 'Vérifiez les opérations de basculement, de rétablissement et de ré
 Il est recommandé de vérifier les opérations de basculement, de rétablissement et de rétablissement de la configuration MetroCluster.
 
 .Étape
-Reportez-vous à la section link:other_references.html["Références"] Associer le contenu _MetroCluster Management and Disaster Recovery_ et suivre les procédures de basculement, de rétablissement et de rétablissement négociés.
+Consultez link:other-references.html["Références"] pour accéder au contenu _MetroCluster Management and Disaster Recovery_ et suivez les procédures de basculement négocié, de réparation et de retour arrière.

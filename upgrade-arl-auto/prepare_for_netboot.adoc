@@ -18,7 +18,7 @@ Si vous installez physiquement les nœuds 3 et 4e dans la procédure, vous devre
 
 .Avant de commencer
 * Vérifiez que vous pouvez accéder à un serveur HTTP avec le système.
-* Reportez-vous à la section link:other_references.html["Références"] Un lien vers le site de support _NetApp_ et télécharger les fichiers système nécessaires pour votre plateforme et la version correcte de ONTAP.
+* Consultez link:other-references.html["Références"] pour accéder au _NetApp Support Site_ et télécharger les fichiers système nécessaires pour votre plateforme et la version correcte d'ONTAP.
 
 
 .Description de la tâche

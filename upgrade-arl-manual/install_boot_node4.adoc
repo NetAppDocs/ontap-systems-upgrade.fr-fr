@@ -48,7 +48,7 @@ Si le noeud 4 se trouve dans un châssis distinct du noeud 3, vous pouvez placer
 . Installez le node4 dans le rack en suivant les instructions de _instructions d'installation et de configuration_ pour le modèle de nœud.
 . [[man_install4_Step4]]câble node4, en déplaçant les connexions du node2 vers le node4.
 +
-Les références suivantes vous aident à effectuer les connexions de câble appropriées. Accédez à link:other_references.html["Références"] pour les lier.
+Les références suivantes vous aident à réaliser correctement les branchements de câbles. Accédez à link:other-references.html["Références"] pour y accéder.
 
 +
 ** _Instructions d'installation et de configuration_ pour la plateforme node4

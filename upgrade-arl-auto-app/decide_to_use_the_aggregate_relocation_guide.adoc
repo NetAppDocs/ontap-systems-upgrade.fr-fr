@@ -23,7 +23,7 @@ Pour vous aider à décider si cette procédure ARL est adaptée à la mise à n
 * Vous êtes expérimenté dans l'administration de ONTAP et vous êtes à l'aise avec les risques de travailler en mode de privilège de diagnostic.
 * Si vous mettez à niveau une configuration MetroCluster, il s'agit d'une configuration FC à quatre nœuds ou plus, et tous les nœuds exécutent ONTAP 9.8 ou version ultérieure.
 +
-Pour mettre à niveau les configurations IP de MetroCluster, reportez-vous au link:other_references.html["Références"]lien vers _mise à niveau et extension MetroCluster_.
+Pour la mise à niveau des configurations IP MetroCluster, veuillez vous référer à link:other-references.html["Références"] pour le lien vers _Mise à niveau et extension de MetroCluster_.
 
 
 
@@ -138,11 +138,11 @@ Pour les combinaisons de mise à niveau indiquées dans le tableau précédent :
 == Choisissez une autre procédure de mise à niveau matérielle
 
 * link:../upgrade-arl/index.html["Passez en revue les méthodes ARL alternatives disponibles pour la mise à niveau du matériel du contrôleur"].
-* Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+* Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous êtes prêt à effectuer des déplacements de volumes, reportez-vous à link:other-references.html["Références"] pour accéder à _Mise à niveau par déplacement de volumes ou de stockage_.
 
 
 .Informations associées
-Se référer à link:other_references.html["Références"] pour créer un lien vers la _Documentation ONTAP 9_.
+Reportez-vous à link:other-references.html["Références"] pour accéder à la documentation _ONTAP 9_.
 
 .Et la suite ?
 Après avoir décidé d'utiliser ou non cette procédure ARL, renseignez-vous sur le link:required_tools_and_documentation.html["outils et documentation requis"].

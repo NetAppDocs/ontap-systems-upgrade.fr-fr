@@ -17,7 +17,7 @@ summary: 'Vérifiez que les ports physiques du nœud 2 sont correctement redirig
 Les ports physiques du nœud 2 doivent correspondre correctement aux ports physiques du nœud 4. Cela permet au nœud 4 de communiquer avec les autres nœuds du cluster et avec le réseau après la mise à niveau.
 
 .Avant de commencer
-Vous devez déjà disposer d'informations sur les ports sur les nouveaux nœuds. Pour accéder à ces informations, reportez-vous à la section link:other_references.html["Références"] Pour accéder au _Hardware Universe_. Vous utilisez ces informations ultérieurement dans cette section.
+Vous devez déjà disposer d'informations sur les ports des nouveaux nœuds. Pour accéder à ces informations, reportez-vous à link:other-references.html["Références"] pour accéder au _Hardware Universe_. Vous utiliserez ces informations plus loin dans cette section.
 
 La configuration logicielle du nœud4 doit correspondre à la connectivité physique du nœud4, et la connectivité IP doit être restaurée avant de poursuivre la mise à niveau.
 
@@ -218,7 +218,7 @@ La commande suivante définit la règle de basculement sur `broadcast-domain-wid
 `network interface modify -vserver node4 -lif data1 failover-policy broadcast-domain-wide -failover-group fg1`
 
 +
-Pour plus d'informations, reportez-vous à link:other_references.html["Références"] pour accéder à _Gestion du réseau_ ou au _ONTAP 9 Command reference_, et accédez à _Configuring failover settings on a LIF_.
+Pour plus d'informations, reportez-vous à link:other-references.html["Références"] pour accéder à _Gestion du réseau_ ou au _ONTAP 9 Command reference_, et accédez à _Configuring failover settings on a LIF_.
 
 . Vérifiez les modifications sur le nœud 4 :
 +

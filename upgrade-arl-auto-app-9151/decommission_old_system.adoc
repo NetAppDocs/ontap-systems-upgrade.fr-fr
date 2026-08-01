@@ -17,7 +17,7 @@ summary: 'Informez NetApp que l"ancien système n"est plus en service après la 
 Une fois la mise à niveau effectuée, vous pouvez désaffecter l'ancien système via le site de support NetApp. Hors fonctionnement du système dit à NetApp que le système n'est plus opérationnel et qu'il l'supprime des bases de données de prise en charge.
 
 .Étapes
-. Reportez-vous à la section link:other_references.html["Références"] Pour accéder au _site de support NetApp_ et connectez-vous.
+. Consultez link:other-references.html["Références"] pour accéder au _NetApp Support Site_ et connectez-vous.
 . Sélectionnez *produits > Mes produits* dans le menu.
 . Sur la page *Afficher les systèmes installés*, choisissez les *critères de sélection* que vous souhaitez utiliser pour afficher des informations sur votre système.
 +

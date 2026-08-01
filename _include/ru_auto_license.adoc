@@ -11,6 +11,6 @@ Certaines fonctionnalités nécessitent des licences, qui sont émises sous la f
 
 Si vous ne disposez pas de nouvelles clés de licence, les fonctionnalités actuellement sous licence dans le cluster sont disponibles pour le nouveau contrôleur. Toutefois, l'utilisation de fonctions sans licence sur le contrôleur peut vous mettre hors conformité avec votre contrat de licence. Vous devez donc installer la ou les nouvelles clés de licence pour le nouveau contrôleur une fois la mise à niveau terminée.
 
-Reportez-vous à la section link:other_references.html["Références"] Pour accéder au _site de support NetApp_ sur lequel vous pouvez obtenir de nouvelles clés de licence de 28 caractères pour ONTAP. Les clés sont disponibles dans la section _mon support_ sous _licences logicielles_. Si le site ne dispose pas de clés de licence, vous pouvez contacter votre ingénieur commercial NetApp.
+Reportez-vous à link:other-references.html["Références"] pour accéder au _Site de support NetApp_ où vous pouvez obtenir de nouvelles clés de licence à 28 caractères pour ONTAP. Les clés sont disponibles dans la section _My Support_ sous _Software licenses_. Si le site ne dispose pas des clés de licence dont vous avez besoin, vous pouvez contacter votre représentant commercial NetApp.
 
-Pour des informations détaillées sur les licences ONTAP, consultez link:other_references.html["Références"] pour accéder au _System Administration Reference_.
+Pour des informations détaillées sur les licences ONTAP, consultez link:other-references.html["Références"] pour accéder au _System Administration Reference_.

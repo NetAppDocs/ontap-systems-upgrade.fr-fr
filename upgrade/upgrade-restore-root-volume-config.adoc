@@ -56,3 +56,6 @@ La séquence de démarrage se poursuit normalement.
 
 
 Si la mise à niveau du contrôleur échoue et signale un `rlib_port_ipspace_assign` Message d'erreur, vous devez restaurer la mise à niveau et supprimer les LIF sur les ports réseau du système d'origine utilisés comme ports haute disponibilité sur le système de remplacement. Pour plus d'informations, voir link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/PANIC_%3A_rlib_port_ipspace_assign%3A_port_e0a_could_not_be_moved_to_HA_ipspace["Article de cette base de connaissances"^].
+
+.Et la suite ?
+Après avoir restauré la configuration du volume racine, link:upgrade-complete.html["finaliser le workflow de mise à niveau du stockage de déplacement"].

@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: upgrade-arl-auto/other_references.html 
+permalink: upgrade-arl-auto/other-references.html 
 keywords: other references, documentation, hardware universe, content, documentation center, information 
 summary: 'Contenu de référence et sites Web requis pour prendre en charge la mise à niveau du contrôleur exécutant ONTAP 9.5 vers 9.7 à l"aide de `system controller replace` commandes.' 
 ---

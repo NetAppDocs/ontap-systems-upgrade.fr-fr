@@ -7,7 +7,7 @@ Avant de remplacer les nœuds d'origine, vous devez confirmer qu'ils sont dans u
 .Étapes
 . Vérifiez que chaque nœud d'origine dispose de ressources suffisantes pour prendre en charge de manière adéquate la charge de travail des deux nœuds en mode basculement.
 +
-Reportez-vous link:other_references.html["Références"]au lien vers _HA pair Management_ et suivez la section _meilleures pratiques pour les paires HA_. Aucun des nœuds d'origine ne doit fonctionner à plus de 50 % d'utilisation. Si un nœud fonctionne à moins de 50 %, il peut gérer les charges des deux nœuds lors de la mise à niveau du contrôleur.
+Consultez link:other-references.html["Références"] pour accéder à _HA pair management_ et suivez la section _Best practices for HA pairs_. Aucun des nœuds d'origine ne doit fonctionner à plus de 50 % d'utilisation ; si un nœud fonctionne à moins de 50 % d'utilisation, il peut gérer les charges des deux nœuds pendant la mise à niveau du contrôleur.
 
 . Pour créer une base de performances pour les nœuds d'origine, procédez comme suit :
 +
@@ -17,23 +17,23 @@ Reportez-vous link:other_references.html["Références"]au lien vers _HA pair Ma
 ====
 Le compte d'utilisateur de diagnostic est uniquement destiné à des fins de diagnostic de bas niveau et ne doit être utilisé qu'avec l'aide du support technique.
 
-Pour plus d'informations sur le déverrouillage des comptes utilisateur, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.
+Pour plus d'informations sur le déverrouillage des comptes utilisateurs, reportez-vous à link:other-references.html["Références"] pour accéder au _System Administration Reference_.
 
 ====
-.. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers le site de support de _NetApp_ et télécharger le collecteur de performances et de statistiques (Perfstat Converged).
+.. Consultez link:other-references.html["Références"] pour accéder au _NetApp Support Site_ et télécharger le Performance and Statistics Collector (Perfstat Converged).
 +
 L'outil Perfstat Converged permet d'établir une base de performance comparée après la mise à niveau.
 
 .. Créez une base de performances en suivant les instructions disponibles sur le site de support NetApp.
 
 
-. Reportez-vous à la section link:other_references.html["Références"] Pour accéder au _site de support NetApp_ et ouvrir un dossier de demande de support sur le site de support NetApp.
+. Reportez-vous à link:other-references.html["Références"] pour accéder au _NetApp Support Site_ et ouvrir un dossier de support sur le NetApp Support Site.
 +
 Vous pouvez utiliser ce ticket pour signaler les problèmes susceptibles de survenir lors de la mise à niveau.
 
 . Vérifiez que les batteries NVMEM ou NVRAM des nœuds 3 et 4 sont chargées et chargez les batteries, le cas échéant.
 +
-Vous devez vérifier physiquement les nœud3 et nœud4 pour vérifier si les batteries NVMEM ou NVRAM sont chargées. Pour plus d'informations sur les LED du modèle des nœuds 3 et 4, voir link:other_references.html["Références"] Pour accéder au _Hardware Universe_.
+Vous devez vérifier physiquement les nœuds 3 et 4 pour vous assurer que les batteries NVMEM ou NVRAM sont chargées. Pour obtenir des informations sur les LED du modèle des nœuds 3 et 4, reportez-vous à link:other-references.html["Références"] pour accéder à _Hardware Universe_.
 
 +
 
@@ -41,7 +41,7 @@ WARNING: N'essayez pas d'effacer le contenu de la NVRAM .  S'il est nécessaire 
 
 . Vérifiez la version de ONTAP sur les nœuds 3 et 4.
 +
-La même version de ONTAP 9.x doit être installée sur les nouveaux nœuds. Si une autre version de ONTAP est installée sur les nouveaux nœuds, vous devez netboot les nouveaux contrôleurs après les avoir installés. Pour obtenir des instructions sur la mise à niveau de ONTAP, reportez-vous à la section link:other_references.html["Références"] Pour accéder à _Upgrade ONTAP_.
+Les nouveaux nœuds doivent avoir la même version d'ONTAP 9.x installée que celle installée sur les nœuds d'origine. Si les nouveaux nœuds ont une version différente d'ONTAP installée, vous devez effectuer un netboot des nouveaux contrôleurs après leur installation. Pour obtenir des instructions sur la mise à niveau d'ONTAP, consultez link:other-references.html["Références"] pour accéder à _Upgrade ONTAP_.
 
 +
 Les informations relatives à la version de ONTAP sur le node3 et le node4 doivent être incluses dans les boîtes d'expédition. La version ONTAP est affichée lorsque le nœud démarre ou que vous pouvez démarrer le nœud en mode maintenance et exécuter la commande :
@@ -150,7 +150,7 @@ node1          node2          true     Connected to node2, Partial giveback
 node2          node1          true     Connected to node1
 ....
 +
-Si l'un des nœuds est en mode de rétablissement partiel, utilisez la `storage failover giveback` commande pour effectuer le rétablissement, puis utilisez `storage failover show-giveback` la commande pour vérifier qu'aucun agrégat ne doit encore être remis. Pour plus d'informations sur les commandes, reportez-vous à la section link:other_references.html["Références"]lien vers _HA pair Management_.
+Si l'un des nœuds est en phase de restitution partielle, utilisez la commande  `storage failover giveback` pour effectuer la restitution, puis la commande  `storage failover show-giveback` pour vous assurer qu'aucun agrégat ne doit encore être restitué. Pour des informations détaillées sur les commandes, consultez link:other-references.html["Références"] pour accéder à _HA pair management_.
 
 . [[man_prepare_nodes_step9]]Confirmez que ni le nœud1 ni le nœud2 ne possède les agrégats pour lesquels il s'agit du propriétaire actuel (mais pas le propriétaire du domicile) :
 +
@@ -239,7 +239,7 @@ node1    None                None
 node2    None                None
 ....
 +
-Si des disques sont manquants, reportez-vous à la section link:other_references.html["Références"] pour établir un lien vers la gestion des disques et des agrégats avec l'interface de ligne de commande_, _gestion logique du stockage avec l'interface de ligne de commande_ et _gestion des paires HA_ pour configurer le stockage de la paire HA.
+En cas de disques manquants, consultez link:other-references.html["Références"] pour accéder à _Disk and aggregate management with the CLI_, _Logical storage management with the CLI_ et _HA pair management_ afin de configurer le stockage de la paire haute disponibilité.
 
 . Confirmer que les nœuds 1 et 2 sont en bonne santé et admissibles à participer au groupe :
 +
@@ -315,14 +315,14 @@ vs0
 `network interface revert -vserver * -lif *`
 
 +
-Pour des informations détaillées sur la commande  `network interface revert`, consultez link:other_references.html["Références"] pour accéder à la _ONTAP 9 Command reference_.
+Pour des informations détaillées sur la commande  `network interface revert`, consultez link:other-references.html["Références"] pour accéder à la _ONTAP 9 Command reference_.
 
 . Vérifier si le nœud 1 ou le nœud 2 possède des disques défectueux :
 +
 `storage disk show -nodelist _node1,node2_ -broken`
 
 +
-Si l'un des disques est défectueux, supprimez-les en suivant les instructions de la section _Disk and Aggregate management à l'aide de la CLI_. (Voir link:other_references.html["Références"] Pour établir un lien vers _Disk et la gestion de l'agrégat avec l'interface de ligne de commande_.)
+Si l'un des disques est défaillant, retirez-le en suivant les instructions de la section _Disk and aggregate management with the CLI_. (Consultez link:other-references.html["Références"] pour accéder à _Disk and aggregate management with the CLI_.)
 
 . Collectez des informations sur node1 et node2 en effectuant les sous-étapes suivantes et en enregistrant la sortie de chaque commande :
 

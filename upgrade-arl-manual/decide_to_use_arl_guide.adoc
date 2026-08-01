@@ -34,9 +34,9 @@ link:../upgrade-arl-auto-in-chassis/decide-to-use-the-aggregate-relocation-guide
 
 
 ====
-Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous êtes prêt à effectuer des déplacements de volumes, reportez-vous à link:other-references.html["Références"] pour accéder à _Mise à niveau par déplacement de volumes ou de stockage_.
 
-Reportez-vous à la section link:other_references.html["Références"] Lien vers le Centre de documentation _ONTAP 9_ où vous pouvez accéder à la documentation produit ONTAP 9.
+Consultez link:other-references.html["Références"] pour accéder au _Centre de documentation ONTAP 9_, où vous pouvez consulter la documentation produit ONTAP 9.
 
 
 
@@ -44,8 +44,8 @@ Reportez-vous à la section link:other_references.html["Références"] Lien vers
 == Choisissez une autre procédure de mise à niveau matérielle
 
 * link:../upgrade-arl/index.html["Passez en revue les méthodes ARL alternatives disponibles pour la mise à niveau du matériel du contrôleur"].
-* Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+* Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous êtes prêt à effectuer des déplacements de volumes, reportez-vous à link:other-references.html["Références"] pour accéder à _Mise à niveau par déplacement de volumes ou de stockage_.
 
 
 .Informations associées
-Se référer à link:other_references.html["Références"] pour créer un lien vers la _Documentation ONTAP 9_.
+Reportez-vous à link:other-references.html["Références"] pour accéder à la documentation _ONTAP 9_.

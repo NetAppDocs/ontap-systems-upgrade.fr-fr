@@ -59,9 +59,9 @@ Vous ne pouvez pas utiliser cette procédure ARL pour mettre à niveau une paire
 | AFF C800 | AFF C80 
 |===
 +
-Pour effectuer une mise à niveau répertoriée dans le tableau ci-dessus, consultez link:other_references.html["Références"] pour accéder à _Utiliser les commandes « system controller replace » pour mettre à niveau les modèles de contrôleur dans le même châssis_.
+Pour effectuer une mise à niveau répertoriée dans le tableau ci-dessus, consultez link:other-references.html["Références"] pour accéder à _Utiliser les commandes « system controller replace » pour mettre à niveau les modèles de contrôleur dans le même châssis_.
 
-* Vous mettez à niveau une configuration MetroCluster FC ou IP. Pour mettre à niveau une configuration MetroCluster, reportez-vous à la section link:other_references.html["Références"] pour accéder à la _documentation de mise à niveau et d'extension MetroCluster_.
+* Vous mettez à niveau une configuration MetroCluster FC ou IP. Pour mettre à niveau une configuration MetroCluster, consultez link:other-references.html["Références"] la documentation _MetroCluster Upgrade and Expansion_.
 
 
 
@@ -116,11 +116,11 @@ Le tableau suivant présente les combinaisons de mises à niveau de contrôleur 
 == Choisissez une autre procédure de mise à niveau matérielle
 
 * link:../upgrade-arl/index.html["Passez en revue les méthodes ARL alternatives disponibles pour la mise à niveau du matériel du contrôleur"].
-* Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous souhaitez déplacer des volumes, reportez-vous à la link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+* Si vous préférez une autre méthode de mise à niveau du matériel du contrôleur et que vous êtes prêt à effectuer des déplacements de volumes, reportez-vous à link:other-references.html["Références"] pour accéder à _Mise à niveau par déplacement de volumes ou de stockage_.
 
 
 .Informations associées
-Se référer à link:other_references.html["Références"] pour créer un lien vers la _Documentation ONTAP 9_.
+Reportez-vous à link:other-references.html["Références"] pour accéder à la documentation _ONTAP 9_.
 
 .Et la suite ?
 Après avoir décidé d'utiliser cette procédure ARL, link:required_tools_and_documentation.html["Découvrez les outils et la documentation requis."].

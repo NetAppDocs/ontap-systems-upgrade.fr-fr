@@ -14,13 +14,19 @@ summary: Vous devez réattribuer les disques qui appartenaient aux nœuds 1 et 2
 Vous devez réattribuer les disques qui appartenaient aux nœuds 1 et 2 respectivement aux nœuds 3 et 4.
 
 .Description de la tâche
-Effectuez les étapes de cette section sur les noeuds 3 et 4, puis effectuez chaque étape sur le noeud 3, puis sur le noeud 4 avant de passer à l'étape suivante.
+Vous effectuez les étapes de cette section sur node3 et node4. Réalisez chaque étape sur node3 puis sur node4 avant de passer à l'étape suivante.
 
+[[reassign-spare-disks-step1]]
 .Étapes
-. Connectez les câbles des tiroirs de stockage des tiroirs précédemment connectés au nœud 1/nœud 2 au nœud 3/nœud 4.
+. Raccordez les câbles des tiroirs disques qui étaient précédemment attachés :
++
+** Connectez les câbles du nœud 1 au nœud 3
+** Connectez les câbles du nœud 2 au nœud 4.
 +
 
-CAUTION: Vous ne devez pas connecter de nouveaux tiroirs au nœud 3/nœud 4 pendant cette procédure de mise à niveau. Vous pouvez connecter de nouveaux tiroirs au système sans interruption une fois la mise à niveau du contrôleur terminée.
+CAUTION: Ne connectez pas de nouveaux tiroirs disques à node3 ou node4 pendant cette procédure de mise à niveau. Vous pouvez connecter de nouveaux tiroirs disques au système sans interruption après avoir terminé la mise à niveau du contrôleur.
+
+
 
 . Vérification de l'alimentation électrique et de la connectivité physique des tiroirs
 . Dans l'invite DU CHARGEUR du nœud 3, démarrez en mode maintenance :
@@ -39,26 +45,38 @@ Local System ID: 101268854
 ...
 ----
 +
-Notez l'ID système du node3 à utiliser à l'étape 4 ci-dessous.
+Enregistrez l'identifiant système du nœud 3 pour l'utiliser dans <<reassign-disks-and-aggregates,Étape 5>>.
 
-. Réaffectez les disques de spare du nœud1, les disques appartenant à l'agrégat racine et tous les agrégats de données :
+
+
+[[reassign-disks-and-aggregates]]
+. Réaffectez les disques et les agrégats de données :
 +
-`disk reassign -s _node1_sysid_ -d _node3_sysid_ -p _node2_sysID_`
-
-+
---
-** Le paramètre `_node1_sysid_` Est la valeur que vous avez enregistrée dans _l'arrêt des nœuds d'origine_, link:upgrade-shutdown-remove-original-nodes.html#shutdown_node_step5["Étape 5"].
-** Spécifier le paramètre `_-p partner_sysID_` uniquement lorsque des disques partagés sont présents.
-
-
-[NOTE]
+[role="tabbed-block"]
 ====
-Lors de la réaffectation des disques de spare du nœud2, des disques appartenant à l'agrégat racine et de tout agrégat de données, la commande est la suivante :
-
-`disk reassign -s node2_sysid -d node4_sysid -p node3_sysID`
-
-====
+.Réaffecter au nœud 3
 --
+Réaffectez les disques de rechange du nœud 1, les disques appartenant à l'agrégat racine et tous les agrégats de données au nœud 3 :
+
+`disk reassign -s <node1_sysid> -d <node3_sysid> -p <node4_sysid>`
+
+** Le paramètre  `node1_sysid` est la valeur que vous avez enregistrée dans _Arrêt des nœuds d'origine_ link:upgrade-shutdown-remove-original-nodes.html#shutdown_node_step5["Étape 5"].
+** Spécifiez le paramètre `-p <node2_sysid>` uniquement lorsque des disques partagés sont présents.
+
+
+--
+.Réaffecter au nœud 4
+--
+Réaffectez les disques de rechange du nœud 2, les disques appartenant à l'agrégat racine et tous les agrégats de données au nœud 4 :
+
+`disk reassign -s <node2_sysid> -d <node4_sysid> -p <node3_sysid>`
+
+** Le paramètre  `node2_sysid` est la valeur que vous avez enregistrée dans _Arrêt des nœuds d'origine_ link:upgrade-shutdown-remove-original-nodes.html#shutdown_node_step5["Étape 5"].
+** Spécifiez le paramètre  `-p <node3_sysid>`uniquement lorsque des disques partagés sont présents.
+
+
+--
+====
 +
 Un message similaire au message suivant s'affiche :
 
@@ -100,8 +118,12 @@ Vous devez voir les résultats similaires à ce qui suit :
           aggr0 online          raid_dp, aggr         root
                                 64-bit
 ----
-. Quitter le mode Maintenance :
+. [[reassign-spare-disks-step9]]Quittez le mode maintenance :
 +
 `halt`
 
+. Répétez <<reassign-spare-disks-step1,Étape 1>> à <<reassign-spare-disks-step9,Étape 9>> sur le nœud 4.
 
+
+.Et la suite ?
+Après avoir installé les étagères de stockage et réattribué la propriété des disques, link:upgrade-restore-root-volume-config.html["restaurer la configuration du volume racine"].

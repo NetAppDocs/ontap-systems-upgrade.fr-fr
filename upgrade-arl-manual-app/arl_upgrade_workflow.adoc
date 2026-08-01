@@ -36,72 +36,31 @@ L'illustration suivante montre les étapes de la procédure. Les flèches gris c
 
 image:arl_upgrade_manual_image1.PNG["Illustration des étapes de la procédure ARL"]
 
-Le tableau suivant décrit les tâches principales de chaque étape et l'état de la propriété agrégée à la fin de l'étape. Les étapes détaillées sont fournies plus loin dans la procédure :
+Découvrez les principales tâches à accomplir à chaque étape et l'état de la propriété de l'agrégat à la fin de l'étape. Les étapes détaillées sont fournies plus loin dans la procédure.
 
-[cols="35,65"]
-|===
-| Étape | Étapes 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"]link:determine_aggregates_on_internal_drives.html["Étape 1 : préparer la mise à niveau"]
+[role="quick-margin-para"]
+Lors de la phase 1, le cas échéant, vérifiez que les disques internes ne contiennent pas d'agrégats racines ou d'agrégats de données, préparez les nœuds pour la mise à niveau et exécutez une série de contrôles préalables. Si nécessaire, vous reclé les disques pour le chiffrement du stockage et préparation au démarrage sur le réseau des nouveaux contrôleurs.
 
-
-| link:determine_aggregates_on_internal_drives.html["Étape 1 : préparer la mise à niveau"]  a| 
-Lors de la première étape, si nécessaire, vous vérifiez que les disques internes ne contiennent pas d’agrégats racine ni d’agrégats de données, vous préparez les nœuds pour la mise à niveau et vous exécutez les vérifications préalables. Si nécessaire, vous réinitialisez les clés de chiffrement des disques pour Storage Encryption et vous préparez le démarrage réseau (netboot) des nouveaux contrôleurs.
-
-Propriété d'un agrégat à la fin de la phase 1 :
-
-* NODE1 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 1.
-* NODE2 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 2.
-
-
-
-
-| link:relocate_non_root_aggr_node1_node2.html["Étape 2 : retrait du noeud 1"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"]link:relocate_non_root_aggr_node1_node2.html["Étape 2 : retrait du noeud 1"]
+[role="quick-margin-para"]
 Lors de la phase 2, vous transférez des agrégats non-racines du nœud 1 vers le nœud 2, et déplacez les LIF de données non-SAN qui appartiennent au nœud 1 vers le nœud 2, y compris les agrégats défaillants ou vetotés. Vous enregistrez également les informations nécessaires sur le nœud1 pour une utilisation ultérieure dans la procédure et retirez le nœud1.
 
-Propriété d'un agrégat à la fin de la phase 2 :
-
-* NODE1 est le propriétaire personnel des agrégats du nœud 1.
-* NODE2 est le propriétaire actuel des agrégats du nœud 1.
-* NODE2 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 2.
-
-
-
-
-| link:install_boot_node3.html["Etape 3 : installation et démarrage du node3"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"]link:install_boot_node3.html["Etape 3 : installation et démarrage du node3"]
+[role="quick-margin-para"]
 Lors de l'étape 3, vous installez et démarrez le nœud 3, puis vous mappez les ports de gestion du cluster et des nœuds du nœud 1 vers le nœud 3. Si vous utilisez NetApp Volume Encryption (NVE), vous restaurez la configuration du gestionnaire de clés. Ensuite, vous déplacez les LIF de données et les LIF SAN appartenant au nœud 1 du nœud 2 vers le nœud 3, vous relocalisez tous les agrégats du nœud 2 vers le nœud 3, et vous déplacez les LIF de données et les LIF SAN appartenant au nœud 2 vers le nœud 3.
 
-Propriété globale à la fin de la phase 3 :
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"]link:record_node2_information.html["Étape 4 : retirer le noeud 2"]
+[role="quick-margin-para"]
+Au cours de l'étape 4, vous enregistrez les informations nécessaires sur le noeud 2 pour une utilisation ultérieure dans la procédure, puis vous retirez le noeud 2.
 
-* Node4 est le propriétaire accueil des agrégats du nœud 2, mais pas le propriétaire actuel.
-* NODE3 est le propriétaire du site et le propriétaire actuel des agrégats appartenant à l'origine au nœud 1.
-* NODE2 est le propriétaire du site et le propriétaire actuel d'agrégats appartenant au nœud2, mais non le propriétaire du site.
-
-
-
-
-| link:record_node2_information.html["Étape 4 : retirer le noeud 2"]  a| 
-Au cours de l'étape 4, vous enregistrez les informations nécessaires sur le noeud 2 pour une utilisation ultérieure dans la procédure, puis vous retirez le noeud 2. La propriété globale n'a aucun changement.
-
-
-
-| link:install_boot_node4.html["Etape 5 : installation et démarrage du node4"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinq"]link:install_boot_node4.html["Etape 5 : installation et démarrage du node4"]
+[role="quick-margin-para"]
 Lors de l’étape 5, vous installez et démarrez le nœud 4 et mappez les ports de gestion du cluster et du nœud du nœud 2 vers le nœud 4. Si vous utilisez NetApp Volume Encryption (NVE), vous restaurez la configuration du gestionnaire de clés. Ensuite, vous déplacez les LIF de données et les LIF SAN appartenant au nœud 2 du nœud 3 vers le nœud 4, vous relocalisez les agrégats du nœud 2 du nœud 3 vers le nœud 4, et vous déplacez les LIF de données et les LIF SAN appartenant au nœud 2 vers le nœud 3.
 
-Propriété globale à la fin de la phase 5 :
-
-* NODE3 est le propriétaire et propriétaire actuel des agrégats qui appartenaient initialement au noeud 1.
-* NODE4 est le propriétaire et propriétaire actuel des agrégats qui appartenaient initialement au nœud2.
-
-
-
-
-| link:manage_authentication_kmip.html["Étape 6 : terminez la mise à niveau"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Six"]link:manage_authentication_kmip.html["Étape 6 : terminez la mise à niveau"]
+[role="quick-margin-para"]
 Lors de la phase 6, vous confirmez que les nouveaux nœuds sont correctement configurés et configurez Storage Encryption ou NetApp Volume Encryption si les nouveaux nœuds sont activés pour le chiffrement. Vous devez également désaffecter les anciens nœuds et reprendre les opérations SnapMirror.
 
-
-NOTE: Les mises à jour de reprise après sinistre des machines virtuelles de stockage (SVM) ne sont pas interrompues conformément aux calendriers prévus.
-
-La propriété globale n'a aucun changement.
-
-|===
 .Et la suite ?
 Après avoir examiné le flux de travail de mise à niveau ARLlink:guidelines_upgrade_with_arl.html["Consultez les directives relatives à la mise à niveau des contrôleurs avec ARL"].

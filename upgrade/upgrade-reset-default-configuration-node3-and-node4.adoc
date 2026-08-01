@@ -54,3 +54,6 @@ Le système lance la  `wipeconfig`procédure et redémarre. Une fois la procédu
 
 . Dans le menu de démarrage, entrez 8 pour redémarrer le nœud, et entrez Ctrl-C pendant AUTOBOOT pour arrêter le nœud à l'invite LOADER.
 
+
+.Et la suite ?
+Après avoir réinitialisé la configuration par défaut sur les nouveaux nœuds, link:upgrade-install-new-nodes.html["installer les nouveaux nœuds"].

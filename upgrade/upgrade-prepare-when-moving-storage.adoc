@@ -170,3 +170,6 @@ NOTE: Il n'est pas nécessaire d'extraire le contenu du `<ontap_version>_image.t
 
 
 Vous allez utiliser les informations du répertoire pour link:upgrade-set-up-new-nodes.html["configurez les nouveaux nœuds"].
+
+.Et la suite ?
+Après avoir préparé la mise à niveau, link:upgrade-shutdown-remove-original-nodes.html["arrêtez les nœuds d'origine"].

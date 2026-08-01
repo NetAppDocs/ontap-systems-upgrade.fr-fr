@@ -17,7 +17,7 @@ summary: 'Vérifiez que les ports physiques du nœud 1 sont correctement redirig
 Vous devez vous assurer que les ports physiques du nœud1 correspondent correctement aux ports physiques du nœud3. Cela permet à nœud3 de communiquer avec les autres nœuds du cluster et avec le réseau après la mise à niveau.
 
 .Avant de commencer
-Vous devez déjà disposer d'informations sur les ports sur les nouveaux nœuds à partir du _Hardware Universe_. (Allez à link:other_references.html["Références"] Pour établir un lien vers le _Hardware Universe_). Vous utilisez ces informations ultérieurement dans cette section et dans link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"].
+Vous devez déjà disposer d'informations sur les ports des nouveaux nœuds provenant de _Hardware Universe_. (Accédez à link:other-references.html["Références"] pour accéder à _Hardware Universe_). Vous utiliserez ces informations plus loin dans cette section et dans link:map_ports_node2_node4.html["Mappage des ports du node2 au node4"].
 
 La configuration logicielle du nœud 3 doit correspondre à la connectivité physique du nœud 3 et la connectivité réseau doit être restaurée avant de poursuivre la mise à niveau.
 
@@ -239,7 +239,7 @@ L'exemple suivant définit la politique de basculement sur « broadcast-domain-l
 network interface modify -vserver node3 -lif data1 failover-policy broadcast-domainwide -failover-group fg1
 ----
 +
-Accédez à link:other_references.html["Références"] pour accéder à _Network Management_ ou au _ONTAP 9 Command reference_ pour plus d'informations.
+Accédez à link:other-references.html["Références"] pour accéder à _Network Management_ ou au _ONTAP 9 Command reference_ pour plus d'informations.
 
 . Vérifiez les modifications sur le noeud 3 :
 +

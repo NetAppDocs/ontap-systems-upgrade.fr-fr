@@ -37,3 +37,6 @@ Chaque tiroir disque, châssis compris, requiert un ID unique.
 . Mettez le système sous tension afin que le tiroir disque converti et tous les autres tiroirs disques reliés aux nouveaux nœuds.
 . Mettez les nouveaux nœuds sous tension, puis interrompez le processus de démarrage de chaque nœud en appuyant sur Ctrl-C pour accéder à l'invite de l'environnement de démarrage.
 
+
+.Et la suite ?
+Après avoir converti un nœud d'origine en un tiroir disque, link:upgrade-attach-shelves-reassign-disks.html["Attachez des tiroirs disques et réattribuez la propriété des disques"].

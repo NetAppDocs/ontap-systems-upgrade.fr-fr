@@ -32,72 +32,31 @@ Durant la procédure, vous mettez à niveau le matériel du contrôleur d'origin
 
 Chaque agrégat possède un propriétaire d'origine et un propriétaire actuel. Le propriétaire de la maison est le propriétaire réel de l'agrégat, et le propriétaire actuel est le propriétaire temporaire.
 
-Le tableau ci-après décrit les tâches générales que vous effectuez à chaque étape ainsi que l'état de propriété de l'agrégat à la fin de cette étape. Les étapes détaillées sont fournies ultérieurement dans la procédure :
+Découvrez les principales tâches que vous effectuez à chaque étape et l'état de la propriété de l'agrégat à la fin de l'étape. Des étapes détaillées sont fournies plus loin dans la procédure.
 
-[cols="35,65"]
-|===
-| Étape | Description 
-
-
-| link:prepare_nodes_for_upgrade.html["Étape 1. Préparation de la mise à niveau"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"]link:prepare_nodes_for_upgrade.html["Étape 1. Préparation de la mise à niveau"]
+[role="quick-margin-para"]
 Lors de l'étape 1, vous exécutez des contrôles préalables et, le cas échéant, vous devez corriger la propriété globale. Vous devez enregistrer certaines informations si vous gérez le chiffrement du stockage à l'aide de OKM et si vous pouvez choisir de suspendre les relations SnapMirror.
 
-Propriété d'un agrégat à la fin de la phase 1 :
-
-* NODE1 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 1.
-* NODE2 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 2.
-
-
-
-
-| link:relocate_non_root_aggr_nas_data_lifs_node1_node2.html["Étape 2. Transférez et retirez le nœud 1"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"]link:relocate_non_root_aggr_nas_data_lifs_node1_node2.html["Étape 2. Transférez et retirez le nœud 1"]
+[role="quick-margin-para"]
 Lors de la phase 2, vous transférez les agrégats non racines et les LIF de données du nœud 1 vers le nœud 2. Ce processus est largement automatisé. L'opération s'interrompt pour vous permettre de vérifier son état. Vous devez reprendre l'opération manuellement. Si nécessaire, vous transférez des agrégats défaillants ou vetotés. Vous enregistrez les informations sur le noeud 1 pour les utiliser ultérieurement dans la procédure avant de retirer le noeud 1. Vous pouvez également préparer votre infrastructure sur le nœud 3 et sur le nœud 4 plus tard dans la procédure.
 
-Propriété d'un agrégat à la fin de la phase 2 :
-
-* NODE2 est le propriétaire actuel des agrégats du nœud 1.
-* NODE2 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 2.
-
-
-
-
-| link:install_boot_node3.html["Étape 3. Installez et démarrez le nœud 3"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"]link:install_boot_node3.html["Étape 3. Installez et démarrez le nœud 3"]
+[role="quick-margin-para"]
 Au cours de l'étape 3, vous installez et amorcez le nœud 3, vérifiez que les ports de cluster et de gestion des nœuds du nœud 1 sont en ligne sur le nœud 3, réaffectez les disques du nœud 1 au nœud 3 et vérifiez l'installation du nœud 3. Si vous utilisez NetApp Volume Encryption (NVE), vous restaurez la configuration du gestionnaire de clés. Si nécessaire, définissez la configuration FC ou UTA/UTA2 sur le nœud 3. Vous pouvez également transférer les LIF de données NAS du nœud 1 et les agrégats non racine du nœud 2 vers le nœud 3, puis vérifier que les LIF SAN existent sur le nœud 3.
 
-Propriété globale à la fin de la phase 3 :
-
-* NODE3 est le propriétaire et propriétaire actuel des agrégats du nœud 1.
-* NODE2 est le propriétaire du site et le propriétaire actuel des agrégats du nœud 2.
-
-
-
-
-| link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Étape 4. Transférez et retirez le nœud 2"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"]link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Étape 4. Transférez et retirez le nœud 2"]
+[role="quick-margin-para"]
 Lors de la phase 4, vous transférez les agrégats non racines et les LIF de données NAS du nœud 2 vers le nœud 3. Vous enregistrez également les informations du node2 pour les utiliser ultérieurement dans la procédure avant de retirer le node2.
 
-Propriété globale à la fin de la phase 4 :
-
-* NODE3 est le propriétaire et propriétaire actuel des agrégats qui appartenaient initialement au noeud 1.
-* Node4 est le propriétaire accueil des agrégats du nœud 2.
-* NODE3 est le propriétaire actuel des agrégats du nœud 2.
-
-
-
-
-| link:install_boot_node4.html["Étape 5. Installez et démarrez Node4"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinq"]link:install_boot_node4.html["Étape 5. Installez et démarrez Node4"]
+[role="quick-margin-para"]
 Au cours de l'étape 5, vous installez et amorcez node4, vérifiez que le cluster et les ports de gestion des nœuds du node2 sont mis en ligne sur le node4, réaffectez les disques du node2 au node4 et vérifiez l'installation du node4. Si vous utilisez NVE, restaurez la configuration du gestionnaire de clés. Si nécessaire, définissez la configuration FC ou UTA/UTA2 sur le nœud 4. Vous pouvez également transférer les LIF de données NAS du nœud 2 et les agrégats non racine du nœud 3 vers le nœud 4, puis vérifier que les LIF SAN existent sur le nœud 4.
 
-Propriété globale à la fin de la phase 5 :
-
-* NODE3 est le propriétaire et propriétaire actuel des agrégats qui appartenaient initialement au noeud 1.
-* NODE4 est le propriétaire et propriétaire actuel des agrégats qui appartenaient initialement au nœud2.
-
-
-
-
-| link:manage-authentication-using-kmip-servers.html["Étape 6. Terminez la mise à niveau"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Six"]link:manage-authentication-using-kmip-servers.html["Étape 6. Terminez la mise à niveau"]
+[role="quick-margin-para"]
 Lors de la phase 6, vous vérifiez que les nouveaux nœuds sont correctement configurés et que, si les nouveaux nœuds sont activés pour le chiffrement, vous configurez et configurez Storage Encryption ou NVE. Vous devez également désaffecter les anciens nœuds et reprendre les opérations SnapMirror.
 
-|===
 .Et la suite ?
 Après avoir pris connaissance de la séquence de mise à niveau ARLlink:prepare_nodes_for_upgrade.html["préparer les nœuds pour la mise à niveau"].

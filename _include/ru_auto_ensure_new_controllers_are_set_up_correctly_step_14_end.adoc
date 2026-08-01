@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-. Pour configurer un cluster sans commutateur sur les nouveaux nœuds, reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers le site de support _NetApp_ et suivre les instructions de la section _transition vers un cluster_ sans commutateur à deux nœuds_.
+. Si vous souhaitez configurer un cluster sans commutateur sur les nouveaux nœuds, reportez-vous à link:other-references.html["Références"] le _NetApp Support Site_ et suivez les instructions de _Transitioning to a two-node switchless cluster_.
 
 
 .Une fois que vous avez terminé

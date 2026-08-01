@@ -24,8 +24,8 @@ Pour savoir si vous pouvez utiliser ARL pour mettre à niveau vers une paire de 
 Avant de mettre à niveau une paire de nœuds à l'aide de cette procédure ARL, vérifiez les conditions suivantes pour vous assurer que votre configuration est prise en charge :
 
 * Vérifiez que le transfert d'agrégats peut être effectué sur les contrôleurs d'origine et de remplacement.
-* Vérifiez la taille de tous les agrégats définis et le nombre de disques pris en charge par le système d'origine. Vous comparez ensuite la taille et le nombre de disques pris en charge par l'agrégat à la taille et au nombre de disques pris en charge par le nouveau système. Reportez-vous à la section link:other_references.html["Références"] pour obtenir un lien vers le _Hardware Universe_ où ces informations sont disponibles. La taille de l'agrégat et le nombre de disques pris en charge par le nouveau système doivent être égaux ou supérieurs à la taille et au nombre de disques pris en charge par le système d'origine.
-* Validez dans les règles de mélange du cluster si les nouveaux nœuds peuvent devenir partie intégrante du cluster avec les nœuds existants lorsque le contrôleur d'origine est remplacé. Pour plus d'informations sur les règles de mélange de clusters, reportez-vous à la section link:other_references.html["Références"] pour accéder au lien vers le _Hardware Universe_.
+* Vérifiez la taille de tous les agrégats définis et le nombre de disques pris en charge par le système d'origine. Vous comparez ensuite la taille des agrégats et le nombre de disques pris en charge à la taille de l'agrégat et au nombre de disques pris en charge par le nouveau système. Reportez-vous à link:other-references.html["Références"] pour accéder à _Hardware Universe_ où ces informations sont disponibles. La taille de l'agrégat et le nombre de disques pris en charge par le nouveau système doivent être égaux ou supérieurs à la taille de l'agrégat et au nombre de disques pris en charge par le système d'origine.
+* Vérifiez, dans les règles de mixage de clusters, si de nouveaux nœuds peuvent être intégrés au cluster avec les nœuds existants lors du remplacement du contrôleur d'origine. Pour plus d'informations sur les règles de mixage de clusters, reportez-vous à link:other-references.html["Références"] pour accéder à _Hardware Universe_.
 * Migrez et réHome les LIF du cluster sur deux ports de cluster par nœud si vous disposez d'un système, tel qu'un AFF 700, avec la configuration suivante :
 * Plus de deux ports de cluster par nœud
 * Une carte d'interconnexion de cluster en slot4 en mode écorché pour créer les ports e4a, e4b, e4c et e4d et les ports e4e, e4f, e4g et e4h
@@ -54,9 +54,9 @@ Si vous mettez à niveau des nœuds dans un cluster sans commutateur à 2 nœuds
 
 Vous ne pouvez pas mettre à niveau des contrôleurs de remplacement qui ne prennent pas en charge les tiroirs disques connectés aux contrôleurs d'origine.
 
-Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Hardware Universe_ pour des informations sur la prise en charge des disques.
+Consultez link:other-references.html["Références"] pour accéder à _Hardware Universe_ et obtenir des informations sur la prise en charge des disques.
 
-Si vous souhaitez mettre à niveau des contrôleurs d'entrée de gamme avec des lecteurs internes, reportez-vous à la section link:other_references.html["Références"] pour accéder à _mise à niveau en déplaçant des volumes ou du stockage_ et passez à la procédure _mise à niveau d'une paire de nœuds exécutant clustered Data ONTAP en déplaçant des volumes_.
+Si vous souhaitez mettre à niveau des contrôleurs d'entrée de gamme avec disques internes, reportez-vous à link:other-references.html["Références"]_Mise à niveau par déplacement de volumes ou de stockage_ et accédez à la procédure _Mise à niveau d'une paire de nœuds exécutant Data ONTAP par déplacement de volumes_.
 
 
 

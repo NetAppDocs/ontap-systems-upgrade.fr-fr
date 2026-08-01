@@ -20,4 +20,4 @@ Durant la procédure, vous mettez à niveau le matériel du contrôleur d'origin
 
 Chaque agrégat possède un propriétaire d'origine et un propriétaire actuel. Le propriétaire de la maison est le propriétaire réel de l'agrégat, et le propriétaire actuel est le propriétaire temporaire.
 
-Le tableau ci-après décrit les tâches générales que vous effectuez à chaque étape ainsi que l'état de propriété de l'agrégat à la fin de cette étape. Les étapes détaillées sont fournies ultérieurement dans la procédure :
+Découvrez les principales tâches que vous effectuez à chaque étape et l'état de la propriété de l'agrégat à la fin de l'étape. Des étapes détaillées sont fournies plus loin dans la procédure.

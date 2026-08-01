@@ -139,7 +139,7 @@ Basé sur la sortie dans <<man_aggr_step4,Étape 4>> Et à l'étape 6, aggr2 uti
 Poursuivre cette procédure.
 
 
-NOTE: Avant de continuer, vous devez placer les agrégats hors ligne, puis les détruire sur les disques internes. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers la gestion _Disk et de l'agrégat avec le contenu CLI_ pour des informations sur la gestion des agrégats.
+NOTE: Avant de continuer, vous devez mettre les agrégats hors ligne, puis les supprimer des disques internes. Consultez link:other-references.html["Références"] pour accéder au contenu _Disk and aggregate management with the CLI_ afin d'obtenir des informations sur la gestion des agrégats.
 
 
 
@@ -147,14 +147,14 @@ NOTE: Avant de continuer, vous devez placer les agrégats hors ligne, puis les d
 Poursuivre cette procédure.
 
 
-NOTE: Avant de continuer, vous devez déplacer les volumes vers un tiroir disque externe, mettre ces agrégats hors ligne, puis les détruire sur les disques internes. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers la gestion _Disk et d'agrégats avec le contenu CLI_ pour des informations sur le déplacement de volumes.
+NOTE: Avant de continuer, vous devez déplacer les volumes vers un tiroir disque externe, mettre les agrégats hors ligne, puis détruire les agrégats sur les disques internes. Consultez link:other-references.html["Références"] pour accéder au contenu _Gestion des disques et des agrégats via l'interface de ligne de commande_ afin d'obtenir des informations sur le déplacement des volumes.
 
 
 
-| Contiennent des volumes racines sur les disques internes | Ne pas poursuivre cette procédure. Vous pouvez mettre à niveau les contrôleurs en faisant référence à link:other_references.html["Références"] Pour établir un lien vers le _site de support NetApp_ et à l'aide de la procédure _mise à niveau du matériel de contrôleur sur une paire de nœuds exécutant clustered Data ONTAP en déplaçant des volumes_. 
+| Contiennent des volumes racines sur les disques internes | N'allez pas plus loin avec cette procédure. Vous pouvez mettre à niveau les contrôleurs en vous référant à link:other-references.html["Références"] pour accéder au _NetApp Support Site_ et en utilisant la procédure _Upgrading the controller hardware on a pair of nodes running clustered Data ONTAP by moving volumes_. 
 
 
-| Contiennent des volumes non-racines sur les disques internes et vous ne pouvez pas déplacer les volumes vers un stockage externe | Ne pas poursuivre cette procédure. Vous pouvez mettre à niveau les contrôleurs en suivant la procédure _mise à niveau du matériel de contrôleur sur une paire de nœuds exécutant clustered Data ONTAP en déplaçant des volumes_. Reportez-vous à la section link:other_references.html["Références"] Lien vers le site de support _NetApp_ où vous pouvez accéder à cette procédure. 
+| Contiennent des volumes non-racines sur les disques internes et vous ne pouvez pas déplacer les volumes vers un stockage externe | N'appliquez pas cette procédure. Vous pouvez mettre à niveau les contrôleurs en utilisant la procédure _Upgrading the controller hardware on a pair of nodes running clustered Data ONTAP by moving volumes_. Reportez-vous à link:other-references.html["Références"] pour accéder au _NetApp Support Site_ où vous pouvez consulter cette procédure. 
 |===
 
 

@@ -50,3 +50,6 @@ Une fois les volumes déplacés vers les nouveaux nœuds, vous supprimez les nœ
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-8.png["Huit"]link:upgrade-complete-move-volumes.html["Terminez la mise à niveau"]
 [role="quick-margin-para"]
 Pour terminer la procédure de mise à niveau en déplaçant des volumes, vous devez configurer le processeur de service, installer de nouvelles licences et configurer AutoSupport. Vous devrez peut-être également configurer Storage ou Volume Encryption et configurer les ports FC ou NCA.
+
+.Et la suite ?
+Après avoir appris comment effectuer une mise à niveau en déplaçant des volumeslink:upgrade-prepare-when-moving-volumes.html["Préparez la mise à niveau"].

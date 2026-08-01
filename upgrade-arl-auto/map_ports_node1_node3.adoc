@@ -17,7 +17,7 @@ summary: 'Vérifiez que les ports physiques du nœud 1 sont correctement redirig
 Vous devez vérifier que les ports physiques du nœud1 correspondent correctement aux ports physiques du nœud3. Cela permet au nœud3 de communiquer avec les autres nœuds du cluster et avec le réseau après la mise à niveau.
 
 .Description de la tâche
-Reportez-vous à la section link:other_references.html["Références"] Pour établir une liaison avec _Hardware Universe_ afin de capturer des informations sur les ports des nouveaux nœuds. Vous utiliserez ces informations plus loin dans cette section.
+Consultez link:other-references.html["Références"] pour accéder à _Hardware Universe_ et recueillir des informations sur les ports des nouveaux nœuds. Vous utiliserez ces informations plus loin dans cette section.
 
 Les paramètres de port peuvent varier selon le modèle des nœuds. Vous devez configurer les ports et les LIF du nœud d'origine pour qu'ils soient compatibles avec l'utilisation et la configuration prévues du nouveau nœud. En effet, le nouveau nœud reproduit la même configuration au démarrage, ce qui signifie qu'au démarrage du nœud3, ONTAP tentera d'héberger les LIF sur les mêmes ports que ceux utilisés sur le nœud1.
 
@@ -215,7 +215,7 @@ La commande suivante définit la règle de basculement sur `broadcast-domain-wid
 `network interface modify -vserver node3 -lif data1 failover-policy broadcast-domainwide -failover-group fg1`
 
 +
-Reportez-vous à link:other_references.html["Références"] pour obtenir un lien vers _Network Management_ ou le _ONTAP 9 Command reference_ pour plus d'informations.
+Reportez-vous à link:other-references.html["Références"] pour obtenir un lien vers _Network Management_ ou le _ONTAP 9 Command reference_ pour plus d'informations.
 
 . Vérifiez les modifications sur le noeud 3 :
 +

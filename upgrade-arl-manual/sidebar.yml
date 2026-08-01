@@ -146,4 +146,4 @@ entries:
   - title: Après la mise à niveau, les LIFs se trouvent sur des ports non valides
     url: "/upgrade-arl-manual/lifs_invalid_ports_after_upgrade.html"
 - title: Références
-  url: "/upgrade-arl-manual/other_references.html"
+  url: "/upgrade-arl-manual/other-references.html"

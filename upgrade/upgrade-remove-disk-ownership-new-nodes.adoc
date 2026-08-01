@@ -100,3 +100,6 @@ Tous les disques répertoriés doivent être non assignés.
 `halt`
 
 
+
+.Et la suite ?
+Après avoir supprimé la propriété des disques attachés aux nouveaux nœuds, link:upgrade-reset-default-configuration-node3-and-node4.html["réinitialiser la configuration par défaut sur les nouveaux nœuds"].

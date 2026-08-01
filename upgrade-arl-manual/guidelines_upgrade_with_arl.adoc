@@ -41,15 +41,15 @@ NOTE: Avant d'effectuer une mise à niveau du système AFF, vous devez mettre à
 * La mise à niveau du contrôleur avec l'ARL est prise en charge sur les systèmes configurés avec les volumes SnapLock Enterprise et SnapLock Compliance.
 
 
-Vous devez vérifier si l'ARL peut être réalisé sur les contrôleurs d'origine et de remplacement. Vous devez vérifier la taille de tous les agrégats définis et le nombre de disques pris en charge par le système d'origine. Ensuite, comparez-les avec la taille et le nombre de disques pris en charge par le nouveau système. Pour accéder à ces informations, reportez-vous à la section link:other_references.html["Références"] Pour accéder au _Hardware Universe_. La taille de l'agrégat et le nombre de disques pris en charge par le nouveau système doivent être égaux ou supérieurs à la taille et au nombre de disques pris en charge par le système d'origine.
+Vous devez vérifier si l'ARL peut être effectuée sur les contrôleurs d'origine et de remplacement. Vous devez vérifier la taille de tous les agrégats définis et le nombre de disques pris en charge par le système d'origine. Comparez-les ensuite avec la taille de l'agrégat et le nombre de disques pris en charge par le nouveau système. Pour accéder à ces informations, consultez link:other-references.html["Références"] pour accéder au lien vers _Hardware Universe_. La taille de l'agrégat et le nombre de disques pris en charge par le nouveau système doivent être égaux ou supérieurs à la taille de l'agrégat et au nombre de disques pris en charge par le système d'origine.
 
-Vous devez valider dans le cluster des règles de combinaison de nouveaux nœuds que les nouveaux nœuds peuvent intégrer au cluster avec les nœuds existants lors du remplacement du contrôleur d'origine. Pour plus d'informations sur les règles de mélange des clusters, reportez-vous à link:other_references.html["Références"] Pour accéder au _Hardware Universe_.
+Vous devez valider dans les règles de mixage de clusters si de nouveaux nœuds peuvent être intégrés au cluster avec les nœuds existants lors du remplacement du contrôleur d'origine. Pour plus d'informations sur les règles de mixage de clusters, reportez-vous à link:other-references.html["Références"] pour accéder à _Hardware Universe_.
 
 
 NOTE: Les deux systèmes sont haute disponibilité ou non HA. Les deux nœuds doivent avoir la personnalisation activée ou désactivée. Vous ne pouvez pas combiner un nœud avec la personnalité optimisée pour la technologie 100 % Flash activée ou un nœud sur lequel l'utilisateur n'est pas activé au sein de la même paire haute disponibilité. Si les personnalités sont différentes, contactez l'assistance technique.
 
 
-NOTE: Si le nouveau système comporte moins de slots que le système d'origine ou s'il comporte moins de ports ou des ports différents, vous devrez peut-être ajouter un adaptateur au nouveau système. Reportez-vous à la section link:other_references.html["Références"] Pour obtenir des informations détaillées sur les plateformes spécifiques, accédez au site de support NetApp _Hardware Universe_.
+NOTE: Si le nouveau système possède moins d'emplacements que le système d'origine, ou s'il possède moins de ports ou des ports différents, vous devrez peut-être ajouter un adaptateur au nouveau système. Consultez link:other-references.html["Références"] pour accéder à l’_Hardware Universe_ sur le site d'assistance NetApp afin d'obtenir des détails sur les plateformes spécifiques.
 
 
 
@@ -60,19 +60,19 @@ Vous ne pouvez pas effectuer les mises à niveau suivantes :
 
 * Vers ou depuis des contrôleurs qui ne peuvent pas exécuter de version de ONTAP depuis ONTAP 9.0 vers ONTAP 9.7.
 +
-Pour en savoir plus sur la mise à niveau du contrôleur pour les systèmes exécutant Data ONTAP 7-mode, reportez-vous à la link:other_references.html["Références"] Lien vers le _site de support NetApp_.
+Pour obtenir des informations sur les mises à niveau des contrôleurs pour les systèmes exécutant Data ONTAP en mode 7, reportez-vous à link:other-references.html["Références"] pour accéder au _NetApp Support Site_.
 
 * Remplacement des contrôleurs qui ne prennent pas en charge les tiroirs disques connectés aux contrôleurs d'origine.
 +
-Pour plus d'informations sur la prise en charge des disques, reportez-vous à link:other_references.html["Références"] Pour accéder au _Hardware Universe_.
+Pour obtenir des informations sur la prise en charge des disques, reportez-vous à link:other-references.html["Références"] pour accéder à _Hardware Universe_.
 
 * À partir des contrôleurs avec agrégats racine ou agrégats de données sur disques internes
 +
-Pour mettre à niveau les contrôleurs avec les agrégats racine ou les agrégats de données sur disques internes, reportez-vous à link:other_references.html["Références"] Pour lier votre système à _mise à niveau en déplaçant des volumes ou du stockage_ et aller à la procédure _mettre à niveau une paire de nœuds exécutant clustered Data ONTAP en déplaçant des volumes_.
+Si vous souhaitez mettre à niveau des contrôleurs avec des agrégats racine ou des agrégats de données sur des disques internes, reportez-vous à link:other-references.html["Références"]_Mise à niveau par déplacement de volumes ou de stockage_ et accédez à la procédure _Mise à niveau d'une paire de nœuds exécutant clustered Data ONTAP par déplacement de volumes_.
 
 +
 
-NOTE: Pour mettre à niveau ONTAP sur les nœuds d'un cluster, reportez-vous à la section link:other_references.html["Références"] Pour accéder à _Upgrade ONTAP_.
+NOTE: Si vous souhaitez mettre à niveau ONTAP sur les nœuds d'un cluster, consultez link:other-references.html["Références"] pour accéder à _Upgrade ONTAP_.
 
 
 
@@ -115,9 +115,9 @@ Certaines fonctionnalités nécessitent des licences, qui sont émises sous la f
 
 Si vous ne disposez pas de nouvelles clés de licence, les fonctionnalités actuellement sous licence dans le cluster sont disponibles pour le nouveau contrôleur et continueront de fonctionner. Toutefois, l'utilisation de fonctions sans licence sur le contrôleur peut vous mettre hors conformité avec votre contrat de licence. Vous devez donc installer la ou les nouvelles clés de licence pour le nouveau contrôleur une fois la mise à niveau terminée.
 
-Toutes les clés de licence comportent 28 caractères alphabétiques en majuscules. Reportez-vous à la section link:other_references.html["Références"] Lien vers le site de support _NetApp_ où vous pouvez obtenir de nouvelles clés de licence de 28 caractères pour ONTAP 9.7. ou plus tôt. Les clés sont disponibles dans la section _mon support_ sous _licences logicielles_. Si le site ne dispose pas des clés de licence dont vous avez besoin, contactez votre ingénieur commercial NetApp.
+Toutes les clés de licence comportent 28 caractères alphabétiques majuscules. Consultez link:other-references.html["Références"] pour accéder au _NetApp Support Site_ où vous pouvez obtenir de nouvelles clés de licence de 28 caractères pour ONTAP 9.7 ou une version antérieure. Les clés sont disponibles dans la section _My Support_ sous _Software licenses_. Si le site ne propose pas les clés de licence dont vous avez besoin, contactez votre représentant commercial NetApp.
 
-Pour plus d'informations sur les licences, rendez-vous sur link:other_references.html["Références"] Pour établir un lien vers _System Administration Reference_.
+Pour obtenir des informations détaillées sur les licences, accédez à link:other-references.html["Références"] pour accéder au _System Administration Reference_.
 
 
 

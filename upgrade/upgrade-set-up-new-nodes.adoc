@@ -124,3 +124,6 @@ Le `ha-config modify controller ha` commande configure `ha` pour le réglage du 
 Le système s'arrête à l'invite DU CHARGEUR
 
 
+
+.Et la suite ?
+Après avoir configuré les nouveaux nœuds, éventuellement, link:upgrade-move-internal-drives.html["déplacer les disques internes du nœud d'origine"] ou link:upgrade-convert-node-to-shelf.html["convertir le nœud d'origine en un tiroir disque"]. Ensuite, link:upgrade-attach-shelves-reassign-disks.html["Attachez des tiroirs disques et réattribuez la propriété des disques"].

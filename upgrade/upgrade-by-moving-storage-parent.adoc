@@ -68,6 +68,9 @@ Vous restaurez les informations de configuration du volume racine sur les périp
 [role="quick-margin-para"]
 Effectuez la mise à niveau dans ONTAP 9.8 ou version ultérieure ou ONTAP 9.7 ou version antérieure.
 
+.Et la suite ?
+Après avoir appris comment effectuer une mise à niveau en déplaçant le stockage,link:upgrade-prepare-when-moving-storage.html["Préparez la mise à niveau"].
+
 .Informations associées
 * link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Mise à niveau de AFF A250 vers AFF A400 en convertissant en tiroir disque"](procédure non perturbatrice)
 * link:convert-to-drive-shelf.html["Mettez à niveau depuis AFF A150, AFF A220 ou FAS2820 en convertissant en un shelf de disques"] (procédure sans interruption)

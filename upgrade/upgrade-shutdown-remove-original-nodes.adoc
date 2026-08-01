@@ -125,3 +125,6 @@ Use "storage failover modify -node <nodename> -onreboot false" to turn it OFF.
 . Etiqueter et retirer tous les câbles du node1 et du node2.
 . Retirez le châssis contenant les nœuds 1 et 2.
 
+
+.Et la suite ?
+Après avoir arrêté les nœuds d'origine, link:upgrade-remove-disk-ownership-new-nodes.html["supprimer la propriété des disques attachés aux nouveaux nœuds"].

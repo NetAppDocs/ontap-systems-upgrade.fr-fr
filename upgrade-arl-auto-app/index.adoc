@@ -34,7 +34,7 @@ Cette procédure de mise à niveau s'applique principalement aux scénarios de m
 * Cette procédure s'applique aux systèmes FAS et aux systèmes AFF .
 * Cette procédure s'applique aux systèmes exécutant une configuration NetApp MetroCluster à 4 nœuds ou une version supérieure. Étant donné que les sites de configuration MetroCluster peuvent se trouver sur deux sites physiquement différents, la mise à niveau automatisée du contrôleur doit être effectuée individuellement sur chaque site MetroCluster pour une paire haute disponibilité.
 * Pour les systèmes non MetroCluster, tels que des clusters haute disponibilité, la mise à niveau du transfert d'agrégats (ARL) est la seule procédure prise en charge.
-* Si vous mettez à niveau votre système AFF A320, vous pouvez utiliser les déplacements de volumes pour mettre à niveau le matériel de votre contrôleur et contacter le support technique. Reportez-vous à la section link:other_references.html["Références"] Pour établir un lien vers _Upgrade en déplaçant des volumes ou du stockage_.
+* Si vous effectuez une mise à niveau depuis un système AFF A320, vous pouvez utiliser le déplacement de volumes pour mettre à niveau le matériel du contrôleur ou contacter le support technique. Consultez link:other-references.html["Références"] pour accéder à _Mise à niveau par déplacement de volumes ou de stockage_.
 
 
 .Automatisation du processus de mise à niveau des contrôleurs
