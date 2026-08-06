@@ -47,10 +47,7 @@ Local System ID: 101268854
 +
 Enregistrez l'identifiant système du nœud 3 pour l'utiliser dans <<reassign-disks-and-aggregates,Étape 5>>.
 
-
-
-[[reassign-disks-and-aggregates]]
-. Réaffectez les disques et les agrégats de données :
+. [[reassign-disks-and-aggregates]]Réaffectez les disques et les agrégats de données :
 +
 [role="tabbed-block"]
 ====
