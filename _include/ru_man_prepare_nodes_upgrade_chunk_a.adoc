@@ -161,7 +161,7 @@ Si ni le nœud 1 ni le nœud 2 ne possèdent des agrégats dont ils sont le prop
 
 +
 ....
-cluster::> storage aggregate show -node node2 -is-home false -fields owner-name,homename,state
+cluster::> storage aggregate show -node node2 -is-home false -fields owner-name,home-name,state
 There are no entries matching your query.
 ....
 +
