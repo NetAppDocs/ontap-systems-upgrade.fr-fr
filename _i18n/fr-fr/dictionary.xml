@@ -4683,7 +4683,6 @@ Avec ONTAP 9.8, le<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" " categ
   <block id="7c83d808889f08051a5ca591ce7c8e27" category="list-text">[[relocate-step1]]Relocalisez les agrégats non racines en complétant les sous-étapes suivantes :</block>
   <block id="fc0d545a8e3aca29e30f066934728447" category="list-text">Vérifiez que l'ID du système partenaire est correctement configuré sur le nœud 3 :</block>
   <block id="dfcbf33b107ee8cbdb248e3973591ecd" category="list-text">[[relocate-step5]]Relocaliser les agrégats non racines :</block>
-  <block id="ed787946b7250668aadee490b38bc4a4" category="section-title">Quelle procédure de mise à niveau dois-je utiliser ?</block>
   <block id="dd04b613766be00015be37c27c9287a8" category="paragraph">Pour sélectionner la procédure de mise à niveau appropriée, consultez toutes les questions répertoriées dans le tableau ci-dessous.</block>
   <block id="40c8ff48fe09ea0079684fdd1a250ec0" category="cell">Posez-vous la question…</block>
   <block id="3b67351e5cad04409e6a96d3746ac449" category="cell">Si votre réponse est oui, vous pouvez faire ceci…</block>
@@ -4712,7 +4711,6 @@ Avec ONTAP 9.8, le<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" " categ
   <block id="4c57db980fd04065c39ac4dffcef854a" category="section-title">Exemple : Mise à niveau du FAS9500 vers le FAS90</block>
   <block id="a97ea56b0e00b2379736ae60869ff66a" category="cell">Question</block>
   <block id="67ca848a550c561e54a81891f0d6d223" category="cell">Exemple de réponse</block>
-  <block id="be3ad2de4d2b8e3ba0b5c1aa4b8cb05b" category="cell">Non. Les FAS9500 et FAS90 fonctionnent tous deux sous ONTAP 9.15.1.</block>
   <block id="d3334963d764fa4e8de5f77317d6ec86" category="cell">Souhaite-je effectuer une mise à niveau disruptive ?</block>
   <block id="5eeadbc38fb7c86d39e9b4b88587473b" category="cell">Non. Je souhaite maintenir mon environnement de production en ligne pendant la mise à niveau.</block>
   <block id="980384b8326ad5f69899ae62e2ab1ecb" category="cell">Oui. Selon que mon système soit modulaire ou intégré, je peux effectuer une mise à niveau en déplaçant des volumes ou en utilisant la relocalisation d'agrégats (ARL).</block>
@@ -5594,4 +5592,14 @@ Avec ONTAP 9.8, le<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" " categ
   <block id="db5d818f482843c95ffb191e7d48c35e" category="summary">Configurez les ports FC intégrés du nœud 4, les ports UTA et UTA2, ou la carte UTA et UTA2 lors d'une mise à niveau manuelle ARL sur des contrôleurs exécutant ONTAP 9.8 ou une version ultérieure.</block>
   <block id="1d1d3bd3fe7acd738c89cf279d744e1b" category="sidebar">Remplacez les modules système de node1</block>
   <block id="61a8342f8a44813141884475de4e2a3c" category="paragraph">Après avoir démarré le nœud2 avec le module système de remplacement, vous vérifiez qu’il est correctement installé. Vous devez attendre que le nœud2 rejoigne le quorum, puis reprendre l’opération de remplacement du contrôleur.</block>
+  <block id="3be649079389687b52aca5285e2b20a4" category="section-title">Étape 1 : Sélectionnez la procédure de mise à niveau appropriée</block>
+  <block id="77020be1e60162ee3900759f339c0767" category="section-title">Étape 2 : Préparez la mise à niveau</block>
+  <block id="a28e21a67dff4d848427cfa15fde856f" category="paragraph">Avant de commencer votre procédure de mise à niveau, examinez toutes les questions répertoriées dans le tableau ci-dessous.</block>
+  <block id="5e3622ee3829e87e1095b6d7f01beaf1" category="cell">Si votre réponse est oui, vous devez faire ceci…</block>
+  <block id="2376e2a677900d01e271835b28de0a94" category="cell">Existe-t-il une configuration FC SAN sur le cluster de mon système d'origine ?</block>
+  <block id="89dcc1d78edaf637785c6ecfca413588" category="inline-link-macro">Découvrez le zonage FC et FCoE avec les systèmes ONTAP</block>
+  <block id="d9be8a4f16ec08dcf1f5e6d2439c4637" category="inline-link-macro">Configurations de zonage FC et FCoE recommandées pour les systèmes ONTAP</block>
+  <block id="f835dc79760f269bbfd81a777b78620d" category="cell">Validez la configuration de zonage SAN pour tous les nœuds des systèmes d'origine et de remplacement. Reportez-vous à <block ref="b0267be2c10e97b47f1f9bcbc029b474" category="inline-link-macro-rx"></block> et <block ref="0b12576218c74a7268436563b74ec582" category="inline-link-macro-rx"></block>.</block>
+  <block id="7fb0d242758a1608211c466843e7f7e8" category="cell">Non. FAS9500 et FAS90 exécutent tous deux ONTAP 9.17.1.</block>
+  <block id="e051a964e918207a93d794544866c861" category="cell">Oui. J'ai validé la configuration de zonage SAN sur tous les nœuds, aussi bien sur le système d'origine que sur le système de remplacement.</block>
 </blocks>

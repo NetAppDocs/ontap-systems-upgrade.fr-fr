@@ -18,8 +18,8 @@ NOTE: Les mises à niveau ASA vers un système de remplacement ASA r2 ne sont pa
 
 
 
-[[which-upgrade-procedure-should-i-use]]
-== Quelle procédure de mise à niveau dois-je utiliser ?
+[[step-1-select-the-correct-upgrade-procedure]]
+== Étape 1 : Sélectionnez la procédure de mise à niveau appropriée
 
 Pour sélectionner la procédure de mise à niveau appropriée, consultez toutes les questions répertoriées dans le tableau ci-dessous.
 
@@ -68,10 +68,24 @@ L'ARL est une procédure de remplacement.  Vous n'avez pas besoin d'agrandir ou 
 | Ai-je un système intégré et souhaite-je le mettre à niveau en remplaçant uniquement le module contrôleur, en conservant le châssis et les disques existants ? | link:upgrade-arl-auto-in-chassis/index.html["Mise à niveau via ARL, en conservant le même châssis, les mêmes disques et les données stockées sur les disques"]. 
 
 
+| Est-ce que je mets à niveau une configuration MetroCluster ? | Se référer àlink:https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Mettez à niveau, actualisez ou développez la configuration MetroCluster"^] . 
+|===
+
+
+[[step-2-prepare-for-the-upgrade]]
+== Étape 2 : Préparez la mise à niveau
+
+Avant de commencer votre procédure de mise à niveau, examinez toutes les questions répertoriées dans le tableau ci-dessous.
+
+[cols="30,70"]
+|===
+| Posez-vous la question… | Si votre réponse est oui, vous devez faire ceci… 
+
+
 | Suis-je en train de déplacer une SVM ? | Se référer àlink:https://docs.netapp.com/us-en/ontap/svm-migrate/index.html#svm-migration-workflow["Aperçu de la mobilité des données SVM"^] . 
 
 
-| Est-ce que je mets à niveau une configuration MetroCluster ? | Se référer àlink:https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Mettez à niveau, actualisez ou développez la configuration MetroCluster"^] . 
+| Existe-t-il une configuration FC SAN sur le cluster de mon système d'origine ? | Validez la configuration de zonage SAN pour tous les nœuds des systèmes d'origine et de remplacement. Reportez-vous à link:https://docs.netapp.com/us-en/ontap/san-config/fibre-channel-fcoe-zoning-concept.html["Découvrez le zonage FC et FCoE avec les systèmes ONTAP"^] et link:https://docs.netapp.com/us-en/ontap/san-config/fc-fcoe-recommended-zoning-configuration.html["Configurations de zonage FC et FCoE recommandées pour les systèmes ONTAP"^]. 
 
 
 | Est-ce que je remplace un composant individuel ? | Se référer àlink:https://docs.netapp.com/us-en/ontap-systems/index.html["Documentation des systèmes matériels ONTAP"^] et localisez le dépliant de l'unité remplaçable sur site (FRU) pour ce composant. 
@@ -88,7 +102,7 @@ Cet exemple fournit des réponses possibles pour une mise à niveau du contrôle
 | Question | Exemple de réponse 
 
 
-| Est-ce que j'utilise une version logicielle différente sur les nœuds d'origine et les nouveaux nœuds ? | Non. Les FAS9500 et FAS90 fonctionnent tous deux sous ONTAP 9.15.1. 
+| Est-ce que j'utilise une version logicielle différente sur les nœuds d'origine et les nouveaux nœuds ? | Non. FAS9500 et FAS90 exécutent tous deux ONTAP 9.17.1. 
 
 
 | Souhaite-je effectuer une mise à niveau disruptive ? | Non. Je souhaite maintenir mon environnement de production en ligne pendant la mise à niveau. 
@@ -110,6 +124,9 @@ Cet exemple fournit des réponses possibles pour une mise à niveau du contrôle
 
 
 | Est-ce que je mets à niveau une configuration MetroCluster ? | Non. Il s'agit d'un cluster HA standard. 
+
+
+| Existe-t-il une configuration FC SAN sur le cluster de mon système d'origine ? | Oui. J'ai validé la configuration de zonage SAN sur tous les nœuds, aussi bien sur le système d'origine que sur le système de remplacement. 
 
 
 | Est-ce que je remplace un composant individuel ? | Non. Je mets à jour l'ensemble du système de contrôle. 
