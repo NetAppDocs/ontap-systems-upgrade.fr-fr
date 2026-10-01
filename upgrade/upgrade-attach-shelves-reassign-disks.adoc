@@ -58,7 +58,7 @@ Réaffectez les disques de rechange du nœud 1, les disques appartenant à l'agr
 `disk reassign -s <node1_sysid> -d <node3_sysid> -p <node4_sysid>`
 
 ** Le paramètre  `node1_sysid` est la valeur que vous avez enregistrée dans _Arrêt des nœuds d'origine_ link:upgrade-shutdown-remove-original-nodes.html#shutdown_node_step5["Étape 5"].
-** Spécifiez le paramètre `-p <node2_sysid>` uniquement lorsque des disques partagés sont présents.
+** Spécifiez le paramètre  `-p <node4_sysid>`uniquement lorsque des disques partagés sont présents.
 
 
 --
