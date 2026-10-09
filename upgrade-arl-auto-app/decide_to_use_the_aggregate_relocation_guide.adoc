@@ -105,7 +105,7 @@ NOTE: Si votre combinaison de modèles de mise à niveau de contrôleurs ne figu
 | FAS2720 | 9.13.1 ou version ultérieure | FAS2820 | 9.13.1 ou version ultérieure 
 
 
-| FAS2760 | 9.11.1P7 ou antérieure | FAS2820 | 9.13.1 ou version ultérieure 
+| FAS2620 | 9.11.1 ou version ultérieure | FAS2820 | 9.13.1 ou version ultérieure 
 
 
 | AFF 8060 | Correctifs 9.8P13 ou version ultérieure | AFF A900 | 9.10.1 à 9.12.1 
